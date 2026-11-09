@@ -462,11 +462,19 @@ def _identity_code_version(identity: dict) -> str:
 
     Tier 2 is skipped for a dirty tree: git cannot tell us what the uncommitted
     files said, so the sha is all there is.
+
+    Tiers 1 and 2 are then resolved along the fingerprint lineage
+    (`tasks/config/fingerprint_lineage.py`): an edit measured record-neutral maps the
+    fingerprint it retired onto the current one, so a dataset written under the
+    retired fingerprint still compares equal to the code that carries it today while
+    its certificate and sidecars keep the fingerprint they were written with.
     """
+    from tasks.config.fingerprint_lineage import resolve
+
     env_id = str(identity.get("env_id") or "").strip()
     recorded = str(identity.get("code_fingerprint") or "").strip()
     if recorded:
-        return "fp:" + recorded[:12]
+        return resolve(env_id, "fp:" + recorded[:12])
 
     sha = str(identity.get("git_sha") or "").strip()
     if not sha:
@@ -480,7 +488,7 @@ def _identity_code_version(identity: dict) -> str:
         except Exception:
             recovered = None
         if recovered:
-            return "fp:" + recovered[:12]
+            return resolve(env_id, "fp:" + recovered[:12])
     return sha[:12] + ("+dirty" if dirty else "")
 
 
