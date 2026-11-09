@@ -29,8 +29,9 @@ _GPU_STAGE_BODY_WEIGHT = (
     "(episode.npz, raw_states.pkl, env_states.pkl) on all five targets of the family; CPU "
     "action replay of three UnscrewCap episodes that cross attached cap -> free twin -> placed "
     "-> open bottle gives an identical per-step state hash chain before and after (3/3); "
-    "replay_success_rate over the released OpenCabinet and UnscrewCap datasets gives the same "
-    "per-episode verdicts before and after."
+    "replay_success_rate over the four released datasets of the family (OpenCabinet, "
+    "PickBottle, PourBeads, UnscrewCap; 100 episodes each) gives identical per-episode rows "
+    "(steps, success verdicts, first divergence, final error) before and after, 400/400."
 )
 
 #: env_id -> ((old_fingerprint, new_fingerprint, evidence), ...), 12-hex prefixes.
