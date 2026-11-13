@@ -1,0 +1,35 @@
+{
+  "logical_object": "cabinet_pouring.bottle_cap",
+  "runtime_handles": [
+    "cap",
+    "cap_fixed",
+    "cap_twin"
+  ],
+  "representations": {
+    "cap": "attached to dynamic A",
+    "cap_fixed": "attached to fixed B",
+    "cap_twin": "free detached twin"
+  },
+  "mesh": "tasks/assets/task_object_meshes/cabinet_pour/bottle_4403/lid_vis/original-2.obj",
+  "uv_vertices": 0,
+  "adapter": "tasks/cabinet_pouring/variation.py: PilotVariation._collect_bindings / apply_appearance",
+  "native_builder": "tasks/cabinet_pouring/cabinet_pouring_long.py: _load_bottle_and_cap / CAP_MARKER_BOXES",
+  "roles": {
+    "cap_surface": {
+      "source_slot": "material_0_0",
+      "runtime_rule": "cap* non-box mesh shapes"
+    },
+    "cap_reference": {
+      "source": "2 existing CAP_MARKER_BOXES",
+      "runtime_rule": "cap* RenderShapeBox",
+      "native_color": [
+        0.85,
+        0.08,
+        0.08,
+        1
+      ]
+    }
+  },
+  "stage_consistency": "One paired scheme stays fixed for the episode across all six representations; stage switching does not resample.",
+  "geometry_and_physics": "Unchanged; no new marker geometry, no collision edits, no new UV."
+}

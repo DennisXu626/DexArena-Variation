@@ -1,0 +1,29 @@
+{
+  "scheme_id": "violet",
+  "paired_bottle_scheme_id": "violet",
+  "catalog_version": "cabinet-appearance-v1",
+  "roles": {
+    "cap_surface": {
+      "base_color": [
+        0.22,
+        0.04,
+        0.4,
+        1
+      ],
+      "roughness": 0.28,
+      "metallic": 0.16
+    },
+    "cap_reference": {
+      "base_color": [
+        0.05,
+        1,
+        0.82,
+        1
+      ],
+      "roughness": 0.28,
+      "metallic": 0.16
+    }
+  },
+  "texture": null,
+  "uv": "Native cap has zero UV vertices; parameter-only change to mesh and two existing asymmetric visual marker boxes"
+}

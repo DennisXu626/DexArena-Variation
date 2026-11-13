@@ -1,0 +1,30 @@
+{
+  "scheme_id": "violet",
+  "paired_cap_scheme_id": "violet",
+  "catalog_version": "cabinet-appearance-v1",
+  "roles": {
+    "body_surface": {
+      "base_color": [
+        0.48,
+        0.2,
+        0.64,
+        1
+      ],
+      "roughness": 0.28,
+      "metallic": 0.16
+    },
+    "body_label": {
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_color_texture": "textures/label.png",
+      "roughness": 0.28,
+      "metallic": 0.16
+    }
+  },
+  "uv": "Reuse original-3.obj vt/faces unchanged; no separate UV file or unwrap",
+  "label_sha256": "94f477cdddf0ef60999736d23f7a09be54cd7c3fb53b18c7ba2329540b509b73"
+}
