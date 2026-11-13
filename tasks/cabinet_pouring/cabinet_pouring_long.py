@@ -502,6 +502,7 @@ class CabinetPouringLongEnv(BaseEnv):
         variation=None,
         **kwargs,
     ):
+        self._bottle_render_membership_dirty = False
         self._variation = None
         if variation and any(
             variation.get(feature, {}).get("enabled", False)
@@ -2096,8 +2097,7 @@ class CabinetPouringLongEnv(BaseEnv):
                 self.source.set_angular_velocity(torch.zeros((b, 3)))
             return source_q
 
-    @staticmethod
-    def _set_body_visible(obj, i: int, visible: bool):
+    def _set_body_visible(self, obj, i: int, visible: bool):
         import sapien.render as srender
 
         raw = obj._objs[int(i)]
@@ -2105,10 +2105,37 @@ class CabinetPouringLongEnv(BaseEnv):
         body = entity.find_component_by_type(srender.RenderBodyComponent)
         if body is None:
             return
-        try:
-            body.visibility = 1.0 if visible else 0.0
-        except AttributeError:
-            body.set_visibility(1.0 if visible else 0.0)
+        self._set_bottle_render_visibility(body, 1.0 if visible else 0.0)
+
+    def _set_bottle_render_visibility(self, body, value):
+        # SAPIEN 3.0 changes render-system membership on visibility transitions.
+        # Even a hide/show round trip invalidates an existing batched group.
+        if body.visibility != value:
+            body.visibility = value
+            self._bottle_render_membership_dirty = True
+
+    def _refresh_bottle_render_group(self):
+        scene = self.scene
+        if not self._bottle_render_membership_dirty:
+            return
+        if (scene.gpu_sim_enabled and not scene.parallel_in_single_scene
+                and scene.render_system_group is not None):
+            # Reuse native setup and the existing cameras; physics and camera
+            # poses are untouched. Rebind both previously initialized groups.
+            scene._setup_gpu_rendering()
+            if scene._sensors_initialized:
+                scene._gpu_setup_sensors(scene.sensors)
+            if scene._human_render_cameras_initialized:
+                scene._gpu_setup_sensors(scene.human_render_cameras)
+        self._bottle_render_membership_dirty = False
+
+    def render_rgb_array(self, *args, **kwargs):
+        self._refresh_bottle_render_group()
+        return super().render_rgb_array(*args, **kwargs)
+
+    def _get_obs_sensor_data(self, *args, **kwargs):
+        self._refresh_bottle_render_group()
+        return super()._get_obs_sensor_data(*args, **kwargs)
 
     @staticmethod
     def _set_articulation_gravity(articulation, i: int, disabled: bool):
@@ -2471,8 +2498,7 @@ class CabinetPouringLongEnv(BaseEnv):
             srender.RenderBodyComponent
         )
 
-    @staticmethod
-    def _set_render_visibility(body, i: int, value: float):
+    def _set_render_visibility(self, body, i: int, value: float):
         import sapien.render as srender
 
         obj = body._objs[int(i)]
@@ -2481,10 +2507,7 @@ class CabinetPouringLongEnv(BaseEnv):
         rb = ent.find_component_by_type(srender.RenderBodyComponent)
         if rb is None:
             return
-        try:
-            rb.visibility = float(value)
-        except AttributeError:
-            rb.set_visibility(float(value))
+        self._set_bottle_render_visibility(rb, float(value))
 
     def _set_ghost_active(self, i: int, active: bool):
         """Show/hide the articulated cap and enable/disable its collisions.
@@ -2492,10 +2515,7 @@ class CabinetPouringLongEnv(BaseEnv):
         pair filter — true across resets (the hand re-poses far away)."""
         rb = self._ghost_render_body(i)
         if rb is not None:
-            try:
-                rb.visibility = 1.0 if active else 0.0
-            except AttributeError:
-                rb.set_visibility(1.0 if active else 0.0)
+            self._set_bottle_render_visibility(rb, 1.0 if active else 0.0)
         # The detached twin is the exact complement of the ghost: while the
         # ghost is shown the twin sits parked at +5 m, and a parked body must
         # not render. It is physically harmless up there (gravity off, zero
