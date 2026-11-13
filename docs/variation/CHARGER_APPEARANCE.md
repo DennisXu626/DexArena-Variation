@@ -1,5 +1,7 @@
 # Charger 外观 Variation 实施与验收
 
+> 本文保留Bob A1–A3交付时的方案、预览报告和后续安排。当前正式接入及PickCharger／InsertPlug各2环境A4／A5已通过，见[当前状态与证据](CHARGER_A4_A5.md)和[统一对象档案](../../assets/appearance/objects/drawer_plug/charger/README.md)；下文历史计划不改写为当时已完成。
+
 ## A1 部件清单
 
 Charger 由三个箱体组成，构建为一个动态刚体。三个箱体分别添加视觉形状和对应的碰撞形状。本体和插脚组分别使用一个渲染材质，两根插脚在构建时共用同一个 `prong_material`。

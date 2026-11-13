@@ -22,18 +22,23 @@ def sha(path):
 
 
 rows = list(csv.DictReader((archive / 'objects.csv').open(encoding='utf-8')))
-assert len(rows) == 42 and len({(r['family'], r['object_id']) for r in rows}) == 42
-assert len({r['family'] for r in rows}) == 10
-assert Counter(r['status'] for r in rows) == {
-    'accepted_pilot': 2, 'pending_adaptation': 35, 'no_visual': 3,
-    'not_loaded': 1, 'external_pending': 1,
-}
+directories = {p.parent.relative_to(archive).as_posix()
+               for p in (archive / 'objects').glob('*/*/README.md')}
+assert len(rows) == len({(r['family'], r['object_id']) for r in rows})
+assert len(rows) == len(directories) and {r['directory'] for r in rows} == directories
+statuses = {'accepted_pilot', 'pending_adaptation', 'no_visual', 'not_loaded', 'external_pending'}
+counts = Counter(r['status'] for r in rows)
+assert set(counts) <= statuses
 for row in rows:
     directory = archive / row['directory']
     assert (directory / 'README.md').is_file(), row
     if row['status'] != 'accepted_pilot':
         assert not (directory / 'variants').exists(), row
 mapping = read(archive / 'runtime_mapping.json')
+inventory = mapping['inventory']
+assert inventory['total_objects'] == len(directories)
+assert inventory['families'] == len({r['family'] for r in rows})
+assert inventory['status_counts'] == {k: counts[k] for k in statuses}
 catalog_path = root / mapping['runtime_catalog']
 catalog = read(catalog_path)
 assert sha(catalog_path) == mapping['runtime_catalog_sha256']
@@ -60,6 +65,23 @@ for name, item in mapping['schemes'].items():
     assert runtime.name == scheme['label_texture']
     assert (archive / item['bottle_materials']).parent / body['roles']['body_label']['base_color_texture'] == texture
     assert cap['texture'] is None
+
+# Charger references Bob's one runtime catalog; measured results are evidence,
+# not a second editable parameter source in the object archive.
+charger = mapping['charger']
+charger_row, = [r for r in rows if r['family'] == 'drawer_plug' and r['object_id'] == 'charger']
+assert charger_row['status'] == charger['status'] == 'accepted_pilot'
+charger_catalog_path = root / charger['runtime_catalog']
+charger_catalog = read(charger_catalog_path)
+assert sha(charger_catalog_path) == charger['runtime_catalog_sha256']
+assert charger_catalog['version'] == charger['runtime_catalog_version']
+assert charger['scheme_ids'] == list(charger_catalog['schemes'])
+assert set(charger_row['published_variants'].split(';')) == set(charger_catalog['schemes']) - {'original'}
+assert (archive / charger['archive_readme']).is_file()
+measured = read(root / charger['evidence'])
+assert measured['catalog_version'] == charger_catalog['version']
+assert measured['catalog_sha256'] == sha(charger_catalog_path)
+assert all(t['A4'] == 'passed' and t['A5']['status'] == 'passed' for t in measured['tasks'])
 
 bottle = archive / 'objects/cabinet_pouring/bottle'
 cap = bottle.parent / 'bottle_cap'
@@ -92,7 +114,8 @@ for path in [root / 'README.md', *archive.rglob('*.md')]:
             continue
         assert (path.parent / target.split('#')[0]).exists(), f'{path}: {target}'
         links += 1
-print(json.dumps({'status': 'passed', 'objects': len(rows), 'families': 10,
+print(json.dumps({'status': 'passed', 'objects': len(directories), 'families': inventory['families'],
+                  'status_counts': inventory['status_counts'],
                   'decoded_pngs': len(images), 'archive_runtime_png_matches': 3,
                   'paired_schemes': 3, 'relative_links': links,
                   'scope': 'CPU archive only; no runtime capability or simulation claim'}))

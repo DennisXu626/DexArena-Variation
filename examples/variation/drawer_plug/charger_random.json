@@ -1,0 +1,8 @@
+{
+  "charger_appearance": {
+    "enabled": true,
+    "seed": 71,
+    "mode": "random_choice",
+    "scheme_ids": ["ivory_matte", "navy_satin", "copper_metal"]
+  }
+}

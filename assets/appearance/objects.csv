@@ -6,7 +6,7 @@ cabinet_pouring,bowl,目标碗,pending_adaptation,objects/cabinet_pouring/bowl,,
 cabinet_pouring,beads,蓝色珠子（程序生成）,pending_adaptation,objects/cabinet_pouring/beads,,cabinet_pouring/beads,beads
 drawer_plug,drawer,抽屉,pending_adaptation,objects/drawer_plug/drawer,,drawer_plug/drawer,drawer
 drawer_plug,socket,插座（程序生成）,pending_adaptation,objects/drawer_plug/socket,,drawer_plug/socket,socket
-drawer_plug,charger,充电器（程序生成）,external_pending,objects/drawer_plug/charger,,drawer_plug/charger,charger
+drawer_plug,charger,充电器（程序生成）,accepted_pilot,objects/drawer_plug/charger,ivory_matte;navy_satin;copper_metal,drawer_plug/charger,charger
 furniture_assembly,flat_panel,木质板件（程序生成）,pending_adaptation,objects/furniture_assembly/flat_panel,,furniture_assembly/flat_panel,panel
 furniture_assembly,panel_rack,板件导向架／装配工装（程序生成）,pending_adaptation,objects/furniture_assembly/panel_rack,,furniture_assembly/panel_rack,rack
 furniture_assembly,rail,金属导轨（程序生成）,pending_adaptation,objects/furniture_assembly/rail,,furniture_assembly/rail,rail_screw

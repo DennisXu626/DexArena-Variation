@@ -2,20 +2,20 @@
 
 这是**已有外观归档，不是新增运行能力**。每个稳定逻辑对象一个目录：十家族V1的40条对象记录全部保留，另补V2／M1的两个无视觉追溯项；不将157条逐任务初始化行变成157套素材。不同家族同名对象不凭名称合并；A／B／C阶段表示记录在bindings，不重复复制贴图。
 
-已有新外观只在Cabinet瓶／盖：Ocean、Citrus、Violet配套三方案，来自已验收M2；其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；charger由Bob另行推进，尚未验收，本轮只设入口。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
+已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
 
 ## 快速使用
 
 1. 从[objects.csv](objects.csv)或下表进入某对象，先读状态／原资源／加载边界。
-2. 瓶／盖已有[参数、纹理、绑定、原版及任务对照](objects/cabinet_pouring/bottle/README.md)，盖[角度参照](objects/cabinet_pouring/bottle_cap/previews/README.md)为历史人工工程检查。
-3. 查看[runtime_mapping.json](runtime_mapping.json)：对象目录是制作／归档入口，`tasks/assets/variation/cabinet_pouring/v1`是当前运行发布副本，运行仍读取原catalog；没有新loader。修改档案后需适配验收再同步发布，两者不是可独立编辑的源，单边修改不算发布完成。
+2. [Charger参数与接入证据](objects/drawer_plug/charger/README.md)引用唯一运行catalog；瓶／盖已有[参数、纹理、绑定、原版及任务对照](objects/cabinet_pouring/bottle/README.md)，盖[角度参照](objects/cabinet_pouring/bottle_cap/previews/README.md)为历史人工工程检查。
+3. 查看[runtime_mapping.json](runtime_mapping.json)：对象目录是制作／归档入口，`tasks/assets/variation/cabinet_pouring/v1`是当前运行发布副本，Charger则引用现有`tasks/assets/variation/drawer_plug/v1/catalog.json`，不复制参数；档案本身没有新loader。修改档案后需适配验收再同步发布，两者不是可独立编辑的源，单边修改不算发布完成。
 4. [Pillow制作说明](objects/cabinet_pouring/bottle/authoring/README.md)提供历史生成脚本的最小可移植版本；不默认覆盖发布素材，字体外部提供。瓶盖无UV／新贴图，不制造假textures或UV文件。
 
 原版不是第四张自制贴图，选择original恢复捕获的原生材质。原OBJ／MTL／原纹理等第三方资源只引用来源和身份，不复制整包。瓶身UV直接属于原OBJ，未单独生成。瓶与盖当前成套scheme选择，不支持任意独立混配。
 
 ## 对象与状态
 
-已验收试点2；待适配35；无视觉不适用3；当前未加载1；外部推进待验收1。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与清单复核：42个对象、10家族；已验收试点3；待适配35；无视觉不适用3；当前未加载1；外部推进待验收0。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -26,7 +26,7 @@
 | cabinet_pouring | [beads](objects/cabinet_pouring/beads/README.md) | 待适配 |
 | drawer_plug | [drawer](objects/drawer_plug/drawer/README.md) | 待适配 |
 | drawer_plug | [socket](objects/drawer_plug/socket/README.md) | 待适配 |
-| drawer_plug | [charger](objects/drawer_plug/charger/README.md) | 由Bob另行推进，尚未验收 |
+| drawer_plug | [charger](objects/drawer_plug/charger/README.md) | 已完成限定试点（A1–A3已接受；两任务各2env A4／A5通过） |
 | furniture_assembly | [flat_panel](objects/furniture_assembly/flat_panel/README.md) | 待适配 |
 | furniture_assembly | [panel_rack](objects/furniture_assembly/panel_rack/README.md) | 待适配 |
 | furniture_assembly | [rail](objects/furniture_assembly/rail/README.md) | 待适配 |

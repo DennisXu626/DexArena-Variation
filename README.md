@@ -1,6 +1,6 @@
 # DexArena Variation
 
-这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，当前只完成下面两个试点。
+这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，当前是下面两个家族、四个任务的限定试点。
 
 外观变化保持视觉／碰撞几何及物理参数不变；位姿只控制明确授权的任务物体，不自动随机化机器人。底层环境由ManiSkill管理，物理和渲染由SAPIEN提供，原对象素材仍按官方授权渠道取得。运行试点不需要AutoDemo算法工程、PPO、教师／学生模型、Dexonomy或任何训练检查点。
 
@@ -13,7 +13,11 @@
 
 已有原版＋Ocean／Citrus／Violet三种外观，实际替换瓶标签、调整盖子和非对称转动参照；支持明确指定或从指定集合随机选择，回合内固定，动态瓶／固定瓶／开口瓶及附着盖／自由盖保持同一逻辑方案。标签、品牌和原红条可以替换，但盖子必须有清楚且非对称的转动参照，仅均匀色或难分辨的周期图案不够。
 
-已有两个任务16环境的GPU批量局部reset（重置选中的环境）及RGB渲染实测；检查了未选环境的物理状态、材质与画面隔离。**这些结果继承自已验收M2及续篇001，本轮建仓没有重跑物理验证。** 不代表全部任务、任意并行规模、范围扩大、完整机器人任务或强化学习成功。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
+Cabinet两个任务已有16环境的GPU批量局部reset（重置选中的环境）及RGB渲染实测；检查了未选环境的物理状态、材质与画面隔离，结果继承已验收M2及续篇001。
+
+Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sharpa-v1`：original仍默认，ivory_matte／navy_satin／copper_metal可固定或集合随机选择；两任务各2环境的A4／A5已通过，包含物理／初态一致性、回合记录和局部reset状态／RGB隔离。Bob A1–A3材质交付与本线接入验收分开，参数只保存在一个[Charger catalog](tasks/assets/variation/drawer_plug/v1/catalog.json)，用法与实际证据见[Charger说明](docs/variation/CHARGER_A4_A5.md)。
+
+**本轮仓库整合仅CPU／Git检查，未复跑GPU或仿真。** 以上不代表全部任务、任意并行规模、范围扩大、完整机器人任务成功、A6或强化学习能力。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
 
 ## 代码导航
 
@@ -23,8 +27,9 @@
 | [cabinet_pouring_long.py](tasks/cabinet_pouring/cabinet_pouring_long.py) | 共用任务、A／B／C物体表示、reset及批量渲染兼容入口 | 集成负责人协调修改 |
 | [PickBottle子任务](tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py) | 柜内初始化、放瓶目标与子任务接口 | 位姿、集成 |
 | [UnscrewCap子任务](tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py) | 桌面初始化、最终固定B表示与子任务接口 | 位姿、集成 |
-| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态；瓶／盖既有纹理、参数、绑定、制作与历史预览 | 外观、素材整理 |
+| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态；瓶／盖资料与Charger实际接入证据 | 外观、素材整理 |
 | [运行外观catalog](tasks/assets/variation/cabinet_pouring/v1/catalog.json) | 既有运行发布副本，运行仍读取此路径 | 外观、集成 |
+| [Charger接入](tasks/drawer_plug/charger_appearance.py)、[配置示例](examples/variation/drawer_plug/)、[证据](docs/variation/evidence/charger_a4_a5/README.md) | 两个DrawerPlug子任务的外观配置及A4／A5边界 | 外观、集成、验收 |
 | [tasks/robots/](tasks/robots/)、[tasks/scene_builders/](tasks/scene_builders/)、[tasks/config/](tasks/config/) | 上游机器人、场景及注册／物理配置 | 了解来源；常规外观工作不需要修改 |
 | [examples/variation/](examples/variation/) | 已有试点配置及本机路径模板 | 所有人 |
 | [tools/variation/run_example.py](tools/variation/run_example.py) | 读取配置，加载／reset，保存记录及可选首帧 | 使用者、集成 |

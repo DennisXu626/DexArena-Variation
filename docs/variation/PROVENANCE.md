@@ -1,5 +1,7 @@
 # 来源、迁移与证据
 
+本页代码来源和M2迁移段落保留建仓时记录；当前Charger／物体档案整合见文末新增说明。历史结论不改写为本轮重新运行结果。
+
 ## 代码来源
 
 官方完整Git仓库：[SIPAIR-Elastic/DexArena](https://github.com/SIPAIR-Elastic/DexArena)，基准固定 `e7d5c49d079153e77da1ce2bfde16edf67ee7fa8`。本仓库是独立私有仓库，保留该提交及其祖先，不是GitHub公开Fork，也不是临时少量文件仓库重新git init。main上的新增修改如下，未合入基准之后其它上游功能：
@@ -35,3 +37,11 @@ M2首轮验证了外观单开、位姿单开、联合配置、固定／随机方
 保留上游Apache-2.0 [LICENSE](../../LICENSE)、[论文引用](../citation.bib)、[资源说明](../../tasks/assets/README.md)及已有[openpi NOTICE](../../utils/pi05_utils/NOTICE)／[许可](../../utils/pi05_utils/LICENSE.openpi)。完整官方首页和致谢见[固定基准README](https://github.com/SIPAIR-Elastic/DexArena/blob/e7d5c49d079153e77da1ce2bfde16edf67ee7fa8/README.md)。
 
 三张variation图案是项目用Pillow程序制作的小素材，不使用外部图片、素材包或分发字体文件；未新增几何。原对象、机器人、场景模型仍遵守原来源授权，仓库私有不代表可以任意重新分发它们。
+
+## 已验收Charger与物体档案整合
+
+按Dennis授权依序整合PR #2、#3、#4。#2为Bob的charger-a3-v1唯一catalog、部件说明及历史单环境预览；#3为统一物体档案，不改变既有瓶／盖及其它对象资料；#4增加Charger正式接口和已验收的两任务2env A4／A5证据。main采用squash记录，不将新main SHA冒称原运行测试提交。
+
+Charger生产测试提交为38b847444b6d2587068348e0047f09e33b98f2e8，已验收PR4 head为e8afb88fd5d3843d82d7692e626a520ceb4fb36e。本轮整合逐项核对运行manifest中任务、验证脚本和catalog哈希，不改这些运行文件；只有档案冲突、清单／状态说明和档案静态计数校验发生整合调整，没有GPU、仿真、训练或重渲染。
+
+Charger原说明仍为A1–A3历史，当前[统一档案](../../assets/appearance/objects/drawer_plug/charger/README.md)、[总索引](../../assets/appearance/README.md)和[运行证据](CHARGER_A4_A5.md)同步反映A4／A5限定通过，完整任务与A6未验证。参数只引用现有运行catalog，不生成第二份材质源。对象数量与状态由实际目录／objects.csv重新统计，runtime_mapping记录当前inventory；目录数不等于全部任务完成度。
