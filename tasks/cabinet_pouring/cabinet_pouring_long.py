@@ -2316,13 +2316,19 @@ class CabinetPouringLongEnv(BaseEnv):
             self.num_envs, dtype=torch.bool, device=self.device
         )
         switch_mask[env_idx] = True
-        self._swap_to_fixed_bottle(switch_mask)
+        self._swap_to_fixed_bottle(switch_mask, reset_env_idx=env_idx)
 
-    def _swap_to_fixed_bottle(self, switch_mask: torch.Tensor):
+    def _swap_to_fixed_bottle(
+        self, switch_mask: torch.Tensor, reset_env_idx: torch.Tensor = None
+    ):
         """A -> B after a qualified set-down and release."""
         if not self.bottle_stage_twins or not bool(switch_mask.any()):
             return
         switch_mask = switch_mask.bool()
+        # GPU articulation setters target scene._reset_mask during reset.
+        # Only the reset caller supplies a sub-batch; ordinary stage switches
+        # still write the full batch under the normal all-environments mask.
+        write_idx = slice(None) if reset_env_idx is None else reset_env_idx
         source_pose = self.source.pose.raw_pose.clone()
         source_qpos = self.bottle_screw.get_qpos().clone()
 
@@ -2330,7 +2336,7 @@ class CabinetPouringLongEnv(BaseEnv):
         fixed_pose = torch.where(
             switch_mask[:, None], source_pose, fixed_pose
         )
-        self.bottle_screw_fixed.set_root_pose(Pose(fixed_pose))
+        self.bottle_screw_fixed.set_root_pose(Pose(fixed_pose[write_idx]))
         fixed_qpos = self.bottle_screw_fixed.get_qpos().clone()
         fixed_qpos[:, self._cap_screw_qindex_fixed] = torch.where(
             switch_mask,
@@ -2341,24 +2347,24 @@ class CabinetPouringLongEnv(BaseEnv):
         fixed_qvel = torch.where(
             switch_mask[:, None], torch.zeros_like(fixed_qvel), fixed_qvel
         )
-        self.bottle_screw_fixed.set_qpos(fixed_qpos)
-        self.bottle_screw_fixed.set_qvel(fixed_qvel)
+        self.bottle_screw_fixed.set_qpos(fixed_qpos[write_idx])
+        self.bottle_screw_fixed.set_qvel(fixed_qvel[write_idx])
         fixed_root_zero = torch.zeros(
             (self.num_envs, 3), device=self.device
         )
-        self.bottle_screw_fixed.set_root_linear_velocity(fixed_root_zero)
-        self.bottle_screw_fixed.set_root_angular_velocity(fixed_root_zero)
+        self.bottle_screw_fixed.set_root_linear_velocity(fixed_root_zero[write_idx])
+        self.bottle_screw_fixed.set_root_angular_velocity(fixed_root_zero[write_idx])
 
         dynamic_pose = self.bottle_screw.root_pose.raw_pose.clone()
         dynamic_pose[switch_mask, :3] = torch.tensor(
             BOTTLE_DYNAMIC_PARK_P, device=self.device
         )
-        self.bottle_screw.set_root_pose(Pose(dynamic_pose))
+        self.bottle_screw.set_root_pose(Pose(dynamic_pose[write_idx]))
         dynamic_qvel = self.bottle_screw.get_qvel().clone()
         dynamic_qvel = torch.where(
             switch_mask[:, None], torch.zeros_like(dynamic_qvel), dynamic_qvel
         )
-        self.bottle_screw.set_qvel(dynamic_qvel)
+        self.bottle_screw.set_qvel(dynamic_qvel[write_idx])
 
         self._active_bottle_rep[switch_mask] = BOTTLE_REP_FIXED
         env_idx = torch.nonzero(switch_mask).flatten()
