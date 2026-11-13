@@ -499,8 +499,16 @@ class CabinetPouringLongEnv(BaseEnv):
         bottle_stage_twins=False,
         num_envs=1,
         reconfiguration_freq=None,
+        variation=None,
         **kwargs,
     ):
+        self._variation = None
+        if variation and any(
+            variation.get(feature, {}).get("enabled", False)
+            for feature in ("appearance", "initial_pose")
+        ):
+            from tasks.cabinet_pouring.variation import PilotVariation
+            self._variation = PilotVariation(self, variation, num_envs)
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.cabinet_init_xy_noise = float(cabinet_init_xy_noise)
@@ -690,6 +698,8 @@ class CabinetPouringLongEnv(BaseEnv):
     # scene
     # ------------------------------------------------------------------ #
     def _load_scene(self, options: dict):
+        if self._variation is not None and self._variation.appearance:
+            self._variation.preload_textures()
         self._load_table()
         if self.has_bottle:
             self._load_particle_support()
@@ -1109,6 +1119,9 @@ class CabinetPouringLongEnv(BaseEnv):
         if len(builders) != 1:
             raise RuntimeError("Expected one bottle_screw articulation")
         builder = builders[0]
+        if self._variation is not None and self._variation.appearance:
+            for link_builder in builder.link_builders:
+                self._variation.isolate_builder_materials(link_builder)
         if self.prebuilt_bottle_lock:
             # Keep the fixed anchor away from all task geometry during scene
             # setup. The six base-joint coordinates are relative to this pose.
@@ -1252,6 +1265,9 @@ class CabinetPouringLongEnv(BaseEnv):
         if len(builders) != 1:
             raise RuntimeError("Expected one fixed bottle_screw articulation")
         builder = builders[0]
+        if self._variation is not None and self._variation.appearance:
+            for link_builder in builder.link_builders:
+                self._variation.isolate_builder_materials(link_builder)
         builder.initial_pose = sapien.Pose(p=BOTTLE_FIXED_PARK_P)
         self.bottle_screw_fixed = builder.build()
         links = {link.name: link for link in self.bottle_screw_fixed.get_links()}
@@ -1605,6 +1621,8 @@ class CabinetPouringLongEnv(BaseEnv):
         if scene_idxs is not None:
             builder.set_scene_idxs(scene_idxs)
         builder.initial_pose = initial_pose or sapien.Pose(p=[0, 0, 0])
+        if marker_boxes and self._variation is not None and self._variation.appearance:
+            self._variation.isolate_builder_materials(builder)
         if body_type == "dynamic":
             return builder.build(name=name)
         if body_type == "kinematic":

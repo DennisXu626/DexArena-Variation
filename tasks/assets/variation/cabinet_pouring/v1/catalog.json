@@ -1,0 +1,85 @@
+{
+  "version": "cabinet-appearance-v1",
+  "source": "M2 original procedural graphics, generated with Pillow; no external artwork",
+  "permission": "Project-authored graphics; no third-party artwork restrictions",
+  "schemes": {
+    "original": {
+      "description": "Restore captured native render properties and original texture/marker colors"
+    },
+    "ocean": {
+      "body_color": [
+        0.15,
+        0.65,
+        0.68,
+        1
+      ],
+      "cap_color": [
+        0.025,
+        0.08,
+        0.16,
+        1
+      ],
+      "reference_color": [
+        1,
+        0.9,
+        0.1,
+        1
+      ],
+      "roughness": 0.38,
+      "metallic": 0.05,
+      "label_texture": "ocean.png",
+      "sha256": "5503fa8c1c1dc823d8643ddcbded7c0e7854f7d2c192455eef197f75ab7da6ef",
+      "description": "OCEAN original graphic label; contrasting asymmetric native top stripe and side tick"
+    },
+    "citrus": {
+      "body_color": [
+        0.95,
+        0.7,
+        0.18,
+        1
+      ],
+      "cap_color": [
+        0.95,
+        0.95,
+        0.83,
+        1
+      ],
+      "reference_color": [
+        0.04,
+        0.12,
+        0.06,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0,
+      "label_texture": "citrus.png",
+      "sha256": "c3dea2e0fd3c2a8240788459dd336f5f151a76b7ef24605937cdff143870658e",
+      "description": "CITRUS original graphic label; contrasting asymmetric native top stripe and side tick"
+    },
+    "violet": {
+      "body_color": [
+        0.48,
+        0.2,
+        0.64,
+        1
+      ],
+      "cap_color": [
+        0.22,
+        0.04,
+        0.4,
+        1
+      ],
+      "reference_color": [
+        0.05,
+        1,
+        0.82,
+        1
+      ],
+      "roughness": 0.28,
+      "metallic": 0.16,
+      "label_texture": "violet.png",
+      "sha256": "94f477cdddf0ef60999736d23f7a09be54cd7c3fb53b18c7ba2329540b509b73",
+      "description": "VIOLET original graphic label; contrasting asymmetric native top stripe and side tick"
+    }
+  }
+}

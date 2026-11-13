@@ -80,7 +80,11 @@ class CabinetPouringUnscrewCapEnv(CabinetPouringLongEnv):
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
 
-            source_xyz = self._placed_bottle_xyz(b)
+            source_xyz = (
+                self._variation.bottle_xyz(env_idx, options)
+                if self._variation is not None and self._variation.initial_pose
+                else self._placed_bottle_xyz(b)
+            )
             source_q = self._place_bottle(b, source_xyz)
             self._place_cap_on_bottle(env_idx, b, source_xyz, source_q)
             self._reset_bottle_stage_twins(env_idx)
@@ -92,6 +96,8 @@ class CabinetPouringUnscrewCapEnv(CabinetPouringLongEnv):
             self._stage_bottle_out[env_idx] = True
             self._stage_bottle_placed[env_idx] = True
             self._sync_placement_region_markers(env_idx)
+            if self._variation is not None:
+                self._variation.finish_reset(env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):
