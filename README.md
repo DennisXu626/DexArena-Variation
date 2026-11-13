@@ -9,11 +9,13 @@
 试点为Cabinet & Pouring家族的：
 
 - `CabinetPouringPickBottle-Sharpa-v1`：从柜内取瓶放到桌面目标区域，柜内起点保持原任务行为。
-- `CabinetPouringUnscrewCap-Sharpa-v1`：从桌面放置瓶开始拧盖，可配置原范围内的合法瓶位姿。
+- `CabinetPouringUnscrewCap-Sharpa-v1`：从桌面放置瓶开始拧盖，可在原区域或显式选择的新XY区域配置合法瓶位姿。
 
 已有原版＋Ocean／Citrus／Violet三种外观，实际替换瓶标签、调整盖子和非对称转动参照；支持明确指定或从指定集合随机选择，回合内固定，动态瓶／固定瓶／开口瓶及附着盖／自由盖保持同一逻辑方案。标签、品牌和原红条可以替换，但盖子必须有清楚且非对称的转动参照，仅均匀色或难分辨的周期图案不够。
 
 已有两个任务16环境的GPU批量局部reset（重置选中的环境）及RGB渲染实测；检查了未选环境的物理状态、材质与画面隔离。**这些结果继承自已验收M2及续篇001，本轮建仓没有重跑物理验证。** 不代表全部任务、任意并行规模、范围扩大、完整机器人任务或强化学习成功。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
+
+本分支另提供 `cabinet_pouring.bottle_table.xy_v2`：圆心(−.25,−.35)m、底圈区域R=.16m，保留旧默认。它是平移后的较大圆盘，**不包含全部旧位置**。完整碰撞补测和新区域检查单列于[M3验证说明](docs/variation/TABLE_XY_VALIDATION.md)，不能把M2历史通过当成本次新区域证据。
 
 ## 代码导航
 
@@ -95,8 +97,11 @@ source .local/paths.env
 | [region_sampling.json](examples/variation/cabinet_pouring/region_sampling.json) | 原合法盘内按面积采样 | UnscrewCap |
 | [combined.json](examples/variation/cabinet_pouring/combined.json) | 外观＋合法固定位置，逐env覆盖 | UnscrewCap；PickBottle仅外观和共同目标定义，仍从柜内开始 |
 | [outside_expected_error.json](examples/variation/cabinet_pouring/outside_expected_error.json) | 演示明确越界会报错 | UnscrewCap，预期失败样例 |
+| [table_xy_fixed.json](examples/variation/cabinet_pouring/table_xy_fixed.json) | 新区域中心固定XY | UnscrewCap |
+| [table_xy_sampling.json](examples/variation/cabinet_pouring/table_xy_sampling.json) | 新区域按面积盘采样 | UnscrewCap |
+| [table_xy_combined.json](examples/variation/cabinet_pouring/table_xy_combined.json) | 新区域＋不同环境外观／合法XY | UnscrewCap；PickBottle只改变共同目标，柜内起点保持 |
 
-更换 `--config` 即可使用其它示例。运行取瓶试点可使用 `--task PickBottle --config examples/variation/cabinet_pouring/appearance.json`，其它参数同上。位置请求不能扩大原圆盘、改变高度／朝向或把取瓶起点搬到桌面；相邻任务要求区域兼容，不精确继承某次终态。详见[契约](docs/variation/CONFIG_CONTRACT.md)。
+更换 `--config` 即可使用其它示例。运行取瓶试点可使用 `--task PickBottle --config examples/variation/cabinet_pouring/appearance.json`，其它参数同上；取瓶采用新区目标时改用 `table_xy_combined.json`。区域只支持原区和新增的固定批准记录，不能任意扩大或改变高度／朝向，不能把取瓶起点搬到桌面；相邻任务要求区域兼容，不精确继承某次终态。详见[契约](docs/variation/CONFIG_CONTRACT.md)。
 
 ## 团队怎样开发
 
