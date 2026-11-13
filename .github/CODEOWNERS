@@ -1,0 +1,10 @@
+# Confirmed maintainer. File ownership does not itself enable branch protection.
+/tasks/cabinet_pouring/ @DennisXu626
+/tasks/assets/variation/ @DennisXu626
+/docs/variation/ @DennisXu626
+/examples/variation/ @DennisXu626
+/tools/variation/ @DennisXu626
+/README.md @DennisXu626
+/CONTRIBUTING.md @DennisXu626
+/.github/ @DennisXu626
+/.gitignore @DennisXu626

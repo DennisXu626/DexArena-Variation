@@ -1,0 +1,12 @@
+{
+  "version": "cabinet-pilot-v1",
+  "seed": 20261112,
+  "manifest_ref": "manifest.json",
+  "config_ref": "examples/variation/cabinet_pouring/default.json",
+  "appearance": {
+    "enabled": false
+  },
+  "initial_pose": {
+    "enabled": false
+  }
+}

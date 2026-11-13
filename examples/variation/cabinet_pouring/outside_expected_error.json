@@ -1,0 +1,24 @@
+{
+  "version": "cabinet-pilot-v1",
+  "seed": 20261112,
+  "manifest_ref": "manifest.json",
+  "config_ref": "examples/variation/cabinet_pouring/outside_expected_error.json",
+  "appearance": {
+    "enabled": false
+  },
+  "initial_pose": {
+    "enabled": true,
+    "mode": "fixed",
+    "xy_m": [
+      -0.05,
+      -0.2
+    ],
+    "quaternion_wxyz": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "region_id": "cabinet_pouring.bottle_table.v1"
+  }
+}

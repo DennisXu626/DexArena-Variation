@@ -242,3 +242,9 @@ checkpoints/
 # Slurm job output and local experiment directories (never committed)
 slurm-*.out
 /exp_*/
+
+# Team-local configuration and outputs; existing tracked upstream assets stay tracked.
+/.local/
+/outputs/
+*.local.env
+/credentials/
