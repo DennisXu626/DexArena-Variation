@@ -1,0 +1,43 @@
+family,object_id,name_zh,status,directory,published_variants,v1_object_key,v2_semantic_groups
+cabinet_pouring,cabinet,橱柜,pending_adaptation,objects/cabinet_pouring/cabinet,,cabinet_pouring/cabinet,cabinet
+cabinet_pouring,bottle,瓶身,accepted_pilot,objects/cabinet_pouring/bottle,ocean;citrus;violet,cabinet_pouring/bottle,cabinet_bottle
+cabinet_pouring,bottle_cap,瓶盖,accepted_pilot,objects/cabinet_pouring/bottle_cap,ocean;citrus;violet,cabinet_pouring/bottle_cap,bottle_cap
+cabinet_pouring,bowl,目标碗,pending_adaptation,objects/cabinet_pouring/bowl,,cabinet_pouring/bowl,bowl
+cabinet_pouring,beads,蓝色珠子（程序生成）,pending_adaptation,objects/cabinet_pouring/beads,,cabinet_pouring/beads,beads
+drawer_plug,drawer,抽屉,pending_adaptation,objects/drawer_plug/drawer,,drawer_plug/drawer,drawer
+drawer_plug,socket,插座（程序生成）,pending_adaptation,objects/drawer_plug/socket,,drawer_plug/socket,socket
+drawer_plug,charger,充电器（程序生成）,external_pending,objects/drawer_plug/charger,,drawer_plug/charger,charger
+furniture_assembly,flat_panel,木质板件（程序生成）,pending_adaptation,objects/furniture_assembly/flat_panel,,furniture_assembly/flat_panel,panel
+furniture_assembly,panel_rack,板件导向架／装配工装（程序生成）,pending_adaptation,objects/furniture_assembly/panel_rack,,furniture_assembly/panel_rack,rack
+furniture_assembly,rail,金属导轨（程序生成）,pending_adaptation,objects/furniture_assembly/rail,,furniture_assembly/rail,rail_screw
+furniture_assembly,screw,螺钉（程序／资产细节待核对）,pending_adaptation,objects/furniture_assembly/screw,,furniture_assembly/screw,rail_screw
+juice_preparation,mini_fridge,迷你冰箱,pending_adaptation,objects/juice_preparation/mini_fridge,,juice_preparation/mini_fridge,fridge
+juice_preparation,apple,苹果,pending_adaptation,objects/juice_preparation/apple,,juice_preparation/apple,apple
+juice_preparation,blender,搅拌机,pending_adaptation,objects/juice_preparation/blender,,juice_preparation/blender,blender;integrated_blender_top
+juice_preparation,blender_lid,搅拌机盖,pending_adaptation,objects/juice_preparation/blender_lid,,juice_preparation/blender_lid,blender_lid;integrated_blender_top
+meal_preparation,lunch_box,午餐盒（默认程序几何）,pending_adaptation,objects/meal_preparation/lunch_box,,meal_preparation/lunch_box,meal_box
+meal_preparation,plate,盘子,pending_adaptation,objects/meal_preparation/plate,,meal_preparation/plate,meal_plate
+meal_preparation,spoon,勺子,pending_adaptation,objects/meal_preparation/spoon,,meal_preparation/spoon,spoon
+meal_preparation,bread,面包,pending_adaptation,objects/meal_preparation/bread,,meal_preparation/bread,bread
+meal_preparation,tomato,番茄／球形食材,pending_adaptation,objects/meal_preparation/tomato,,meal_preparation/tomato,tomato
+nut_bolt,bolt,螺栓（程序生成主体／导入头部）,pending_adaptation,objects/nut_bolt/bolt,,nut_bolt/bolt,nut_bolt
+nut_bolt,nut,螺母（程序生成）,pending_adaptation,objects/nut_bolt/nut,,nut_bolt/nut,nut
+nut_bolt,bolt_platform,螺栓底座／平台（碰撞工装）,no_visual,objects/nut_bolt/bolt_platform,,nut_bolt/bolt_platform,nut_platform
+office_desk,laptop,笔记本电脑（model_id 10211）,pending_adaptation,objects/office_desk/laptop,,office_desk/laptop,office_laptop
+office_desk,keyboard,键盘（model_id 13106）,pending_adaptation,objects/office_desk/keyboard,,office_desk/keyboard,office_keyboard
+office_desk,mouse,鼠标（model_id 101408）,pending_adaptation,objects/office_desk/mouse,,office_desk/mouse,office_mouse
+package_opening,package,包装盒,pending_adaptation,objects/package_opening/package,,package_opening/package,package_box
+package_opening,apple,包装内苹果,pending_adaptation,objects/package_opening/apple,,package_opening/apple,package_apple
+package_opening,package_plate,接收盘,pending_adaptation,objects/package_opening/package_plate,,package_opening/package_plate,package_plate
+pipette_transfer,pipette,移液器,pending_adaptation,objects/pipette_transfer/pipette,,pipette_transfer/pipette,pipette
+pipette_transfer,sample_cup,样品杯／吸液杯（程序生成）,pending_adaptation,objects/pipette_transfer/sample_cup,,pipette_transfer/sample_cup,pipette_cup
+pipette_transfer,test_tube,试管（程序生成）,pending_adaptation,objects/pipette_transfer/test_tube,,pipette_transfer/test_tube,pipette_tube
+pipette_transfer,tube_rack,试管架（程序生成）,pending_adaptation,objects/pipette_transfer/tube_rack,,pipette_transfer/tube_rack,pipette_rack
+pipette_transfer,pipette_stand,移液器支架（程序生成）,pending_adaptation,objects/pipette_transfer/pipette_stand,,pipette_transfer/pipette_stand,pipette_stand
+pipette_transfer,tip_cup,吸头杯（程序生成）,pending_adaptation,objects/pipette_transfer/tip_cup,,pipette_transfer/tip_cup,pipette_stand
+table_cleaning,dustpan,簸箕,pending_adaptation,objects/table_cleaning/dustpan,,table_cleaning/dustpan,dustpan
+table_cleaning,bin,垃圾桶,pending_adaptation,objects/table_cleaning/bin,,table_cleaning/bin,trash_bin
+table_cleaning,debris,糖块碎屑,pending_adaptation,objects/table_cleaning/debris,,table_cleaning/debris,debris
+table_cleaning,brush,刷子（bundle 资源，当前任务未实例化）,not_loaded,objects/table_cleaning/brush,,table_cleaning/brush,
+cabinet_pouring,particle_support,颗粒隐藏支撑,no_visual,objects/cabinet_pouring/particle_support,,,collection_surface
+pipette_transfer,liquid_state,液体任务状态代理,no_visual,objects/pipette_transfer/liquid_state,,,pipette_liquid

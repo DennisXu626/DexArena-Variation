@@ -23,7 +23,8 @@
 | [cabinet_pouring_long.py](tasks/cabinet_pouring/cabinet_pouring_long.py) | 共用任务、A／B／C物体表示、reset及批量渲染兼容入口 | 集成负责人协调修改 |
 | [PickBottle子任务](tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py) | 柜内初始化、放瓶目标与子任务接口 | 位姿、集成 |
 | [UnscrewCap子任务](tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py) | 桌面初始化、最终固定B表示与子任务接口 | 位姿、集成 |
-| [外观目录](tasks/assets/variation/cabinet_pouring/v1/catalog.json) | 三张小贴图、颜色和材质参数 | 外观 |
+| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态；瓶／盖既有纹理、参数、绑定、制作与历史预览 | 外观、素材整理 |
+| [运行外观catalog](tasks/assets/variation/cabinet_pouring/v1/catalog.json) | 既有运行发布副本，运行仍读取此路径 | 外观、集成 |
 | [tasks/robots/](tasks/robots/)、[tasks/scene_builders/](tasks/scene_builders/)、[tasks/config/](tasks/config/) | 上游机器人、场景及注册／物理配置 | 了解来源；常规外观工作不需要修改 |
 | [examples/variation/](examples/variation/) | 已有试点配置及本机路径模板 | 所有人 |
 | [tools/variation/run_example.py](tools/variation/run_example.py) | 读取配置，加载／reset，保存记录及可选首帧 | 使用者、集成 |
@@ -33,7 +34,7 @@
 
 三条阅读路线：
 
-1. **做外观**：先看 `appearance.json`／`appearance_random.json`，再看catalog及 `variation.py` 的绑定。提交同视角实景、盖角度参照、阶段一致性和物理不变证据；不能只看资源包预览。
+1. **做外观**：先看[对象档案](assets/appearance/README.md)，再看 `appearance.json`／`appearance_random.json`、运行catalog及 `variation.py` 的绑定。提交同视角实景、盖角度参照、阶段一致性和物理不变证据；不能只看资源包预览。
 2. **做初始位姿**：先看 `fixed_pose.json`／`region_sampling.json`、契约中的env_world坐标／米／wxyz单位，再沿 `REGION`、PickBottle目标、UnscrewCap最终B初始化阅读。不能只改父类临时初态，因为子类reset会继续覆写。
 3. **做集成**：先看契约、父任务和两个子类的接入点，再检查默认关闭、每env记录、局部reset与渲染隔离。共用入口提前协调；外观与位姿当前共用一个适配模块，不各造一套框架。
 

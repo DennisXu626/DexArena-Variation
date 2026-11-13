@@ -1,0 +1,29 @@
+{
+  "scheme_id": "ocean",
+  "paired_bottle_scheme_id": "ocean",
+  "catalog_version": "cabinet-appearance-v1",
+  "roles": {
+    "cap_surface": {
+      "base_color": [
+        0.025,
+        0.08,
+        0.16,
+        1
+      ],
+      "roughness": 0.38,
+      "metallic": 0.05
+    },
+    "cap_reference": {
+      "base_color": [
+        1,
+        0.9,
+        0.1,
+        1
+      ],
+      "roughness": 0.38,
+      "metallic": 0.05
+    }
+  },
+  "texture": null,
+  "uv": "Native cap has zero UV vertices; parameter-only change to mesh and two existing asymmetric visual marker boxes"
+}
