@@ -1,0 +1,11 @@
+{
+  "charger_appearance": {
+    "enabled": true,
+    "seed": 71,
+    "mode": "explicit",
+    "scheme_id": "ivory_matte",
+    "per_env": {
+      "1": {"scheme_id": "navy_satin"}
+    }
+  }
+}
