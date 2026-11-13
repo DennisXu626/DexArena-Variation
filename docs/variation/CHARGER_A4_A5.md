@@ -2,6 +2,8 @@
 
 本分支依赖Bob [PR #2](https://github.com/DennisXu626/DexArena-Variation/pull/2)的已审阅提交5185f1dd61f2de88ab7d4ada7a2ef77f01e6b207。Bob交付部件／材质与单环境预览A1–A3；本分支负责正式接入和A4／A5，不要求Bob补做。经本轮单独授权，在现有GPU环境完成两任务各2env短检，**A4／A5均通过限定检查**；没有训练或完整机器人任务成功结论。
 
+以上是已验收A4／A5运行历史。本次仓库整合将PR #2／#3／#4对齐main，仅做CPU检查，未重跑GPU；原物体档案来源和当前实际接入状态均保留。
+
 ## 现有参数与最小接入
 
 直接读取[Bob原catalog](../../tasks/assets/variation/drawer_plug/v1/catalog.json)，版本charger-a3-v1。original、ivory_matte、navy_satin、copper_metal全部保持其参数；本体变色／粗糙度／金属度，双插脚保留原版参数。不新增贴图、UV或几何，不复制第二份catalog。
@@ -37,9 +39,12 @@ env.reset(options={'env_idx': torch.tensor([1], device=env.unwrapped.device),
 ## 静态与运行边界
 
 ```bash
+git fetch origin refs/pull/2/head
 python tools/variation/check_static.py
 python tools/variation/check_charger_a4_a5.py --static
 ```
+
+Charger静态检查对照Bob已审阅原提交。main采用squash历史，干净克隆若没有该历史对象，先按上方命令从GitHub读取PR #2参考对象；不切换工作树、不依赖未提交文件、不改变生产代码或静态基准SHA。
 
 第二项用AST对照Bob head：除构造／Charger构建的显式材质隔离、两子任务初始化末端绑定外，其余已有方法保持，包括成功条件、机器人初始化及物理逻辑。静态不证明实际材质隔离或成功条件运行回归。
 
@@ -73,6 +78,6 @@ python tools/variation/check_charger_a4_a5.py --output outputs/charger_a4_a5/run
 
 ## 归档与回退
 
-[Charger对象档案](../../assets/appearance/objects/drawer_plug/charger/README.md)沿用PR #3对象路径，只引用现有参数与本轮证据。PR #3未合并时本分支不导入整套档案；后续合并需保留该对象的实际新状态，不覆盖其它对象资料。
+[Charger对象档案](../../assets/appearance/objects/drawer_plug/charger/README.md)已与PR #3统一目录、总清单和状态计数对齐，保留原始来源与本轮实际接入证据；只引用现有参数，不复制独立catalog，不覆盖其它对象资料。
 
 关闭kwarg即可走原生路径。代码回退通过撤销本分支新增提交，不撤销Bob材质交付，不强推／合并main。本分支完成限定检查后交Dennis／leader审阅，不自行合并或开展其它物体。
