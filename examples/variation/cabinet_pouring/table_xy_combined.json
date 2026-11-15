@@ -1,0 +1,44 @@
+{
+  "version": "cabinet-pilot-v1",
+  "seed": 20261113,
+  "manifest_ref": "manifest.json",
+  "config_ref": "examples/variation/cabinet_pouring/table_xy_combined.json",
+  "appearance": {
+    "enabled": true,
+    "mode": "explicit",
+    "scheme_id": "ocean"
+  },
+  "initial_pose": {
+    "enabled": true,
+    "region_id": "cabinet_pouring.bottle_table.xy_v2",
+    "mode": "fixed",
+    "quaternion_wxyz": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "xy_m": [
+      -0.25,
+      -0.35
+    ]
+  },
+  "per_env": {
+    "0": {
+      "appearance": {
+        "scheme_id": "ocean"
+      }
+    },
+    "1": {
+      "appearance": {
+        "scheme_id": "violet"
+      },
+      "initial_pose": {
+        "xy_m": [
+          -0.3,
+          -0.4
+        ]
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""Small Cabinet pilot adapter: render appearance and original tabletop poses.
+"""Small Cabinet pilot adapter: appearance and selected tabletop poses.
 
 It is constructed only when one feature is enabled. Native task physics,
 robot reset and stage writers remain owned by the original task classes.
@@ -15,6 +15,11 @@ REGION = {
     "center_xy_m": [-0.22, -0.20], "radius_m": 0.15,
     "table_top_z_m": 0.0, "fit": "entire_bottom_support_ring",
 }
+TABLE_XY_REGION = {
+    "id": "cabinet_pouring.bottle_table.xy_v2", "frame": "env_world",
+    "center_xy_m": [-0.25, -0.35], "radius_m": 0.16,
+    "table_top_z_m": 0.0, "fit": "entire_bottom_support_ring",
+}
 ASSETS = Path(__file__).resolve().parents[1] / "assets/variation/cabinet_pouring/v1"
 
 
@@ -26,13 +31,17 @@ class PilotVariation:
         self.initial_pose = bool(config.get("initial_pose", {}).get("enabled", False))
         if type(env).__name__ not in {"CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv"}:
             raise ValueError("This pilot variation supports only PickBottle and UnscrewCap")
+        self.region = REGION
         if self.initial_pose:
-            # Both stages consume this single original-region definition.
+            # One run-level selection feeds both stages, including their
+            # native target marker, observation and placement predicate.
             requested = config.get("initial_pose", {}).get("region_id", REGION["id"])
-            if requested != REGION["id"]:
-                raise ValueError("Only the original tabletop bottle region is supported")
-            env.place_center_xy = tuple(REGION["center_xy_m"])
-            env.place_radius = REGION["radius_m"]
+            if requested == TABLE_XY_REGION["id"]:
+                self.region = TABLE_XY_REGION
+            elif requested != REGION["id"]:
+                raise ValueError(f"Unknown tabletop bottle region: {requested}")
+            env.place_center_xy = tuple(self.region["center_xy_m"])
+            env.place_radius = self.region["radius_m"]
         seed = int(config.get("seed", 0))
         # Separate streams per feature and actual environment; never consume
         # the task's global Torch RNG for appearance or explicit sampling.
@@ -52,6 +61,11 @@ class PilotVariation:
         override = options.get("variation", {})
         request.update(override.get(feature, {}))
         request.update(override.get("per_env", {}).get(str(env_idx), {}).get(feature, {}))
+        if (feature == "initial_pose" and self.initial_pose
+                and request.get("region_id", self.region["id"]) != self.region["id"]):
+            error = "region_id is run-level; reset/per_env cannot switch the selected region"
+            self._record(env_idx, options, status="rejected", error=error, pose=None)
+            raise ValueError(f"initial_pose env {env_idx}: {error}")
         return request
 
     def preload_textures(self):
@@ -98,13 +112,11 @@ class PilotVariation:
         if all(r.get("mode", "native") == "native" for r in requests):
             return e._placed_bottle_xyz(len(env_idx))
         xyz = torch.zeros((len(env_idx), 3), dtype=torch.float32, device=e.device)
-        radius = REGION["radius_m"] - e._source_bottom_support_radius
+        radius = self.region["radius_m"] - e._source_bottom_support_radius
         z = -e.source_z_lo + 0.001  # Original reset clearance, not success height.
         for row, (i, request) in enumerate(zip(env_idx.tolist(), requests)):
             mode = request.get("mode", "native")
             try:
-                if request.get("region_id", REGION["id"]) != REGION["id"]:
-                    raise ValueError("Unknown or expanded region is not supported")
                 q = np.asarray(request.get("quaternion_wxyz", [1, 0, 0, 0]), dtype=float)
                 if q.shape != (4,) or not np.array_equal(q, [1, 0, 0, 0]):
                     raise ValueError("Original initialization orientation is identity wxyz only")
@@ -113,7 +125,7 @@ class PilotVariation:
                 elif mode == "region":
                     theta = self.rng[1][i].uniform(0, 2 * np.pi)
                     r = radius * np.sqrt(self.rng[1][i].uniform())
-                    xy = np.asarray(REGION["center_xy_m"]) + r * np.array([np.cos(theta), np.sin(theta)])
+                    xy = np.asarray(self.region["center_xy_m"]) + r * np.array([np.cos(theta), np.sin(theta)])
                 elif mode == "native":
                     xyz[row] = e._placed_bottle_xyz(1)[0]
                     continue
@@ -121,8 +133,8 @@ class PilotVariation:
                     raise ValueError(f"Unsupported initial_pose mode: {mode}")
                 if xy.shape != (2,) or not np.isfinite(xy).all():
                     raise ValueError("xy_m must contain two finite meter values")
-                if np.linalg.norm(xy - REGION["center_xy_m"]) > radius + 1e-9:
-                    raise ValueError("Bottle bottom support ring exceeds original region")
+                if np.linalg.norm(xy - self.region["center_xy_m"]) > radius + 1e-9:
+                    raise ValueError(f"Bottle bottom support ring exceeds selected region {self.region['id']}")
                 requested_z = float(request.get("z_m", z))
                 if not np.isfinite(requested_z) or abs(requested_z - z) > 1e-7:
                     raise ValueError("z_m must preserve the original 1mm reset clearance")
@@ -203,6 +215,11 @@ class PilotVariation:
             self.schemes[i] = scheme_id
 
     def finish_reset(self, env_idx, options):
+        if self.initial_pose:
+            # PickBottle keeps its native cabinet spawn, so it does not call
+            # bottle_xyz. Still reject attempts to switch its target region.
+            for i in env_idx.tolist():
+                self.request("initial_pose", i, options)
         if self.appearance:
             self.apply_appearance(env_idx, options)
         for i in env_idx.tolist():
@@ -216,7 +233,7 @@ class PilotVariation:
                   "config_ref": options.get("variation", {}).get("config_ref", self.config.get("config_ref")),
                   "env_idx": i, "episode_index": self.episodes[i],
                   "appearance": self.schemes[i] if self.appearance else "native_disabled",
-                  "final_pose_wxyz_m": pose, "region_id": REGION["id"], "status": status}
+                  "final_pose_wxyz_m": pose, "region_id": self.region["id"], "status": status}
         if pose is not None:
             record["representation"] = int(e._active_bottle_rep[i])
             record["cap_position_m"] = e._cap_p()[i].detach().cpu().tolist()

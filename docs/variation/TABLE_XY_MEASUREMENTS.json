@@ -1,0 +1,455 @@
+{
+  "versions": {
+    "torch": "2.6.0",
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "numpy": "2.2.6",
+    "gymnasium": "0.29.1"
+  },
+  "region": {
+    "id": "cabinet_pouring.bottle_table.xy_v2",
+    "center_xy_m": [
+      -0.25,
+      -0.35
+    ],
+    "radius_m": 0.16,
+    "constraint": "entire bottom support ring",
+    "is_old_region_superset": false
+  },
+  "support_radius_m": 0.02625862460405762,
+  "center_sampling_radius_m": 0.13374137539594239,
+  "sample_count": 32,
+  "samples_outside_old_center_domain": 26,
+  "release": [
+    {
+      "position_id": 0,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.905726432800293e-07,
+      "tail_bottom_max_m": 1.1175870895385742e-07,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.0016905447700992227,
+      "tail_max_angular_speed_rad_s": 0.01518336683511734,
+      "tail_min_table_force_n": 1.3006315231364245,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 1,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.980232238769531e-07,
+      "tail_bottom_max_m": 8.195638656616211e-08,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.002000089967623353,
+      "tail_max_angular_speed_rad_s": 0.01898288168013096,
+      "tail_min_table_force_n": 1.2979563474705047,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 2,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.0116567611694336e-07,
+      "tail_bottom_max_m": 1.1920928955078125e-07,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.0018733221804723144,
+      "tail_max_angular_speed_rad_s": 0.019954824820160866,
+      "tail_min_table_force_n": 1.2978764772453841,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 3,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.086162567138672e-07,
+      "tail_bottom_max_m": 1.1175870895385742e-07,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.0008063449058681726,
+      "tail_max_angular_speed_rad_s": 0.006417995318770409,
+      "tail_min_table_force_n": 1.301357865336749,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 4,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.8312206268310547e-07,
+      "tail_bottom_max_m": 1.1175870895385742e-07,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.0015846607275307178,
+      "tail_max_angular_speed_rad_s": 0.016169747337698936,
+      "tail_min_table_force_n": 1.3030415773416764,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 5,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -3.427267074584961e-07,
+      "tail_bottom_max_m": 2.9802322387695312e-08,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.001076264656148851,
+      "tail_max_angular_speed_rad_s": 0.012722060084342957,
+      "tail_min_table_force_n": 1.2999174594895508,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 6,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.980232238769531e-07,
+      "tail_bottom_max_m": 1.4901161193847656e-08,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.0011826292611658573,
+      "tail_max_angular_speed_rad_s": 0.010398794896900654,
+      "tail_min_table_force_n": 1.2975642681129986,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 7,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.384185791015625e-07,
+      "tail_bottom_max_m": 3.725290298461914e-08,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.001537597505375743,
+      "tail_max_angular_speed_rad_s": 0.014191367663443089,
+      "tail_min_table_force_n": 1.303586244585168,
+      "tail_other_contact_count": 0
+    },
+    {
+      "position_id": 8,
+      "tail_all_passed": true,
+      "tail_bottom_min_m": -2.4586915969848633e-07,
+      "tail_bottom_max_m": 1.6391277313232422e-07,
+      "tail_max_tilt_deg": 0.02797645516693592,
+      "tail_max_linear_speed_m_s": 0.0016896625747904181,
+      "tail_max_angular_speed_rad_s": 0.01673039235174656,
+      "tail_min_table_force_n": 1.3004794120889491,
+      "tail_other_contact_count": 0
+    }
+  ],
+  "batch16": [
+    {
+      "case": "UnscrewCap_16_off",
+      "load_s": 6.94166130758822,
+      "initial_reset_s": 0.2334955632686615,
+      "initial_render_s": 0.15952245518565178,
+      "rgb_shapes": {
+        "base_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "task_wrist_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "wrist_camera": [
+          16,
+          240,
+          320,
+          3
+        ],
+        "human": [
+          16,
+          720,
+          1280,
+          3
+        ]
+      },
+      "status": "passed",
+      "max_rss_kib": 3460472,
+      "gpu_memory": "0, 3057 MiB, 40960 MiB\n",
+      "cycles": [
+        {
+          "selected": [
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            15
+          ],
+          "reset_s_including_rgb": 0.2040541786700487,
+          "render_s_rgb_and_human": 0.11671826429665089,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        {
+          "selected": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15
+          ],
+          "reset_s_including_rgb": 0.19948000274598598,
+          "render_s_rgb_and_human": 0.11110453680157661,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        }
+      ]
+    },
+    {
+      "case": "UnscrewCap_16_on",
+      "load_s": 2.7794424798339605,
+      "initial_reset_s": 0.25001956708729267,
+      "initial_render_s": 0.1552659459412098,
+      "rgb_shapes": {
+        "base_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "task_wrist_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "wrist_camera": [
+          16,
+          240,
+          320,
+          3
+        ],
+        "human": [
+          16,
+          720,
+          1280,
+          3
+        ]
+      },
+      "status": "passed",
+      "max_rss_kib": 4690964,
+      "gpu_memory": "0, 4987 MiB, 40960 MiB\n",
+      "cycles": [
+        {
+          "selected": [
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            15
+          ],
+          "reset_s_including_rgb": 0.21536393649876118,
+          "render_s_rgb_and_human": 0.12080637365579605,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        {
+          "selected": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15
+          ],
+          "reset_s_including_rgb": 0.21194671280682087,
+          "render_s_rgb_and_human": 0.11571382358670235,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        }
+      ]
+    },
+    {
+      "case": "PickBottle_16_off",
+      "load_s": 3.2327341828495264,
+      "initial_reset_s": 0.1065299790352583,
+      "initial_render_s": 0.1332852989435196,
+      "rgb_shapes": {
+        "base_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "task_wrist_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "wrist_camera": [
+          16,
+          240,
+          320,
+          3
+        ],
+        "human": [
+          16,
+          720,
+          1280,
+          3
+        ]
+      },
+      "status": "passed",
+      "max_rss_kib": 5245488,
+      "gpu_memory": "0, 4979 MiB, 40960 MiB\n",
+      "cycles": [
+        {
+          "selected": [
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            15
+          ],
+          "reset_s_including_rgb": 0.08648625575006008,
+          "render_s_rgb_and_human": 0.09481818415224552,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        {
+          "selected": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15
+          ],
+          "reset_s_including_rgb": 0.08357563428580761,
+          "render_s_rgb_and_human": 0.09475251287221909,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        }
+      ]
+    },
+    {
+      "case": "PickBottle_16_on",
+      "load_s": 2.8213593028485775,
+      "initial_reset_s": 0.12089305929839611,
+      "initial_render_s": 0.13864978775382042,
+      "rgb_shapes": {
+        "base_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "task_wrist_camera": [
+          16,
+          256,
+          256,
+          3
+        ],
+        "wrist_camera": [
+          16,
+          240,
+          320,
+          3
+        ],
+        "human": [
+          16,
+          720,
+          1280,
+          3
+        ]
+      },
+      "status": "passed",
+      "max_rss_kib": 5262272,
+      "gpu_memory": "0, 4979 MiB, 40960 MiB\n",
+      "cycles": [
+        {
+          "selected": [
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            13,
+            15
+          ],
+          "reset_s_including_rgb": 0.09485844895243645,
+          "render_s_rgb_and_human": 0.09232491999864578,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        {
+          "selected": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15
+          ],
+          "reset_s_including_rgb": 0.09156310744583607,
+          "render_s_rgb_and_human": 0.09179770015180111,
+          "unselected_state_changes": [],
+          "unselected_material_changes": [],
+          "unselected_visibility_changes": [],
+          "unselected_changed_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        }
+      ]
+    }
+  ],
+  "costs": {
+    "gpu_seconds_charged_upper_bound": 597,
+    "cpu_wall_seconds_conservative": 7200
+  },
+  "limits": "Engineering environment checks, no full robot task execution, IK validation or RL claim. Batch isolation performed without physics steps."
+}
