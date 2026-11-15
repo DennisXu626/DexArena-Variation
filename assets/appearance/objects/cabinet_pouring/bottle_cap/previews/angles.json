@@ -1,0 +1,50 @@
+[
+  {
+    "degrees": 0,
+    "actual_radians": 0.0,
+    "cap_quaternion_wxyz": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scheme": "ocean",
+    "visual_only": true
+  },
+  {
+    "degrees": 45,
+    "actual_radians": 0.7853981852531433,
+    "cap_quaternion_wxyz": [
+      0.9238795042037964,
+      4.5619415800501883e-08,
+      0.0,
+      0.3826834559440613
+    ],
+    "scheme": "ocean",
+    "visual_only": true
+  },
+  {
+    "degrees": 90,
+    "actual_radians": 1.5707963705062866,
+    "cap_quaternion_wxyz": [
+      0.7071068286895752,
+      8.429369557916289e-08,
+      0.0,
+      0.7071068286895752
+    ],
+    "scheme": "ocean",
+    "visual_only": true
+  },
+  {
+    "degrees": 180,
+    "actual_radians": 3.1415927410125732,
+    "cap_quaternion_wxyz": [
+      4.371138828673793e-08,
+      -1.1920927533992653e-07,
+      0.0,
+      -1.0
+    ],
+    "scheme": "ocean",
+    "visual_only": true
+  }
+]

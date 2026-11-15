@@ -1,0 +1,1242 @@
+{
+  "status": "passed",
+  "scope": "A4/A5 two environments; no physics steps or full robot task execution",
+  "tested_commit": "38b847444b6d2587068348e0047f09e33b98f2e8",
+  "catalog_version": "charger-a3-v1",
+  "catalog_sha256": "6b426f0cfe2f288291df419671b3952fd47c7a2cce54ec3acde869e9b695b047",
+  "versions": {
+    "torch": "2.6.0",
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "gymnasium": "0.29.1",
+    "numpy": "2.2.6"
+  },
+  "cpu_audit_torch_version": "2.11.0+cu128",
+  "allocated_gpu_seconds": 29,
+  "tasks": [
+    {
+      "task": "PickCharger",
+      "A4": "passed",
+      "scheme_ids": [
+        "original",
+        "ivory_matte",
+        "navy_satin",
+        "copper_metal"
+      ],
+      "actual_fixed_materials": {
+        "original": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.7200000286102295,
+                  0.75,
+                  0.800000011920929,
+                  1.0
+                ],
+                "roughness": 0.09000000357627869,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.7200000286102295,
+                  0.75,
+                  0.800000011920929,
+                  1.0
+                ],
+                "roughness": 0.09000000357627869,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "ivory_matte": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "navy_satin": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.05999999865889549,
+                  0.18000000715255737,
+                  0.3799999952316284,
+                  1.0
+                ],
+                "roughness": 0.3199999928474426,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.05999999865889549,
+                  0.18000000715255737,
+                  0.3799999952316284,
+                  1.0
+                ],
+                "roughness": 0.3199999928474426,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "copper_metal": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8199999928474426,
+                  0.44999998807907104,
+                  0.25,
+                  1.0
+                ],
+                "roughness": 0.2800000011920929,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8199999928474426,
+                  0.44999998807907104,
+                  0.25,
+                  1.0
+                ],
+                "roughness": 0.2800000011920929,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      "random_trace_repeat": [
+        [
+          [
+            "ivory_matte",
+            "copper_metal"
+          ],
+          [
+            "ivory_matte",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ]
+        ],
+        [
+          [
+            "ivory_matte",
+            "copper_metal"
+          ],
+          [
+            "ivory_matte",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ]
+        ]
+      ],
+      "physical_and_full_initial_state_equal": true,
+      "native_charger_mass_kg": 0.19170814752578735,
+      "native_charger_inertia_kg_m2": [
+        0.00013197859516367316,
+        0.0001569898013258353,
+        0.00017913883493747562
+      ],
+      "A5": {
+        "status": "passed",
+        "selected": [
+          1
+        ],
+        "physics_steps": 0,
+        "unselected_state_changes": [],
+        "unselected_pixel_changes": {
+          "base_camera": 0,
+          "task_wrist_camera": 0,
+          "wrist_camera": 0,
+          "human": 0
+        },
+        "before_materials": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.05999999865889549,
+                  0.18000000715255737,
+                  0.3799999952316284,
+                  1.0
+                ],
+                "roughness": 0.3199999928474426,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "after_materials": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8199999928474426,
+                  0.44999998807907104,
+                  0.25,
+                  1.0
+                ],
+                "roughness": 0.2800000011920929,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "before_records": [
+          {
+            "env_idx": 0,
+            "episode_index": 1,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 1,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 2,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 2,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          }
+        ],
+        "after_records": [
+          {
+            "env_idx": 0,
+            "episode_index": 1,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 1,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 2,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 2,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 3,
+            "scheme_id": "copper_metal",
+            "catalog_version": "charger-a3-v1"
+          }
+        ],
+        "rgb_shapes": {
+          "base_camera": [
+            2,
+            256,
+            256,
+            3
+          ],
+          "task_wrist_camera": [
+            2,
+            256,
+            256,
+            3
+          ],
+          "wrist_camera": [
+            2,
+            240,
+            320,
+            3
+          ],
+          "human": [
+            2,
+            720,
+            1280,
+            3
+          ]
+        }
+      },
+      "elapsed_seconds": 12.763740383088589
+    },
+    {
+      "task": "InsertPlug",
+      "A4": "passed",
+      "scheme_ids": [
+        "original",
+        "ivory_matte",
+        "navy_satin",
+        "copper_metal"
+      ],
+      "actual_fixed_materials": {
+        "original": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.7200000286102295,
+                  0.75,
+                  0.800000011920929,
+                  1.0
+                ],
+                "roughness": 0.09000000357627869,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.7200000286102295,
+                  0.75,
+                  0.800000011920929,
+                  1.0
+                ],
+                "roughness": 0.09000000357627869,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "ivory_matte": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "navy_satin": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.05999999865889549,
+                  0.18000000715255737,
+                  0.3799999952316284,
+                  1.0
+                ],
+                "roughness": 0.3199999928474426,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.05999999865889549,
+                  0.18000000715255737,
+                  0.3799999952316284,
+                  1.0
+                ],
+                "roughness": 0.3199999928474426,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "copper_metal": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8199999928474426,
+                  0.44999998807907104,
+                  0.25,
+                  1.0
+                ],
+                "roughness": 0.2800000011920929,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8199999928474426,
+                  0.44999998807907104,
+                  0.25,
+                  1.0
+                ],
+                "roughness": 0.2800000011920929,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ]
+      },
+      "random_trace_repeat": [
+        [
+          [
+            "ivory_matte",
+            "copper_metal"
+          ],
+          [
+            "ivory_matte",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ]
+        ],
+        [
+          [
+            "ivory_matte",
+            "copper_metal"
+          ],
+          [
+            "ivory_matte",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "ivory_matte"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ],
+          [
+            "navy_satin",
+            "copper_metal"
+          ]
+        ]
+      ],
+      "physical_and_full_initial_state_equal": true,
+      "native_charger_mass_kg": 0.19170814752578735,
+      "native_charger_inertia_kg_m2": [
+        0.00013197859516367316,
+        0.0001569898013258353,
+        0.00017913883493747562
+      ],
+      "A5": {
+        "status": "passed",
+        "selected": [
+          1
+        ],
+        "physics_steps": 0,
+        "unselected_state_changes": [],
+        "unselected_pixel_changes": {
+          "base_camera": 0,
+          "task_wrist_camera": 0,
+          "wrist_camera": 0,
+          "human": 0
+        },
+        "before_materials": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.05999999865889549,
+                  0.18000000715255737,
+                  0.3799999952316284,
+                  1.0
+                ],
+                "roughness": 0.3199999928474426,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "after_materials": [
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8999999761581421,
+                  0.8600000143051147,
+                  0.7599999904632568,
+                  1.0
+                ],
+                "roughness": 0.6499999761581421,
+                "metallic": 0.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          },
+          {
+            "body": [
+              {
+                "base_color": [
+                  0.8199999928474426,
+                  0.44999998807907104,
+                  0.25,
+                  1.0
+                ],
+                "roughness": 0.2800000011920929,
+                "metallic": 1.0
+              }
+            ],
+            "prongs": [
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              },
+              {
+                "base_color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 0.05999999865889549,
+                "metallic": 1.0
+              }
+            ]
+          }
+        ],
+        "before_records": [
+          {
+            "env_idx": 0,
+            "episode_index": 1,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 1,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 2,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 2,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          }
+        ],
+        "after_records": [
+          {
+            "env_idx": 0,
+            "episode_index": 1,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 1,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 2,
+            "scheme_id": "ivory_matte",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 2,
+            "scheme_id": "navy_satin",
+            "catalog_version": "charger-a3-v1"
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 3,
+            "scheme_id": "copper_metal",
+            "catalog_version": "charger-a3-v1"
+          }
+        ],
+        "rgb_shapes": {
+          "base_camera": [
+            2,
+            256,
+            256,
+            3
+          ],
+          "task_wrist_camera": [
+            2,
+            256,
+            256,
+            3
+          ],
+          "wrist_camera": [
+            2,
+            240,
+            320,
+            3
+          ],
+          "human": [
+            2,
+            720,
+            1280,
+            3
+          ]
+        }
+      },
+      "elapsed_seconds": 9.344716427847743
+    }
+  ],
+  "tested_file_sha256": {
+    "tasks/drawer_plug/drawer_plug_long.py": "834769897af83d17dc2a462dbf1dc4674fb3e5c6818b6306eb96e95fad5d13b8",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "1fb5b9f44b57ec6be1d6d4447bfa801a028fe81f87b897f95cbcec778114d1ce",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "8bb9bd2b8658b2aa8d1066e02fb430384f9c11adf8171c1642de9175296b63f0",
+    "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
+    "tasks/assets/variation/drawer_plug/v1/catalog.json": "6b426f0cfe2f288291df419671b3952fd47c7a2cce54ec3acde869e9b695b047"
+  },
+  "decoded_images": 48
+}

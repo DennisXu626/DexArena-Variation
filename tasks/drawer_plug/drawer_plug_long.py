@@ -385,6 +385,7 @@ class DrawerPlugLongEnv(BaseEnv):
         object_init_xy_noise=0.01,
         num_envs=1,
         reconfiguration_freq=None,
+        charger_appearance=None,
         **kwargs,
     ):
         if "sim_config" in kwargs and kwargs["sim_config"] is not None:
@@ -396,6 +397,12 @@ class DrawerPlugLongEnv(BaseEnv):
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.drawer_init_xy_noise = float(drawer_init_xy_noise)
         self.object_init_xy_noise = float(object_init_xy_noise)
+        self._charger_appearance = None
+        if charger_appearance and charger_appearance.get("enabled", False):
+            if type(self).__name__ not in {"DrawerPlugPickChargerEnv", "DrawerPlugInsertPlugEnv"}:
+                raise ValueError("Charger appearance pilot supports only PickCharger and InsertPlug")
+            from tasks.drawer_plug.charger_appearance import ChargerAppearance
+            self._charger_appearance = ChargerAppearance(charger_appearance, num_envs)
         if not DRAWER_URDF_PATH.exists():
             raise FileNotFoundError(f"Drawer URDF not found: {DRAWER_URDF_PATH}")
         if reconfiguration_freq is None:
@@ -727,6 +734,8 @@ class DrawerPlugLongEnv(BaseEnv):
                 density=self.charger_density,
             )
         builder.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.6])
+        if self._charger_appearance is not None:
+            self._charger_appearance.isolate_builder_materials(builder)
         self.charger = builder.build(name="charger")
         for obj in self.charger._objs:
             component = obj.find_component_by_type(

@@ -1,0 +1,30 @@
+{
+  "scheme_id": "citrus",
+  "paired_cap_scheme_id": "citrus",
+  "catalog_version": "cabinet-appearance-v1",
+  "roles": {
+    "body_surface": {
+      "base_color": [
+        0.95,
+        0.7,
+        0.18,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0
+    },
+    "body_label": {
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_color_texture": "textures/label.png",
+      "roughness": 0.65,
+      "metallic": 0
+    }
+  },
+  "uv": "Reuse original-3.obj vt/faces unchanged; no separate UV file or unwrap",
+  "label_sha256": "c3dea2e0fd3c2a8240788459dd336f5f151a76b7ef24605937cdff143870658e"
+}

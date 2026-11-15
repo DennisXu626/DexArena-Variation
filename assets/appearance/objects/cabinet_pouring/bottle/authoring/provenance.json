@@ -1,0 +1,13 @@
+{
+  "historical_source": "M2 make_assets.py",
+  "historical_script_sha256": "cb2bbe8addbc10aa25c4d8a2fc8530efa58c0d6846fc42745f95ea30e6d59c5a",
+  "archive_script_sha256": "077ec875228006724c281dc298fb7d46d18d756474971cce2b680d7c4514b298",
+  "changes": [
+    "output path via --output, default fresh local authoring-output directory",
+    "Arial regular and Bold font files via explicit CLI arguments",
+    "refuse existing output filenames"
+  ],
+  "drawing_operations": "unchanged",
+  "historical_pillow_version": "not recorded in historical input; do not infer from current environment",
+  "font_files_distributed": false
+}

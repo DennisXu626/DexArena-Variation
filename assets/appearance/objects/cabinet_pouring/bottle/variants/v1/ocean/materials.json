@@ -1,0 +1,30 @@
+{
+  "scheme_id": "ocean",
+  "paired_cap_scheme_id": "ocean",
+  "catalog_version": "cabinet-appearance-v1",
+  "roles": {
+    "body_surface": {
+      "base_color": [
+        0.15,
+        0.65,
+        0.68,
+        1
+      ],
+      "roughness": 0.38,
+      "metallic": 0.05
+    },
+    "body_label": {
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_color_texture": "textures/label.png",
+      "roughness": 0.38,
+      "metallic": 0.05
+    }
+  },
+  "uv": "Reuse original-3.obj vt/faces unchanged; no separate UV file or unwrap",
+  "label_sha256": "5503fa8c1c1dc823d8643ddcbded7c0e7854f7d2c192455eef197f75ab7da6ef"
+}

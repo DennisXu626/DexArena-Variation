@@ -52,6 +52,8 @@ class DrawerPlugPickChargerEnv(DrawerPlugLongEnv):
             self._initialize_drawer(env_idx, b, travel=travel)
             self._place_charger_in_drawer(env_idx, b, travel)
             self._stage_drawer_open[env_idx] = True
+            if self._charger_appearance is not None:
+                self._charger_appearance.finish_reset(self, env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):

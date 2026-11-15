@@ -1,0 +1,54 @@
+{
+  "check_date": "2026-11-13",
+  "scope": "One local CPU authoring check, existing Pillow and fonts. No new designs; published PNGs preserved.",
+  "pillow_version": "12.1.1",
+  "freetype_version": "2.14.1",
+  "font_inputs": [
+    {
+      "role": "regular",
+      "filename": "arial.ttf",
+      "sha256": "b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a"
+    },
+    {
+      "role": "bold",
+      "filename": "arialbd.ttf",
+      "sha256": "e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5"
+    }
+  ],
+  "historical_pillow_version": "unknown",
+  "images": [
+    {
+      "scheme_id": "ocean",
+      "size": [
+        388,
+        490
+      ],
+      "mode": "RGB",
+      "generated_sha256": "5503fa8c1c1dc823d8643ddcbded7c0e7854f7d2c192455eef197f75ab7da6ef",
+      "published_sha256": "5503fa8c1c1dc823d8643ddcbded7c0e7854f7d2c192455eef197f75ab7da6ef",
+      "byte_match": true
+    },
+    {
+      "scheme_id": "citrus",
+      "size": [
+        388,
+        490
+      ],
+      "mode": "RGB",
+      "generated_sha256": "c3dea2e0fd3c2a8240788459dd336f5f151a76b7ef24605937cdff143870658e",
+      "published_sha256": "c3dea2e0fd3c2a8240788459dd336f5f151a76b7ef24605937cdff143870658e",
+      "byte_match": true
+    },
+    {
+      "scheme_id": "violet",
+      "size": [
+        388,
+        490
+      ],
+      "mode": "RGB",
+      "generated_sha256": "94f477cdddf0ef60999736d23f7a09be54cd7c3fb53b18c7ba2329540b509b73",
+      "published_sha256": "94f477cdddf0ef60999736d23f7a09be54cd7c3fb53b18c7ba2329540b509b73",
+      "byte_match": true
+    }
+  ]
+}

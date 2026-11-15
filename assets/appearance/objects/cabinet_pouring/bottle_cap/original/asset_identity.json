@@ -1,0 +1,19 @@
+{
+  "asset_root": "tasks/assets/task_object_meshes/cabinet_pour",
+  "visual_mesh": "bottle_4403/lid_vis/original-2.obj",
+  "code_reference": "e7d5c49d079153e77da1ce2bfde16edf67ee7fa8",
+  "hf_reference": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+  "version_scope": "M1 compared only 8 selected visual/dependency files, not a whole bundle revision identity; original assets remain externally acquired.",
+  "files": [
+    {
+      "path": "bottle_4403/lid_vis/original-2.mtl",
+      "sha256": "8ff2f5278ccebf5c6fc82b717b52d5f106ae0f305ae4c322ae291c223c77db57",
+      "local_runtime_match": true
+    },
+    {
+      "path": "bottle_4403/lid_vis/original-2.obj",
+      "sha256": "c8be15c7db97da9f45347cb660bf7adceee32ac91a1b02d51c1f6e4f1a4fc204",
+      "local_runtime_match": true
+    }
+  ]
+}

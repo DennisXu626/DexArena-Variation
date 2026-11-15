@@ -1,0 +1,82 @@
+{
+  "source": "Accepted M2 historical gallery; no new render, GPU or server connection this round",
+  "base_code_commit": "e7d5c49d079153e77da1ce2bfde16edf67ee7fa8",
+  "versions": {
+    "torch": "2.6.0",
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "numpy": "2.2.6"
+  },
+  "task_code_hashes": {
+    "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": "45024e84650805165a7d77bf3f4e686f0b114e41473cdd54ddb351215f7daed1",
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "bd5d1d6598950a4d380dd10c8b4b6952f80d17ea3352ec320f97b64947d5745b",
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "49e41cd5e8106c6bb1c00a04ac4f12eef9ab562ff575cf1e27fbb806e9b30724",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "3eaf5f7e0bffb1a375b4af1ae81a17bb0d541450cf5914f3d04fec87c0875380",
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "75dced699eb44417b998e0a4a6f48cf4e85b736f16d0fb257fe0cc787f9ff39a",
+    "tasks/cabinet_pouring/variation.py": "d9389a354f958d9456d6268aca2dab1727c551a0087b41126f3b82f38fb4038b"
+  },
+  "gallery_conditions": "same camera, seed7 and same robot/object state; native single-environment CPU physics plus GPU rendering historically; not new batched-reset evidence",
+  "images": [
+    {
+      "archive": "objects/cabinet_pouring/bottle/previews/original.png",
+      "historical_source": "M2 variation_suite_gallery/appearance_original_env0.png",
+      "sha256": "e73eec910a5f07332b4fef8a3c7f3803c1ea2be08e278bb459a27770af941468",
+      "kind": "same-view real task scene; M2 historical rendering, not rendered this round"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle/previews/ocean.png",
+      "historical_source": "M2 variation_suite_gallery/appearance_ocean_env0.png",
+      "sha256": "cde234a3897d70905a37eb9a32817d3f15ff710d784c9130ce88bb82da4c53b6",
+      "kind": "same-view real task scene; M2 historical rendering, not rendered this round"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle/previews/citrus.png",
+      "historical_source": "M2 variation_suite_gallery/appearance_citrus_env0.png",
+      "sha256": "7a66a08b563f0617ec1f6dad7944387727e28b0e68de9fe340c0e9764feb8cb4",
+      "kind": "same-view real task scene; M2 historical rendering, not rendered this round"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle/previews/violet.png",
+      "historical_source": "M2 variation_suite_gallery/appearance_violet_env0.png",
+      "sha256": "a539874013e6ab9aea2f9b1a38aa9df44638e8157fc3ab78530219543d7bc71b",
+      "kind": "same-view real task scene; M2 historical rendering, not rendered this round"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle_cap/previews/angle_000.png",
+      "historical_source": "M2 angle_closeups/000.png",
+      "sha256": "ed2c2749036ca8477f2a5d9b1ac14f2c8230777f798d81dd756ec1e5db50c965",
+      "kind": "Ocean known joint angle; visual engineering check, not robot unscrewing"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle_cap/previews/angle_045.png",
+      "historical_source": "M2 angle_closeups/045.png",
+      "sha256": "2491725fb599dec47ebb476c1189b0576e809847f5be2fe00ac3974cf29ca8cc",
+      "kind": "Ocean known joint angle; visual engineering check, not robot unscrewing"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle_cap/previews/angle_090.png",
+      "historical_source": "M2 angle_closeups/090.png",
+      "sha256": "329536721e51d899f8d0f02756d8c9e695d24431d4a101d90d64126a60e083c6",
+      "kind": "Ocean known joint angle; visual engineering check, not robot unscrewing"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle_cap/previews/angle_180.png",
+      "historical_source": "M2 angle_closeups/180.png",
+      "sha256": "bb069b091f28a6acffa07ee55570c8ddde5b834cbfa72878763028d5009d9046",
+      "kind": "Ocean known joint angle; visual engineering check, not robot unscrewing"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle/previews/open_bottle_engineering.png",
+      "historical_source": "M2 variation_suite_gallery/open_bottle_engineering_env0.png",
+      "sha256": "88b4af756987cf588a742dc1b4b5586a3eb7aef454d50e51d104ba985fe8f4b3",
+      "kind": "engineering representation switch, not task success"
+    },
+    {
+      "archive": "objects/cabinet_pouring/bottle_cap/previews/free_cap_engineering.png",
+      "historical_source": "M2 variation_suite_gallery/free_cap_engineering_env0.png",
+      "sha256": "ce39b4c249ad3ba7bcf2bb2eec079013f476b4adfe4caa98ca56d4fdfce848ec",
+      "kind": "engineering representation switch, not task success"
+    }
+  ]
+}

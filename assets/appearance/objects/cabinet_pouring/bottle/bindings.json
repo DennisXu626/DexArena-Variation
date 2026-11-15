@@ -1,0 +1,33 @@
+{
+  "logical_object": "cabinet_pouring.bottle",
+  "runtime_handles": [
+    "source",
+    "source_fixed",
+    "source_open"
+  ],
+  "representations": {
+    "source": "dynamic A",
+    "source_fixed": "fixed B",
+    "source_open": "open C"
+  },
+  "mesh": "tasks/assets/task_object_meshes/cabinet_pour/bottle_4403/body_vis/original-3.obj",
+  "uv_vertices": 38,
+  "adapter": "tasks/cabinet_pouring/variation.py: PilotVariation._collect_bindings / apply_appearance",
+  "native_builder": "tasks/cabinet_pouring/cabinet_pouring_long.py: _load_bottle_and_cap / CAP_MARKER_BOXES",
+  "roles": {
+    "body_surface": {
+      "source_slots": [
+        "material_0_0",
+        "material_1_0"
+      ],
+      "runtime_rule": "source* parts without native base_color_texture"
+    },
+    "body_label": {
+      "source_slot": "material_2_0",
+      "native_texture": "../images/texture_1.jpg",
+      "runtime_rule": "source* parts with native base_color_texture"
+    }
+  },
+  "stage_consistency": "One paired scheme stays fixed for the episode across all six representations; stage switching does not resample.",
+  "geometry_and_physics": "Unchanged; no new marker geometry, no collision edits, no new UV."
+}

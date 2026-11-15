@@ -1,0 +1,29 @@
+{
+  "scheme_id": "citrus",
+  "paired_bottle_scheme_id": "citrus",
+  "catalog_version": "cabinet-appearance-v1",
+  "roles": {
+    "cap_surface": {
+      "base_color": [
+        0.95,
+        0.95,
+        0.83,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0
+    },
+    "cap_reference": {
+      "base_color": [
+        0.04,
+        0.12,
+        0.06,
+        1
+      ],
+      "roughness": 0.65,
+      "metallic": 0
+    }
+  },
+  "texture": null,
+  "uv": "Native cap has zero UV vertices; parameter-only change to mesh and two existing asymmetric visual marker boxes"
+}
