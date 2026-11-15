@@ -24,3 +24,9 @@ V1对象键：`office_desk/mouse`；V2对应键：`office_mouse`。代码调查�
 ## 2026-11-15候选静态分析
 
 状态仍为待适配。本轮仅核对现有源文件、资产部件与材质／UV事实，实际SAPIEN绑定、并行隔离和A6仍未验证；见[候选分析](../../../../../docs/variation/OBJECT_CANDIDATES.md)。没有创建该对象的新方案、配置或运行代码。
+
+## ClickMouse 最小接入准备（未运行验收）
+
+仅 `OfficeDeskClickMouse-Sharpa-v1` 已准备 original／ivory_matte／navy_satin 的最小材质入口、固定／随机示例及双环境短检脚本。默认关闭；Long 不变。档案状态仍为**待适配／运行未验收**，无新增 GPU 或 RGB 通过证据。
+
+[接口、部件绑定和验证说明](../../../../../docs/variation/MOUSE_101408.md)；[唯一 catalog](../../../../../tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json)；[短检脚本](../../../../../tools/variation/check_mouse_101408.py)。不复制一份参数源，不更改现有验收状态计数。

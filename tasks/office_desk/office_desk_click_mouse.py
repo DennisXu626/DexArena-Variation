@@ -49,6 +49,7 @@ from tasks.config.sim_profiles import make_sim_config
 from tasks.scene_builders import TableSceneBuilder
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
+from tasks.office_desk.mouse_appearance import MouseAppearance
 
 
 # =============================================================================
@@ -491,12 +492,18 @@ class OfficeDeskClickMouseEnv(BaseEnv):
         robot_uids: str = DEFAULT_ROBOT_UID,
         robot_init_qpos_noise: float = 0.02,
         target_finger_id: int = 1,
+        mouse_appearance: dict | None = None,
         mouse_xy_noise: float = 0.02,
         mouse_yaw_noise_deg: float = 5.0,
         num_envs: int = 1,
         reconfiguration_freq=None,
         **kwargs,
     ):
+        # Disabled: no adapter, appearance RNG, material binding or reset writes.
+        self._mouse_appearance = (
+            MouseAppearance(mouse_appearance, num_envs)
+            if mouse_appearance and mouse_appearance.get("enabled", False) else None
+        )
         runtime_sim_config = kwargs.pop("sim_config", None)
         if runtime_sim_config not in (None, {"control_freq": CONTROL_FREQUENCY}):
             raise ValueError(
@@ -673,6 +680,8 @@ class OfficeDeskClickMouseEnv(BaseEnv):
             builder.set_scene_idxs([env_id])
             builder.initial_pose = sapien.Pose()
 
+            if self._mouse_appearance is not None:
+                self._mouse_appearance.isolate_builder_materials(builder)
             mouse = builder.build(
                 name=f"mouse-{env_id}"
             )
@@ -753,6 +762,8 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                 )
                 joint.set_friction(float(cfg["wheel_friction"]))
 
+            if self._mouse_appearance is not None:
+                self._mouse_appearance.bind(mouse, env_id)
             self._mice.append(mouse)
             self._left_links.append(
                 mouse.links_map[
@@ -1024,6 +1035,9 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                 )
             self.agent.reset(qpos)
             self.agent.robot.set_root_pose(ROBOT_ROOT_POSE)
+
+        if self._mouse_appearance is not None:
+            self._mouse_appearance.finish_reset(env_idx, options)
 
     def _ensure_buffers(self):
         if hasattr(self, "press_started"):

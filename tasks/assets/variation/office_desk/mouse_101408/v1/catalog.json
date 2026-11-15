@@ -1,0 +1,80 @@
+{
+  "version": "mouse-101408-v1",
+  "status": "runtime_unverified",
+  "source": "Self-authored scalar render parameters; original restores native loader material per render part. No external textures.",
+  "binding": {
+    "link_0": "buttons",
+    "link_1": "buttons",
+    "link_2": "wheel",
+    "link_3": "shell"
+  },
+  "schemes": {
+    "original": {
+      "restore_native": true
+    },
+    "ivory_matte": {
+      "shell": {
+        "base_color": [
+          0.82,
+          0.77,
+          0.65,
+          1.0
+        ],
+        "roughness": 0.85,
+        "metallic": 0.0
+      },
+      "buttons": {
+        "base_color": [
+          0.94,
+          0.91,
+          0.83,
+          1.0
+        ],
+        "roughness": 0.85,
+        "metallic": 0.0
+      },
+      "wheel": {
+        "base_color": [
+          0.12,
+          0.15,
+          0.18,
+          1.0
+        ],
+        "roughness": 0.85,
+        "metallic": 0.0
+      }
+    },
+    "navy_satin": {
+      "shell": {
+        "base_color": [
+          0.025,
+          0.065,
+          0.16,
+          1.0
+        ],
+        "roughness": 0.4,
+        "metallic": 0.0
+      },
+      "buttons": {
+        "base_color": [
+          0.12,
+          0.28,
+          0.42,
+          1.0
+        ],
+        "roughness": 0.4,
+        "metallic": 0.0
+      },
+      "wheel": {
+        "base_color": [
+          0.65,
+          0.45,
+          0.16,
+          1.0
+        ],
+        "roughness": 0.4,
+        "metallic": 0.0
+      }
+    }
+  }
+}
