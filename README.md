@@ -21,6 +21,8 @@ Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sha
 
 本分支另提供 `cabinet_pouring.bottle_table.xy_v2`：圆心(−.25,−.35)m、底圈区域R=.16m，保留旧默认。它是平移后的较大圆盘，**不包含全部旧位置**。完整碰撞补测和新区域检查单列于[M3验证说明](docs/variation/TABLE_XY_VALIDATION.md)，不能把M2历史通过当成本次新区域证据。
 
+当前默认开关、任务／对象、配置、实测边界及实现／证据／验收来源统一列于[能力清单](docs/variation/STATUS.md)；[下一物体候选分析](docs/variation/OBJECT_CANDIDATES.md)不代表已适配或A6完成。
+
 ## 代码导航
 
 | 路径 | 做什么 | 谁先看 |

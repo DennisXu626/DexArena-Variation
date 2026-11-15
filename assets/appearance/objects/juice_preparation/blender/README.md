@@ -22,3 +22,7 @@ V1对象键：`juice_preparation/blender`；V2对应键：`blender, integrated_b
 - [tasks/juice_preparation/juice_preparation_press_button.py](../../../../../tasks/juice_preparation/juice_preparation_press_button.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+## 2026-11-15候选静态分析
+
+状态仍为待适配。本轮仅核对现有源文件、资产部件与材质／UV事实，实际SAPIEN绑定、并行隔离和A6仍未验证；见[候选分析](../../../../../docs/variation/OBJECT_CANDIDATES.md)。没有创建该对象的新方案、配置或运行代码。
