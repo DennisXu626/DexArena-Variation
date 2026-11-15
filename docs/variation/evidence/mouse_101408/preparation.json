@@ -21,7 +21,7 @@
         "status": "passed",
         "python_syntax_files": 10,
         "json_configs": 10,
-        "relative_links": 127,
+        "relative_links": 128,
         "scope": "CPU static only; no environment import or physical verification"
       }
     },
