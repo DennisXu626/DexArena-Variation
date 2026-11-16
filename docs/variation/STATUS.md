@@ -1,6 +1,6 @@
 # 当前能力清单与验证边界
 
-这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。当前PR快照覆盖三个家族、五个正式任务；“入口已具备”与“限定验证通过”不代表全任务或机器人完整成功。2026-11-15的PR #1整合及本页更新只作CPU／Git核对，没有重跑GPU、仿真或渲染。
+这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。本清单覆盖三个家族、五个正式任务；“入口已具备”与“限定验证通过”不代表全任务或机器人完整成功。2026-11-15的PR #1整合及本页更新只作CPU／Git核对，没有重跑GPU、仿真或渲染。
 
 ## 1. 瓶身／瓶盖外观
 
@@ -54,7 +54,7 @@
 
 | 字段 | 当前事实 |
 |---|---|
-| 验收与集成状态 | leader已接受限定双环境结果；**PR #6尚未合入main**，两者分开记录。仅Mouse 101408、`OfficeDeskClickMouse-Sharpa-v1`，不扩到Long |
+| 验收与集成状态 | leader已接受限定双环境结果；集成状态见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)的合并记录。仅Mouse 101408、`OfficeDeskClickMouse-Sharpa-v1`，不扩到Long |
 | 默认、方案与记录 | 省略/关闭`mouse_appearance`保留原生外观；original／ivory_matte／navy_satin，固定或指定集合随机、独立外观流、回合固定、实际方案与catalog版本记录 |
 | 配置与唯一参数源 | [默认](../../examples/variation/office_desk/mouse_101408/default.json)、[固定](../../examples/variation/office_desk/mouse_101408/fixed.json)、[随机](../../examples/variation/office_desk/mouse_101408/random.json)；[运行catalog](../../tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json)、[接口与绑定](MOUSE_101408.md) |
 | 实际验证 | 2env physx_cuda原生加载/reset；三方案真实部件材料与RGB；随机复现/回合记录；修复后各方案的几何、碰撞、物理属性、初态和按钮target对照；两轮仅env1局部reset，env0状态/target/材质/记录与base/wrist/human三路RGB保持 |
@@ -65,6 +65,6 @@
 
 ## 仍待实现／验证
 
-[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。除瓶身、盖、Charger及限定ClickMouse试点外，其它对象仍按各自待适配／无视觉／未加载状态保留。Mouse验收不代表PR已合入main。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
+[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。除瓶身、盖、Charger及限定ClickMouse试点外，其它对象仍按各自待适配／无视觉／未加载状态保留。Mouse限定验收与集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。历史报告保留当时结论，当前状态以本页和各项证据为准。

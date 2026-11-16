@@ -1,6 +1,6 @@
 # 鼠标（model_id 101408）（office_desk.mouse）
 
-状态：**限定范围已验收**。对象Mouse 101408，仅`OfficeDeskClickMouse-Sharpa-v1`的双环境外观及A4／A5；PR #6尚未合入main。下方历史候选/准备段落保留当时结论。
+状态：**限定范围已验收**。对象Mouse 101408，仅`OfficeDeskClickMouse-Sharpa-v1`的双环境外观及A4／A5；集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。下方历史候选/准备段落保留当时结论。
 
 原始角色：可交互输入设备。V1资源说明：`assets/task_object_meshes/office/101408/mobility.urdf`。
 
@@ -39,4 +39,4 @@ V1对象键：`office_desk/mouse`；V2对应键：`office_mouse`。代码调查�
 - **未验证**完整点击、Long、CPU后端运行、A6、大规模并行，以及修复前后内部warm-start轨迹等价；限定验收不是完整机器人成功。
 - GPU历史累计35/600秒（86071失败10秒＋86453复测25秒）。历史失败与上轮墙钟71分54秒／超支26分54秒保留，不冲销。
 
-[固定证据与真实任务图](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/MOUSE_101408.md)；[结构化结果](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/evidence/mouse_101408/retest_001.json)；[历史失败](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/evidence/mouse_101408/run_001.json)。完整证据入口沿用[任务说明](../../../../../docs/variation/MOUSE_101408.md)。请审验层复核文档增量后按仓库规范合并，并核对main实际落地；执行层不合并。
+[固定证据与真实任务图](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/MOUSE_101408.md)；[结构化结果](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/evidence/mouse_101408/retest_001.json)；[历史失败](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/evidence/mouse_101408/run_001.json)。完整证据入口沿用[任务说明](../../../../../docs/variation/MOUSE_101408.md)。审验和集成记录以[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)为准。

@@ -147,7 +147,7 @@
     "runtime_commit": "78c9b2f212a50f4a9249acd30993dd9c6940d467",
     "evidence_commit": "daaec9c9cd9c30da432dd23c65a720ed1cfb382e",
     "evidence": "docs/variation/evidence/mouse_101408/retest_001.json",
-    "integration": "PR #6 open; not merged into main as of 2026-11-16 handoff",
+    "integration": "Integration record: https://github.com/DennisXu626/DexArena-Variation/pull/6",
     "policy": "Reference one runtime catalog; no duplicate parameters or assets"
   }
 }
