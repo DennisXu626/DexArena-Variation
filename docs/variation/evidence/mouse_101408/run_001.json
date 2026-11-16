@@ -1,0 +1,51 @@
+{
+  "status": "runtime_failed_before_appearance_checks",
+  "acceptance": "pending Dennis review; not accepted",
+  "frozen_runtime_commit": "358b4de5d7036a03bcfee025ee679c03da6f7239",
+  "job_id": 86071,
+  "job_state": "FAILED",
+  "exit_code": "1:0",
+  "GPU_allocated_seconds": 10,
+  "GPU_budget_seconds": 600,
+  "max_jobs_authorization_consumed": true,
+  "GPU_retry_permitted": false,
+  "physics_steps": 0,
+  "failure": {
+    "phase": "variation-disabled native two-environment scene construction",
+    "operation": "joint.set_drive_target -> cuda_articulation_target_qpos.torch()",
+    "type": "ValueError",
+    "message": "cannot parse `typestr`",
+    "task_location": "tasks/office_desk/office_desk_click_mouse.py:745",
+    "library_location": "mani_skill/utils/structs/articulation_joint.py:261",
+    "root_cause": "not established; no fix/retry performed"
+  },
+  "checks": {
+    "native_two_env_load": "failed",
+    "original_ivory_navy_binding_and_RGB": "not reached",
+    "fixed_and_random_reproducibility": "not reached",
+    "physical_initial_state_equality": "not reached",
+    "env1_reset_env0_isolation": "not reached"
+  },
+  "RGB_evidence_generated": false,
+  "source_and_asset_hashes_match": true,
+  "guard": {
+    "returncode": 1,
+    "stop_reason": null,
+    "retained_log_bytes": 543,
+    "original_process_group_cleanup_complete": true,
+    "restarts": 0
+  },
+  "accounting": "scontrol full terminal cached; sacct database unavailable; no double-counting batch/extern steps",
+  "production_files": {
+    "tasks/office_desk/office_desk_click_mouse.py": "95bd763866577de2b4aaa6fbae8d9e646827d02b19dd6422493ebb244894ca58",
+    "tasks/office_desk/mouse_appearance.py": "944327b9fabddd3f8d154dbfed2cbdff4d251dde207046072724d11c8566b3ac",
+    "tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json": "559b5cf39708f1e614aa8e9f3d3a999f55ce0a8714fee9989239888830dae340"
+  },
+  "versions": {
+    "torch": "2.6.0",
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "gymnasium": "0.29.1",
+    "numpy": "2.2.6"
+  }
+}
