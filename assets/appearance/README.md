@@ -2,7 +2,7 @@
 
 这是**已有外观归档，不是新增运行能力**。每个稳定逻辑对象一个目录：十家族V1的40条对象记录全部保留，另补V2／M1的两个无视觉追溯项；不将157条逐任务初始化行变成157套素材。不同家族同名对象不凭名称合并；A／B／C阶段表示记录在bindings，不重复复制贴图。
 
-已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；Mouse 101408的ivory_matte／navy_satin也已完成限定ClickMouse双环境验收（集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)）；Cabinet剩余对象已完成一次短检，但[视觉交验受阻](../../docs/variation/evidence/cabinet_remaining/README.md)，未增加验收计数。其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
+已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；Mouse 101408的ivory_matte／navy_satin也已完成限定ClickMouse双环境验收（集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)）；Cabinet柜体/碗/珠子已[通过限定运行与视觉检查](../../docs/variation/evidence/cabinet_remaining/leader_fix_005/README.md)，待Dennis最终查收，暂未增加验收计数。其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
 
 ## 快速使用
 
@@ -17,15 +17,15 @@
 
 ## 对象与状态
 
-按实际目录与清单复核：42个对象、10家族；已验收试点4；待适配34；无视觉不适用3；当前未加载1；外部推进待验收0。Mouse仅限定范围已验收；集成状态以[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)的合并记录为准。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与清单复核：42个对象、10家族；已验收试点4；待适配34；无视觉不适用3；当前未加载1；外部推进待验收0。Mouse仅限定范围已验收；集成状态以[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)的合并记录为准。pending_adaptation统计暂包含柜体/碗/珠子三个运行通过、待最终查收项；其余待适配不是开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
-| cabinet_pouring | [cabinet](objects/cabinet_pouring/cabinet/README.md) | 参数/隔离短检通过，视觉交验受阻或未确认，待审验 |
+| cabinet_pouring | [cabinet](objects/cabinet_pouring/cabinet/README.md) | 限定运行/视觉通过，待Dennis查收（统计暂保留待适配） |
 | cabinet_pouring | [bottle](objects/cabinet_pouring/bottle/README.md) | 已完成试点（继承M2验收） |
 | cabinet_pouring | [bottle_cap](objects/cabinet_pouring/bottle_cap/README.md) | 已完成试点（继承M2验收） |
-| cabinet_pouring | [bowl](objects/cabinet_pouring/bowl/README.md) | 参数/隔离短检通过，视觉交验受阻或未确认，待审验 |
-| cabinet_pouring | [beads](objects/cabinet_pouring/beads/README.md) | 参数/隔离短检通过，视觉交验受阻或未确认，待审验 |
+| cabinet_pouring | [bowl](objects/cabinet_pouring/bowl/README.md) | 限定运行/视觉通过，待Dennis查收（统计暂保留待适配） |
+| cabinet_pouring | [beads](objects/cabinet_pouring/beads/README.md) | 限定运行/视觉通过，待Dennis查收（统计暂保留待适配） |
 | drawer_plug | [drawer](objects/drawer_plug/drawer/README.md) | 待适配 |
 | drawer_plug | [socket](objects/drawer_plug/socket/README.md) | 待适配 |
 | drawer_plug | [charger](objects/drawer_plug/charger/README.md) | 已完成限定试点（A1–A3已接受；两任务各2env A4／A5通过） |
@@ -68,6 +68,6 @@
 
 覆盖依据：已验收V1 OBJECT_APPEARANCE.csv（40条）与V2 OBJECT_INITIALIZATION.csv（157条）、M1 PILOT_ASSETS及实际视觉结构，代码调查基准e7d5c49d079153e77da1ce2bfde16edf67ee7fa8；原始调查表由维护者保管，不将个人本机路径或内部日志上传。V2 rail_screw映射rail／screw部件，integrated_blender_top映射blender／lid的实际合并分支，不虚构独立对象；tip_cup是stand部件，独立目录仅保留逻辑追溯。
 
-[预览来源清单](preview_sources.json)记录M2历史图片原文件名、版本和SHA256。所有任务图均为历史SAPIEN实际渲染，本轮仅复制、解码和静态核对，没有GPU、仿真、重渲染、服务器连接或训练。平面标签文件不是任务应用效果。代码、HF选定素材revision与运行环境分别记载；V1静态模型图不能替代实际加载证据。
+[预览来源清单](preview_sources.json)记录M2历史图片原文件名、版本和SHA256。M2归档图为历史SAPIEN实际渲染，当时仅复制、解码和静态核对；新增柜体/碗/珠子的作业88777实景及运行证据另见对应对象入口。平面标签文件不是任务应用效果。代码、HF选定素材revision与运行环境分别记载；V1静态模型图不能替代实际加载证据。
 
-第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。本轮不修改既有运行代码、运行catalog／PNG、M3 PR或协作规范。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。
+第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。最初归档未修改运行代码；后续适配的运行改动、catalog及派生素材以对应对象记录为准。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。

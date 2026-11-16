@@ -1,0 +1,23 @@
+{
+  "UTC": "2026-11-16T17:25:59.732593+00:00",
+  "scheduler": {
+    "JobId": "88777",
+    "JobState": "COMPLETED",
+    "ExitCode": "0:0",
+    "RunTime": "00:01:53",
+    "TimeLimit": "00:02:00",
+    "StartTime": "2026-11-16T17:21:56",
+    "EndTime": "2026-11-16T17:23:49",
+    "Requeue": "0",
+    "Restarts": "0"
+  },
+  "all_1332_file_hashes_match": true,
+  "dependencies_unchanged": true,
+  "source_commit": "a18cd0e26708fe2f39ff12a8a84c28735571039a",
+  "source_status": "",
+  "original_PGID_alive": false,
+  "queue_watcher_exists": false,
+  "this_line_in_queue": false,
+  "unrelated_active_jobs_untouched": true,
+  "raw_terminal_sha256": "cda6a0c63d231ba0e98dcbeba6eb0bad90c3ba906182affa9c4e2d5dc7662471"
+}

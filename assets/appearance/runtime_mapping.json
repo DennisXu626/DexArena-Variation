@@ -155,12 +155,22 @@
     "commit": "030a6119025d39c520eebbfc6cf18b9d44e18130",
     "evidence": "docs/variation/evidence/cabinet_remaining/README.md",
     "status": "automated_checks_passed; visual_acceptance_blocked; pending Dennis",
-    "accepted_object_count_increment": 0
+    "accepted_object_count_increment": 0,
+    "historical": true
   },
   "cabinet_remaining_visual_fix_001": {
     "status": "diagnostic_failed; v1.2_not_runtime_validated",
     "job": "88509",
     "evidence": "docs/variation/evidence/cabinet_remaining/visual_fix_001/README.md",
-    "accepted_object_count_increment": 0
+    "accepted_object_count_increment": 0,
+    "historical": true
+  },
+  "cabinet_remaining_current": {
+    "job": "88777",
+    "runtime_commit": "a18cd0e26708fe2f39ff12a8a84c28735571039a",
+    "evidence": "docs/variation/evidence/cabinet_remaining/leader_fix_005/README.md",
+    "status": "runtime_and_visual_passed_pending_Dennis",
+    "accepted_object_count_increment": 0,
+    "scope": "four short tasks x2 environments; Long x1 engineering; no full robot success or A6"
   }
 }

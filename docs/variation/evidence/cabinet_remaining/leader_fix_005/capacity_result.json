@@ -1,0 +1,41 @@
+{
+  "sample_count": 108,
+  "peak_total_bytes": 725964155,
+  "minimum_mount_available_bytes": 289511833600,
+  "total_stop_bytes": 805306368,
+  "absolute_cap": false,
+  "last_sample": {
+    "directory_bytes": {
+      "source": 122343906,
+      "home": 0,
+      "cache": 277227,
+      "tmp": 0,
+      "output": 76545425,
+      "logs": 1754,
+      "deps": 0,
+      "leader_fix_005": 83619663
+    },
+    "total_bytes": 725964155,
+    "mount_root_available_bytes": 289511833600,
+    "nominal_quota_bytes": null,
+    "estimated_quota_headroom_bytes": null,
+    "quota_is_absolute_hard_limit": false
+  },
+  "final_snapshot": {
+    "directory_bytes": {
+      "source": 122343906,
+      "home": 0,
+      "cache": 277227,
+      "tmp": 0,
+      "output": 76545425,
+      "logs": 1754,
+      "deps": 0,
+      "leader_fix_005": 83621417
+    },
+    "total_bytes": 725965909,
+    "mount_root_available_bytes": 289511833600,
+    "nominal_quota_bytes": null,
+    "estimated_quota_headroom_bytes": null,
+    "quota_is_absolute_hard_limit": false
+  }
+}

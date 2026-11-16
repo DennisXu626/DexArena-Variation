@@ -1,6 +1,6 @@
 # 当前能力清单与验证边界
 
-这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。本清单覆盖三个家族、五个正式任务；“入口已具备”与“限定验证通过”不代表全任务或机器人完整成功。2026-11-15的PR #1整合及本页更新只作CPU／Git核对，没有重跑GPU、仿真或渲染。
+这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。本清单覆盖三个家族、八个正式任务入口（含Long单环境工程检查）；“入口已具备”与“限定验证通过”不代表全任务或机器人完整成功。2026-11-15的PR #1整合及本页更新只作CPU／Git核对，没有重跑GPU、仿真或渲染。
 
 ## 1. 瓶身／瓶盖外观
 
@@ -65,14 +65,14 @@
 
 ## 仍待实现／验证
 
-[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。除瓶身、盖、Charger及限定ClickMouse试点外，其它对象仍按各自待适配／无视觉／未加载状态保留。Mouse限定验收与集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
+[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。瓶身、盖、Charger及限定ClickMouse为已验收试点；新增柜体、碗、珠子已通过限定运行与视觉检查、待Dennis最终查收，统计暂保留pending_adaptation。其它对象状态不变。Mouse限定验收与集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。历史报告保留当时结论，当前状态以本页和各项证据为准。
 
-## Cabinet剩余对象短检（视觉交验受阻）
+## 6. Cabinet柜体、碗、珠子：限定运行与视觉通过
 
-柜体、碗、珠子的作业88174已完成：四短任务各2env、Long单env工程检查。original/ocean/citrus/violet的实际材质参数、恢复、物理初态、固定/随机记录，以及四短任务两轮env1局部reset隔离自动断言通过；瓶/盖表示与xy_v2合法点必要回归通过。**实景审计中柜体和碗未呈现预期配色；珠子独立视觉效果未确认，不能据脚本总passed判为验收通过。** 三对象仍pending_adaptation，计数不增加；PR #10保持草稿、未合并，待Dennis审验。见[真实图、逐任务证据及边界](evidence/cabinet_remaining/README.md)，[原准备与接口说明](CABINET_REMAINING.md)保留。没有完整机器人任务、训练、A6或Long双环境结论。
+最终作业88777（源码`a18cd0e26708fe2f39ff12a8a84c28735571039a`）完成四短任务各2env、Long单env。original/ocean/citrus/violet实际绑定、原纹理像素恢复、物理初态、随机复现和记录通过；四短任务两轮env1局部reset后env0状态/材料/随机流/记录和四路RGB均不变。原瓶/盖工程表示和xy_v2合法点必要回归通过。
 
-## Cabinet视觉修复补充（未通过）
+柜体/碗以私有稳定纹理对象上传原版/派生像素，解决批量渲染后换贴图引用不刷新的问题。新实例与同实例切换的ROI完全一致；把手原版保持，独立4mm珠子蓝/橙/紫与隔离通过。leader已人工检查九张对照图。
 
-[visual_fix_001](evidence/cabinet_remaining/visual_fix_001/README.md)：已准备v1.2原纹理派生配色最小修复；首份诊断作业88509在单材质可见性断言停止，13GPU秒、Requeue=0。正式修复视觉、独立珠子蓝/橙/紫及原矩阵回归未运行。旧v1.1证据保持历史范围，三个对象仍pending_adaptation，PR #10草稿未合并；没有增加已验收数量。
+**待Dennis最终查收，PR #10未合并；验收计数暂不增加。** [接口与素材说明](CABINET_REMAINING.md)、[实景与完整证据](evidence/cabinet_remaining/leader_fix_005/README.md)。历史88174/88509的视觉失败保留在对应证据中。没有完整机器人任务、训练、A6、Long双环境、其它手型或长时间压力结论。
