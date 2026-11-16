@@ -1,0 +1,1902 @@
+{
+  "status": "passed",
+  "checks": {
+    "default_disabled": "passed",
+    "explicit_disabled": "passed",
+    "original": {
+      "status": "passed",
+      "materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.13333334028720856,
+                0.13333334028720856,
+                0.13333334028720856,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.13333334028720856,
+                0.13333334028720856,
+                0.13333334028720856,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "original",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "original",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "original",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "original",
+          "catalog_version": "mouse-101408-v1"
+        }
+      ],
+      "drive_state": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      },
+      "load_reset_render_seconds": 1.6138658802956343
+    },
+    "ivory_matte": {
+      "status": "passed",
+      "materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        }
+      ],
+      "drive_state": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      },
+      "load_reset_render_seconds": 1.5086335968226194
+    },
+    "navy_satin": {
+      "status": "passed",
+      "materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.2800000011920929,
+                0.41999998688697815,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.2800000011920929,
+                0.41999998688697815,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.6499999761581421,
+                0.44999998807907104,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.02500000037252903,
+                0.06499999761581421,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.02500000037252903,
+                0.06499999761581421,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.2800000011920929,
+                0.41999998688697815,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.2800000011920929,
+                0.41999998688697815,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.6499999761581421,
+                0.44999998807907104,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.02500000037252903,
+                0.06499999761581421,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.02500000037252903,
+                0.06499999761581421,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        }
+      ],
+      "drive_state": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      },
+      "load_reset_render_seconds": 1.6191191356629133
+    },
+    "random_reproducibility": [
+      [
+        [
+          "original",
+          "navy_satin"
+        ],
+        [
+          "original",
+          "original"
+        ],
+        [
+          "ivory_matte",
+          "original"
+        ],
+        [
+          "ivory_matte",
+          "navy_satin"
+        ]
+      ],
+      [
+        [
+          "original",
+          "navy_satin"
+        ],
+        [
+          "original",
+          "original"
+        ],
+        [
+          "ivory_matte",
+          "original"
+        ],
+        [
+          "ivory_matte",
+          "navy_satin"
+        ]
+      ]
+    ],
+    "local_reset_0": {
+      "selected": [
+        1
+      ],
+      "scheme_id": "original",
+      "unselected_state_changes": [],
+      "unselected_pixel_changes": {
+        "base_camera": 0,
+        "wrist_camera": 0,
+        "human": 0
+      },
+      "before_materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.2800000011920929,
+                0.41999998688697815,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.2800000011920929,
+                0.41999998688697815,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.6499999761581421,
+                0.44999998807907104,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.02500000037252903,
+                0.06499999761581421,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.02500000037252903,
+                0.06499999761581421,
+                0.1599999964237213,
+                1.0
+              ],
+              "roughness": 0.4000000059604645,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "after_materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.13333334028720856,
+                0.13333334028720856,
+                0.13333334028720856,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "scheme_id": "original",
+          "catalog_version": "mouse-101408-v1"
+        }
+      ],
+      "reset_render_seconds": 0.9607703890651464,
+      "before_drives": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      },
+      "after_drives": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "local_reset_1": {
+      "selected": [
+        1
+      ],
+      "scheme_id": "ivory_matte",
+      "unselected_state_changes": [],
+      "unselected_pixel_changes": {
+        "base_camera": 0,
+        "wrist_camera": 0,
+        "human": 0
+      },
+      "before_materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.7529411911964417,
+                0.7529411911964417,
+                0.7529411911964417,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.13333334028720856,
+                0.13333334028720856,
+                0.13333334028720856,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.3176470696926117,
+                0.3176470696926117,
+                0.3176470696926117,
+                1.0
+              ],
+              "roughness": 0.9884529709815979,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "after_materials": [
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        },
+        {
+          "link_0": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_1": [
+            {
+              "base_color": [
+                0.9399999976158142,
+                0.9100000262260437,
+                0.8299999833106995,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_2": [
+            {
+              "base_color": [
+                0.11999999731779099,
+                0.15000000596046448,
+                0.18000000715255737,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ],
+          "link_3": [
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            },
+            {
+              "base_color": [
+                0.8199999928474426,
+                0.7699999809265137,
+                0.6499999761581421,
+                1.0
+              ],
+              "roughness": 0.8500000238418579,
+              "metallic": 0.0
+            }
+          ]
+        }
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "navy_satin",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "scheme_id": "original",
+          "catalog_version": "mouse-101408-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "scheme_id": "ivory_matte",
+          "catalog_version": "mouse-101408-v1"
+        }
+      ],
+      "reset_render_seconds": 0.8151659201830626,
+      "before_drives": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      },
+      "after_drives": {
+        "gpu_initialized": true,
+        "buffer": {
+          "typestr": "f4",
+          "shape": [
+            4,
+            29
+          ],
+          "strides": [
+            116,
+            4
+          ],
+          "cuda_id": 0,
+          "ptr_nonzero": true
+        },
+        "envs": [
+          {
+            "env_idx": 0,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.07995231449604034
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          },
+          {
+            "env_idx": 1,
+            "buttons": [
+              {
+                "joint_index": 0,
+                "expected": 0.0,
+                "actual": 0.0
+              },
+              {
+                "joint_index": 1,
+                "expected": 0.0,
+                "actual": 0.0
+              }
+            ],
+            "qpos": [
+              [
+                0.0,
+                0.0,
+                -0.0799713283777237
+              ]
+            ],
+            "qvel": [
+              [
+                0.0,
+                0.0,
+                0.0
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "physics_steps": 0,
+  "native_after_construction": {
+    "gpu_initialized": true,
+    "buffer": {
+      "typestr": "f4",
+      "shape": [
+        4,
+        29
+      ],
+      "strides": [
+        116,
+        4
+      ],
+      "cuda_id": 0,
+      "ptr_nonzero": true
+    },
+    "envs": [
+      {
+        "env_idx": 0,
+        "buttons": [
+          {
+            "joint_index": 0,
+            "expected": 0.0,
+            "actual": 0.0
+          },
+          {
+            "joint_index": 1,
+            "expected": 0.0,
+            "actual": 0.0
+          }
+        ],
+        "qpos": [
+          [
+            0.0,
+            0.0,
+            -0.07995231449604034
+          ]
+        ],
+        "qvel": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "env_idx": 1,
+        "buttons": [
+          {
+            "joint_index": 0,
+            "expected": 0.0,
+            "actual": 0.0
+          },
+          {
+            "joint_index": 1,
+            "expected": 0.0,
+            "actual": 0.0
+          }
+        ],
+        "qpos": [
+          [
+            0.0,
+            0.0,
+            -0.0799713283777237
+          ]
+        ],
+        "qvel": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    ]
+  },
+  "native_after_reset": {
+    "gpu_initialized": true,
+    "buffer": {
+      "typestr": "f4",
+      "shape": [
+        4,
+        29
+      ],
+      "strides": [
+        116,
+        4
+      ],
+      "cuda_id": 0,
+      "ptr_nonzero": true
+    },
+    "envs": [
+      {
+        "env_idx": 0,
+        "buttons": [
+          {
+            "joint_index": 0,
+            "expected": 0.0,
+            "actual": 0.0
+          },
+          {
+            "joint_index": 1,
+            "expected": 0.0,
+            "actual": 0.0
+          }
+        ],
+        "qpos": [
+          [
+            0.0,
+            0.0,
+            -0.07995231449604034
+          ]
+        ],
+        "qvel": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "env_idx": 1,
+        "buttons": [
+          {
+            "joint_index": 0,
+            "expected": 0.0,
+            "actual": 0.0
+          },
+          {
+            "joint_index": 1,
+            "expected": 0.0,
+            "actual": 0.0
+          }
+        ],
+        "qpos": [
+          [
+            0.0,
+            0.0,
+            -0.0799713283777237
+          ]
+        ],
+        "qvel": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    ]
+  },
+  "elapsed_seconds": 17.377421736717224,
+  "process_max_rss_kib": 3606996,
+  "gpu_memory_snapshot": "0, 16048 MiB, 40960 MiB\n",
+  "status_note": "limited checks passed; pending Dennis acceptance",
+  "runtime_commit": "78c9b2f212a50f4a9249acd30993dd9c6940d467",
+  "runtime_file_hashes": {
+    "tasks/office_desk/office_desk_click_mouse.py": "dc4ac8e5ace883eee4765fde5ce7f32d49cd215788965972d74a34945d817148",
+    "tasks/office_desk/mouse_appearance.py": "944327b9fabddd3f8d154dbfed2cbdff4d251dde207046072724d11c8566b3ac",
+    "tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json": "559b5cf39708f1e614aa8e9f3d3a999f55ce0a8714fee9989239888830dae340",
+    "tools/variation/check_mouse_101408.py": "feb285674874d5462a3d494db6234deea924b918720f28c03164d7d8e918e0c2"
+  },
+  "job_id": 86453,
+  "job_state": "COMPLETED",
+  "exit_code": "0:0",
+  "GPU_allocated_seconds_this_round": 25,
+  "GPU_cumulative_seconds": 35,
+  "original_PGID_cleanup_complete": true,
+  "no_live_job_from_this_line": true,
+  "GPU_memory_snapshot_scope": "shared visible card usage, not this job peak",
+  "internal_warm_start_trajectory_equivalence": "not verified",
+  "A6_or_robot_click_success": "not tested",
+  "preinitialization_typestr": "not sampled; prior empty typestr remains inference",
+  "independent_saved_RGB_comparison": {
+    "local_0_base_camera_env0.png": {
+      "pixel_channel_differences": 0,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": true
+    },
+    "local_0_base_camera_env1.png": {
+      "pixel_channel_differences": 6560,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": null
+    },
+    "local_0_wrist_camera_env0.png": {
+      "pixel_channel_differences": 0,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": true
+    },
+    "local_0_wrist_camera_env1.png": {
+      "pixel_channel_differences": 113827,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": null
+    },
+    "local_0_human_env0.png": {
+      "pixel_channel_differences": 0,
+      "image_size": [
+        768,
+        2048,
+        3
+      ],
+      "env0_identical": true
+    },
+    "local_0_human_env1.png": {
+      "pixel_channel_differences": 105479,
+      "image_size": [
+        768,
+        2048,
+        3
+      ],
+      "env0_identical": null
+    },
+    "local_1_base_camera_env0.png": {
+      "pixel_channel_differences": 0,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": true
+    },
+    "local_1_base_camera_env1.png": {
+      "pixel_channel_differences": 6528,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": null
+    },
+    "local_1_wrist_camera_env0.png": {
+      "pixel_channel_differences": 0,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": true
+    },
+    "local_1_wrist_camera_env1.png": {
+      "pixel_channel_differences": 125113,
+      "image_size": [
+        240,
+        640,
+        3
+      ],
+      "env0_identical": null
+    },
+    "local_1_human_env0.png": {
+      "pixel_channel_differences": 0,
+      "image_size": [
+        768,
+        2048,
+        3
+      ],
+      "env0_identical": true
+    },
+    "local_1_human_env1.png": {
+      "pixel_channel_differences": 90127,
+      "image_size": [
+        768,
+        2048,
+        3
+      ],
+      "env0_identical": null
+    }
+  }
+}
