@@ -13,11 +13,11 @@
 
 原版不是第四张自制贴图，选择original恢复捕获的原生材质。原OBJ／MTL／原纹理等第三方资源只引用来源和身份，不复制整包。瓶身UV直接属于原OBJ，未单独生成。瓶与盖当前成套scheme选择，不支持任意独立混配。
 
-当前已验证能力以[STATUS集中清单](../../docs/variation/STATUS.md)为准；[三个候选的静态分析](../../docs/variation/OBJECT_CANDIDATES.md)不改变下表状态，也不代表A6完成。
+当前能力以[STATUS集中清单](../../docs/variation/STATUS.md)为准。Meal 的五个对象引用[唯一运行 catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json)，详见[用法](../../docs/variation/MEAL_APPEARANCE.md)和[PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。[三个候选的静态分析](../../docs/variation/OBJECT_CANDIDATES.md)不改变下表状态，也不代表A6完成。
 
 ## 对象与状态
 
-按实际目录与清单复核：42个对象、10家族；已验收试点3；待适配35；无视觉不适用3；当前未加载1；外部推进待验收0。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与清单复核：42个对象、10家族；已验收试点3；待适配30；Meal 已接入待审验5；无视觉不适用3；当前未加载1；外部推进待验收0。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -37,11 +37,11 @@
 | juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 待适配 |
 | juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 待适配 |
 | juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 待适配 |
-| meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 待适配 |
-| meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 待适配 |
-| meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 待适配 |
-| meal_preparation | [bread](objects/meal_preparation/bread/README.md) | 待适配 |
-| meal_preparation | [tomato](objects/meal_preparation/tomato/README.md) | 待适配 |
+| meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 已接入，待 PR #8 最终审验 |
+| meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 已接入，待 PR #8 最终审验 |
+| meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 已接入，待 PR #8 最终审验 |
+| meal_preparation | [bread](objects/meal_preparation/bread/README.md) | 已接入，待 PR #8 最终审验 |
+| meal_preparation | [tomato](objects/meal_preparation/tomato/README.md) | 已接入，待 PR #8 最终审验 |
 | nut_bolt | [bolt](objects/nut_bolt/bolt/README.md) | 待适配 |
 | nut_bolt | [nut](objects/nut_bolt/nut/README.md) | 待适配 |
 | nut_bolt | [bolt_platform](objects/nut_bolt/bolt_platform/README.md) | 无视觉，不适用皮肤 |

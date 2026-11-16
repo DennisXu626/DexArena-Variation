@@ -29,19 +29,27 @@
       },
       "check_meal.py": {
         "sha256": "f762806dd3324cff85c6c84a210964766495e516d9fa0ec74347abb04e9f4689",
-        "lf_sha256": "e8fb2631de23c520e4eb625d74846d5b44e2eea92c95f4b81ac42c62a99f4a71"
+        "lf_sha256": "e8fb2631de23c520e4eb625d74846d5b44e2eea92c95f4b81ac42c62a99f4a71",
+        "archive": "job-86264-inputs/check_meal.py",
+        "archive_sha256": "ab382388a3174131fbdb3ca754e33e804414cb329524d55e24d3d5354c56fc97",
+        "restore_historical_lf_by_appending_newlines": 1
       },
       "render_meal_objects.py": {
         "sha256": "75ac807f7511521348ff5ba9ba3dfe36b38ccfb4be4bf9e23fd8ab6e5b13c101",
-        "lf_sha256": "3f271b4b4a27a0e996927a92b07d1bf2d6a3a0ce21f5738d4da6568221ac9bd9"
+        "lf_sha256": "3f271b4b4a27a0e996927a92b07d1bf2d6a3a0ce21f5738d4da6568221ac9bd9",
+        "archive": "job-86264-inputs/render_meal_objects.py",
+        "archive_sha256": "f8a00849cf7deff452739fd7ffdaef5ec7670663ae50fa96e1ff88a9822d247a",
+        "restore_historical_lf_by_appending_newlines": 1
       },
       "catalog.json": {
         "sha256": "1ca1494e18a96a3673b1c4605bfa7846658315b570e128d093ddd8e70e3a8c09",
-        "lf_sha256": "e2d308a1ea01140ae26dc106c37c963ba1f0771cde9158818cdcb04e9a643b51"
+        "lf_sha256": "e2d308a1ea01140ae26dc106c37c963ba1f0771cde9158818cdcb04e9a643b51",
+        "archive": "job-86264-inputs/catalog.json"
       },
       "lunch_box_catalog.json": {
         "sha256": "127c14ca066430f483067d1e4133796351d4a7019ea2d1c725be81fa16e7dd08",
-        "lf_sha256": "a91c20d09d14eeb92cf33f41955acc0e82b352777a6ddea76c30f9988a26a3cb"
+        "lf_sha256": "a91c20d09d14eeb92cf33f41955acc0e82b352777a6ddea76c30f9988a26a3cb",
+        "archive": "job-86264-inputs/lunch_box_catalog.json"
       },
       "report.json": {
         "sha256": "24cc645c8947b3af9820a890280b32948ab551184e99dab02817fee26c35344b",
@@ -60,7 +68,12 @@
       "mani_skill": "3.0.0b22",
       "torch": "2.12.0.dev20260408+cu128",
       "source": "Shared interpreter and adjacent render manifest"
-    }
+    },
+    "receipt_archive": "receipts.json",
+    "asset_identity_archive": "asset-identity.json",
+    "historical_inputs": "job-86264-inputs/check_meal.py",
+    "per_scheme_evidence": "receipts.json",
+    "raw_report_scope": "The original hash-verified report only retains each stage's baseline. Each alternative was compared in memory; the log preserves the per-case PASS results."
   },
   "86563": {
     "job": 86563,
@@ -135,6 +148,17 @@
       "mani_skill": "3.0.0b22",
       "torch": "2.12.0.dev20260408+cu128",
       "source": "Parallel run environment record"
+    },
+    "receipt_archive": "receipts.json",
+    "asset_identity_archive": "asset-identity.json",
+    "batch_archive": {
+      "script_sha256": "5b68849a719341d493f7cad9f98da458f826e571424ddbcc766ca993e09b7409",
+      "command_excerpt": "for mode in isolation baseline enabled; do \"${PYTHON}\" -B \"${MEAL_PARALLEL}/upload/check_meal_parallel.py\" --mode \"$mode\" --output \"${MEAL_PARALLEL}/results-${SLURM_JOB_ID}\"; done",
+      "environment": {
+        "OMP_NUM_THREADS": 1,
+        "MKL_NUM_THREADS": 1,
+        "ROBOCASA_ASSET_DIR": "${ROBOCASA_ASSET_DIR}"
+      }
     }
   },
   "86898": {
@@ -144,7 +168,66 @@
     "backend": "physx_cuda",
     "gpu_node": "lyg0295",
     "gpu_index": 0,
-    "task_snapshot": "Same staged implementation as job 86563",
+    "task_snapshot": {
+      "evidence": [
+        "Both receipts record the same staged working directory.",
+        "86563 batch script and 86898 receipt command target only their respective checks, not a new task checkout.",
+        "Both archived logs identify the same loaded task object paths; receipts.json contains stage result lines and original log hashes.",
+        "The retained working directory's eight Meal production files match the 86563 archive byte-for-byte. Recorded mtimes predate both starts.",
+        "No independent run-time production checksum manifest was emitted for 86898."
+      ],
+      "retained_source_and_catalog": {
+        "tasks/meal_preparation/__init__.py": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "mtime_utc": "2026-11-13T07:37:43+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/meal_preparation/appearance.py": {
+          "sha256": "0d2c68b74ddb343c9e84279ace87be076bd06f360a93236b09e6ece9b3168819",
+          "bytes": 10688,
+          "mtime_utc": "2026-11-16T08:17:42.724605+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/meal_preparation/appearance_textures.py": {
+          "sha256": "b05324c44e68dffbeef4e806b9291b250f8cee1c30a80471d57837ae9bdc34f5",
+          "bytes": 3011,
+          "mtime_utc": "2026-11-16T07:43:20.353054+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/meal_preparation/meal_preparation_long.py": {
+          "sha256": "148a0ddbd410d22ad1098648ad6f08d2a57d3435c404db3a85fe1bfc0d89ef16",
+          "bytes": 200799,
+          "mtime_utc": "2026-11-16T08:03:59.087371+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/meal_preparation/meal_preparation_open_lunch_box.py": {
+          "sha256": "8a298497da1c4001767b2f654a7e790a2ce2fcc0801d50864615caa7ddc67cb0",
+          "bytes": 1955,
+          "mtime_utc": "2026-11-13T07:37:43+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/meal_preparation/meal_preparation_place_bread.py": {
+          "sha256": "b71c20aa1f7e298afbc3bbd19d6a1faf7b7b3b7997bc15ef263b6f38fca389cc",
+          "bytes": 2676,
+          "mtime_utc": "2026-11-13T07:37:43+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/meal_preparation/meal_preparation_scoop_tomato.py": {
+          "sha256": "d6c1d6218e37fce19e90610bed2bbf2e5354295725800f6955fbe5b195f3d8f8",
+          "bytes": 2412,
+          "mtime_utc": "2026-11-13T07:37:43+00:00",
+          "matches_86563_archive_sha256": true
+        },
+        "tasks/assets/variation/meal_preparation/v1/catalog.json": {
+          "sha256": "c1d80a8760cf00ca12cea1144c343757c7399dbedecf5e02418f656e55eecf63",
+          "bytes": 2798,
+          "mtime_utc": "2026-11-16T07:43:20.353054+00:00",
+          "matches_86563_archive_sha256": true
+        }
+      },
+      "inventory_collected_utc": "2026-11-16T10:20:09.036788+00:00"
+    },
     "runtime_version_reference": {
       "python": "3.10",
       "sapien": "3.0.3",
@@ -154,6 +237,22 @@
     },
     "test_sha256": "72dfd62ecf7b712b22bc8e7284363a7089d291d376956d4c8c746eb535f08e43",
     "test_lf_sha256": "5568a13c5ab878d91c41670740a0edaf18a9effd341f49df2a7cb21c5f7c1575",
-    "raw_summary_sha256": "ec0b83b2d25424adcbbdc5c911f99be359674ad0e4b2b3cf13ad5c80c960b894"
+    "raw_summary_sha256": "ec0b83b2d25424adcbbdc5c911f99be359674ad0e4b2b3cf13ad5c80c960b894",
+    "receipt_archive": "receipts.json",
+    "asset_identity_archive": "asset-identity.json"
+  },
+  "preview_manifests": {
+    "86157": {
+      "archive": "render-manifest-86157.json",
+      "raw_sha256": "c26d8165c883d8ab1db12c92857e86e91ecafa186f0e58b688a510ef86c61498",
+      "lf_sha256": "c26d8165c883d8ab1db12c92857e86e91ecafa186f0e58b688a510ef86c61498",
+      "scope": "Historical render manifest for this preview job only"
+    },
+    "86234": {
+      "archive": "render-manifest-86234.json",
+      "raw_sha256": "be546573f6bcf61da409737871bcb35334c5511392f44b8d8439141698405ecd",
+      "lf_sha256": "be546573f6bcf61da409737871bcb35334c5511392f44b8d8439141698405ecd",
+      "scope": "Historical render manifest for this preview job only"
+    }
   }
 }

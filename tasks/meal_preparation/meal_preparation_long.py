@@ -377,7 +377,7 @@ PARTNET_STABLE_BOX_MODEL_IDS = {"100426"}
 PARTNET_BOX_LID_DRIVE_STIFFNESS = 0.0
 PARTNET_BOX_LID_DRIVE_DAMPING = 0.30      # N*m*s/rad
 PARTNET_BOX_LID_DRIVE_FORCE_LIMIT = 5.0   # N*m, structural ceiling
-# 鈿狅笍 `joint.set_friction` takes a SETTING, not newton-metres (the same trap the
+# ⚠️ `joint.set_friction` takes a SETTING, not newton-metres (the same trap the
 # drawer and the fridge hinge were recalibrated for). Measured breakaway torque
 # on THIS hinge, by re-applying qf before every substep (set_qf survives only
 # one substep):

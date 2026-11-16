@@ -198,4 +198,3 @@ class MealAppearance:
             self.records[idx] = {"env_idx": idx, "scheme_id": scheme,
                                  "episode_index": 1 if previous is None else previous["episode_index"] + 1,
                                  "catalog_version": self.catalog["version"]}
-

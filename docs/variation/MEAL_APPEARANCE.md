@@ -1,5 +1,6 @@
 # Meal Preparation 外观 Variation
 
+本实现随 [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 提交，待最终审验。[当前能力与限制](STATUS.md)及[归档证据](evidence/meal_preparation/README.md)记录实际检查范围、恢复原版和历史收据。
 本目录的实现使用备餐任务原有的程序生成午餐盒和 RoboCasa 视觉资产。通过 `meal_appearance` 在建场时为每个环境绑定独立的可变渲染材质，在回合 reset 时应用指定方案。几何、碰撞、质量、关节和成功判定沿用原任务。
 
 ## 方案和部件

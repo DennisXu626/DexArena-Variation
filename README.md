@@ -17,7 +17,9 @@ Cabinet两个任务已有16环境的GPU批量局部reset（重置选中的环境
 
 Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sharpa-v1`：original仍默认，ivory_matte／navy_satin／copper_metal可固定或集合随机选择；两任务各2环境的A4／A5已通过，包含物理／初态一致性、回合记录和局部reset状态／RGB隔离。Bob A1–A3材质交付与本线接入验收分开，参数只保存在一个[Charger catalog](tasks/assets/variation/drawer_plug/v1/catalog.json)，用法与实际证据见[Charger说明](docs/variation/CHARGER_A4_A5.md)。
 
-**本轮仓库整合仅CPU／Git检查，未复跑GPU或仿真。** 以上不代表全部任务、任意并行规模、范围扩大、完整机器人任务成功、A6或强化学习能力。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
+Meal Preparation 已在 [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 提交五个对象的外观方案与四个 Sharpa 任务入口，待最终审验。[Meal 使用说明](docs/variation/MEAL_APPEARANCE.md)和[历史运行证据](docs/variation/evidence/meal_preparation/README.md)包含双环境隔离、原版恢复及适用边界。
+
+**本次补交仅整理历史证据并做静态检查。** 以上不代表全部任务、任意并行规模、范围扩大、完整机器人任务成功、A6或强化学习能力。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
 
 本分支另提供 `cabinet_pouring.bottle_table.xy_v2`：圆心(−.25,−.35)m、底圈区域R=.16m，保留旧默认。它是平移后的较大圆盘，**不包含全部旧位置**。完整碰撞补测和新区域检查单列于[M3验证说明](docs/variation/TABLE_XY_VALIDATION.md)，不能把M2历史通过当成本次新区域证据。
 
@@ -31,10 +33,11 @@ Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sha
 | [cabinet_pouring_long.py](tasks/cabinet_pouring/cabinet_pouring_long.py) | 共用任务、A／B／C物体表示、reset及批量渲染兼容入口 | 集成负责人协调修改 |
 | [PickBottle子任务](tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py) | 柜内初始化、放瓶目标与子任务接口 | 位姿、集成 |
 | [UnscrewCap子任务](tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py) | 桌面初始化、最终固定B表示与子任务接口 | 位姿、集成 |
-| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态；瓶／盖资料与Charger实际接入证据 | 外观、素材整理 |
+| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态、已验收试点和 Meal 待审验接入 | 外观、素材整理 |
 | [运行外观catalog](tasks/assets/variation/cabinet_pouring/v1/catalog.json) | 既有运行发布副本，运行仍读取此路径 | 外观、集成 |
 | [Charger接入](tasks/drawer_plug/charger_appearance.py)、[配置示例](examples/variation/drawer_plug/)、[证据](docs/variation/evidence/charger_a4_a5/README.md) | 两个DrawerPlug子任务的外观配置及A4／A5边界 | 外观、集成、验收 |
 | [tasks/robots/](tasks/robots/)、[tasks/scene_builders/](tasks/scene_builders/)、[tasks/config/](tasks/config/) | 上游机器人、场景及注册／物理配置 | 了解来源；常规外观工作不需要修改 |
+| [Meal 接入](docs/variation/MEAL_APPEARANCE.md)、[证据及收据](docs/variation/evidence/meal_preparation/README.md) | 开盒、放面包、舀番茄和长任务的外观配置与验证边界 | 外观、集成、验收 |
 | [examples/variation/](examples/variation/) | 已有试点配置及本机路径模板 | 所有人 |
 | [tools/variation/run_example.py](tools/variation/run_example.py) | 读取配置，加载／reset，保存记录及可选首帧 | 使用者、集成 |
 | [tools/variation/check_static.py](tools/variation/check_static.py) | 不导入仿真的CPU静态检查 | 所有人 |

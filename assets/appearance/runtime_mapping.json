@@ -78,7 +78,8 @@
     "families": 10,
     "status_counts": {
       "accepted_pilot": 3,
-      "pending_adaptation": 35,
+      "pending_adaptation": 30,
+      "implemented_pending_review": 5,
       "no_visual": 3,
       "not_loaded": 1,
       "external_pending": 0

@@ -1,6 +1,6 @@
 # 当前能力清单与验证边界
 
-这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。范围限两个家族、四个正式任务；“入口已具备”与“限定验证通过”不代表全任务或机器人完整成功。2026-11-15的PR #1整合及本页更新只作CPU／Git核对，没有重跑GPU、仿真或渲染。
+这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。Cabinet 和 Charger 的已验收能力沿用既有结论。Meal Preparation 的实现和限定证据列于第 5 节，等待 PR #8 最终审验。此次补档只做静态核对，沿用各作业实测记录。
 
 ## 1. 瓶身／瓶盖外观
 
@@ -50,8 +50,19 @@
 | 未验证边界 | **不是IK或机器人可达性、真实抓放／完整任务成功**。机器人几何结论只覆盖测得初态；9点2秒释放不是连续区域动力学全域或长期稳定性证明；隔离比较不推进物理。不扩大柜内范围／朝向／设施或任务家族 |
 | 证据及验收来源 | [PR #1](https://github.com/DennisXu626/DexArena-Variation/pull/1)，已验收head`5191bc8`；[验证说明](TABLE_XY_VALIDATION.md)、[精简实测数据](TABLE_XY_MEASUREMENTS.json)。leader限定验收对应`VARIATION_M3_TABLE_XY_ACCEPTANCE_20261113.md`，原始记录由维护者保管；本轮按实际manifest哈希确认未改变已验收运行实现 |
 
+## 5. Meal Preparation 外观接入（PR #8 待最终审验）
+
+| 字段 | 当前事实 |
+| --- | --- |
+| 实现范围 | 午餐盒、盘子、勺子、面包和番茄。开盒、放面包、舀番茄及长任务四个 Sharpa 入口 |
+| 配置与实现 | `meal_appearance` 默认关闭。提供原版和两套方案，支持固定选择、指定集合随机、按环境设置以及回合记录。[使用说明](MEAL_APPEARANCE.md)和[唯一运行 catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json) |
+| 历史实测 | 86264 为旧基线加独立预览绑定，核对三方案的物理签名、受控任务判定和短任务回放。86563 为接入实现的双环境局部 reset 隔离，另测长任务双环境成本。86898 对照独立原版，四任务共 76 个槽的材质与纹理一致，恢复后的 env1 RGB 逐值一致 |
+| 审阅补充 | PR8-R1 在 CPU 空渲染绑定下确认固定 seed、配置、环境数和 reset 顺序的 32 轮随机选择与记录可复现，未选 env0 随机流保持一致 |
+| 未测范围 | 随机方案 GPU 渲染、更多环境、其它手型及 PartNet 午餐盒。放面包和舀番茄的历史回放未复现最终成功。长任务完成只用受控状态验证 |
+| 审阅与证据 | [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)、[PR8-R1 审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5918176986)、[证据与历史收据](evidence/meal_preparation/README.md)。待最终审验 |
+
 ## 仍待实现／验证
 
-[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。除瓶身、盖及Charger试点外，其它对象仍按各自待适配／无视觉／未加载状态保留。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
+[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。Meal 的五个对象在 PR #8 中标为已接入、待审验。其余尚未进入试点的对象按清单所列状态保留。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。历史报告保留当时结论，当前状态以本页和各项证据为准。

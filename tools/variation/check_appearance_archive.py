@@ -26,7 +26,8 @@ directories = {p.parent.relative_to(archive).as_posix()
                for p in (archive / 'objects').glob('*/*/README.md')}
 assert len(rows) == len({(r['family'], r['object_id']) for r in rows})
 assert len(rows) == len(directories) and {r['directory'] for r in rows} == directories
-statuses = {'accepted_pilot', 'pending_adaptation', 'no_visual', 'not_loaded', 'external_pending'}
+statuses = {'accepted_pilot', 'pending_adaptation', 'implemented_pending_review',
+            'no_visual', 'not_loaded', 'external_pending'}
 counts = Counter(r['status'] for r in rows)
 assert set(counts) <= statuses
 for row in rows:
