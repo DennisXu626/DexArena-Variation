@@ -201,7 +201,8 @@ class PilotVariation:
                     else:
                         role = "cap_reference" if isinstance(shape, sr.RenderShapeBox) else "cap_surface"
                     self._bindings[i].append({"name": name, "role": role, "part": part_index,
-                                              "material": material, "original": original})
+                                              "material": material, "original": original,
+                                              "render_body": body})
         self._binding_key = key
         self._bound_objects = objects
 
@@ -223,6 +224,12 @@ class PilotVariation:
             if scheme_id not in self.catalog["schemes"]:
                 raise ValueError(f"Unknown appearance scheme: {scheme_id}")
             scheme = self.catalog["schemes"][scheme_id]
+            # SAPIEN 3.0 can retain the previous texture descriptor after a
+            # material setter. Track only the new textured objects in this env.
+            textured = [b for b in self._bindings[i] if b["role"] in {"cabinet", "bowl"}]
+            before = {id(b): (b["material"].base_color_texture.filename
+                              if b["material"].base_color_texture is not None else None)
+                      for b in textured}
             for binding in self._bindings[i]:
                 material = binding["material"]
                 for k, value in binding["original"].items():
@@ -256,6 +263,18 @@ class PilotVariation:
                     material.base_color = scheme[color_key]
                 material.roughness = scheme["roughness"]
                 material.metallic = scheme["metallic"]
+            changed_bodies = {}
+            for binding in textured:
+                texture = binding["material"].base_color_texture
+                if before[id(binding)] != (texture.filename if texture is not None else None):
+                    body = binding["render_body"]
+                    changed_bodies[id(body)] = body
+            # Refresh visuals once per affected component; do not rebuild actors
+            # or touch physics, disabled components, or unselected environments.
+            for body in changed_bodies.values():
+                if body.is_enabled:
+                    body.disable()
+                    body.enable()
             self.schemes[i] = scheme_id
 
     def finish_reset(self, env_idx, options):
