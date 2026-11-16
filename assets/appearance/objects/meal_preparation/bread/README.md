@@ -1,10 +1,8 @@
 # 面包（meal_preparation.bread）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**两套外观与任务证据已制作，等待 Dennis PR 审阅**。
 
 原始角色：可抓取食材。V1资源说明：`MealPreparation_Assets/robocasa/objaverse/bagel/bagel_5/model.xml`。
-
-尚无已验收新外观；原UV、材质槽及阶段绑定须在后续适配时针对实际资产核定，不能将静态图册视为加载证明。
 
 ## 资料与加载边界
 
@@ -19,3 +17,12 @@ V1对象键：`meal_preparation/bread`；V2对应键：`bread`。代码调查基
 - [tasks/meal_preparation/meal_preparation_long.py](../../../../../tasks/meal_preparation/meal_preparation_long.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+## 本次外观交付
+
+- 部件与材质绑定。RoboCasa `bagel_5` 的 `Material.052`，保留现有表皮和孔缘 UV。
+- 方案。浅烘金黄、深烘栗棕。使用已授权安装的 `visual/image0.png` 现场生成改色贴图。 新增 UV 为无。
+- 阶段。放面包和长任务从桌面开始，舀番茄短任务初始已在盘中。
+- 对照证据。放面包短任务的原版及两套贝果近景。 同组使用相同初态或受控状态、相机和光照，附在交付 PR。
+
+[运行参数目录](../../../../../tasks/assets/variation/meal_preparation/v1/catalog.json)是唯一参数源。[复现说明与验收范围](../../../../../docs/variation/MEAL_APPEARANCE.md)列出任务入口、贴图生成、局部 reset 检查和性能数据。

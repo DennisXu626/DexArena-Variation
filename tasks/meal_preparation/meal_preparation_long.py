@@ -377,7 +377,7 @@ PARTNET_STABLE_BOX_MODEL_IDS = {"100426"}
 PARTNET_BOX_LID_DRIVE_STIFFNESS = 0.0
 PARTNET_BOX_LID_DRIVE_DAMPING = 0.30      # N*m*s/rad
 PARTNET_BOX_LID_DRIVE_FORCE_LIMIT = 5.0   # N*m, structural ceiling
-# ⚠️ `joint.set_friction` takes a SETTING, not newton-metres (the same trap the
+# 鈿狅笍 `joint.set_friction` takes a SETTING, not newton-metres (the same trap the
 # drawer and the fridge hinge were recalibrated for). Measured breakaway torque
 # on THIS hinge, by re-applying qf before every substep (set_qf survives only
 # one substep):
@@ -1162,6 +1162,7 @@ def _build_robocasa_mjcf_actor(
     scale=1.0,
     initial_pose=None,
     body_type="dynamic",
+    appearance=None,
 ):
     loader = scene.create_mjcf_loader()
     loader.visual_groups = [1]
@@ -1173,6 +1174,8 @@ def _build_robocasa_mjcf_actor(
     if len(actor_builders) + len(articulation_builders) != 1:
         raise RuntimeError(f"Expected one RoboCasa model in {mjcf_path}, got {len(actor_builders)} actors and {len(articulation_builders)} articulations.")
     if articulation_builders:
+        if appearance is not None:
+            raise ValueError('Meal appearance requires a rigid RoboCasa actor')
         builder = articulation_builders[0]
         if initial_pose is not None:
             builder.set_initial_pose(initial_pose)
@@ -1186,6 +1189,8 @@ def _build_robocasa_mjcf_actor(
         builder.add_capsule_collision(pose=pose, radius=sleeve["radius"], half_length=sleeve["half_length"],
                                       material=object_material(sleeve["material"]))
         builder.add_capsule_visual(pose=pose, radius=sleeve["radius"], half_length=sleeve["half_length"], material=grip_mat)
+    if appearance is not None:
+        appearance.bind_mjcf(builder, name, asset_info)
     if initial_pose is not None:
         builder.set_initial_pose(initial_pose)
     if body_type == "static":
@@ -1199,7 +1204,7 @@ def _find_robocasa_actor_asset(kind: str):
     return _find_robocasa_mjcf_asset(kind) or _find_robocasa_mesh_asset(kind)
 
 
-def _build_robocasa_actor(scene, asset_info, name, scale, initial_pose, body_type="dynamic"):
+def _build_robocasa_actor(scene, asset_info, name, scale, initial_pose, body_type="dynamic", appearance=None):
     if "mjcf_path" in asset_info:
         return _build_robocasa_mjcf_actor(
             scene,
@@ -1208,7 +1213,10 @@ def _build_robocasa_actor(scene, asset_info, name, scale, initial_pose, body_typ
             scale=scale,
             initial_pose=initial_pose,
             body_type=body_type,
+            appearance=appearance,
         )
+    if appearance is not None:
+        raise ValueError("Meal appearance requires the approved MJCF asset")
     return _build_mesh_actor(
         scene,
         asset_info,
@@ -1294,7 +1302,8 @@ def _configure_task_object_physics(obj, material_kind: str):
 
 
 def _build_procedural_lidded_box(
-    scene, scene_idxs, name, visual_urdf_path: Path | None = None, initial_pose=None
+    scene, scene_idxs, name, visual_urdf_path: Path | None = None, initial_pose=None,
+    appearance=None,
 ):
     builder = scene.create_articulation_builder()
     builder.set_scene_idxs(scene_idxs)
@@ -1424,6 +1433,10 @@ def _build_procedural_lidded_box(
     leaf_vis_half = [box_lx / 2, leaf_t / 2, (leaf_vis_top - box_lz) / 2]
     leaf_vis_pose = sapien.Pose([0.0, leaf_y0 + leaf_t / 2, (leaf_vis_top + box_lz) / 2])
     base.add_box_visual(pose=leaf_vis_pose, half_size=leaf_vis_half, material=bottom_mat)
+    if appearance is not None:
+        appearance.bind_box(base, lid, scene_idxs[0], {
+            "box_base": bottom_mat, "inner_floor": inner_mat, "box_lid": lid_mat,
+        })
     lid.set_joint_name("box_lid_hinge")
     lid.set_joint_properties(
         type="revolute",
@@ -1480,6 +1493,7 @@ class MealPreparationBase(BaseEnv):
         robot_uids=SUBTASK_ROBOT_UID,
         robot_init_qpos_noise=0.02,
         box_asset_source="procedural",
+        meal_appearance=None,
         initial_box_lid_qpos=0.0,
         lock_box_lid_until_opening=False,
         render_camera_view="overview",
@@ -1503,6 +1517,12 @@ class MealPreparationBase(BaseEnv):
             )
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.box_asset_source = box_asset_source
+        self.meal_appearance = None
+        if meal_appearance and meal_appearance.get("enabled", True):
+            if box_asset_source != "procedural":
+                raise ValueError("Meal appearance supports the procedural lunch box")
+            from .appearance import MealAppearance
+            self.meal_appearance = MealAppearance(meal_appearance, num_envs)
         self.initial_box_lid_qpos = initial_box_lid_qpos
         self.lock_box_lid_until_opening = lock_box_lid_until_opening
         self.render_camera_view = render_camera_view
@@ -1657,6 +1677,8 @@ class MealPreparationBase(BaseEnv):
         self._load_meal_assets()
 
     def _load_meal_assets(self):
+        if self.meal_appearance is not None:
+            self.meal_appearance.begin_scene()
         self.box = self._load_box() if self.has_box else None
         self.plate = self._build_plate() if self.has_plate else None
         self.spoon = self._build_spoon() if self.has_spoon else None
@@ -1735,6 +1757,7 @@ class MealPreparationBase(BaseEnv):
                     f"procedural_box_{i}",
                     visual_urdf_path=visual_urdf_path,
                     initial_pose=sapien.Pose(box_pose.tolist()),
+                    appearance=self.meal_appearance,
                 )
                 self.loaded_box_asset_source = "hybrid" if visual_urdf_path is not None else "procedural"
                 if visual_urdf_path is not None:
@@ -1788,7 +1811,11 @@ class MealPreparationBase(BaseEnv):
         dof = self._box_lid_dof()
         if dof == 0:
             return
-        self.box_lid_target_qpos = target_qpos.clone()
+        if target_qpos.shape[0] == self.num_envs:
+            self.box_lid_target_qpos = target_qpos.clone()
+        else:
+            env_idx = torch.where(self.scene._reset_mask)[0]
+            self._write_episode_rows("box_lid_target_qpos", env_idx, target_qpos)
         zero_velocity = torch.zeros_like(target_qpos)
         if self.gpu_sim_enabled:
             data_index_dtype = getattr(
@@ -1851,6 +1878,7 @@ class MealPreparationBase(BaseEnv):
             self.scene,
             asset_info,
             name="pizza_plate",
+            appearance=self.meal_appearance,
             scale=ROBOCASA_OBJECT_SCALES["plate"],
             initial_pose=Pose.create_from_pq(builder_pose),
             body_type="static",
@@ -1865,6 +1893,7 @@ class MealPreparationBase(BaseEnv):
             self.scene,
             asset_info,
             name="spoon",
+            appearance=self.meal_appearance,
             scale=_mul_scale3(ROBOCASA_OBJECT_SCALES["spoon"], (1.0, 1.0, SPOON_LENGTH_SCALE)),   # length axis = local z
             initial_pose=sapien.Pose(p=self.spoon_pose_xyz.tolist(), q=self.spoon_pose_q.tolist()),
         )
@@ -1875,8 +1904,14 @@ class MealPreparationBase(BaseEnv):
         self.spoon_pose_xyz = self.spoon_pose_xyz.clone()
         self.spoon_pose_xyz[2] = float(-lowest + 0.0005)
         print(f"[MealPreparation] spoon pose set to ({self.spoon_pose_xyz[0]:.3f}, {self.spoon_pose_xyz[1]:.3f}, {self.spoon_pose_xyz[2]:.3f})")
-        spoon.set_pose(sapien.Pose(p=self.spoon_pose_xyz.tolist(), q=self.spoon_pose_q.tolist()))
+        self._place_spoon_before_reset(spoon)
         return spoon
+
+    def _place_spoon_before_reset(self, spoon):
+        # During GPU scene construction the pose buffer is unavailable.
+        # _initialize_actors writes the calibrated spawn pose after startup.
+        if not self.gpu_sim_enabled:
+            spoon.set_pose(sapien.Pose(p=self.spoon_pose_xyz.tolist(), q=self.spoon_pose_q.tolist()))
 
     def _build_bread(self):
         asset_info = _require_robocasa_actor_asset("bread")
@@ -1887,6 +1922,7 @@ class MealPreparationBase(BaseEnv):
             self.scene,
             asset_info,
             name="bread",
+            appearance=self.meal_appearance,
             scale=ROBOCASA_OBJECT_SCALES["bread"],
             initial_pose=sapien.Pose(self.bread_pose_xyz.tolist()),
         )
@@ -1908,6 +1944,7 @@ class MealPreparationBase(BaseEnv):
             self.scene,
             asset_info,
             name="round_ball_food",
+            appearance=self.meal_appearance,
             scale=ROBOCASA_OBJECT_SCALES["ball_food"],
             initial_pose=sapien.Pose(self.ball_pose_xyz.tolist()),
         )
@@ -1952,9 +1989,9 @@ class MealPreparationBase(BaseEnv):
             return self.plate_pose_xyz.to(self.device).expand(self.num_envs, -1)
         return self.plate.pose.p
 
-    def _sample_episode_xy_noise(self, batch_size: int, scale: float):
+    def _sample_episode_xy_noise(self, env_idx: torch.Tensor, scale: float):
         if scale <= 0:
-            return torch.zeros((batch_size, 2), device=self.device)
+            return torch.zeros((len(env_idx), 2), device=self.device)
         return torch.stack(
             [
                 torch.as_tensor(
@@ -1962,21 +1999,28 @@ class MealPreparationBase(BaseEnv):
                     device=self.device,
                     dtype=torch.float32,
                 )
-                for i in range(batch_size)
+                for i in env_idx.tolist()
             ],
             dim=0,
         )
 
-    def _sample_episode_xy_disk(self, batch_size: int, radius: float):
+    def _sample_episode_xy_disk(self, env_idx: torch.Tensor, radius: float):
         """Uniformly sample a predecessor outcome inside a radial predicate."""
         if radius <= 0:
-            return torch.zeros((batch_size, 2), device=self.device)
+            return torch.zeros((len(env_idx), 2), device=self.device)
         samples = []
-        for i in range(batch_size):
+        for i in env_idx.tolist():
             theta = self._batched_episode_rng[i].uniform(0.0, 2.0 * np.pi)
             radial = radius * np.sqrt(self._batched_episode_rng[i].uniform(0.0, 1.0))
             samples.append([radial * np.cos(theta), radial * np.sin(theta)])
         return torch.as_tensor(samples, dtype=torch.float32, device=self.device)
+
+    def _write_episode_rows(self, name, env_idx, values):
+        target = getattr(self, name, None)
+        if target is None or target.shape != (self.num_envs, *values.shape[1:]):
+            target = values.new_zeros((self.num_envs, *values.shape[1:]))
+            setattr(self, name, target)
+        target[env_idx] = values
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         self.box_lid_lock_active = self.lock_box_lid_until_opening
@@ -2000,6 +2044,8 @@ class MealPreparationBase(BaseEnv):
         self._set_lock_bodies_kinematic(
             self.ball_food_lock_active or self.tabletop_object_lock_active
         )
+        if self.meal_appearance is not None:
+            self.meal_appearance.finish_reset(env_idx, options)
 
     def _initialize_actors(self, env_idx: torch.Tensor):
         with torch.device(self.device):
@@ -2020,18 +2066,18 @@ class MealPreparationBase(BaseEnv):
                 if self._scene_box_pose_xyz is not None
                 else self.box_pose_xyz.to(self.device).expand(b, -1).clone()
             )
-            self._episode_box_pose = box_pose.clone()
+            self._write_episode_rows("_episode_box_pose", env_idx, box_pose)
 
             bread_pose = self.bread_pose_xyz.to(self.device).expand(b, -1).clone()
             bread_pose[:, :2] += layout_offset
-            bread_pose[:, :2] += self._sample_episode_xy_noise(b, self.stage_spawn_noise)
-            self._episode_bread_pose = bread_pose.clone()
+            bread_pose[:, :2] += self._sample_episode_xy_noise(env_idx, self.stage_spawn_noise)
+            self._write_episode_rows("_episode_bread_pose", env_idx, bread_pose)
             if self.bread is not None:
                 self.bread.set_pose(Pose.create_from_pq(bread_pose))
             ball_pose = self.ball_pose_xyz.to(self.device).expand(b, -1).clone()
             ball_pose[:, :2] += layout_offset
-            ball_pose[:, :2] += self._sample_episode_xy_noise(b, self.stage_spawn_noise * 0.6)
-            self._episode_ball_pose = ball_pose.clone()
+            ball_pose[:, :2] += self._sample_episode_xy_noise(env_idx, self.stage_spawn_noise * 0.6)
+            self._write_episode_rows("_episode_ball_pose", env_idx, ball_pose)
             if self.ball_food is not None:
                 self.ball_food.set_pose(Pose.create_from_pq(ball_pose))
             # The plate is a static actor in GPU simulation and cannot be moved
@@ -2039,11 +2085,11 @@ class MealPreparationBase(BaseEnv):
             # box and dynamic objects still receive per-episode layout noise.
             spoon_pose = self.spoon_pose_xyz.to(self.device).expand(b, -1).clone()
             spoon_pose[:, :2] += layout_offset
-            spoon_pose[:, :2] += self._sample_episode_xy_noise(b, self.stage_spawn_noise * 0.5)
-            self._episode_spoon_pose = spoon_pose.clone()
+            spoon_pose[:, :2] += self._sample_episode_xy_noise(env_idx, self.stage_spawn_noise * 0.5)
+            self._write_episode_rows("_episode_spoon_pose", env_idx, spoon_pose)
             if self.spoon is not None:
                 self.spoon.set_pose(Pose.create_from_pq(spoon_pose, self.spoon_pose_q.to(self.device).expand(b, -1)))
-            self._episode_plate_pose = self._scene_plate_pose()[env_idx].clone()
+            self._write_episode_rows("_episode_plate_pose", env_idx, self._scene_plate_pose()[env_idx])
             zero_vel = torch.zeros((b, 3), device=self.device)
             for actor in (self.ball_food, self.spoon, self.bread):
                 if actor is not None:
@@ -2079,7 +2125,7 @@ class MealPreparationBase(BaseEnv):
                             device=self.device,
                             dtype=init_qpos.dtype,
                         )
-                        for i in range(b)
+                        for i in env_idx.tolist()
                     ],
                     dim=0,
                 )
@@ -2459,21 +2505,21 @@ class MealPreparationBase(BaseEnv):
         a spawn radius.
         """
         b = len(env_idx)
-        pose = self._episode_plate_pose.clone()
+        pose = self._episode_plate_pose[env_idx].clone()
         floor_z, flat_radius = self._plate_floor_geometry()
         points = self._actor_local_collision_points(obj)
         if points is None or bbox is None:
-            pose[:, :2] += self._sample_episode_xy_disk(b, xy_radius)
-            pose[:, 2] = self._episode_plate_pose[:, 2] + fallback_z
+            pose[:, :2] += self._sample_episode_xy_disk(env_idx, xy_radius)
+            pose[:, 2] = self._episode_plate_pose[env_idx, 2] + fallback_z
         else:
             drop = float(points[:, 2].min())                 # origin -> lowest point
             footprint = float(np.linalg.norm(points[:, :2], axis=1).max())
             # Keep the whole footprint on the flat floor; a hair of clearance
             # only, so the object seats instead of falling.
             scatter = max(0.0, min(xy_radius, flat_radius - footprint))
-            pose[:, :2] += self._sample_episode_xy_disk(b, scatter)
+            pose[:, :2] += self._sample_episode_xy_disk(env_idx, scatter)
             pose[:, 2] = (
-                self._episode_plate_pose[:, 2] + floor_z + PLATE_SEAT_CLEARANCE - drop
+                self._episode_plate_pose[env_idx, 2] + floor_z + PLATE_SEAT_CLEARANCE - drop
             )
         obj.set_pose(Pose.create_from_pq(pose))
         obj.set_linear_velocity(torch.zeros((b, 3), device=self.device))
@@ -3494,12 +3540,12 @@ class _ScoopTomatoTask(MealPreparationBase):
                     device=self.device,
                     dtype=torch.float32,
                 )
-                for i in range(len(env_idx))
+                for i in env_idx.tolist()
             ],
             dim=0,
         )
         self._set_box_lid_qpos_values(env_idx, open_qpos)
-        self._episode_open_lid_qpos = open_qpos
+        self._write_episode_rows("_episode_open_lid_qpos", env_idx, open_qpos)
         self._place_bread_on_plate(env_idx)
         self.initial_ball_in_box[env_idx] = self._ball_in_box()[env_idx]
         # Milestones inherited from stages 1 and 2.
@@ -3645,12 +3691,12 @@ class _PickAndPlaceBreadTask(MealPreparationBase):
                         device=self.device,
                         dtype=torch.float32,
                     )
-                    for i in range(b)
+                    for i in env_idx.tolist()
                 ],
                 dim=0,
             )
             self._set_box_lid_qpos_values(env_idx, open_qpos)
-            self._episode_open_lid_qpos = open_qpos
+            self._write_episode_rows("_episode_open_lid_qpos", env_idx, open_qpos)
             del b
             self.initial_ball_in_box[env_idx] = self._ball_in_box()[env_idx]
             self.ever_left_hand_opened_box[env_idx] = True
@@ -3758,7 +3804,7 @@ SPOON_LENGTH_FACTOR = 0.6
 TOMATO_SIZE_FACTOR = 0.6
 SPOON_MASS_BEFORE_RESIZE = 0.1371392458677292
 
-def _build_scaled_spoon_actor(scene, asset_info, scale, initial_pose):
+def _build_scaled_spoon_actor(scene, asset_info, scale, initial_pose, appearance=None):
     """Build the same spoon while moving its fixed-size grip with the mesh."""
     loader = scene.create_mjcf_loader()
     loader.visual_groups = [1]
@@ -3774,6 +3820,8 @@ def _build_scaled_spoon_actor(scene, asset_info, scale, initial_pose):
             f"{len(articulation_builders)} articulations."
         )
     if articulation_builders:
+        if appearance is not None:
+            raise ValueError("Meal appearance requires a rigid RoboCasa spoon")
         builder = articulation_builders[0]
         builder.set_initial_pose(initial_pose)
         return builder.build(name="spoon", fix_root_link=False)
@@ -3795,6 +3843,8 @@ def _build_scaled_spoon_actor(scene, asset_info, scale, initial_pose):
         half_length=sleeve["half_length"],
         material=_make_material([0.12, 0.12, 0.14, 1.0]),
     )
+    if appearance is not None:
+        appearance.bind_mjcf(builder, "spoon", asset_info)
     builder.set_initial_pose(initial_pose)
     spoon = builder.build_dynamic(name="spoon")
     component = spoon._objs[0].find_component_by_type(
@@ -3815,6 +3865,7 @@ class _ScaledFoodAssetsMixin:
         spoon = _build_scaled_spoon_actor(
             self.scene,
             asset_info,
+            appearance=self.meal_appearance,
             scale=_mul_scale3(
                 ROBOCASA_OBJECT_SCALES["spoon"],
                 (1.0, 1.0, SPOON_LENGTH_SCALE * SPOON_LENGTH_FACTOR),
@@ -3834,12 +3885,7 @@ class _ScaledFoodAssetsMixin:
             f"({self.spoon_pose_xyz[0]:.3f}, {self.spoon_pose_xyz[1]:.3f}, "
             f"{self.spoon_pose_xyz[2]:.3f})"
         )
-        spoon.set_pose(
-            sapien.Pose(
-                p=self.spoon_pose_xyz.tolist(),
-                q=self.spoon_pose_q.tolist(),
-            )
-        )
+        self._place_spoon_before_reset(spoon)
         return spoon
 
     def _build_ball_food(self):
@@ -3862,6 +3908,7 @@ class _ScaledFoodAssetsMixin:
             self.scene,
             asset_info,
             name="round_ball_food",
+            appearance=self.meal_appearance,
             scale=ROBOCASA_OBJECT_SCALES["ball_food"] * TOMATO_SIZE_FACTOR,
             initial_pose=sapien.Pose(self.ball_pose_xyz.tolist()),
         )
