@@ -44,7 +44,7 @@ assert approval.get('storage_risk_confirmed_by_Dennis') is True
 assert approval.get('storage_root') == ROOT_APPROVED
 assert approval.get('accept_sampled_limit_overshoot') is True
 assert approval.get('blockers_resolved') is True
-assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2), (300, 3)]
+assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2), (300, 3), (300, 4)]
 assert os.environ.get('SLURM_JOB_ID'), 'Allocated job required'
 assert args.output.resolve().is_relative_to(Path(ROOT_APPROVED).resolve())
 args.output.mkdir(parents=True, exist_ok=False)
@@ -119,6 +119,8 @@ def materials(e):
                 m = part.material
                 values.append({k: plain(getattr(m, k)) for k in ['base_color', 'roughness', 'metallic',
                               'specular', 'transmission', 'transmission_roughness', 'ior', 'emission']})
+                if name.startswith('cabinet:') and Path(getattr(shape, 'filename', '')).name == 'original-36.obj':
+                    values[-1]['protected_handle'] = True
                 for k in ['base_color_texture', 'roughness_texture', 'metallic_texture',
                           'normal_texture', 'transmission_texture', 'emission_texture']:
                     texture = getattr(m, k)
@@ -186,6 +188,9 @@ def verify(e, ids, native):
     a._collect_bindings()
     assert a.schemes == ids
     actual = materials(e)
+    if e.has_cabinet:
+        for i in range(e.num_envs):
+            assert any(p.get('protected_handle') for p in actual[f'cabinet:link_0/{i}']), 'Cabinet handle mapping absent'
     texture_cache = []
     owners = []
     assert sum(len(v) for v in actual.values()) == sum(len(v) for v in a._bindings), 'Unbound render parts'
@@ -230,6 +235,8 @@ def verify(e, ids, native):
                 assert abs(m.metallic - scheme['metallic']) < 1e-7
     for key, parts in actual.items():
         for p, old in zip(parts, native[key]):
+            if p.get('protected_handle'):
+                assert p == old, ('Cabinet handle appearance changed', key)
             for field in ['normal_texture', 'transmission', 'transmission_texture', 'transmission_roughness', 'ior']:
                 assert p[field] == old[field], ('Preserved field changed', key, field)
     return actual

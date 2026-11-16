@@ -191,7 +191,11 @@ class PilotVariation:
                     if name.startswith("cabinet:"):
                         # Tint only opaque textured panels; handles, trim and
                         # transparent parts retain their native appearance.
+                        # Cabinet 46966's handle is a textured mesh too; texture
+                        # presence alone cannot distinguish it from wood panels.
+                        is_handle = Path(getattr(shape, "filename", "")).name == "original-36.obj"
                         role = ("cabinet" if original["base_color_texture"] is not None
+                                and not is_handle
                                 and float(original["base_color"][3]) >= 0.999
                                 and float(material.transmission) == 0 else "cabinet_detail")
                     elif name in {"bowl", "beads"}:
