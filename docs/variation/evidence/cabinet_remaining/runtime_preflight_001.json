@@ -1,0 +1,82 @@
+{
+  "status": "blocked_pending_explicit_Cabinet_storage_risk_confirmation",
+  "GPU_seconds": 0,
+  "jobs_submitted": 0,
+  "simulation_imports_or_runs": 0,
+  "root_created": false,
+  "uploaded_bytes": 0,
+  "production_baseline": "d2bace247fba289265ca3bc7d3394bc2956bf851",
+  "validation_script_sha256": "ae7b82a269d953449a94965f5d6210eae302750183e7bd96e39c4a8fec0fec83",
+  "task_matrix": {
+    "OpenCabinet": {
+      "cabinet": "not_run",
+      "bowl": "not_applicable",
+      "beads": "not_applicable"
+    },
+    "PickBottle": {
+      "cabinet": "not_run",
+      "bowl": "not_applicable",
+      "beads": "not_run"
+    },
+    "UnscrewCap": {
+      "cabinet": "not_applicable",
+      "bowl": "not_applicable",
+      "beads": "not_run"
+    },
+    "PourBeads": {
+      "cabinet": "not_applicable",
+      "bowl": "not_run",
+      "beads": "not_run"
+    },
+    "Long": {
+      "cabinet": "not_run",
+      "bowl": "not_run",
+      "beads": "not_run"
+    }
+  },
+  "static": [
+    "matrix --static passed",
+    "repository static passed",
+    "archive static passed",
+    "missing-risk gate refused before task imports/output creation"
+  ],
+  "risk_confirmation_sources_checked": [
+    "current user message distinguishes budget from storage risk",
+    "local Cabinet proposal says pending",
+    "PR10 comments empty",
+    "PR10 reviews empty"
+  ],
+  "storage_root_exists": false,
+  "Ceph_available_bytes_at_read": 291252469760,
+  "asset_file_count": 627,
+  "asset_bytes": 1321905,
+  "packages_METADATA": {
+    "torch-2.6.0.dist-info": [
+      "Name: torch",
+      "Version: 2.6.0"
+    ],
+    "sapien-3.0.3.dist-info": [
+      "Name: sapien",
+      "Version: 3.0.3"
+    ],
+    "mani_skill-3.0.0b22.dist-info": [
+      "Name: mani_skill",
+      "Version: 3.0.0b22"
+    ],
+    "gymnasium-0.29.1.dist-info": [
+      "Name: gymnasium",
+      "Version: 0.29.1"
+    ],
+    "numpy-2.2.6.dist-info": [
+      "Name: numpy",
+      "Version: 2.2.6"
+    ]
+  },
+  "remaining_pre_submit": [
+    "Explicit storage-risk and physical path acceptance",
+    "Deploy line-specific thin wrapper of tested guard after acceptance",
+    "Freeze all runtime asset/cache identities and derived-URDF readonly compatibility",
+    "Fresh scheduling/Monica and bounded queue deadline setup"
+  ],
+  "accepted_objects_count_unchanged": true
+}

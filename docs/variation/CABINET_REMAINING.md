@@ -62,3 +62,17 @@ PickBottle/UnscrewCap做最小旧瓶/盖A/B/C和附着/自由盖工程切换检�
 提议沿用受监测模式：总目录768MiB约1秒采样触发停止（可延迟越限，非绝对硬封顶）、日志8MiB、普通单文件64MiB，服务器底层最低20GiB/本机D盘10GiB；保留已测试PGID清理和调度硬时限。只清理本线进程，不影响其它健康作业；未知固定驱动写盘/跨PGID后代边界先列明，不能把模式或预算当已批准。依赖/路径/身份、Monica与队列刷新通过后才可提交；任何绑定/物理/渲染/隔离断言失败即保存有限证据并停，不再提交。
 
 本轮停止于草稿PR交接，真实图、运行材质/恢复、局部reset、阶段一致性与预算保护均待Dennis批准下一轮后核定。
+
+## 运行准备续篇：预算已批，存储风险尚未确认
+
+本轮已获总墙钟60分钟、一次单卡600分配秒/应用540秒预算；没有查到本线Ceph路径及无硬配额风险的明确确认，因此**没有上传、创建服务器目录、生成缓存、加载仿真或提交GPU作业**。旧Mouse目录风险批准不代替本线确认。原短检提案保留，预算批准与存储风险批准分开。
+
+[专用短检脚本](../../tools/variation/check_cabinet_remaining.py)已完成CPU静态准备：[状态/未运行矩阵](evidence/cabinet_remaining/runtime_preflight_001.json)。`--static`不导入仿真；实际运行在导入tasks之前必须检查独立approval的storage_risk_confirmed_by_Dennis、accept_sampled_limit_overshoot和blockers_resolved。预算已批但风险未确认的负例被拒绝，未创建输出。此负例/静态通过不是材质、RGB、物理或A4/A5通过。
+
+脚本按四短任务2env、Long1env，先原生/关闭，再original/ocean/citrus/violet及切回原版；核对实际parts/material/texture、物理指纹/索引/初态/drive targets、固定/随机/记录、两轮env1局部reset的env0状态/随机流/材质/贴图/记录和原RGB/human，最后做原瓶盖工程切换及已有xy_v2合法点。Long遵循正式注册的原生参数（注册项含bottle_stage_twins=True，不以构造函数默认False推断实际注册模式），不强改表示机制；工程触发不代表机器人执行。任一关键断言失败即保存有限部分结果、停止，不自动重试。完整矩阵仍全部未运行。
+
+只读检查拟根realpath仍为`/mnt/ceph2/xkl/DexArena/cabinet_remaining_appearance_20261116/`，目录尚不存在，父目录为本用户所有，实际Ceph挂载底层余量超过20GiB；Cabinet源资产627文件/1321905字节，选定URDF/模型已定位。主要包元数据沿用旧基准；不是本线加载验证。完整资产/派生缓存hash与只读兼容、薄入口部署、驱动写盘和新鲜调度状态仍是提交前门槛。
+
+容量估计/边界仍按上方提案：正常峰值估计600MiB、输出100–200MiB，768MiB约1秒采样停止可能越限，非硬配额；日志8MiB、普通文件64MiB、服务器最低20GiB/本机D盘10GiB。旧PGID清理/有界日志核心函数AST核对未变，已有Linux CPU证据，但旧CLI硬编码Mouse，不能直接当Cabinet已部署保护。请Dennis明确接受本线Ceph落盘与上述无硬封顶风险后，再进行受限部署、缓存/保护核对；不将当前就绪资料写成blockers_resolved=true。
+
+排队提议上限120秒；提交时至少留120+600+900=1620秒，所以本轮第33分钟为更严格提交边界（用户第35分钟是绝对上限），第45分钟必须收尾。调度deadline与独立PENDING截止取消须一起落实，`--time`或SSH超时不能代替队列截止。确认未到则完成本地准备后停止，不反复等待、不延长本轮窗口。真实同条件任务图与运行结果仍待批准后补齐，未更改对象验收状态。
