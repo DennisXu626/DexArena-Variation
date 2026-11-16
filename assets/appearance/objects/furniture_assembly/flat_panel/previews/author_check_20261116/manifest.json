@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-11-16T08:58:10.915011+00:00",
+  "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+  "git_base_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "implementation_files_sha256": {
+    "tools/variation/render_panel_preview.py": "7861a39c60812ad8bc1b46bdb58c7542f6119e6ce332c3dc87d0cb8133b6a7bc",
+    "tools/variation/panel_preview_materials.py": "3e87e016c1d4d2ebb34261c602546dd74246194c9cafe43cb68c5e58e0ce41f1",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "031cb99e25201ebc352b44b2102d55690cd49e872d2b9ce469414f8abb632efc",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "57e25f7070cd78b2deb82a1a3f646ac565cc4632cfcfeae021ff475e0cbcc103"
+  },
+  "catalog_version": "flat-panel-preview-v1",
+  "num_envs": 1,
+  "seed": 0,
+  "panel_color_jitter": false,
+  "visual_detail": true,
+  "backend": "BackendInfo(device=device(type='cpu'), sim_device=Device(\"cpu\"), sim_backend='physx_cpu', render_device=Device(\"cuda:0\"), render_backend='sapien_cuda')",
+  "platform": "Windows",
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "numpy": "2.2.6",
+    "gymnasium": "0.29.1",
+    "trimesh": "5.2.1",
+    "Pillow": "12.3.0"
+  },
+  "camera": {
+    "width": 720,
+    "height": 720,
+    "near": 0.009999999776482582,
+    "far": 100.0,
+    "fovy": 1.0,
+    "poses": {
+      "task": {
+        "p_m": [
+          0.6800000071525574,
+          -1.7100000381469727,
+          0.9200000166893005
+        ],
+        "q_wxyz": [
+          0.46452927589416504,
+          -0.11927545070648193,
+          0.06330762058496475,
+          0.8752017617225647
+        ]
+      },
+      "detail": {
+        "p_m": [
+          0.06522668898105621,
+          -0.33572712540626526,
+          0.2905000150203705
+        ],
+        "q_wxyz": [
+          0.567324161529541,
+          -0.12174633145332336,
+          0.08527445048093796,
+          0.8099687695503235
+        ]
+      }
+    },
+    "task_view": "Native task render_camera extrinsics and projection; viewer shader",
+    "detail_view": "Additional fixed camera of the same unchanged task initial state",
+    "capture_path": "SAPIEN RenderWindow Color -> CPU NumPy (not CUDA image tensor)"
+  },
+  "env_step_calls_after_reset": 0,
+  "wood_texture_files": {
+    "wood_albedo.png": false,
+    "wood_normal.png": false,
+    "wood_roughness.png": false
+  },
+  "scope": "Real task initial-state material preview only; manually inspect images before acceptance"
+}

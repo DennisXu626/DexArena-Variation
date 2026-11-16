@@ -1,0 +1,204 @@
+{
+  "version": "furniture-screw-bindings-v1",
+  "logical_object": "furniture_assembly.screw",
+  "status": "user_visual_review_passed_formal_integration_pending",
+  "catalog": "variants/v1/catalog.json",
+  "definition": "tools/variation/furniture_screw_definition.py",
+  "runtime_handle": "env.unwrapped.screw_head",
+  "target_link": "screw_head",
+  "excluded_link": "rail_body",
+  "binding_policy": "Match source-native base_color/roughness/metallic only inside the selected head entity, validate per-role and total shape counts, then record actual shape geometry/pose and parts. Final author_check_002 observed the current grip/reference mapping in both real tasks; source counts remain distinguished from the observed records below.",
+  "roles": {
+    "grip": {
+      "editable": true,
+      "properties": [
+        "base_color",
+        "roughness",
+        "metallic"
+      ],
+      "description": "InsertRail: all 17 originally dark head floor/wall/chamfer visuals, including recess interior surfaces. FastenScrew: hub and wing bar. The InsertRail recess material is recolored; its physical cross-channel shape is preserved."
+    },
+    "reference": {
+      "editable": false,
+      "description": "InsertRail: four native gold top caps retained as the recess contrast surfaces. FastenScrew: brass stem and the original brass direction stripe share one native material and remain fully preserved. No asymmetry claim is made from static source inspection."
+    }
+  },
+  "representations": [
+    {
+      "task_id": "FurnitureAssemblyInsertRail-Sharpa-v1",
+      "source": "tasks/furniture_assembly/furniture_assembly_insert_rail.py: _add_screw_head_link",
+      "shape": "Revolute cross-recess screw head attached to the movable rail",
+      "source_expected_shape_count": 21,
+      "source_expected_roles": {
+        "grip": 17,
+        "reference": 4
+      },
+      "source_parts": {
+        "grip": "One originally dark cylinder plus four groups of lower wall, upper wall and two chamfer plates; all 17 surfaces receive the candidate color",
+        "reference": "Four thin gold quadrant top caps retain native material"
+      },
+      "visual_review_required": "Verify the recolored head is clearly distinguishable and the unchanged cross recess remains legible; do not claim preservation of native dark recess material.",
+      "native_values_reference": "furniture_screw_definition.get_definition for this task",
+      "runtime_status": "single_env_author_check_complete_user_visual_review_passed",
+      "observed_shape_count": 21,
+      "observed_part_count": 21,
+      "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/evidence.json",
+      "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/manifest.json"
+    },
+    {
+      "task_id": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+      "source": "tasks/furniture_assembly/furniture_assembly_fasten_screw.py: _add_wing_screw_head_link",
+      "shape": "Revolute wing screw attached to the fixed rail; separate builder from the InsertRail cross head",
+      "source_expected_shape_count": 4,
+      "source_expected_roles": {
+        "grip": 2,
+        "reference": 2
+      },
+      "source_parts": {
+        "grip": "Round hub cylinder and wing bar box",
+        "reference": "Brass stem cylinder and original brass direction stripe box with identical native PBR values"
+      },
+      "native_values_reference": "furniture_screw_definition.get_definition for this task",
+      "runtime_status": "single_env_author_check_complete_user_visual_review_passed",
+      "observed_shape_count": 4,
+      "observed_part_count": 4,
+      "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/evidence.json",
+      "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/manifest.json"
+    }
+  ],
+  "original_policy": "Restore native values captured from the current real task instance, not a universal screw palette or another task representation.",
+  "preservation": [
+    "This screw binding does not write rail_body or other objects; family schemes may separately change their own catalog-authorized material fields",
+    "visual and collision geometry",
+    "cross recess shape and wing outline",
+    "native gold caps or brass stem/direction stripe reference role",
+    "UV and textures",
+    "all other material fields",
+    "joint limit, friction and drive",
+    "mass and inertia",
+    "object and robot initial state",
+    "success predicates"
+  ],
+  "scope": "Authoring and one-environment initial-state preview definition; no new task kwargs, randomization, episode logger, Long support or A4/A5 acceptance.",
+  "human_review": "user_visual_review_passed",
+  "handoff": "The user approved all four FurnitureAssembly objects in the integrated three-task visual review and authorized submission after the final check. Formal task integration and A4/A5 acceptance remain pending with Dennis; no other family is included.",
+  "actual_render_bindings": {
+    "status": "single_env_author_check_complete_user_visual_review_passed",
+    "source_run": "author_check_002",
+    "num_envs": 1,
+    "seed": 0,
+    "platform": "Windows",
+    "sim_backend": "physx_cpu",
+    "render_backend": "sapien_cuda",
+    "visual_detail": true,
+    "env_step_calls_after_reset": 0,
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2"
+    ],
+    "tasks": [
+      {
+        "task_id": "FurnitureAssemblyInsertRail-Sharpa-v1",
+        "entities": [
+          {
+            "semantic": "screw_head",
+            "name": "screw_head",
+            "id": 59
+          }
+        ],
+        "observed_shape_count": 21,
+        "observed_part_count": 21,
+        "editable_part_count": 17,
+        "preserved_part_count": 4,
+        "observed_roles": {
+          "grip": {
+            "shape_count": 17,
+            "part_count": 17,
+            "editable": true
+          },
+          "reference": {
+            "shape_count": 4,
+            "part_count": 4,
+            "editable": false
+          }
+        },
+        "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/evidence.json",
+        "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/manifest.json",
+        "comparison_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/comparison_screw.png",
+        "checks": {
+          "all_present_objects_and_actual_shape_part_bindings": true,
+          "all_requested_pbr_fields_read_back_for_every_part": true,
+          "same_reset_state_geometry_physics_uv_and_rail_joints": true,
+          "non_furniture_and_all_protected_material_fields_unchanged": true,
+          "full_original_material_description_restored_exactly": true,
+          "restored_original_pixels_identical": true
+        },
+        "restored_pixels": {
+          "views": [
+            "task",
+            "flat_panel",
+            "rail",
+            "screw"
+          ],
+          "identical": true,
+          "max_abs_diff": 0,
+          "changed_channel_values": 0
+        }
+      },
+      {
+        "task_id": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+        "entities": [
+          {
+            "semantic": "screw_head",
+            "name": "screw_head",
+            "id": 59
+          }
+        ],
+        "observed_shape_count": 4,
+        "observed_part_count": 4,
+        "editable_part_count": 2,
+        "preserved_part_count": 2,
+        "observed_roles": {
+          "grip": {
+            "shape_count": 2,
+            "part_count": 2,
+            "editable": true
+          },
+          "reference": {
+            "shape_count": 2,
+            "part_count": 2,
+            "editable": false
+          }
+        },
+        "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/evidence.json",
+        "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/manifest.json",
+        "comparison_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/comparison_screw.png",
+        "checks": {
+          "all_present_objects_and_actual_shape_part_bindings": true,
+          "all_requested_pbr_fields_read_back_for_every_part": true,
+          "same_reset_state_geometry_physics_uv_and_rail_joints": true,
+          "non_furniture_and_all_protected_material_fields_unchanged": true,
+          "full_original_material_description_restored_exactly": true,
+          "restored_original_pixels_identical": true
+        },
+        "restored_pixels": {
+          "views": [
+            "task",
+            "flat_panel",
+            "rail",
+            "screw"
+          ],
+          "identical": true,
+          "max_abs_diff": 0,
+          "changed_channel_values": 0
+        }
+      }
+    ],
+    "human_review": "user_visual_review_passed",
+    "boundary": "Actual same-reset initial-state authoring checks only; no dynamics, robot task success, parallel reset, Long or A4/A5 acceptance. Full scene baselines remain ignored local outputs.",
+    "human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json"
+  },
+  "human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json",
+  "formal_integration": "pending"
+}

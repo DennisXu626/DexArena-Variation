@@ -1,0 +1,167 @@
+{
+  "version": "furniture-rack-bindings-v1",
+  "logical_object": "furniture_assembly.panel_rack",
+  "status": "user_visual_review_passed_formal_integration_pending",
+  "source_reference_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "catalog": "variants/v1/catalog.json",
+  "runtime_handle": "env.unwrapped.rack",
+  "object_type": "One kinematic Actor, not an articulation; raw _objs elements resolve to the actual entity",
+  "native_builder": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: build_panel_rack",
+  "preview_definition": "tools/variation/furniture_rack_definition.py: get_definition",
+  "binding_rule": "Within the returned rack entity only, match the complete captured base_color/roughness/metallic signature to the five source roles; validate all role shape counts and record every actual render part. Do not use shape order as the binding rule.",
+  "expected_source_shape_count": 32,
+  "expected_source_collision_shape_count": 5,
+  "roles": {
+    "body": {
+      "source_material_variable": "body",
+      "part_description": "Two straight slot walls, two angled lead-in blocks and four outer stiffening ribs",
+      "expected_source_shape_count": 8,
+      "candidate_action": "Override only base_color, roughness and metallic from the unique catalog"
+    },
+    "plate": {
+      "source_material_variable": "plate",
+      "part_description": "One base plate",
+      "expected_source_shape_count": 1,
+      "candidate_action": "Override only base_color, roughness and metallic from the unique catalog"
+    },
+    "pad": {
+      "source_material_variable": "pad",
+      "part_description": "Two inner slot liners and four rubber feet; a single shared semantic role",
+      "expected_source_shape_count": 6,
+      "candidate_action": "Preserve the complete captured native material"
+    },
+    "bolt": {
+      "source_material_variable": "bolt",
+      "part_description": "Eight silver wall-fixing bolt-head visuals",
+      "expected_source_shape_count": 8,
+      "candidate_action": "Preserve the complete captured native material"
+    },
+    "decal": {
+      "source_material_variable": "decal",
+      "part_description": "Nine yellow warning-stripe visuals on the front base-plate edge",
+      "expected_source_shape_count": 9,
+      "candidate_action": "Preserve the complete captured native material"
+    }
+  },
+  "actual_render_bindings": {
+    "status": "single_env_author_check_complete_user_visual_review_passed",
+    "source_run": "author_check_002",
+    "num_envs": 1,
+    "seed": 0,
+    "platform": "Windows",
+    "sim_backend": "physx_cpu",
+    "render_backend": "sapien_cuda",
+    "visual_detail": true,
+    "env_step_calls_after_reset": 0,
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2"
+    ],
+    "tasks": [
+      {
+        "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+        "entities": [
+          {
+            "semantic": "rack",
+            "name": "scene-0_panel_rack",
+            "id": 57
+          }
+        ],
+        "observed_shape_count": 32,
+        "observed_part_count": 32,
+        "editable_part_count": 9,
+        "preserved_part_count": 23,
+        "observed_roles": {
+          "body": {
+            "shape_count": 8,
+            "part_count": 8,
+            "editable": true
+          },
+          "plate": {
+            "shape_count": 1,
+            "part_count": 1,
+            "editable": true
+          },
+          "pad": {
+            "shape_count": 6,
+            "part_count": 6,
+            "editable": false
+          },
+          "bolt": {
+            "shape_count": 8,
+            "part_count": 8,
+            "editable": false
+          },
+          "decal": {
+            "shape_count": 9,
+            "part_count": 9,
+            "editable": false
+          }
+        },
+        "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/evidence.json",
+        "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/manifest.json",
+        "comparison_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/comparison_panel_rack.png",
+        "checks": {
+          "all_present_objects_and_actual_shape_part_bindings": true,
+          "all_requested_pbr_fields_read_back_for_every_part": true,
+          "same_reset_state_geometry_physics_uv_and_rail_joints": true,
+          "non_furniture_and_all_protected_material_fields_unchanged": true,
+          "full_original_material_description_restored_exactly": true,
+          "restored_original_pixels_identical": true
+        },
+        "restored_pixels": {
+          "views": [
+            "task",
+            "flat_panel",
+            "panel_rack"
+          ],
+          "identical": true,
+          "max_abs_diff": 0,
+          "changed_channel_values": 0
+        }
+      }
+    ],
+    "human_review": "user_visual_review_passed",
+    "boundary": "Actual same-reset initial-state authoring checks only; no dynamics, robot task success, parallel reset, Long or A4/A5 acceptance. Full scene baselines remain ignored local outputs.",
+    "human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json"
+  },
+  "representations": [
+    {
+      "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+      "presence": "Present: _load_scene calls build_panel_rack with visual_detail; _initialize_episode repositions the rack",
+      "representation": "Kinematic repositionable fixture with explicit native mass 1.917 kg",
+      "preview_status": "single_env_author_check_complete_user_visual_review_passed",
+      "observed_shape_count": 32,
+      "observed_part_count": 32,
+      "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/evidence.json",
+      "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/manifest.json"
+    },
+    {
+      "task_id": "FurnitureAssemblyInsertRail-Sharpa-v1",
+      "presence": "Absent from this short task's _load_scene; it constructs panel, marker and rail",
+      "preview_status": "not_applicable_no_rack_instance"
+    },
+    {
+      "task_id": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+      "presence": "Absent from this short task's _load_scene; it constructs panel, marker and screw-carrying rail",
+      "preview_status": "not_applicable_no_rack_instance"
+    },
+    {
+      "task_id": "FurnitureAssemblyLong-Sharpa-v1",
+      "presence": "Source uses the same builder, but Long runtime coverage is excluded from this preview package",
+      "preview_status": "source_reference_only_not_runtime_validated"
+    }
+  ],
+  "original_policy": "Restore values captured from the actual task instance; the source PBR signatures are identification checks, not a substitute original scheme.",
+  "preservation_intent": {
+    "visual_properties": "Keep slot entrance and warning contrast, pads, bolts, decals and all non-target material fields",
+    "geometry_and_physics": "No visual/collision shapes, transforms, fixture mass/inertia, contact materials, robot state, initialization or task predicate changes",
+    "new_assets": "No new UV, texture, model or font; use the original procedural geometry and source material roles",
+    "verification_boundary": "Final author_check_002 verified actual 32-shape/32-part binding, requested PBR readback, unchanged scene/protected fields and exact original material/pixel restoration in one LayFlatPanel initial state; no dynamics, parallel reset or A4/A5 claim."
+  },
+  "handoff": "The user approved all four FurnitureAssembly objects in the integrated three-task visual review and authorized submission after the final check. Formal task integration and A4/A5 acceptance remain pending with Dennis; no other family is included.",
+  "human_review": "user_visual_review_passed",
+  "human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json",
+  "formal_integration": "pending"
+}

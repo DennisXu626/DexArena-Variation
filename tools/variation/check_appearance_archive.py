@@ -29,11 +29,26 @@ assert len(rows) == len(directories) and {r['directory'] for r in rows} == direc
 statuses = {'accepted_pilot', 'pending_adaptation', 'no_visual', 'not_loaded', 'external_pending'}
 counts = Counter(r['status'] for r in rows)
 assert set(counts) <= statuses
+authoring_packages = 0
 for row in rows:
     directory = archive / row['directory']
     assert (directory / 'README.md').is_file(), row
-    if row['status'] != 'accepted_pilot':
-        assert not (directory / 'variants').exists(), row
+    if row['status'] != 'accepted_pilot' and (directory / 'variants').exists():
+        # A pending object may contain a declared authoring package without
+        # publishing runtime variants or promoting its acceptance status.
+        assert row['status'] == 'pending_adaptation' and not row['published_variants'], row
+        candidate_catalogs = list((directory / 'variants').rglob('catalog.json'))
+        assert len(candidate_catalogs) == 1, row
+        authored = read(candidate_catalogs[0])
+        assert authored['scope'] == 'authoring_and_single_environment_preview_only', row
+        assert authored['object_id'] == f"{row['family']}.{row['object_id']}", row
+        assert authored['schemes']['original'] == {'mode': 'restore_native'}, row
+        candidates = {k: v for k, v in authored['schemes'].items() if k != 'original'}
+        assert candidates and all(v['mode'] == 'material_override' for v in candidates.values()), row
+        binding = read(directory / 'bindings.json')
+        assert binding['logical_object'] == authored['object_id'], row
+        assert (directory / binding['catalog']).resolve() == candidate_catalogs[0].resolve(), row
+        authoring_packages += 1
 mapping = read(archive / 'runtime_mapping.json')
 inventory = mapping['inventory']
 assert inventory['total_objects'] == len(directories)
@@ -118,4 +133,5 @@ print(json.dumps({'status': 'passed', 'objects': len(directories), 'families': i
                   'status_counts': inventory['status_counts'],
                   'decoded_pngs': len(images), 'archive_runtime_png_matches': 3,
                   'paired_schemes': 3, 'relative_links': links,
+                  'authoring_preview_packages': authoring_packages,
                   'scope': 'CPU archive only; no runtime capability or simulation claim'}))
