@@ -742,9 +742,12 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                     ),
                     mode="force",
                 )
-                joint.set_drive_target(
-                    float(release)
-                )
+                # CUDA target buffers do not exist until scene._setup().
+                # Keep the CPU path here; defer only GPU targets below.
+                if not self.scene.gpu_sim_enabled:
+                    joint.set_drive_target(
+                        float(release)
+                    )
                 joint.set_friction(
                     float(cfg["button_friction"])
                 )
@@ -870,6 +873,15 @@ class OfficeDeskClickMouseEnv(BaseEnv):
         mouse_z = []
 
         for env_id, mouse in enumerate(self._mice):
+            if self.scene.gpu_sim_enabled:
+                # Same release targets, once per scene build, after gpu_init.
+                joints = mouse.get_active_joints()
+                joints[self._left_indices[env_id]].set_drive_target(
+                    float(self.left_released[env_id])
+                )
+                joints[self._right_indices[env_id]].set_drive_target(
+                    float(self.right_released[env_id])
+                )
             qpos = mouse.get_qpos()
             qpos[:, self._left_indices[env_id]] = (
                 self.left_released[env_id]

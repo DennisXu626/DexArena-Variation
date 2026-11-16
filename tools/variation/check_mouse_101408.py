@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = '00a3695193680e0bfc0d37b8c77986b2fbfb8357'
 TASK = 'tasks/office_desk/office_desk_click_mouse.py'
 FILES = [TASK, 'tasks/office_desk/mouse_appearance.py',
-         'tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json']
+         'tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json',
+         'tools/variation/check_mouse_101408.py']
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--static', action='store_true')
 parser.add_argument('--output', type=Path)
@@ -34,6 +35,15 @@ if args.static:
                                    'show', BASE + ':' + TASK], text=True, encoding='utf-8')
     new = (ROOT / TASK).read_text(encoding='utf-8')
     tree = ast.parse(new)
+    # Normalize only the reviewed CPU-preserving GPU target migration.
+    cpu_target = ast.parse('''if not self.scene.gpu_sim_enabled:
+    joint.set_drive_target(float(release))''').body[0]
+    gpu_targets = ast.parse('''if self.scene.gpu_sim_enabled:
+    joints = mouse.get_active_joints()
+    joints[self._left_indices[env_id]].set_drive_target(float(self.left_released[env_id]))
+    joints[self._right_indices[env_id]].set_drive_target(float(self.right_released[env_id]))''').body[0]
+    migration_counts = {'cpu': 0, 'gpu': 0}
+    same = lambda a, b: ast.dump(a, include_attributes=False) == ast.dump(b, include_attributes=False)
     # Strip only the documented appearance import, argument, assignment and hooks.
     class Strip(ast.NodeTransformer):
         def visit_ImportFrom(self, node):
@@ -47,11 +57,26 @@ if args.static:
                 return None
             return self.generic_visit(node)
         def visit_FunctionDef(self, node):
+            if node.name == '_load_scene':
+                for parent in ast.walk(node):
+                    if isinstance(parent, ast.For):
+                        for i, statement in enumerate(parent.body):
+                            if same(statement, cpu_target):
+                                parent.body[i] = statement.body[0]
+                                migration_counts['cpu'] += 1
+            if node.name == '_after_reconfigure':
+                for statement in node.body:
+                    if isinstance(statement, ast.For) and ast.unparse(statement.target) == '(env_id, mouse)':
+                        assert same(statement.body[0], gpu_targets), 'GPU targets must precede existing qpos writes'
+                        del statement.body[0]
+                        migration_counts['gpu'] += 1
             if node.name == '__init__' and 'mouse_appearance' in [a.arg for a in node.args.kwonlyargs]:
                 index = [a.arg for a in node.args.kwonlyargs].index('mouse_appearance')
                 del node.args.kwonlyargs[index]; del node.args.kw_defaults[index]
             return self.generic_visit(node)
-    assert ast.dump(Strip().visit(tree), include_attributes=False) == ast.dump(ast.parse(old), include_attributes=False)
+    normalized = Strip().visit(tree)
+    assert migration_counts == {'cpu': 1, 'gpu': 1}, migration_counts
+    assert same(normalized, ast.parse(old)), 'Unreviewed task AST change'
     long_file = 'tasks/office_desk/office_desk_long.py'
     original = subprocess.check_output(['git', '-c', 'safe.directory=' + ROOT.as_posix(), '-C', str(ROOT),
                                         'show', BASE + ':' + long_file])
@@ -70,7 +95,8 @@ if args.static:
     for path in examples:
         cfg = json.loads(path.read_text(encoding='utf-8'))
         assert cfg['task_id'] == 'OfficeDeskClickMouse-Sharpa-v1'
-    print(json.dumps({'status': 'passed', 'baseline': BASE, 'task_after_removing_appearance_hooks': 'AST identical',
+    print(json.dumps({'status': 'passed', 'baseline': BASE, 'task_after_documented_normalization': 'AST identical',
+                      'exact_target_migrations': migration_counts,
                       'Long': 'unchanged', 'examples': len(examples), 'GPU_seconds': 0,
                       'runtime': 'NOT TESTED'}))
     sys.exit(0)
@@ -198,10 +224,35 @@ def make(config=None):
                     reconfiguration_freq=0, obs_mode='rgb', render_mode='rgb_array', **kwargs)
 
 
+def drive_state(e):
+    """Post-initialization evidence only; never convert a pre-init CUDA buffer."""
+    assert e.scene._gpu_sim_initialized
+    buffer = e.scene.px.cuda_articulation_target_qpos
+    rows = []
+    for i, mouse in enumerate(e._mice):
+        joints = mouse.get_active_joints()
+        row = {'env_idx': i, 'buttons': [], 'qpos': plain(mouse.get_qpos()),
+               'qvel': plain(mouse.get_qvel())}
+        for index, released in [(e._left_indices[i], e.left_released[i]),
+                                (e._right_indices[i], e.right_released[i])]:
+            actual = float(joints[index].drive_target.item())
+            expected = float(released)
+            np.testing.assert_allclose(actual, expected, rtol=0, atol=1e-7)
+            row['buttons'].append({'joint_index': index, 'expected': expected, 'actual': actual})
+        rows.append(row)
+    return {'gpu_initialized': True, 'buffer': {'typestr': buffer.typestr,
+            'shape': list(buffer.shape), 'strides': list(buffer.strides),
+            'cuda_id': buffer.cuda_id, 'ptr_nonzero': buffer.ptr != 0}, 'envs': rows}
+
+
 env = None
 started = time.monotonic()
 try:
-    env = make(); env.reset(seed=7); e = env.unwrapped
+    env = make(); e = env.unwrapped
+    results['native_after_construction'] = drive_state(e)
+    env.reset(seed=7)
+    baseline_drives = drive_state(e)
+    results['native_after_reset'] = baseline_drives
     assert e._mouse_appearance is None
     native, baseline, properties = materials(e), snapshot(e), physical(e)
     native_info = plain(e.get_info())
@@ -213,6 +264,7 @@ try:
     assert e._mouse_appearance is None
     assert not state_changes(baseline, snapshot(e)) and physical(e) == properties
     assert materials(e) == native
+    assert drive_state(e) == baseline_drives
     results['checks']['explicit_disabled'] = 'passed'
     env.close(); env = None
     for name in catalog['schemes']:
@@ -222,6 +274,7 @@ try:
         assert not state_changes(baseline, snapshot(e))
         assert physical(e) == properties
         assert plain(e.get_info()) == native_info
+        assert drive_state(e) == baseline_drives
         records = list(e._mouse_appearance.records)
         for camera, rgb in capture(env).items():
             for i in [0, 1]:
@@ -229,7 +282,8 @@ try:
         capture(env)
         assert records == e._mouse_appearance.records
         results['checks'][name] = {'status': 'passed', 'materials': materials(e),
-                                  'records': records, 'load_reset_render_seconds': time.monotonic() - tick}
+                                  'records': records, 'drive_state': drive_state(e),
+                                  'load_reset_render_seconds': time.monotonic() - tick}
         env.close(); env = None
     traces = []
     for repeat in range(2):
@@ -248,11 +302,13 @@ try:
     verify(e, ['ivory_matte', 'navy_satin'], native)
     images, state, mats = capture(env), snapshot(e), materials(e)
     records = list(e._mouse_appearance.records)
+    drives = drive_state(e)
     for round_index, name in enumerate(['original', 'ivory_matte']):
         tick = time.monotonic()
         env.reset(options={'env_idx': torch.tensor([1], device=e.device),
                            'mouse_appearance': {'per_env': {'1': {'scheme_id': name}}}})
         after_images, after, after_mats = capture(env), snapshot(e), materials(e)
+        after_drives = drive_state(e)
         verify(e, ['ivory_matte', name], native)
         changes = state_changes(state, after, [0])
         pixels = {k: int(np.count_nonzero(images[k][0] != after_images[k][0])) for k in images}
@@ -264,12 +320,15 @@ try:
         row = {'selected': [1], 'scheme_id': name, 'unselected_state_changes': changes,
                'unselected_pixel_changes': pixels, 'before_materials': mats, 'after_materials': after_mats,
                'records': list(e._mouse_appearance.records), 'reset_render_seconds': time.monotonic() - tick}
+        row.update(before_drives=drives, after_drives=after_drives)
         dump(args.output / f'local_{round_index}.json', row)
         assert not changes and not any(pixels.values())
         assert mats[0] == after_mats[0] and physical(e) == properties
+        assert drives['envs'][0] == after_drives['envs'][0]
         assert [r for r in records if r['env_idx'] == 0] == [r for r in e._mouse_appearance.records if r['env_idx'] == 0]
         results['checks'][f'local_reset_{round_index}'] = row
         images, state, mats = after_images, after, after_mats
+        drives = after_drives
     results['status'] = 'passed'
 except Exception:
     results.update(status='failed', error=traceback.format_exc())
