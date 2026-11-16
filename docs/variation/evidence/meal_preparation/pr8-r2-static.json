@@ -1,0 +1,271 @@
+{
+  "handoff": "PR8-R2",
+  "status": "passed",
+  "reviewed_head": "928fb143bdeca0d875b0a6319b7f3bee2def488f",
+  "tested_author_head": "59f97ba43f82d0186024c2992685dc701f49dce2",
+  "base_main": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "python": "3.13.11",
+  "no_project_imports": true,
+  "new_author_commit_changed_files": [
+    "README.md",
+    "assets/appearance/README.md",
+    "assets/appearance/objects.csv",
+    "assets/appearance/runtime_mapping.json",
+    "docs/variation/MEAL_APPEARANCE.md",
+    "docs/variation/STATUS.md",
+    "docs/variation/evidence/meal_preparation/README.md",
+    "docs/variation/evidence/meal_preparation/asset-identity.json",
+    "docs/variation/evidence/meal_preparation/job-86264-inputs/catalog.json",
+    "docs/variation/evidence/meal_preparation/job-86264-inputs/check_meal.py",
+    "docs/variation/evidence/meal_preparation/job-86264-inputs/lunch_box_catalog.json",
+    "docs/variation/evidence/meal_preparation/job-86264-inputs/render_meal_objects.py",
+    "docs/variation/evidence/meal_preparation/receipts.json",
+    "docs/variation/evidence/meal_preparation/render-manifest-86157.json",
+    "docs/variation/evidence/meal_preparation/render-manifest-86234.json",
+    "docs/variation/evidence/meal_preparation/runs.json",
+    "docs/variation/evidence/meal_preparation/source-cleanup.json",
+    "tasks/meal_preparation/appearance.py",
+    "tasks/meal_preparation/meal_preparation_long.py",
+    "tools/variation/check_appearance_archive.py",
+    "tools/variation/check_meal_parallel.py",
+    "tools/variation/check_meal_restore_original.py"
+  ],
+  "production_AST_and_hash_mapping": [
+    {
+      "path": "tasks/meal_preparation/appearance.py",
+      "old_sha256": "94efad87db1c9ea97ccc52b76570196fb7d0e534adf8489f60ee3972f5b4e6b2",
+      "current_and_final_sha256": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "AST_identical": true
+    },
+    {
+      "path": "tasks/meal_preparation/meal_preparation_long.py",
+      "old_sha256": "711c03ccfc8a75e3f2cd58e42d05362c5491f5a32a786cd8e63d3aca754dc866",
+      "current_and_final_sha256": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "AST_identical": true
+    },
+    {
+      "path": "tools/variation/check_meal_parallel.py",
+      "old_sha256": "7047522b8348da3834e2d9db45a45f1c5bd72edd1521dbebc799430df25ef737",
+      "current_and_final_sha256": "0fa290d5931ed14d4fc738f1bc7e8d9b1df90022fac264bbc317fff9b60f98a9",
+      "AST_identical": true
+    },
+    {
+      "path": "tools/variation/check_meal_restore_original.py",
+      "old_sha256": "5568a13c5ab878d91c41670740a0edaf18a9effd341f49df2a7cb21c5f7c1575",
+      "current_and_final_sha256": "463a56a3a3fd7a21e5d8d55ccb31a5d15eab9cbfe4beb5d3ce921dbd25cf6805",
+      "AST_identical": true
+    }
+  ],
+  "final_production_and_validation_files_equal_tested_author_head": true,
+  "archive_checker_change": "One allowed status added; matches CSV and index, no simulation logic",
+  "new_historical_archive_hashes": [
+    {
+      "file": "job-86264-inputs/check_meal.py",
+      "sha256": "ab382388a3174131fbdb3ca754e33e804414cb329524d55e24d3d5354c56fc97"
+    },
+    {
+      "file": "job-86264-inputs/render_meal_objects.py",
+      "sha256": "f8a00849cf7deff452739fd7ffdaef5ec7670663ae50fa96e1ff88a9822d247a"
+    },
+    {
+      "file": "job-86264-inputs/catalog.json",
+      "sha256": "e2d308a1ea01140ae26dc106c37c963ba1f0771cde9158818cdcb04e9a643b51"
+    },
+    {
+      "file": "job-86264-inputs/lunch_box_catalog.json",
+      "sha256": "a91c20d09d14eeb92cf33f41955acc0e82b352777a6ddea76c30f9988a26a3cb"
+    },
+    {
+      "file": "render-manifest-86157.json",
+      "sha256": "c26d8165c883d8ab1db12c92857e86e91ecafa186f0e58b688a510ef86c61498",
+      "scope": "Historical preview only"
+    },
+    {
+      "file": "render-manifest-86234.json",
+      "sha256": "be546573f6bcf61da409737871bcb35334c5511392f44b8d8439141698405ecd",
+      "scope": "Historical preview only"
+    }
+  ],
+  "retained_source_mtime_checks": [
+    {
+      "path": "tasks/meal_preparation/__init__.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/meal_preparation/appearance.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/meal_preparation/appearance_textures.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/meal_preparation/meal_preparation_long.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/meal_preparation/meal_preparation_open_lunch_box.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/meal_preparation/meal_preparation_place_bread.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/meal_preparation/meal_preparation_scoop_tomato.py",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    },
+    {
+      "path": "tasks/assets/variation/meal_preparation/v1/catalog.json",
+      "matches_86563_archive": true,
+      "mtime_before_both_starts": true
+    }
+  ],
+  "receipt_checks": [
+    {
+      "job": "86264",
+      "seconds": 108.0,
+      "allocated_gpu_index_seconds": 108,
+      "source": "Author-transcribed receipt archive, not a new scheduler query"
+    },
+    {
+      "job": "86563",
+      "seconds": 118.0,
+      "allocated_gpu_index_seconds": 118,
+      "source": "Author-transcribed receipt archive, not a new scheduler query"
+    },
+    {
+      "job": "86898",
+      "seconds": 52.0,
+      "allocated_gpu_index_seconds": 52,
+      "source": "Author-transcribed receipt archive, not a new scheduler query"
+    }
+  ],
+  "asset_checks": "Model IDs, file manifest references and hash formats consistent; no raw assets fetched or rehashed",
+  "relative_links_checked": 226,
+  "link_basis": "Frozen current Git tree plus exact candidate additions",
+  "json_parse_count": 16,
+  "object_status_counts": {
+    "accepted_pilot": 3,
+    "pending_adaptation": 30,
+    "implemented_pending_review": 5,
+    "no_visual": 3,
+    "not_loaded": 1,
+    "external_pending": 0
+  },
+  "whitespace": {
+    "command": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.whitespace=blank-at-eof,blank-at-eol,space-before-tab",
+      "diff",
+      "--no-index",
+      "--check",
+      "D:\\DexArena\\deliverables\\pr_review\\PR8-R2\\base",
+      "D:\\DexArena\\deliverables\\pr_review\\PR8-R2\\candidate"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "",
+    "meaning": "--no-index implies --exit-code; 1 means inputs differ, no diagnostics means no whitespace error",
+    "scope": "Actual base acd6ba2 to final candidate content for full changed-file set, not empty working-tree diff"
+  },
+  "execution_layer_changed_files": [
+    {
+      "path": "assets/appearance/objects/meal_preparation/bread/README.md",
+      "previous_blob": "74f54e232b28c8861d3a5b7d335c50d6753ca1d3",
+      "candidate_blob": "83ed7e8d2b6aeb6a9e67ebed64b73405aa4ff378",
+      "sha256": "7712f1207f409c13545bc2521cfe803b3f7dcc7da7a2bb2f8d68e60c528f1eeb"
+    },
+    {
+      "path": "assets/appearance/objects/meal_preparation/lunch_box/README.md",
+      "previous_blob": "45dec8576efd755cc96344e6634f191410f7cd80",
+      "candidate_blob": "3721854b858b494113b63edde6393ecf963738ad",
+      "sha256": "e8ea7602f14e985a8b8bc307bf3e3a04f0c389bef71d05472d05b9c373ec69dc"
+    },
+    {
+      "path": "assets/appearance/objects/meal_preparation/plate/README.md",
+      "previous_blob": "ef087d58afb6434a50935dbd88bed2cecdb4f20f",
+      "candidate_blob": "91f064d2264aa9b3ec937218c494b82003e0b18b",
+      "sha256": "928329b4316b402e817adb1f1c6e0adceb3a0a7933cab810d27a150d2304f6c8"
+    },
+    {
+      "path": "assets/appearance/objects/meal_preparation/spoon/README.md",
+      "previous_blob": "351e8a0d103ca3ba713f9a30675a90147dc2574c",
+      "candidate_blob": "591716a2b7a863359be64287af77b1b001c5c672",
+      "sha256": "28d49e52fd3234e76566696c85d6eee082d2efb864aaed85e159a63449512d98"
+    },
+    {
+      "path": "assets/appearance/objects/meal_preparation/tomato/README.md",
+      "previous_blob": "5dae4421cf9545d922fcf83343e82a576d3e642e",
+      "candidate_blob": "f5a7860b8598f5457aaa681f67564607c4a3b2c4",
+      "sha256": "3275d5363d6fa9940de012a69adb18e08c86cf43428ab1d7ec7675a1adf833d2"
+    },
+    {
+      "path": "assets/appearance/README.md",
+      "previous_blob": "b7fc986af74c0a3dec339a6dd3052986052d1548",
+      "candidate_blob": "c4b5e1607559027848018ab21aad00d96a51a61b",
+      "sha256": "52607826b63c888b392c7fa3937f5417125e25a91d8d5bd99b47b228ddf5b82e"
+    },
+    {
+      "path": "docs/variation/evidence/meal_preparation/pr8-r1-evidence-audit.json",
+      "previous_blob": null,
+      "candidate_blob": "90d850a3bc91e84981f186e2baca0dee047e9f8e",
+      "sha256": "9165a3ed66f4cbf9af14e971a3186f971e8a155e86cc3c601acdd29b03448a45"
+    },
+    {
+      "path": "docs/variation/evidence/meal_preparation/pr8-r1-selector-cpu.json",
+      "previous_blob": null,
+      "candidate_blob": "79aebbbf25090c9ec76a08fd2e4de38294a26bc8",
+      "sha256": "336a4bf598c3f6d410eb1e5887c244a37b087f00255cfabe1fe581b39c7cf044"
+    },
+    {
+      "path": "docs/variation/evidence/meal_preparation/pr8-r2-costs.json",
+      "previous_blob": null,
+      "candidate_blob": "e855e8648a921dc350452ac50fa5c31c2728090d",
+      "sha256": "bcbd7ed51d4a5dc5e90bd12b582062f5f77da4e6d9d4cb0d1896d506518dc6b5"
+    },
+    {
+      "path": "docs/variation/evidence/meal_preparation/PR8-R2.md",
+      "previous_blob": null,
+      "candidate_blob": "0da00c7d0da98ada1b4cd49e1938a4386c29ab8b",
+      "sha256": "e249254b07218882f6798fd017e0c2c2992ddfebc32548f0a26d92017ee71942"
+    },
+    {
+      "path": "docs/variation/evidence/meal_preparation/README.md",
+      "previous_blob": "45ecf79f761492c4763e30461940fc6b6cccb44b",
+      "candidate_blob": "3b0ff6088882e4c1fc2b8475ef233e6ee3d074f8",
+      "sha256": "a59a4f8921ab1a006ea650b5704cf017aebe2d76e70a9cfffdf1e8cdf780ee17"
+    },
+    {
+      "path": "docs/variation/MEAL_APPEARANCE.md",
+      "previous_blob": "f486049a633c44141558721f744af9798970bb39",
+      "candidate_blob": "bb31c96c1150f69f9bde007a4f6c40475bdad838",
+      "sha256": "ac5b801a01ab84a39a70378e6621987476116229bccb7fc2dff08b34b6f64762"
+    },
+    {
+      "path": "docs/variation/STATUS.md",
+      "previous_blob": "1d9c75186019a9e8bd397d2392f94b7183ef0925",
+      "candidate_blob": "9797056bdeeb332eb61fa8a1f7b1d61efb1ecb67",
+      "sha256": "60304ec2bc4c93660fe4da952ae69552af913aadc553b294518878784212063d"
+    },
+    {
+      "path": "README.md",
+      "previous_blob": "54db4cf735b8e62c8071283eea769a9e0175d8f0",
+      "candidate_blob": "64c1f614d813e73dc042e4bd64442f4c7d99d15e",
+      "sha256": "1a0f3393687259c242382f79b275f4ce191062a8f0a8c09f669f1f0b5499657a"
+    }
+  ],
+  "author_supplement_required": false,
+  "functional_blockers_identified": [],
+  "final_acceptance": "Pending independent review, unmerged"
+}

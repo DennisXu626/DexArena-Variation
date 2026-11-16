@@ -1,0 +1,104 @@
+{
+  "main_commit": "c3e3b2a306669757df2fed49e313a66eed89f10b",
+  "conflicts_resolved": [
+    "assets/appearance/README.md",
+    "docs/variation/STATUS.md"
+  ],
+  "scope": "Preserved upstream Meal PR8; only two aggregate document conflicts resolved; Cabinet runtime unchanged.",
+  "runtime_manifest_files": {
+    "tasks/cabinet_pouring/variation.py": true,
+    "tasks/cabinet_pouring/__init__.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": true,
+    "tasks/assets/variation/cabinet_pouring/v1/catalog.json": true,
+    "tools/variation/check_cabinet_remaining.py": true,
+    "tasks/assets/variation/cabinet_pouring/v1/citrus.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/ocean.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/violet.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_3.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/bowl_citrus_material_0.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_3.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_4.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_0.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/provenance.json": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_2.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_1.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_0.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_1.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_2.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_4.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/bowl_ocean_material_0.png": true,
+    "tools/variation/make_cabinet_tints.py": true
+  },
+  "checks": {
+    "tools/variation/check_static.py": {
+      "status": "passed",
+      "python_syntax_files": 14,
+      "json_configs": 10,
+      "relative_links": 181,
+      "scope": "CPU static only; no environment import or physical verification"
+    },
+    "tools/variation/check_appearance_archive.py": {
+      "status": "passed",
+      "objects": 42,
+      "families": 10,
+      "status_counts": {
+        "accepted_pilot": 9,
+        "pending_adaptation": 29,
+        "no_visual": 3,
+        "not_loaded": 1,
+        "implemented_pending_review": 0,
+        "external_pending": 0
+      },
+      "decoded_pngs": 13,
+      "archive_runtime_png_matches": 3,
+      "paired_schemes": 3,
+      "relative_links": 371,
+      "scope": "CPU archive only; no runtime capability or simulation claim"
+    },
+    "tools/variation/check_cabinet_remaining.py": {
+      "status": "static_passed",
+      "tasks": {
+        "OpenCabinet": [
+          2,
+          [
+            "cabinet"
+          ]
+        ],
+        "PickBottle": [
+          2,
+          [
+            "beads",
+            "cabinet"
+          ]
+        ],
+        "UnscrewCap": [
+          2,
+          [
+            "beads"
+          ]
+        ],
+        "PourBeads": [
+          2,
+          [
+            "bowl",
+            "beads"
+          ]
+        ],
+        "Long": [
+          1,
+          [
+            "bowl",
+            "beads",
+            "cabinet"
+          ]
+        ]
+      },
+      "runtime": "NOT RUN",
+      "GPU_seconds": 0
+    }
+  }
+}

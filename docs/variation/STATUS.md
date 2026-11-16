@@ -1,6 +1,6 @@
 # 当前能力清单与验证边界
 
-这是当前能力的集中入口；README和对象档案只作导航，不另维护同一份详细清单。本清单覆盖三个家族、八个正式任务入口（含Long单环境工程检查）；“入口已具备”与“限定验证通过”不代表全任务或机器人完整成功。2026-11-15的PR #1整合及本页更新只作CPU／Git核对，没有重跑GPU、仿真或渲染。
+这是当前能力的集中入口；README和对象档案只作导航。入口与限定验收共涉及四家族、十二个任务入口：Cabinet四短任务及Long，Charger两个短任务，Mouse仅ClickMouse，以及Meal三短任务及Long。对象索引42项，已验收限定试点9项；Cabinet新增三对象运行/视觉通过、待Dennis最终查收，未提前增加验收计数。Meal已由[PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)合入main。各项环境数、工程触发及未验证范围如下，不代表完整机器人任务成功。
 
 ## 1. 瓶身／瓶盖外观
 
@@ -63,16 +63,29 @@
 | 固定版本与来源 | 实际运行`78c9b2f212a50f4a9249acd30993dd9c6940d467`；已查收证据`daaec9c9cd9c30da432dd23c65a720ed1cfb382e`，[限定结果](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/evidence/mouse_101408/retest_001.json)、[Mouse档案](../../assets/appearance/objects/office_desk/mouse/README.md)、[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6) |
 | 历史记录 | 失败86071保留；复测86453完成25秒，GPU累计35/600秒。上轮墙钟71分54秒、超支26分54秒保留，不冲销；本次仅文档整合，GPU新增0 |
 
+## 6. Meal Preparation 外观接入（限定技术验收通过，已合入PR8）
+
+| 字段 | 当前事实 |
+| --- | --- |
+| 实现范围 | 午餐盒、盘子、勺子、面包和番茄。开盒、放面包、舀番茄及长任务四个 Sharpa 入口 |
+| 配置与实现 | `meal_appearance` 默认关闭。提供原版和两套方案，支持固定选择、指定集合随机、按环境设置以及回合记录。[使用说明](MEAL_APPEARANCE.md)和[唯一运行 catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json) |
+| 历史实测 | 86264 为旧基线加独立预览绑定，核对三方案的物理签名、受控任务判定和短任务回放。86563 为接入实现的双环境局部 reset 隔离，另测长任务双环境成本。86898 对照独立原版，四任务共 76 个槽的材质与纹理一致，恢复后的 env1 RGB 逐值一致 |
+| 审阅补充 | PR8-R1 在 CPU 空渲染绑定下确认固定 seed、配置、环境数和 reset 顺序的 32 轮随机选择与记录可复现，未选 env0 随机流保持一致 |
+| 未测范围 | 随机方案 GPU 渲染、更多环境、其它手型及 PartNet 午餐盒。放面包和舀番茄的历史回放未复现最终成功。长任务完成只用受控状态验证 |
+| 审阅与证据 | [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)、[PR8-R1 审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5918176986)、[证据与历史收据](evidence/meal_preparation/README.md)。限定技术验收通过，已合入PR8；[查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8) |
+
 ## 仍待实现／验证
 
-[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。瓶身、盖、Charger及限定ClickMouse为已验收试点；新增柜体、碗、珠子已通过限定运行与视觉检查、待Dennis最终查收，统计暂保留pending_adaptation。其它对象状态不变。Mouse限定验收与集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
+[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。瓶身、盖、Charger、限定ClickMouse及Meal五对象为已验收限定试点；新增柜体、碗、珠子已通过限定运行与视觉检查、待Dennis最终查收，统计暂保留pending_adaptation。其它对象状态不变。Mouse限定验收与集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。历史报告保留当时结论，当前状态以本页和各项证据为准。
 
-## 6. Cabinet柜体、碗、珠子：限定运行与视觉通过
+## 7. Cabinet柜体、碗、珠子：限定运行与视觉通过
 
 最终作业88777（源码`a18cd0e26708fe2f39ff12a8a84c28735571039a`）完成四短任务各2env、Long单env。original/ocean/citrus/violet实际绑定、原纹理像素恢复、物理初态、随机复现和记录通过；四短任务两轮env1局部reset后env0状态/材料/随机流/记录和四路RGB均不变。原瓶/盖工程表示和xy_v2合法点必要回归通过。
 
 柜体/碗以私有稳定纹理对象上传原版/派生像素，解决批量渲染后换贴图引用不刷新的问题。新实例与同实例切换的ROI完全一致；把手原版保持，独立4mm珠子蓝/橙/紫与隔离通过。leader已人工检查九张对照图。
 
 **待Dennis最终查收，PR #10未合并；验收计数暂不增加。** [接口与素材说明](CABINET_REMAINING.md)、[实景与完整证据](evidence/cabinet_remaining/leader_fix_005/README.md)。历史88174/88509的视觉失败保留在对应证据中。没有完整机器人任务、训练、A6、Long双环境、其它手型或长时间压力结论。
+
+Meal的历史边界及整合证据仍见[PR8-R2](evidence/meal_preparation/PR8-R2.md)和[PR8-R3](evidence/meal_preparation/PR8-R3.md)；本次仅保留其已合入内容，未重跑或修改Meal实现。

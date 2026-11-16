@@ -13,11 +13,11 @@
 
 原版不是第四张自制贴图，选择original恢复捕获的原生材质。原OBJ／MTL／原纹理等第三方资源只引用来源和身份，不复制整包。瓶身UV直接属于原OBJ，未单独生成。瓶与盖当前成套scheme选择，不支持任意独立混配。
 
-当前已验证能力以[STATUS集中清单](../../docs/variation/STATUS.md)为准；[三个候选的静态分析](../../docs/variation/OBJECT_CANDIDATES.md)不改变下表状态，也不代表A6完成。
+当前能力以[STATUS集中清单](../../docs/variation/STATUS.md)为准。Meal 的五个对象引用[唯一运行 catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json)，详见[用法](../../docs/variation/MEAL_APPEARANCE.md)和[PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。[三个候选的静态分析](../../docs/variation/OBJECT_CANDIDATES.md)不改变下表状态，也不代表A6完成。
 
 ## 对象与状态
 
-按实际目录与清单复核：42个对象、10家族；已验收试点4；待适配34；无视觉不适用3；当前未加载1；外部推进待验收0。Mouse仅限定范围已验收；集成状态以[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)的合并记录为准。pending_adaptation统计暂包含柜体/碗/珠子三个运行通过、待最终查收项；其余待适配不是开发授权。
+按实际目录与CSV复核：42个对象、10家族；已验收限定试点9（原有4＋Meal5）；待适配29；无视觉不适用3；当前未加载1；已实现待审验0；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，已通过PR #8合入main；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。pending_adaptation统计暂包含柜体/碗/珠子三个运行通过、待Dennis最终查收项；其余待适配不是本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -37,11 +37,11 @@
 | juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 待适配 |
 | juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 待适配 |
 | juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 待适配 |
-| meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 待适配 |
-| meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 待适配 |
-| meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 待适配 |
-| meal_preparation | [bread](objects/meal_preparation/bread/README.md) | 待适配 |
-| meal_preparation | [tomato](objects/meal_preparation/tomato/README.md) | 待适配 |
+| meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 限定技术验收通过，已合入PR8；集成状态见PR8 |
+| meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 限定技术验收通过，已合入PR8；集成状态见PR8 |
+| meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 限定技术验收通过，已合入PR8；集成状态见PR8 |
+| meal_preparation | [bread](objects/meal_preparation/bread/README.md) | 限定技术验收通过，已合入PR8；集成状态见PR8 |
+| meal_preparation | [tomato](objects/meal_preparation/tomato/README.md) | 限定技术验收通过，已合入PR8；集成状态见PR8 |
 | nut_bolt | [bolt](objects/nut_bolt/bolt/README.md) | 待适配 |
 | nut_bolt | [nut](objects/nut_bolt/nut/README.md) | 待适配 |
 | nut_bolt | [bolt_platform](objects/nut_bolt/bolt_platform/README.md) | 无视觉，不适用皮肤 |
@@ -71,3 +71,5 @@
 [预览来源清单](preview_sources.json)记录M2历史图片原文件名、版本和SHA256。M2归档图为历史SAPIEN实际渲染，当时仅复制、解码和静态核对；新增柜体/碗/珠子的作业88777实景及运行证据另见对应对象入口。平面标签文件不是任务应用效果。代码、HF选定素材revision与运行环境分别记载；V1静态模型图不能替代实际加载证据。
 
 第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。最初归档未修改运行代码；后续适配的运行改动、catalog及派生素材以对应对象记录为准。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。
+
+Meal 五对象依据[PR8-R2查收结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标为 `accepted_pilot`，表示限定技术验收通过，已合入PR8；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。[PR8-R2证据索引](../../docs/variation/evidence/meal_preparation/PR8-R2.md)说明源码对应、复用范围和历史追溯限制。
