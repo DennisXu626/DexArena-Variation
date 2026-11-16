@@ -1,0 +1,84 @@
+{
+  "version": "package-opening-preview-v2",
+  "objects": {
+    "box": {
+      "original": {
+        "label": "Original"
+      },
+      "kraft": {
+        "label": "Warm Kraft Paper",
+        "colors": {
+          "body": "#AB7950",
+          "flap": "#D5B186",
+          "floor": "#E7CEA7",
+          "tab": "#7A4E33"
+        },
+        "roughness": 0.83,
+        "metallic": 0
+      },
+      "blue_gray": {
+        "label": "Blue-Gray Printed Carton",
+        "colors": {
+          "body": "#415A6B",
+          "flap": "#829FB0",
+          "floor": "#DCE6E9",
+          "tab": "#E7C58D"
+        },
+        "roughness": 0.68,
+        "metallic": 0
+      }
+    },
+    "apple": {
+      "original": {
+        "label": "Original"
+      },
+      "golden": {
+        "label": "Golden Apple",
+        "color": "#D7AC42",
+        "roughness": 0.34,
+        "metallic": 0
+      },
+      "green": {
+        "label": "Refined Green Apple",
+        "color": "#8EA25C",
+        "roughness": 0.44,
+        "metallic": 0,
+        "include_yellow_skin": true
+      }
+    },
+    "plate": {
+      "original": {
+        "label": "Original"
+      },
+      "teal_glaze": {
+        "label": "Deep Teal Glaze",
+        "color": "#245C59",
+        "roughness": 0.28,
+        "metallic": 0
+      },
+      "ivory_satin": {
+        "label": "Ivory Satin Glaze",
+        "color": "#EFE0BC",
+        "roughness": 0.54,
+        "metallic": 0
+      }
+    }
+  },
+  "schemes": {
+    "original": {
+      "box": "original",
+      "apple": "original",
+      "plate": "original"
+    },
+    "variant_1": {
+      "box": "kraft",
+      "apple": "golden",
+      "plate": "teal_glaze"
+    },
+    "variant_2": {
+      "box": "blue_gray",
+      "apple": "green",
+      "plate": "ivory_satin"
+    }
+  }
+}
