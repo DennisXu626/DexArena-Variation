@@ -1,6 +1,6 @@
 # 目标碗（cabinet_pouring.bowl）
 
-状态：**素材参数和最小接入已准备，运行待验证**。对象统计仍pending_adaptation，不增加已验收数量。无GPU、仿真加载或新实景。
+当前状态：**作业88174已运行；参数绑定、物理初态、恢复及限定隔离断言通过，视觉交验仍受阻，待Dennis审验**。柜体／碗预期配色未实现；珠子独立RGB效果未确认。统计仍pending_adaptation，不增加已验收数量。见[实际结果与真实图](../../../../../docs/variation/evidence/cabinet_remaining/README.md)。下文“待验证”描述保留为准备阶段历史，不代表当前尚未运行。
 
 原始角色：接收珠子的容器。V1资源说明：`RoboCasa bowl/visual/model_normalized_0.obj`。
 

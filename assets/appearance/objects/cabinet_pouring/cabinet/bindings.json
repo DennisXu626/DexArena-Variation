@@ -3,11 +3,11 @@
   "asset_snapshot_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
   "source_identity_note": "Existing gallery asset snapshot read without simulation; runtime asset identity must be checked before GPU",
   "tasks": {
-    "CabinetPouringOpenCabinet-Sharpa-v1": "loaded; appearance prepared, runtime untested",
-    "CabinetPouringPickBottle-Sharpa-v1": "loaded; appearance prepared, runtime untested",
+    "CabinetPouringOpenCabinet-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only",
+    "CabinetPouringPickBottle-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only",
     "CabinetPouringUnscrewCap-Sharpa-v1": "not applicable: not loaded",
     "CabinetPouringPourBeads-Sharpa-v1": "not applicable: not loaded",
-    "CabinetPouringLong-Sharpa-v1": "loaded; appearance prepared, runtime untested"
+    "CabinetPouringLong-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only"
   },
   "catalog": "tasks/assets/variation/cabinet_pouring/v1/catalog.json",
   "schemes": [
@@ -17,7 +17,7 @@
   ],
   "violet": "new object remains native; existing bottle/cap violet unchanged",
   "new_texture_UV_geometry": false,
-  "runtime_validation": "not performed",
+  "runtime_validation": "job88174: automated binding/restoration/physics/initial-state/random/local-reset checks passed; visual acceptance blocked for cabinet/bowl, not confirmed for beads; pending Dennis",
   "URDF_sha256": "eed1ddb9fdaad535ebdcff0ac27d322228b0452250574cb8c462be9720648416",
   "links": {
     "base": [],
@@ -517,5 +517,6 @@
         ]
       }
     ]
-  }
+  },
+  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md"
 }

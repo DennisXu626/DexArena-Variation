@@ -4,10 +4,10 @@
   "source_identity_note": "Existing gallery asset snapshot read without simulation; runtime asset identity must be checked before GPU",
   "tasks": {
     "CabinetPouringOpenCabinet-Sharpa-v1": "not applicable: not loaded",
-    "CabinetPouringPickBottle-Sharpa-v1": "loaded; appearance prepared, runtime untested",
-    "CabinetPouringUnscrewCap-Sharpa-v1": "loaded; appearance prepared, runtime untested",
-    "CabinetPouringPourBeads-Sharpa-v1": "loaded; appearance prepared, runtime untested",
-    "CabinetPouringLong-Sharpa-v1": "loaded; appearance prepared, runtime untested"
+    "CabinetPouringPickBottle-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only",
+    "CabinetPouringUnscrewCap-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only",
+    "CabinetPouringPourBeads-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only",
+    "CabinetPouringLong-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only"
   },
   "catalog": "tasks/assets/variation/cabinet_pouring/v1/catalog.json",
   "schemes": [
@@ -17,7 +17,7 @@
   ],
   "violet": "new object remains native; existing bottle/cap violet unchanged",
   "new_texture_UV_geometry": false,
-  "runtime_validation": "not performed",
+  "runtime_validation": "job88174: automated binding/restoration/physics/initial-state/random/local-reset checks passed; visual acceptance blocked for cabinet/bowl, not confirmed for beads; pending Dennis",
   "representation": "particles[i], dynamic native spheres; no stage-specific duplicate actors",
   "default_count": 16,
   "radius_m": 0.004,
@@ -28,5 +28,6 @@
     1
   ],
   "UV": "no imported UV/texture; native sphere visual",
-  "isolation": "Only appearance-enabled builds use native build_sphere scene_idxs=[i], then Actor.merge; same radius/color/body_type/pose, physics setup unchanged"
+  "isolation": "Only appearance-enabled builds use native build_sphere scene_idxs=[i], then Actor.merge; same radius/color/body_type/pose, physics setup unchanged",
+  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md"
 }

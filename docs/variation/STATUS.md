@@ -69,6 +69,6 @@
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。历史报告保留当时结论，当前状态以本页和各项证据为准。
 
-## Cabinet剩余对象准备（未运行验收）
+## Cabinet剩余对象短检（视觉交验受阻）
 
-柜体cabinet、目标碗bowl、珠子beads已准备ocean/citrus两候选及原版恢复接入；沿用同一catalog，瓶/盖原方案不改，violet对新对象保留原版。四短任务及Long入口按实际加载收集材料，initial_pose仍仅原两试点。**没有GPU、实景或运行隔离新通过结论，三对象状态仍pending_adaptation，已验收数量不增加。** 见[映射、边界及待批准短检](CABINET_REMAINING.md)。
+柜体、碗、珠子的作业88174已完成：四短任务各2env、Long单env工程检查。original/ocean/citrus/violet的实际材质参数、恢复、物理初态、固定/随机记录，以及四短任务两轮env1局部reset隔离自动断言通过；瓶/盖表示与xy_v2合法点必要回归通过。**实景审计中柜体和碗未呈现预期配色；珠子独立视觉效果未确认，不能据脚本总passed判为验收通过。** 三对象仍pending_adaptation，计数不增加；PR #10保持草稿、未合并，待Dennis审验。见[真实图、逐任务证据及边界](evidence/cabinet_remaining/README.md)，[原准备与接口说明](CABINET_REMAINING.md)保留。没有完整机器人任务、训练、A6或Long双环境结论。

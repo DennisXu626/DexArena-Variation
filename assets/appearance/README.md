@@ -2,7 +2,7 @@
 
 这是**已有外观归档，不是新增运行能力**。每个稳定逻辑对象一个目录：十家族V1的40条对象记录全部保留，另补V2／M1的两个无视觉追溯项；不将157条逐任务初始化行变成157套素材。不同家族同名对象不凭名称合并；A／B／C阶段表示记录在bindings，不重复复制贴图。
 
-已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；Mouse 101408的ivory_matte／navy_satin也已完成限定ClickMouse双环境验收（集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)）；其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
+已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；Mouse 101408的ivory_matte／navy_satin也已完成限定ClickMouse双环境验收（集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)）；Cabinet剩余对象已完成一次短检，但[视觉交验受阻](../../docs/variation/evidence/cabinet_remaining/README.md)，未增加验收计数。其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
 
 ## 快速使用
 
@@ -21,11 +21,11 @@
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
-| cabinet_pouring | [cabinet](objects/cabinet_pouring/cabinet/README.md) | 待适配 |
+| cabinet_pouring | [cabinet](objects/cabinet_pouring/cabinet/README.md) | 参数/隔离短检通过，视觉交验受阻或未确认，待审验 |
 | cabinet_pouring | [bottle](objects/cabinet_pouring/bottle/README.md) | 已完成试点（继承M2验收） |
 | cabinet_pouring | [bottle_cap](objects/cabinet_pouring/bottle_cap/README.md) | 已完成试点（继承M2验收） |
-| cabinet_pouring | [bowl](objects/cabinet_pouring/bowl/README.md) | 待适配 |
-| cabinet_pouring | [beads](objects/cabinet_pouring/beads/README.md) | 待适配 |
+| cabinet_pouring | [bowl](objects/cabinet_pouring/bowl/README.md) | 参数/隔离短检通过，视觉交验受阻或未确认，待审验 |
+| cabinet_pouring | [beads](objects/cabinet_pouring/beads/README.md) | 参数/隔离短检通过，视觉交验受阻或未确认，待审验 |
 | drawer_plug | [drawer](objects/drawer_plug/drawer/README.md) | 待适配 |
 | drawer_plug | [socket](objects/drawer_plug/socket/README.md) | 待适配 |
 | drawer_plug | [charger](objects/drawer_plug/charger/README.md) | 已完成限定试点（A1–A3已接受；两任务各2env A4／A5通过） |

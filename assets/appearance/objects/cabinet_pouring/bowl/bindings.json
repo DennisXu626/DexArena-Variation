@@ -6,8 +6,8 @@
     "CabinetPouringOpenCabinet-Sharpa-v1": "not applicable: not loaded",
     "CabinetPouringPickBottle-Sharpa-v1": "not applicable: not loaded",
     "CabinetPouringUnscrewCap-Sharpa-v1": "not applicable: not loaded",
-    "CabinetPouringPourBeads-Sharpa-v1": "loaded; appearance prepared, runtime untested",
-    "CabinetPouringLong-Sharpa-v1": "loaded; appearance prepared, runtime untested"
+    "CabinetPouringPourBeads-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only",
+    "CabinetPouringLong-Sharpa-v1": "loaded; job88174 automated checks passed; visual acceptance blocked or unconfirmed; Long engineering only"
   },
   "catalog": "tasks/assets/variation/cabinet_pouring/v1/catalog.json",
   "schemes": [
@@ -17,7 +17,7 @@
   ],
   "violet": "new object remains native; existing bottle/cap violet unchanged",
   "new_texture_UV_geometry": false,
-  "runtime_validation": "not performed",
+  "runtime_validation": "job88174: automated binding/restoration/physics/initial-state/random/local-reset checks passed; visual acceptance blocked for cabinet/bowl, not confirmed for beads; pending Dennis",
   "visual": "bowl/visual/model_normalized_0.obj",
   "visual_sha256": "ab74e19eecd7ef70fa92f0713e73ba0704181f2901257143533964ad36aeac52",
   "UV_entries": 742,
@@ -25,5 +25,6 @@
     "material_0"
   ],
   "texture": "bowl/visual/material_0.jpeg",
-  "representation": "target kinematic mesh actor; inner/outer/rim share one imported material"
+  "representation": "target kinematic mesh actor; inner/outer/rim share one imported material",
+  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md"
 }
