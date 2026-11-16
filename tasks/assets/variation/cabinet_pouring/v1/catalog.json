@@ -1,5 +1,5 @@
 {
-  "version": "cabinet-appearance-v1",
+  "version": "cabinet-appearance-v1.1",
   "source": "M2 original procedural graphics, generated with Pillow; no external artwork",
   "permission": "Project-authored graphics; no third-party artwork restrictions",
   "schemes": {
@@ -29,7 +29,39 @@
       "metallic": 0.05,
       "label_texture": "ocean.png",
       "sha256": "5503fa8c1c1dc823d8643ddcbded7c0e7854f7d2c192455eef197f75ab7da6ef",
-      "description": "OCEAN original graphic label; contrasting asymmetric native top stripe and side tick"
+      "description": "OCEAN original graphic label; contrasting asymmetric native top stripe and side tick",
+      "objects": {
+        "cabinet": {
+          "base_color": [
+            0.35,
+            0.65,
+            0.75,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0.0
+        },
+        "bowl": {
+          "base_color": [
+            1,
+            0.8,
+            0.65,
+            1
+          ],
+          "roughness": 0.45,
+          "metallic": 0.0
+        },
+        "beads": {
+          "base_color": [
+            1,
+            0.45,
+            0.05,
+            1
+          ],
+          "roughness": 0.25,
+          "metallic": 0.0
+        }
+      }
     },
     "citrus": {
       "body_color": [
@@ -54,7 +86,39 @@
       "metallic": 0,
       "label_texture": "citrus.png",
       "sha256": "c3dea2e0fd3c2a8240788459dd336f5f151a76b7ef24605937cdff143870658e",
-      "description": "CITRUS original graphic label; contrasting asymmetric native top stripe and side tick"
+      "description": "CITRUS original graphic label; contrasting asymmetric native top stripe and side tick",
+      "objects": {
+        "cabinet": {
+          "base_color": [
+            0.85,
+            0.6,
+            0.3,
+            1
+          ],
+          "roughness": 0.65,
+          "metallic": 0.0
+        },
+        "bowl": {
+          "base_color": [
+            0.2,
+            0.55,
+            0.45,
+            1
+          ],
+          "roughness": 0.55,
+          "metallic": 0.0
+        },
+        "beads": {
+          "base_color": [
+            0.65,
+            0.2,
+            0.9,
+            1
+          ],
+          "roughness": 0.35,
+          "metallic": 0.0
+        }
+      }
     },
     "violet": {
       "body_color": [

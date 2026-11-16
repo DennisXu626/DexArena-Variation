@@ -1,6 +1,6 @@
 # 橱柜（cabinet_pouring.cabinet）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**素材参数和最小接入已准备，运行待验证**。对象统计仍pending_adaptation，不增加已验收数量。无GPU、仿真加载或新实景。
 
 原始角色：可动家具／柜门。V1资源说明：`assets/task_object_meshes/cabinet_pour/cabinet/mobility.urdf（visual 部件由 URDF 引用）`。
 
@@ -19,3 +19,15 @@ V1对象键：`cabinet_pouring/cabinet`；V2对应键：`cabinet`。代码调查
 - [tasks/cabinet_pouring/cabinet_pouring_long.py](../../../../../tasks/cabinet_pouring/cabinet_pouring_long.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+## 本轮参数与绑定（运行未验证）
+
+base无visual；link_0为门及操作部件（11个visual），link_1柜体（21个visual）；OBJ已有UV与多材质槽。仅不透明且无transmission的带纹理表面着色，保留原纹理、alpha、把手/门缝/开口及无纹理细节；透明部件不改。
+
+[完整部件/槽/任务映射](bindings.json)。OpenCabinet仅柜体；PickBottle柜体和珠子；UnscrewCap仅珠子；PourBeads碗和珠子；Long三者原生加载，外观入口已准备但运行/全阶段未验证。缺失对象不做占位。四短任务+Long仅Sharpa列入提案；不能外推其它手型或完整任务成功。
+
+original完整恢复捕获的base_color、base_color_texture、roughness和metallic（其余属性从未修改）。ocean与citrus读取[唯一catalog](../../../../../tasks/assets/variation/cabinet_pouring/v1/catalog.json)的schemes.<ID>.objects.cabinet；ocean为蓝绿柜/暖白碗/橙珠，citrus为暖木柜/深绿碗/紫珠。violet省略这三对象参数，恢复其原版，不改变原瓶/盖紫色方案。无新贴图、UV或几何，无额外外部素材；原模型/纹理许可仍按上方原渠道，自制标量参数随项目许可。
+
+沿用variation.appearance的固定/集合随机、per_env及局部reset覆盖，不增加任意逐对象组合接口。一次reset选同一方案，所有实际表示复用该选择；original恢复先于新方案写入，未覆盖项不沿用上一回合颜色。材质owner检查拒绝跨env共享；运行隔离尚未证明。初始位姿功能仍只允许原PickBottle/UnscrewCap。
+
+参数可直接复现，无素材制作脚本或新图片需要生成；沿用[配置示例](../../../../../examples/variation/cabinet_pouring/appearance.json)或随机示例，任务与边界见[本轮说明](../../../../../docs/variation/CABINET_REMAINING.md)。素材/接入已准备，CPU检查见说明；真实同seed/相机/光照原版及两候选、切回original、阶段与局部reset对照均待获批短检，不提供假预览。

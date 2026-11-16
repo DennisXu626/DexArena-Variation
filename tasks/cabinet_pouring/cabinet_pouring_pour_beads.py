@@ -68,6 +68,8 @@ class CabinetPouringPourBeadsEnv(CabinetPouringLongEnv):
             self._stage_bottle_placed[env_idx] = True
             self._stage_cap_turned[env_idx] = True
             self._stage_cap_placed[env_idx] = True
+            if self._variation is not None:
+                self._variation.finish_reset(env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):

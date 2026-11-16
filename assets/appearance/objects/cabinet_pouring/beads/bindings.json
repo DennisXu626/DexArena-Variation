@@ -1,0 +1,32 @@
+{
+  "object": "beads",
+  "asset_snapshot_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+  "source_identity_note": "Existing gallery asset snapshot read without simulation; runtime asset identity must be checked before GPU",
+  "tasks": {
+    "CabinetPouringOpenCabinet-Sharpa-v1": "not applicable: not loaded",
+    "CabinetPouringPickBottle-Sharpa-v1": "loaded; appearance prepared, runtime untested",
+    "CabinetPouringUnscrewCap-Sharpa-v1": "loaded; appearance prepared, runtime untested",
+    "CabinetPouringPourBeads-Sharpa-v1": "loaded; appearance prepared, runtime untested",
+    "CabinetPouringLong-Sharpa-v1": "loaded; appearance prepared, runtime untested"
+  },
+  "catalog": "tasks/assets/variation/cabinet_pouring/v1/catalog.json",
+  "schemes": [
+    "original",
+    "ocean",
+    "citrus"
+  ],
+  "violet": "new object remains native; existing bottle/cap violet unchanged",
+  "new_texture_UV_geometry": false,
+  "runtime_validation": "not performed",
+  "representation": "particles[i], dynamic native spheres; no stage-specific duplicate actors",
+  "default_count": 16,
+  "radius_m": 0.004,
+  "original_RGBA": [
+    0.15,
+    0.45,
+    0.9,
+    1
+  ],
+  "UV": "no imported UV/texture; native sphere visual",
+  "isolation": "Only appearance-enabled builds use native build_sphere scene_idxs=[i], then Actor.merge; same radius/color/body_type/pose, physics setup unchanged"
+}

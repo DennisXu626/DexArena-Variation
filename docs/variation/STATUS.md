@@ -68,3 +68,7 @@
 [对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录对象状态，目录数不是适配完成度。除瓶身、盖、Charger及限定ClickMouse试点外，其它对象仍按各自待适配／无视觉／未加载状态保留。Mouse限定验收与集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析；没有新方案、适配配置、GPU或A6结果。
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。历史报告保留当时结论，当前状态以本页和各项证据为准。
+
+## Cabinet剩余对象准备（未运行验收）
+
+柜体cabinet、目标碗bowl、珠子beads已准备ocean/citrus两候选及原版恢复接入；沿用同一catalog，瓶/盖原方案不改，violet对新对象保留原版。四短任务及Long入口按实际加载收集材料，initial_pose仍仅原两试点。**没有GPU、实景或运行隔离新通过结论，三对象状态仍pending_adaptation，已验收数量不增加。** 见[映射、边界及待批准短检](CABINET_REMAINING.md)。
