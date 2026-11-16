@@ -201,8 +201,27 @@ class PilotVariation:
                     else:
                         role = "cap_reference" if isinstance(shape, sr.RenderShapeBox) else "cap_surface"
                     self._bindings[i].append({"name": name, "role": role, "part": part_index,
-                                              "material": material, "original": original,
-                                              "render_body": body})
+                                              "material": material, "original": original})
+        # Bind private, stable texture objects before the first batched frame.
+        # Subsequent resets upload pixels without replacing descriptors or
+        # adding/removing render components. Never upload into native textures.
+        pixels = {}
+        for bindings in self._bindings:
+            pool = {}
+            for binding in bindings:
+                texture = binding["original"]["base_color_texture"]
+                if binding["role"] not in {"cabinet", "bowl"} or texture is None:
+                    continue
+                source = texture.filename
+                if source not in pixels:
+                    pixels[source] = texture.download().copy()
+                if source not in pool:
+                    live = sr.RenderTexture2D(array=pixels[source], format=texture.format,
+                        mipmap_levels=texture.mipmap_levels, filter_mode=texture.filter_mode,
+                        address_mode=texture.address_mode, srgb=texture.is_srgb)
+                    pool[source] = {"texture": live, "native_pixels": pixels[source], "candidates": {}}
+                binding["live_texture"] = pool[source]
+                binding["material"].base_color_texture = pool[source]["texture"]
         self._binding_key = key
         self._bound_objects = objects
 
@@ -224,16 +243,27 @@ class PilotVariation:
             if scheme_id not in self.catalog["schemes"]:
                 raise ValueError(f"Unknown appearance scheme: {scheme_id}")
             scheme = self.catalog["schemes"][scheme_id]
-            # SAPIEN 3.0 can retain the previous texture descriptor after a
-            # material setter. Track only the new textured objects in this env.
-            textured = [b for b in self._bindings[i] if b["role"] in {"cabinet", "bowl"}]
-            before = {id(b): (b["material"].base_color_texture.filename
-                              if b["material"].base_color_texture is not None else None)
-                      for b in textured}
+            uploaded = set()
             for binding in self._bindings[i]:
                 material = binding["material"]
                 for k, value in binding["original"].items():
-                    setattr(material, k, value)
+                    if k != "base_color_texture" or "live_texture" not in binding:
+                        setattr(material, k, value)
+                if "live_texture" in binding:
+                    live = binding["live_texture"]
+                    if id(live) not in uploaded:
+                        params = scheme.get("objects", {}).get(binding["role"], {})
+                        source = binding["original"]["base_color_texture"].filename
+                        filename = params.get("texture_files", {}).get(Path(source).name)
+                        data = live["native_pixels"]
+                        if filename is not None:
+                            if filename not in live["candidates"]:
+                                live["candidates"][filename] = self._textures[str(ASSETS / filename)].download().copy()
+                            data = live["candidates"][filename]
+                        if data.shape != live["native_pixels"].shape or data.dtype != live["native_pixels"].dtype:
+                            raise ValueError("Derived texture must preserve native pixel dimensions and format")
+                        live["texture"].upload(data)
+                        uploaded.add(id(live))
                 if scheme_id == "original":
                     continue
                 role = binding["role"]
@@ -245,10 +275,6 @@ class PilotVariation:
                         color = list(params["base_color"])
                         color[3] = float(binding["original"]["base_color"][3])
                         material.base_color = color
-                        texture = binding["original"]["base_color_texture"]
-                        if texture is not None and "texture_files" in params:
-                            filename = params["texture_files"][Path(texture.filename).name]
-                            material.base_color_texture = self._textures[str(ASSETS / filename)]
                         material.roughness = params["roughness"]
                         material.metallic = params["metallic"]
                     continue  # omitted schemes/roles restore captured original
@@ -263,18 +289,6 @@ class PilotVariation:
                     material.base_color = scheme[color_key]
                 material.roughness = scheme["roughness"]
                 material.metallic = scheme["metallic"]
-            changed_bodies = {}
-            for binding in textured:
-                texture = binding["material"].base_color_texture
-                if before[id(binding)] != (texture.filename if texture is not None else None):
-                    body = binding["render_body"]
-                    changed_bodies[id(body)] = body
-            # Refresh visuals once per affected component; do not rebuild actors
-            # or touch physics, disabled components, or unselected environments.
-            for body in changed_bodies.values():
-                if body.is_enabled:
-                    body.disable()
-                    body.enable()
             self.schemes[i] = scheme_id
 
     def finish_reset(self, env_idx, options):

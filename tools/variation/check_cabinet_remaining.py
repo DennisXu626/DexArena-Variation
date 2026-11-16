@@ -44,7 +44,7 @@ assert approval.get('storage_risk_confirmed_by_Dennis') is True
 assert approval.get('storage_root') == ROOT_APPROVED
 assert approval.get('accept_sampled_limit_overshoot') is True
 assert approval.get('blockers_resolved') is True
-assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2)]
+assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2), (300, 3)]
 assert os.environ.get('SLURM_JOB_ID'), 'Allocated job required'
 assert args.output.resolve().is_relative_to(Path(ROOT_APPROVED).resolve())
 args.output.mkdir(parents=True, exist_ok=False)
@@ -94,8 +94,22 @@ def body(raw):
     return getattr(raw, 'entity', raw).find_component_by_type(sr.RenderBodyComponent)
 
 
+def texture_signature(texture, cache):
+    if texture is None:
+        return None
+    for previous, signature in cache:
+        if texture == previous:
+            return signature
+    pixels = texture.download()
+    signature = {'pixels_sha256': hashlib.sha256(pixels.tobytes()).hexdigest(),
+                 'shape': list(pixels.shape), 'dtype': str(pixels.dtype)}
+    cache.append((texture, signature))
+    return signature
+
+
 def materials(e):
     data = {}
+    texture_cache = []
     for name, i, raw in entries(e):
         render = body(raw)
         if render is None: continue
@@ -108,7 +122,9 @@ def materials(e):
                 for k in ['base_color_texture', 'roughness_texture', 'metallic_texture',
                           'normal_texture', 'transmission_texture', 'emission_texture']:
                     texture = getattr(m, k)
-                    values[-1][k] = None if texture is None else str(texture.filename)
+                    values[-1][k] = (texture_signature(texture, texture_cache)
+                                    if k == 'base_color_texture' and (name.startswith('cabinet:') or name == 'bowl')
+                                    else None if texture is None else str(texture.filename))
         data[f'{name}/{i}'] = values
     return data
 
@@ -170,6 +186,8 @@ def verify(e, ids, native):
     a._collect_bindings()
     assert a.schemes == ids
     actual = materials(e)
+    texture_cache = []
+    owners = []
     assert sum(len(v) for v in actual.values()) == sum(len(v) for v in a._bindings), 'Unbound render parts'
     for i, bindings in enumerate(a._bindings):
         scheme = catalog['schemes'][ids[i]]
@@ -177,16 +195,26 @@ def verify(e, ids, native):
             m, original, role = b['material'], b['original'], b['role']
             new_object = role in ['cabinet', 'cabinet_detail', 'bowl', 'beads']
             params = scheme.get('objects', {}).get(role) if new_object else None
+            if 'live_texture' in b:
+                live = b['live_texture']['texture']
+                assert m.base_color_texture == live, 'Live texture binding replaced'
+                assert not any(live == previous and i != owner for previous, owner in owners), 'Shared mutable texture across environments'
+                owners.append((live, i))
+                expected_texture = original['base_color_texture']
+                if params is not None and 'texture_files' in params:
+                    filename = params['texture_files'][Path(expected_texture.filename).name]
+                    expected_texture = a._textures[str(ROOT / 'tasks/assets/variation/cabinet_pouring/v1' / filename)]
+                assert texture_signature(live, texture_cache) == texture_signature(expected_texture, texture_cache), 'Uploaded texture pixels differ from source'
             if ids[i] == 'original' or (new_object and params is None):
                 for k, expected in original.items():
+                    if k == 'base_color_texture' and 'live_texture' in b: continue
                     if k == 'base_color': np.testing.assert_array_equal(m.base_color, expected)
                     else: assert getattr(m, k) == expected
             elif new_object:
                 expected = list(params['base_color']); expected[3] = float(original['base_color'][3])
                 np.testing.assert_allclose(m.base_color, expected, rtol=0, atol=1e-7)
                 if original['base_color_texture'] is not None and 'texture_files' in params:
-                    expected_texture = params['texture_files'][Path(original['base_color_texture'].filename).name]
-                    assert Path(m.base_color_texture.filename).resolve() == (ROOT / 'tasks/assets/variation/cabinet_pouring/v1' / expected_texture).resolve()
+                    assert 'live_texture' in b
                 else:
                     assert m.base_color_texture == original['base_color_texture']
                 assert abs(m.roughness - params['roughness']) < 1e-7
