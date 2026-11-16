@@ -1,0 +1,34 @@
+{
+  "material_comparisons": {
+    "open": {
+      "slots": 12,
+      "independent_comparison_faults": [],
+      "restored_rgb_max": 0,
+      "restored_rgb_changed": 0,
+      "state_changes": []
+    },
+    "bread": {
+      "slots": 22,
+      "independent_comparison_faults": [],
+      "restored_rgb_max": 0,
+      "restored_rgb_changed": 0,
+      "state_changes": []
+    },
+    "tomato": {
+      "slots": 22,
+      "independent_comparison_faults": [],
+      "restored_rgb_max": 0,
+      "restored_rgb_changed": 0,
+      "state_changes": []
+    },
+    "long": {
+      "slots": 22,
+      "independent_comparison_faults": [],
+      "restored_rgb_max": 0,
+      "restored_rgb_changed": 0,
+      "state_changes": []
+    }
+  },
+  "relative_links_checked": 38,
+  "broken_relative_links": []
+}

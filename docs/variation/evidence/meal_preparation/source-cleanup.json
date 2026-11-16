@@ -1,0 +1,31 @@
+{
+  "reviewed_head": "928fb143bdeca0d875b0a6319b7f3bee2def488f",
+  "diff_base": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "normalization": "Convert CRLF to LF; hash UTF-8 file bytes. AST uses Python 3.13 ast.dump without source positions.",
+  "files": {
+    "tasks/meal_preparation/appearance.py": {
+      "historical_lf_sha256": "94efad87db1c9ea97ccc52b76570196fb7d0e534adf8489f60ee3972f5b4e6b2",
+      "reviewed_head_lf_sha256": "94efad87db1c9ea97ccc52b76570196fb7d0e534adf8489f60ee3972f5b4e6b2",
+      "cleanup_lf_sha256": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "ast_sha256_before_and_after": "ee6085829fb3350b17620f710b29cf94ece056bf7738b61ba44f585b12e3b02d"
+    },
+    "tasks/meal_preparation/meal_preparation_long.py": {
+      "historical_lf_sha256": "711c03ccfc8a75e3f2cd58e42d05362c5491f5a32a786cd8e63d3aca754dc866",
+      "reviewed_head_lf_sha256": "711c03ccfc8a75e3f2cd58e42d05362c5491f5a32a786cd8e63d3aca754dc866",
+      "cleanup_lf_sha256": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "ast_sha256_before_and_after": "dcc669c1dfb248fc2ac2eafb167a50dd5799f194eb854906c9be11c8974f368a"
+    },
+    "tools/variation/check_meal_parallel.py": {
+      "historical_lf_sha256": "7047522b8348da3834e2d9db45a45f1c5bd72edd1521dbebc799430df25ef737",
+      "reviewed_head_lf_sha256": "7047522b8348da3834e2d9db45a45f1c5bd72edd1521dbebc799430df25ef737",
+      "cleanup_lf_sha256": "0fa290d5931ed14d4fc738f1bc7e8d9b1df90022fac264bbc317fff9b60f98a9",
+      "ast_sha256_before_and_after": "97b691d2d39e4f7a6af7ca3a7be2828f28950efcb52f1ba48f0e37da50a84223"
+    },
+    "tools/variation/check_meal_restore_original.py": {
+      "historical_lf_sha256": "5568a13c5ab878d91c41670740a0edaf18a9effd341f49df2a7cb21c5f7c1575",
+      "reviewed_head_lf_sha256": "5568a13c5ab878d91c41670740a0edaf18a9effd341f49df2a7cb21c5f7c1575",
+      "cleanup_lf_sha256": "463a56a3a3fd7a21e5d8d55ccb31a5d15eab9cbfe4beb5d3ce921dbd25cf6805",
+      "ast_sha256_before_and_after": "52841f1124ffd8ba2747abfccf4fbb7e94fcbdda99d1be77e3899ab2aad3e22f"
+    }
+  }
+}

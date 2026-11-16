@@ -1,6 +1,6 @@
 # DexArena Variation
 
-这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，当前是下面两个家族、四个任务的限定试点。
+这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，当前有限定验收的入口涉及四家族、九个任务入口：Cabinet两短任务、Charger两短任务、Mouse仅ClickMouse一短任务、Meal三短任务及一长任务入口；各自验收边界见能力清单，不代表完整机器人任务成功。
 
 外观变化保持视觉／碰撞几何及物理参数不变；位姿只控制明确授权的任务物体，不自动随机化机器人。底层环境由ManiSkill管理，物理和渲染由SAPIEN提供，原对象素材仍按官方授权渠道取得。运行试点不需要AutoDemo算法工程、PPO、教师／学生模型、Dexonomy或任何训练检查点。
 
@@ -17,7 +17,9 @@ Cabinet两个任务已有16环境的GPU批量局部reset（重置选中的环境
 
 Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sharpa-v1`：original仍默认，ivory_matte／navy_satin／copper_metal可固定或集合随机选择；两任务各2环境的A4／A5已通过，包含物理／初态一致性、回合记录和局部reset状态／RGB隔离。Bob A1–A3材质交付与本线接入验收分开，参数只保存在一个[Charger catalog](tasks/assets/variation/drawer_plug/v1/catalog.json)，用法与实际证据见[Charger说明](docs/variation/CHARGER_A4_A5.md)。
 
-**本轮仓库整合仅CPU／Git检查，未复跑GPU或仿真。** 以上不代表全部任务、任意并行规模、范围扩大、完整机器人任务成功、A6或强化学习能力。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
+Meal Preparation 已在 [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 交付五个对象的original＋两候选及四个Sharpa任务入口；限定技术验收通过，待整合/合并；集成状态见PR8。[Meal 使用说明](docs/variation/MEAL_APPEARANCE.md)和[历史运行证据](docs/variation/evidence/meal_preparation/README.md)包含双环境隔离、原版恢复及适用边界。
+
+**本次补交仅整理历史证据并做静态检查。** 以上不代表全部任务、任意并行规模、范围扩大、完整机器人任务成功、A6或强化学习能力。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
 
 本分支另提供 `cabinet_pouring.bottle_table.xy_v2`：圆心(−.25,−.35)m、底圈区域R=.16m，保留旧默认。它是平移后的较大圆盘，**不包含全部旧位置**。完整碰撞补测和新区域检查单列于[M3验证说明](docs/variation/TABLE_XY_VALIDATION.md)，不能把M2历史通过当成本次新区域证据。
 
@@ -31,10 +33,11 @@ Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sha
 | [cabinet_pouring_long.py](tasks/cabinet_pouring/cabinet_pouring_long.py) | 共用任务、A／B／C物体表示、reset及批量渲染兼容入口 | 集成负责人协调修改 |
 | [PickBottle子任务](tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py) | 柜内初始化、放瓶目标与子任务接口 | 位姿、集成 |
 | [UnscrewCap子任务](tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py) | 桌面初始化、最终固定B表示与子任务接口 | 位姿、集成 |
-| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态；瓶／盖资料与Charger实际接入证据 | 外观、素材整理 |
+| [按物体外观档案](assets/appearance/README.md) | 十家族对象状态、限定验收及Meal待整合/合并状态 | 外观、素材整理 |
 | [运行外观catalog](tasks/assets/variation/cabinet_pouring/v1/catalog.json) | 既有运行发布副本，运行仍读取此路径 | 外观、集成 |
 | [Charger接入](tasks/drawer_plug/charger_appearance.py)、[配置示例](examples/variation/drawer_plug/)、[证据](docs/variation/evidence/charger_a4_a5/README.md) | 两个DrawerPlug子任务的外观配置及A4／A5边界 | 外观、集成、验收 |
 | [tasks/robots/](tasks/robots/)、[tasks/scene_builders/](tasks/scene_builders/)、[tasks/config/](tasks/config/) | 上游机器人、场景及注册／物理配置 | 了解来源；常规外观工作不需要修改 |
+| [Meal 接入](docs/variation/MEAL_APPEARANCE.md)、[证据及收据](docs/variation/evidence/meal_preparation/README.md) | 开盒、放面包、舀番茄和长任务的外观配置与验证边界 | 外观、集成、验收 |
 | [examples/variation/](examples/variation/) | 已有试点配置及本机路径模板 | 所有人 |
 | [tools/variation/run_example.py](tools/variation/run_example.py) | 读取配置，加载／reset，保存记录及可选首帧 | 使用者、集成 |
 | [tools/variation/check_static.py](tools/variation/check_static.py) | 不导入仿真的CPU静态检查 | 所有人 |
@@ -139,3 +142,5 @@ git push -u origin feat/bottle-appearance
 ## 来源与许可
 
 保留 [Apache-2.0 LICENSE](LICENSE)、[上游引用](docs/citation.bib)、[既有第三方NOTICE](utils/pi05_utils/NOTICE)和模型来源说明。原始DexArena、ManiSkill／SAPIEN及对象素材归各原作者；本团队新增内容只限已标明的variation实现、小贴图和协作入口，详见[来源映射](docs/variation/PROVENANCE.md)。私有仓库不替代第三方数据许可。
+
+Meal限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)；当前待整合/合并，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。历史资料见[PR8-R2索引](docs/variation/evidence/meal_preparation/PR8-R2.md)，最新文档整合见[PR8-R3记录](docs/variation/evidence/meal_preparation/PR8-R3.md)。

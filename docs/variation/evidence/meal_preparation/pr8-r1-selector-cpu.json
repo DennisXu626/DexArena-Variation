@@ -1,0 +1,14 @@
+{
+  "scope": "CPU execution of exact MealAppearance class AST, empty render bindings; no simulator, renderer or GPU imported. Checks selection, records and RNG only.",
+  "source_sha256": "94efad87db1c9ea97ccc52b76570196fb7d0e534adf8489f60ee3972f5b4e6b2",
+  "numpy_version": "2.4.2",
+  "same_seed_config_env_count_reset_order_reproducible": true,
+  "rounds": 32,
+  "unselected_rng_unchanged": true,
+  "override_precedence_and_records_pass": true,
+  "observed_schemes": [
+    "original",
+    "variant_1",
+    "variant_2"
+  ]
+}

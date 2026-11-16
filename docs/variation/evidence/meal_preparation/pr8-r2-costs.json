@@ -1,0 +1,50 @@
+{
+  "handoff": "PR8-R2",
+  "approved": {
+    "gpu_seconds": 0,
+    "new_compute_jobs": 0
+  },
+  "actual": {
+    "gpu_seconds": 0,
+    "new_compute_jobs": 0,
+    "simulation": 0,
+    "training": 0,
+    "large_downloads": 0,
+    "background_tasks": 0
+  },
+  "historical": {
+    "receipt_source": "receipts.json author transcription; not independently queried from scheduler",
+    "jobs": [
+      {
+        "job": "86264",
+        "seconds": 108.0,
+        "allocated_gpu_index_seconds": 108,
+        "source": "Author-transcribed receipt archive, not a new scheduler query"
+      },
+      {
+        "job": "86563",
+        "seconds": 118.0,
+        "allocated_gpu_index_seconds": 118,
+        "source": "Author-transcribed receipt archive, not a new scheduler query"
+      },
+      {
+        "job": "86898",
+        "seconds": 52.0,
+        "allocated_gpu_index_seconds": 52,
+        "source": "Author-transcribed receipt archive, not a new scheduler query"
+      }
+    ],
+    "allocated_gpu_index_seconds": 278,
+    "allocation_scope": "One named index G0 and one shared Shard per job; not exclusive whole-GPU or accelerator-active seconds",
+    "accelerator_active_seconds": null,
+    "full_transition_history": null,
+    "historical_cleanup": null,
+    "current_remote_queue": "not independently queried"
+  },
+  "start": "2026-11-16T18:22:53+08:00",
+  "wall_clock_deadline": "2026-11-16T19:08:00+08:00",
+  "closeout_reserved_from": "2026-11-16T18:58:00+08:00",
+  "output_path": "D:\\DexArena\\deliverables\\pr_review\\PR8-R2",
+  "initial_D_free_bytes": 129876656128,
+  "accounting": "Finite local files and short stdlib static checks; no project imports or submitted jobs; historical work separated from this round"
+}
