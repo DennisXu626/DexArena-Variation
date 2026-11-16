@@ -43,7 +43,7 @@ Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sha
 
 三条阅读路线：
 
-1. **做外观**：先看[对象档案](assets/appearance/README.md)，再看 `appearance.json`／`appearance_random.json`、运行catalog及 `variation.py` 的绑定。提交同视角实景、盖角度参照、阶段一致性和物理不变证据；不能只看资源包预览。
+1. **做外观**：先看[本轮分工与交付](docs/variation/TEAM_APPEARANCE.md)和[对象档案](assets/appearance/README.md)，再参考既有catalog及预览样例。实习同学交付部件映射、方案／素材、同条件对照和复现说明；Dennis统一组织正式任务接入及A4／A5验收。模型预览与真实任务画面分别标注，不能相互替代。
 2. **做初始位姿**：先看 `fixed_pose.json`／`region_sampling.json`、契约中的env_world坐标／米／wxyz单位，再沿 `REGION`、PickBottle目标、UnscrewCap最终B初始化阅读。不能只改父类临时初态，因为子类reset会继续覆写。
 3. **做集成**：先看契约、父任务和两个子类的接入点，再检查默认关闭、每env记录、局部reset与渲染隔离。共用入口提前协调；外观与位姿当前共用一个适配模块，不各造一套框架。
 
@@ -51,7 +51,7 @@ Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sha
 
 ### 1. 克隆和静态检查
 
-需要GitHub对私有仓库的访问权限；成员邀请由Dennis在验收后单独处理。使用自己的GitHub认证，不共享token。以下克隆命令从存放代码的父目录运行，其余命令都从仓库根运行：
+使用自己的GitHub认证，不共享token；缺少仓库开发权限时联系Dennis。以下克隆命令从存放代码的父目录运行，其余命令都从仓库根运行：
 
 ```bash
 git clone https://github.com/DennisXu626/DexArena-Variation.git
@@ -112,6 +112,8 @@ source .local/paths.env
 更换 `--config` 即可使用其它示例。运行取瓶试点可使用 `--task PickBottle --config examples/variation/cabinet_pouring/appearance.json`，其它参数同上；取瓶采用新区目标时改用 `table_xy_combined.json`。区域只支持原区和新增的固定批准记录，不能任意扩大或改变高度／朝向，不能把取瓶起点搬到桌面；相邻任务要求区域兼容，不精确继承某次终态。详见[契约](docs/variation/CONFIG_CONTRACT.md)。
 
 ## 团队怎样开发
+
+本轮按任务家族分工：Dennis负责2个家族，两位实习同学各4个家族；每人先交一个外观样例，再分批推进。对象范围、首个样例、交付包及职责边界统一见[本轮外观协作安排](docs/variation/TEAM_APPEARANCE.md)。位置规则暂由Dennis集中制定，本轮不向实习同学分发位置实现任务。
 
 main是供大家使用的集成版本，开发必须从最新main新建任务分支，如 `feat/bottle-appearance`、`feat/pose-regions`、`fix/reset-isolation`，一个分支对应一件工作。禁止直接在main开发或随手推送，不强推main。
 
