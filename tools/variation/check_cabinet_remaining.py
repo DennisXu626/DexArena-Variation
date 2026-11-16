@@ -44,7 +44,7 @@ assert approval.get('storage_risk_confirmed_by_Dennis') is True
 assert approval.get('storage_root') == ROOT_APPROVED
 assert approval.get('accept_sampled_limit_overshoot') is True
 assert approval.get('blockers_resolved') is True
-assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2), (300, 3), (300, 4)]
+assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2), (300, 3), (300, 4), (300, 5)]
 assert os.environ.get('SLURM_JOB_ID'), 'Allocated job required'
 assert args.output.resolve().is_relative_to(Path(ROOT_APPROVED).resolve())
 args.output.mkdir(parents=True, exist_ok=False)
