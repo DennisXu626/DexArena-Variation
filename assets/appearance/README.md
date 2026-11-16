@@ -71,3 +71,5 @@
 [预览来源清单](preview_sources.json)记录M2历史图片原文件名、版本和SHA256。所有任务图均为历史SAPIEN实际渲染，本轮仅复制、解码和静态核对，没有GPU、仿真、重渲染、服务器连接或训练。平面标签文件不是任务应用效果。代码、HF选定素材revision与运行环境分别记载；V1静态模型图不能替代实际加载证据。
 
 第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。本轮不修改既有运行代码、运行catalog／PNG、M3 PR或协作规范。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。
+
+Meal 五对象已交付接入及限定证据，清单状态 `implemented_pending_review` 表示等待最终审验，不是尚未实现或已验收。[PR8-R2证据索引](../../docs/variation/evidence/meal_preparation/PR8-R2.md)说明源码对应、复用范围和历史追溯限制。

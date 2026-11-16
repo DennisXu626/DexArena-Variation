@@ -34,3 +34,5 @@ env0 的材质与方案记录保持一致。长任务的 env0 四路 RGB 逐值�
 ```bash
 python -B tools/variation/check_meal_restore_original.py --output outputs/meal_restore_original
 ```
+
+[PR8-R2核对与收尾索引](PR8-R2.md)记录新增提交对应、已核对收据摘录的计账口径与剩余非阻断限制。86157／86234是独立历史预览manifest，不自动证明当前四张PR拼图全部具有运行时身份链；86264也不作为当前接入完整运行的证明。最终结论以PR #8审阅为准。

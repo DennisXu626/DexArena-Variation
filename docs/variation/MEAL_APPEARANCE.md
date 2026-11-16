@@ -80,3 +80,5 @@ Slurm 作业 `86563` 在 lyg0295 的 G0 上完成。运行使用 PhysX CUDA、SA
 
 
 历史任务判定、双环境隔离及恢复原版验收见 [运行证据索引](evidence/meal_preparation/README.md)。
+
+PR8-R2仅做文档及短时静态核对，不执行上述GPU示例。[收尾索引](evidence/meal_preparation/PR8-R2.md)保留R1已关闭项并核对新增补档。随机选择复现只限CPU逻辑；真实GPU随机路径、更多环境／手型、PartNet午餐盒和完整机器人长任务成功未纳入。最终验收以PR #8审阅为准，当前待独立审验。

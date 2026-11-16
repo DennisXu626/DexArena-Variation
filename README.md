@@ -1,6 +1,6 @@
 # DexArena Variation
 
-这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，当前是下面两个家族、四个任务的限定试点。
+这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，已有验收覆盖 Cabinet／Charger 两家族四任务；本 PR 另交付 Meal 五对象、四个 Sharpa 任务的接入与限定证据，待独立审验负责人最终审验。
 
 外观变化保持视觉／碰撞几何及物理参数不变；位姿只控制明确授权的任务物体，不自动随机化机器人。底层环境由ManiSkill管理，物理和渲染由SAPIEN提供，原对象素材仍按官方授权渠道取得。运行试点不需要AutoDemo算法工程、PPO、教师／学生模型、Dexonomy或任何训练检查点。
 
@@ -142,3 +142,5 @@ git push -u origin feat/bottle-appearance
 ## 来源与许可
 
 保留 [Apache-2.0 LICENSE](LICENSE)、[上游引用](docs/citation.bib)、[既有第三方NOTICE](utils/pi05_utils/NOTICE)和模型来源说明。原始DexArena、ManiSkill／SAPIEN及对象素材归各原作者；本团队新增内容只限已标明的variation实现、小贴图和协作入口，详见[来源映射](docs/variation/PROVENANCE.md)。私有仓库不替代第三方数据许可。
+
+Meal 本轮补充资料及提交对应性集中见[PR8-R2证据索引](docs/variation/evidence/meal_preparation/PR8-R2.md)。执行层只完成证据与文档收尾，最终验收以 PR #8 审阅为准。
