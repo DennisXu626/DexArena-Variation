@@ -1,0 +1,27 @@
+{
+  "status": "GPU_runtime_pending_time_gate",
+  "frozen_runtime_commit": "358b4de5d7036a03bcfee025ee679c03da6f7239",
+  "tree": "cf39a0348202a93b68559a2ccf372529e1f76413",
+  "tracked_entries": 658,
+  "regular_files": 657,
+  "uninitialized_original_gitlinks": 1,
+  "reused_files": 550,
+  "delta_files": 107,
+  "all_target_blobs_verified": true,
+  "git_fsck_exit": 0,
+  "clean_worktree_after_restore": true,
+  "repository_history": "exact target and accepted-base shallow references; original gitlink retained, no submodule payload downloaded",
+  "Mouse_static": "passed",
+  "coacd_private_CPU_import": "passed1.0.11, baseline stack unchanged",
+  "readonly_PhysX_file_bind_CPU": "passed",
+  "GPU_or_Vulkan_tested": false,
+  "GPU_jobs_submitted": 0,
+  "GPU_seconds_used": 0,
+  "remaining_authorized_GPU_seconds": 600,
+  "remaining_checks": [
+    "native/disabled/original/two-variant materials and physical equality",
+    "random reproducibility",
+    "local reset state/material/RGB isolation"
+  ],
+  "reason_not_submitted": "Pre-submission text/bytes wrapper defect corrected after confirming no submission; remaining time failed600s job plus5min closing gate. No GPU retry or protection removal."
+}
