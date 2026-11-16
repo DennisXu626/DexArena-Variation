@@ -1,0 +1,12 @@
+{
+  "task_id": "OfficeDeskClickMouse-Sharpa-v1",
+  "mouse_appearance": {
+    "enabled": true,
+    "scheme_id": "ivory_matte",
+    "per_env": {
+      "1": {
+        "scheme_id": "navy_satin"
+      }
+    }
+  }
+}
