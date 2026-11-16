@@ -1,3 +1,2 @@
-# Preserve exact bytes of Furniture Assembly captures referenced by SHA-256.
+# Preserve exact bytes of Furniture Assembly evidence referenced by SHA-256.
 furniture_assembly/previews/author_check_20261116/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-objects/furniture_assembly/flat_panel/previews/author_check_20261116/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

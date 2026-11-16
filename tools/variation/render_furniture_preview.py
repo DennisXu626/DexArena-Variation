@@ -20,11 +20,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from render_panel_preview import (
-    capture, compare_images, digest, prepare_viewer, role_parameters as flat_role_parameters, write_json,
-)
 from tools.variation.furniture_preview_materials import (
-    FIELDS, apply_object, describe_furniture, inspect_furniture, restore_furniture, snapshot_furniture,
+    FIELDS, PANEL_EDITABLE_ROLES, apply_object, describe_furniture, inspect_furniture, restore_furniture, snapshot_furniture,
     _validate_params,
 )
 
@@ -33,6 +30,81 @@ SCHEMES = ("original", "variant_1", "variant_2")
 TASK_IDS = {name: f"FurnitureAssembly{name}-Sharpa-v1"
             for name in ("LayFlatPanel", "InsertRail", "FastenScrew")}
 SCOPE = "Real single-environment initial-state authoring preview; no dynamics, task success, parallel reset or A4/A5 acceptance"
+
+
+def write_json(path, value):
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + '\n', encoding='utf-8')
+
+
+def digest(value):
+    raw = json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode('utf-8')
+    return hashlib.sha256(raw).hexdigest()
+
+
+def flat_role_parameters(catalog, name):
+    candidate = catalog['schemes'][name]
+    color = candidate['base_color']
+    return {role: {
+        'base_color': [float(c) * catalog['color_factors'][role] for c in color[:3]] + [color[3]],
+        'roughness': candidate['roughness'][role], 'metallic': candidate['metallic'],
+    } for role in PANEL_EDITABLE_ROLES}
+
+
+def capture(viewer, pose):
+    """Read the native human framebuffer; avoid Windows CUDA tensor readback."""
+    from PIL import Image
+    viewer.set_camera_pose(pose)
+    # Draw no UI into exported frames. No physics or task reset is performed.
+    for _ in range(2):
+        viewer.window.update_render()
+        viewer.window.render('Color', [])
+    pixels = np.asarray(viewer.window.get_picture('Color'))[..., :3].copy()
+    if np.issubdtype(pixels.dtype, np.floating):
+        pixels = (np.clip(pixels, 0, 1) * 255).astype(np.uint8)
+    elif pixels.dtype != np.uint8:
+        raise ValueError(f'Unexpected framebuffer dtype {pixels.dtype}')
+    if pixels.ndim != 3 or pixels.shape[-1] != 3 or np.ptp(pixels) == 0:
+        raise RuntimeError('Invalid or blank native task framebuffer')
+    return Image.fromarray(pixels)
+
+
+def compare_images(frames, path):
+    from PIL import Image, ImageDraw
+    width, height = frames[0][1].size
+    sheet = Image.new('RGB', (width * len(frames), height + 36), (30, 30, 30))
+    draw = ImageDraw.Draw(sheet)
+    for i, (name, frame) in enumerate(frames):
+        draw.text((i * width + 12, 10), name, fill=(245, 245, 245))
+        sheet.paste(frame, (i * width, 36))
+    sheet.save(path)
+
+
+def prepare_viewer(env):
+    from sapien.utils.viewer.path_window import PathWindow
+    from sapien.utils.viewer.transform_window import TransformWindow
+
+    viewer = env.unwrapped._viewer
+    # Optional editing panels require Pinocchio on robot selection. Keep the
+    # native task and other viewer plugins; material inspection needs no IK.
+    kept = []
+    for plugin in viewer.plugins:
+        if isinstance(plugin, (TransformWindow, PathWindow)):
+            plugin.close()
+        else:
+            kept.append(plugin)
+    viewer.plugins = kept
+    viewer.selected_entity_visibility = 1.0
+    camera = env.unwrapped.scene.human_render_cameras['render_camera'].camera._render_cameras[0]
+    task_pose = camera.get_global_pose()
+    config = {'width': int(camera.width), 'height': int(camera.height),
+              'near': float(camera.near), 'far': float(camera.far), 'fovy': float(camera.fovy),
+              'task_view': 'Native task render_camera extrinsics and projection; viewer shader',
+              'capture_path': 'SAPIEN RenderWindow Color -> CPU NumPy (not CUDA image tensor)'}
+    viewer.resolution = (config['width'], config['height'])
+    viewer.window.set_camera_parameters(config['near'], config['far'], config['fovy'])
+    viewer.set_camera_pose(task_pose)
+    return viewer, task_pose, config
+
 
 
 def sha(path):
@@ -128,9 +200,9 @@ def fixed_views(env, binding, order):
     import sapien
     from mani_skill.utils import sapien_utils
 
-    viewer, previous_views, config = prepare_viewer(env)
+    viewer, task_pose, config = prepare_viewer(env)
     viewer.select_entity(None)
-    views = {"task": previous_views["task"]}
+    views = {"task": task_pose}
     for object_id in order:
         definition = binding.objects[object_id].definition
         if object_id == "flat_panel":
@@ -203,9 +275,7 @@ def _baseline_path(output, task):
 def implementation_files(index):
     files = {
         "tools/variation/render_furniture_preview.py", "tools/variation/furniture_preview_materials.py",
-        "tools/variation/render_panel_preview.py", "tools/variation/panel_preview_materials.py",
-        "tools/variation/furniture_rack_definition.py", "tools/variation/furniture_rail_definition.py",
-        "tools/variation/furniture_screw_definition.py", INDEX.relative_to(ROOT).as_posix(),
+        INDEX.relative_to(ROOT).as_posix(),
         "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py",
         "tasks/furniture_assembly/furniture_assembly_insert_rail.py",
         "tasks/furniture_assembly/furniture_assembly_fasten_screw.py",

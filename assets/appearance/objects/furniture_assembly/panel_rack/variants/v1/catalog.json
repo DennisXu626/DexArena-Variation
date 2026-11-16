@@ -10,21 +10,19 @@
     "variant_2": "Light grey-white steel walls and a medium grey base; retain native rubber, silver bolts and yellow warning stripes."
   },
   "schemes": {
-    "original": {
-      "mode": "restore_native"
-    },
+    "original": {"mode": "restore_native"},
     "variant_1": {
       "mode": "material_override",
       "roles": {
         "body": {"base_color": [0.055, 0.12, 0.23, 1.0], "roughness": 0.48, "metallic": 0.35},
-        "plate": {"base_color": [0.035, 0.07, 0.13, 1.0], "roughness": 0.62, "metallic": 0.30}
+        "plate": {"base_color": [0.035, 0.07, 0.13, 1.0], "roughness": 0.62, "metallic": 0.3}
       }
     },
     "variant_2": {
       "mode": "material_override",
       "roles": {
-        "body": {"base_color": [0.80, 0.82, 0.84, 1.0], "roughness": 0.60, "metallic": 0.25},
-        "plate": {"base_color": [0.56, 0.59, 0.63, 1.0], "roughness": 0.72, "metallic": 0.30}
+        "body": {"base_color": [0.8, 0.82, 0.84, 1.0], "roughness": 0.6, "metallic": 0.25},
+        "plate": {"base_color": [0.56, 0.59, 0.63, 1.0], "roughness": 0.72, "metallic": 0.3}
       }
     }
   }

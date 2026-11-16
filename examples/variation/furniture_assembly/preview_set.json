@@ -5,35 +5,19 @@
   "objects": {
     "flat_panel": {
       "catalog": "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json",
-      "scheme_map": {
-        "original": "original",
-        "variant_1": "ivory_matte",
-        "variant_2": "navy_satin"
-      }
+      "scheme_map": {"original": "original", "variant_1": "ivory_matte", "variant_2": "navy_satin"}
     },
     "panel_rack": {
       "catalog": "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json",
-      "scheme_map": {
-        "original": "original",
-        "variant_1": "variant_1",
-        "variant_2": "variant_2"
-      }
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
     },
     "rail": {
       "catalog": "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json",
-      "scheme_map": {
-        "original": "original",
-        "variant_1": "variant_1",
-        "variant_2": "variant_2"
-      }
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
     },
     "screw": {
       "catalog": "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json",
-      "scheme_map": {
-        "original": "original",
-        "variant_1": "variant_1",
-        "variant_2": "variant_2"
-      }
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
     }
   },
   "tasks": {

@@ -1,179 +1,37 @@
 {
   "version": "flat-panel-bindings-v1",
   "logical_object": "furniture_assembly.flat_panel",
-  "status": "user_visual_review_passed_formal_integration_pending",
   "source_reference_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
   "catalog": "variants/v1/catalog.json",
   "runtime_handle": "env.unwrapped.panel",
-  "object_type": "Actor; procedural geometry, no articulation link mapping",
-  "native_builder": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: build_drawer_panel",
-  "native_material_factory": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: make_render_material",
+  "object_type": "Actor",
+  "native_builder": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: build_drawer_panel / make_render_material",
   "roles": {
-    "face": {
-      "source_material_variable": "face",
-      "part_description": "Main panel surfaces and flared entrance wedges",
-      "source_binding": "panel_collision_boxes visual: all except index 3; mouth_wedge_files visuals",
-      "observed_shape_indices": [
-        0,
-        1,
-        2,
-        4,
-        5
-      ],
-      "candidate_action": "Override base_color, roughness and metallic from catalog; preserve other native properties"
-    },
-    "cut": {
-      "source_material_variable": "cut",
-      "part_description": "Closed stop wall and routed groove floor",
-      "source_binding": "panel_collision_boxes visual index 3; groove floor box visual",
-      "observed_shape_indices": [
-        3,
-        6
-      ],
-      "candidate_action": "Override base_color, roughness and metallic from catalog; retain groove contrast"
-    },
-    "edge": {
-      "source_material_variable": "edge",
-      "part_description": "Edge banding on four panel sides",
-      "source_binding": "Four box visuals added by the edge banding loop",
-      "observed_shape_indices": [
-        7,
-        8,
-        9,
-        10
-      ],
-      "candidate_action": "Override base_color, roughness and metallic from catalog"
-    },
-    "routed": {
-      "source_material_variable": "routed",
-      "part_description": "Polished strips along straight groove lips and flared entrance edges",
-      "source_binding": "Straight and angled groove-lip box visuals under visual_detail",
-      "observed_shape_indices": [
-        11,
-        12,
-        13,
-        14
-      ],
-      "candidate_action": "Override base_color, roughness and metallic from catalog; retain entrance outline"
-    },
-    "label": {
-      "source_material_variable": "label",
-      "part_description": "Printed part label background",
-      "source_binding": "Label box visual under visual_detail",
-      "observed_shape_indices": [
-        15
-      ],
-      "candidate_action": "Preserve captured native material unchanged"
-    },
-    "ink": {
-      "source_material_variable": "ink",
-      "part_description": "Six stencilled barcode strips on the label",
-      "source_binding": "Six barcode box visuals under visual_detail",
-      "observed_shape_indices": [
-        16,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
-      "candidate_action": "Preserve captured native material unchanged"
-    }
+    "face": {"source_variable": "face", "parts": "Main panel surfaces and two flared entrance wedges", "shape_count": 5, "editable": true},
+    "cut": {"source_variable": "cut", "parts": "Closed stop wall and groove floor overlay", "shape_count": 2, "editable": true},
+    "edge": {"source_variable": "edge", "parts": "Four side/end edge-banding visuals", "shape_count": 4, "editable": true},
+    "routed": {"source_variable": "routed", "parts": "Two straight and two flared groove-lip strips", "shape_count": 4, "editable": true},
+    "label": {"source_variable": "label", "parts": "Printed part-label background", "shape_count": 1, "editable": false},
+    "ink": {"source_variable": "ink", "parts": "Six barcode strips", "shape_count": 6, "editable": false}
   },
-  "actual_render_bindings": {
-    "status": "observed_in_single_env_author_check",
-    "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
-    "entity_name": "scene-0_drawer_panel",
-    "shape_count": 22,
-    "part_count_per_shape": 1,
-    "part_index_per_shape": 0,
-    "warning": "Source variable names are semantic roles, not SAPIEN material names. Observed shape indices are specific to this task instance and loading version.",
-    "evidence_ref": "previews/author_check_20261116/evidence.json",
-    "manifest_ref": "previews/author_check_20261116/manifest.json",
-    "author_check": {
-      "platform": "Windows",
-      "num_envs": 1,
-      "seed": 0,
-      "panel_color_jitter": false,
-      "visual_detail": true,
-      "sim_backend": "physx_cpu",
-      "render_backend": "sapien_cuda",
-      "capture_path": "SAPIEN RenderWindow Color to CPU NumPy, using native task camera extrinsics/projection plus a fixed detail camera",
-      "env_step_calls_after_reset": 0,
-      "checks": [
-        "Actual 22-shape role binding and requested material parameters matched",
-        "Same-reset state, elapsed-step, geometry/physics/UV, non-panel and protected-material snapshots remained equal",
-        "Captured original material restoration was exact"
-      ],
-      "boundary": "Initial-state same-scene authoring checks only; no dynamics, parallel reset, other-task or A4/A5 acceptance"
-    },
-    "human_review": "user_visual_review_passed",
-    "human_review_ref": "previews/author_check_20261116/human_review.json",
-    "integrated_human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json"
-  },
-  "representations": [
-    {
-      "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+  "representations": {
+    "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
       "source": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: _load_scene",
-      "representation": "Dynamic movable panel, build_drawer_panel default kinematic=False",
-      "native_color_behavior": "panel_color_jitter=True by default; base color chosen before panel construction",
-      "preview_status": "single_env_author_check_complete_family_user_visual_review_passed"
+      "type": "dynamic Actor",
+      "native_color_jitter": true
     },
-    {
-      "task_id": "FurnitureAssemblyInsertRail-Sharpa-v1",
+    "FurnitureAssemblyInsertRail-Sharpa-v1": {
       "source": "tasks/furniture_assembly/furniture_assembly_insert_rail.py: _load_scene",
-      "representation": "Fixed assembly panel, build_drawer_panel kinematic=True",
-      "native_color_behavior": "panel_color_jitter=True by default; own loading path",
-      "preview_status": "single_env_author_check_complete_family_user_visual_review_passed"
+      "type": "kinematic Actor",
+      "native_color_jitter": true
     },
-    {
-      "task_id": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+    "FurnitureAssemblyFastenScrew-Sharpa-v1": {
       "source": "tasks/furniture_assembly/furniture_assembly_fasten_screw.py: _load_scene",
-      "representation": "Fixed assembly panel, build_drawer_panel kinematic=True",
-      "native_color_behavior": "Own loader passes the native brown base color; no new scheme interface",
-      "preview_status": "single_env_author_check_complete_family_user_visual_review_passed"
+      "type": "kinematic Actor",
+      "native_color_jitter": false
     }
-  ],
-  "original_policy": "Restore the native material values captured from this actual task instance; do not substitute an assumed original color or a generated original texture.",
-  "preservation_intent": {
-    "visual_properties": "Keep label, ink, UV, textures and specular; only four catalog roles change base_color, roughness and metallic",
-    "geometry_and_physics": "No visual/collision geometry, mass, inertia, contact material, joint, robot, pose or success-condition edits",
-    "new_assets": "No new UV, texture, model or font",
-    "verification_boundary": "Same-scene initial snapshots passed the limited author check; this is not complete physical regression or A4/A5 acceptance"
   },
-  "stage_consistency": "All three short-task representations were independently loaded and checked at fixed initial states; no cross-stage runtime, Long or formal task integration acceptance.",
-  "handoff": "The user approved all four FurnitureAssembly objects in the integrated three-task visual review and authorized submission after the final check. Formal task integration and A4/A5 acceptance remain pending with Dennis; no other family is included.",
-  "integrated_family_author_check": {
-    "status": "three_short_task_single_env_author_check_complete_user_visual_review_passed",
-    "summary_ref": "../../../furniture_assembly/previews/author_check_20261116/summary.json",
-    "tasks": {
-      "LayFlatPanel": {
-        "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/manifest.json",
-        "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/LayFlatPanel/evidence.json",
-        "actual_shape_count": 22
-      },
-      "InsertRail": {
-        "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/manifest.json",
-        "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/InsertRail/evidence.json",
-        "actual_shape_count": 22
-      },
-      "FastenScrew": {
-        "manifest_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/manifest.json",
-        "evidence_ref": "../../../furniture_assembly/previews/author_check_20261116/FastenScrew/evidence.json",
-        "actual_shape_count": 22
-      }
-    },
-    "checks": [
-      "All actual panel role bindings and requested three PBR fields read back in each task",
-      "Same-reset full scene state, geometry/physics/UV, rail joints and protected material snapshots unchanged",
-      "All native material descriptions restored exactly",
-      "Original and restored RGB identical in all eleven fixed family views"
-    ],
-    "boundary": "Single-environment initial-state checks in three separately reset real tasks; no dynamics, Long, parallel reset or A4/A5 acceptance",
-    "human_review": "user_visual_review_passed",
-    "human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json"
-  },
-  "human_review": "user_visual_review_passed",
-  "human_review_ref": "../../../furniture_assembly/previews/author_check_20261116/human_review.json",
-  "formal_integration": "pending"
+  "binding_boundary": "22 shapes, one part each. Role names are source semantics, not fixed SAPIEN material names or binding-by-index. Preserve label/ink and all non-target material fields.",
+  "evidence": {"base": "../../../furniture_assembly/previews/author_check_20261116", "tasks": ["LayFlatPanel", "InsertRail", "FastenScrew"]},
+  "historical_single_object_capture": "https://github.com/DennisXu626/DexArena-Variation/tree/59fb134f908f037c94caf5a018b1c6f13374caa0/assets/appearance/objects/furniture_assembly/flat_panel/previews/author_check_20261116"
 }

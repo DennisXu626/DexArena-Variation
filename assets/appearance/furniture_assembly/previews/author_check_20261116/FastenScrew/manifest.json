@@ -1,47 +1,26 @@
 {
-  "created_utc": "2026-11-16T10:57:45.048112+00:00",
+  "created_utc": "2026-11-16T14:15:07.492096+00:00",
   "task_id": "FurnitureAssemblyFastenScrew-Sharpa-v1",
-  "git_base_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "git_base_commit": "0050f1a19a2e5bd12ee4942b9c81795975b4c413",
   "source_identity": "Exact file hashes include the uncommitted authoring implementation",
   "implementation_files_sha256": {
-    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "57e25f7070cd78b2deb82a1a3f646ac565cc4632cfcfeae021ff475e0cbcc103",
-    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "7d12f9496fc08316a14248b754ba0f8d46d514ec4cddb7582d4285957ecc20f8",
-    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "14aa571834c3a5bcb7aaa5d6934d353e1e07da4d3796ce3fb35deba86f3d45c0",
-    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "8eab39586d4994f4f50cea3ce8a945e83ec19df7cb5875b62b02c174fa770372",
-    "examples/variation/furniture_assembly/preview_set.json": "ae929b0cfa710ca7add5af1a5448441ac172a90bd5f830e0f328ea5cf718d7e7",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5",
+    "examples/variation/furniture_assembly/preview_set.json": "ad46442dc26daee9b24baf6ea9ba1bb9924ba8011ebb8486538255a3d8575e6b",
     "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "192e48b739683739c8c8cf78af6aa330ae0e6f32aeb1f228cb9beccc9836ebf8",
     "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "e96e1d62bdfb52fb17f80a4829b7b215938d5f72dc23e7d5cbedddb25fa0d5fd",
     "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "031cb99e25201ebc352b44b2102d55690cd49e872d2b9ce469414f8abb632efc",
-    "tools/variation/furniture_preview_materials.py": "58dbcb309118d653338cfb5aa499600ebc884b3b2c12c8c42bd651d2ee0a8440",
-    "tools/variation/furniture_rack_definition.py": "b9460d9423ea181d59aaaf725f52d6402306091bc57e680ac8986baccfbb7385",
-    "tools/variation/furniture_rail_definition.py": "92ef6588bfb082a2551b327a291157e9f850cc17e5fc05807c26c16315d98b2b",
-    "tools/variation/furniture_screw_definition.py": "8179c764a8a1773ad601c5b5a8f643f4685097a2b35f6991f6af5adc2b076329",
-    "tools/variation/panel_preview_materials.py": "3e87e016c1d4d2ebb34261c602546dd74246194c9cafe43cb68c5e58e0ce41f1",
-    "tools/variation/render_furniture_preview.py": "24dc1000974f015b2eeec386925d263008a86988071c9ca2db857872d3eca87c",
-    "tools/variation/render_panel_preview.py": "7861a39c60812ad8bc1b46bdb58c7542f6119e6ce332c3dc87d0cb8133b6a7bc"
+    "tools/variation/furniture_preview_materials.py": "7143dcacd2b9d1072f915182ff8bafee128bd2962ebf7b63e65d58489cca6c74",
+    "tools/variation/render_furniture_preview.py": "4d23617d1464d0f2cd6c687a8704df904efcb28cc2fcbb157dc596ca1da0631c"
   },
   "index_version": "furniture-preview-set-v1",
-  "object_catalog_versions": {
-    "flat_panel": "flat-panel-preview-v1",
-    "rail": "furniture-rail-preview-v1",
-    "screw": "furniture-screw-preview-v1"
-  },
+  "object_catalog_versions": {"flat_panel": "flat-panel-preview-v1", "rail": "furniture-rail-preview-v1", "screw": "furniture-screw-preview-v1"},
   "object_scheme_maps": {
-    "flat_panel": {
-      "original": "original",
-      "variant_1": "ivory_matte",
-      "variant_2": "navy_satin"
-    },
-    "rail": {
-      "original": "original",
-      "variant_1": "variant_1",
-      "variant_2": "variant_2"
-    },
-    "screw": {
-      "original": "original",
-      "variant_1": "variant_1",
-      "variant_2": "variant_2"
-    }
+    "flat_panel": {"original": "original", "variant_1": "ivory_matte", "variant_2": "navy_satin"},
+    "rail": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"},
+    "screw": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
   },
   "num_envs": 1,
   "seed": 0,
@@ -68,101 +47,41 @@
     "near": 0.009999999776482582,
     "far": 100.0,
     "fovy": 1.0,
+    "task_view": "Native task render_camera extrinsics and projection; viewer shader",
+    "capture_path": "SAPIEN RenderWindow Color -> CPU NumPy (not CUDA image tensor)",
     "poses": {
       "task": {
-        "p_m": [
-          0.75,
-          -1.649999976158142,
-          0.9200000166893005
-        ],
-        "q_wxyz": [
-          0.46392983198165894,
-          -0.12728773057460785,
-          0.06756027787923813,
-          0.8740723729133606
-        ]
+        "p_m": [0.75, -1.649999976158142, 0.9200000166893005],
+        "q_wxyz": [0.46392983198165894, -0.12728773057460785, 0.06756027787923813, 0.8740723729133606]
       },
       "flat_panel": {
-        "p_m": [
-          0.025452306494116783,
-          0.030080478638410568,
-          0.5590000152587891
-        ],
-        "q_wxyz": [
-          0.23219233751296997,
-          0.5501624345779419,
-          0.16263383626937866,
-          -0.7854669094085693
-        ]
+        "p_m": [0.025452306494116783, 0.030080478638410568, 0.5590000152587891],
+        "q_wxyz": [0.23219233751296997, 0.5501624345779419, 0.16263383626937866, -0.7854669094085693]
       },
       "rail": {
-        "p_m": [
-          0.10253863781690598,
-          -0.40037623047828674,
-          0.26600000262260437
-        ],
-        "q_wxyz": [
-          0.4466386139392853,
-          -0.24967646598815918,
-          0.13133741915225983,
-          0.8490736484527588
-        ]
+        "p_m": [0.10253863781690598, -0.40037623047828674, 0.26600000262260437],
+        "q_wxyz": [0.4466386139392853, -0.24967646598815918, 0.13133741915225983, 0.8490736484527588]
       },
       "screw": {
-        "p_m": [
-          -0.12720224261283875,
-          -0.22283053398132324,
-          0.16850000619888306
-        ],
-        "q_wxyz": [
-          0.44902274012565613,
-          -0.27095746994018555,
-          0.1450120508670807,
-          0.8390066623687744
-        ]
+        "p_m": [-0.12720224261283875, -0.22283053398132324, 0.16850000619888306],
+        "q_wxyz": [0.44902274012565613, -0.27095746994018555, 0.1450120508670807, 0.8390066623687744]
       }
     },
-    "task_view": "Native task render_camera extrinsics and projection; viewer shader",
-    "detail_view": "Additional fixed object cameras of the same unchanged real task initial state",
-    "capture_path": "SAPIEN RenderWindow Color -> CPU NumPy (not CUDA image tensor)",
     "projection_matrix": [
-      [
-        1.8304877281188965,
-        -0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        -1.8304877281188965,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        -1.000100016593933,
-        -0.010001000016927719
-      ],
-      [
-        0.0,
-        0.0,
-        -1.0,
-        0.0
-      ]
+      [1.8304877281188965, -0.0, 0.0, 0.0],
+      [0.0, -1.8304877281188965, 0.0, 0.0],
+      [0.0, 0.0, -1.000100016593933, -0.010001000016927719],
+      [0.0, 0.0, -1.0, 0.0]
     ],
+    "detail_view": "Additional fixed object cameras of the same unchanged real task initial state",
     "flat_panel_detail_rule": "Eye = center + localX*0.16m + localY*0.12m + localZ*0.55m; aim at actual panel center",
-    "view_order": [
-      "task",
-      "flat_panel",
-      "rail",
-      "screw"
-    ]
+    "view_order": ["task", "flat_panel", "rail", "screw"]
   },
   "env_step_calls_after_reset": 0,
   "evidence": {
     "file": "evidence.json",
-    "sha256": "54f531a0c6afd242cddb0fc591a54ee7c6305b0f13168aeaeb40ddd58625cc17"
+    "sha256": "75d02e9c11b2e8edf00177546c255c6bdbd0fb776e557df195db6bf479e137d3",
+    "capture_sha256": "54f531a0c6afd242cddb0fc591a54ee7c6305b0f13168aeaeb40ddd58625cc17"
   },
   "baseline_scene": {
     "storage": "ignored_local_output_only",
@@ -170,5 +89,12 @@
     "included_in_object_delivery": false
   },
   "scope": "Real single-environment initial-state authoring preview; no dynamics, task success, parallel reset or A4/A5 acceptance",
-  "human_review": "pending_human_review"
+  "human_review": "pending_human_review",
+  "archive": {
+    "format": "furniture-evidence-compact-v1",
+    "capture_manifest_sha256": "82bad7ae0ae27a7d4e39447f1a0f88f91a071f9014376d76bfb16a558ee76557",
+    "capture_manifest_newline": "CRLF",
+    "conversion_tool": "tools/variation/compact_furniture_evidence.py",
+    "conversion_tool_sha256": "9688797fb34049d5f8b522d9fb072f0448eff50202df442f3d4c6a51f0b59520"
+  }
 }
