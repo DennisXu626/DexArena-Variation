@@ -1,6 +1,6 @@
 # Meal Preparation 外观 Variation
 
-本实现随 [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 提交，待最终审验。[当前能力与限制](STATUS.md)及[归档证据](evidence/meal_preparation/README.md)记录实际检查范围、恢复原版和历史收据。
+本实现随 [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 提交，限定技术验收通过，待整合/合并；依据[查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。[当前能力与限制](STATUS.md)及[归档证据](evidence/meal_preparation/README.md)记录实际检查范围、恢复原版和历史收据。
 本目录的实现使用备餐任务原有的程序生成午餐盒和 RoboCasa 视觉资产。通过 `meal_appearance` 在建场时为每个环境绑定独立的可变渲染材质，在回合 reset 时应用指定方案。几何、碰撞、质量、关节和成功判定沿用原任务。
 
 ## 方案和部件
@@ -81,4 +81,4 @@ Slurm 作业 `86563` 在 lyg0295 的 G0 上完成。运行使用 PhysX CUDA、SA
 
 历史任务判定、双环境隔离及恢复原版验收见 [运行证据索引](evidence/meal_preparation/README.md)。
 
-PR8-R2仅做文档及短时静态核对，不执行上述GPU示例。[收尾索引](evidence/meal_preparation/PR8-R2.md)保留R1已关闭项并核对新增补档。随机选择复现只限CPU逻辑；真实GPU随机路径、更多环境／手型、PartNet午餐盒和完整机器人长任务成功未纳入。最终验收以PR #8审阅为准，当前待独立审验。
+PR8-R2仅做文档及短时静态核对，不执行上述GPU示例。[收尾索引](evidence/meal_preparation/PR8-R2.md)保留R1已关闭项并核对新增补档。随机选择复现只限CPU逻辑；真实GPU随机路径、更多环境／手型、PartNet午餐盒和完整机器人长任务成功未纳入。限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，当前待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。

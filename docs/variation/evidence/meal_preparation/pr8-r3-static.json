@@ -1,0 +1,405 @@
+{
+  "handoff": "PR8-R3",
+  "status": "passed",
+  "PR_parent": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+  "main_parent": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+  "common_base": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "frozen_staged_tree_before_static_artifact": "c39502358d3fac8083aeddc4c50d0002fd2d3c41",
+  "python": "3.13.11",
+  "identity_checks": [
+    {
+      "family": "Meal",
+      "path": "tasks/assets/variation/meal_preparation/v1/catalog.json",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "d02481b61b72db89d029f7ef2d637c12ce95db6f",
+      "sha256": "cc850bfc799a6bff39b33603be6eff5034821d6947e143a32fd745c81a0c03f4",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/__init__.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/appearance.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "638afe125652dca3aa62bcae67c53f4e3d33dffb",
+      "sha256": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/appearance_textures.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "bdf3f3387fea9cd25ea0e20a055c992664c61471",
+      "sha256": "67b9450e92d0ee606528250a09b1d0346e583f09c8246f32de8de2ea3bbc28e6",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/meal_preparation_long.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "939746c560845475c539a04370f774da836c32e4",
+      "sha256": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/meal_preparation_open_lunch_box.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "0b22f0802549b04cdbc18c1f3fe521ed79493cd2",
+      "sha256": "dd61b8e7ad8dbb798a104c451e32fdafa0fae704d535c616bb79a5ad6b6b9d76",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/meal_preparation_place_bread.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "2d4b1ee28150254cb203d83f6672b9fce05eaf6f",
+      "sha256": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tasks/meal_preparation/meal_preparation_scoop_tomato.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "419e5eea8ce6ef8ad32ce35d81f7d91c92c37a91",
+      "sha256": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tools/variation/check_meal_parallel.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "963549889a284c8166873a5e63c9b27c7848a0a6",
+      "sha256": "0fa290d5931ed14d4fc738f1bc7e8d9b1df90022fac264bbc317fff9b60f98a9",
+      "byte_identical": true
+    },
+    {
+      "family": "Meal",
+      "path": "tools/variation/check_meal_restore_original.py",
+      "baseline": "4ede53ea0e4c631461b79e8116713bdc7cef11af",
+      "baseline_and_merge_blob": "d9912464dfa2b11102bad1c5910474b8112c3798",
+      "sha256": "463a56a3a3fd7a21e5d8d55ccb31a5d15eab9cbfe4beb5d3ce921dbd25cf6805",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/preparation.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "00b05d641c6f625b196a3e5a1c71c44a233e3b41",
+      "sha256": "7da74045dcad42560a1d9540a09474f075f7e4ce8805f05afea280479ebc9722",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/recovery_001.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "3721857aa8bccaabce077a17febd9108829d387c",
+      "sha256": "5f3bac7fb54aadfa836f19f8c0504bfd98182e3648aeb1bb751340fb949d1795",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/retest_001.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "1457a89ccfe61615dbd17593ea6cf943bc82502c",
+      "sha256": "c12de3ee753e792f1d47d9f14684d63daafbbbf71edd600538e9071176410d4b",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/retest_001_ivory_matte.png",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "73d9ca3e80983368c6ad8bee303ed60e1a5a2a74",
+      "sha256": "481df0ce5c9ef39f382410c73d51346dd848da7c607d61fbb6f5a2ddefc02ce2",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/retest_001_navy_satin.png",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "b877c34e60fb48f94c1cc7cf3f08e0ab7ba8e61f",
+      "sha256": "5d22538543c5c8c41dbc00606d8102f075e7f391d6a4a378aa38b4d35f9b3071",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/retest_001_original.png",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "a5ed797a37668eb8f6a4ac2120c9e59c7fec8d16",
+      "sha256": "ea36bfbe2a5e2b799778a8000649b7719b17ca239fe7c2e1f986994490be8873",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "docs/variation/evidence/mouse_101408/run_001.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "5da1cee4489a108bb2b4fe81d4348973eb8f58a8",
+      "sha256": "ebc3916e711466fde66672c32abb1f48e6b3ad477e8175632daffbab12ea2392",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "examples/variation/office_desk/mouse_101408/default.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "05f226998254de8aa3bd83de7f12f48b6ebe131f",
+      "sha256": "88785323df39f1af02d28851f373c90c8020d84a2fb6089bc1d38d057937d63e",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "examples/variation/office_desk/mouse_101408/fixed.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "ab397a610502581185cfa3ea217e59a10cdfcaaa",
+      "sha256": "f8cd200806096fb1b5aa166c2fbfd3db253bc42113a2775f535c59bd6ca507ac",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "examples/variation/office_desk/mouse_101408/random.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "84846cce5a6c92ea0fc2a40edeb77685ef791fae",
+      "sha256": "662edeca8f9844ebc5a4f611f8f6a2e365e6cd37ca88215e0a93d537fd9cf81d",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "f1a1d8be62efa6534dcac3422fbd93cbf3592234",
+      "sha256": "559b5cf39708f1e614aa8e9f3d3a999f55ce0a8714fee9989239888830dae340",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/office_desk/__init__.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/office_desk/mouse_appearance.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "4faf9f202d8aed07c22fb09c272a826f0002c2f6",
+      "sha256": "944327b9fabddd3f8d154dbfed2cbdff4d251dde207046072724d11c8566b3ac",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/office_desk/office_desk_click_mouse.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "5d896c950d07987172c8579566339dc92e868c89",
+      "sha256": "dc4ac8e5ace883eee4765fde5ce7f32d49cd215788965972d74a34945d817148",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/office_desk/office_desk_long.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "0f4af2d30807cc7aff9dfa9ef0aeee4f0bdd14ab",
+      "sha256": "0acc26306d8ff41b9455112031fcb904e0b24c837de95a4b5e6f71d016f01b38",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/office_desk/office_desk_open_laptop.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "2c071e8bd57f060fc49ee8cbf28d254834a320d6",
+      "sha256": "9652d8e572369adc87a6669eb35c7bc1d35cea431c88d1ddbad27d8974d67b2e",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tasks/office_desk/office_desk_type_keys.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "80020773cafff3aceb12d7b95150b696e99eb980",
+      "sha256": "d0a347cc7e899cec7b008113718bcbb5fe06794462a90a2608fb1827a3f86d54",
+      "byte_identical": true
+    },
+    {
+      "family": "Mouse",
+      "path": "tools/variation/check_mouse_101408.py",
+      "baseline": "be63bc8e6345c2fd761b98c68a1af145dc6e865b",
+      "baseline_and_merge_blob": "7aeba4fff517caa5c8efc266d40bc5b985fd1cf4",
+      "sha256": "feb285674874d5462a3d494db6234deea924b918720f28c03164d7d8e918e0c2",
+      "byte_identical": true
+    }
+  ],
+  "scope_check": "Every other blob equals the incoming main delta or original PR; only listed docs/index allow manual differences",
+  "allowed_document_paths": [
+    "README.md",
+    "assets/appearance/README.md",
+    "assets/appearance/objects.csv",
+    "assets/appearance/objects/meal_preparation/bread/README.md",
+    "assets/appearance/objects/meal_preparation/lunch_box/README.md",
+    "assets/appearance/objects/meal_preparation/plate/README.md",
+    "assets/appearance/objects/meal_preparation/spoon/README.md",
+    "assets/appearance/objects/meal_preparation/tomato/README.md",
+    "assets/appearance/runtime_mapping.json",
+    "docs/variation/MEAL_APPEARANCE.md",
+    "docs/variation/STATUS.md",
+    "docs/variation/evidence/meal_preparation/PR8-R3.md",
+    "docs/variation/evidence/meal_preparation/README.md",
+    "docs/variation/evidence/meal_preparation/pr8-r3-static.json"
+  ],
+  "object_count": 42,
+  "status_counts": {
+    "accepted_pilot": 9,
+    "pending_adaptation": 29,
+    "no_visual": 3,
+    "not_loaded": 1,
+    "implemented_pending_review": 0,
+    "external_pending": 0
+  },
+  "Mouse_section_5_verbatim": true,
+  "Meal_section_6": true,
+  "repository_checks": [
+    {
+      "script": "tools/variation/check_static.py",
+      "result": {
+        "status": "passed",
+        "python_syntax_files": 12,
+        "json_configs": 10,
+        "relative_links": 167,
+        "scope": "CPU static only; no environment import or physical verification"
+      }
+    },
+    {
+      "script": "tools/variation/check_appearance_archive.py",
+      "result": {
+        "status": "passed",
+        "objects": 42,
+        "families": 10,
+        "status_counts": {
+          "accepted_pilot": 9,
+          "pending_adaptation": 29,
+          "no_visual": 3,
+          "not_loaded": 1,
+          "implemented_pending_review": 0,
+          "external_pending": 0
+        },
+        "decoded_pngs": 13,
+        "archive_runtime_png_matches": 3,
+        "paired_schemes": 3,
+        "relative_links": 346,
+        "scope": "CPU archive only; no runtime capability or simulation claim"
+      }
+    }
+  ],
+  "affected_relative_links_checked": 216,
+  "conflict_markers": false,
+  "unmerged_index_entries": false,
+  "commands": [
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/DexArena/work/pr8_r3/repository",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.excludesFile=D:/DexArena/deliverables/pr_review/PR8-R1/empty.txt",
+        "-C",
+        "D:\\DexArena\\work\\pr8_r3\\repository",
+        "write-tree"
+      ],
+      "returncode": 0,
+      "stdout": "c39502358d3fac8083aeddc4c50d0002fd2d3c41\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\Dennis\\miniconda3\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 12, \"json_configs\": 10, \"relative_links\": 167, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\Dennis\\miniconda3\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "tools/variation/check_appearance_archive.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 9, \"pending_adaptation\": 29, \"no_visual\": 3, \"not_loaded\": 1, \"implemented_pending_review\": 0, \"external_pending\": 0}, \"decoded_pngs\": 13, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 346, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/DexArena/work/pr8_r3/repository",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.excludesFile=D:/DexArena/deliverables/pr_review/PR8-R1/empty.txt",
+        "-C",
+        "D:\\DexArena\\work\\pr8_r3\\repository",
+        "diff",
+        "--cached",
+        "--check",
+        "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/DexArena/work/pr8_r3/repository",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.excludesFile=D:/DexArena/deliverables/pr_review/PR8-R1/empty.txt",
+        "-C",
+        "D:\\DexArena\\work\\pr8_r3\\repository",
+        "diff",
+        "--name-only",
+        "--diff-filter=U"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/DexArena/work/pr8_r3/repository",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.excludesFile=D:/DexArena/deliverables/pr_review/PR8-R1/empty.txt",
+        "-C",
+        "D:\\DexArena\\work\\pr8_r3\\repository",
+        "diff",
+        "--name-only"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "GPU_seconds": 0,
+  "new_compute_jobs": 0,
+  "simulation_or_training_runs": 0,
+  "acceptance_reference": "https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591",
+  "acceptance_scope": "Limited technical acceptance by independent reviewer; execution did not approve or merge PR",
+  "created_at": "2026-11-16T20:23:32.085139+08:00"
+}

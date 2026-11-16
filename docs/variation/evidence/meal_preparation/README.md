@@ -36,3 +36,6 @@ python -B tools/variation/check_meal_restore_original.py --output outputs/meal_r
 ```
 
 [PR8-R2核对与收尾索引](PR8-R2.md)记录新增提交对应、已核对收据摘录的计账口径与剩余非阻断限制。86157／86234是独立历史预览manifest，不自动证明当前四张PR拼图全部具有运行时身份链；86264也不作为当前接入完整运行的证明。最终结论以PR #8审阅为准。
+
+
+最新导航：[PR8-R2限定技术验收结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)；当前待整合/合并，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)；[PR8-R3整合记录](PR8-R3.md)。历史R1/R2索引与原始证据保留当时状态。

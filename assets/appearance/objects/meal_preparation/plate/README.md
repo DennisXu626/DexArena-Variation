@@ -1,6 +1,6 @@
 # 盘子（meal_preparation.plate）
 
-状态：**original＋两套候选及正式任务接入已交付，限定证据已核对，待独立审验负责人最终审验**。
+状态：**original＋两套候选及正式任务接入已交付，限定技术验收通过，待整合/合并；集成状态见PR8**。
 
 原始角色：食材承托面。V1资源说明：`MealPreparation_Assets/robocasa/objaverse/plate/plate_0/model.xml`。
 
@@ -27,4 +27,4 @@ V1对象键：`meal_preparation/plate`；V2对应键：`meal_plate`。代码调�
 
 [运行参数目录](../../../../../tasks/assets/variation/meal_preparation/v1/catalog.json)是唯一参数源。[复现说明与验收范围](../../../../../docs/variation/MEAL_APPEARANCE.md)列出任务入口、贴图生成、局部 reset 检查和性能数据。
 
-本轮按对象实际加载阶段覆盖三个 Sharpa 短任务与一个 Sharpa 长任务，默认程序午餐盒。随机方案仅 CPU 选择／记录逻辑复现已核对；真实 GPU 随机路径、更多环境／手型、PartNet 午餐盒及完整机器人长任务成功未测。[PR8-R2证据索引](../../../../../docs/variation/evidence/meal_preparation/PR8-R2.md)列出提交对应与范围；最终验收以[PR #8审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5918176986)及后续审阅为准。
+本轮按对象实际加载阶段覆盖三个 Sharpa 短任务与一个 Sharpa 长任务，默认程序午餐盒。随机方案仅 CPU 选择／记录逻辑复现已核对；真实 GPU 随机路径、更多环境／手型、PartNet 午餐盒及完整机器人长任务成功未测。[PR8-R2证据索引](../../../../../docs/variation/evidence/meal_preparation/PR8-R2.md)列出提交对应与范围；限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)；当前待整合/合并，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。

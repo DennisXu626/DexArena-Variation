@@ -2,7 +2,7 @@
 
 这是**已有外观归档，不是新增运行能力**。每个稳定逻辑对象一个目录：十家族V1的40条对象记录全部保留，另补V2／M1的两个无视觉追溯项；不将157条逐任务初始化行变成157套素材。不同家族同名对象不凭名称合并；A／B／C阶段表示记录在bindings，不重复复制贴图。
 
-已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
+已有新外观包括Cabinet瓶／盖的Ocean、Citrus、Violet配套三方案（已验收M2），以及Charger的ivory_matte、navy_satin、copper_metal（A1–A3材质与两任务各2env A4／A5已验收）；Mouse 101408的ivory_matte／navy_satin也已完成限定ClickMouse双环境验收（集成记录见[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6)）；其余对象状态如下。目录数量不是适配完成度。无视觉bolt_platform、particle_support和liquid_state不要求生产皮肤；brush资源存在但当前任务未实例化；Charger档案已含正式接入与运行证据，但完整机器人任务成功和A6未验证。机器人、共享桌面／地面和背景扩展不在本轮，V2 shared_table行不建皮肤目录。
 
 ## 快速使用
 
@@ -17,7 +17,7 @@
 
 ## 对象与状态
 
-按实际目录与清单复核：42个对象、10家族；已验收试点3；待适配30；Meal 已接入待审验5；无视觉不适用3；当前未加载1；外部推进待验收0。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与CSV复核：42个对象、10家族；已验收限定试点9（原有4＋Meal5）；待适配29；无视觉不适用3；当前未加载1；已实现待审验0；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -37,17 +37,17 @@
 | juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 待适配 |
 | juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 待适配 |
 | juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 待适配 |
-| meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 已接入，待 PR #8 最终审验 |
-| meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 已接入，待 PR #8 最终审验 |
-| meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 已接入，待 PR #8 最终审验 |
-| meal_preparation | [bread](objects/meal_preparation/bread/README.md) | 已接入，待 PR #8 最终审验 |
-| meal_preparation | [tomato](objects/meal_preparation/tomato/README.md) | 已接入，待 PR #8 最终审验 |
+| meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
+| meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
+| meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
+| meal_preparation | [bread](objects/meal_preparation/bread/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
+| meal_preparation | [tomato](objects/meal_preparation/tomato/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
 | nut_bolt | [bolt](objects/nut_bolt/bolt/README.md) | 待适配 |
 | nut_bolt | [nut](objects/nut_bolt/nut/README.md) | 待适配 |
 | nut_bolt | [bolt_platform](objects/nut_bolt/bolt_platform/README.md) | 无视觉，不适用皮肤 |
 | office_desk | [laptop](objects/office_desk/laptop/README.md) | 待适配 |
 | office_desk | [keyboard](objects/office_desk/keyboard/README.md) | 待适配 |
-| office_desk | [mouse](objects/office_desk/mouse/README.md) | 待适配 |
+| office_desk | [mouse](objects/office_desk/mouse/README.md) | 限定试点已验收（仅ClickMouse 2env A4／A5） |
 | package_opening | [package](objects/package_opening/package/README.md) | 待适配 |
 | package_opening | [apple](objects/package_opening/apple/README.md) | 待适配 |
 | package_opening | [package_plate](objects/package_opening/package_plate/README.md) | 待适配 |
@@ -72,4 +72,4 @@
 
 第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。本轮不修改既有运行代码、运行catalog／PNG、M3 PR或协作规范。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。
 
-Meal 五对象已交付接入及限定证据，清单状态 `implemented_pending_review` 表示等待最终审验，不是尚未实现或已验收。[PR8-R2证据索引](../../docs/variation/evidence/meal_preparation/PR8-R2.md)说明源码对应、复用范围和历史追溯限制。
+Meal 五对象依据[PR8-R2查收结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标为 `accepted_pilot`，表示限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。[PR8-R2证据索引](../../docs/variation/evidence/meal_preparation/PR8-R2.md)说明源码对应、复用范围和历史追溯限制。

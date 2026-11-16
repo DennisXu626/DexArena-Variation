@@ -15,17 +15,17 @@ juice_preparation,mini_fridge,迷你冰箱,pending_adaptation,objects/juice_prep
 juice_preparation,apple,苹果,pending_adaptation,objects/juice_preparation/apple,,juice_preparation/apple,apple
 juice_preparation,blender,搅拌机,pending_adaptation,objects/juice_preparation/blender,,juice_preparation/blender,blender;integrated_blender_top
 juice_preparation,blender_lid,搅拌机盖,pending_adaptation,objects/juice_preparation/blender_lid,,juice_preparation/blender_lid,blender_lid;integrated_blender_top
-meal_preparation,lunch_box,午餐盒（默认程序几何）,implemented_pending_review,objects/meal_preparation/lunch_box,,meal_preparation/lunch_box,meal_box
-meal_preparation,plate,盘子,implemented_pending_review,objects/meal_preparation/plate,,meal_preparation/plate,meal_plate
-meal_preparation,spoon,勺子,implemented_pending_review,objects/meal_preparation/spoon,,meal_preparation/spoon,spoon
-meal_preparation,bread,面包,implemented_pending_review,objects/meal_preparation/bread,,meal_preparation/bread,bread
-meal_preparation,tomato,番茄／球形食材,implemented_pending_review,objects/meal_preparation/tomato,,meal_preparation/tomato,tomato
+meal_preparation,lunch_box,午餐盒（默认程序几何）,accepted_pilot,objects/meal_preparation/lunch_box,,meal_preparation/lunch_box,meal_box
+meal_preparation,plate,盘子,accepted_pilot,objects/meal_preparation/plate,,meal_preparation/plate,meal_plate
+meal_preparation,spoon,勺子,accepted_pilot,objects/meal_preparation/spoon,,meal_preparation/spoon,spoon
+meal_preparation,bread,面包,accepted_pilot,objects/meal_preparation/bread,,meal_preparation/bread,bread
+meal_preparation,tomato,番茄／球形食材,accepted_pilot,objects/meal_preparation/tomato,,meal_preparation/tomato,tomato
 nut_bolt,bolt,螺栓（程序生成主体／导入头部）,pending_adaptation,objects/nut_bolt/bolt,,nut_bolt/bolt,nut_bolt
 nut_bolt,nut,螺母（程序生成）,pending_adaptation,objects/nut_bolt/nut,,nut_bolt/nut,nut
 nut_bolt,bolt_platform,螺栓底座／平台（碰撞工装）,no_visual,objects/nut_bolt/bolt_platform,,nut_bolt/bolt_platform,nut_platform
 office_desk,laptop,笔记本电脑（model_id 10211）,pending_adaptation,objects/office_desk/laptop,,office_desk/laptop,office_laptop
 office_desk,keyboard,键盘（model_id 13106）,pending_adaptation,objects/office_desk/keyboard,,office_desk/keyboard,office_keyboard
-office_desk,mouse,鼠标（model_id 101408）,pending_adaptation,objects/office_desk/mouse,,office_desk/mouse,office_mouse
+office_desk,mouse,鼠标（model_id 101408）,accepted_pilot,objects/office_desk/mouse,ivory_matte;navy_satin,office_desk/mouse,office_mouse
 package_opening,package,包装盒,pending_adaptation,objects/package_opening/package,,package_opening/package,package_box
 package_opening,apple,包装内苹果,pending_adaptation,objects/package_opening/apple,,package_opening/apple,package_apple
 package_opening,package_plate,接收盘,pending_adaptation,objects/package_opening/package_plate,,package_opening/package_plate,package_plate
