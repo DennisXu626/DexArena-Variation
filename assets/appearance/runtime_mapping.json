@@ -3,7 +3,7 @@
   "team_base_commit": "2de5d9435b48731e2cbf5b619eccfad6b5bd32dc",
   "runtime_catalog": "tasks/assets/variation/cabinet_pouring/v1/catalog.json",
   "runtime_catalog_version": "cabinet-appearance-v1.2",
-  "runtime_catalog_sha256": "9f0f248a07a05ebef950c136c1f6f3bba3e7e70920dfed63ef347ef3eed25298",
+  "runtime_catalog_sha256": "e392d9242288402e370149753cb1d86787aac42e10f67b8fc18cf70b1a2cb507",
   "policy": "Object folders are authoring/archive entry; tasks directory is existing runtime publication copy. They are not independently editable sources. After adaptation review, synchronize publication and verify again; this archive is not a runtime loader.",
   "selection": "Existing runtime selects one paired scheme for bottle and cap together; arbitrary independent mixing is not implemented.",
   "original": {

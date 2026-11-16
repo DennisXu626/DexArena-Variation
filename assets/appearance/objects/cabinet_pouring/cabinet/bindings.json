@@ -16,7 +16,11 @@
     "citrus"
   ],
   "violet": "new object remains native; existing bottle/cap violet unchanged",
-  "new_texture_UV_geometry": false,
+  "new_texture_UV_geometry": {
+    "derived_textures": true,
+    "new_UV": false,
+    "new_geometry": false
+  },
   "runtime_validation": "job88174: automated binding/restoration/physics/initial-state/random/local-reset checks passed; visual acceptance blocked for cabinet/bowl, not confirmed for beads; pending Dennis",
   "URDF_sha256": "eed1ddb9fdaad535ebdcff0ac27d322228b0452250574cb8c462be9720648416",
   "links": {

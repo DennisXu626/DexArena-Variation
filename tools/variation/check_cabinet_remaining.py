@@ -260,29 +260,50 @@ def visual_evidence():
     """Diagnostic instances only. Never modify normal task poses or cameras."""
     diagnostic = {'surface_probes': {}, 'independent_beads': {}, 'robot_success': False}
     dump(OUT / 'visual_evidence.json', diagnostic)
-    for task, role, name in [('OpenCabinet', 'cabinet', 'cabinet:link_0'), ('PourBeads', 'bowl', 'bowl')]:
+    # Fixed object-only crops for the native 1280x720 human camera and seed 71.
+    # Unlike a whole-frame difference, these exclude the independently tinted bottle.
+    for task, role, box in [('OpenCabinet', 'cabinet', (625, 185, 760, 370)),
+                            ('PourBeads', 'bowl', (690, 392, 755, 435))]:
+        row = {'status': 'started', 'ROI_xyxy': box, 'fresh': {}, 'switches': {}}
+        diagnostic['surface_probes'][task] = row
+        def roi(frame):
+            x0, y0, x1, y1 = box
+            return frame['human'][0, y0:y1, x0:x1, :3].astype(np.int16)
+        # Compare valid texture-to-texture paths. Removing a texture at runtime
+        # tests a different renderer transition and is not a visibility oracle.
+        fresh = {}
+        for scheme in ['original', 'ocean', 'citrus']:
+            first = gym.make(f'CabinetPouring{task}-Sharpa-v1', num_envs=1, sim_backend='physx_cuda',
+                             obs_mode='rgb', render_mode='rgb_array', reconfiguration_freq=0,
+                             variation=cfg(scheme))
+            try:
+                first.reset(seed=71)
+                fresh[scheme] = roi(capture(first, f'DIAGNOSTIC_{task}_fresh_{scheme}'))
+                row['fresh'][scheme] = {'mean_rgb': fresh[scheme].mean(axis=(0, 1)).tolist()}
+            finally:
+                first.close()
+        for scheme in ['ocean', 'citrus']:
+            delta = np.abs(fresh[scheme] - fresh['original'])
+            count = int(np.count_nonzero(np.any(delta > 15, axis=-1)))
+            row['fresh'][scheme]['changed_pixels_gt15'] = count
+            dump(OUT / 'visual_evidence.json', diagnostic)
+            assert count >= (100 if role == 'cabinet' else 20), ('Fresh object texture not visible', task, scheme, count)
         probe = gym.make(f'CabinetPouring{task}-Sharpa-v1', num_envs=1, sim_backend='physx_cuda',
                          obs_mode='rgb', render_mode='rgb_array', reconfiguration_freq=0, variation=cfg())
         try:
             probe.reset(seed=71); e = probe.unwrapped
-            native = materials(e); capture(probe, f'DIAGNOSTIC_{task}_original')
-            binding = next(b for b in e._variation._bindings[0] if b['name'] == name and b['role'] == role)
-            m = binding['material']; original = binding['original']; params = catalog['schemes']['ocean']['objects'][role]
-            m.base_color = params['base_color']; m.roughness = params['roughness']; m.metallic = params['metallic']
-            old = capture(probe, f'DIAGNOSTIC_{task}_old_scalar_path')
-            m.base_color = [1, 0, 1, 1]  # Diagnostic only: never a published scheme.
-            textured = capture(probe, f'DIAGNOSTIC_{task}_magenta_with_native_texture')
-            assert np.array_equal(old['human'], textured['human']), 'Texture/baseColor exclusivity hypothesis rejected'
-            m.base_color_texture = None
-            bare = capture(probe, f'DIAGNOSTIC_{task}_magenta_without_texture')
-            changed = int(np.count_nonzero(bare['human'] != textured['human']))
-            assert changed > 0, 'Selected material is not visibly used by this surface'
-            probe.reset(seed=71, options={'variation': {'appearance': {'scheme_id': 'ocean'}}})
-            verify(e, ['ocean'], native); fixed = capture(probe, f'DIAGNOSTIC_{task}_fixed_ocean')
-            assert np.count_nonzero(fixed['human'] != old['human']) > 0
-            diagnostic['surface_probes'][task] = {'status': 'passed', 'binding_name': name, 'part': binding['part'],
-                'source_texture': original['base_color_texture'].filename, 'texture_vs_scalar_identical': True,
-                'remove_texture_changed_channels': changed, 'fixed_uses_tinted_native_detail': True}
+            native = materials(e)
+            for scheme in ['original', 'ocean', 'citrus', 'original', 'violet']:
+                probe.reset(seed=71, options={'variation': {'appearance': {'scheme_id': scheme}}})
+                verify(e, [scheme], native)
+                current = roi(capture(probe, f'DIAGNOSTIC_{task}_switch_{scheme}'))
+                expected = fresh['original' if scheme == 'violet' else scheme]
+                delta = np.abs(current - expected)
+                row['switches'][scheme] = {'max_channel_difference_from_fresh': int(delta.max()),
+                                           'mean_difference_from_fresh': float(delta.mean())}
+                dump(OUT / 'visual_evidence.json', diagnostic)
+                assert delta.max() <= 3, ('Runtime texture switch differs from fresh instance', task, scheme, row['switches'][scheme])
+            row['status'] = 'passed'
             dump(OUT / 'visual_evidence.json', diagnostic)
         finally:
             probe.close()
@@ -319,7 +340,22 @@ def visual_evidence():
                      'ocean': (r > g + 20) & (g > b + 10),
                      'citrus': (r > g + 20) & (b > g + 20),
                      'violet': (b > r + 20) & (b > g + 10)}[scheme]
-            return int(np.count_nonzero(color))
+            # Count only projected particle interiors, never arbitrary background.
+            eye = np.array([1., .90, .60]); target = np.array([1., 1., .50])
+            forward = target - eye; forward /= np.linalg.norm(forward)
+            left = np.cross([0., 0., 1.], forward); left /= np.linalg.norm(left)
+            up = np.cross(forward, left)
+            yy, xx = np.mgrid[:image.shape[0], :image.shape[1]]
+            focal = image.shape[0] / (2 * np.tan(.65 / 2))
+            mask = np.zeros(xx.shape, dtype=bool)
+            for j in range(len(e.particles)):
+                v = np.array([1 + (j % 4 - 1.5) * .018, 1 + (j // 4 - 1.5) * .018, .50]) - eye
+                depth = v @ forward
+                cx = image.shape[1] / 2 - focal * (v @ left) / depth
+                cy = image.shape[0] / 2 - focal * (v @ up) / depth
+                radius = .65 * focal * e.particle_radius / depth
+                mask |= (xx-cx)**2 + (yy-cy)**2 < radius**2
+            return int(np.count_nonzero(color & mask))
         native = None; baseline = None
         for scheme in ['original', 'ocean', 'citrus', 'original', 'violet']:
             beads.reset(seed=71, options={'variation': {'appearance': {'scheme_id': scheme}}}); place([0, 1])

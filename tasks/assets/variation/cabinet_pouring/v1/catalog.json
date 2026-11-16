@@ -1,7 +1,7 @@
 {
   "version": "cabinet-appearance-v1.2",
-  "source": "M2 original procedural graphics, generated with Pillow; no external artwork",
-  "permission": "Project-authored graphics; no third-party artwork restrictions",
+  "source": "Project-authored bottle labels; cabinet/bowl recolors derived from original task textures; see object_tints/provenance.json",
+  "permission": "Original asset license terms apply to derived cabinet/bowl textures; project-authored bottle labels retain their existing terms",
   "schemes": {
     "original": {
       "description": "Restore captured native render properties and original texture/marker colors"
