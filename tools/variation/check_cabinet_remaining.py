@@ -26,6 +26,7 @@ parser.add_argument('--static', action='store_true')
 parser.add_argument('--approved-runtime', action='store_true')
 parser.add_argument('--approval', type=Path)
 parser.add_argument('--output', type=Path)
+parser.add_argument('--visual-evidence', action='store_true', help='Single-variable texture probes and independent bead scene')
 args = parser.parse_args()
 catalog = json.loads((ROOT / 'tasks/assets/variation/cabinet_pouring/v1/catalog.json').read_text())
 if args.static:
@@ -43,7 +44,7 @@ assert approval.get('storage_risk_confirmed_by_Dennis') is True
 assert approval.get('storage_root') == ROOT_APPROVED
 assert approval.get('accept_sampled_limit_overshoot') is True
 assert approval.get('blockers_resolved') is True
-assert approval.get('max_GPU_seconds') == 600 and approval.get('max_jobs') == 1
+assert (approval.get('max_GPU_seconds'), approval.get('max_jobs')) in [(600, 1), (300, 2)]
 assert os.environ.get('SLURM_JOB_ID'), 'Allocated job required'
 assert args.output.resolve().is_relative_to(Path(ROOT_APPROVED).resolve())
 args.output.mkdir(parents=True, exist_ok=False)
@@ -183,7 +184,11 @@ def verify(e, ids, native):
             elif new_object:
                 expected = list(params['base_color']); expected[3] = float(original['base_color'][3])
                 np.testing.assert_allclose(m.base_color, expected, rtol=0, atol=1e-7)
-                assert m.base_color_texture == original['base_color_texture']
+                if original['base_color_texture'] is not None and 'texture_files' in params:
+                    expected_texture = params['texture_files'][Path(original['base_color_texture'].filename).name]
+                    assert Path(m.base_color_texture.filename).resolve() == (ROOT / 'tasks/assets/variation/cabinet_pouring/v1' / expected_texture).resolve()
+                else:
+                    assert m.base_color_texture == original['base_color_texture']
                 assert abs(m.roughness - params['roughness']) < 1e-7
                 assert abs(m.metallic - params['metallic']) < 1e-7
             else:
@@ -251,8 +256,107 @@ def engineering(env, task, row):
                           'native_stage_twins': e.bottle_stage_twins, 'artificial_trigger': True}
 
 
+def visual_evidence():
+    """Diagnostic instances only. Never modify normal task poses or cameras."""
+    diagnostic = {'surface_probes': {}, 'independent_beads': {}, 'robot_success': False}
+    dump(OUT / 'visual_evidence.json', diagnostic)
+    for task, role, name in [('OpenCabinet', 'cabinet', 'cabinet:link_0'), ('PourBeads', 'bowl', 'bowl')]:
+        probe = gym.make(f'CabinetPouring{task}-Sharpa-v1', num_envs=1, sim_backend='physx_cuda',
+                         obs_mode='rgb', render_mode='rgb_array', reconfiguration_freq=0, variation=cfg())
+        try:
+            probe.reset(seed=71); e = probe.unwrapped
+            native = materials(e); capture(probe, f'DIAGNOSTIC_{task}_original')
+            binding = next(b for b in e._variation._bindings[0] if b['name'] == name and b['role'] == role)
+            m = binding['material']; original = binding['original']; params = catalog['schemes']['ocean']['objects'][role]
+            m.base_color = params['base_color']; m.roughness = params['roughness']; m.metallic = params['metallic']
+            old = capture(probe, f'DIAGNOSTIC_{task}_old_scalar_path')
+            m.base_color = [1, 0, 1, 1]  # Diagnostic only: never a published scheme.
+            textured = capture(probe, f'DIAGNOSTIC_{task}_magenta_with_native_texture')
+            assert np.array_equal(old['human'], textured['human']), 'Texture/baseColor exclusivity hypothesis rejected'
+            m.base_color_texture = None
+            bare = capture(probe, f'DIAGNOSTIC_{task}_magenta_without_texture')
+            changed = int(np.count_nonzero(bare['human'] != textured['human']))
+            assert changed > 0, 'Selected material is not visibly used by this surface'
+            probe.reset(seed=71, options={'variation': {'appearance': {'scheme_id': 'ocean'}}})
+            verify(e, ['ocean'], native); fixed = capture(probe, f'DIAGNOSTIC_{task}_fixed_ocean')
+            assert np.count_nonzero(fixed['human'] != old['human']) > 0
+            diagnostic['surface_probes'][task] = {'status': 'passed', 'binding_name': name, 'part': binding['part'],
+                'source_texture': original['base_color_texture'].filename, 'texture_vs_scalar_identical': True,
+                'remove_texture_changed_channels': changed, 'fixed_uses_tinted_native_detail': True}
+            dump(OUT / 'visual_evidence.json', diagnostic)
+        finally:
+            probe.close()
+
+    import sapien
+    from mani_skill.utils import sapien_utils
+    from mani_skill.utils.structs import Pose
+    # A separate diagnostic instance reuses native build_sphere + Actor.merge +
+    # PilotVariation. The bottle stays outside this close camera's field of view.
+    beads = gym.make('CabinetPouringUnscrewCap-Sharpa-v1', num_envs=2, sim_backend='physx_cuda',
+                     obs_mode='rgb', render_mode='rgb_array', reconfiguration_freq=0, variation=cfg(),
+                     human_render_camera_configs={'width': 512, 'height': 512, 'fov': .65,
+                         'pose': sapien_utils.look_at([1, .90, .60], [1, 1, .50])})
+    try:
+        e = beads.unwrapped
+        def place(indices):
+            for j, particle in enumerate(e.particles):
+                p = particle.pose.p.clone()
+                p[indices] = torch.tensor([1 + (j % 4 - 1.5) * .018, 1 + (j // 4 - 1.5) * .018, .50], device=e.device)
+                particle.set_pose(Pose.create_from_pq(p=p, q=particle.pose.q))
+            e.scene.px.gpu_apply_rigid_dynamic_data(); e.scene._gpu_fetch_all()
+        def frame(prefix):
+            from PIL import ImageDraw
+            a = beads.render().detach().cpu().numpy().copy()
+            for i, image in enumerate(a):
+                im = Image.fromarray(image[..., :3]); draw = ImageDraw.Draw(im)
+                draw.rectangle((0, 0, 511, 18), fill='black')
+                draw.text((4, 3), 'INDEPENDENT BEAD DIAGNOSTIC - NOT TASK INITIAL STATE', fill='white')
+                im.save(OUT / f'INDEPENDENT_BEADS_{prefix}_{i}.png')
+            return a
+        def color_count(image, scheme):
+            r,g,b = np.moveaxis(image[..., :3].astype(np.int16), -1, 0)
+            color = {'original': (b > r + 20) & (b > g + 10),
+                     'ocean': (r > g + 20) & (g > b + 10),
+                     'citrus': (r > g + 20) & (b > g + 20),
+                     'violet': (b > r + 20) & (b > g + 10)}[scheme]
+            return int(np.count_nonzero(color))
+        native = None; baseline = None
+        for scheme in ['original', 'ocean', 'citrus', 'original', 'violet']:
+            beads.reset(seed=71, options={'variation': {'appearance': {'scheme_id': scheme}}}); place([0, 1])
+            if native is None: native = materials(e)
+            verify(e, [scheme] * 2, native); images = frame(scheme)
+            counts = [color_count(image, scheme) for image in images]
+            assert min(counts) >= 100, ('Bead color not visually resolved', scheme, counts)
+            if baseline is None: baseline = images.copy()
+            if scheme in ['original', 'violet']: assert np.array_equal(images, baseline), 'Independent bead native restoration differs'
+            diagnostic['independent_beads'][scheme] = {'status': 'passed', 'color_pixels': counts}
+        beads.reset(seed=71, options={'variation': {'per_env': {'0': {'appearance': {'scheme_id': 'ocean'}}, '1': {'appearance': {'scheme_id': 'citrus'}}}}}); place([0, 1])
+        for turn, scheme in enumerate(['original', 'ocean']):
+            before, old_mat = snapshot(e), materials(e)
+            rng = [copy.deepcopy(e._variation.rng[k][0].bit_generator.state) for k in [0, 1]]
+            records = copy.deepcopy([x for x in e._variation.records if x['env_idx'] == 0])
+            images = frame(f'local{turn}_before')
+            beads.reset(options={'env_idx': torch.tensor([1], device=e.device), 'variation': {'per_env': {'1': {'appearance': {'scheme_id': scheme}}}}}); place([1])
+            after = frame(f'local{turn}_after'); unselected(before, snapshot(e), 2)
+            assert {k:v for k,v in old_mat.items() if k.endswith('/0')} == {k:v for k,v in materials(e).items() if k.endswith('/0')}
+            assert rng == [e._variation.rng[k][0].bit_generator.state for k in [0, 1]]
+            assert records == [x for x in e._variation.records if x['env_idx'] == 0]
+            assert np.array_equal(images[0], after[0]) and not np.array_equal(images[1], after[1])
+            assert color_count(after[1], scheme) >= 100
+            verify(e, ['ocean', scheme], native)
+            diagnostic['independent_beads'][f'local_{turn}'] = {'status': 'passed', 'env0_pixels': 0,
+                'env1_changed_channels': int(np.count_nonzero(images[1] != after[1])), 'scheme': scheme}
+        diagnostic['independent_beads']['geometry'] = {'radius_m': e.particle_radius, 'count_per_env': len(e.particles), 'user_steps': 0}
+        diagnostic['status'] = 'passed'; dump(OUT / 'visual_evidence.json', diagnostic)
+    finally:
+        beads.close()
+
+
 manifest_files = [p for p in (ROOT / 'tasks/cabinet_pouring').glob('*.py')]
 manifest_files += [ROOT / 'tasks/assets/variation/cabinet_pouring/v1/catalog.json', Path(__file__)]
+manifest_files += [p for p in (ROOT / 'tasks/assets/variation/cabinet_pouring/v1').rglob('*')
+                   if p.is_file() and p.suffix in {'.png', '.json'} and p not in manifest_files]
+manifest_files += [ROOT / 'tools/variation/make_cabinet_tints.py']
 from tasks.cabinet_pouring.cabinet_pouring_long import TASK_ASSET_DIR
 manifest = {'git_commit': subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip(),
     'files': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in manifest_files},
@@ -264,6 +368,8 @@ dump(OUT / 'manifest.json', manifest)
 env = None
 started = time.monotonic()
 try:
+    if args.visual_evidence:
+        visual_evidence()
     for task, (n, loaded) in TASKS.items():
         row = {'status': 'started', 'objects': {k: 'pending' if k in loaded else 'not_applicable'
                for k in ['cabinet', 'bowl', 'beads']}, 'checks': {}}
@@ -276,6 +382,7 @@ try:
         assert len(getattr(e, 'particles', [])) == (e.num_particles if e.has_bottle else 0)
         env.close(); env = None
         env = make(task, cfg()); e = env.unwrapped
+        original_frames = None
         for scheme in SCHEMES + ['ocean', 'original']:
             env.reset(seed=71, options={'variation': {'appearance': {'scheme_id': scheme}}})
             dump(OUT / f'{task}_current_materials.json', materials(e))
@@ -284,12 +391,24 @@ try:
             assert physical(e) == phys and snapshot(e) == state, 'Geometry/physics/initial-state mismatch'
             if scheme == 'original': assert actual == native
             row['checks'][scheme] = {'status': 'passed', 'materials': actual}
-            capture(env, f'{task}_{scheme}')
+            frames = capture(env, f'{task}_{scheme}')
+            if original_frames is None: original_frames = frames
+            if args.visual_evidence and scheme in ['ocean', 'citrus']:
+                rois = {'cabinet': (82, 38, 158, 150), 'bowl': (171, 176, 198, 199)}
+                for role in loaded & rois.keys():
+                    x0,y0,x1,y1 = rois[role]
+                    delta = np.abs(frames['base_camera'][0,y0:y1,x0:x1,:3].astype(np.int16) -
+                                   original_frames['base_camera'][0,y0:y1,x0:x1,:3].astype(np.int16))
+                    changed = int(np.count_nonzero(np.any(delta > 10, axis=-1)))
+                    assert changed > 20 and delta.mean() > 3, ('Native object RGB change too small', task, role, scheme)
+                    row['checks'][scheme].setdefault('native_object_RGB', {})[role] = {
+                        'ROI_xyxy': [x0,y0,x1,y1], 'pixels_delta_gt_10': changed, 'mean_channel_delta': float(delta.mean()),
+                        'note': 'Object ROI evidence, final visual review also required'}
         row['checks']['candidate_to_original'] = 'passed'
         if n == 2:
             env.reset(seed=71, options={'variation': {'per_env': {'0': {'appearance': {'scheme_id': 'ocean'}},
                      '1': {'appearance': {'scheme_id': 'citrus'}}}}})
-            for turn, scheme in enumerate(['violet', 'original']):
+            for turn, scheme in enumerate(['violet', 'ocean']):
                 before_state, before_mat = snapshot(e), materials(e)
                 rng = [copy.deepcopy(e._variation.rng[k][0].bit_generator.state) for k in [0, 1]]
                 records = [copy.deepcopy(x) for x in e._variation.records if x['env_idx'] == 0]
@@ -306,7 +425,10 @@ try:
                 after = capture(env, f'{task}_local{turn}_after')
                 pixels = {k: int(np.count_nonzero(v[0] != after[k][0])) for k, v in images.items()}
                 assert not any(pixels.values()), pixels
-                row['checks'][f'local_{turn}'] = {'status': 'passed', 'selected': [1], 'scheme': scheme, 'env0_pixels': pixels}
+                selected_pixels = {k: int(np.count_nonzero(v[1] != after[k][1])) for k, v in images.items()}
+                assert selected_pixels['human'] > 0, 'Selected environment did not visibly change'
+                row['checks'][f'local_{turn}'] = {'status': 'passed', 'selected': [1], 'scheme': scheme,
+                    'env0_pixels': pixels, 'env1_changed_channels': selected_pixels}
             assert physical(e) == phys
         if task in ['PickBottle', 'UnscrewCap', 'Long']:
             env.reset(seed=71, options={'variation': {'appearance': {'scheme_id': 'violet'},

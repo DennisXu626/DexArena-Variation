@@ -80,6 +80,13 @@ class PilotVariation:
                 path = str(ASSETS / scheme["label_texture"])
                 if path not in self._textures:
                     self._textures[path] = sr.RenderTexture2D(filename=path, mipmap_levels=4)
+            # Textured native objects need a tinted texture: SAPIEN's raster
+            # shader selects texture instead of multiplying by base_color.
+            for params in scheme.get("objects", {}).values():
+                for filename in params.get("texture_files", {}).values():
+                    path = str(ASSETS / filename)
+                    if path not in self._textures:
+                        self._textures[path] = sr.RenderTexture2D(filename=path, mipmap_levels=4)
 
     @staticmethod
     def isolate_builder_materials(builder):
@@ -231,6 +238,10 @@ class PilotVariation:
                         color = list(params["base_color"])
                         color[3] = float(binding["original"]["base_color"][3])
                         material.base_color = color
+                        texture = binding["original"]["base_color_texture"]
+                        if texture is not None and "texture_files" in params:
+                            filename = params["texture_files"][Path(texture.filename).name]
+                            material.base_color_texture = self._textures[str(ASSETS / filename)]
                         material.roughness = params["roughness"]
                         material.metallic = params["metallic"]
                     continue  # omitted schemes/roles restore captured original

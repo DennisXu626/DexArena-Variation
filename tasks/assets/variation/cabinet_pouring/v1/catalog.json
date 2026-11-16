@@ -1,5 +1,5 @@
 {
-  "version": "cabinet-appearance-v1.1",
+  "version": "cabinet-appearance-v1.2",
   "source": "M2 original procedural graphics, generated with Pillow; no external artwork",
   "permission": "Project-authored graphics; no third-party artwork restrictions",
   "schemes": {
@@ -39,7 +39,14 @@
             1
           ],
           "roughness": 0.6,
-          "metallic": 0.0
+          "metallic": 0.0,
+          "texture_files": {
+            "texture_0.jpg": "object_tints/cabinet_ocean_texture_0.png",
+            "texture_1.jpg": "object_tints/cabinet_ocean_texture_1.png",
+            "texture_2.jpg": "object_tints/cabinet_ocean_texture_2.png",
+            "texture_3.jpg": "object_tints/cabinet_ocean_texture_3.png",
+            "texture_4.png": "object_tints/cabinet_ocean_texture_4.png"
+          }
         },
         "bowl": {
           "base_color": [
@@ -49,7 +56,10 @@
             1
           ],
           "roughness": 0.45,
-          "metallic": 0.0
+          "metallic": 0.0,
+          "texture_files": {
+            "material_0.jpeg": "object_tints/bowl_ocean_material_0.png"
+          }
         },
         "beads": {
           "base_color": [
@@ -96,7 +106,14 @@
             1
           ],
           "roughness": 0.65,
-          "metallic": 0.0
+          "metallic": 0.0,
+          "texture_files": {
+            "texture_0.jpg": "object_tints/cabinet_citrus_texture_0.png",
+            "texture_1.jpg": "object_tints/cabinet_citrus_texture_1.png",
+            "texture_2.jpg": "object_tints/cabinet_citrus_texture_2.png",
+            "texture_3.jpg": "object_tints/cabinet_citrus_texture_3.png",
+            "texture_4.png": "object_tints/cabinet_citrus_texture_4.png"
+          }
         },
         "bowl": {
           "base_color": [
@@ -106,7 +123,10 @@
             1
           ],
           "roughness": 0.55,
-          "metallic": 0.0
+          "metallic": 0.0,
+          "texture_files": {
+            "material_0.jpeg": "object_tints/bowl_citrus_material_0.png"
+          }
         },
         "beads": {
           "base_color": [
