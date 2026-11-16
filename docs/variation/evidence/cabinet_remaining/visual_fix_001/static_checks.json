@@ -1,0 +1,68 @@
+{
+  "production_files_match_frozen_runtime": {
+    "tasks/cabinet_pouring/variation.py": true,
+    "tasks/cabinet_pouring/__init__.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": true,
+    "tasks/assets/variation/cabinet_pouring/v1/catalog.json": true,
+    "tools/variation/check_cabinet_remaining.py": true,
+    "tasks/assets/variation/cabinet_pouring/v1/citrus.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/ocean.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/violet.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_3.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/bowl_citrus_material_0.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_3.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_4.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_0.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/provenance.json": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_2.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_ocean_texture_1.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_0.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_1.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_2.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/cabinet_citrus_texture_4.png": true,
+    "tasks/assets/variation/cabinet_pouring/v1/object_tints/bowl_ocean_material_0.png": true,
+    "tools/variation/make_cabinet_tints.py": true
+  },
+  "derived_textures": {
+    "count": 12,
+    "bytes": 3896904,
+    "output_hashes_dimensions_decoding_source_hashes": "passed"
+  },
+  "static": {
+    "exit": 0,
+    "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 12, \"json_configs\": 10, \"relative_links\": 164, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+    "stderr": ""
+  },
+  "archive": {
+    "exit": 0,
+    "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 4, \"pending_adaptation\": 34, \"no_visual\": 3, \"not_loaded\": 1, \"external_pending\": 0}, \"decoded_pngs\": 13, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 341, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n",
+    "stderr": ""
+  },
+  "checker_static": {
+    "exit": 0,
+    "stdout": "{\"status\": \"static_passed\", \"tasks\": {\"OpenCabinet\": [2, [\"cabinet\"]], \"PickBottle\": [2, [\"beads\", \"cabinet\"]], \"UnscrewCap\": [2, [\"beads\"]], \"PourBeads\": [2, [\"bowl\", \"beads\"]], \"Long\": [1, [\"bowl\", \"beads\", \"cabinet\"]]}, \"runtime\": \"NOT RUN\", \"GPU_seconds\": 0}\n",
+    "stderr": ""
+  },
+  "diff": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "relative_links": {
+    "count": 105,
+    "errors": []
+  },
+  "inventory": {
+    "count": 42,
+    "states": {
+      "pending_adaptation": 34,
+      "accepted_pilot": 4,
+      "no_visual": 3,
+      "not_loaded": 1
+    }
+  }
+}

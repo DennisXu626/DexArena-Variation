@@ -29,5 +29,12 @@
   ],
   "UV": "no imported UV/texture; native sphere visual",
   "isolation": "Only appearance-enabled builds use native build_sphere scene_idxs=[i], then Actor.merge; same radius/color/body_type/pose, physics setup unchanged",
-  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md"
+  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md",
+  "visual_fix_001": {
+    "catalog_version": "cabinet-appearance-v1.2",
+    "runtime_commit": "ddc10c02c40cd149906122daf690d3325d6f4ccc",
+    "job_id": "88509",
+    "status": "diagnostic_failed; formal_visual_and_regression_not_run",
+    "evidence": "docs/variation/evidence/cabinet_remaining/visual_fix_001/README.md"
+  }
 }

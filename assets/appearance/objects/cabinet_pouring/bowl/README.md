@@ -31,3 +31,7 @@ original完整恢复捕获的base_color、base_color_texture、roughness和metal
 沿用variation.appearance的固定/集合随机、per_env及局部reset覆盖，不增加任意逐对象组合接口。一次reset选同一方案，所有实际表示复用该选择；original恢复先于新方案写入，未覆盖项不沿用上一回合颜色。材质owner检查拒绝跨env共享；运行隔离尚未证明。初始位姿功能仍只允许原PickBottle/UnscrewCap。
 
 参数可直接复现，无素材制作脚本或新图片需要生成；沿用[配置示例](../../../../../examples/variation/cabinet_pouring/appearance.json)或随机示例，任务与边界见[本轮说明](../../../../../docs/variation/CABINET_REMAINING.md)。素材/接入已准备，CPU检查见说明；真实同seed/相机/光照原版及两候选、切回original、阶段与局部reset对照均待获批短检，不提供假预览。
+
+## visual_fix_001（本轮最新）
+
+v1.2柜体/碗派生纹理修复已准备，珠子独立诊断脚本已准备；作业88509在柜体首材质可见性探针停止，后续全部未运行，不能按本轮视觉通过。旧v1.1参数/隔离结果仅保留原范围。见[本轮证据](../../../../../docs/variation/evidence/cabinet_remaining/visual_fix_001/README.md)；当前仍pending_adaptation，待Dennis决定后续，不增加验收计数。

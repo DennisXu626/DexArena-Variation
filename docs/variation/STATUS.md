@@ -72,3 +72,7 @@
 ## Cabinet剩余对象短检（视觉交验受阻）
 
 柜体、碗、珠子的作业88174已完成：四短任务各2env、Long单env工程检查。original/ocean/citrus/violet的实际材质参数、恢复、物理初态、固定/随机记录，以及四短任务两轮env1局部reset隔离自动断言通过；瓶/盖表示与xy_v2合法点必要回归通过。**实景审计中柜体和碗未呈现预期配色；珠子独立视觉效果未确认，不能据脚本总passed判为验收通过。** 三对象仍pending_adaptation，计数不增加；PR #10保持草稿、未合并，待Dennis审验。见[真实图、逐任务证据及边界](evidence/cabinet_remaining/README.md)，[原准备与接口说明](CABINET_REMAINING.md)保留。没有完整机器人任务、训练、A6或Long双环境结论。
+
+## Cabinet视觉修复补充（未通过）
+
+[visual_fix_001](evidence/cabinet_remaining/visual_fix_001/README.md)：已准备v1.2原纹理派生配色最小修复；首份诊断作业88509在单材质可见性断言停止，13GPU秒、Requeue=0。正式修复视觉、独立珠子蓝/橙/紫及原矩阵回归未运行。旧v1.1证据保持历史范围，三个对象仍pending_adaptation，PR #10草稿未合并；没有增加已验收数量。

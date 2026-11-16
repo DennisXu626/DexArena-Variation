@@ -26,5 +26,12 @@
   ],
   "texture": "bowl/visual/material_0.jpeg",
   "representation": "target kinematic mesh actor; inner/outer/rim share one imported material",
-  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md"
+  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/README.md",
+  "visual_fix_001": {
+    "catalog_version": "cabinet-appearance-v1.2",
+    "runtime_commit": "ddc10c02c40cd149906122daf690d3325d6f4ccc",
+    "job_id": "88509",
+    "status": "diagnostic_failed; formal_visual_and_regression_not_run",
+    "evidence": "docs/variation/evidence/cabinet_remaining/visual_fix_001/README.md"
+  }
 }

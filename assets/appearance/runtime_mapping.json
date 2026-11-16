@@ -156,5 +156,11 @@
     "evidence": "docs/variation/evidence/cabinet_remaining/README.md",
     "status": "automated_checks_passed; visual_acceptance_blocked; pending Dennis",
     "accepted_object_count_increment": 0
+  },
+  "cabinet_remaining_visual_fix_001": {
+    "status": "diagnostic_failed; v1.2_not_runtime_validated",
+    "job": "88509",
+    "evidence": "docs/variation/evidence/cabinet_remaining/visual_fix_001/README.md",
+    "accepted_object_count_increment": 0
   }
 }
