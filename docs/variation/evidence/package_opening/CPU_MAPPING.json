@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "additional_checks": [
+    {
+      "binding_order_reversed": false,
+      "candidate_ids": [
+        "variant_1",
+        "variant_2"
+      ],
+      "actual_ids": [
+        "variant_1",
+        "variant_2"
+      ],
+      "global_env_indices": [
+        3,
+        1
+      ]
+    },
+    {
+      "binding_order_reversed": false,
+      "candidate_ids": [
+        "variant_2",
+        "variant_1"
+      ],
+      "actual_ids": [
+        "variant_1",
+        "variant_1"
+      ],
+      "global_env_indices": [
+        3,
+        1
+      ]
+    },
+    {
+      "binding_order_reversed": true,
+      "candidate_ids": [
+        "variant_1",
+        "variant_2"
+      ],
+      "actual_ids": [
+        "variant_1",
+        "variant_2"
+      ],
+      "global_env_indices": [
+        3,
+        1
+      ]
+    },
+    {
+      "binding_order_reversed": true,
+      "candidate_ids": [
+        "variant_2",
+        "variant_1"
+      ],
+      "actual_ids": [
+        "variant_1",
+        "variant_1"
+      ],
+      "global_env_indices": [
+        3,
+        1
+      ]
+    }
+  ],
+  "rows": 57,
+  "GPU_seconds": 0,
+  "scope": "No simulator, tempfile manager, assets, recolor_apple or image generation invoked"
+}

@@ -87,3 +87,11 @@ Slurm 作业 `87021` 在 `lyg0295` 完成，退出码 `0:0`。基线为 `acd6ba2
 | 长任务 | 1.403 → 1.794 | 12.60 → 12.41 | 499.16 → 499.70 | 5.25 → 5.30 |
 
 以上是同一作业进程先跑原版再跑变体的单次构建和 8 次热调用中位数。热 reset 复用当前方案，初次生成贴图和重复切换的代价没有单独计时。任务判定输入由脚本控制，完整机器人开盒和抓取轨迹、更多并行环境及显存曲线留待后续验收。
+
+## PR9-R2核对与档案收尾
+
+限定证据已查收，待最终合并。[方案映射](evidence/package_opening/SCHEME_MAPPING.json)分别记录任务scheme_id、对象recipe ID、env_idx、role和历史图注。无数字方案入口。variant_1为kraft／golden／teal_glaze，variant_2为blue_gray／green／ivory_satin；green保留include_yellow_skin=true。
+
+四张PR图按内容分别为闭盒、苹果、盘子、盒内苹果；第四张盒体仍original，不声称两套开盖纸盒均已视觉验证。预览文件用recipe ID命名，任务接口用scheme_id，两者不混称；执行预览模板必须显式传入上述唯一运行catalog，本轮没有运行预览。未来Windows运行OBJ／MTL临时副本须先核准D盘位置及量级，本轮没有环境导入或临时资产生成。
+
+[本轮记录](evidence/package_opening/PR9-R2.md)复用已关闭32轮检查和既有GPU证据，只补CPU索引映射。

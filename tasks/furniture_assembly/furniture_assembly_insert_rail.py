@@ -117,6 +117,8 @@ from tasks.furniture_assembly.furniture_assembly_lay_flat_panel import (
 )
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
+from tasks.furniture_assembly.appearance import FurnitureAppearance
+from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
 from tasks.config.object_materials import object_material
 from tasks.scene_builders import TableSceneBuilder
 from tasks.config.sim_profiles import make_sim_config
@@ -292,6 +294,8 @@ def build_slider_rail(
     visual_detail: bool = True,
     kinematic: bool = False,
     show_screw_bosses: bool = True,
+    appearance=None,
+    defer_drive_target: bool = False,
 ):
     """Steel drawer slide member: C-section with two locating pins on the underside.
 
@@ -373,12 +377,14 @@ def build_slider_rail(
     builder.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.5])
     _add_screw_head_link(art, builder, phys, screw)
     art.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.5])
+    if appearance is not None:
+        appearance.isolate_builder_materials(art)
     built = art.build(name=name, fix_root_link=bool(kinematic))
-    apply_screw_thread_resistance(built)
+    apply_screw_thread_resistance(built, initialize_target=not defer_drive_target)
     return built
 
 
-def apply_screw_thread_resistance(rail_articulation) -> None:
+def apply_screw_thread_resistance(rail_articulation, initialize_target: bool = True) -> None:
     """Coulomb thread torque on the screw joint (see SCREW_THREAD_TORQUE)."""
     joints = rail_articulation.active_joints_map if hasattr(rail_articulation, "active_joints_map") else {}
     joint = joints.get("screw_joint") if joints else None
@@ -389,7 +395,8 @@ def apply_screw_thread_resistance(rail_articulation) -> None:
     for j in targets:
         j.set_drive_properties(stiffness=0.0, damping=SCREW_THREAD_DAMPING,
                                force_limit=SCREW_THREAD_TORQUE, mode="force")
-        j.set_drive_velocity_target(0.0)
+        if initialize_target:
+            j.set_drive_velocity_target(0.0)
 
 
 def _add_screw_head_link(art, rail_link, phys, screw_render_material):
@@ -655,7 +662,7 @@ class RailSeatClip:
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -739,6 +746,7 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
         rail_random_yaw: float = 0.0,
         panel_color_jitter: bool = True,
         visual_detail: bool = True,
+        furniture_appearance: dict | None = None,
         terminate_on_success: bool = False,
         render_camera_eye=(0.68, -1.71, 0.92),
         render_camera_target=(-0.45, -0.04, 0.36),
@@ -749,6 +757,10 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
         reconfiguration_freq=None,
         **kwargs,
     ):
+        self._furniture_appearance = (
+            FurnitureAppearance(furniture_appearance, num_envs)
+            if furniture_appearance and furniture_appearance.get("enabled", False) else None
+        )
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.rail_random_x = float(rail_random_x)
         self.rail_random_y = float(rail_random_y)
@@ -825,7 +837,7 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
 
         self.panel = build_drawer_panel(
             self.scene, base_color=base_color, visual_detail=self.visual_detail,
-            kinematic=True,
+            kinematic=True, appearance=self._furniture_appearance,
         )
         # the long task builds its rail with show_screw_bosses=False (the
         # articulated screw is the visible one). A subtask must be a subset of the long
@@ -834,7 +846,9 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
         # same marker under the same panel (user: strict subset).
         self.place_marker = build_place_marker(self.scene, PLACE_REGION_HALF_SIZE)
         self.rail = build_slider_rail(self.scene, visual_detail=self.visual_detail,
-                                      show_screw_bosses=False)
+                                      show_screw_bosses=False,
+                                      appearance=self._furniture_appearance,
+                                      defer_drive_target=self.gpu_sim_enabled)
         set_task_object_energy_fence(self.rail)
         self.rail_body = self.rail.links_map["rail_body"]
         self.screw_joint = self.rail.active_joints_map["screw_joint"]
@@ -850,15 +864,28 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
         self.settle_counter = torch.zeros(
             (self.num_envs,), dtype=torch.int32, device=self.device
         )
+        if self._furniture_appearance is not None:
+            for env_id in range(self.num_envs):
+                self._furniture_appearance.bind(self, env_id)
+
+    def _after_reconfigure(self, options: dict):
+        super()._after_reconfigure(options)
+        if self.gpu_sim_enabled:
+            self.screw_joint.set_drive_velocity_target(0.0)
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
             b = len(env_idx)
             self.table_scene.initialize(env_idx)
             set_work_table_pose(self)
-            self._reset_agent(b)
+            self._reset_agent(b, env_idx)
 
             def rand(scale: float) -> torch.Tensor:
+                if not is_full_reset(env_idx, self.num_envs):
+                    return torch.tensor([
+                        self._batched_episode_rng[int(i)].uniform(-1.0, 1.0) * float(scale)
+                        for i in env_idx
+                    ], device=self.device)
                 return (torch.rand((b,), device=self.device) * 2.0 - 1.0) * float(scale)
 
             # --- fixed template panel: flat, groove up at subtask 1's target centre ---
@@ -887,6 +914,9 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
             self.lift_achieved[env_idx] = False
             self.align_achieved[env_idx] = False
             self.settle_counter[env_idx] = 0
+
+        if self._furniture_appearance is not None:
+            self._furniture_appearance.finish_reset(env_idx, options)
 
     # ------------------------------------------------------------------
     # Geometry accessors
@@ -989,15 +1019,16 @@ class FurnitureAssemblyInsertRailEnv(DeclarativeTaskStateMixin, BaseEnv):
         is_static = q["is_static"]
 
         settled_now = q["seated_now"]
-        self.settle_counter = torch.where(
-            settled_now, self.settle_counter + 1, torch.zeros_like(self.settle_counter)
+        self.settle_counter = self._reset_scoped_value(
+            self.settle_counter,
+            torch.where(settled_now, self.settle_counter + 1, torch.zeros_like(self.settle_counter)),
         )
         success = self.settle_counter >= self.SETTLE_STEPS
 
         # Reward-only latches.
-        self.grasp_achieved |= is_grasped
-        self.lift_achieved |= is_lifted
-        self.align_achieved |= is_lifted & is_aligned
+        self.grasp_achieved |= self._reset_scoped_predicate(is_grasped)
+        self.lift_achieved |= self._reset_scoped_predicate(is_lifted)
+        self.align_achieved |= self._reset_scoped_predicate(is_lifted & is_aligned)
 
         return {
             "success": success,

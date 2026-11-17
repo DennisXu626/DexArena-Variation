@@ -1,0 +1,64 @@
+{
+  "version": "furniture-screw-bindings-v1",
+  "logical_object": "furniture_assembly.screw",
+  "source_reference_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "catalog": "variants/v1/catalog.json",
+  "runtime_handle": "env.unwrapped.screw_head",
+  "object_type": "revolute child link",
+  "excluded_link": "rail_body",
+  "roles": {
+    "grip": {
+      "editable": true,
+      "parts": "InsertRail: 17 originally dark head floor/wall/chamfer visuals, including recess interior. FastenScrew: round hub and wing bar."
+    },
+    "reference": {
+      "editable": false,
+      "parts": "InsertRail: four gold quadrant caps. FastenScrew: brass stem and original brass direction stripe sharing identical native PBR."
+    }
+  },
+  "representations": {
+    "FurnitureAssemblyInsertRail-Sharpa-v1": {
+      "source": "tasks/furniture_assembly/furniture_assembly_insert_rail.py: _add_screw_head_link",
+      "type": "cross-recess revolute head on movable rail",
+      "source_variables": {
+        "grip": "dark",
+        "reference": "screw_render_material"
+      },
+      "shape_counts": {
+        "grip": 17,
+        "reference": 4,
+        "total": 21
+      },
+      "source_parts": "One dark cylinder plus four groups of lower/upper wall and two chamfers; four thin gold top caps are preserved."
+    },
+    "FurnitureAssemblyFastenScrew-Sharpa-v1": {
+      "source": "tasks/furniture_assembly/furniture_assembly_fasten_screw.py: _add_wing_screw_head_link",
+      "type": "wing-head revolute child on fixed rail",
+      "source_variables": {
+        "grip": "knob",
+        "reference": "brass"
+      },
+      "shape_counts": {
+        "grip": 2,
+        "reference": 2,
+        "total": 4
+      },
+      "source_parts": "Hub cylinder and wing box change; stem cylinder and top stripe are one preserved role, not separately editable slots."
+    }
+  },
+  "binding_boundary": "Match task-specific native roughness/metallic within screw_head and validate role shape counts. Capture native PBR for original. Recolor InsertRail grip material while preserving cross-channel geometry, reference, non-target material fields and joints.",
+  "evidence": {
+    "summary": "assets/appearance/furniture_assembly/previews/runtime/summary.json",
+    "tasks": [
+      "InsertRail",
+      "FastenScrew"
+    ],
+    "scope": "task_appearance_and_reset_acceptance"
+  },
+  "runtime_interface": {
+    "kwarg": "furniture_appearance",
+    "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
+    "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
+    "status": "runtime_verified_pending_review"
+  }
+}

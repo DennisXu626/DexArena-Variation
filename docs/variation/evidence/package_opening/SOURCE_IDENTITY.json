@@ -1,0 +1,32 @@
+{
+  "head_under_test": "1235e3a11af6584e1fc7fd81a388e61ac5ee0b23",
+  "main": "56a4aec4740b7139307e01048fa0e8e6ed430f14",
+  "files": [
+    {
+      "path": "tasks/package_opening/appearance.py",
+      "sha256": "f86f464b495232e32dc6bd2fa99f67138b906826c97b47caf5e7ed36c287753f",
+      "unchanged": true
+    },
+    {
+      "path": "tasks/package_opening/package_opening_long.py",
+      "sha256": "479a1caa35062c3fdbd1748f50a67a6ecbab7dfb8c79311142423a33802170b5",
+      "unchanged": true
+    },
+    {
+      "path": "tasks/assets/variation/package_opening/v1/catalog.json",
+      "sha256": "7d330059e2e5cbf03616d654f6284b2e2cafeff7556931d1d3214169dc66eefe",
+      "unchanged": true
+    },
+    {
+      "path": "tools/variation/check_package_opening.py",
+      "sha256": "3c34de945a1dd705a2a8b424549fa58df150441b9029e6bf7e9b1d221049f536",
+      "unchanged": true
+    },
+    {
+      "path": "tools/variation/render_package_opening_preview.py",
+      "sha256": "a92526fccc8644d7840c04c779b6fa0d40bc6e990af77eacd8512972b06e0463",
+      "unchanged": true
+    }
+  ],
+  "line_endings": "Committed LF bytes; original87021 hash normalization already closed in R1, not repeated"
+}

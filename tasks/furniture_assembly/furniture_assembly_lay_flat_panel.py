@@ -90,6 +90,8 @@ from mani_skill.utils.wrappers.record import RecordEpisode
 
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
+from tasks.furniture_assembly.appearance import FurnitureAppearance
+from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
 from tasks.robots.panda_sharpa_hand_left_mobile_base import PandaSharpaHandLeftAngledMobileBase  # noqa: F401
 from tasks.robots.panda_wuji_hand_left_mobile_base import PandaWujiHandLeftMobileBase  # noqa: F401
 from tasks.config.object_materials import object_material
@@ -419,6 +421,7 @@ def build_drawer_panel(
     use_textures: bool = True,
     visual_detail: bool = True,
     kinematic: bool = False,
+    appearance=None,
 ):
     """Drawer side panel with a real slide-in groove: flared mouth at -x, stop wall at +x.
 
@@ -475,6 +478,8 @@ def build_drawer_panel(
 
     if not visual_detail:
         builder.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.5])
+        if appearance is not None:
+            appearance.isolate_builder_materials(builder)
         return builder.build_kinematic(name=name) if kinematic else builder.build(name=name)
 
     # Polished strip along each groove lip; reads as the router's eased edge.
@@ -511,11 +516,14 @@ def build_drawer_panel(
         )
 
     builder.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.5])
+    if appearance is not None:
+        appearance.isolate_builder_materials(builder)
     return builder.build_kinematic(name=name) if kinematic else builder.build(name=name)
 
 
 def build_panel_rack(
-    scene: ManiSkillScene, name: str = "panel_rack", visual_detail: bool = True
+    scene: ManiSkillScene, name: str = "panel_rack", visual_detail: bool = True,
+    appearance=None,
 ):
     """Static slotted rack: base plate plus two walls forming the slot.
 
@@ -612,6 +620,8 @@ def build_panel_rack(
     # Kinematic, not static: the rack pose is re-randomized every episode, and on the GPU
     # backend a static actor's pose is uploaded once at build time and set_pose() is ignored.
     # Kinematic bodies are equally immovable but can be repositioned.
+    if appearance is not None:
+        appearance.isolate_builder_materials(builder)
     rack = builder.build_kinematic(name=name)
     # Task layer: explicit mass (kinematic fixture, so dynamically inert).
     for raw in rack._objs:
@@ -727,7 +737,7 @@ def build_place_marker(scene: ManiSkillScene, half_size, name: str = "place_zone
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -790,6 +800,7 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
         place_random_y: float = 0.0,
         panel_color_jitter: bool = True,
         visual_detail: bool = True,
+        furniture_appearance: dict | None = None,
         show_place_marker: bool = True,
         terminate_on_success: bool = False,
         render_width: int = 720,
@@ -798,6 +809,10 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
         reconfiguration_freq=None,
         **kwargs,
     ):
+        self._furniture_appearance = (
+            FurnitureAppearance(furniture_appearance, num_envs)
+            if furniture_appearance and furniture_appearance.get("enabled", False) else None
+        )
         if render_width <= 0 or render_height <= 0:
             raise ValueError("Render width and height must be positive integers.")
         self.render_width = int(render_width)
@@ -898,10 +913,14 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
             ) + (1.0,)
 
         self.panel = build_drawer_panel(
-            self.scene, base_color=base_color, visual_detail=self.visual_detail
+            self.scene, base_color=base_color, visual_detail=self.visual_detail,
+            appearance=self._furniture_appearance,
         )
         set_task_object_energy_fence(self.panel)
-        self.rack = build_panel_rack(self.scene, visual_detail=self.visual_detail)
+        self.rack = build_panel_rack(
+            self.scene, visual_detail=self.visual_detail,
+            appearance=self._furniture_appearance,
+        )
         self.place_marker = (
             build_place_marker(self.scene, self.PLACE_REGION_HALF_SIZE)
             if self.show_place_marker
@@ -920,8 +939,11 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
         self.settle_counter = torch.zeros(
             (self.num_envs,), dtype=torch.int32, device=self.device
         )
+        if self._furniture_appearance is not None:
+            for env_id in range(self.num_envs):
+                self._furniture_appearance.bind(self, env_id)
 
-    def _reset_agent(self, b: int):
+    def _reset_agent(self, b: int, env_idx=None):
         if self.robot_uids in MOBILE_ROBOT_UIDS:
             qpos = torch.tensor(
                 self.agent.keyframes["rest"].qpos, device=self.device, dtype=torch.float32
@@ -940,10 +962,17 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
                 qpos[:, arm_idx] = torch.tensor(
                     ARM_INIT_QPOS, device=self.device, dtype=torch.float32
                 ).expand(b, -1).clone()
-                qpos[:, arm_idx] += common.to_tensor(
-                    self._episode_rng.normal(0.0, self.robot_init_qpos_noise, (b, len(arm_idx))),
-                    device=self.device,
-                )
+                if is_full_reset(env_idx, self.num_envs):
+                    noise = self._episode_rng.normal(
+                        0.0, self.robot_init_qpos_noise, (b, len(arm_idx))
+                    )
+                else:
+                    noise = np.stack([
+                        self._batched_episode_rng[int(i)].normal(
+                            0.0, self.robot_init_qpos_noise, len(arm_idx)
+                        ) for i in env_idx
+                    ])
+                qpos[:, arm_idx] += common.to_tensor(noise, device=self.device)
         self.agent.reset(qpos)
         self.agent.robot.set_root_pose(ROBOT_ROOT_POSE)
 
@@ -952,9 +981,14 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
             b = len(env_idx)
             self.table_scene.initialize(env_idx)
             set_work_table_pose(self)
-            self._reset_agent(b)
+            self._reset_agent(b, env_idx)
 
             def rand(scale: float) -> torch.Tensor:
+                if not is_full_reset(env_idx, self.num_envs):
+                    return torch.tensor([
+                        self._batched_episode_rng[int(i)].uniform(-1.0, 1.0) * float(scale)
+                        for i in env_idx
+                    ], device=self.device)
                 return (torch.rand((b,), device=self.device) * 2.0 - 1.0) * float(scale)
 
             # Rack. yaw 0 puts the slot along world x, so the panel long axis is along x.
@@ -994,6 +1028,9 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
             self.grasp_achieved[env_idx] = False
             self.extract_achieved[env_idx] = False
             self.settle_counter[env_idx] = 0
+
+        if self._furniture_appearance is not None:
+            self._furniture_appearance.finish_reset(env_idx, options)
 
     # ------------------------------------------------------------------
     # Geometry accessors, exported for subtasks 2 and 3
@@ -1117,14 +1154,15 @@ class FurnitureAssemblyLayFlatPanelEnv(DeclarativeTaskStateMixin, BaseEnv):
         # it exactly. A panel lying flat on the table cannot still be in the slot, so there is
         # no need to also check that it was extracted.
         settled_now = q["placed_now"]          # == is_flat_on_table & in_place_region & is_released & is_static
-        self.settle_counter = torch.where(
-            settled_now, self.settle_counter + 1, torch.zeros_like(self.settle_counter)
+        self.settle_counter = self._reset_scoped_value(
+            self.settle_counter,
+            torch.where(settled_now, self.settle_counter + 1, torch.zeros_like(self.settle_counter)),
         )
         success = self.settle_counter >= self.SETTLE_STEPS
 
         # Reward-only latches.
-        self.grasp_achieved |= is_grasped
-        self.extract_achieved |= is_grasped & is_out_of_rack
+        self.grasp_achieved |= self._reset_scoped_predicate(is_grasped)
+        self.extract_achieved |= self._reset_scoped_predicate(is_grasped & is_out_of_rack)
 
         return {
             "success": success,
