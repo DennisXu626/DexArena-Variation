@@ -1,7 +1,7 @@
 {
   "version": "furniture-rail-preview-v1",
   "object_id": "furniture_assembly.rail",
-  "scope": "authoring_and_single_environment_preview_only",
+  "scope": "furniture_appearance",
   "preserve_roles": [],
   "preserve_properties": ["textures", "uv", "specular"],
   "schemes": {

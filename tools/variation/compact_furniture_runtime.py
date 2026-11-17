@@ -69,13 +69,7 @@ def sdk_identity(path, lock_path=None):
     result = {key: artifact[key] for key in ('wheel_sha256', 'source_commit', 'native_files')}
     result['artifact_sha256'] = sha(path)
     required_loaded, expected_loaded = core | bindings, dict(native)
-    if 'actual_toolchain' not in artifact:
-        result.update(schema='legacy-private-sdk-artifacts', **{
-            key: artifact[key] for key in ('patches_sha256', 'kernel_compiler',
-                'sapien_cuda_architectures', 'physx_gpu_kernel_toolchain')})
-        digest_map(result['patches_sha256'], 'SDK patches')
-        return result, expected_loaded, required_loaded
-
+    require('actual_toolchain' in artifact, 'Complete portable SDK build receipt is required')
     require(lock_path is not None, 'Portable SDK receipt requires --sdk-lock')
     lock = read(lock_path)
     actual, source = artifact['actual_toolchain'], artifact['actual_source']

@@ -1,7 +1,7 @@
 {
   "version": "furniture-screw-preview-v1",
   "object_id": "furniture_assembly.screw",
-  "scope": "authoring_and_single_environment_preview_only",
+  "scope": "furniture_appearance",
   "source": "Self-authored scalar render parameters; original restores native per-part values from the current task instance. No new geometry, UV or textures.",
   "preserve_roles": ["reference"],
   "task_role_subsets": {

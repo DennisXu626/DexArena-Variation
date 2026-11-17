@@ -1,7 +1,7 @@
 {
   "version": "furniture-rack-preview-v1",
   "object_id": "furniture_assembly.panel_rack",
-  "scope": "authoring_and_single_environment_preview_only",
+  "scope": "furniture_appearance",
   "preserve_roles": ["pad", "bolt", "decal"],
   "preserve_properties": ["specular", "textures", "uv", "emission", "opacity"],
   "scheme_descriptions": {

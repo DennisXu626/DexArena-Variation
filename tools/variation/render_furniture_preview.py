@@ -46,7 +46,7 @@ def flat_role_parameters(catalog, name):
 
 
 def capture(viewer, pose):
-    """Read the native human framebuffer; avoid Windows CUDA tensor readback."""
+    """Read the viewer framebuffer without advancing simulation."""
     from PIL import Image
     viewer.set_camera_pose(pose)
     # Draw no UI into exported frames. No physics or task reset is performed.
@@ -137,7 +137,7 @@ def load_set():
             raise ValueError(f"Invalid unique catalog path or scheme map: {object_id}")
         catalog = json.loads(path.read_text(encoding="utf-8"))
         if (catalog["object_id"] != f"furniture_assembly.{object_id}"
-                or catalog["scope"] != "authoring_and_single_environment_preview_only"
+                or catalog["scope"] != "furniture_appearance"
                 or entry["scheme_map"]["original"] != "original"
                 or catalog["schemes"]["original"] != {"mode": "restore_native"}):
             raise ValueError(f"Catalog identity/original mismatch: {object_id}")
@@ -151,7 +151,7 @@ def load_set():
             params = scheme.get("roles")
             if params is None:
                 if object_id != "flat_panel" or set(catalog["color_factors"]) != {"face", "cut", "edge", "routed"}:
-                    raise ValueError("Only the prior flat-panel catalog uses palette/factor parameters")
+                    raise ValueError("Only flat_panel uses palette/factor parameters")
                 _validate_params({"base_color": scheme["base_color"], "roughness": 0.5,
                                   "metallic": scheme["metallic"]}, "flat_panel palette")
                 if any(not 0 < float(factor) <= 1 for factor in catalog["color_factors"].values()):
@@ -334,7 +334,7 @@ def export(env, binding, index, catalogs, viewer, views, camera_config, output, 
                                   capture_output=True, text=True, check=True).stdout.strip()
         manifest = dict(
             created_utc=datetime.now(timezone.utc).isoformat(), task_id=TASK_IDS[task],
-            git_base_commit=revision, source_identity="Exact file hashes include the uncommitted authoring implementation",
+            git_base_commit=revision, source_identity="Exact source and parameter file hashes identify the capture inputs",
             implementation_files_sha256={file: sha(ROOT / file) for file in implementation_files(index)},
             index_version=index["version"], object_catalog_versions={oid: catalogs[oid]["version"] for oid in binding.objects},
             object_scheme_maps={oid: index["objects"][oid]["scheme_map"] for oid in binding.objects},

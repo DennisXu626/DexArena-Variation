@@ -1,7 +1,7 @@
 {
   "version": "flat-panel-preview-v1",
   "object_id": "furniture_assembly.flat_panel",
-  "scope": "authoring_and_single_environment_preview_only",
+  "scope": "furniture_appearance",
   "color_factors": {"face": 1.0, "cut": 0.76, "edge": 0.6, "routed": 0.88},
   "color_rule": "Multiply the scheme base_color RGB by the role factor; preserve the scheme alpha unchanged.",
   "preserve_roles": ["label", "ink"],

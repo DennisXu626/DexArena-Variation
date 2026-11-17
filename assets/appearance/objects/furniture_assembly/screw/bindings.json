@@ -46,21 +46,19 @@
       "source_parts": "Hub cylinder and wing box change; stem cylinder and top stripe are one preserved role, not separately editable slots."
     }
   },
-  "binding_boundary": "Formal adapter matches task-specific native roughness/metallic only inside screw_head and validates expected role shape counts. Capture the actual native base_color/roughness/metallic for original. Recoloring InsertRail grip changes recess material, not cross-channel geometry. Preserve reference, all other material fields and joint geometry.",
+  "binding_boundary": "Match task-specific native roughness/metallic within screw_head and validate role shape counts. Capture native PBR for original. Recolor InsertRail grip material while preserving cross-channel geometry, reference, non-target material fields and joints.",
   "evidence": {
-    "base": "https://github.com/DennisXu626/DexArena-Variation/blob/435f835038d22cfe21b452681747cf3d85d6a67c/assets/appearance/furniture_assembly/previews/author_check_20261116",
+    "summary": "assets/appearance/furniture_assembly/previews/runtime/summary.json",
     "tasks": [
       "InsertRail",
       "FastenScrew"
     ],
-    "source_commit": "435f835038d22cfe21b452681747cf3d85d6a67c",
-    "scope": "historical_authoring_preview_only_not_formal_interface_gpu_validation"
+    "scope": "task_appearance_and_reset_acceptance"
   },
   "runtime_interface": {
     "kwarg": "furniture_appearance",
     "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
     "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
-    "status": "runtime_verified_pending_review",
-    "evidence": "assets/appearance/furniture_assembly/previews/runtime_check_20261117/summary.json"
+    "status": "runtime_verified_pending_review"
   }
 }

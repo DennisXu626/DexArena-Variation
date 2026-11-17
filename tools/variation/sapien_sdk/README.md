@@ -1,6 +1,6 @@
 # SAPIEN GPU build for furniture assembly
 
-This bundle builds patched SAPIEN `3.0.3+dexarena.gpu1.wininterop5` for partial GPU reset and Windows CUDA RGB. A clean source/native/Python/wheel build and standard two-environment GPU checks passed for LayFlatPanel, InsertRail and FastenScrew. See the [validation summary](../../../assets/appearance/furniture_assembly/previews/runtime_check_20261117/summary.json).
+This bundle builds patched SAPIEN `3.0.3+dexarena.gpu1.wininterop5` for partial GPU reset and Windows CUDA RGB. A clean source/native/Python/wheel build and standard two-environment GPU checks passed for LayFlatPanel, InsertRail and FastenScrew. See the [validation summary](../../../assets/appearance/furniture_assembly/previews/runtime/summary.json).
 
 The six patches have three groups:
 

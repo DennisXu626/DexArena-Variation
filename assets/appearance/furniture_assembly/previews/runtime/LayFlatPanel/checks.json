@@ -1124,11 +1124,11 @@
         },
         "/state/actors/drawer_panel": {
           "changed_values": 12,
-          "max_absolute_error": 0.07275985740125179
+          "max_absolute_error": 0.0458260178565979
         },
         "/state/actors/panel_rack": {
           "changed_values": 8,
-          "max_absolute_error": 0.1025383323431015
+          "max_absolute_error": 0.04158991575241089
         },
         "/state/actors/place_zone": {
           "changed_values": 3,
@@ -1150,8 +1150,8 @@
         "fetched": {
           "fields": {
             "/state/actors/table-workspace": 1.7881393432617188e-07,
-            "/state/actors/drawer_panel": 1.4901161193847656e-07,
-            "/state/actors/panel_rack": 1.9371509552001953e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 1.7881393432617188e-07,
             "/state/actors/place_zone": 1.1920928955078125e-07,
             "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
             "/state/furniture_panel_task_state": 0.0,
@@ -1163,26 +1163,26 @@
             "/joint_targets/robot/velocity_target": 0.0
           },
           "values_checked": 550,
-          "changed_values_within_tolerance": 12,
+          "changed_values_within_tolerance": 14,
           "max_absolute_error": 1.9371509552001953e-07
         },
         "final": {
           "fields": {
             "/state/actors/table-workspace": 1.7881393432617188e-07,
-            "/state/actors/drawer_panel": 1.4901161193847656e-07,
-            "/state/actors/panel_rack": 1.9371509552001953e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 1.7881393432617188e-07,
             "/state/actors/place_zone": 1.1920928955078125e-07,
             "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
             "/joint_targets/robot/qpos": 0.0,
             "/joint_targets/robot/qvel": 0.0
           },
           "values_checked": 362,
-          "changed_values_within_tolerance": 12,
+          "changed_values_within_tolerance": 14,
           "max_absolute_error": 1.9371509552001953e-07
         }
       },
-      "raw_json_sha256": "f397bd25762422ff926331fd8f8895990d5fa8a7a3716b3a235a1abcf4040b32",
-      "raw_state_sha256": "aec36a6550a4fa7d01fd572bf03150fcd2745841700a87eaa45df089e3aae328"
+      "raw_json_sha256": "cfb1ba5e57fff837e4aaf154cd27b2dcca4dd9771da75d394fa27eaed65603f8",
+      "raw_state_sha256": "eb7f7e351f01b4fec7ded76b25acc3689d567f4de6db1126d3133e8c427269db"
     },
     {
       "capture_id": "selected_reset_12",
@@ -1199,11 +1199,11 @@
       "intent_changes": {
         "/state/actors/drawer_panel": {
           "changed_values": 6,
-          "max_absolute_error": 0.08043749257922173
+          "max_absolute_error": 0.09221314638853073
         },
         "/state/actors/panel_rack": {
           "changed_values": 4,
-          "max_absolute_error": 0.11299514397978783
+          "max_absolute_error": 0.12940065190196037
         },
         "/state/actors/place_zone": {
           "changed_values": 1,
@@ -1256,8 +1256,8 @@
           "max_absolute_error": 2.2351741790771484e-07
         }
       },
-      "raw_json_sha256": "d61538bab610102bff3d6f0b74c383048a2f96abfe94d33b21d2f7660970e656",
-      "raw_state_sha256": "c3f93fa08d2875ab53d2f79ab9d2cb77ea796e58f6e670f4c4ba0ae5d48c02a3"
+      "raw_json_sha256": "5f294c09b45b3701f72620196c787a49845dda09628c26a7aa5a1d169f9464f0",
+      "raw_state_sha256": "85b46af804f5f1cba9b68a6a5051f8428180107ecea0ccf72024d0b880a7e9a7"
     },
     {
       "capture_id": "selected_reset_13",
@@ -1434,11 +1434,11 @@
         },
         "/state/actors/drawer_panel": {
           "changed_values": 12,
-          "max_absolute_error": 0.07691817730665207
+          "max_absolute_error": 0.07092114724218845
         },
         "/state/actors/panel_rack": {
           "changed_values": 8,
-          "max_absolute_error": 0.1087548416107893
+          "max_absolute_error": 0.09934547170996666
         },
         "/state/actors/place_zone": {
           "changed_values": 3,
@@ -1460,8 +1460,8 @@
         "fetched": {
           "fields": {
             "/state/actors/table-workspace": 1.7881393432617188e-07,
-            "/state/actors/drawer_panel": 1.6391277313232422e-07,
-            "/state/actors/panel_rack": 1.6391277313232422e-07,
+            "/state/actors/drawer_panel": 1.4901161193847656e-07,
+            "/state/actors/panel_rack": 2.2351741790771484e-07,
             "/state/actors/place_zone": 1.1920928955078125e-07,
             "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
             "/state/furniture_panel_task_state": 0.0,
@@ -1474,13 +1474,13 @@
           },
           "values_checked": 550,
           "changed_values_within_tolerance": 15,
-          "max_absolute_error": 1.7881393432617188e-07
+          "max_absolute_error": 2.2351741790771484e-07
         },
         "final": {
           "fields": {
             "/state/actors/table-workspace": 1.7881393432617188e-07,
-            "/state/actors/drawer_panel": 1.6391277313232422e-07,
-            "/state/actors/panel_rack": 1.6391277313232422e-07,
+            "/state/actors/drawer_panel": 1.4901161193847656e-07,
+            "/state/actors/panel_rack": 2.2351741790771484e-07,
             "/state/actors/place_zone": 1.1920928955078125e-07,
             "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
             "/joint_targets/robot/qpos": 0.0,
@@ -1488,11 +1488,11 @@
           },
           "values_checked": 362,
           "changed_values_within_tolerance": 15,
-          "max_absolute_error": 1.7881393432617188e-07
+          "max_absolute_error": 2.2351741790771484e-07
         }
       },
-      "raw_json_sha256": "d6eac7b5b3faf7b93e8ccccb401114233fea2efe622b1369e4bda2659f7b509d",
-      "raw_state_sha256": "73e40ef85f10017c8105d92436ff7f75f90a6139495c484d05ad66d8ac52a807"
+      "raw_json_sha256": "09858ef9bbd93523312af314dc1fac3e44be2a9c5f1baeef4646cae5f956f32b",
+      "raw_state_sha256": "460bfe17a56607e86e507d9641c784ff323de147a50d511a773c1ad7396d7d1b"
     },
     {
       "capture_id": "selected_reset_16",
@@ -1509,11 +1509,11 @@
       "intent_changes": {
         "/state/actors/drawer_panel": {
           "changed_values": 6,
-          "max_absolute_error": 0.052407615701667964
+          "max_absolute_error": 0.0148019939661026
         },
         "/state/actors/panel_rack": {
           "changed_values": 4,
-          "max_absolute_error": 0.07379622664302588
+          "max_absolute_error": 0.016085349023342133
         },
         "/state/actors/place_zone": {
           "changed_values": 1,
@@ -1566,8 +1566,8 @@
           "max_absolute_error": 2.2351741790771484e-07
         }
       },
-      "raw_json_sha256": "109e819b55ec514371d3bc16c5fde13e92919e250a0866a711a3b5b837aa9da5",
-      "raw_state_sha256": "81328e2c04738cc438f40a70bb1c61b6c1fe0aff1c539d3f929cf0ff97797f0f"
+      "raw_json_sha256": "09b555f7e6f60a54352f8cb9d7d99bb858416c219ad5505f2d25321dca4b937d",
+      "raw_state_sha256": "1a008db1c221faedd4f93546f3f7fcd3277777b6bac8d2093e8db02e6bf67d16"
     },
     {
       "capture_id": "selected_reset_17",

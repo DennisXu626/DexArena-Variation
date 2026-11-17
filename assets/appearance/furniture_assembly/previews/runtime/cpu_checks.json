@@ -1,6 +1,6 @@
 {
   "scope": "Single CPU environment; no RGB/GPU or task-completion claim",
-  "summary_sha256": "d29fabfc1d6ca593d71e7393792cb197912247aa969d9ff5d8348031c971ec32",
+  "summary_sha256": "78bd33bae23a6f7db0a2b2851cd875798d1f860ce94c18d8e02b719e6f1868d1",
   "seed": 7,
   "control_steps_per_run": 60,
   "control_steps": 720,
@@ -41,10 +41,10 @@
     "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
     "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
     "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
-    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
-    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
-    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
-    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "b9c2fbf0d30c2ca5ee9a9890254a575a958a81c4cf50dbe058b46998f6fe8c45",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "c4bbf0ababa43ad868d11d184593e65c53ad7d1cb66d70c2c1222bf41e02574c",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "545784afe0e3da47e3b25830ab9ddd3a472c014f85dc72d7f71aa642d7206b61",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "be4a7ac44559cae4254bfdac75a4414916a2f12bbdd5f5b064cd1b9ffeb00597"
   },
   "source_lf_sha256": {
     "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -82,10 +82,10 @@
     "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
     "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
     "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
-    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
-    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
-    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
-    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "b9c2fbf0d30c2ca5ee9a9890254a575a958a81c4cf50dbe058b46998f6fe8c45",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "c4bbf0ababa43ad868d11d184593e65c53ad7d1cb66d70c2c1222bf41e02574c",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "545784afe0e3da47e3b25830ab9ddd3a472c014f85dc72d7f71aa642d7206b61",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "be4a7ac44559cae4254bfdac75a4414916a2f12bbdd5f5b064cd1b9ffeb00597"
   },
   "source_hash_semantics": "source_sha256 retains raw capture bytes; source_lf_sha256 verifies those bytes before UTF-8 .py/.json CRLF-to-LF normalization only.",
   "tasks": {
@@ -94,7 +94,7 @@
       "maximum_joint_displacement_rad": 0.015316963195800781,
       "runs": {
         "native_off": {
-          "run_sha256": "42fba29ea8f73e9b584e0a83e4333ab923d869b7392773933161156f4c9cad20",
+          "run_sha256": "5ea535784ca99daf7717f60cd7cd0f4fed3e8fcdd1765a9936b18a9fb27437d2",
           "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -111,7 +111,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "original": {
-          "run_sha256": "1aef09a94027c7a206414fde0d02f461fe4e83e30d8639202b58352c06d32ea7",
+          "run_sha256": "e4cf268ced844564fe33d79314c80972fcbe9b2d6cd3a3640b5c532f9a7650af",
           "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -128,7 +128,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "variant_1": {
-          "run_sha256": "5e6631ef73c90944c66fe0aa8ae203a7bc40ce57d87bdd3da2812564ccebe965",
+          "run_sha256": "a28f7b6c5cc5d96c7a947ddc68c38bd24dfbc622f918f6ad8c1bd15ce35a32f4",
           "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -145,7 +145,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "variant_2": {
-          "run_sha256": "9d7fa3d33df71f236a0d414c34e02efe3171ea89edc1a15e07233d8c33616d5a",
+          "run_sha256": "2eb3d7bb7d7802161c863952d1771461e1b14d181556e61261fd86c1b2e49d7d",
           "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -168,7 +168,7 @@
       "maximum_joint_displacement_rad": 0.015330791473388672,
       "runs": {
         "native_off": {
-          "run_sha256": "81ced578a4517f9ea6928ad8760c623499cbfd8e1d4197acb15c2ca8b753980b",
+          "run_sha256": "44f6da87eab2ee1b35a96cf66703e07b0937ae4652b72d1e9a1dd02b9fb2e961",
           "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -185,7 +185,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "original": {
-          "run_sha256": "c344512b3ee1d59e7a31560704af0f7f1903c04c2012dd9d6281f789cd334e63",
+          "run_sha256": "f657beeedc82e4f1cb83c0cdf497978c653000e68aafc88f2cd1c7ab5b06a742",
           "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -202,7 +202,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "variant_1": {
-          "run_sha256": "fc3d637a0d933b237e4b20a2cc8e1df4bfa4836fed883c2c610d30ee8c9f8ed6",
+          "run_sha256": "f53c38d59bdd011a4b79ebcd86ed72fcfdc785966d861b2110d0a089fc4c9360",
           "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -219,7 +219,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "variant_2": {
-          "run_sha256": "a289d63313b083cc2c44f92e170bfe499edd106c09743e460aa4ad7a59dfae5b",
+          "run_sha256": "368b5f009422631cff77eb8234d5feb772b3cac3c993e15292811723b1b7f8d2",
           "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -242,7 +242,7 @@
       "maximum_joint_displacement_rad": 0.015330791473388672,
       "runs": {
         "native_off": {
-          "run_sha256": "c2017b4093c7145c662ce16dcf1810e445b7932e9c28038fb14c3b05e5795aef",
+          "run_sha256": "5c58ee2db46c58c3fc6f5d5dc7b6e2151ebada21983c471bd99fc2200ebe8667",
           "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -259,7 +259,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "original": {
-          "run_sha256": "6e3bc6464d7dc1ee931b466d56ba7c535afa1275c288dae88a236d02e4302d45",
+          "run_sha256": "ee594bc031d64bc9b232b6dfaa53e29fed202b158f0852ea09c3fe5ca867fceb",
           "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -276,7 +276,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "variant_1": {
-          "run_sha256": "a87004def5a4bf95f5bd7677331ddaa7753f4db40417b347a40d53f4f75dba43",
+          "run_sha256": "c3a22d6991e4427a2b36cdee9997e3096e3ff16dc4d600da3a28743b06c4d89f",
           "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
           "control_steps": 60,
           "physics_steps": 1200,
@@ -293,7 +293,7 @@
           "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
         },
         "variant_2": {
-          "run_sha256": "4236e183d3fd15a278cd8d3d1640a79cdeccd9a5089aae25c46847741120380b",
+          "run_sha256": "d3666166d676e136fab7f2aab9d4a7f4d343dcb397431ee06adb85137849f647",
           "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
           "control_steps": 60,
           "physics_steps": 1200,

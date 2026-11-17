@@ -1,6 +1,6 @@
 # 螺钉（furniture_assembly.screw）
 
-2026-11-17：正式外观接口接入与GPU运行检查已完成，物体总状态待团队审阅；Long未接入。接口、SDK、复现与运行证据见[家族说明](../../../../../docs/variation/FURNITURE_APPEARANCE.md)。
+方案选择、正式接口、复现与验收范围见[家族说明](../../../../../docs/variation/FURNITURE_APPEARANCE.md)。
 
 ## 方案与部件
 

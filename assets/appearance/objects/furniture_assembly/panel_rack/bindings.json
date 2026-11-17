@@ -51,20 +51,18 @@
     "FurnitureAssemblyInsertRail-Sharpa-v1",
     "FurnitureAssemblyFastenScrew-Sharpa-v1"
   ],
-  "binding_boundary": "Historical preview matched full native base_color/roughness/metallic signatures inside rack. Formal adapter resolves rack._objs to its Entity, matches native roughness/metallic within this entity, and validates expected role shape counts for visual_detail. Preserve pad/bolt/decal and other material fields; no scene-wide color or fixed shape-order binding.",
+  "binding_boundary": "Resolve rack._objs to its Entity and match native roughness/metallic within that entity. Validate role shape counts for visual_detail. Preserve pad/bolt/decal and non-target material fields; do not bind by scene-wide color or shape order.",
   "evidence": {
-    "base": "https://github.com/DennisXu626/DexArena-Variation/blob/435f835038d22cfe21b452681747cf3d85d6a67c/assets/appearance/furniture_assembly/previews/author_check_20261116",
+    "summary": "assets/appearance/furniture_assembly/previews/runtime/summary.json",
     "tasks": [
       "LayFlatPanel"
     ],
-    "source_commit": "435f835038d22cfe21b452681747cf3d85d6a67c",
-    "scope": "historical_authoring_preview_only_not_formal_interface_gpu_validation"
+    "scope": "task_appearance_and_reset_acceptance"
   },
   "runtime_interface": {
     "kwarg": "furniture_appearance",
     "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
     "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
-    "status": "runtime_verified_pending_review",
-    "evidence": "assets/appearance/furniture_assembly/previews/runtime_check_20261117/summary.json"
+    "status": "runtime_verified_pending_review"
   }
 }

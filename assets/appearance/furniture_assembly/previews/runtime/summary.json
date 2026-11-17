@@ -9,8 +9,8 @@
   },
   "exporter": {
     "file": "compact_furniture_runtime.py",
-    "sha256": "71f32985ae8c1cd9766a32f26e6db725e3d86f2bbbc382ad5e7dbfad0c3f4fcc",
-    "lf_sha256": "71f32985ae8c1cd9766a32f26e6db725e3d86f2bbbc382ad5e7dbfad0c3f4fcc"
+    "sha256": "99c3cd11c09576e99ec2c28cdd1676b8a19c9738b150dd1ed8f6ba6532ad62e0",
+    "lf_sha256": "99c3cd11c09576e99ec2c28cdd1676b8a19c9738b150dd1ed8f6ba6532ad62e0"
   },
   "sdk": {
     "wheel_sha256": "c93e2165a3bf3057b3efa945552a4753827753af5ea1ef0c76ec080201613110",
@@ -227,8 +227,8 @@
   },
   "captures": [
     {
-      "results_sha256": "1d104dc0852da124d3094a881d925924a44e95a3a034f8c10dd22d0b37e26165",
-      "manifest_sha256": "609dc3c2aee8d15731c734614a6fdcd920a426cb46345922796b3f9f87d4cf9a",
+      "results_sha256": "da81e574d4b43f0b280d7fc79fbaa964fd3a24349f47c068bbb14bd0a2857887",
+      "manifest_sha256": "6378b65e3b3378288bf04bf9153602a84147c14d3a4b8137f764eda989e607db",
       "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
       "manifest": {
         "platform": "Windows",
@@ -249,23 +249,129 @@
         "--approved-runtime",
         "--sim-backend",
         "physx_cuda",
-        "--experimental-windows-cuda"
+        "--experimental-windows-cuda",
+        "--task",
+        "LayFlatPanel"
       ],
       "capture_path": "original ManiSkill RGB cameras",
       "task_ids": [
-        "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
-        "FurnitureAssemblyInsertRail-Sharpa-v1",
-        "FurnitureAssemblyFastenScrew-Sharpa-v1"
+        "FurnitureAssemblyLayFlatPanel-Sharpa-v1"
       ],
-      "control_steps": 6,
-      "physics_steps": 120,
+      "control_steps": 2,
+      "physics_steps": 40,
       "console": {
-        "process_sha256": "7963a2b1168a7c4c0f21a10ef6ef8a6d09a633166f79302f17359688e1787891",
+        "process_sha256": "1be4048ea83ca0dfa512aea802294b499ea348894006a6de5c46063fb3eeb571",
         "returncode": 0,
         "timed_out": false,
         "streams_sha256": {
-          "stdout.txt": "645d7d6ccb1582daa19f4be9e2d85e98932abb376e23965f9f230e6566db0ad5",
-          "stderr.txt": "b202558d7e366db74829c059477e0c191db4d1ce3b66015f435bc75b24689259"
+          "stdout.txt": "483243ebae291b1729fdb79152045393602963e9c3fbc2ce3b95a9fd35c9b786",
+          "stderr.txt": "8f7f1c2438db17c62b852c2dae3cfa81856b4ecaa5f5099804f1929984c80e23"
+        },
+        "known_warning_types": {
+          "optional_pinocchio_unavailable": 1,
+          "agent_registration_override:panda": 1,
+          "agent_registration_override:panda_wristcam": 1
+        },
+        "unreviewed_stderr_lines": 0,
+        "runner": {
+          "file": "run_check.py",
+          "sha256": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+        }
+      }
+    },
+    {
+      "results_sha256": "ac30e34c724e988845e280e36855cc0879e94c19dd081b91677c22aaa05cc53b",
+      "manifest_sha256": "a2835a9bf65d95d032d7d97ad3205be721e708aae23394c1d3201c8e1bcc4a0c",
+      "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "manifest": {
+        "platform": "Windows",
+        "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 22:57:13) [MSC v.1944 64 bit (AMD64)]",
+        "sim_backend": "physx_cuda",
+        "num_envs": 2,
+        "test_mode": "standard",
+        "gpu_bootstrap": "cached official DLLs + process-local sapien.physx._enable_gpu",
+        "experimental_windows_cuda": true,
+        "catalog_version": "furniture-appearance-v1"
+      },
+      "command": [
+        "tools/variation/check_furniture_appearance.py",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}",
+        "--output",
+        "{capture_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cuda",
+        "--experimental-windows-cuda",
+        "--task",
+        "InsertRail"
+      ],
+      "capture_path": "original ManiSkill RGB cameras",
+      "task_ids": [
+        "FurnitureAssemblyInsertRail-Sharpa-v1"
+      ],
+      "control_steps": 2,
+      "physics_steps": 40,
+      "console": {
+        "process_sha256": "562086b4af523a21cd7fe8e3d6b9b2899e3dc70f8c66bf1006eccf8c20fc3c0a",
+        "returncode": 0,
+        "timed_out": false,
+        "streams_sha256": {
+          "stdout.txt": "5698c9e035432e858c5edb659dca7a9dca54995abcefc7f291c85a27ad1a2e9a",
+          "stderr.txt": "970cfbbf9563ead0b2205c13f58596b7fe4b7b0682ff6f7e732025fd932f1304"
+        },
+        "known_warning_types": {
+          "optional_pinocchio_unavailable": 1,
+          "agent_registration_override:panda": 1,
+          "agent_registration_override:panda_wristcam": 1
+        },
+        "unreviewed_stderr_lines": 0,
+        "runner": {
+          "file": "run_check.py",
+          "sha256": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+        }
+      }
+    },
+    {
+      "results_sha256": "e5cd64d7c5f88bacade2b451cf372bd483eb175f4201a07f7c3672bd0ae4a6c6",
+      "manifest_sha256": "0af6c2652d40c8ee34957543ccefe3dd30d801bd27d7e7887a8c914436dec090",
+      "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "manifest": {
+        "platform": "Windows",
+        "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 22:57:13) [MSC v.1944 64 bit (AMD64)]",
+        "sim_backend": "physx_cuda",
+        "num_envs": 2,
+        "test_mode": "standard",
+        "gpu_bootstrap": "cached official DLLs + process-local sapien.physx._enable_gpu",
+        "experimental_windows_cuda": true,
+        "catalog_version": "furniture-appearance-v1"
+      },
+      "command": [
+        "tools/variation/check_furniture_appearance.py",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}",
+        "--output",
+        "{capture_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cuda",
+        "--experimental-windows-cuda",
+        "--task",
+        "FastenScrew"
+      ],
+      "capture_path": "original ManiSkill RGB cameras",
+      "task_ids": [
+        "FurnitureAssemblyFastenScrew-Sharpa-v1"
+      ],
+      "control_steps": 2,
+      "physics_steps": 40,
+      "console": {
+        "process_sha256": "54c9206835c64fba4d595cf77b17ffddd8a8db9a84317bf0be8298a2b30d2f4c",
+        "returncode": 0,
+        "timed_out": false,
+        "streams_sha256": {
+          "stdout.txt": "2f49e0fbb45603c57160a0377db9365b619965afc00ee3c9f0d543c5608dc88e",
+          "stderr.txt": "b571eb644067afc209ce196754380b81ce53a7306d43f52f3cfb1ed54e42e7c3"
         },
         "known_warning_types": {
           "optional_pinocchio_unavailable": 1,
@@ -283,11 +389,11 @@
   "tasks": {
     "LayFlatPanel": {
       "checks": "LayFlatPanel/checks.json",
-      "sha256": "d12f26285cb20630d384ac766b2a11049390d46077e1d2ddb5e16456c1b12315"
+      "sha256": "d4f1007bd70af8e8afefe0d680a55d964c236d7669dd4337eb3050979f0dd4d8"
     },
     "InsertRail": {
       "checks": "InsertRail/checks.json",
-      "sha256": "9ccf50e575a3cc8ba2b69346faa522f3ecc2a1715e85bcbd3ce2e1b5eb9be4bc"
+      "sha256": "0a496526a0cbe94ab41fd7aeec8885cfcff88a7ef8def98d9f92c582c11f341f"
     },
     "FastenScrew": {
       "checks": "FastenScrew/checks.json",
@@ -381,7 +487,7 @@
     }
   },
   "identity": {
-    "git_commit": "626fe79d04c6a59fd5b56c645080735c6f5d166d",
+    "git_commit": "cee6a2d9cd25aad8ba5edaf2422759a930926d5b",
     "files": {
       "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
       "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
@@ -391,10 +497,10 @@
       "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
       "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
       "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
-      "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
-      "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
-      "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
-      "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
+      "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "b9c2fbf0d30c2ca5ee9a9890254a575a958a81c4cf50dbe058b46998f6fe8c45",
+      "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "c4bbf0ababa43ad868d11d184593e65c53ad7d1cb66d70c2c1222bf41e02574c",
+      "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "545784afe0e3da47e3b25830ab9ddd3a472c014f85dc72d7f71aa642d7206b61",
+      "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "be4a7ac44559cae4254bfdac75a4414916a2f12bbdd5f5b064cd1b9ffeb00597"
     },
     "files_lf_sha256": {
       "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
@@ -405,10 +511,10 @@
       "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
       "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
       "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
-      "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
-      "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
-      "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
-      "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
+      "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "b9c2fbf0d30c2ca5ee9a9890254a575a958a81c4cf50dbe058b46998f6fe8c45",
+      "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "c4bbf0ababa43ad868d11d184593e65c53ad7d1cb66d70c2c1222bf41e02574c",
+      "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "545784afe0e3da47e3b25830ab9ddd3a472c014f85dc72d7f71aa642d7206b61",
+      "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "be4a7ac44559cae4254bfdac75a4414916a2f12bbdd5f5b064cd1b9ffeb00597"
     },
     "source_hash_semantics": {
       "files": "Unchanged raw capture-time file-byte SHA-256.",
@@ -429,6 +535,6 @@
   },
   "cpu_dynamics": {
     "checks": "cpu_checks.json",
-    "sha256": "a2042804d14771943de6a52f45aa22db8eb8e7efe94a475a8f13fef1a3041e7e"
+    "sha256": "cbfc3c05838d6645c2d88a999ed651554b906120c365b32d0a6f0c718f63d33f"
   }
 }

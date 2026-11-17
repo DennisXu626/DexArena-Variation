@@ -405,12 +405,12 @@ def _restore_object(obj):
 def apply_object(obj, catalog, scheme_id):
     """Validate a complete object scheme before writing only its editable PBR.
 
-    Supports the prior flat-panel palette/factor schema and the other three
-    catalogs' explicit role parameters. Original restores measured native data.
+    Flat-panel schemes use palette/factor parameters; other objects use explicit
+    role parameters. Original restores measured native data.
     """
     _check_live(obj)
     if (catalog["object_id"] != f"furniture_assembly.{obj.object_id}"
-            or catalog["scope"] != "authoring_and_single_environment_preview_only"):
+            or catalog["scope"] != "furniture_appearance"):
         raise ValueError("Object catalog identity/scope mismatch")
     scheme = catalog["schemes"][scheme_id]
     if scheme_id == "original":

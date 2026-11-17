@@ -1232,7 +1232,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 4,
-          "max_absolute_error": 0.060148686170578
+          "max_absolute_error": 0.04359504580497742
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 14,
@@ -1285,8 +1285,8 @@
           "max_absolute_error": 2.086162567138672e-07
         }
       },
-      "raw_json_sha256": "e9f6701c2056bacd4791b76494233d0b5ae09053df5483e201732669b4172833",
-      "raw_state_sha256": "0a596877d8de00ae03af545bffed1fc3460c56fb6614e4ad2078ffa6eda66d98"
+      "raw_json_sha256": "cb4dfc0d09de8e32b99b3fa70c4bed3fd3a6a821db9f7bb2cffa52205012af94",
+      "raw_state_sha256": "abe7711da18259aa95c2612fd28242d71011b1aedb72ed36bcc0c513ee36434f"
     },
     {
       "capture_id": "selected_reset_12",
@@ -1315,7 +1315,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 2,
-          "max_absolute_error": 0.009978830814361572
+          "max_absolute_error": 0.05850650370121002
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 7,
@@ -1368,8 +1368,8 @@
           "max_absolute_error": 5.960464477539063e-08
         }
       },
-      "raw_json_sha256": "c118e618583e796b1c987cdf8ae474b6be832ff6205015b4ac5cbdbb393e3cf0",
-      "raw_state_sha256": "9043474e27bdb3326d0e9372d9d3b84d68b08889b9943115b9aae27f9f86e021"
+      "raw_json_sha256": "fb50670373ebfcbeda3ba279aad6f3f703fe6b55fe34e1ad990f49090ea02198",
+      "raw_state_sha256": "388c324619214835d9d16b132da2cea97f514a7ef6e91dabf8a73d305dd69488"
     },
     {
       "capture_id": "selected_reset_13",
@@ -1574,7 +1574,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 4,
-          "max_absolute_error": 0.0407598614692688
+          "max_absolute_error": 0.059205472469329834
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 14,
@@ -1627,8 +1627,8 @@
           "max_absolute_error": 1.7881393432617188e-07
         }
       },
-      "raw_json_sha256": "bd16183d76344bc0cfda6977d20a8063826ebd48fd5aaafbe10f9c216c64b8ec",
-      "raw_state_sha256": "4707bcf37d945b733f56ea6f7049349ca4b92a1f3f1e1cb8a4957e81cd114dcd"
+      "raw_json_sha256": "a1b6e6e010ea8cb4f625603821f881a5dfeeaf55fddce2223803c048f4b6bb31",
+      "raw_state_sha256": "faa38b18fa3cad52e2efc60b6f6590071df4c5ae77fb96de41f1ac186411ca10"
     },
     {
       "capture_id": "selected_reset_16",
@@ -1657,7 +1657,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 2,
-          "max_absolute_error": 0.07212449610233307
+          "max_absolute_error": 0.04253619909286499
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 7,
@@ -1710,8 +1710,8 @@
           "max_absolute_error": 5.960464477539063e-08
         }
       },
-      "raw_json_sha256": "66facf35e335c6dd90390479d72ceef9cd915002992e203f071bb89ebe213918",
-      "raw_state_sha256": "505c74284c22a7a76068bf5711aeceeed25ffe6f0ac7dd6da215c10a886eb61a"
+      "raw_json_sha256": "cf4292f677bd19e698f99e3827bf02c36e355e3059a31daa21db66048112507f",
+      "raw_state_sha256": "3afd6d61282683e20315a86d12dec11308916dc69c8e3648506ea84590f3f8a6"
     },
     {
       "capture_id": "selected_reset_17",
