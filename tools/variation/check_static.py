@@ -24,6 +24,11 @@ for path in configs:
         ids = request.get('scheme_ids', []) + ([request['scheme_id']] if 'scheme_id' in request else [])
         assert all(i in catalog['schemes'] for i in ids), path
 for scheme in catalog['schemes'].values():
+    for role, params in scheme.get('objects', {}).items():
+        assert role in {'cabinet', 'bowl', 'beads'}
+        assert len(params['base_color']) == 4 and params['base_color'][3] == 1
+        assert all(0 <= value <= 1 for value in params['base_color'])
+        assert 0 <= params['roughness'] <= 1 and params['metallic'] == 0
     if 'label_texture' in scheme:
         assert (root / 'tasks/assets/variation/cabinet_pouring/v1' / scheme['label_texture']).is_file()
 docs = [root / 'README.md', root / 'CONTRIBUTING.md', root / '.github/PULL_REQUEST_TEMPLATE.md']

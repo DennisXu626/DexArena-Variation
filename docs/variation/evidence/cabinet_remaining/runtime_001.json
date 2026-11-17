@@ -1,0 +1,549 @@
+{
+  "job_id": "88174",
+  "frozen_commit": "030a6119025d39c520eebbfc6cf18b9d44e18130",
+  "automated_status": "passed",
+  "delivery_status": "blocked_visual_acceptance",
+  "user_physics_steps": 0,
+  "tasks": {
+    "OpenCabinet": {
+      "automated_status": "passed",
+      "objects_automated": {
+        "cabinet": "passed",
+        "bowl": "not_applicable",
+        "beads": "not_applicable"
+      },
+      "checks": {
+        "original": {
+          "status": "passed"
+        },
+        "ocean": {
+          "status": "passed"
+        },
+        "citrus": {
+          "status": "passed"
+        },
+        "violet": {
+          "status": "passed"
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "original",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ]
+      },
+      "env0_render_part_counts": {
+        "cabinet": 76
+      },
+      "engineering": "not_applicable",
+      "num_envs": 2,
+      "RGB_appearance_acceptance": "blocked_or_not_confirmed"
+    },
+    "PickBottle": {
+      "automated_status": "passed",
+      "objects_automated": {
+        "cabinet": "passed",
+        "bowl": "not_applicable",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed"
+        },
+        "ocean": {
+          "status": "passed"
+        },
+        "citrus": {
+          "status": "passed"
+        },
+        "violet": {
+          "status": "passed"
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "original",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ],
+        "xy_v2_legal_point_regression": "passed"
+      },
+      "env0_render_part_counts": {
+        "source": 3,
+        "source_fixed": 3,
+        "source_open": 3,
+        "cap": 3,
+        "cap_fixed": 3,
+        "cap_twin": 3,
+        "cabinet": 76,
+        "beads": 16
+      },
+      "engineering": {
+        "status": "passed",
+        "robot_success": false,
+        "native_stage_twins": true,
+        "artificial_trigger": true
+      },
+      "num_envs": 2,
+      "RGB_appearance_acceptance": "blocked_or_not_confirmed"
+    },
+    "UnscrewCap": {
+      "automated_status": "passed",
+      "objects_automated": {
+        "cabinet": "not_applicable",
+        "bowl": "not_applicable",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed"
+        },
+        "ocean": {
+          "status": "passed"
+        },
+        "citrus": {
+          "status": "passed"
+        },
+        "violet": {
+          "status": "passed"
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "original",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ],
+        "xy_v2_legal_point_regression": "passed"
+      },
+      "env0_render_part_counts": {
+        "source": 3,
+        "source_fixed": 3,
+        "source_open": 3,
+        "cap": 3,
+        "cap_fixed": 3,
+        "cap_twin": 3,
+        "beads": 16
+      },
+      "engineering": {
+        "status": "passed",
+        "robot_success": false,
+        "native_stage_twins": true,
+        "artificial_trigger": true
+      },
+      "num_envs": 2,
+      "RGB_appearance_acceptance": "blocked_or_not_confirmed"
+    },
+    "PourBeads": {
+      "automated_status": "passed",
+      "objects_automated": {
+        "cabinet": "not_applicable",
+        "bowl": "passed",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed"
+        },
+        "ocean": {
+          "status": "passed"
+        },
+        "citrus": {
+          "status": "passed"
+        },
+        "violet": {
+          "status": "passed"
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "original",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ]
+      },
+      "env0_render_part_counts": {
+        "source": 3,
+        "bowl": 1,
+        "beads": 16
+      },
+      "engineering": "not_applicable",
+      "num_envs": 2,
+      "RGB_appearance_acceptance": "blocked_or_not_confirmed"
+    },
+    "Long": {
+      "automated_status": "passed",
+      "objects_automated": {
+        "cabinet": "passed",
+        "bowl": "passed",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed"
+        },
+        "ocean": {
+          "status": "passed"
+        },
+        "citrus": {
+          "status": "passed"
+        },
+        "violet": {
+          "status": "passed"
+        },
+        "candidate_to_original": "passed",
+        "random_reproducibility": [
+          [
+            [
+              "ocean"
+            ],
+            [
+              "ocean"
+            ],
+            [
+              "violet"
+            ]
+          ],
+          [
+            [
+              "ocean"
+            ],
+            [
+              "ocean"
+            ],
+            [
+              "violet"
+            ]
+          ]
+        ]
+      },
+      "env0_render_part_counts": {
+        "source": 3,
+        "source_fixed": 3,
+        "source_open": 3,
+        "cap": 3,
+        "cap_fixed": 3,
+        "cap_twin": 3,
+        "cabinet": 76,
+        "bowl": 1,
+        "beads": 16
+      },
+      "engineering": {
+        "status": "passed",
+        "robot_success": false,
+        "native_stage_twins": true,
+        "artificial_trigger": true
+      },
+      "num_envs": 1,
+      "RGB_appearance_acceptance": "blocked_or_not_confirmed"
+    }
+  },
+  "manual_visual": {
+    "cabinet": "failed: intended ocean/citrus coloration not clearly realized",
+    "bowl": "failed: intended ocean/citrus coloration not clearly realized",
+    "beads": "not_confirmed: bindings checked, individual bead appearance not resolved in reviewed views"
+  },
+  "acceptance": "pending Dennis; PR remains draft; no object acceptance increment",
+  "source_hashes": {
+    "tasks/cabinet_pouring/variation.py": "373340589413c2b9c865a998ba6899d111f68629b9f4f226ebb2680740cb7301",
+    "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "49e41cd5e8106c6bb1c00a04ac4f12eef9ab562ff575cf1e27fbb806e9b30724",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "dc7e379479a0323aa124718bc30e7e52b826fab0dde7b7196264dc360a035dc5",
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "75dced699eb44417b998e0a4a6f48cf4e85b736f16d0fb257fe0cc787f9ff39a",
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "f8f40c13e3c7a2933fa39d3854307a6401c07a0a68af197e1503afc71ef7923e",
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": "33a9c5ea9b8efe6e9338cc5070b3163302bb343d86c1cfae4d086cb3491e04ae",
+    "tasks/assets/variation/cabinet_pouring/v1/catalog.json": "2d40adc7f9bc75e5cebaabb7270e8349f7ff305916a269b028d7e21d15571dad",
+    "tools/variation/check_cabinet_remaining.py": "ae7b82a269d953449a94965f5d6210eae302750183e7bd96e39c4a8fec0fec83"
+  },
+  "local_frozen_files_match": {
+    "tasks/cabinet_pouring/variation.py": true,
+    "tasks/cabinet_pouring/__init__.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": true,
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": true,
+    "tasks/assets/variation/cabinet_pouring/v1/catalog.json": true,
+    "tools/variation/check_cabinet_remaining.py": true
+  },
+  "post_runtime_hashes_checked": 1297,
+  "post_runtime_hashes_all_match": true,
+  "dependencies_unchanged": true,
+  "original_PGID_alive": false,
+  "queue_watcher_exists": false,
+  "queue": {
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "image_identity": {
+    "OpenCabinet_original_human_0.png": "5656b760c7b6ecb90df6880cdfcf69e1407e59690f2134c6fcff895c467d24ec",
+    "OpenCabinet_ocean_human_0.png": "68af93c30732675b2d1713d7a9221acf4c6971eb7289363f50e8cb4efda02d29",
+    "OpenCabinet_citrus_human_0.png": "b57bad7042100f4f2df5aeb63ddc45189652e8b56971fe62b45604fb01d8e988",
+    "PourBeads_original_human_0.png": "e667ac1d3d2674913b6fff6456b050f93007118637304151f0305c69bb049767",
+    "PourBeads_ocean_human_0.png": "3377f734c6940ff8128c4f093f6a59b3776a98d3ff1ad1b0344c33419ac5dd3a",
+    "PourBeads_citrus_human_0.png": "1ebb35fd094ce1dfa20621e73e229a2eedea7199613b4286b15b58d624f9a7ce",
+    "Long_original_human_0.png": "363281dd65de1b13244f1a17bfdf4584bbdd021ed6e78216d2e15c27e15180af",
+    "Long_ocean_human_0.png": "ae392d8626b4fb3492af766cff2e261ad7d93bcabac2ae8bcad1e69dc8a1b6d3",
+    "Long_citrus_human_0.png": "929f6bcf840363ac3e31a09bb8eb16df97188356553ebc24c3f1835c9e8fada8"
+  },
+  "visual_ROI_measurements": {
+    "OpenCabinet_ocean": {
+      "ROI_xyxy": [
+        625,
+        185,
+        760,
+        370
+      ],
+      "max_channel_delta": 7,
+      "mean_abs_channel_delta": 0.5625091758425091,
+      "pixels_any_channel_delta_gt_10": 0,
+      "note": "Descriptive saved-frame comparison; ROI not segmentation or a new acceptance threshold."
+    },
+    "OpenCabinet_citrus": {
+      "ROI_xyxy": [
+        625,
+        185,
+        760,
+        370
+      ],
+      "max_channel_delta": 5,
+      "mean_abs_channel_delta": 0.4661061061061061,
+      "pixels_any_channel_delta_gt_10": 0,
+      "note": "Descriptive saved-frame comparison; ROI not segmentation or a new acceptance threshold."
+    },
+    "PourBeads_ocean": {
+      "ROI_xyxy": [
+        690,
+        392,
+        755,
+        435
+      ],
+      "max_channel_delta": 23,
+      "mean_abs_channel_delta": 0.6463923673225999,
+      "pixels_any_channel_delta_gt_10": 44,
+      "note": "Descriptive saved-frame comparison; ROI not segmentation or a new acceptance threshold."
+    },
+    "PourBeads_citrus": {
+      "ROI_xyxy": [
+        690,
+        392,
+        755,
+        435
+      ],
+      "max_channel_delta": 9,
+      "mean_abs_channel_delta": 0.4039355992844365,
+      "pixels_any_channel_delta_gt_10": 0,
+      "note": "Descriptive saved-frame comparison; ROI not segmentation or a new acceptance threshold."
+    }
+  },
+  "limitations": [
+    "No robot task success, policy training, A6 or Long multi-env isolation.",
+    "A changed frame is not proof that a particular object has the intended appearance.",
+    "Automated checks verify material getters and render isolation, not perceived color.",
+    "No root-cause repair or second GPU job attempted."
+  ],
+  "result_sha256": "88b9e2075c03936f4e218c1378fdea324db32557838da2e7b87b0c1c87ddd016",
+  "manifest_sha256": "20713f58597e575532445bf9152b8168a6f0f0c137046650137a063a0e1c39e7"
+}

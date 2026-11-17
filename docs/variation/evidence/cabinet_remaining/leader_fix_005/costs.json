@@ -1,0 +1,42 @@
+{
+  "window_start_UTC": "2026-11-16T16:58:00+00:00",
+  "hard_end_UTC": "2026-11-16T17:58:00+00:00",
+  "closeout_started_before_UTC": "2026-11-16T17:27:00+00:00",
+  "budget_wall_seconds": 3600,
+  "budget_GPU_seconds": 300,
+  "approved_jobs_total": 5,
+  "jobs": [
+    {
+      "job_id": "88730",
+      "allocated_seconds": 17,
+      "result": "failed: fresh-instance colors worked, dynamic texture replacement did not"
+    },
+    {
+      "job_id": "88771",
+      "allocated_seconds": 17,
+      "result": "failed: render body disable/enable forbidden by batched scene"
+    },
+    {
+      "job_id": "88774",
+      "allocated_seconds": 112,
+      "result": "script passed; manual review found pre-existing handle role misclassification"
+    },
+    {
+      "job_id": "88775",
+      "allocated_seconds": 1,
+      "result": "failed before application: missing supervisor working directory; leader implementation error"
+    },
+    {
+      "job_id": "88777",
+      "allocated_seconds": 113,
+      "result": "passed full regression including protected handle"
+    }
+  ],
+  "GPU_allocated_seconds": 260,
+  "recorded_UTC": "2026-11-16T17:33:11.683988+00:00",
+  "historical_costs": "Earlier executor jobs 88174 and 88509 are separate historical budgets; not erased or recharged here.",
+  "scope": "Includes failed jobs; this ledger is updated at final closeout. No further GPU submission.",
+  "wall_seconds_at_evidence_commit": 2111,
+  "closing_reserve_seconds": 900,
+  "final_receipt": "Final GitHub synchronization and wall-clock receipt are stored with the maintainer; this timestamp is pre-push."
+}

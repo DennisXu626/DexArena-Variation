@@ -1,0 +1,612 @@
+{
+  "status": "passed",
+  "tasks": {
+    "OpenCabinet": {
+      "status": "passed",
+      "objects": {
+        "cabinet": "passed",
+        "bowl": "not_applicable",
+        "beads": "not_applicable"
+      },
+      "checks": {
+        "original": {
+          "status": "passed",
+          "material_parts": 152,
+          "protected_handle_parts": 8
+        },
+        "ocean": {
+          "status": "passed",
+          "native_object_RGB": {
+            "cabinet": {
+              "ROI_xyxy": [
+                82,
+                38,
+                158,
+                150
+              ],
+              "pixels_delta_gt_10": 6461,
+              "mean_channel_delta": 34.0265507518797,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 152,
+          "protected_handle_parts": 8
+        },
+        "citrus": {
+          "status": "passed",
+          "native_object_RGB": {
+            "cabinet": {
+              "ROI_xyxy": [
+                82,
+                38,
+                158,
+                150
+              ],
+              "pixels_delta_gt_10": 6461,
+              "mean_channel_delta": 27.921796679197996,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 152,
+          "protected_handle_parts": 8
+        },
+        "violet": {
+          "status": "passed",
+          "material_parts": 152,
+          "protected_handle_parts": 8
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 26458,
+            "task_wrist_camera": 27651,
+            "wrist_camera": 165418,
+            "human": 87649
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "ocean",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 27749,
+            "task_wrist_camera": 50200,
+            "wrist_camera": 182834,
+            "human": 89150
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ]
+      }
+    },
+    "PickBottle": {
+      "status": "passed",
+      "objects": {
+        "cabinet": "passed",
+        "bowl": "not_applicable",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed",
+          "material_parts": 220,
+          "protected_handle_parts": 8
+        },
+        "ocean": {
+          "status": "passed",
+          "native_object_RGB": {
+            "cabinet": {
+              "ROI_xyxy": [
+                82,
+                38,
+                158,
+                150
+              ],
+              "pixels_delta_gt_10": 5013,
+              "mean_channel_delta": 30.100681390977442,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 220,
+          "protected_handle_parts": 8
+        },
+        "citrus": {
+          "status": "passed",
+          "native_object_RGB": {
+            "cabinet": {
+              "ROI_xyxy": [
+                82,
+                38,
+                158,
+                150
+              ],
+              "pixels_delta_gt_10": 5013,
+              "mean_channel_delta": 26.621201441102755,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 220,
+          "protected_handle_parts": 8
+        },
+        "violet": {
+          "status": "passed",
+          "material_parts": 220,
+          "protected_handle_parts": 8
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 50154,
+            "task_wrist_camera": 64073,
+            "wrist_camera": 123014,
+            "human": 110334
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "ocean",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 53823,
+            "task_wrist_camera": 62849,
+            "wrist_camera": 117182,
+            "human": 112145
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ],
+        "xy_v2_legal_point_regression": "passed"
+      },
+      "engineering": {
+        "status": "passed",
+        "robot_success": false,
+        "native_stage_twins": true,
+        "artificial_trigger": true
+      }
+    },
+    "UnscrewCap": {
+      "status": "passed",
+      "objects": {
+        "cabinet": "not_applicable",
+        "bowl": "not_applicable",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed",
+          "material_parts": 68,
+          "protected_handle_parts": 0
+        },
+        "ocean": {
+          "status": "passed",
+          "material_parts": 68,
+          "protected_handle_parts": 0
+        },
+        "citrus": {
+          "status": "passed",
+          "material_parts": 68,
+          "protected_handle_parts": 0
+        },
+        "violet": {
+          "status": "passed",
+          "material_parts": 68,
+          "protected_handle_parts": 0
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 21909,
+            "task_wrist_camera": 61937,
+            "wrist_camera": 136493,
+            "human": 28547
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "ocean",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 25621,
+            "task_wrist_camera": 68385,
+            "wrist_camera": 174649,
+            "human": 30974
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ],
+        "xy_v2_legal_point_regression": "passed"
+      },
+      "engineering": {
+        "status": "passed",
+        "robot_success": false,
+        "native_stage_twins": true,
+        "artificial_trigger": true
+      }
+    },
+    "PourBeads": {
+      "status": "passed",
+      "objects": {
+        "cabinet": "not_applicable",
+        "bowl": "passed",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed",
+          "material_parts": 40,
+          "protected_handle_parts": 0
+        },
+        "ocean": {
+          "status": "passed",
+          "native_object_RGB": {
+            "bowl": {
+              "ROI_xyxy": [
+                171,
+                176,
+                198,
+                199
+              ],
+              "pixels_delta_gt_10": 433,
+              "mean_channel_delta": 12.301127214170693,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 40,
+          "protected_handle_parts": 0
+        },
+        "citrus": {
+          "status": "passed",
+          "native_object_RGB": {
+            "bowl": {
+              "ROI_xyxy": [
+                171,
+                176,
+                198,
+                199
+              ],
+              "pixels_delta_gt_10": 443,
+              "mean_channel_delta": 44.789049919484704,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 40,
+          "protected_handle_parts": 0
+        },
+        "violet": {
+          "status": "passed",
+          "material_parts": 40,
+          "protected_handle_parts": 0
+        },
+        "candidate_to_original": "passed",
+        "local_0": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "violet",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 24618,
+            "task_wrist_camera": 42041,
+            "wrist_camera": 142918,
+            "human": 33041
+          }
+        },
+        "local_1": {
+          "status": "passed",
+          "selected": [
+            1
+          ],
+          "scheme": "ocean",
+          "env0_pixels": {
+            "base_camera": 0,
+            "task_wrist_camera": 0,
+            "wrist_camera": 0,
+            "human": 0
+          },
+          "env1_changed_channels": {
+            "base_camera": 27857,
+            "task_wrist_camera": 43289,
+            "wrist_camera": 131363,
+            "human": 35488
+          }
+        },
+        "random_reproducibility": [
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ],
+          [
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "violet"
+            ],
+            [
+              "ocean",
+              "citrus"
+            ]
+          ]
+        ]
+      }
+    },
+    "Long": {
+      "status": "passed",
+      "objects": {
+        "cabinet": "passed",
+        "bowl": "passed",
+        "beads": "passed"
+      },
+      "checks": {
+        "original": {
+          "status": "passed",
+          "material_parts": 111,
+          "protected_handle_parts": 4
+        },
+        "ocean": {
+          "status": "passed",
+          "native_object_RGB": {
+            "cabinet": {
+              "ROI_xyxy": [
+                82,
+                38,
+                158,
+                150
+              ],
+              "pixels_delta_gt_10": 4924,
+              "mean_channel_delta": 25.930568609022558,
+              "note": "Object ROI evidence, final visual review also required"
+            },
+            "bowl": {
+              "ROI_xyxy": [
+                171,
+                176,
+                198,
+                199
+              ],
+              "pixels_delta_gt_10": 499,
+              "mean_channel_delta": 13.953837895866881,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 111,
+          "protected_handle_parts": 4
+        },
+        "citrus": {
+          "status": "passed",
+          "native_object_RGB": {
+            "cabinet": {
+              "ROI_xyxy": [
+                82,
+                38,
+                158,
+                150
+              ],
+              "pixels_delta_gt_10": 4924,
+              "mean_channel_delta": 21.253641917293233,
+              "note": "Object ROI evidence, final visual review also required"
+            },
+            "bowl": {
+              "ROI_xyxy": [
+                171,
+                176,
+                198,
+                199
+              ],
+              "pixels_delta_gt_10": 511,
+              "mean_channel_delta": 51.184648416532475,
+              "note": "Object ROI evidence, final visual review also required"
+            }
+          },
+          "material_parts": 111,
+          "protected_handle_parts": 4
+        },
+        "violet": {
+          "status": "passed",
+          "material_parts": 111,
+          "protected_handle_parts": 4
+        },
+        "candidate_to_original": "passed",
+        "random_reproducibility": [
+          [
+            [
+              "ocean"
+            ],
+            [
+              "ocean"
+            ],
+            [
+              "violet"
+            ]
+          ],
+          [
+            [
+              "ocean"
+            ],
+            [
+              "ocean"
+            ],
+            [
+              "violet"
+            ]
+          ]
+        ]
+      },
+      "engineering": {
+        "status": "passed",
+        "robot_success": false,
+        "native_stage_twins": true,
+        "artificial_trigger": true
+      }
+    }
+  },
+  "user_physics_steps": 0,
+  "internal_gpu_warm_start": "native framework behavior; not robot execution",
+  "elapsed_seconds": 102.69737698510289,
+  "runtime_commit": "a18cd0e26708fe2f39ff12a8a84c28735571039a",
+  "job_id": "88777",
+  "allocated_GPU_seconds": 113,
+  "acceptance": "runtime and visual checks passed; pending Dennis final review",
+  "raw_results_sha256": "b1feff2d72de2bb0a8979fa1a74a690e09ce4036debffef3d5c819cb588237e8",
+  "portable_full_results_sha256": "d21d7ca2dc119bd71085fb6feaa7b0a0dad2001d6dda2c170baa4b83dab88b40",
+  "portable_note": "Personal installation prefixes replaced by placeholders only; values and measurements unchanged. Raw file retained by maintainer."
+}

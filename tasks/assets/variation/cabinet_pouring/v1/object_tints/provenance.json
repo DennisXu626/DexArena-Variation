@@ -1,0 +1,162 @@
+{
+  "method": "native luminance multiplied by existing catalog RGB; native alpha retained",
+  "license": "Derived from existing PartNet/RoboCasa task assets; original asset terms remain applicable",
+  "files": {
+    "cabinet_ocean_texture_0.png": {
+      "role": "cabinet",
+      "scheme": "ocean",
+      "source": "cabinet/images/texture_0.jpg",
+      "source_sha256": "ac39178048c84f7b229abc893d1a2b0ae42f176c99dffb2da26c4e04111af8de",
+      "sha256": "fa37ff7f02597e2b18a16b40233e6b651616a71f8ea380fb6d815d5416105f91",
+      "size": 649245,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_basename": "texture_0.jpg"
+    },
+    "cabinet_citrus_texture_0.png": {
+      "role": "cabinet",
+      "scheme": "citrus",
+      "source": "cabinet/images/texture_0.jpg",
+      "source_sha256": "ac39178048c84f7b229abc893d1a2b0ae42f176c99dffb2da26c4e04111af8de",
+      "sha256": "e3743693edfd77df7fbc3f3d89bb848dbe0ed6695b1a83dc07d10389762ddf28",
+      "size": 639897,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_basename": "texture_0.jpg"
+    },
+    "cabinet_ocean_texture_1.png": {
+      "role": "cabinet",
+      "scheme": "ocean",
+      "source": "cabinet/images/texture_1.jpg",
+      "source_sha256": "e44a28718ee5ac0dcc9df90ef99362cdcbd3168ac6e0f817a43dc9d8e2fb240d",
+      "sha256": "d0e35c1408214b8ff7d8ef0daa63c34661a80cc6c4e20ea26c277f949cab4aa6",
+      "size": 743022,
+      "dimensions": [
+        800,
+        800
+      ],
+      "source_basename": "texture_1.jpg"
+    },
+    "cabinet_citrus_texture_1.png": {
+      "role": "cabinet",
+      "scheme": "citrus",
+      "source": "cabinet/images/texture_1.jpg",
+      "source_sha256": "e44a28718ee5ac0dcc9df90ef99362cdcbd3168ac6e0f817a43dc9d8e2fb240d",
+      "sha256": "b053a1205b7533c6e334a3597dd66b3216a0dd4b8b476abaeffa99287d29a4ba",
+      "size": 725136,
+      "dimensions": [
+        800,
+        800
+      ],
+      "source_basename": "texture_1.jpg"
+    },
+    "cabinet_ocean_texture_2.png": {
+      "role": "cabinet",
+      "scheme": "ocean",
+      "source": "cabinet/images/texture_2.jpg",
+      "source_sha256": "20f81b5c349570e7074249310a55497463188c569a3a79ed8bf0d46234952bc4",
+      "sha256": "5cfe7138fcb0632cb59941ff9619552068402817e40e0deeb06a13a1f4ad5169",
+      "size": 52721,
+      "dimensions": [
+        700,
+        126
+      ],
+      "source_basename": "texture_2.jpg"
+    },
+    "cabinet_citrus_texture_2.png": {
+      "role": "cabinet",
+      "scheme": "citrus",
+      "source": "cabinet/images/texture_2.jpg",
+      "source_sha256": "20f81b5c349570e7074249310a55497463188c569a3a79ed8bf0d46234952bc4",
+      "sha256": "9f1139ddc7e7d162fd87d3b5e1f374fceff9fc944195f817a8db9b4500818443",
+      "size": 51333,
+      "dimensions": [
+        700,
+        126
+      ],
+      "source_basename": "texture_2.jpg"
+    },
+    "cabinet_ocean_texture_3.png": {
+      "role": "cabinet",
+      "scheme": "ocean",
+      "source": "cabinet/images/texture_3.jpg",
+      "source_sha256": "c1ad6a2215decdf897783279845e885f623ae21298c039be85e2d01682a91680",
+      "sha256": "353b55ea991195a3184ef5a365ef600d3ca59811963f5274a607b07b83d92abe",
+      "size": 46316,
+      "dimensions": [
+        800,
+        160
+      ],
+      "source_basename": "texture_3.jpg"
+    },
+    "cabinet_citrus_texture_3.png": {
+      "role": "cabinet",
+      "scheme": "citrus",
+      "source": "cabinet/images/texture_3.jpg",
+      "source_sha256": "c1ad6a2215decdf897783279845e885f623ae21298c039be85e2d01682a91680",
+      "sha256": "33403202da9780e42f5659e4d461208cb5098bb6e18365cf5ba126f6220d9fa1",
+      "size": 45222,
+      "dimensions": [
+        800,
+        160
+      ],
+      "source_basename": "texture_3.jpg"
+    },
+    "cabinet_ocean_texture_4.png": {
+      "role": "cabinet",
+      "scheme": "ocean",
+      "source": "cabinet/images/texture_4.png",
+      "source_sha256": "e68703b42f239fb06d3b867ebe17c60aaf195f0177b2e6570c8d996beaaae687",
+      "sha256": "f302d9a41b326a9f9eb9b0ab3a6670121bcc098fd9fcc4b43fea45b74246edb3",
+      "size": 39084,
+      "dimensions": [
+        800,
+        99
+      ],
+      "source_basename": "texture_4.png"
+    },
+    "cabinet_citrus_texture_4.png": {
+      "role": "cabinet",
+      "scheme": "citrus",
+      "source": "cabinet/images/texture_4.png",
+      "source_sha256": "e68703b42f239fb06d3b867ebe17c60aaf195f0177b2e6570c8d996beaaae687",
+      "sha256": "b8a6ede89d419da80dc5100782e93ed6511029d80a4c3c320ac00171e37a2052",
+      "size": 38880,
+      "dimensions": [
+        800,
+        99
+      ],
+      "source_basename": "texture_4.png"
+    },
+    "bowl_ocean_material_0.png": {
+      "role": "bowl",
+      "scheme": "ocean",
+      "source": "bowl/visual/material_0.jpeg",
+      "source_sha256": "6ff196c4acda76aa95836857a0b4641e2d003452b1fc4ab44a797754efd1140f",
+      "sha256": "58f46b1387f02f6e81dd86c2ddf3d6a9a8a525f83e8e1a93aee16831522f1a2d",
+      "size": 448703,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_basename": "material_0.jpeg"
+    },
+    "bowl_citrus_material_0.png": {
+      "role": "bowl",
+      "scheme": "citrus",
+      "source": "bowl/visual/material_0.jpeg",
+      "source_sha256": "6ff196c4acda76aa95836857a0b4641e2d003452b1fc4ab44a797754efd1140f",
+      "sha256": "0374e0a0d544d517a99ff71c930cd87a2407b31d81b68d783cc9dd843dfacd1b",
+      "size": 417345,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_basename": "material_0.jpeg"
+    }
+  }
+}

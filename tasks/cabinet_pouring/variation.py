@@ -29,8 +29,12 @@ class PilotVariation:
         self.config = copy.deepcopy(config)
         self.appearance = bool(config.get("appearance", {}).get("enabled", False))
         self.initial_pose = bool(config.get("initial_pose", {}).get("enabled", False))
-        if type(env).__name__ not in {"CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv"}:
-            raise ValueError("This pilot variation supports only PickBottle and UnscrewCap")
+        if type(env).__name__ not in {"CabinetPouringLongEnv", "CabinetPouringOpenCabinetEnv",
+                                      "CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv",
+                                      "CabinetPouringPourBeadsEnv"}:
+            raise ValueError("Unsupported CabinetPouring task")
+        if self.initial_pose and type(env).__name__ not in {"CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv"}:
+            raise ValueError("Initial-pose variation still supports only PickBottle and UnscrewCap")
         self.region = REGION
         if self.initial_pose:
             # One run-level selection feeds both stages, including their
@@ -76,6 +80,13 @@ class PilotVariation:
                 path = str(ASSETS / scheme["label_texture"])
                 if path not in self._textures:
                     self._textures[path] = sr.RenderTexture2D(filename=path, mipmap_levels=4)
+            # Textured native objects need a tinted texture: SAPIEN's raster
+            # shader selects texture instead of multiplying by base_color.
+            for params in scheme.get("objects", {}).values():
+                for filename in params.get("texture_files", {}).values():
+                    path = str(ASSETS / filename)
+                    if path not in self._textures:
+                        self._textures[path] = sr.RenderTexture2D(filename=path, mipmap_levels=4)
 
     @staticmethod
     def isolate_builder_materials(builder):
@@ -147,32 +158,74 @@ class PilotVariation:
     def _collect_bindings(self):
         import sapien.render as sr
         names = ["source", "source_fixed", "source_open", "cap", "cap_fixed", "cap_twin"]
-        objects = tuple(raw for name in names for raw in getattr(self.env, name)._objs)
-        key = tuple(id(raw) for raw in objects)
+        entries = [(name, i, raw) for name in names
+                   for i, raw in enumerate(getattr(getattr(self.env, name, None), "_objs", []))]
+        for i, cabinet in enumerate(getattr(self.env, "_cabinets", [])):
+            for link in cabinet.get_links():
+                entries.extend(("cabinet:" + link.name, i, raw) for raw in link._objs)
+        entries.extend(("bowl", i, raw) for i, raw in
+                       enumerate(getattr(getattr(self.env, "target", None), "_objs", [])))
+        for particle in getattr(self.env, "particles", []):
+            entries.extend(("beads", i, raw) for i, raw in enumerate(particle._objs))
+        objects = tuple(raw for _, _, raw in entries)
+        key = tuple((name, i, id(raw)) for name, i, raw in entries)
         if self._binding_key == key:
             return
         self._bindings = [[] for _ in range(self.env.num_envs)]
         owners = {}
-        for name in names:
-            for i, raw in enumerate(getattr(self.env, name)._objs):
-                entity = getattr(raw, "entity", raw)
-                body = entity.find_component_by_type(sr.RenderBodyComponent)
-                for shape in body.render_shapes:
-                    for part_index, part in enumerate(shape.parts):
-                        material = part.material
-                        # Native loaders already instantiate private materials
-                        # per environment. Refuse an unexpected shared owner
-                        # instead of mutating another environment's material.
-                        previous = owners.setdefault(id(material), i)
-                        if previous != i:
-                            raise RuntimeError("Native render material is shared across environments")
-                        original = {k: getattr(material, k) for k in ["base_color", "base_color_texture", "roughness", "metallic"]}
-                        if name.startswith("source"):
-                            role = "body_label" if original["base_color_texture"] is not None else "body_surface"
-                        else:
-                            role = "cap_reference" if isinstance(shape, sr.RenderShapeBox) else "cap_surface"
-                        self._bindings[i].append({"name": name, "role": role, "part": part_index,
-                                                  "material": material, "original": original})
+        for name, i, raw in entries:
+            entity = getattr(raw, "entity", raw)
+            body = entity.find_component_by_type(sr.RenderBodyComponent)
+            if body is None:
+                continue  # e.g. the cabinet's non-visual base link
+            for shape in body.render_shapes:
+                for part_index, part in enumerate(shape.parts):
+                    material = part.material
+                    # Native loaders already instantiate private materials
+                    # per environment. Refuse an unexpected shared owner
+                    # instead of mutating another environment's material.
+                    previous = owners.setdefault(id(material), i)
+                    if previous != i:
+                        raise RuntimeError("Native render material is shared across environments")
+                    original = {k: getattr(material, k) for k in ["base_color", "base_color_texture", "roughness", "metallic"]}
+                    if name.startswith("cabinet:"):
+                        # Tint only opaque textured panels; handles, trim and
+                        # transparent parts retain their native appearance.
+                        # Cabinet 46966's handle is a textured mesh too; texture
+                        # presence alone cannot distinguish it from wood panels.
+                        is_handle = Path(getattr(shape, "filename", "")).name == "original-36.obj"
+                        role = ("cabinet" if original["base_color_texture"] is not None
+                                and not is_handle
+                                and float(original["base_color"][3]) >= 0.999
+                                and float(material.transmission) == 0 else "cabinet_detail")
+                    elif name in {"bowl", "beads"}:
+                        role = name
+                    elif name.startswith("source"):
+                        role = "body_label" if original["base_color_texture"] is not None else "body_surface"
+                    else:
+                        role = "cap_reference" if isinstance(shape, sr.RenderShapeBox) else "cap_surface"
+                    self._bindings[i].append({"name": name, "role": role, "part": part_index,
+                                              "material": material, "original": original})
+        # Bind private, stable texture objects before the first batched frame.
+        # Subsequent resets upload pixels without replacing descriptors or
+        # adding/removing render components. Never upload into native textures.
+        pixels = {}
+        for bindings in self._bindings:
+            pool = {}
+            for binding in bindings:
+                texture = binding["original"]["base_color_texture"]
+                if binding["role"] not in {"cabinet", "bowl"} or texture is None:
+                    continue
+                source = texture.filename
+                if source not in pixels:
+                    pixels[source] = texture.download().copy()
+                if source not in pool:
+                    live = sr.RenderTexture2D(array=pixels[source], format=texture.format,
+                        mipmap_levels=texture.mipmap_levels, filter_mode=texture.filter_mode,
+                        address_mode=texture.address_mode, srgb=texture.is_srgb)
+                    pool[source] = {"texture": live, "native_pixels": pixels[source], "candidates": {}}
+                binding["live_texture"] = pool[source]
+                binding["material"].base_color_texture = pool[source]["texture"]
         self._binding_key = key
         self._bound_objects = objects
 
@@ -194,13 +247,41 @@ class PilotVariation:
             if scheme_id not in self.catalog["schemes"]:
                 raise ValueError(f"Unknown appearance scheme: {scheme_id}")
             scheme = self.catalog["schemes"][scheme_id]
+            uploaded = set()
             for binding in self._bindings[i]:
                 material = binding["material"]
                 for k, value in binding["original"].items():
-                    setattr(material, k, value)
+                    if k != "base_color_texture" or "live_texture" not in binding:
+                        setattr(material, k, value)
+                if "live_texture" in binding:
+                    live = binding["live_texture"]
+                    if id(live) not in uploaded:
+                        params = scheme.get("objects", {}).get(binding["role"], {})
+                        source = binding["original"]["base_color_texture"].filename
+                        filename = params.get("texture_files", {}).get(Path(source).name)
+                        data = live["native_pixels"]
+                        if filename is not None:
+                            if filename not in live["candidates"]:
+                                live["candidates"][filename] = self._textures[str(ASSETS / filename)].download().copy()
+                            data = live["candidates"][filename]
+                        if data.shape != live["native_pixels"].shape or data.dtype != live["native_pixels"].dtype:
+                            raise ValueError("Derived texture must preserve native pixel dimensions and format")
+                        live["texture"].upload(data)
+                        uploaded.add(id(live))
                 if scheme_id == "original":
                     continue
                 role = binding["role"]
+                if role in {"cabinet", "cabinet_detail", "bowl", "beads"}:
+                    params = scheme.get("objects", {}).get(role)
+                    if params is not None:
+                        # Keep UV/textures and original opacity; no geometry,
+                        # visibility, transmission or collision modifications.
+                        color = list(params["base_color"])
+                        color[3] = float(binding["original"]["base_color"][3])
+                        material.base_color = color
+                        material.roughness = params["roughness"]
+                        material.metallic = params["metallic"]
+                    continue  # omitted schemes/roles restore captured original
                 if role == "body_label":
                     texture_path = str(ASSETS / scheme["label_texture"])
                     if texture_path not in self._textures:
@@ -223,7 +304,8 @@ class PilotVariation:
         if self.appearance:
             self.apply_appearance(env_idx, options)
         for i in env_idx.tolist():
-            pose = self.env._source_pose().raw_pose[i].detach().cpu().tolist()
+            pose = (self.env._source_pose().raw_pose[i].detach().cpu().tolist()
+                    if self.env.has_bottle else None)
             self._record(i, options, status="ok", pose=pose)
             self.episodes[i] += 1
 
@@ -235,8 +317,9 @@ class PilotVariation:
                   "appearance": self.schemes[i] if self.appearance else "native_disabled",
                   "final_pose_wxyz_m": pose, "region_id": self.region["id"], "status": status}
         if pose is not None:
-            record["representation"] = int(e._active_bottle_rep[i])
-            record["cap_position_m"] = e._cap_p()[i].detach().cpu().tolist()
+            record["representation"] = int(e._active_bottle_rep[i]) if e.bottle_stage_twins else 0
+            if e.has_cap:
+                record["cap_position_m"] = e._cap_p()[i].detach().cpu().tolist()
         if error is not None:
             record["error"] = error
         self.records.append(record)

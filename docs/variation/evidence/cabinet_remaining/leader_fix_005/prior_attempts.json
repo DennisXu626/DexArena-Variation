@@ -1,0 +1,120 @@
+[
+  {
+    "attempt": 1,
+    "runtime_commit": "e4751a9997eee15d6979c5c42dbc9bcb1ea34604",
+    "scheduler": {
+      "JobId": "88730",
+      "JobState": "FAILED",
+      "ExitCode": "1:0",
+      "RunTime": "00:00:17"
+    },
+    "guard": {
+      "returncode": 1,
+      "stop_reason": null,
+      "elapsed_seconds": 14.927050717175007,
+      "retained_log_bytes": 1759,
+      "cleanup": {
+        "pgid": 1740899,
+        "errors": [],
+        "TERM_sent": false,
+        "KILL_sent": false,
+        "live_remaining": [],
+        "zombie_remaining": [],
+        "complete": true
+      },
+      "exceptions": [],
+      "drain_deadline_hit": false,
+      "drain_limit_seconds": 0.5,
+      "attempts": 1,
+      "job_id": "88730",
+      "physical_gpus": "2"
+    }
+  },
+  {
+    "attempt": 2,
+    "runtime_commit": "01eb01cc7f9af556fdb79b321a8ddf06bdc51a9d",
+    "scheduler": {
+      "JobId": "88771",
+      "JobState": "FAILED",
+      "ExitCode": "1:0",
+      "RunTime": "00:00:17"
+    },
+    "guard": {
+      "returncode": 1,
+      "stop_reason": null,
+      "elapsed_seconds": 15.028969138860703,
+      "retained_log_bytes": 1759,
+      "cleanup": {
+        "pgid": 1787949,
+        "errors": [],
+        "TERM_sent": false,
+        "KILL_sent": false,
+        "live_remaining": [],
+        "zombie_remaining": [],
+        "complete": true
+      },
+      "exceptions": [],
+      "drain_deadline_hit": false,
+      "drain_limit_seconds": 0.5,
+      "attempts": 1,
+      "job_id": "88771",
+      "physical_gpus": "2"
+    }
+  },
+  {
+    "attempt": 3,
+    "runtime_commit": "ae3083020e30d5c3f3d92eb3d2cd104fcceeeb13",
+    "scheduler": {
+      "JobId": "88774",
+      "JobState": "COMPLETED",
+      "ExitCode": "0:0",
+      "RunTime": "00:01:52"
+    },
+    "guard": {
+      "returncode": 0,
+      "stop_reason": null,
+      "elapsed_seconds": 109.70869568735361,
+      "retained_log_bytes": 1754,
+      "cleanup": {
+        "pgid": 1828244,
+        "errors": [],
+        "TERM_sent": false,
+        "KILL_sent": false,
+        "live_remaining": [],
+        "zombie_remaining": [],
+        "complete": true
+      },
+      "exceptions": [],
+      "drain_deadline_hit": false,
+      "drain_limit_seconds": 0.5,
+      "attempts": 1,
+      "job_id": "88774",
+      "physical_gpus": "2"
+    }
+  },
+  {
+    "attempt": 4,
+    "runtime_commit": "f98e086b2fca7405754738f82307ab947d9eb69f",
+    "scheduler": {
+      "JobId": "88775",
+      "JobState": "FAILED",
+      "ExitCode": "1:0",
+      "RunTime": "00:00:01"
+    },
+    "guard": {
+      "returncode": null,
+      "stop_reason": "supervisor_error",
+      "elapsed_seconds": 0.0004793703556060791,
+      "retained_log_bytes": 0,
+      "cleanup": null,
+      "exceptions": [
+        "FileNotFoundError: [Errno 2] No such file or directory: PosixPath('<APPROVED_RUN_ROOT>/leader_fix_004/source')"
+      ],
+      "drain_deadline_hit": false,
+      "drain_limit_seconds": 0.5,
+      "attempts": 1,
+      "job_id": "88775",
+      "physical_gpus": "2"
+    }
+  }
+]

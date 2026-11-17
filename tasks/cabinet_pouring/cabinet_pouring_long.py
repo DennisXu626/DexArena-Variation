@@ -69,6 +69,7 @@ from mani_skill.utils.geometry.rotation_conversions import (
 from tasks.config.hands import register_task
 from tasks.scene_builders.table import TableSceneBuilder
 from mani_skill.utils.structs.articulation import Articulation
+from mani_skill.utils.structs.actor import Actor
 from mani_skill.utils.structs.pose import Pose
 from mani_skill.utils.structs.types import GPUMemoryConfig, SimConfig
 from mani_skill.utils.wrappers.record import RecordEpisode
@@ -1497,15 +1498,25 @@ class CabinetPouringLongEnv(BaseEnv):
                 shape.set_collision_groups(groups)
 
     def _load_particles(self):
+        def build_particle(index):
+            kwargs = dict(radius=self.particle_radius,
+                          color=[0.15, 0.45, 0.9, 1.0], body_type="dynamic",
+                          initial_pose=sapien.Pose(p=[0, 0, 0.6 + 0.05 * index]))
+            if self._variation is None or not self._variation.appearance:
+                return actors.build_sphere(self.scene, name=f"particle_{index}", **kwargs)
+            # The helper creates an explicit material. Separate native builds
+            # keep it private per environment without changing sphere physics.
+            singles = [actors.build_sphere(self.scene, scene_idxs=[i],
+                       name=f"particle_{index}_env_{i}", **kwargs)
+                       for i in range(self.num_envs)]
+            for actor in singles:
+                self.remove_from_state_dict_registry(actor)
+            particle = Actor.merge(singles, name=f"particle_{index}")
+            self.add_to_state_dict_registry(particle)
+            return particle
+
         self.particles = [
-            actors.build_sphere(
-                self.scene,
-                radius=self.particle_radius,
-                color=[0.15, 0.45, 0.9, 1.0],
-                name=f"particle_{i}",
-                body_type="dynamic",
-                initial_pose=sapien.Pose(p=[0, 0, 0.6 + 0.05 * i]),
-            )
+            build_particle(i)
             for i in range(self.num_particles)
         ]
         # The particles stand in for water, and water is frictionless for our
@@ -2803,6 +2814,9 @@ class CabinetPouringLongEnv(BaseEnv):
                 self._stage_cap_turned[env_idx] = True
                 self._stage_cap_placed[env_idx] = True
             self._sync_placement_region_markers(env_idx)
+
+            if self._variation is not None:
+                self._variation.finish_reset(env_idx, options)
 
     def _before_control_step(self):
         """Read the physical screw angle while the cap remains joint-attached.

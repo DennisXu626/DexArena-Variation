@@ -1,0 +1,47 @@
+{
+  "object": "bowl",
+  "asset_snapshot_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+  "source_identity_note": "Static snapshot metadata retained; job88777 runtime assets verified against frozen manifest before and after execution.",
+  "tasks": {
+    "CabinetPouringOpenCabinet-Sharpa-v1": "not applicable: not loaded",
+    "CabinetPouringPickBottle-Sharpa-v1": "not applicable: not loaded",
+    "CabinetPouringUnscrewCap-Sharpa-v1": "not applicable: not loaded",
+    "CabinetPouringPourBeads-Sharpa-v1": "job88777: binding/visual/physics/reset checks passed; two environments",
+    "CabinetPouringLong-Sharpa-v1": "job88777: binding/visual/physics/reset checks passed; single-environment engineering only"
+  },
+  "catalog": "tasks/assets/variation/cabinet_pouring/v1/catalog.json",
+  "schemes": [
+    "original",
+    "ocean",
+    "citrus"
+  ],
+  "violet": "new object remains native; existing bottle/cap violet unchanged",
+  "new_texture_UV_geometry": {
+    "derived_textures": true,
+    "new_UV": false,
+    "new_geometry": false
+  },
+  "runtime_validation": "job88777: runtime and visual checks passed; manual images checked; pending Dennis final review; no full robot task or A6",
+  "visual": "bowl/visual/model_normalized_0.obj",
+  "visual_sha256": "ab74e19eecd7ef70fa92f0713e73ba0704181f2901257143533964ad36aeac52",
+  "UV_entries": 742,
+  "material_slots": [
+    "material_0"
+  ],
+  "texture": "bowl/visual/material_0.jpeg",
+  "representation": "target kinematic mesh actor; inner/outer/rim share one imported material",
+  "runtime_evidence": "docs/variation/evidence/cabinet_remaining/leader_fix_005/README.md",
+  "visual_fix_001": {
+    "catalog_version": "cabinet-appearance-v1.2",
+    "runtime_commit": "ddc10c02c40cd149906122daf690d3325d6f4ccc",
+    "job_id": "88509",
+    "status": "diagnostic_failed; formal_visual_and_regression_not_run",
+    "evidence": "docs/variation/evidence/cabinet_remaining/visual_fix_001/README.md"
+  },
+  "leader_fix_005": {
+    "runtime_commit": "a18cd0e26708fe2f39ff12a8a84c28735571039a",
+    "job_id": "88777",
+    "status": "passed_limited_scope_pending_Dennis",
+    "evidence": "docs/variation/evidence/cabinet_remaining/leader_fix_005/README.md"
+  }
+}
