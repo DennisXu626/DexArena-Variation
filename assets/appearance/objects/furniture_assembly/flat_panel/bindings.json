@@ -1,0 +1,81 @@
+{
+  "version": "flat-panel-bindings-v1",
+  "logical_object": "furniture_assembly.flat_panel",
+  "source_reference_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "catalog": "variants/v1/catalog.json",
+  "runtime_handle": "env.unwrapped.panel",
+  "object_type": "Actor",
+  "native_builder": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: build_drawer_panel / make_render_material",
+  "roles": {
+    "face": {
+      "source_variable": "face",
+      "parts": "Main panel surfaces and two flared entrance wedges",
+      "shape_count": 5,
+      "editable": true
+    },
+    "cut": {
+      "source_variable": "cut",
+      "parts": "Closed stop wall and groove floor overlay",
+      "shape_count": 2,
+      "editable": true
+    },
+    "edge": {
+      "source_variable": "edge",
+      "parts": "Four side/end edge-banding visuals",
+      "shape_count": 4,
+      "editable": true
+    },
+    "routed": {
+      "source_variable": "routed",
+      "parts": "Two straight and two flared groove-lip strips",
+      "shape_count": 4,
+      "editable": true
+    },
+    "label": {
+      "source_variable": "label",
+      "parts": "Printed part-label background",
+      "shape_count": 1,
+      "editable": false
+    },
+    "ink": {
+      "source_variable": "ink",
+      "parts": "Six barcode strips",
+      "shape_count": 6,
+      "editable": false
+    }
+  },
+  "representations": {
+    "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
+      "source": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: _load_scene",
+      "type": "dynamic Actor",
+      "native_color_jitter": true
+    },
+    "FurnitureAssemblyInsertRail-Sharpa-v1": {
+      "source": "tasks/furniture_assembly/furniture_assembly_insert_rail.py: _load_scene",
+      "type": "kinematic Actor",
+      "native_color_jitter": true
+    },
+    "FurnitureAssemblyFastenScrew-Sharpa-v1": {
+      "source": "tasks/furniture_assembly/furniture_assembly_fasten_screw.py: _load_scene",
+      "type": "kinematic Actor",
+      "native_color_jitter": false
+    }
+  },
+  "binding_boundary": "Resolve panel._objs to its Entity and match native roughness/metallic within that entity. Validate role shape counts for the task and visual_detail. Capture native PBR, including panel jitter, for original. Preserve label/ink and non-target material fields; do not bind by shape order.",
+  "evidence": {
+    "summary": "assets/appearance/furniture_assembly/previews/runtime/summary.json",
+    "tasks": [
+      "LayFlatPanel",
+      "InsertRail",
+      "FastenScrew"
+    ],
+    "scope": "task_appearance_and_reset_acceptance"
+  },
+  "runtime_interface": {
+    "kwarg": "furniture_appearance",
+    "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
+    "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
+    "status": "runtime_verified_pending_review"
+  },
+  "original_policy": "Restore the actual captured native build-time PBR, including native panel color jitter. Enabling or disabling the formal adapter must not disable native jitter."
+}

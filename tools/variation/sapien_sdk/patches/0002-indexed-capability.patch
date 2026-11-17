@@ -1,0 +1,40 @@
+--- a/include/sapien/physx/physx_system.h
++++ b/include/sapien/physx/physx_system.h
+@@ -35,6 +35,9 @@
+ 
+ namespace sapien {
+ namespace physx {
++
++// Compiled-library capability; stock 3.0.3 does not provide this symbol.
++unsigned indexedGpuApplyPatchVersion();
+ class PhysxArticulation;
+ class PhysxMaterial;
+ class PhysxRigidBodyComponent;
+--- a/src/physx/physx_system.cpp
++++ b/src/physx/physx_system.cpp
+@@ -36,6 +36,14 @@
+ namespace sapien {
+ namespace physx {
+ 
++unsigned indexedGpuApplyPatchVersion() {
++#ifdef SAPIEN_CUDA
++  return 1;
++#else
++  return 0;
++#endif
++}
++
+ struct SapienBodyDataTest {
+   Pose pose;
+   Vec3 v;
+--- a/python/pybind/physx.cpp
++++ b/python/pybind/physx.cpp
+@@ -192,6 +192,8 @@
+ 
+ Generator<int> init_physx(py::module &sapien) {
+   auto m = sapien.def_submodule("physx");
++  m.def("indexed_gpu_apply_patch_version", &indexedGpuApplyPatchVersion,
++        "Version of the compiled indexed GPU apply fix; zero means unavailable.");
+ 
+   auto PyPhysxSceneConfig = py::classh<PhysxSceneConfig>(m, "PhysxSceneConfig");
+   PyPhysxSceneConfig.def(py::init<>())

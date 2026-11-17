@@ -1,0 +1,29 @@
+{
+  "version": "furniture-rack-preview-v1",
+  "object_id": "furniture_assembly.panel_rack",
+  "scope": "furniture_appearance",
+  "preserve_roles": ["pad", "bolt", "decal"],
+  "preserve_properties": ["specular", "textures", "uv", "emission", "opacity"],
+  "scheme_descriptions": {
+    "original": "Restore the native material values captured from the actual rack instance.",
+    "variant_1": "Deep navy powder-coated steel walls and base; retain native rubber, silver bolts and yellow warning stripes.",
+    "variant_2": "Light grey-white steel walls and a medium grey base; retain native rubber, silver bolts and yellow warning stripes."
+  },
+  "schemes": {
+    "original": {"mode": "restore_native"},
+    "variant_1": {
+      "mode": "material_override",
+      "roles": {
+        "body": {"base_color": [0.055, 0.12, 0.23, 1.0], "roughness": 0.48, "metallic": 0.35},
+        "plate": {"base_color": [0.035, 0.07, 0.13, 1.0], "roughness": 0.62, "metallic": 0.3}
+      }
+    },
+    "variant_2": {
+      "mode": "material_override",
+      "roles": {
+        "body": {"base_color": [0.8, 0.82, 0.84, 1.0], "roughness": 0.6, "metallic": 0.25},
+        "plate": {"base_color": [0.56, 0.59, 0.63, 1.0], "roughness": 0.72, "metallic": 0.3}
+      }
+    }
+  }
+}
