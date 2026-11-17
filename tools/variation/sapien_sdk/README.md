@@ -25,6 +25,28 @@ $python = 'C:\path\to\python.exe'
 
 The existing task assets must be available before `run_check.py`. Optional build arguments `-VsInstall`, `-GitBash`, `-CMake` and `-Ninja` select tools explicitly. Use `-VsInstall` if vswhere does not discover the installed C++ toolset. Compilation is capped at four jobs; CUDA and build files stay private.
 
+For an ordinary Windows task script, set these process variables and run the Python bootstrap below before importing ManiSkill or `tasks`. Keep the DLL handles alive until the environment closes.
+
+```powershell
+$env:SAPIEN_RUNTIME = $runtime
+$env:PHYSX_GPU_DIR = "$work\physx-runtime"
+$env:DEXARENA_ROOT = $repo
+```
+
+```python
+import ctypes, os, sys
+from pathlib import Path
+runtime = Path(os.environ["SAPIEN_RUNTIME"]).resolve()
+physx = Path(os.environ["PHYSX_GPU_DIR"]).resolve()
+repo = Path(os.environ["DEXARENA_ROOT"]).resolve()
+dll_dirs = [os.add_dll_directory(str(runtime / "sapien")), os.add_dll_directory(str(physx))]
+dlls = [ctypes.WinDLL(str(physx / name)) for name in ("PhysXDevice64.dll", "PhysXGpu_64.dll")]
+sys.path[:0] = [str(runtime), str(repo)]
+import sapien
+assert Path(sapien.__file__).resolve().is_relative_to(runtime)
+sapien.physx._enable_gpu()
+```
+
 Optional preparation arguments `--download-cache PATH --source-reference CHECKOUT --dependency-reference DEPS` reuse SHA-checked archives and committed Git objects while creating new working trees. `prepared_inputs.json` records source/input hashes; `build_identity.json` records measured tools and recipe hashes; `artifact.json` identifies the wheel and matching native binaries. `run_check.py` verifies actual loaded SDK/PhysX paths and SHA before and after the standard repository checker. Keep these records and the build/checker logs together.
 
 For Linux, `python prepare.py --work-dir /path/to/new/private/build --common-only` prepares the common indexed fixes/capability and version hook. Linux compilation and runtime checks remain unverified; use upstream Linux build instructions with CUDA enabled and a distinct local suffix such as `dexarena.gpu1`.

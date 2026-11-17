@@ -22,7 +22,7 @@
 
 GPU 局部 reset 要求 SDK 原生函数 `sapien.physx.indexed_gpu_apply_patch_version()` 返回 `1`。Windows 验证包为 `3.0.3+dexarena.gpu1.wininterop5`；构建与加载方法见 [SDK 说明](../../tools/variation/sapien_sdk/README.md)。CPU 不受此能力检查影响。
 
-按 SDK 说明加载补丁包后运行：
+先在同一进程执行 [SDK 说明](../../tools/variation/sapien_sdk/README.md)的普通脚本加载片段，再运行：
 
 ```python
 import torch
@@ -47,6 +47,8 @@ env.close()
 ```
 
 记录字段为 `env_idx`、`episode_index`、`scheme_id`、`catalog_version`；回合索引按环境递增，包含构造时的初始化。局部 reset 的随机流、每环境控制器缓冲和任务状态隔离修复独立于外观开关；[Franka reset](../../tasks/robots/franka_joint_impedance_controller.py)按选中 mask 更新已有目标。
+
+外观协议与 Mouse 保持一致；选中环境的外观请求在外观抽样和材质更新前统一校验。[Mouse 兼容性复核](evidence/furniture_assembly/mouse_compatibility_20261117.json)在同一 SDK 上通过原验收及 main 对照，未引入运行回归；Mouse 已有的强动态隔离缺口不在本 PR 扩改。共享控制器修复会更新采集代码指纹，新增数据使用新版本目录，不与旧 Mouse 采集版本混录。
 
 ## 部件与来源
 

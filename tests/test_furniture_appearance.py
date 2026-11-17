@@ -134,6 +134,35 @@ class FurnitureAppearanceTests(unittest.TestCase):
                 self.assertEqual(adapter.records, [])
                 self.assertEqual(adapter.episodes, [0, 0])
 
+    def test_later_invalid_request_preserves_all_materials_records_and_rng(self):
+        for invalid in ({'mode': 'explicit', 'scheme_id': 'missing'}, {'mode': 'unsupported'},
+                        {'mode': 'random_choice', 'scheme_ids': []},
+                        {'mode': 'random_choice', 'scheme_ids': ['missing']}):
+            with self.subTest(invalid=invalid):
+                adapter = make_adapter({'mode': 'random_choice', 'seed': 71,
+                    'scheme_ids': ['original', 'variant_1', 'variant_2'], 'per_env': {'1': invalid}})
+                before = [material_state(adapter, i) for i in range(2)]
+                rng = [copy.deepcopy(value.bit_generator.state) for value in adapter.rng]
+                with self.assertRaises(ValueError):
+                    reset(adapter, [0, 1])
+                self.assertEqual([material_state(adapter, i) for i in range(2)], before)
+                self.assertEqual([value.bit_generator.state for value in adapter.rng], rng)
+                self.assertEqual(adapter.records, [])
+                self.assertEqual(adapter.episodes, [0, 0])
+                self.assertEqual(adapter.schemes, ['original', 'original'])
+
+    def test_later_unbound_environment_preserves_earlier_random_stream(self):
+        adapter = make_adapter({'mode': 'random_choice', 'seed': 71,
+                                'scheme_ids': ['original', 'variant_1']})
+        before = material_state(adapter, 0)
+        rng = copy.deepcopy(adapter.rng[0].bit_generator.state)
+        adapter.bindings[1] = None
+        with self.assertRaises(RuntimeError):
+            reset(adapter, [0, 1])
+        self.assertEqual(material_state(adapter, 0), before)
+        self.assertEqual(adapter.rng[0].bit_generator.state, rng)
+        self.assertEqual(adapter.records, [])
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -171,27 +171,32 @@ class FurnitureAppearance:
 
     def finish_reset(self, env_idx, options):
         override = options.get('furniture_appearance', {})
+        requests = []
         for i in env_idx.tolist():
             request = {**self.config, **self.config.get('per_env', {}).get(str(i), {}),
                        **override, **override.get('per_env', {}).get(str(i), {})}
             mode = request.get('mode', 'explicit')
             if mode == 'explicit':
-                name = request.get('scheme_id', 'original')
+                choices = [request.get('scheme_id', 'original')]
             elif mode == 'random_choice':
                 choices = request.get('scheme_ids', [])
                 if not choices or any(value not in self.catalog['schemes'] for value in choices):
                     raise ValueError('Furniture scheme_ids must be nonempty catalog choices')
-                name = str(self.rng[i].choice(choices))
             else:
                 raise ValueError(f'Unsupported furniture selection mode: {mode}')
-            if name not in self.catalog['schemes']:
-                raise ValueError(f'Unknown furniture scheme: {name}')
+            if any(name not in self.catalog['schemes'] for name in choices):
+                raise ValueError(f'Unknown furniture scheme: {choices}')
             if self.bindings[i] is None:
                 raise RuntimeError(f'Furniture environment is not bound: {i}')
-            parameters = {oid: self.scheme_parameters(oid, name)
-                          for oid in {row[0] for row in self.bindings[i]}}
+            parameters = {name: {oid: self.scheme_parameters(oid, name)
+                                for oid in {row[0] for row in self.bindings[i]}}
+                          for name in choices}
+            requests.append((i, mode, choices, parameters))
+        selections = [(i, str(self.rng[i].choice(choices)) if mode == 'random_choice' else choices[0], params)
+                      for i, mode, choices, params in requests]
+        for i, name, parameters in selections:
             for object_id, role, part, material, native in self.bindings[i]:
-                params = parameters[object_id].get(role, native)
+                params = parameters[name][object_id].get(role, native)
                 for key in FIELDS:
                     setattr(material, key, params[key])
             self.schemes[i] = name

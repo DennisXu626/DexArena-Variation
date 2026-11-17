@@ -227,8 +227,8 @@
   },
   "captures": [
     {
-      "results_sha256": "aff4c76a66b9d622b6561335651afdbed2447f10df47495c7aa0db3026752528",
-      "manifest_sha256": "274691a8cfe647af932ccaf876598b7630a893b691a61f51578f8d3f01aac353",
+      "results_sha256": "1d104dc0852da124d3094a881d925924a44e95a3a034f8c10dd22d0b37e26165",
+      "manifest_sha256": "609dc3c2aee8d15731c734614a6fdcd920a426cb46345922796b3f9f87d4cf9a",
       "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
       "manifest": {
         "platform": "Windows",
@@ -260,12 +260,12 @@
       "control_steps": 6,
       "physics_steps": 120,
       "console": {
-        "process_sha256": "196a7a695a84811fe40beb2e174e27793d9643346ca4960faa06bff858f217e0",
+        "process_sha256": "7963a2b1168a7c4c0f21a10ef6ef8a6d09a633166f79302f17359688e1787891",
         "returncode": 0,
         "timed_out": false,
         "streams_sha256": {
           "stdout.txt": "645d7d6ccb1582daa19f4be9e2d85e98932abb376e23965f9f230e6566db0ad5",
-          "stderr.txt": "505f7b870ea564a696ac87dcdf9dab0fbb98dce2bc0f7e8179393801790bf96a"
+          "stderr.txt": "b202558d7e366db74829c059477e0c191db4d1ce3b66015f435bc75b24689259"
         },
         "known_warning_types": {
           "optional_pinocchio_unavailable": 1,
@@ -283,11 +283,11 @@
   "tasks": {
     "LayFlatPanel": {
       "checks": "LayFlatPanel/checks.json",
-      "sha256": "bfa1b28814b8a6d6c7a42b2c08c4a540acef153358855f4cc5f7d38be29da867"
+      "sha256": "d12f26285cb20630d384ac766b2a11049390d46077e1d2ddb5e16456c1b12315"
     },
     "InsertRail": {
       "checks": "InsertRail/checks.json",
-      "sha256": "6aace4e6683e8cac80caf8d5ef7a6c4492192e656e0cd858ee8e758e886d3ed2"
+      "sha256": "9ccf50e575a3cc8ba2b69346faa522f3ecc2a1715e85bcbd3ce2e1b5eb9be4bc"
     },
     "FastenScrew": {
       "checks": "FastenScrew/checks.json",
@@ -381,9 +381,9 @@
     }
   },
   "identity": {
-    "git_commit": "7c16fd9552d3a4cbc8eff48c7ef68dcbcf6f6e4e",
+    "git_commit": "626fe79d04c6a59fd5b56c645080735c6f5d166d",
     "files": {
-      "tasks/furniture_assembly/appearance.py": "512bf940f7f3e8ea0177abdef7bc0ee3d722d9ff00ac9675ebcc701ea8244a1a",
+      "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
       "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
       "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
       "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
@@ -397,7 +397,7 @@
       "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
     },
     "files_lf_sha256": {
-      "tasks/furniture_assembly/appearance.py": "512bf940f7f3e8ea0177abdef7bc0ee3d722d9ff00ac9675ebcc701ea8244a1a",
+      "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
       "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
       "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
       "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
@@ -429,6 +429,6 @@
   },
   "cpu_dynamics": {
     "checks": "cpu_checks.json",
-    "sha256": "fc866ecb721570813286d8b30259f0067c49311fa9b4ae0bb3b199e37703f238"
+    "sha256": "a2042804d14771943de6a52f45aa22db8eb8e7efe94a475a8f13fef1a3041e7e"
   }
 }

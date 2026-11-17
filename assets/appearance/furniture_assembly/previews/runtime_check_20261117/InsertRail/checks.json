@@ -1232,7 +1232,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 4,
-          "max_absolute_error": 0.04796513170003891
+          "max_absolute_error": 0.060148686170578
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 14,
@@ -1250,7 +1250,7 @@
             "/state/actors/drawer_panel": 1.1920928955078125e-07,
             "/state/actors/place_zone": 1.1920928955078125e-07,
             "/state/articulations/panda_sharpa_hand_right_angled_mobile_base": 1.1920928955078125e-07,
-            "/state/articulations/slider_rail": 1.4156103134155273e-07,
+            "/state/articulations/slider_rail": 2.086162567138672e-07,
             "/state/furniture_rail_task_state": 0.0,
             "/elapsed_steps": 0.0,
             "/joint_targets/robot/qpos": 0.0,
@@ -1266,7 +1266,7 @@
           },
           "values_checked": 560,
           "changed_values_within_tolerance": 13,
-          "max_absolute_error": 1.7881393432617188e-07
+          "max_absolute_error": 2.086162567138672e-07
         },
         "final": {
           "fields": {
@@ -1274,7 +1274,7 @@
             "/state/actors/drawer_panel": 1.1920928955078125e-07,
             "/state/actors/place_zone": 1.1920928955078125e-07,
             "/state/articulations/panda_sharpa_hand_right_angled_mobile_base": 1.1920928955078125e-07,
-            "/state/articulations/slider_rail": 1.4156103134155273e-07,
+            "/state/articulations/slider_rail": 2.086162567138672e-07,
             "/joint_targets/robot/qpos": 0.0,
             "/joint_targets/robot/qvel": 0.0,
             "/joint_targets/rail/qpos": 0.0,
@@ -1282,11 +1282,11 @@
           },
           "values_checked": 370,
           "changed_values_within_tolerance": 13,
-          "max_absolute_error": 1.7881393432617188e-07
+          "max_absolute_error": 2.086162567138672e-07
         }
       },
-      "raw_json_sha256": "771df140f131c9ec805234f0d5e833a9f421950abe52b3b84f3712fd93aedd21",
-      "raw_state_sha256": "2434de10d96fbed4f209b318e23da71fe66be29edb652be7d9ec8f2c854e8534"
+      "raw_json_sha256": "e9f6701c2056bacd4791b76494233d0b5ae09053df5483e201732669b4172833",
+      "raw_state_sha256": "0a596877d8de00ae03af545bffed1fc3460c56fb6614e4ad2078ffa6eda66d98"
     },
     {
       "capture_id": "selected_reset_12",
@@ -1315,7 +1315,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 2,
-          "max_absolute_error": 0.021552622318267822
+          "max_absolute_error": 0.009978830814361572
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 7,
@@ -1368,8 +1368,8 @@
           "max_absolute_error": 5.960464477539063e-08
         }
       },
-      "raw_json_sha256": "145d16940fee1af890e7494e00774edef68e85c584a023997a0b9238b674e213",
-      "raw_state_sha256": "88580ec761df4bf275a4d606d3715dc3c0d71fabf0cf26ef841d65dfe12dd40a"
+      "raw_json_sha256": "c118e618583e796b1c987cdf8ae474b6be832ff6205015b4ac5cbdbb393e3cf0",
+      "raw_state_sha256": "9043474e27bdb3326d0e9372d9d3b84d68b08889b9943115b9aae27f9f86e021"
     },
     {
       "capture_id": "selected_reset_13",
@@ -1574,7 +1574,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 4,
-          "max_absolute_error": 0.05664125084877014
+          "max_absolute_error": 0.0407598614692688
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 14,
@@ -1627,8 +1627,8 @@
           "max_absolute_error": 1.7881393432617188e-07
         }
       },
-      "raw_json_sha256": "1acd03bbcf9422c15ea0594b9b4ccac93badc963320bb7e3627c97b9fca52594",
-      "raw_state_sha256": "2824a6c672710f466818a08189d03e9f5b150dc831c3c875953419ff5638494d"
+      "raw_json_sha256": "bd16183d76344bc0cfda6977d20a8063826ebd48fd5aaafbe10f9c216c64b8ec",
+      "raw_state_sha256": "4707bcf37d945b733f56ea6f7049349ca4b92a1f3f1e1cb8a4957e81cd114dcd"
     },
     {
       "capture_id": "selected_reset_16",
@@ -1657,7 +1657,7 @@
         },
         "/state/articulations/slider_rail": {
           "changed_values": 2,
-          "max_absolute_error": 0.08088722825050354
+          "max_absolute_error": 0.07212449610233307
         },
         "/joint_targets/robot/qpos": {
           "changed_values": 7,
@@ -1710,8 +1710,8 @@
           "max_absolute_error": 5.960464477539063e-08
         }
       },
-      "raw_json_sha256": "db2d69f42e9724576b340743944912123c057d23e7d9691da5c07620fbd3adc2",
-      "raw_state_sha256": "4c2d697d6b05a8681b8b289c29ff4ac5bab697e0fcf33f95ee435dbbf223680b"
+      "raw_json_sha256": "66facf35e335c6dd90390479d72ceef9cd915002992e203f071bb89ebe213918",
+      "raw_state_sha256": "505c74284c22a7a76068bf5711aeceeed25ffe6f0ac7dd6da215c10a886eb61a"
     },
     {
       "capture_id": "selected_reset_17",
