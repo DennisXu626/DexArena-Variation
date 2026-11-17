@@ -7,12 +7,42 @@
   "object_type": "Actor",
   "native_builder": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: build_drawer_panel / make_render_material",
   "roles": {
-    "face": {"source_variable": "face", "parts": "Main panel surfaces and two flared entrance wedges", "shape_count": 5, "editable": true},
-    "cut": {"source_variable": "cut", "parts": "Closed stop wall and groove floor overlay", "shape_count": 2, "editable": true},
-    "edge": {"source_variable": "edge", "parts": "Four side/end edge-banding visuals", "shape_count": 4, "editable": true},
-    "routed": {"source_variable": "routed", "parts": "Two straight and two flared groove-lip strips", "shape_count": 4, "editable": true},
-    "label": {"source_variable": "label", "parts": "Printed part-label background", "shape_count": 1, "editable": false},
-    "ink": {"source_variable": "ink", "parts": "Six barcode strips", "shape_count": 6, "editable": false}
+    "face": {
+      "source_variable": "face",
+      "parts": "Main panel surfaces and two flared entrance wedges",
+      "shape_count": 5,
+      "editable": true
+    },
+    "cut": {
+      "source_variable": "cut",
+      "parts": "Closed stop wall and groove floor overlay",
+      "shape_count": 2,
+      "editable": true
+    },
+    "edge": {
+      "source_variable": "edge",
+      "parts": "Four side/end edge-banding visuals",
+      "shape_count": 4,
+      "editable": true
+    },
+    "routed": {
+      "source_variable": "routed",
+      "parts": "Two straight and two flared groove-lip strips",
+      "shape_count": 4,
+      "editable": true
+    },
+    "label": {
+      "source_variable": "label",
+      "parts": "Printed part-label background",
+      "shape_count": 1,
+      "editable": false
+    },
+    "ink": {
+      "source_variable": "ink",
+      "parts": "Six barcode strips",
+      "shape_count": 6,
+      "editable": false
+    }
   },
   "representations": {
     "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
@@ -31,7 +61,24 @@
       "native_color_jitter": false
     }
   },
-  "binding_boundary": "22 shapes, one part each. Role names are source semantics, not fixed SAPIEN material names or binding-by-index. Preserve label/ink and all non-target material fields.",
-  "evidence": {"base": "../../../furniture_assembly/previews/author_check_20261116", "tasks": ["LayFlatPanel", "InsertRail", "FastenScrew"]},
-  "historical_single_object_capture": "https://github.com/DennisXu626/DexArena-Variation/tree/59fb134f908f037c94caf5a018b1c6f13374caa0/assets/appearance/objects/furniture_assembly/flat_panel/previews/author_check_20261116"
+  "binding_boundary": "Formal adapter resolves panel._objs to its Entity, matches native roughness/metallic only within this entity, and validates expected role shape counts for the task and visual_detail. Capture actual native base_color/roughness/metallic, including panel jitter, for original. Preserve label/ink and all non-target material fields; no fixed shape-order binding.",
+  "evidence": {
+    "base": "https://github.com/DennisXu626/DexArena-Variation/blob/435f835038d22cfe21b452681747cf3d85d6a67c/assets/appearance/furniture_assembly/previews/author_check_20261116",
+    "tasks": [
+      "LayFlatPanel",
+      "InsertRail",
+      "FastenScrew"
+    ],
+    "source_commit": "435f835038d22cfe21b452681747cf3d85d6a67c",
+    "scope": "historical_authoring_preview_only_not_formal_interface_gpu_validation"
+  },
+  "historical_single_object_capture": "https://github.com/DennisXu626/DexArena-Variation/tree/59fb134f908f037c94caf5a018b1c6f13374caa0/assets/appearance/objects/furniture_assembly/flat_panel/previews/author_check_20261116",
+  "runtime_interface": {
+    "kwarg": "furniture_appearance",
+    "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
+    "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
+    "status": "runtime_verified_pending_review",
+    "evidence": "assets/appearance/furniture_assembly/previews/runtime_check_20261117/summary.json"
+  },
+  "original_policy": "Restore the actual captured native build-time PBR, including native panel color jitter. Enabling or disabling the formal adapter must not disable native jitter."
 }

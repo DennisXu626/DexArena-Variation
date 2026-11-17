@@ -112,7 +112,11 @@ class FrankaJointImpedanceController(BaseController):
 
     def reset(self):
         super().reset()
-        self._target_qpos = self.qpos.clone()
+        if getattr(self, "_target_qpos", None) is None:
+            self._target_qpos = self.qpos.clone()
+        else:
+            mask = self.scene._reset_mask
+            self._target_qpos[mask] = self.qpos[mask].clone()
         self._kp = torch.as_tensor(
             self.config.stiffness, dtype=self.qpos.dtype, device=self.device
         ).view(1, -1)

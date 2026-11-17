@@ -1,9 +1,4 @@
-"""Preview the furniture material set in three real, single-env short tasks.
-
-The family scheme changes all objects present in the chosen task. Captures use
-one unchanged reset, the native task lighting and CPU framebuffer readback.
-No task-level appearance interface, physical stepping or parallel test is added.
-"""
+"""Export fixed-camera previews of the three furniture material schemes."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -25,7 +20,7 @@ from tools.variation.furniture_preview_materials import (
     _validate_params,
 )
 
-INDEX = ROOT / "examples/variation/furniture_assembly/preview_set.json"
+INDEX = ROOT / "tasks/assets/variation/furniture_assembly/v1/catalog.json"
 SCHEMES = ("original", "variant_1", "variant_2")
 TASK_IDS = {name: f"FurnitureAssembly{name}-Sharpa-v1"
             for name in ("LayFlatPanel", "InsertRail", "FastenScrew")}
@@ -130,8 +125,8 @@ def compare_pixels(original, restored):
 def load_set():
     """Validate the unique catalogs and family mapping without simulator imports."""
     index = json.loads(INDEX.read_text(encoding="utf-8"))
-    if (index["version"] != "furniture-preview-set-v1"
-            or index["scope"] != "authoring_and_single_environment_preview_only"
+    if (index["version"] != "furniture-appearance-v1"
+            or index["scope"] != "material_appearance"
             or tuple(index["schemes"]) != SCHEMES or set(index["tasks"]) != set(TASK_IDS)
             or set(index["objects"]) != {"flat_panel", "panel_rack", "rail", "screw"}):
         raise ValueError("Unexpected furniture preview-set contract")
@@ -142,7 +137,7 @@ def load_set():
             raise ValueError(f"Invalid unique catalog path or scheme map: {object_id}")
         catalog = json.loads(path.read_text(encoding="utf-8"))
         if (catalog["object_id"] != f"furniture_assembly.{object_id}"
-                or catalog["scope"] != index["scope"]
+                or catalog["scope"] != "authoring_and_single_environment_preview_only"
                 or entry["scheme_map"]["original"] != "original"
                 or catalog["schemes"]["original"] != {"mode": "restore_native"}):
             raise ValueError(f"Catalog identity/original mismatch: {object_id}")

@@ -7,24 +7,57 @@
   "object_type": "articulation root link",
   "excluded_link": "screw_head",
   "roles": {
-    "metal_body": {"source_variable": "steel", "parts": "One web and two flange box visuals", "editable": true},
-    "channel_details": {"source_variable": "dark", "parts": "Rolled flange lips and nine stamped slot visuals per native loop occurrence", "editable": true}
+    "metal_body": {
+      "source_variable": "steel",
+      "parts": "One web and two flange box visuals",
+      "editable": true
+    },
+    "channel_details": {
+      "source_variable": "dark",
+      "parts": "Rolled flange lips and nine stamped slot visuals per native loop occurrence",
+      "editable": true
+    }
   },
   "representations": {
     "FurnitureAssemblyInsertRail-Sharpa-v1": {
       "source": "tasks/furniture_assembly/furniture_assembly_insert_rail.py: build_slider_rail",
       "type": "movable articulation root",
-      "native_options": {"show_screw_bosses": false},
-      "shape_counts": {"metal_body": 3, "channel_details": 22, "total": 25},
+      "native_options": {
+        "show_screw_bosses": false
+      },
+      "shape_counts": {
+        "metal_body": 3,
+        "channel_details": 22,
+        "total": 25
+      },
       "source_difference": "The two-lip/nine-slot loops are inside both flange iterations, preserving duplicated native visuals."
     },
     "FurnitureAssemblyFastenScrew-Sharpa-v1": {
       "source": "tasks/furniture_assembly/furniture_assembly_fasten_screw.py: build_wing_screw_rail / _add_rail_body",
       "type": "fixed articulation root",
-      "shape_counts": {"metal_body": 3, "channel_details": 11, "total": 14},
+      "shape_counts": {
+        "metal_body": 3,
+        "channel_details": 11,
+        "total": 14
+      },
       "source_difference": "Two lips and nine slots occur once in this separate builder."
     }
   },
-  "binding_boundary": "Resolve the single rail_body._objs component through .entity when needed. Match native base_color/roughness/metallic within this entity only; never bind the whole articulation or screw_head. Preserve other material fields and native duplicate geometry.",
-  "evidence": {"base": "../../../furniture_assembly/previews/author_check_20261116", "tasks": ["InsertRail", "FastenScrew"]}
+  "binding_boundary": "Historical preview matched native base_color/roughness/metallic inside rail_body. Formal adapter resolves the single rail_body._objs component through .entity when needed, matches native roughness/metallic within this entity, and validates task-specific expected role shape counts. Never bind the whole articulation or screw_head. Preserve other material fields and native duplicate geometry.",
+  "evidence": {
+    "base": "https://github.com/DennisXu626/DexArena-Variation/blob/435f835038d22cfe21b452681747cf3d85d6a67c/assets/appearance/furniture_assembly/previews/author_check_20261116",
+    "tasks": [
+      "InsertRail",
+      "FastenScrew"
+    ],
+    "source_commit": "435f835038d22cfe21b452681747cf3d85d6a67c",
+    "scope": "historical_authoring_preview_only_not_formal_interface_gpu_validation"
+  },
+  "runtime_interface": {
+    "kwarg": "furniture_appearance",
+    "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
+    "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
+    "status": "runtime_verified_pending_review",
+    "evidence": "assets/appearance/furniture_assembly/previews/runtime_check_20261117/summary.json"
+  }
 }

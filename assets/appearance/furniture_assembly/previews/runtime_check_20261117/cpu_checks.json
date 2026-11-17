@@ -1,0 +1,317 @@
+{
+  "scope": "Single CPU environment; no RGB/GPU or task-completion claim",
+  "summary_sha256": "8306c97b92ede269c65bc0df16ea02a8a1853fb811398bdcfe7c203ef5032469",
+  "seed": 7,
+  "control_steps_per_run": 60,
+  "control_steps": 720,
+  "physics_steps": 14400,
+  "source_sha256": {
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "512bf940f7f3e8ea0177abdef7bc0ee3d722d9ff00ac9675ebcc701ea8244a1a",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "73608e52c17a535b0a21ffb61a8fd89b1916aad83057630829034f44931c614a",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
+    "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tasks/robots/hand_controller_gains.py": "c8542a3a856aedf9b2687db6ca5e30fbb893fc8715f252b78af1fe1c19f1cdc5",
+    "tasks/robots/panda_base.py": "709bb5e7002f6d2af4e397b20f2e2d45ac685dc3ea2bc907a60512aafde78648",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "08b5d2dcc3499176244f7ce228990516fc0c7eee70a1568b934e277ed0a5dff5",
+    "tasks/robots/panda_dual_sharpa_hand.py": "b39d49835e7d7a3c64a344b3311ddece34cd10b33245d1130af0fb1d9421767f",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "27b59640e6a5be032cfe24f1298eeebfb600f1720151ec8f2a83176379043a22",
+    "tasks/robots/panda_dual_wuji_hand.py": "5d0b0ae91e4a58ef1a1e05b47fb3fbce81d5c4b144026ed7cecf6c9b6270feb2",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "f0f7b4c3cb094edeaf3c2a0f60dcb832c59c1a78ecef9512f511f40d5d379817",
+    "tasks/robots/panda_dual_xhand_hand.py": "40e7445790b07aec29c083e7fdf6d8b400d7d1ebd42d36fc8efe7d5be00a9ed0",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "f8c880151be70be212ca59223dc64ef755ec2200d16ca7f95a6fbf9f0938154b",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "4acb353194c5a81ded23e0764b7ca792091a17a19f9ba9e7e97baf30ceef07e0",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "95136d64ff7503ab08ff7f3db402304a9e8531c2f6bf2c564977c5c77af788f0",
+    "tasks/robots/panda_impedance.py": "1a6aeeba3887738758f0a2c0536f6703fd5ab6db2537b30d1c3ee9c02c3a0f85",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "4785c550f90d8eedb475acdecf9d9b868c729b60c070b9a7b62c5f1ffe8fbc32",
+    "tasks/robots/panda_sharpa_hand_right.py": "a46da81e87d33179dadc9a4e9f5961bd9c9fb287cdf06be39bac4f62217bbbf8",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "b2df2a781d33c2fadf607b8453846319ed0fd7638f313aa25f73226cee3c8579",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "477b0b57255bfd615b68a424241a5b0fc7cd12ddbc33a5341e3e8b0b6ac167e9",
+    "tasks/robots/panda_wuji_hand_right.py": "a62a9a7cad9bec524e273988b891de778184b214be0da128399f76278cb8e5a4",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "9aeddd05dadd3884e81ef27bc00a8b0b7ef6450c3bb9e8b5247d305ff533ef84",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "37239c14903ea500e3434aaefb8b293b20a0029a1fcd98588c998227d5a32ffa",
+    "tasks/robots/panda_xhand_hand_right.py": "c778abfc2ebae2366e52283a5e5162f35e4c6d8f6f27eb43f9bcba7b4a545a6b",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "0b350d12893f58031ce00d2e72f178f1e58576bf2484da300f518a17dac1c031",
+    "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
+    "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
+    "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
+  },
+  "source_lf_sha256": {
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "512bf940f7f3e8ea0177abdef7bc0ee3d722d9ff00ac9675ebcc701ea8244a1a",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "73608e52c17a535b0a21ffb61a8fd89b1916aad83057630829034f44931c614a",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
+    "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tasks/robots/hand_controller_gains.py": "c8542a3a856aedf9b2687db6ca5e30fbb893fc8715f252b78af1fe1c19f1cdc5",
+    "tasks/robots/panda_base.py": "709bb5e7002f6d2af4e397b20f2e2d45ac685dc3ea2bc907a60512aafde78648",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "08b5d2dcc3499176244f7ce228990516fc0c7eee70a1568b934e277ed0a5dff5",
+    "tasks/robots/panda_dual_sharpa_hand.py": "b39d49835e7d7a3c64a344b3311ddece34cd10b33245d1130af0fb1d9421767f",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "27b59640e6a5be032cfe24f1298eeebfb600f1720151ec8f2a83176379043a22",
+    "tasks/robots/panda_dual_wuji_hand.py": "5d0b0ae91e4a58ef1a1e05b47fb3fbce81d5c4b144026ed7cecf6c9b6270feb2",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "f0f7b4c3cb094edeaf3c2a0f60dcb832c59c1a78ecef9512f511f40d5d379817",
+    "tasks/robots/panda_dual_xhand_hand.py": "40e7445790b07aec29c083e7fdf6d8b400d7d1ebd42d36fc8efe7d5be00a9ed0",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "f8c880151be70be212ca59223dc64ef755ec2200d16ca7f95a6fbf9f0938154b",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "4acb353194c5a81ded23e0764b7ca792091a17a19f9ba9e7e97baf30ceef07e0",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "95136d64ff7503ab08ff7f3db402304a9e8531c2f6bf2c564977c5c77af788f0",
+    "tasks/robots/panda_impedance.py": "1a6aeeba3887738758f0a2c0536f6703fd5ab6db2537b30d1c3ee9c02c3a0f85",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "4785c550f90d8eedb475acdecf9d9b868c729b60c070b9a7b62c5f1ffe8fbc32",
+    "tasks/robots/panda_sharpa_hand_right.py": "a46da81e87d33179dadc9a4e9f5961bd9c9fb287cdf06be39bac4f62217bbbf8",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "b2df2a781d33c2fadf607b8453846319ed0fd7638f313aa25f73226cee3c8579",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "477b0b57255bfd615b68a424241a5b0fc7cd12ddbc33a5341e3e8b0b6ac167e9",
+    "tasks/robots/panda_wuji_hand_right.py": "a62a9a7cad9bec524e273988b891de778184b214be0da128399f76278cb8e5a4",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "9aeddd05dadd3884e81ef27bc00a8b0b7ef6450c3bb9e8b5247d305ff533ef84",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "37239c14903ea500e3434aaefb8b293b20a0029a1fcd98588c998227d5a32ffa",
+    "tasks/robots/panda_xhand_hand_right.py": "c778abfc2ebae2366e52283a5e5162f35e4c6d8f6f27eb43f9bcba7b4a545a6b",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "0b350d12893f58031ce00d2e72f178f1e58576bf2484da300f518a17dac1c031",
+    "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
+    "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
+    "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "cba99c76425930bbd5d98f29661c002052516caef830be604442e57325333440",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "40ab0d63ed5db95f5ef7482f82b152dea54cc3d47a03efe7b7e08ae44016bedd",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "c3702f4ce5f762a73e7e15f0b3b8b8f0126b07f21aa2d13d983fc3de7e54ac5a",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "f37ebcd39f173f60362013c2405557ae312b11408e20c792d7d81dd4cbedacb5"
+  },
+  "source_hash_semantics": "source_sha256 retains raw capture bytes; source_lf_sha256 verifies those bytes before UTF-8 .py/.json CRLF-to-LF normalization only.",
+  "tasks": {
+    "LayFlatPanel": {
+      "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+      "maximum_joint_displacement_rad": 0.015316963195800781,
+      "runs": {
+        "native_off": {
+          "run_sha256": "5629228034cf2f123a05b62548e98ecf377d32fcd490451682e6494b67039c9d",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "original": {
+          "run_sha256": "d2d3d0360a57e4a78c4e1ac4f259b5d98f5f5248f97bb1fafdea5983109b174f",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "variant_1": {
+          "run_sha256": "2ec679b4c2bbb3dc472f71f24c6234b3367c8d40f339f3d77f4bd963495aa9d1",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "variant_2": {
+          "run_sha256": "89ae96db10565c24c922b4cd7bbb46aec27b9b9c358e7f2de85d747a91d0b83b",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        }
+      }
+    },
+    "InsertRail": {
+      "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+      "maximum_joint_displacement_rad": 0.015330791473388672,
+      "runs": {
+        "native_off": {
+          "run_sha256": "e10bd97a18f808944300940b99ca1bc8d9062b5984293e93d0cfa6c7e2e8deed",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "original": {
+          "run_sha256": "3ef69321664680726dbaf10accd8a16295c1ef2bd6d7865e92b37ec589ee3ea7",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "variant_1": {
+          "run_sha256": "77307c5f7736e09316e29568fae8e79d4fa3ecca573f5392a97cb74939e85e22",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "variant_2": {
+          "run_sha256": "f324856d89afc0e9226afae5625f911fd24a8fa8cb235baef9ab063fe08cf95a",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        }
+      }
+    },
+    "FastenScrew": {
+      "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+      "maximum_joint_displacement_rad": 0.015330791473388672,
+      "runs": {
+        "native_off": {
+          "run_sha256": "1e5f228d0b4aaaca2d181ddcf82a14de4760ce090ebed65e0ff8a043792d09bb",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "original": {
+          "run_sha256": "d99149bd7e12334aa37c7b42414aa8fe6e73ca89b9bbde24b367a360b2a3919c",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "variant_1": {
+          "run_sha256": "c0c5988e671d39bbe1cd6ac7ec39a6179dd6678a49174b359d401f868a9f055c",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        },
+        "variant_2": {
+          "run_sha256": "73859f4bbb5eb035c68327cb110ff67d8fbab34334d0d4906741f12e6edd32e8",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "8de191d412af8efb5aa921e0dd714ca314e9df4f70cee0301dabb1d6fe34a68a"
+        }
+      }
+    }
+  },
+  "receipt_sha256": "64d831d19f61e4ee77002bc82432af66ce0b44e81718011d7083e835bc93e16a",
+  "command": "python -B tools/variation/check_furniture_dynamics.py --output <fresh-output-directory> --steps 60 --seed 7"
+}

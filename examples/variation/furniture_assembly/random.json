@@ -1,0 +1,13 @@
+{
+  "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+  "furniture_appearance": {
+    "enabled": true,
+    "seed": 71,
+    "mode": "random_choice",
+    "scheme_ids": [
+      "original",
+      "variant_1",
+      "variant_2"
+    ]
+  }
+}

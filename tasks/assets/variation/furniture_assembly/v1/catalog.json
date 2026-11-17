@@ -1,6 +1,6 @@
 {
-  "version": "furniture-preview-set-v1",
-  "scope": "authoring_and_single_environment_preview_only",
+  "version": "furniture-appearance-v1",
+  "scope": "material_appearance",
   "schemes": ["original", "variant_1", "variant_2"],
   "objects": {
     "flat_panel": {
