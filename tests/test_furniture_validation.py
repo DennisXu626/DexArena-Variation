@@ -1,8 +1,11 @@
 """Reject empty/stale image evidence in the furniture checker."""
+import ast
 import importlib.util
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
@@ -52,6 +55,41 @@ class ImageEvidenceTests(unittest.TestCase):
             self.assertIn('env1', filename)
             with np.load(output / filename) as evidence:
                 self.assertEqual(evidence['coordinates_yxc'].tolist(), [[0, 0, 0], [0, 0, 1], [0, 0, 2]])
+
+
+class StaticBaselineTests(unittest.TestCase):
+    def test_committed_scoped_baseline_is_supported(self):
+        self.assertEqual(CHECK.static_check('HEAD')['status'], 'passed')
+
+    def test_native_baseline_is_supported(self):
+        baseline = '435f835038d22cfe21b452681747cf3d85d6a67c'
+        try:
+            CHECK.git('cat-file', '-e', baseline + '^{commit}')
+        except subprocess.CalledProcessError:
+            self.skipTest('Native baseline is absent from this checkout')
+        self.assertEqual(CHECK.static_check(baseline)['status'], 'passed')
+
+    def test_scope_normalization_does_not_hide_judgment_changes(self):
+        git = CHECK.git
+
+        def changed_baseline(*arguments):
+            if arguments[0] != 'show' or not arguments[1].startswith('fixture:'):
+                return git(*arguments)
+            filename = arguments[1].split(':', 1)[1]
+            text = git('show', 'HEAD:' + filename)
+            if filename == CHECK.TASKS['LayFlatPanel']:
+                tree = ast.parse(text)
+                evaluate = next(node for node in ast.walk(tree)
+                                if isinstance(node, ast.FunctionDef) and node.name == 'evaluate')
+                comparison = next(node for node in ast.walk(evaluate)
+                                  if isinstance(node, ast.Compare) and isinstance(node.ops[0], ast.GtE))
+                comparison.ops[0] = ast.Gt()
+                text = ast.unparse(tree)
+            return text
+
+        with patch.object(CHECK, 'git', side_effect=changed_baseline), self.assertRaisesRegex(
+                AssertionError, 'task judgment/reward AST changed'):
+            CHECK.static_check('fixture')
 
 
 if __name__ == '__main__':

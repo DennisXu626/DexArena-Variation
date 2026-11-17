@@ -227,8 +227,8 @@
   },
   "captures": [
     {
-      "results_sha256": "68657890a421439106c39c203411066d01c45773f9e76861a8034cde2dea439a",
-      "manifest_sha256": "3c261a3c2b07be2326d03524bef30290296508b7f220373273a1c4474367792c",
+      "results_sha256": "aff4c76a66b9d622b6561335651afdbed2447f10df47495c7aa0db3026752528",
+      "manifest_sha256": "274691a8cfe647af932ccaf876598b7630a893b691a61f51578f8d3f01aac353",
       "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
       "manifest": {
         "platform": "Windows",
@@ -260,12 +260,12 @@
       "control_steps": 6,
       "physics_steps": 120,
       "console": {
-        "process_sha256": "9e1dfeb880d6002e8a40809dc5e4846a29b8e56abf9abe0e7e95dca299744ba3",
+        "process_sha256": "196a7a695a84811fe40beb2e174e27793d9643346ca4960faa06bff858f217e0",
         "returncode": 0,
         "timed_out": false,
         "streams_sha256": {
           "stdout.txt": "645d7d6ccb1582daa19f4be9e2d85e98932abb376e23965f9f230e6566db0ad5",
-          "stderr.txt": "cbe7f94a84d192a0737bb925465eec4a0f72433854dffc3dbcdc158fae890847"
+          "stderr.txt": "505f7b870ea564a696ac87dcdf9dab0fbb98dce2bc0f7e8179393801790bf96a"
         },
         "known_warning_types": {
           "optional_pinocchio_unavailable": 1,
@@ -283,11 +283,11 @@
   "tasks": {
     "LayFlatPanel": {
       "checks": "LayFlatPanel/checks.json",
-      "sha256": "060dc69577f2cb14e9f58304f6887fc15a2f7a6fd6a2882a4e2cc939ffe8b224"
+      "sha256": "bfa1b28814b8a6d6c7a42b2c08c4a540acef153358855f4cc5f7d38be29da867"
     },
     "InsertRail": {
       "checks": "InsertRail/checks.json",
-      "sha256": "fbee89a1d62fb8772772b26b256c6d28efe41c4c90d177d1ca153f9632278129"
+      "sha256": "6aace4e6683e8cac80caf8d5ef7a6c4492192e656e0cd858ee8e758e886d3ed2"
     },
     "FastenScrew": {
       "checks": "FastenScrew/checks.json",
@@ -381,12 +381,12 @@
     }
   },
   "identity": {
-    "git_commit": "435f835038d22cfe21b452681747cf3d85d6a67c",
+    "git_commit": "7c16fd9552d3a4cbc8eff48c7ef68dcbcf6f6e4e",
     "files": {
       "tasks/furniture_assembly/appearance.py": "512bf940f7f3e8ea0177abdef7bc0ee3d722d9ff00ac9675ebcc701ea8244a1a",
       "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
       "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
-      "tools/variation/check_furniture_appearance.py": "6dd6d0dff64cdb957c66ee1e83a387b86e2c9aec404c5cc495c7c00210706259",
+      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
       "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
       "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
       "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
@@ -400,7 +400,7 @@
       "tasks/furniture_assembly/appearance.py": "512bf940f7f3e8ea0177abdef7bc0ee3d722d9ff00ac9675ebcc701ea8244a1a",
       "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
       "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
-      "tools/variation/check_furniture_appearance.py": "6dd6d0dff64cdb957c66ee1e83a387b86e2c9aec404c5cc495c7c00210706259",
+      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
       "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
       "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
       "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",

@@ -90,7 +90,6 @@ def static_check(baseline):
         assert set(catalog['tasks'][task]) <= set(catalog['objects']), task
         current = ast.parse((ROOT / filename).read_text(encoding='utf-8'))
         previous = ast.parse(git('show', baseline + ':' + filename))
-        counts = {'value': 0, 'predicate': 0}
         class NormalizeScope(ast.NodeTransformer):
             def visit_Call(self, node):
                 node = self.generic_visit(node)
@@ -107,11 +106,17 @@ def static_check(baseline):
                     counts['predicate'] += 1
                     return node.args[0]
                 return node
-        for node in ast.walk(current):
-            if isinstance(node, ast.FunctionDef) and node.name in protected:
-                NormalizeScope().visit(node)
+        normalized_counts = []
+        for tree in (current, previous):
+            counts = {'value': 0, 'predicate': 0}
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef) and node.name in protected:
+                    NormalizeScope().visit(node)
+            normalized_counts.append(counts)
+        counts, previous_counts = normalized_counts
         expected_counts = {'LayFlatPanel': (1, 2), 'InsertRail': (1, 3), 'FastenScrew': (1, 0)}[task]
         assert tuple(counts.values()) == expected_counts, (task, counts)
+        assert tuple(previous_counts.values()) in ((0, 0), expected_counts), (task, previous_counts)
         methods = lambda tree: {node.name: ast.dump(node, include_attributes=False)
             for node in ast.walk(tree) if isinstance(node, ast.FunctionDef) and node.name in protected}
         assert methods(current) == methods(previous), f'{task}: task judgment/reward AST changed'
@@ -131,15 +136,25 @@ else:
     self._target_qpos[mask] = self.qpos[mask].clone()
 ''').body[0]
     native_assignment = ast.parse('self._target_qpos = self.qpos.clone()').body[0]
-    normalized_impedance = 0
-    for cls in impedance.body:
-        if isinstance(cls, ast.ClassDef) and cls.name == 'FrankaJointImpedanceController':
-            for method in cls.body:
-                if isinstance(method, ast.FunctionDef) and method.name == 'reset':
-                    assert ast.dump(method.body[1], include_attributes=False) == ast.dump(
-                        authorized_reset, include_attributes=False), 'Unexpected impedance reset change'
-                    method.body[1] = native_assignment
-                    normalized_impedance += 1
+    def normalize_impedance(tree):
+        found, scoped = 0, 0
+        for cls in tree.body:
+            if isinstance(cls, ast.ClassDef) and cls.name == 'FrankaJointImpedanceController':
+                for method in cls.body:
+                    if isinstance(method, ast.FunctionDef) and method.name == 'reset':
+                        found += 1
+                        assignment = ast.dump(method.body[1], include_attributes=False)
+                        if assignment == ast.dump(authorized_reset, include_attributes=False):
+                            method.body[1] = copy.deepcopy(native_assignment)
+                            scoped += 1
+                        else:
+                            assert assignment == ast.dump(native_assignment, include_attributes=False), \
+                                'Unexpected impedance reset change'
+        assert found == 1
+        return scoped
+
+    normalized_impedance = normalize_impedance(impedance)
+    normalize_impedance(old_impedance)
     assert normalized_impedance == 1
     assert ast.dump(impedance, include_attributes=False) == ast.dump(old_impedance, include_attributes=False), \
         'Impedance source changed outside the scoped reset assignment'
