@@ -1,0 +1,26 @@
+{
+  "version": "table-cleaning-preview-v1",
+  "schemes": {
+    "original": {},
+    "variant_1": {
+      "pan": "#2D746E",
+      "pan_roughness": 0.84,
+      "bin_frame": "#B0A79B",
+      "sugar_rgb_multipliers": [
+        1.05,
+        0.82,
+        0.88
+      ]
+    },
+    "variant_2": {
+      "pan": "#A64D3C",
+      "pan_roughness": 0.51,
+      "bin_frame": "#384F6A",
+      "sugar_rgb_multipliers": [
+        0.76,
+        0.92,
+        1.08
+      ]
+    }
+  }
+}

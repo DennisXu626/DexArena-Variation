@@ -55,7 +55,7 @@ class TableCleaningDumpDustpanEnv(TableCleanBase):
 
     def _initialize_episode(self, env_idx, options):
         with torch.device(self.device):
-            self._place_scene_start(env_idx)
+            self._place_scene_start(env_idx, options)
             if self.start_loaded:
                 self._place_in_pan(len(env_idx), env_idx)
                 # Stage 1 is the precondition here, so it starts satisfied --
