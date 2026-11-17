@@ -40,6 +40,10 @@ if args.static:
                                            '-C', str(ROOT), 'show', BOB_HEAD + ':' + file], text=True, encoding='utf-8')
         old = ast.parse(original)
         new = ast.parse((ROOT / file).read_text(encoding='utf-8'))
+        # Normalize only the enumerated Drawer/socket visual hooks. The new
+        # checker also compares the full normalized task AST to main's baseline.
+        from check_drawer_socket import strip_fixture_hooks
+        new = strip_fixture_hooks(new, file.endswith('drawer_plug_long.py'))
         methods = lambda tree: {n.name: ast.dump(n, include_attributes=False)
                                 for cls in tree.body if isinstance(cls, ast.ClassDef)
                                 for n in cls.body if isinstance(n, ast.FunctionDef)}

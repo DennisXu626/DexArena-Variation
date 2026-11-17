@@ -1,0 +1,46 @@
+{
+  "checks": {
+    "fixtures": {
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"scope\": \"CPU AST/catalog/source closure/pixel encoding only\", \"baseline\": \"793c74798c3291155e7010a0688053c1fbe57faa\", \"protected_task_AST\": \"identical after enumerated visual hooks\", \"charger_code_catalog\": \"byte identical\", \"asset_hashes_checked\": true, \"CPU_selection_records\": \"reproducible; env0 stream/records unchanged by env1 (no material bindings)\", \"runtime_realism_A4_A5\": \"not run\"}\n"
+    },
+    "charger": {
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"scope\": \"AST/JSON only; A4/A5 runtime not tested\", \"bob_head\": \"5185f1dd61f2de88ab7d4ada7a2ef77f01e6b207\", \"success_and_other_existing_methods\": \"unchanged\"}\n"
+    },
+    "repository": {
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 21, \"json_configs\": 10, \"relative_links\": 214, \"scope\": \"CPU static only; no environment import or physical verification\"}\n"
+    },
+    "archive": {
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 9, \"pending_adaptation\": 24, \"no_visual\": 3, \"not_loaded\": 1, \"implemented_pending_review\": 5, \"external_pending\": 0}, \"decoded_pngs\": 35, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 378, \"pending_appearance_packages\": 4, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n"
+    },
+    "diff": {
+      "exit_code": 0,
+      "stdout": ""
+    }
+  },
+  "robot_URDF_mesh_preflight": {
+    "panda_dual_sharpa_hand_angled_mobile_base.urdf": {
+      "sha256": "ad00d6395b0b70314701e2f5af622d331137b62dc042bda0da2601cc20c03658",
+      "mesh_count": 74,
+      "missing": [],
+      "mesh_bytes": 24581961
+    },
+    "panda_sharpa_hand_left_angled_mobile_base.urdf": {
+      "sha256": "0ef0507d72ecbad54564eaf92d0a74ad6da3b72032fc5d44275f274bc44cb9c6",
+      "mesh_count": 57,
+      "missing": [],
+      "mesh_bytes": 19473083
+    },
+    "panda_sharpa_hand_right_angled_mobile_base.urdf": {
+      "sha256": "701706b3b54a55c86f463343e34b50b3088937eae5a62728f3af1f807debc65f",
+      "mesh_count": 57,
+      "missing": [],
+      "mesh_bytes": 19473983
+    }
+  },
+  "GPU_seconds": 0,
+  "runtime": "not run"
+}

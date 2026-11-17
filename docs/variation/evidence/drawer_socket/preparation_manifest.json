@@ -1,0 +1,17 @@
+{
+  "baseline_main": "793c74798c3291155e7010a0688053c1fbe57faa",
+  "files": {
+    "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "9be4d4e8b923e6cdbef84733075c48333947a4a9e41ef7f0b4ec43971f04bff6",
+    "tasks/drawer_plug/drawer_plug_long.py": "80895fc5e700c406419e847203524ed7e48753f474173d50f991ecd8e633dd86",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "70d9f964f4c74f86d9c1caa9681918b72b41db6b4438a266ff310473f9c9edc9",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "a7d8243daae418f736a387adf4c9ea1b4bda0f5dbbccf96019dc9214c76d28cd",
+    "tasks/drawer_plug/fixture_appearance.py": "8db9cec9e8a9049955c5aea87284b0ccdaed37ba358abcf3947719ea485cdb9d",
+    "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json": "034d41587454d7715a39608bece63d9b24fd8047bff2cf42fc436069609cf092",
+    "tasks/assets/variation/drawer_plug/v1/catalog.json": "6b426f0cfe2f288291df419671b3952fd47c7a2cce54ec3acde869e9b695b047",
+    "tools/variation/check_drawer_socket.py": "f14cc669fd9421959c5d223d15235499d95b50b595a0bb49c3e892e629189ff9"
+  },
+  "GPU_seconds": 0,
+  "runtime": "not run"
+}

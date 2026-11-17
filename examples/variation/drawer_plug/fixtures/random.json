@@ -1,0 +1,12 @@
+{
+  "drawer_plug_appearance": {
+    "enabled": true,
+    "seed": 91,
+    "mode": "random_choice",
+    "scheme_ids": [
+      "original",
+      "warm_white",
+      "neutral_grey"
+    ]
+  }
+}

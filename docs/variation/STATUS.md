@@ -1,5 +1,7 @@
 # 当前能力清单与验证边界
 
+本轮新增准备项：[Drawer/Socket外观](DRAWER_SOCKET_APPEARANCE.md)。original＋暖白/中性灰配套方案已完成CPU素材与接入；OpenDrawer/PickCharger/InsertPlug及Long工程路径均**尚未运行**，真实感、恢复和隔离待验证，不增加已验收对象数。Charger既有生产适配器/catalog未改；新增Long调用范围另待验证，不能沿用两短任务验收。
+
 这是当前能力的集中入口；README和对象档案只作导航。入口与限定验收共涉及四家族、九个任务入口：Cabinet两个短任务、Charger两个短任务、Mouse仅ClickMouse一个短任务，以及Meal三个短任务和一个长任务入口。对象索引42项、accepted_pilot九对象不是九个完整机器人任务成功。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
 
 ## 1. 瓶身／瓶盖外观
