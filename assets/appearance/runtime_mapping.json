@@ -78,10 +78,10 @@
     "families": 10,
     "status_counts": {
       "accepted_pilot": 9,
-      "pending_adaptation": 29,
+      "pending_adaptation": 26,
       "no_visual": 3,
       "not_loaded": 1,
-      "implemented_pending_review": 0,
+      "implemented_pending_review": 3,
       "external_pending": 0
     },
     "basis": "Actual objects/*/*/README.md directories and matching unique CSV rows; not adaptation-completion count"
@@ -150,5 +150,17 @@
     "evidence": "docs/variation/evidence/mouse_101408/retest_001.json",
     "integration": "Integration record: https://github.com/DennisXu626/DexArena-Variation/pull/6",
     "policy": "Reference one runtime catalog; no duplicate parameters or assets"
+  },
+  "package_opening": {
+    "status": "implemented_pending_review",
+    "runtime_catalog": "tasks/assets/variation/package_opening/v1/catalog.json",
+    "runtime_catalog_sha256": "7d330059e2e5cbf03616d654f6284b2e2cafeff7556931d1d3214169dc66eefe",
+    "scheme_ids": [
+      "original",
+      "variant_1",
+      "variant_2"
+    ],
+    "mapping_evidence": "docs/variation/evidence/package_opening/SCHEME_MAPPING.json",
+    "policy": "Reference unique runtime catalog, no duplicated parameters; pending final review"
   }
 }

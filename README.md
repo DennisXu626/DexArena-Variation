@@ -144,3 +144,6 @@ git push -u origin feat/bottle-appearance
 保留 [Apache-2.0 LICENSE](LICENSE)、[上游引用](docs/citation.bib)、[既有第三方NOTICE](utils/pi05_utils/NOTICE)和模型来源说明。原始DexArena、ManiSkill／SAPIEN及对象素材归各原作者；本团队新增内容只限已标明的variation实现、小贴图和协作入口，详见[来源映射](docs/variation/PROVENANCE.md)。私有仓库不替代第三方数据许可。
 
 Meal限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)；当前待整合/合并，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。历史资料见[PR8-R2索引](docs/variation/evidence/meal_preparation/PR8-R2.md)，最新文档整合见[PR8-R3记录](docs/variation/evidence/meal_preparation/PR8-R3.md)。
+
+
+Package Opening的OpenPackage／ExtractApple／Long三个Sharpa入口已交付，限定证据已查收、待PR9最终合并；[用法](docs/variation/PACKAGE_OPENING_APPEARANCE.md)、[方案身份及整合记录](docs/variation/evidence/package_opening/PR9-R2.md)。不把Package方案套成Cabinet Ocean／Citrus／Violet。

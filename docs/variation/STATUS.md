@@ -81,3 +81,8 @@
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。Meal随机方案真实GPU、PartNet午餐盒和完整机器人长任务成功未测；默认程序盒、固定方案双环境局部reset及恢复original的限定结论不外推。历史报告保留当时结论。
 
 Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合记录](evidence/meal_preparation/PR8-R3.md)分别记录当时状态与本轮收尾。86264旧基线＋独立预览／回放仅作历史参考，不替代当前接入验收。执行层未批准、未合并。
+
+
+## 7. Package Opening（PR9待最终合并）
+
+三对象original＋variant_1／variant_2、OpenPackage／ExtractApple／Long三个Sharpa入口已实现，87021三任务各2env的限定运行证据已查收。当前implemented_pending_review，不增加accepted计数。配置／恢复原版／局部reset等证据与边界见[用法](PACKAGE_OPENING_APPEARANCE.md)及[PR9-R2索引](evidence/package_opening/PR9-R2.md)。CPU只补非连续／乱序环境索引、候选和绑定顺序身份检查；不代表GPU随机路径、完整机器人或压力测试。

@@ -26,9 +26,9 @@ nut_bolt,bolt_platform,螺栓底座／平台（碰撞工装）,no_visual,objects
 office_desk,laptop,笔记本电脑（model_id 10211）,pending_adaptation,objects/office_desk/laptop,,office_desk/laptop,office_laptop
 office_desk,keyboard,键盘（model_id 13106）,pending_adaptation,objects/office_desk/keyboard,,office_desk/keyboard,office_keyboard
 office_desk,mouse,鼠标（model_id 101408）,accepted_pilot,objects/office_desk/mouse,ivory_matte;navy_satin,office_desk/mouse,office_mouse
-package_opening,package,包装盒,pending_adaptation,objects/package_opening/package,,package_opening/package,package_box
-package_opening,apple,包装内苹果,pending_adaptation,objects/package_opening/apple,,package_opening/apple,package_apple
-package_opening,package_plate,接收盘,pending_adaptation,objects/package_opening/package_plate,,package_opening/package_plate,package_plate
+package_opening,package,包装盒,implemented_pending_review,objects/package_opening/package,,package_opening/package,package_box
+package_opening,apple,包装内苹果,implemented_pending_review,objects/package_opening/apple,,package_opening/apple,package_apple
+package_opening,package_plate,接收盘,implemented_pending_review,objects/package_opening/package_plate,,package_opening/package_plate,package_plate
 pipette_transfer,pipette,移液器,pending_adaptation,objects/pipette_transfer/pipette,,pipette_transfer/pipette,pipette
 pipette_transfer,sample_cup,样品杯／吸液杯（程序生成）,pending_adaptation,objects/pipette_transfer/sample_cup,,pipette_transfer/sample_cup,pipette_cup
 pipette_transfer,test_tube,试管（程序生成）,pending_adaptation,objects/pipette_transfer/test_tube,,pipette_transfer/test_tube,pipette_tube

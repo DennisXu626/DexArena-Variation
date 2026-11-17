@@ -1,10 +1,10 @@
 # 包装内苹果（package_opening.apple）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**素材及正式接入已交付，限定证据已查收，待最终合并（PR #9）**。本轮只补CPU映射／索引核对，不新增GPU结论。
 
 原始角色：可抓取内容物。V1资源说明：`RoboCasa/Objaverse 对象资源；上次远程检查见 package apple material.mtl → material_0.jpeg`。
 
-尚无已验收新外观；原UV、材质槽及阶段绑定须在后续适配时针对实际资产核定，不能将静态图册视为加载证明。
+original＋variant_1／variant_2的接入与限定运行证据已提供；尚待最终审阅，不提前计为accepted。模型预览不替代任务证据。
 
 ## 资料与加载边界
 
@@ -19,3 +19,12 @@ V1对象键：`package_opening/apple`；V2对应键：`package_apple`。代码�
 - [tasks/package_opening/package_opening_long.py](../../../../../tasks/package_opening/package_opening_long.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+
+## 本次接入与方案身份
+
+唯一参数源：[运行catalog](../../../../../tasks/assets/variation/package_opening/v1/catalog.json)；[用法和范围](../../../../../docs/variation/PACKAGE_OPENING_APPEARANCE.md)；[请求→recipe→记录／历史图注映射](../../../../../docs/variation/evidence/package_opening/SCHEME_MAPPING.json)。
+
+variant_1→golden（#D7AC42）；variant_2→green（#8EA25C，include_yellow_skin=true）。实际为Package的apple_0、defaultMat.011、visual/image0.png，不能引用其它家族apple；沿原UV现场生成衍生像素，仓库只交配方，分发许可仍未核实。
+
+无数字方案入口；env_idx、材质槽、recipe ID和方案序号分别记录。开包装／取苹果／Long接入及87021限定双环境证据保留；受控成功判定不代表完整机器人轨迹，GPU随机路径未验证。

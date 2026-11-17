@@ -1,0 +1,1113 @@
+{
+  "job": "87021",
+  "base": "acd6ba2",
+  "gpu": "0",
+  "num_envs": 2,
+  "sim_backend": "physx_cuda",
+  "render_backend": "gpu",
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "source_sha256": {
+    "tasks/package_opening/appearance.py": "8be86b06fbc66e7071642df134fa215fdcdfed80165b9ea5d9b269f86c9f36c7",
+    "tasks/package_opening/package_opening_long.py": "9f6b353a03df28f000ab8103b65868d143877b2555fc663e1507bd6c33a2887e",
+    "tasks/assets/variation/package_opening/v1/catalog.json": "f3eea9023a89269c4e429fcef1cf4487646aaa4c14b8628ce4e6200be96d73cb",
+    "tools/variation/check_package_opening.py": "69e3df6b896b8219ad892ffe5feadb4a2bfec0195ab97ba36d8b45027882746b"
+  },
+  "stages": {
+    "open": {
+      "physics_and_geometry_match": true,
+      "materials_match_native": true,
+      "material_faults": [],
+      "material_slots": 21,
+      "changed_slots": [
+        "box/1/0/0",
+        "box/1/1/0",
+        "box/1/2/0",
+        "box/1/3/0",
+        "box/1/4/0",
+        "box/1/5/0",
+        "box/1/6/0",
+        "box/1/7/0",
+        "box/1/8/0",
+        "box/1/9/0",
+        "box/1/10/0",
+        "box/1/11/0",
+        "box/1/12/0",
+        "box/1/13/0",
+        "box/1/14/0",
+        "box/1/15/0",
+        "box/2/0/0",
+        "box/2/1/0",
+        "box/3/0/0",
+        "box/3/1/0"
+      ],
+      "restored_state_matches_native": true,
+      "restored_state_deltas": {},
+      "restored_rgb": {
+        "changed_channels": 0,
+        "max_abs_channel_delta": 0
+      },
+      "untouched_rgb": {
+        "changed_channels": 0,
+        "max_abs_channel_delta": 0
+      },
+      "untouched_state_and_materials_match": true,
+      "untouched_state_deltas": {
+        "native": {},
+        "variant": {}
+      },
+      "task_predicates_match": true,
+      "task_predicates": {
+        "both_closed": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            0,
+            0
+          ],
+          "box_opened": [
+            false,
+            false
+          ]
+        },
+        "one_flap_open": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            0,
+            0
+          ],
+          "box_opened": [
+            false,
+            false
+          ]
+        },
+        "both_flaps_open": {
+          "success": [
+            true,
+            true
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ]
+        }
+      },
+      "timings": {
+        "native": {
+          "build_ms": 1769.711297005415,
+          "reset_median_ms": 9.242242202162743,
+          "step_median_ms": 465.9754913300276,
+          "rgb_median_ms": 5.260078236460686
+        },
+        "variant": {
+          "build_ms": 1571.1367093026638,
+          "reset_median_ms": 9.323053993284702,
+          "step_median_ms": 465.4162637889385,
+          "rgb_median_ms": 5.258229561150074
+        }
+      }
+    },
+    "extract": {
+      "physics_and_geometry_match": true,
+      "materials_match_native": true,
+      "material_faults": [],
+      "material_slots": 23,
+      "changed_slots": [
+        "box/1/0/0",
+        "box/1/1/0",
+        "box/1/2/0",
+        "box/1/3/0",
+        "box/1/4/0",
+        "box/1/5/0",
+        "box/1/6/0",
+        "box/1/7/0",
+        "box/1/8/0",
+        "box/1/9/0",
+        "box/1/10/0",
+        "box/1/11/0",
+        "box/1/12/0",
+        "box/1/13/0",
+        "box/1/14/0",
+        "box/1/15/0",
+        "box/2/0/0",
+        "box/2/1/0",
+        "box/3/0/0",
+        "box/3/1/0",
+        "apple/0/0/0",
+        "plate/0/0/0"
+      ],
+      "restored_state_matches_native": true,
+      "restored_state_deltas": {},
+      "restored_rgb": {
+        "changed_channels": 0,
+        "max_abs_channel_delta": 0
+      },
+      "untouched_rgb": {
+        "changed_channels": 1,
+        "max_abs_channel_delta": 1
+      },
+      "untouched_state_and_materials_match": true,
+      "untouched_state_deltas": {
+        "native": {
+          "/actors/plate_0": 1.1920928955078125e-07,
+          "/actors/apple_0": 3.5762786865234375e-07,
+          "/actors/plate": 1.1920928955078125e-07,
+          "/actors/apple": 3.5762786865234375e-07
+        },
+        "variant": {
+          "/actors/plate_0": 1.1920928955078125e-07,
+          "/actors/apple_0": 3.5762786865234375e-07,
+          "/actors/plate": 1.1920928955078125e-07,
+          "/actors/apple": 3.5762786865234375e-07
+        }
+      },
+      "task_predicates_match": true,
+      "task_predicates": {
+        "settled_without_pickup": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            false,
+            false
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            true,
+            true
+          ],
+          "apple_rest_steps": [
+            41,
+            41
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            true,
+            true
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "lifted_near_tcp_and_clear_of_rim": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "apple_lifted": [
+            true,
+            true
+          ],
+          "apple_grasped": [
+            true,
+            true
+          ],
+          "apple_extracted": [
+            true,
+            true
+          ],
+          "apple_picked_now": [
+            true,
+            true
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            false,
+            false
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            false,
+            false
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "outside_plate": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "just_moved_to_plate": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "before_settle_threshold": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            true,
+            true
+          ],
+          "apple_rest_steps": [
+            39,
+            39
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "released_at_settle_threshold": {
+          "success": [
+            true,
+            true
+          ],
+          "stage": [
+            2,
+            2
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            true,
+            true
+          ],
+          "apple_rest_steps": [
+            40,
+            40
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            true,
+            true
+          ],
+          "apple_task_completed": [
+            true,
+            true
+          ]
+        }
+      },
+      "timings": {
+        "native": {
+          "build_ms": 1614.6517377346754,
+          "reset_median_ms": 11.444853618741035,
+          "step_median_ms": 271.5213680639863,
+          "rgb_median_ms": 4.941100254654884
+        },
+        "variant": {
+          "build_ms": 1956.5542880445719,
+          "reset_median_ms": 11.71217206865549,
+          "step_median_ms": 272.7769333869219,
+          "rgb_median_ms": 4.954011179506779
+        }
+      }
+    },
+    "long": {
+      "physics_and_geometry_match": true,
+      "materials_match_native": true,
+      "material_faults": [],
+      "material_slots": 23,
+      "changed_slots": [
+        "box/1/0/0",
+        "box/1/1/0",
+        "box/1/2/0",
+        "box/1/3/0",
+        "box/1/4/0",
+        "box/1/5/0",
+        "box/1/6/0",
+        "box/1/7/0",
+        "box/1/8/0",
+        "box/1/9/0",
+        "box/1/10/0",
+        "box/1/11/0",
+        "box/1/12/0",
+        "box/1/13/0",
+        "box/1/14/0",
+        "box/1/15/0",
+        "box/2/0/0",
+        "box/2/1/0",
+        "box/3/0/0",
+        "box/3/1/0",
+        "apple/0/0/0",
+        "plate/0/0/0"
+      ],
+      "restored_state_matches_native": true,
+      "restored_state_deltas": {},
+      "restored_rgb": {
+        "changed_channels": 0,
+        "max_abs_channel_delta": 0
+      },
+      "untouched_rgb": {
+        "changed_channels": 1,
+        "max_abs_channel_delta": 1
+      },
+      "untouched_state_and_materials_match": true,
+      "untouched_state_deltas": {
+        "native": {
+          "/actors/plate_0": 1.1920928955078125e-07,
+          "/actors/apple_0": 3.5762786865234375e-07,
+          "/actors/plate": 1.1920928955078125e-07,
+          "/actors/apple": 3.5762786865234375e-07
+        },
+        "variant": {
+          "/actors/plate_0": 1.1920928955078125e-07,
+          "/actors/apple_0": 3.5762786865234375e-07,
+          "/actors/plate": 1.1920928955078125e-07,
+          "/actors/apple": 3.5762786865234375e-07
+        }
+      },
+      "task_predicates_match": true,
+      "task_predicates": {
+        "both_closed": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            0,
+            0
+          ],
+          "box_opened": [
+            false,
+            false
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            false,
+            false
+          ],
+          "apple_height_correct": [
+            false,
+            false
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "one_flap_open": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            0,
+            0
+          ],
+          "box_opened": [
+            false,
+            false
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            false,
+            false
+          ],
+          "apple_height_correct": [
+            false,
+            false
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "both_flaps_open": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            false,
+            false
+          ],
+          "apple_height_correct": [
+            false,
+            false
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "settled_without_pickup": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            false,
+            false
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            true,
+            true
+          ],
+          "apple_rest_steps": [
+            41,
+            41
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            true,
+            true
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "lifted_near_tcp_and_clear_of_rim": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            true,
+            true
+          ],
+          "apple_grasped": [
+            true,
+            true
+          ],
+          "apple_extracted": [
+            true,
+            true
+          ],
+          "apple_picked_now": [
+            true,
+            true
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            false,
+            false
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            false,
+            false
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "outside_plate": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "just_moved_to_plate": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            false,
+            false
+          ],
+          "apple_rest_steps": [
+            0,
+            0
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "before_settle_threshold": {
+          "success": [
+            false,
+            false
+          ],
+          "stage": [
+            1,
+            1
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            true,
+            true
+          ],
+          "apple_rest_steps": [
+            39,
+            39
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            false,
+            false
+          ],
+          "apple_task_completed": [
+            false,
+            false
+          ]
+        },
+        "released_at_settle_threshold": {
+          "success": [
+            true,
+            true
+          ],
+          "stage": [
+            2,
+            2
+          ],
+          "box_opened": [
+            true,
+            true
+          ],
+          "apple_lifted": [
+            false,
+            false
+          ],
+          "apple_grasped": [
+            false,
+            false
+          ],
+          "apple_extracted": [
+            false,
+            false
+          ],
+          "apple_picked_now": [
+            false,
+            false
+          ],
+          "apple_pick_completed": [
+            true,
+            true
+          ],
+          "apple_height_correct": [
+            true,
+            true
+          ],
+          "apple_stable": [
+            true,
+            true
+          ],
+          "apple_rest_steps": [
+            40,
+            40
+          ],
+          "apple_released": [
+            true,
+            true
+          ],
+          "apple_in_plate": [
+            true,
+            true
+          ],
+          "apple_task_completed": [
+            true,
+            true
+          ]
+        }
+      },
+      "timings": {
+        "native": {
+          "build_ms": 1402.7755539864302,
+          "reset_median_ms": 12.602646835148335,
+          "step_median_ms": 499.157034792006,
+          "rgb_median_ms": 5.249524489045143
+        },
+        "variant": {
+          "build_ms": 1794.073212891817,
+          "reset_median_ms": 12.410388328135014,
+          "step_median_ms": 499.6987544000149,
+          "rgb_median_ms": 5.296159535646439
+        }
+      }
+    }
+  }
+}

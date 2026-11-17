@@ -17,7 +17,7 @@
 
 ## 对象与状态
 
-按实际目录与CSV复核：42个对象、10家族；已验收限定试点9（原有4＋Meal5）；待适配29；无视觉不适用3；当前未加载1；已实现待审验0；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与CSV复核：42个对象、10家族；已验收限定试点9（原有4＋Meal5）；待适配26；无视觉不适用3；当前未加载1；已实现待审验3；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -48,9 +48,9 @@
 | office_desk | [laptop](objects/office_desk/laptop/README.md) | 待适配 |
 | office_desk | [keyboard](objects/office_desk/keyboard/README.md) | 待适配 |
 | office_desk | [mouse](objects/office_desk/mouse/README.md) | 限定试点已验收（仅ClickMouse 2env A4／A5） |
-| package_opening | [package](objects/package_opening/package/README.md) | 待适配 |
-| package_opening | [apple](objects/package_opening/apple/README.md) | 待适配 |
-| package_opening | [package_plate](objects/package_opening/package_plate/README.md) | 待适配 |
+| package_opening | [package](objects/package_opening/package/README.md) | 限定证据已查收，待PR9最终合并 |
+| package_opening | [apple](objects/package_opening/apple/README.md) | 限定证据已查收，待PR9最终合并 |
+| package_opening | [package_plate](objects/package_opening/package_plate/README.md) | 限定证据已查收，待PR9最终合并 |
 | pipette_transfer | [pipette](objects/pipette_transfer/pipette/README.md) | 待适配 |
 | pipette_transfer | [sample_cup](objects/pipette_transfer/sample_cup/README.md) | 待适配 |
 | pipette_transfer | [test_tube](objects/pipette_transfer/test_tube/README.md) | 待适配 |
@@ -73,3 +73,6 @@
 第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。本轮不修改既有运行代码、运行catalog／PNG、M3 PR或协作规范。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。
 
 Meal 五对象依据[PR8-R2查收结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标为 `accepted_pilot`，表示限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。[PR8-R2证据索引](../../docs/variation/evidence/meal_preparation/PR8-R2.md)说明源码对应、复用范围和历史追溯限制。
+
+
+Package三对象的接入和限定证据见[PR9-R2索引](../../docs/variation/evidence/package_opening/PR9-R2.md)，当前implemented_pending_review，不增加已验收计数。
