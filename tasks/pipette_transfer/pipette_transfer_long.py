@@ -46,6 +46,9 @@ from tasks.robots.panda_dual_wuji_hand_mobile_base import PandaDualWujiHandMobil
 from tasks.robots.panda_dual_xhand_hand_mobile_base import PandaDualXHandHandMobileBase  # noqa: F401
 from tasks.config.layout_randomization import ARM_INIT_QPOS_NOISE_STD, arm_qpos_noise, episode_rng, offset_pose, uniform_offset, layout_rng
 from tasks.config.guidance_markers import pop_guidance_marker_flag
+from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin
+from tasks.pipette_transfer.appearance import PipetteAppearance, validate_per_env, validate_reset_request
+from tasks.pipette_transfer.rendering import PipetteRendering
 from tasks.scene_builders import TableSceneBuilder
 from tasks.config.sim_profiles import make_sim_config
 from tasks.config.object_materials import object_material
@@ -207,6 +210,8 @@ def _actor(env, idx, name, pose, build, dynamic=False, material=None):
     if material is not None:
         for record in getattr(b,"collision_records",[]):
             record.material=material
+    if env._pipette_appearance is not None:
+        env._pipette_appearance.isolate_builder_materials(b)
     actor=b.build_dynamic(name) if dynamic else b.build_kinematic(name)
     if dynamic: set_task_object_energy_fence(actor)
     key=name.rsplit("_",1)[0]
@@ -384,6 +389,8 @@ def _load_pipette(env,idx,cfg):
     for link_builder in b.link_builders:
         for record in getattr(link_builder,"collision_records",[]):
             record.material=pipette_material
+    if env._pipette_appearance is not None:
+        env._pipette_appearance.isolate_builder_materials(b)
     pipette=b.build(name=f"pipette_{idx}",fix_root_link=False)
     set_task_object_energy_fence(pipette)
     if len(pipette.active_joints)!=1 or not pipette.active_joints[0].name.endswith("plunger_joint"):
@@ -396,7 +403,8 @@ def _load_pipette(env,idx,cfg):
         force_limit=PIPETTE_PLUNGER_FORCE_LIMIT,
         mode="force",
     )
-    plunger.set_drive_target(0.0)
+    if not env.gpu_sim_enabled:
+        plunger.set_drive_target(0.0)
     if hasattr(plunger,"set_friction"):
         plunger.set_friction(PIPETTE_PLUNGER_FRICTION)
     return pipette
@@ -418,7 +426,7 @@ def build_scene(env,cfg):
                 material=object_material("hard_plastic",dominant="table"),
             ))
         if env.LOAD_PIPETTE: pips.append(_load_pipette(env,i,cfg))
-    return table,Actor.merge(cups,"sample_cup") if cups else None,Actor.merge(tubes,"test_tube") if tubes else None,Actor.merge(racks,"tube_rack") if racks else None,Actor.merge(stands,"pipette_stand") if stands else None,Articulation.merge(pips,"pipette") if pips else None
+    return table,Actor.merge(cups,"sample_cup") if cups else None,Actor.merge(tubes,"test_tube") if tubes else None,Actor.merge(racks,"tube_rack") if racks else None,Actor.merge(stands,"pipette_stand") if stands else None,Articulation.merge(pips,"pipette",merge_links=True) if pips else None
 
 def _point_to_segment_dist(point,pose,seg_local):
     """Distance from world points (N,3) to a segment given in an actor's local frame."""
@@ -484,10 +492,10 @@ class PipetteEvaluator:
                 tube=e.test_tube.pose.p; tip_tube=torch.linalg.norm((tip-tube)[:,:2],dim=1)<TIP_IN_TUBE_XY_TOL; tip_tube &= (tip[:,2]>tube[:,2]+.03)&(tip[:,2]<tube[:,2]+c.tube_h)
             # Both halves of "aspirate" only count while the hand actually holds the
             # lifted pipette; their ORDER is free (see PipetteEvaluator.__init__).
-            self.primed |= pipette_lifted&pressed
-            self.dipped |= pipette_lifted&tip_cup
-            self.first_press |= (self.stage==0)&self.primed&self.dipped
-            self.second_press |= (self.stage>=1)&tip_tube&pressed
+            self.primed |= e._reset_scoped_predicate(pipette_lifted&pressed)
+            self.dipped |= e._reset_scoped_predicate(pipette_lifted&tip_cup)
+            self.first_press |= e._reset_scoped_predicate((self.stage==0)&self.primed&self.dipped)
+            self.second_press |= e._reset_scoped_predicate((self.stage>=1)&tip_tube&pressed)
             stand_xy=e.pipette_stand.pose.p[:,:2] if e.pipette_stand is not None else torch.tensor(c.pipette_stand_xy,device=e.device)
             returned=torch.linalg.norm(pip[:,:2]-stand_xy,dim=1)<c.pipette_return_radius
             # The long stand stores the pipette vertically, so its URDF root
@@ -497,12 +505,12 @@ class PipetteEvaluator:
             returned &= torch.linalg.norm(e.pipette.root_angular_velocity,dim=1)<.25   # a leaning pipette wobbles ~0.1 rad/s against the well wall
             returned &= pip_axis[:,2] > PIPETTE_RETURN_TILT_COS
             returned &= hands_away
-            self.stage=torch.where((self.stage==0)&self.first_press&released&returned,torch.ones_like(self.stage),self.stage)
+            self.stage=e._reset_scoped_value(self.stage,torch.where((self.stage==0)&self.first_press&released&returned,torch.ones_like(self.stage),self.stage))
             # S1 (subtask, the long task's own rule now): the tube
             # STAYS in the rack; the second press plus the parked pipette finish the task.
             # Stage 2 (the lifted tube of the retired dual-hand dispense) no longer exists,
             # the counter goes 1 -> 3 so the recorded S1 data keep their stage values.
-            self.stage=torch.where((self.stage==1)&self.second_press&released&returned,torch.full_like(self.stage,3),self.stage)
+            self.stage=e._reset_scoped_value(self.stage,torch.where((self.stage==1)&self.second_press&released&returned,torch.full_like(self.stage,3),self.stage))
         else:
             returned=zero
         if e.test_tube is not None:
@@ -518,10 +526,23 @@ class PipetteEvaluator:
     reward_mode="normalized_dense",
     render_mode="rgb_array",
 )
-class PipetteTransferLongEnv(BaseEnv):
+class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
     SUPPORTED_ROBOTS=[ROBOT_UID,"panda_dual_wuji_hand_angled_mobile_base","panda_dual_xhand_hand_angled_mobile_base","panda_dual_gripper_mobile_base"]; TARGET_STAGE=0
     LOAD_CUP=True; LOAD_PIPETTE=True; LOAD_TUBE=True; LOAD_RACK=True; LOAD_PIPETTE_STAND=True
-    def __init__(self,*a,robot_init_qpos_noise=ARM_INIT_QPOS_NOISE_STD,**kw):
+    _DEFER_APPEARANCE_RESET=False
+    def __init__(self,*a,robot_init_qpos_noise=ARM_INIT_QPOS_NOISE_STD,
+                 pipette_appearance=None,pipette_rendering=None,**kw):
+        num_envs=kw.get("num_envs",a[0] if a else 1)
+        if pipette_appearance is not None:
+            validate_per_env(pipette_appearance,num_envs)
+        self._pipette_appearance=(PipetteAppearance(pipette_appearance,num_envs,
+            rendering_enabled=bool(pipette_rendering and pipette_rendering.get("enabled",False)))
+            if pipette_appearance and pipette_appearance.get("enabled",False) else None)
+        self._pipette_rendering=(PipetteRendering(pipette_rendering)
+            if pipette_rendering and pipette_rendering.get("enabled",False) else None)
+        if self._pipette_rendering is not None:
+            for name in ("sensor_configs","human_render_camera_configs"):
+                kw[name]=self._pipette_rendering.camera_overrides(kw.get(name))
         # Gaussian arm-joint noise from the episode RNG (fleet std by default);
         # the dual-arm teleop entry point passes 0.0 on purpose.
         self.robot_init_qpos_noise=float(robot_init_qpos_noise)
@@ -553,9 +574,42 @@ class PipetteTransferLongEnv(BaseEnv):
         set_work_table_pose(self)
     def _load_scene(self,options):
         self.table_scene,self.sample_cup,self.test_tube,self.tube_rack,self.pipette_stand,self.pipette=build_scene(self,self.cfg)
+        if self._pipette_rendering is not None:
+            self._pipette_rendering.prepare_objects(self)
         for x in (self.sample_cup,self.test_tube,self.tube_rack,self.pipette_stand,self.pipette):
             if x is not None: self.add_to_state_dict_registry(x)
-    def _after_reconfigure(self,options): self.eval=PipetteEvaluator(self,self.cfg)
+    def reset(self,seed=None,options=None):
+        indices=validate_reset_request(seed,options,self.num_envs)
+        if self._pipette_appearance is not None:
+            validate_per_env(self._pipette_appearance.config,self.num_envs)
+        if indices is not None:
+            env_idx=options["env_idx"]
+            device=self._elapsed_steps.device
+            if not (isinstance(env_idx,torch.Tensor) and env_idx.dtype==torch.long and env_idx.device==device):
+                options={**options,"env_idx":torch.tensor(indices,dtype=torch.long,device=device)}
+        return super().reset(seed=seed,options=options)
+    def _setup_sensors(self,options):
+        if self._pipette_rendering is not None:
+            self._pipette_rendering.prepare_formats()
+        super()._setup_sensors(options)
+        if self._pipette_rendering is not None:
+            self._pipette_rendering.bind_cameras(self)
+    def _after_reconfigure(self,options):
+        self.eval=PipetteEvaluator(self,self.cfg)
+        if self.gpu_sim_enabled and self.pipette is not None:
+            self.pipette.active_joints[0].set_drive_target(0.0)
+        if self._pipette_appearance is not None:
+            for env_id in range(self.num_envs):
+                self._pipette_appearance.bind(self,env_id)
+    def _finish_appearance_reset(self,env_idx,options):
+        if self._pipette_appearance is not None:
+            self._pipette_appearance.finish_reset(env_idx,options)
+    def close(self):
+        try:
+            return super().close()
+        finally:
+            if getattr(self,"_pipette_rendering",None) is not None:
+                self._pipette_rendering.close()
     def _initialize_episode(self,env_idx,options):
         self.table_scene.initialize(env_idx)
         self._set_work_table_pose()
@@ -564,7 +618,7 @@ class PipetteTransferLongEnv(BaseEnv):
         # (dual rig for the long task / S1, single right-arm rig for S0).
         self.agent.robot.set_root_pose(DUAL_ROBOT_BASE_POSE)
         lay=self._sample_layout(env_idx)   # first episode-RNG draw: layout (see layout_rng)
-        self._reset_arms()
+        self._reset_arms(env_idx)
         self.eval.reset(env_idx); n=len(env_idx)
         T=lambda rows: torch.tensor(np.asarray(rows),dtype=torch.float32,device=self.device)
         ident=T([[1,0,0,0]]*n)
@@ -572,7 +626,7 @@ class PipetteTransferLongEnv(BaseEnv):
         if self.tube_rack is not None: self.tube_rack.set_pose(Pose.create_from_pq(T([[x,y,self.cfg.table_z] for x,y in lay['rack']]),ident))
         if self.pipette_stand is not None: self.pipette_stand.set_pose(Pose.create_from_pq(T([[x,y,self.cfg.table_z] for x,y in lay['stand']]),T(lay['stand_q'])))
         if self.pipette is not None:
-            self.pipette.set_qpos(torch.zeros_like(self.pipette.get_qpos())); self.pipette.set_qvel(torch.zeros_like(self.pipette.get_qvel()))
+            self.pipette.set_qpos(torch.zeros_like(self.pipette.get_qpos()[env_idx])); self.pipette.set_qvel(torch.zeros_like(self.pipette.get_qvel()[env_idx]))
             pip_pose=Pose.create_from_pq(
                 T([[x,y,self.cfg.table_z+self.cfg.pipette_stand_z] for x,y in lay['stand']]),
                 ident,
@@ -582,6 +636,8 @@ class PipetteTransferLongEnv(BaseEnv):
             self.pipette.set_root_angular_velocity(torch.zeros((n,3),device=self.device))
         if self.test_tube is not None:
             self.test_tube.set_pose(Pose.create_from_pq(T([[x+(self.cfg.tube_xy[0]-self.cfg.rack_xy[0]),y+(self.cfg.tube_xy[1]-self.cfg.rack_xy[1]),self.cfg.table_z+.003] for x,y in lay['rack']]),ident)); self.test_tube.set_linear_velocity(torch.zeros((n,3),device=self.device)); self.test_tube.set_angular_velocity(torch.zeros((n,3),device=self.device))
+        if not self._DEFER_APPEARANCE_RESET:
+            self._finish_appearance_reset(env_idx,options)
     def _sample_layout(self,env_idx):
         """Per-episode workstation layout from the episode RNG (see the PIPETTE_*_RANDOM constants).
 
@@ -601,14 +657,14 @@ class PipetteTransferLongEnv(BaseEnv):
             _,q=offset_pose((0,0,0),PIPETTE_STAND_NOMINAL_Q,0.0,0.0,syaw)
             out["cup"].append(cup); out["rack"].append((c.rack_xy[0]+rdx,c.rack_xy[1]+rdy)); out["stand"].append(stand); out["stand_q"].append(q)
         return out
-    def _reset_arms(self):
+    def _reset_arms(self,env_idx):
         """Arm layer: both arms start from the shared rig pose.
 
         Without this the arms fall through to the agent keyframe, which sits
         2.6 rad away at one joint -- the operator feels a different wrist
         attitude from the first frame than in every other task.
         """
-        qpos=self.agent.robot.get_qpos().clone()
+        qpos=self.agent.robot.get_qpos()[env_idx].clone()
         active=[j.name for j in self.agent.robot.get_active_joints()]
         idx=[active.index(n) for n in getattr(self.agent,"arm_joint_names",[]) if n in active]
         shared=torch.tensor(ARM_INIT_QPOS,dtype=qpos.dtype,device=self.device)
@@ -616,11 +672,11 @@ class PipetteTransferLongEnv(BaseEnv):
             block=idx[start:start+len(ARM_INIT_QPOS)]
             if len(block)==len(ARM_INIT_QPOS):
                 qpos[:,torch.tensor(block,device=self.device)]=shared
-        for k in range(qpos.shape[0]):
-            index,noise=arm_qpos_noise(episode_rng(self,k),self.agent,1,self.robot_init_qpos_noise,device=self.device)
+        for k,env_id in enumerate(env_idx.tolist()):
+            index,noise=arm_qpos_noise(episode_rng(self,env_id),self.agent,1,self.robot_init_qpos_noise,device=self.device)
             qpos[k,index]+=noise[0]
         self.agent.robot.set_qpos(qpos)
-        self.agent.robot.set_qvel(torch.zeros_like(self.agent.robot.get_qvel()))
+        self.agent.robot.set_qvel(torch.zeros_like(self.agent.robot.get_qvel()[env_idx]))
         self.agent.controller.reset()
 
     def evaluate(self): return self.eval.evaluate()
@@ -679,6 +735,7 @@ class PipetteTransferLongEnv(BaseEnv):
     def compute_normalized_dense_reward(self,obs,action,info): return self.compute_dense_reward(obs,action,info)/3
 
 class PipetteSubtaskEnv(PipetteTransferLongEnv):
+    _DEFER_APPEARANCE_RESET=True
     TARGET_STAGE=0
     REQUIRE_FINAL_PLACEMENT=False
     def __init__(self,*a,target_stage=None,**kw): self.TARGET_STAGE=self.__class__.TARGET_STAGE if target_stage is None else target_stage; super().__init__(*a,**kw)
@@ -687,6 +744,7 @@ class PipetteSubtaskEnv(PipetteTransferLongEnv):
         self.eval.stage[env_idx]=self.TARGET_STAGE
         self.eval.first_press[env_idx]=self.TARGET_STAGE>=1
         self.eval.second_press[env_idx]=self.TARGET_STAGE>=2
+        self._finish_appearance_reset(env_idx,options)
         # Standalone subtasks keep the exact corresponding full-task reset
         # poses. Only the predecessor stage flags and object masks differ.
     def evaluate(self):

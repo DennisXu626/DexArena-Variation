@@ -1,0 +1,2 @@
+previews/runtime/** -text
+previews/runtime/rendering_probe_summary.json whitespace=cr-at-eol
