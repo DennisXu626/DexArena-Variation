@@ -252,6 +252,27 @@ def pixel_check(directory, rows, prefix, env, *, zero=False, changed=False):
     return measured
 
 
+STRIP_STORAGE_FIELDS = {'name', 'sha256', 'source_kind', 'source_asset_sha256'}
+STRIP_DESCRIPTOR = dict(width=1547, height=721, channels=4, format='R8G8B8A8Unorm',
+                        mipmap_levels=1, filter_mode='linear', address_mode='repeat', is_srgb=True)
+
+
+def strip_pixels_sha(color):
+    return _strip_solid_sha(tuple(float(x) for x in color[:3]))
+
+
+def _strip_solid_sha(color):
+    import hashlib
+    linear = np.asarray(color, dtype=np.float64)
+    rgba = bytes([*np.rint(255 * np.where(linear <= .0031308, 12.92 * linear,
+                 1.055 * np.power(linear, 1 / 2.4) - .055)).astype(np.uint8), 255])
+    return hashlib.sha256(rgba * (STRIP_DESCRIPTOR['width'] * STRIP_DESCRIPTOR['height'])).hexdigest()
+
+
+def strip_projection(texture):
+    return {k: v for k, v in texture.items() if k not in STRIP_STORAGE_FIELDS}
+
+
 def pbr_profile(value, entity, context):
     fields(value, PBR_FIELDS, context + '/complete SDK PBR')
     H.canonical_sha(value)
@@ -281,6 +302,16 @@ def pbr_profile(value, entity, context):
                     or texture['asset_ref'] == texture['asset_reference'], 'Conflicting actual texture source references')
             require(Path(source).name == texture['name'] and CAPTURE_FILES.get(source) == texture['sha256'],
                     context + ': texture bytes outside captured asset/external closure')
+        elif texture.get('source_kind') == 'office_keyboard_private_strip':
+            require(name == 'base_color_texture' and not texture['name'], context + ': wrong private strip slot')
+            fields(texture, ('asset_ref', 'source_asset_sha256', 'data_sha256', 'data_dtype', 'data_shape'), context)
+            source = texture['asset_ref']
+            require(source.startswith('tasks/assets/task_object_meshes/office/13106/')
+                    and CAPTURE_FILES.get(source) == texture['source_asset_sha256']
+                    and all(texture[key] == item for key, item in STRIP_DESCRIPTOR.items())
+                    and texture['data_dtype'] == 'uint8' and texture['data_shape'] == [721, 1547, 4],
+                    context + ': private strip source, sampler, or pixel layout differs')
+            H.digest_map({'source': texture['source_asset_sha256'], 'pixels': texture['data_sha256']}, context)
         else:
             require(not texture['name'], context + ': named texture lacks a real file digest')
             fields(texture, ('asset_ref', 'embedded_asset_sha256', 'data_sha256', 'data_dtype',
@@ -341,9 +372,20 @@ def logical_scene(rows):
     return result
 
 
-def scene_materials_equal(a, b):
+def scene_materials_equal(a, b, *, strip_restore=False):
     logical = bool(a) and isinstance(a[0], dict) and 'logical_group' in a[0]
-    return logical_scene(a) == logical_scene(b) if logical else a == b
+    if not logical:
+        return a == b
+    before, after = logical_scene(a), logical_scene(b)
+    if not strip_restore:
+        return before == after
+
+    def project(scene):
+        return {key: ({**row, 'material': {**row['material'], 'base_color_texture':
+                 strip_projection(row['material']['base_color_texture'])}} if key[-1] == 'safe' else row)
+                for key, row in scene.items()}
+
+    return project(before) == project(after)
 
 
 def triangle_group_sha(values):
@@ -441,7 +483,8 @@ def office_partition_check(native, original, native_audit, original_audit, nativ
     after = office_audit_check(original, original_audit, original_geometry)
     compact = []
     for env, (a, b) in enumerate(zip(before, after)):
-        require(logical_scene(native[env]) == logical_scene(original[env]), 'Office enabled original differs from native logical PBR/geometry')
+        require(scene_materials_equal(native[env], original[env], strip_restore=task == 'TypeKeys'),
+                'Office enabled original differs from native logical PBR/geometry')
         require(a['groups'].keys() == b['groups'].keys(), 'Office native/enabled furniture group coverage differs')
         partitions = {}
         for key, source in a['groups'].items():
@@ -703,7 +746,7 @@ def catalog_parameters(repo, family, task):
                 if scheme != 'original':
                     for role, source in catalog.get('role_aliases', {}).items():
                         require(oid == 'keyboard' and role == 'shell_strip' and source == 'shell', 'Unknown Office role alias')
-                        params = {**params, role: {**params[source], 'base_color_texture': None}}
+                        params = {**params, role: dict(params[source])}
             parameters.setdefault(scheme, {})[oid] = params
     return parameters, roles, counts
 
@@ -744,27 +787,36 @@ def material_check(native, actual, scheme, bindings, parameters, roles, counts):
         expected = copy.deepcopy(baseline)
         env = int(key.split('/')[1])
         selected_scheme = scheme[env] if isinstance(scheme, list) else scheme
+        private_strip = False
         if key in bindings:
             binding = bindings[key]
             params = parameters[selected_scheme][binding['object_id']].get(binding['role'], {})
+            private_strip = (binding['object_id'], binding['role']) == ('keyboard', 'shell_strip')
             for field, value in params.items():
                 if field == 'base_color_rgb':
                     expected['base_color'][:3] = value
                 elif field == 'base_color_alpha':
                     expected['base_color'][3] = value
                 else:
-                    require(field in ('base_color', 'roughness', 'metallic') or
-                            (field == 'base_color_texture' and value is None
-                             and binding['object_id'] == 'keyboard' and binding['role'] == 'shell_strip'), 'Unsupported catalog PBR field')
+                    require(field in ('base_color', 'roughness', 'metallic'), 'Unsupported catalog PBR field')
                     expected[field] = value
         for field, value in baseline.items():
-            if expected[field] == value or selected_scheme == 'original':
+            if private_strip and field in ('base_color_texture', 'diffuse_texture'):
+                target = b[key][field]
+                projected = strip_projection(value)
+                if selected_scheme != 'original':
+                    projected['data_sha256'] = strip_pixels_sha(params['base_color'])
+                require(target['source_kind'] == 'office_keyboard_private_strip'
+                        and target['source_asset_sha256'] == value['sha256']
+                        and strip_projection(target) == projected, f'{scheme}: private strip bytes/sampler differ: {key}')
+            elif expected[field] == value or selected_scheme == 'original':
                 require(b[key][field] == value, f'{scheme}: protected PBR changed: {key}/{field}')
             else:
                 matches = b[key][field] is None if expected[field] is None else np.allclose(np.asarray(b[key][field]), np.asarray(expected[field]), rtol=0, atol=2e-6)
                 require(matches,
                         f'{scheme}: PBR differs from catalog: {key}/{field}')
-            if value != b[key][field]:
+            if value != b[key][field] and not (private_strip and selected_scheme == 'original'
+                                               and field in ('base_color_texture', 'diffuse_texture')):
                 changed.append(key + '/' + field)
     require(scheme == 'original' or isinstance(scheme, list) or changed, f'{scheme}: candidate PBR is unchanged')
     return {'canonical_sha256': H.canonical_sha(actual), 'changed_fields': changed}
@@ -1056,7 +1108,8 @@ def local_check(directory, row, prefix, expected_selected, selected_states, capt
         'shared_controller_counters': {'before': row['before_shared_controller_counters'],
                                       'after': row['after_shared_controller_counters']}}
     if appearance:
-        require(scene_materials_equal(row['after_materials'][expected_selected], captured_native[expected_selected]),
+        require(scene_materials_equal(row['after_materials'][expected_selected], captured_native[expected_selected],
+                                      strip_restore=True),
                 f'{prefix}: selected environment did not restore captured native PBR')
         private['appearance_rng'] = raw_pair(row, 'appearance_rng_unselected', prefix)
         fields(row, ('before_records', 'after_records'), prefix)
@@ -1141,7 +1194,7 @@ def nut_stage_check(task_directory, reference):
     require(row['engaged_private']['records'] == row['before_records'], 'Native engage changed appearance records')
     record_check(row['before_records'], row['after_records'], [1])
     measured, frames = {}, {}
-    cameras = {'base_camera', 'task_wrist_camera', 'human'}
+    cameras = {'base_camera', 'task_wrist_camera', 'wrist_camera', 'human'}
     for stage in ('before', 'engaged', 'restored'):
         rows = row['first_vs_repeat'][stage]
         require(len(rows) == 2 and all(set(r) == cameras for r in rows), 'SeatNut repeat camera set differs')
@@ -1269,6 +1322,87 @@ def mouse_collision_check(row, repo):
     return value
 
 
+def office_strip_check(directory, evidence, native, checks, parameters):
+    import hashlib
+
+    fields(evidence, ('schema_version', 'file', 'sha256', 'stages'), 'TypeKeys raw strip evidence')
+    stages = {'native_off': None, 'original': 'original', 'variant_1': 'variant_1',
+              'variant_2': 'variant_2', 'restore_candidate': 'variant_2', 'restored_original': 'original'}
+    require(evidence['schema_version'] == 1 and evidence['file'] == 'strip_textures.npz'
+            and set(evidence['stages']) == set(stages), 'Incorrect TypeKeys texture evidence stages')
+    path = inside(directory, evidence['file'])
+    require(track(path) == evidence['sha256'], 'TypeKeys texture archive SHA differs')
+    seen, native_pixels = set(), {}
+    with np.load(path, allow_pickle=False) as archive:
+        def array(row, key):
+            fields(row, ('key', 'sha256', 'dtype', 'shape'), 'TypeKeys strip pixel receipt')
+            require(row['key'] == key and key not in seen and row['dtype'] == 'uint8'
+                    and row['shape'] == [721, 1547, 4], 'Invalid TypeKeys strip pixel receipt')
+            pixels = archive[key]
+            require(pixels.dtype == np.uint8 and list(pixels.shape) == row['shape']
+                    and pixels.flags.c_contiguous and np.all(pixels[..., 3] == 255)
+                    and hashlib.sha256(pixels.tobytes()).hexdigest() == row['sha256'], 'TypeKeys strip raw bytes differ')
+            seen.add(key)
+            return pixels
+
+        def safe_texture(rows):
+            matching = [row['material']['base_color_texture'] for row in rows if row['logical_group'] == 'safe']
+            require(len(matching) == 1, 'Missing unique TypeKeys safe group')
+            return matching[0]
+
+        for stage, scheme in stages.items():
+            rows = evidence['stages'][stage]
+            require(isinstance(rows, list) and len(rows) == 2, 'TypeKeys texture evidence must cover both envs')
+            for env, row in enumerate(rows):
+                require(row['env_idx'] == env and row['descriptor'] == STRIP_DESCRIPTOR,
+                        'TypeKeys actual strip descriptor differs')
+                prefix = f'{stage}_env{env}'
+                if scheme is None:
+                    native_pixels[env] = array(row['native'], prefix)
+                    require(row['native']['sha256'] == safe_texture(native[env])['data_sha256'],
+                            'TypeKeys native baseline PBR and raw pixels differ')
+                    continue
+                require(row['bound_handle_stable'] is True and row['bound_handle_exclusive'] is True,
+                        'TypeKeys actual private handle changed or is shared')
+                source, bound, expected = (array(row[k], prefix + '_' + k) for k in ('source', 'bound', 'expected'))
+                require(np.array_equal(source, native_pixels[env]) and np.array_equal(bound, expected),
+                        'TypeKeys source or private bound pixels differ')
+                if scheme == 'original':
+                    require(np.array_equal(expected, source), 'TypeKeys did not restore actual native texture bytes')
+                else:
+                    color = parameters[scheme]['keyboard']['shell_strip']['base_color']
+                    require(row['bound']['sha256'] == strip_pixels_sha(color) and not np.array_equal(bound, source),
+                            'TypeKeys strip bytes differ from independently encoded catalog color')
+                if stage in ('original', 'variant_1', 'variant_2'):
+                    require(row['bound']['sha256'] == safe_texture(checks[stage]['materials'][env])['data_sha256'],
+                            'TypeKeys fixed PBR and raw bound bytes differ')
+        require(set(archive.files) == seen, 'Unaccounted raw TypeKeys strip arrays')
+    return {'sha256': evidence['sha256'], 'stages': evidence['stages'], 'checked_arrays': len(seen)}
+
+
+def office_first_repeat_check(directory, evidence, schemes, cameras):
+    expected = {f'fixed_{scheme}_first_repeat': scheme for scheme in schemes}
+    expected['restored_original_first_repeat'] = 'restored_original'
+    require(isinstance(evidence, dict) and set(evidence) == set(expected), 'Missing Office first/repeat stage')
+    result = {}
+    for prefix, scheme in expected.items():
+        rows = evidence[prefix]
+        require(set(rows) == {'0', '1'}, 'Office first/repeat needs both environments')
+        result[prefix] = {}
+        for env in (0, 1):
+            value = rows[str(env)]
+            require(set(value) == set(cameras), 'Office first/repeat missing native camera evidence')
+            result[prefix][str(env)] = pixel_check(directory, value, prefix, env, zero=True)
+            for camera in cameras:
+                first, _ = pair(inside(directory, f'{prefix}_{camera}_env{env}.png'))
+                if scheme == 'restored_original':
+                    _, stored = pair(inside(directory, f'original_restoration_{camera}_env{env}.png'))
+                else:
+                    stored = png(inside(directory, f'{scheme}_{camera}_env{env}.png'))
+                require(np.array_equal(first, stored), 'Office fixed/restored evidence differs from first frame')
+    return result
+
+
 def task_check(root, task, family, profile, images, repo):
     name = task['task']
     require(task['status'] == 'passed' and not task.get('error') and not task.get('close_error'), f'{name}: task failed')
@@ -1284,6 +1418,8 @@ def task_check(root, task, family, profile, images, repo):
         office_audit = office_material_evidence(directory, native, checks['original']['materials'],
                                                 checks['material_partition_mapping'], repo, name)
     parameters, roles, counts = catalog_parameters(repo, family, name)
+    strip_audit = (office_strip_check(directory, checks.get('strip_texture_evidence'), native, checks, parameters)
+                   if family == 'office_desk' and name == 'TypeKeys' else None)
     fields(checks, ('material_roles',), name + '/raw material slot roles')
     bindings = checks['material_roles']
     interface = interface_check(directory, checks, native, physical, schemes, bindings, parameters, roles, counts,
@@ -1298,6 +1434,8 @@ def task_check(root, task, family, profile, images, repo):
     native_rows = checks['native_local_reset_control']['rounds']
     require(len(native_rows) == 2, 'Native-off local reset control missing')
     cameras = tuple(capture_diagnostic['pixels']['0'])
+    office_first_repeat = (office_first_repeat_check(directory, checks.get('first_repeat_frames'), schemes, cameras)
+                           if family == 'office_desk' else None)
     office_counter = office_counter_check(directory, checks.get('diagnostic_counter_scope'), name, selected_states,
                                           cameras) if family == 'office_desk' else None
     require(set(cameras) == set(native_rows[0]['pixel_changes']), 'Native/local capture camera set differs')
@@ -1351,7 +1489,7 @@ def task_check(root, task, family, profile, images, repo):
                             require(H.zero_pixels({camera: row_pixels}), 'Original RGB is not native')
         fixed[scheme]['pixels_vs_original'] = {str(env): {camera: metrics(frames['original', camera, env],
             frames[scheme, camera, env]) for camera in cameras} for env in (0, 1)}
-        if scheme != 'original':
+        if scheme != 'original' and family != 'nut_bolt':
             require(all(H.changed_task_pixels(v) for v in fixed[scheme]['pixels_vs_original'].values()), 'Fixed task candidate invisible')
         # Compare restoration at the same fixed seed, across all original cameras.
         for camera in cameras:
@@ -1363,8 +1501,20 @@ def task_check(root, task, family, profile, images, repo):
                 elif scheme == schemes[-1]:
                     require(np.array_equal(before_restore, frames[schemes[-1], camera, env]), 'Restoration candidate side differs')
                 require(np.array_equal(frames['original', camera, env], restored), 'Full original RGB restoration differs')
-    require(all(not np.array_equal(frames[schemes[1], 'base_camera', e], frames[schemes[2], 'base_camera', e])
-                for e in (0, 1)), 'Two candidate task RGB frames are identical')
+    witness = 'base_camera'
+    if family == 'nut_bolt':
+        witness = task.get('candidate_visibility_camera')
+        seed = task.get('reset_seed')
+        allowed_witness = {'PickBolt': {'base_camera'}, 'SeatNut': {'base_camera', 'wrist_camera'},
+                           'TurnNut': {'base_camera', 'human'}}[name]
+        require(type(seed) is int and seed >= 0 and witness in cameras and witness in allowed_witness,
+                'Unreviewed Nut visibility witness or reset seed')
+        require(all(fixed[scheme]['pixels_vs_original'][str(e)][witness]['changed_values'] > 0
+                    for scheme in schemes[1:] for e in (0, 1)), 'Nut candidate invisible in its named native witness')
+        if name == 'SeatNut' and witness == 'wrist_camera':
+            images[f'{name}/variant_1_wrist_camera_env0.png'] = inside(directory, 'fixed_variant_1_wrist_camera_env0.png')
+    require(all(not np.array_equal(frames[schemes[1], witness, e], frames[schemes[2], witness, e])
+                for e in (0, 1)), 'Two candidate RGB frames are identical in the named native witness')
     if family == 'nut_bolt':
         local_rows, prefixes = checks['local_reset_isolation'], ('local_0', 'local_1')
     else:
@@ -1395,8 +1545,11 @@ def task_check(root, task, family, profile, images, repo):
         'native_local_reset': native_compact,
         'material_roles_sha256': H.canonical_sha(bindings),
         **({'actual_logical_material_audit': office_audit} if office_audit is not None else {}),
+        **({'keyboard_private_strip': strip_audit} if strip_audit is not None else {}),
+        **({'fixed_and_restored_first_repeat': office_first_repeat} if office_first_repeat is not None else {}),
         **({'diagnostic_counter_scope': office_counter} if office_counter is not None else {}),
         **({'stage_visibility_fixture': nut_stage} if nut_stage is not None else {}),
+        **({'reset_seed': seed, 'candidate_visibility_camera': witness} if family == 'nut_bolt' else {}),
         'robot_urdf_names': sorted({k.rsplit('/', 1)[-1] + '.urdf'
             for record in selected_states.values() for k in record['states']['expected']
             if '/state/articulations/panda_' in k}),
@@ -1586,7 +1739,29 @@ def console_check(directory, capture, results, sdk, repo, profile):
     require(process['returncode'] == 0 and process['timed_out'] is False, 'GPU process failed/timed out')
     streams = {n: track(directory / n) for n in ('stdout.txt', 'stderr.txt')}
     require(streams == process['streams_sha256'], 'Raw GPU console stream SHA differs')
-    printed = read(directory / 'stdout.txt')
+    native_lines = None
+    if profile['prefix'] == 'OfficeDesk':
+        lines = (directory / 'stdout.txt').read_text(encoding='utf-8').splitlines()
+        require(lines and lines[-1].startswith('{'), 'Office console has no closing JSON receipt')
+        keyboard = ('[keyboard {}] model=13106, active_keys=77, sequence=P-A-I-R-ENTER, '
+                    'indices=[38, 23, 40, 44, 34]')
+        mouse = '[mouse {}] left stroke=0.0008000, right stroke=0.0008000'
+        task_names = [row['task'] for row in results['tasks']]
+        native_lines = {}
+        allowed = {template.format(env): (kind, env) for task, template, kind in
+                   (('TypeKeys', keyboard, 'keyboard'), ('ClickMouse', mouse, 'mouse')) if task in task_names
+                   for env in (0, 1)}
+        for index in range(0, len(lines) - 1, 2):
+            pair_lines = lines[index:index + 2]
+            require(len(pair_lines) == 2 and all(line in allowed for line in pair_lines), 'Unexpected Office native stdout')
+            left, right = (allowed[line] for line in pair_lines)
+            require(left[0] == right[0] and (left[1], right[1]) == (0, 1), 'Incomplete Office native stdout pair')
+            native_lines[left[0]] = native_lines.get(left[0], 0) + 1
+        require(set(native_lines) == {kind for task, kind in (('TypeKeys', 'keyboard'), ('ClickMouse', 'mouse'))
+                                      if task in task_names}, 'Missing Office native startup diagnostics')
+        printed = json.loads(lines[-1])
+    else:
+        printed = read(directory / 'stdout.txt')
     actual = printed['tasks']
     pairs = [(r['task'], r['status']) for r in results['tasks']]
     if actual and isinstance(actual[0], dict):
@@ -1617,9 +1792,12 @@ def console_check(directory, capture, results, sdk, repo, profile):
             kind = 'agent_registration_override:' + match.group(1)
         warnings[kind] = warnings.get(kind, 0) + 1
     require(not continuation, 'Incomplete optional Pinocchio warning')
-    return dict(process_sha256=track(directory / 'process.json'), streams_sha256=streams,
+    compact = dict(process_sha256=track(directory / 'process.json'), streams_sha256=streams,
         returncode=0, timed_out=False, command=portable_command(command, repo), known_warning_types=warnings,
         resources=resource_check(directory, command, 1792))
+    if native_lines is not None:
+        compact['verified_native_stdout_pairs'] = native_lines
+    return compact
 
 
 def cpu_console_check(directory, capture, repo, profile):
@@ -1954,6 +2132,39 @@ def sdk_build_identity(family, repo, artifact, lock):
     return sdk, expected, required, public
 
 
+def nut_probe_summary(path, repo, sdk_out):
+    report = read(path)
+    fields(report, ('schema', 'status', 'sdk', 'raster', 'native', 'exporter_sha256'), 'Nut SDK probe receipt')
+    require(report['schema'] == 'nut-bolt-v7-sdk-probe-evidence-v1' and report['status'] == 'passed',
+            'Nut SDK probe summary schema or verdict differs')
+    build = report['sdk']
+    for key in ('version', 'source_commit', 'artifact_sha256', 'lock_sha256', 'wheel_sha256',
+                'capabilities_expected', 'wheel_record_entries_verified', 'build_mode', 'physx_host_dependency_reused'):
+        require(build[key] == sdk_out[key], 'Nut SDK probe build differs: ' + key)
+    require(build['clean_full_build_executed'] is True and build['visibility_patch_sha256'] in
+            {p['sha256'] for p in sdk_out['patches']}, 'Nut raster patch not covered by runtime SDK recipe')
+    raster, native = report['raster'], report['native']
+    require(native['sdk_python_sha256'] == sdk_out['runtime_python']['raw_sha256'],
+            'Nut native probe loaded Python source map differs from task runtime')
+    require(raster['environments'] == 2 and raster['scoped_rgb_and_segmentation_restored_exactly'] is True
+            and raster['pose_and_camera_buffers_before_after_exact'] is True and len(raster['frames']) == 5
+            and native['scene_count'] == 1 and native['body_count'] == 12 and native['physics_steps'] == 160
+            and native['six_locked_velocity_components'] == [0] * 6 and native['unselected_restore_exact'] is True
+            and native['contact_frames_with_nonzero_impulse'] > 0, 'Nut independent probe acceptance coverage differs')
+    code = {'exporter': 'tools/variation/compact_nut_bolt_sdk_probes.py',
+            'raster': raster['probe_source'], 'native': native['probe_source']}
+    for label, sha in (('exporter', report['exporter_sha256']), ('raster', raster['probe_source_sha256']),
+                       ('native', native['probe_source_sha256'])):
+        require(track(inside(repo, code[label])) == sha, 'Nut probe source differs: ' + label)
+    for receipt in (raster, native):
+        actual = receipt['loaded_native_sha256']
+        require(actual == {name: item['sha256'] for name, item in sdk_out['loaded_native'].items()},
+                'Nut probe loaded native bytes differ from task runtime')
+        require(receipt['monitor']['returncode'] == 0 and receipt['monitor']['empty_console_streams'] is True,
+                'Nut SDK probe failed or emitted diagnostics')
+    return {'summary_file': 'sdk_probe_checks.json', 'summary_sha256': track(path), 'source_files': code}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--family', choices=tuple(PROFILES), required=True)
@@ -1963,12 +2174,14 @@ def main(argv=None):
     parser.add_argument('--sdk-lock', type=Path, required=True)
     parser.add_argument('--cpu-run', type=Path, required=True)
     parser.add_argument('--cpu-console-run', type=Path, required=True)
-    parser.add_argument('--probe-summary', type=Path, help='Verify the SDK identity of a supplementary Pipette optical summary')
+    parser.add_argument('--probe-summary', type=Path, help='Verify the supplementary Pipette optical or Nut SDK probe receipt')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args(argv)
     family, profile = args.family, PROFILES[args.family]
-    if args.probe_summary is not None and family != 'pipette_transfer':
-        parser.error('--probe-summary requires --family pipette_transfer')
+    if args.probe_summary is not None and family not in ('pipette_transfer', 'nut_bolt'):
+        parser.error('--probe-summary requires --family pipette_transfer or nut_bolt')
+    if family == 'nut_bolt' and args.probe_summary is None:
+        parser.error('--family nut_bolt requires --probe-summary')
     repo = repository(profile)
     configure(repo)
     WATCHED.clear()
@@ -2069,7 +2282,10 @@ def main(argv=None):
     cpu_run = args.cpu_run.resolve(strict=True)
     cpu = cpu_check(cpu_run, gpu_identity, family, profile, repo, expected, required, sdk)
     cpu['console'] = cpu_console_check(args.cpu_console_run.resolve(strict=True), cpu_run, repo, profile)
-    require(len(images) == len(profile['tasks']) * 7, 'Expected seven unchanged original PNGs per task')
+    expected_images = len(profile['tasks']) * 7
+    if family == 'nut_bolt' and prepared['SeatNut']['candidate_visibility_camera'] == 'wrist_camera':
+        expected_images += 1
+    require(len(images) == expected_images, 'Unexpected number of unchanged original evidence PNGs')
     sdk_out.update(runtime_python=gpu_identity['sdk_python'], loaded_native=gpu_identity['sdk'],
                    system_vulkan_loader=gpu_identity['system_vulkan_loader'],
                    identity_scope='Private SDK Python sources and native libraries')
@@ -2081,12 +2297,17 @@ def main(argv=None):
         source_identity=gpu_identity['source_identity'], sdk=sdk_out, captures=captures, tasks={}, images={})
     if 'external_identity' in gpu_identity:
         summary['external_identity'] = gpu_identity['external_identity']
-    if args.probe_summary is not None:
+    if args.probe_summary is not None and family == 'pipette_transfer':
         summary['supplementary_probe_sdk'] = probe_sdk_check(args.probe_summary, repo, gpu_identity, expected, required, sdk)
+    elif args.probe_summary is not None:
+        summary['supplementary_probe_sdk'] = nut_probe_summary(args.probe_summary, repo, sdk_out)
     captured_paths = {inside(repo, name) for name in gpu_identity['files']}
     if args.probe_summary is not None:
         supplementary = summary['supplementary_probe_sdk']
-        captured_paths.update(inside(repo, supplementary[k]) for k in ('capture_tool', 'exporter'))
+        probe_sources = ([supplementary[k] for k in ('capture_tool', 'exporter')] if family == 'pipette_transfer'
+                         else supplementary['source_files'].values())
+        captured_paths.update(inside(repo, name) for name in probe_sources)
+        captured_paths.add(args.probe_summary.resolve(strict=True))
     for identity in gpu_identity['tasks'].values():
         captured_paths.update(inside(repo, name) for name in identity['assets']['raw_sha256'])
         if 'generated_urdf' in identity:
@@ -2105,7 +2326,7 @@ def main(argv=None):
     import hashlib
     if args.probe_summary is not None:
         probe_bytes = args.probe_summary.read_bytes()
-        require(hashlib.sha256(probe_bytes).hexdigest() == supplementary['summary_sha256'], 'Optical summary changed')
+        require(hashlib.sha256(probe_bytes).hexdigest() == supplementary['summary_sha256'], 'Probe summary changed')
         encoded[supplementary['summary_file']] = probe_bytes
     summary['cpu_dynamics'] = {'checks': 'cpu_checks.json', 'sha256': hashlib.sha256(encoded['cpu_checks.json']).hexdigest()}
     for task in prepared:
@@ -2120,7 +2341,7 @@ def main(argv=None):
         png_bytes[name] = raw
         summary['images'][name] = {'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw),
             'source_file': name.split('/')[0] + '/' + path.name,
-            'layout': 'native | scheme' if family == 'nut_bolt' and '_human_env0' in name else
+            'layout': 'native | scheme' if family == 'nut_bolt' and '/local_' not in name else
                       'before | after' if '/local_' in name else 'single frame'}
     for path, expected_sha in WATCHED.items():
         require(H.sha(path) == expected_sha, 'Input changed before export: ' + path.name)

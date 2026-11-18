@@ -5,8 +5,8 @@
   "scope": "Short-task appearance/reset acceptance; CPU exact dynamics and two standard CUDA environments; no complete robot task, Long or Linux claim",
   "exporter": {
     "file": "compact_task_runtime.py",
-    "sha256": "bdc1abb97c14d8a7a749efab8373b93c970de26f49c2725740fe66a621c560b4",
-    "lf_sha256": "bdc1abb97c14d8a7a749efab8373b93c970de26f49c2725740fe66a621c560b4",
+    "sha256": "7351bd0984aa09a2c7c2b041fa89752be0208e40f64afdb8a2d0e0d0519bdab3",
+    "lf_sha256": "7351bd0984aa09a2c7c2b041fa89752be0208e40f64afdb8a2d0e0d0519bdab3",
     "helper": "tools/variation/compact_furniture_runtime.py",
     "helper_sha256": "ac49efaaa4fe1ecb29d20981d0bc0ae23de00fee5d894650cbb5217c9c326f91"
   },
