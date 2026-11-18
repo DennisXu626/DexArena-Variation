@@ -14,7 +14,8 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[2]
 TASKS = ('LayFlatPanel', 'InsertRail', 'FastenScrew')
-SCHEMES = ('native_off', 'original', 'variant_1', 'variant_2')
+CATALOG = ROOT / 'tasks/assets/variation/furniture_assembly/v1/catalog.json'
+SCHEMES = ('native_off', 'native_repeat', *json.loads(CATALOG.read_text(encoding='utf-8'))['schemes'])
 COMMON = dict(num_envs=1, sim_backend='physx_cpu', obs_mode='state',
               control_mode='pd_joint_pos', reward_mode='dense',
               reconfiguration_freq=0, render_mode=None)
@@ -95,7 +96,7 @@ def worker(args):
               'sapien_binary': {'path': sapien.pysapien.__file__, 'sha256': digest(sapien.pysapien.__file__)},
               'control_steps': 0, 'physics_steps': 0, 'image_capture': False}
     try:
-        config = {'enabled': False} if args.scheme == 'native_off' else {
+        config = {'enabled': False} if args.scheme in ('native_off', 'native_repeat') else {
             'enabled': True, 'mode': 'explicit', 'scheme_id': args.scheme, 'seed': 71}
         report['appearance_config'] = config
         env = gym.make(f'FurnitureAssembly{args.task}-Sharpa-v1', furniture_appearance=config, **COMMON)
@@ -107,7 +108,7 @@ def worker(args):
         report['panel_color_jitter'] = getattr(base, 'panel_color_jitter', 'not applicable')
         report['sim_config'] = repr(base.sim_config)
         adapter = base._furniture_appearance
-        assert (adapter is None) == (args.scheme == 'native_off')
+        assert (adapter is None) == (args.scheme in ('native_off', 'native_repeat'))
         if adapter is not None:
             assert adapter.schemes == [args.scheme]
             report['appearance_records'] = adapter.records

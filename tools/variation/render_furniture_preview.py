@@ -1,4 +1,4 @@
-"""Export fixed-camera previews of the three furniture material schemes."""
+"""Export fixed-camera previews of the furniture catalog."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -21,7 +21,7 @@ from tools.variation.furniture_preview_materials import (
 )
 
 INDEX = ROOT / "tasks/assets/variation/furniture_assembly/v1/catalog.json"
-SCHEMES = ("original", "variant_1", "variant_2")
+SCHEMES = tuple(json.loads(INDEX.read_text(encoding="utf-8"))["schemes"])
 TASK_IDS = {name: f"FurnitureAssembly{name}-Sharpa-v1"
             for name in ("LayFlatPanel", "InsertRail", "FastenScrew")}
 SCOPE = "Real single-environment initial-state authoring preview; no dynamics, task success, parallel reset or A4/A5 acceptance"
@@ -127,6 +127,7 @@ def load_set():
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     if (index["version"] != "furniture-appearance-v1"
             or index["scope"] != "material_appearance"
+            or not SCHEMES or SCHEMES[0] != "original" or len(set(SCHEMES)) != len(SCHEMES)
             or tuple(index["schemes"]) != SCHEMES or set(index["tasks"]) != set(TASK_IDS)
             or set(index["objects"]) != {"flat_panel", "panel_rack", "rail", "screw"}):
         raise ValueError("Unexpected furniture preview-set contract")
@@ -142,8 +143,8 @@ def load_set():
                 or catalog["schemes"]["original"] != {"mode": "restore_native"}):
             raise ValueError(f"Catalog identity/original mismatch: {object_id}")
         mapped = [entry["scheme_map"][scheme] for scheme in SCHEMES]
-        if len(set(mapped)) != 3 or set(mapped) != set(catalog["schemes"]):
-            raise ValueError(f"Each family scheme must map to one of exactly three object schemes: {object_id}")
+        if len(set(mapped)) != len(SCHEMES) or set(mapped) != set(catalog["schemes"]):
+            raise ValueError(f"Each family scheme must map to a distinct object scheme: {object_id}")
         for local_id in mapped[1:]:
             scheme = catalog["schemes"][local_id]
             if scheme["mode"] != "material_override":
@@ -314,9 +315,14 @@ def export(env, binding, index, catalogs, viewer, views, camera_config, output, 
         invariant_check(baseline, binding)
         evidence["comparisons"] = {}
         for view, images in frames.items():
-            filename = f"comparison_{view}.png"
-            compare_images(images, output / filename)
-            evidence["comparisons"][view] = dict(file=filename, sha256=sha(output / filename))
+            comparisons = []
+            for page, start in enumerate(range(1, len(images), 2), 1):
+                batch = [images[0], *images[start:start + 2]]
+                filename = f"comparison_{view}_{page:02}.png"
+                compare_images(batch, output / filename)
+                comparisons.append(dict(file=filename, sha256=sha(output / filename),
+                                        schemes=[name for name, _ in batch]))
+            evidence["comparisons"][view] = comparisons
         evidence["checks"] = {
             "all_present_objects_and_actual_shape_part_bindings": True,
             "all_requested_pbr_fields_read_back_for_every_part": True,
@@ -351,7 +357,7 @@ def export(env, binding, index, catalogs, viewer, views, camera_config, output, 
             scope=SCOPE, human_review="pending_human_review",
         )
         write_json(output / "manifest.json", manifest)
-        print(f"Exported {TASK_IDS[task]}: three family schemes, {len(views)} fixed views to {output}", flush=True)
+        print(f"Exported {TASK_IDS[task]}: {len(SCHEMES)} family schemes, {len(views)} fixed views to {output}", flush=True)
     except BaseException as error:
         write_json(output / "failure.json", dict(task_id=TASK_IDS[task], error_type=type(error).__name__,
                                                error=str(error), scope=SCOPE, status="failed"))
@@ -366,7 +372,7 @@ def interactive(env, binding, index, catalogs, viewer, views, scheme, focus):
     select_family(binding, index, catalogs, scheme)
     invariant_check(baseline, binding)
     viewer.set_camera_pose(views[focus])
-    print("Keys: 1 original | 2 variant_1 | 3 variant_2 (all present objects); V cycles fixed views", flush=True)
+    print("Keys: 1 original | 2 variant_1 | 3 variant_2 | N/B next/previous scheme | V next fixed view", flush=True)
     print("Camera: right-drag rotates, middle-drag pans, wheel zooms. Close window to exit.", flush=True)
     print(f"Scheme: {scheme}; view: {focus}", flush=True)
     try:
@@ -380,6 +386,13 @@ def interactive(env, binding, index, catalogs, viewer, views, scheme, focus):
                     select_family(binding, index, catalogs, candidate)
                     invariant_check(baseline, binding)
                     scheme = candidate
+                    print(f"Scheme: {scheme}; view: {focus}", flush=True)
+            for key, direction in (("n", 1), ("b", -1)):
+                if viewer.window.key_press(key):
+                    scheme = SCHEMES[(SCHEMES.index(scheme) + direction) % len(SCHEMES)]
+                    viewer.select_entity(None)
+                    select_family(binding, index, catalogs, scheme)
+                    invariant_check(baseline, binding)
                     print(f"Scheme: {scheme}; view: {focus}", flush=True)
             if viewer.window.key_press("v"):
                 order = list(views)

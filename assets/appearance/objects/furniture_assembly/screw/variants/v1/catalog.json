@@ -19,6 +19,62 @@
       "mode": "material_override",
       "label": "brick_red_head",
       "roles": {"grip": {"base_color": [0.7, 0.12, 0.045, 1.0], "roughness": 0.5, "metallic": 0.08}}
+    },
+    "variant_3": {
+      "mode": "material_override",
+      "label": "wine_head",
+      "roles": {
+        "grip": {"base_color": [0.48, 0.025, 0.105, 1.0], "roughness": 0.79, "metallic": 0.12}
+      }
+    },
+    "variant_4": {
+      "mode": "material_override",
+      "label": "amber_head",
+      "roles": {
+        "grip": {"base_color": [0.94, 0.29, 0.022, 1.0], "roughness": 0.52, "metallic": 0.38}
+      }
+    },
+    "variant_5": {
+      "mode": "material_override",
+      "label": "citron_head",
+      "roles": {
+        "grip": {"base_color": [0.69, 0.86, 0.05, 1.0], "roughness": 0.68, "metallic": 0.22}
+      }
+    },
+    "variant_6": {
+      "mode": "material_override",
+      "label": "forest_head",
+      "roles": {
+        "grip": {"base_color": [0.035, 0.285, 0.08, 1.0], "roughness": 0.65, "metallic": 0.3}
+      }
+    },
+    "variant_7": {
+      "mode": "material_override",
+      "label": "cyan_head",
+      "roles": {
+        "grip": {"base_color": [0.025, 0.68, 0.83, 1.0], "roughness": 0.32, "metallic": 0.55}
+      }
+    },
+    "variant_8": {
+      "mode": "material_override",
+      "label": "violet_head",
+      "roles": {
+        "grip": {"base_color": [0.295, 0.065, 0.68, 1.0], "roughness": 0.43, "metallic": 0.5}
+      }
+    },
+    "variant_9": {
+      "mode": "material_override",
+      "label": "rose_head",
+      "roles": {
+        "grip": {"base_color": [0.96, 0.24, 0.52, 1.0], "roughness": 0.37, "metallic": 0.27}
+      }
+    },
+    "variant_10": {
+      "mode": "material_override",
+      "label": "graphite_head",
+      "roles": {
+        "grip": {"base_color": [0.105, 0.135, 0.165, 1.0], "roughness": 0.45, "metallic": 0.8}
+      }
     }
   }
 }
