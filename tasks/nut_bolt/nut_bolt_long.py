@@ -10,9 +10,9 @@
 Only sparse reward is exposed.  The three milestones are latched in order and
 each contributes one point.  A dynamically simulated bolt is used during the
 first stage.  Once it has genuinely been set down (upright, released and
-settled), its pose is latched and enforced on every simulation substep.  This
-gives the later threading stages a fixed bolt without relying on a runtime
-dynamic-to-static conversion, which PhysX GPU simulation does not support.
+settled), its pose is latched once and its six motion axes are locked. The GPU
+path requires native lock synchronization and indexed state publication; it
+does not teleport held bodies on simulation substeps or change their body type.
 The free placement nut and the revolute nut both exist before GPU initialization;
 episode logic only parks one representation and activates the other, so the scene
 topology stays fixed for batched training.
@@ -76,6 +76,9 @@ from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightM
 from tasks.robots.panda_dual_xhand_hand_mobile_base import PandaDualXHandHandMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.config.sim_profiles import make_sim_config
+from tasks.nut_bolt.reset_scope import NutBoltResetScopeMixin, is_full_reset
+from tasks.nut_bolt.appearance import NutBoltAppearance, validate_per_env
+from tasks.nut_bolt.gpu_hold import hold_pose as gpu_hold_pose, refresh_gpu_hold_state, sync_nut_swap_gpu
 
 
 ENV_ID = "NutBoltLong-Sharpa-v1"
@@ -186,7 +189,7 @@ def local_point(pose: Pose, point) -> torch.Tensor:
     reward_mode="sparse",
     render_mode="rgb_array",
 )
-class NutBoltLongEnv(BaseEnv):
+class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
     SUPPORTED_ROBOTS = [
         "panda_gripper_left_mobile_base",
         "panda_gripper_right_mobile_base",
@@ -291,16 +294,31 @@ class NutBoltLongEnv(BaseEnv):
         object_init_xy_noise=0.015,
         num_envs=1,
         reconfiguration_freq=None,
+        nut_bolt_appearance=None,
         **kwargs,
     ):
         if "sim_config" in kwargs and kwargs["sim_config"] is not None:
-            raise ValueError(
-                "Screwing freezes the Plant configuration in "
-                "tasks/config/sim_profiles.py; runtime sim_config overrides are not allowed"
-            )
+            config = kwargs['sim_config']
+            allowed = {'max_rigid_contact_count', 'max_rigid_patch_count', 'found_lost_pairs_capacity'}
+            memory = config.get('gpu_memory_config') if isinstance(config, dict) else None
+            if (not isinstance(config, dict) or set(config) != {'gpu_memory_config'}
+                    or not isinstance(memory, dict) or set(memory) != allowed
+                    or any(type(value) is not int or value <= 0 for value in memory.values())):
+                raise ValueError(
+                    'Screwing freezes the Plant configuration; only positive integer '
+                    'GPU memory capacities may be overridden'
+                )
+        if nut_bolt_appearance is not None:
+            validate_per_env(nut_bolt_appearance, num_envs)
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.object_init_xy_noise = float(object_init_xy_noise)
+        if type(self).__name__ == 'NutBoltLongEnv' and nut_bolt_appearance and nut_bolt_appearance.get('enabled', False):
+            raise ValueError('Nut & Bolt appearance currently supports the three short tasks only')
+        self._nut_bolt_appearance = (
+            NutBoltAppearance(nut_bolt_appearance, num_envs)
+            if nut_bolt_appearance and nut_bolt_appearance.get("enabled", False) else None
+        )
         if not BOLT_HEX_HEAD_PATH.exists():
             raise FileNotFoundError(f"Bolt head mesh not found: {BOLT_HEX_HEAD_PATH}")
         if reconfiguration_freq is None:
@@ -392,6 +410,9 @@ class NutBoltLongEnv(BaseEnv):
         if self.has_nut:
             self._load_nut()
             self._load_threaded_nut()
+        if self._nut_bolt_appearance is not None:
+            for env_id in range(self.num_envs):
+                self._nut_bolt_appearance.bind(self, env_id)
 
     def _load_bolt_place_region_marker(self):
         """Render the bolt placement-success disc without adding collision."""
@@ -538,6 +559,8 @@ class NutBoltLongEnv(BaseEnv):
         builder.initial_pose = sapien.Pose(
             [*self.bolt_spawn_xy, self.bolt_height / 2]
         )
+        if self._nut_bolt_appearance is not None:
+            self._nut_bolt_appearance.isolate_builder_materials(builder)
         self.bolt = builder.build(name="bolt")
         self.bolt.set_mass(0.25)
         self._set_task_object_energy_fence(self.bolt)
@@ -644,6 +667,8 @@ class NutBoltLongEnv(BaseEnv):
         builder.initial_pose = sapien.Pose(
             [*self.nut_spawn_xy, self.nut_half_height]
         )
+        if self._nut_bolt_appearance is not None:
+            self._nut_bolt_appearance.isolate_builder_materials(builder)
         self.nut = builder.build(name="nut")
         self.nut.set_mass(0.10)
         self._set_task_object_energy_fence(self.nut)
@@ -729,6 +754,8 @@ class NutBoltLongEnv(BaseEnv):
             raise RuntimeError("Expected one threaded-nut articulation")
         builder = builders[0]
         builder.initial_pose = sapien.Pose(p=[0.0, 0.0, THREADED_NUT_PARK_Z])
+        if self._nut_bolt_appearance is not None:
+            self._nut_bolt_appearance.isolate_builder_materials(builder)
         self.nut_revolute = builder.build(name="nut_revolute")
         self.threaded_nut = self.nut_revolute.links_map["threaded_nut"]
         self.nut_turn_joint = self.nut_revolute.active_joints_map["nut_turn_joint"]
@@ -772,6 +799,26 @@ class NutBoltLongEnv(BaseEnv):
     # ------------------------------------------------------------------ #
     # common robot and reset helpers
     # ------------------------------------------------------------------ #
+    def _reset_random(self, shape, normal=False):
+        """Keep native full-reset draws; partial resets consume selected RNGs only."""
+        indices = getattr(self, '_furniture_reset_env_idx', None)
+        if is_full_reset(indices, self.num_envs):
+            function = torch.randn if normal else torch.rand
+            return function(shape, device=self.device)
+        if shape[0] != len(indices):
+            raise ValueError('Partial Nut & Bolt random draw has the wrong environment count')
+        values = []
+        for index in indices:
+            rng = self._batched_episode_rng[int(index)]
+            values.append(rng.normal(size=shape[1:]) if normal else rng.uniform(size=shape[1:]))
+        return torch.as_tensor(np.asarray(values), dtype=torch.float32, device=self.device)
+
+    def _reset_disc_xy(self, center, radius, batch_size):
+        angle = self._reset_random((batch_size,)) * (2 * np.pi)
+        radial = radius * torch.sqrt(self._reset_random((batch_size,)))
+        return torch.stack([center[0] + radial * torch.cos(angle),
+                            center[1] + radial * torch.sin(angle)], dim=-1)
+
     def _initial_robot_qpos(self, batch_size: int) -> torch.Tensor:
         single_arm_qpos = torch.tensor(
             SCREWING_DEFAULT_ARM_INIT_QPOS,
@@ -787,7 +834,7 @@ class NutBoltLongEnv(BaseEnv):
         num_arms = len(arm_joint_names) // len(single_arm_qpos)
         arm_qpos = single_arm_qpos.repeat(num_arms).expand(batch_size, -1).clone()
         arm_qpos += (
-            torch.randn((batch_size, len(arm_joint_names)), device=self.device)
+            self._reset_random((batch_size, len(arm_joint_names)), normal=True)
             * self.robot_init_qpos_noise
         )
 
@@ -899,6 +946,25 @@ class NutBoltLongEnv(BaseEnv):
         7.6--7.92 cm), so a smaller fixed disc would omit valid long-task
         outputs. Rejection uses the same six support vertices as success.
         """
+        indices = getattr(self, '_furniture_reset_env_idx', None)
+        if not is_full_reset(indices, self.num_envs):
+            rows = []
+            for index in indices:
+                rng = self._batched_episode_rng[int(index)]
+                for _ in range(100):
+                    angle = rng.uniform() * 2 * np.pi
+                    radial = self.bolt_place_radius * np.sqrt(rng.uniform())
+                    xy = np.asarray(self.bolt_place_center_xy) + radial * np.array([np.cos(angle), np.sin(angle)])
+                    yaw = rng.uniform() * 2 * np.pi - np.pi
+                    angles = yaw + np.arange(6) * np.pi / 3
+                    vertices = xy + self.hex_head_circumradius * np.stack([np.cos(angles), np.sin(angles)], axis=-1)
+                    if np.linalg.norm(vertices - np.asarray(self.bolt_place_center_xy), axis=-1).max() <= self.bolt_place_radius:
+                        rows.append([*xy, yaw])
+                        break
+                else:
+                    raise RuntimeError('Unable to sample a valid placed-bolt pose')
+            sampled = torch.tensor(rows, dtype=torch.float32, device=self.device)
+            return sampled[:, :2], sampled[:, 2]
         centre = torch.tensor(
             self.bolt_place_center_xy, dtype=torch.float32, device=self.device
         )
@@ -942,11 +1008,11 @@ class NutBoltLongEnv(BaseEnv):
                 # Sample the bolt in a disc and lay it down at a large random
                 # tilt.  Random world yaw chooses its direction on the table;
                 # random local spin changes which hex-head face touches it.
-                xyz[:, :2] = sample_screwing_disc_xy(
+                xyz[:, :2] = self._reset_disc_xy(
                     self.bolt_spawn_xy, self.bolt_spawn_radius, b
                 )
                 tilt_min, tilt_max = self.bolt_spawn_tilt_range
-                tilt = tilt_min + torch.rand(b) * (tilt_max - tilt_min)
+                tilt = tilt_min + self._reset_random((b,)) * (tilt_max - tilt_min)
                 tilt_q = axis_angle_to_quaternion(
                     torch.stack(
                         [torch.zeros_like(tilt), tilt, torch.zeros_like(tilt)],
@@ -954,10 +1020,10 @@ class NutBoltLongEnv(BaseEnv):
                     )
                 )
                 yaw_q = quaternion_about_z(
-                    torch.rand(b) * 2 * np.pi - np.pi
+                    self._reset_random((b,)) * 2 * np.pi - np.pi
                 )
                 spin_q = quaternion_about_z(
-                    torch.rand(b) * 2 * np.pi - np.pi
+                    self._reset_random((b,)) * 2 * np.pi - np.pi
                 )
                 quat = quaternion_multiply(
                     quaternion_multiply(yaw_q, tilt_q), spin_q
@@ -1010,10 +1076,10 @@ class NutBoltLongEnv(BaseEnv):
             xyz = torch.zeros((b, 3))
             xyz[:, :2] = (
                 torch.tensor(self.nut_spawn_xy, dtype=torch.float32)
-                + (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
+                + (self._reset_random((b, 2)) * 2 - 1) * self.object_init_xy_noise
             )
             xyz[:, 2] = self.nut_half_height + 1e-3
-            yaw = torch.rand(b) * 2 * np.pi - np.pi
+            yaw = self._reset_random((b,)) * 2 * np.pi - np.pi
             self._set_nut_pose(xyz, quaternion_about_z(yaw))
             self._park_threaded_nut(env_idx, b)
 
@@ -1022,7 +1088,7 @@ class NutBoltLongEnv(BaseEnv):
         with torch.device(self.device):
             lock_pose = self._bolt_lock_pose[env_idx]
             bolt_yaw = yaw_about_z(lock_pose[:, 3:])
-            yaw = bolt_yaw + torch.rand(b) * 2 * np.pi - np.pi
+            yaw = bolt_yaw + self._reset_random((b,)) * 2 * np.pi - np.pi
             quat = quaternion_about_z(yaw)
             self._set_threaded_nut_state(env_idx, lock_pose, quat)
             self._stage_nut_placed[env_idx] = True
@@ -1096,18 +1162,11 @@ class NutBoltLongEnv(BaseEnv):
         self._nut_yaw_prev[env_idx] = joint_qpos[:, 0]
         self._sync_nut_visibility()
 
-    def _sync_nut_swap_gpu(self):
+    def _sync_nut_swap_gpu(self, env_idx):
         """Publish a one-time actor/articulation swap before forming observations."""
         if not self.gpu_sim_enabled:
             return
-        px = self.scene.px
-        px.gpu_apply_rigid_dynamic_data()
-        px.gpu_apply_articulation_root_pose()
-        px.gpu_apply_articulation_root_velocity()
-        px.gpu_apply_articulation_qpos()
-        px.gpu_apply_articulation_qvel()
-        px.gpu_update_articulation_kinematics()
-        self.scene._gpu_fetch_all()
+        sync_nut_swap_gpu(self, env_idx)
 
     def _engage_newly_placed_nuts(self, mask: torch.Tensor):
         """Swap seated free nuts into the prebuilt revolute representation."""
@@ -1121,7 +1180,7 @@ class NutBoltLongEnv(BaseEnv):
             free_q,
         )
         self._refresh_hold_state()
-        self._sync_nut_swap_gpu()
+        self._sync_nut_swap_gpu(env_idx)
 
     def _nut_pose(self) -> Pose:
         free_pose = self.nut.pose
@@ -1177,6 +1236,10 @@ class NutBoltLongEnv(BaseEnv):
                 self._update_platform_pose(env_idx)
             self._refresh_hold_state()
 
+    def _finish_appearance_reset(self, env_idx, options):
+        if self._nut_bolt_appearance is not None:
+            self._nut_bolt_appearance.finish_reset(env_idx, options)
+
     # ------------------------------------------------------------------ #
     # dynamic bolt lock and threading state
     # ------------------------------------------------------------------ #
@@ -1213,6 +1276,8 @@ class NutBoltLongEnv(BaseEnv):
 
     def _hold_pose(self, actor, env_index: int):
         """Pose to write once, at the moment a body becomes held."""
+        if self.gpu_sim_enabled:
+            return gpu_hold_pose(self, actor, env_index, THREADED_NUT_PARK_Z)
         if actor is self.bolt:
             return sapien.Pose(
                 p=self._bolt_lock_pose[env_index, :3].detach().cpu().numpy(),
@@ -1273,19 +1338,8 @@ class NutBoltLongEnv(BaseEnv):
         if not hasattr(self, "_bolt_locked"):
             return
         if self.gpu_sim_enabled:
-            held = bool(self._bolt_locked.any()) or bool(self._nut_engaged.any())
-            if not held:
-                return
-            raise RuntimeError(
-                "Screwing holds the placed bolt and the parked free nut with the "
-                "PhysX kinematic flag, which GPU PhysX does not support changing "
-                "after scene load (set_locked_motion_axes is accepted but ignored "
-                "there too -- measured 19 mm of drift on a 'locked' bolt). Run the "
-                "task on CPU (num_envs=1), which is the collection path it is used "
-                "for. The previous per-substep teleport did work on GPU, but it "
-                "re-applied a depenetration impulse on every substep the hand "
-                "touched a held body, so those GPU rollouts were not physical."
-            )
+            refresh_gpu_hold_state(self, write_pose)
+            return
         for actor, mask in self._hold_bodies():
             if actor is None:
                 continue
@@ -1467,10 +1521,13 @@ class NutBoltLongEnv(BaseEnv):
         is_new_control_step = (
             self._elapsed_steps != self._bolt_place_last_eval_step
         )
-        self._bolt_place_hold_count = torch.where(
-            is_new_control_step, next_count, self._bolt_place_hold_count
+        self._bolt_place_hold_count = self._reset_scoped_value(
+            self._bolt_place_hold_count, torch.where(
+                is_new_control_step, next_count, self._bolt_place_hold_count
+            )
         )
-        self._bolt_place_last_eval_step = self._elapsed_steps.clone()
+        self._bolt_place_last_eval_step = self._reset_scoped_value(
+            self._bolt_place_last_eval_step, self._elapsed_steps.clone())
         return candidate & (
             self._bolt_place_hold_count >= self.bolt_place_hold_steps
         )
@@ -1517,13 +1574,16 @@ class NutBoltLongEnv(BaseEnv):
             | (tilt_cos < self.nut_tilt_cos_exit)
             | (z_gap > self.nut_seat_z_window_exit)
         )
-        self._nut_aligned_exit_streak = torch.where(
-            outside_exit,
-            self._nut_aligned_exit_streak + 1.0,
-            torch.zeros_like(self._nut_aligned_exit_streak),
+        self._nut_aligned_exit_streak = self._reset_scoped_value(
+            self._nut_aligned_exit_streak, torch.where(
+                outside_exit,
+                self._nut_aligned_exit_streak + 1.0,
+                torch.zeros_like(self._nut_aligned_exit_streak),
+            )
         )
         exit_now = self._nut_aligned_exit_streak >= self.nut_aligned_exit_steps
-        self._nut_aligned = (self._nut_aligned | threading_geometric) & (~exit_now)
+        self._nut_aligned = self._reset_scoped_value(
+            self._nut_aligned, (self._nut_aligned | threading_geometric) & (~exit_now))
 
         settled = (
             torch.linalg.norm(self._nut_linear_velocity(), dim=-1)
@@ -1569,10 +1629,13 @@ class NutBoltLongEnv(BaseEnv):
         is_new_control_step = (
             self._elapsed_steps != self._nut_engage_last_eval_step
         )
-        self._nut_engage_hold_count = torch.where(
-            is_new_control_step, next_count, self._nut_engage_hold_count
+        self._nut_engage_hold_count = self._reset_scoped_value(
+            self._nut_engage_hold_count, torch.where(
+                is_new_control_step, next_count, self._nut_engage_hold_count
+            )
         )
-        self._nut_engage_last_eval_step = self._elapsed_steps.clone()
+        self._nut_engage_last_eval_step = self._reset_scoped_value(
+            self._nut_engage_last_eval_step, self._elapsed_steps.clone())
         return candidate & (
             self._nut_engage_hold_count >= self.nut_engage_hold_steps
         )
@@ -1603,17 +1666,17 @@ class NutBoltLongEnv(BaseEnv):
             min=0.0,
             max=2 * np.pi,
         )
-        self._cum_rotation = torch.where(
-            eligible, next_rotation, self._cum_rotation
-        )
+        self._cum_rotation = self._reset_scoped_value(
+            self._cum_rotation, torch.where(eligible, next_rotation, self._cum_rotation))
         rotation_delta = torch.where(
             eligible,
             counterclockwise_delta,
             torch.zeros_like(counterclockwise_delta),
         )
-        self._nut_yaw_prev = yaw
+        self._nut_yaw_prev = self._reset_scoped_value(self._nut_yaw_prev, yaw)
         # Compatibility observation channel: a pure revolute has no axial DOF.
-        self._threaded_depth.zero_()
+        self._threaded_depth = self._reset_scoped_value(
+            self._threaded_depth, torch.zeros_like(self._threaded_depth))
         turned = self._cum_rotation >= (self.screwing_success_rotation - 1e-4)
         return turned, rotation_delta
 
@@ -1626,10 +1689,13 @@ class NutBoltLongEnv(BaseEnv):
             torch.zeros_like(self._success_hold_count),
         )
         is_new_control_step = self._elapsed_steps != self._success_last_eval_step
-        self._success_hold_count = torch.where(
-            is_new_control_step, next_hold, self._success_hold_count
+        self._success_hold_count = self._reset_scoped_value(
+            self._success_hold_count, torch.where(
+                is_new_control_step, next_hold, self._success_hold_count
+            )
         )
-        self._success_last_eval_step = self._elapsed_steps.clone()
+        self._success_last_eval_step = self._reset_scoped_value(
+            self._success_last_eval_step, self._elapsed_steps.clone())
         return self._success_hold_count >= self.success_hold_steps
 
     # ------------------------------------------------------------------ #

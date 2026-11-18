@@ -1,0 +1,6 @@
+# Unified-diff context encodes an empty source line as one space.
+*.patch text eol=lf whitespace=-blank-at-eol
+*.py text eol=lf
+*.ps1 text eol=lf
+*.json text eol=lf
+*.md text eol=lf

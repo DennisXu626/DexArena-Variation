@@ -1,0 +1,16 @@
+{
+  "version": "nut-bolt-appearance-v1",
+  "scope": "material_appearance",
+  "schemes": ["original", "variant_1", "variant_2"],
+  "objects": {
+    "bolt": {
+      "catalog": "assets/appearance/objects/nut_bolt/bolt/variants/v1/catalog.json",
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
+    },
+    "nut": {
+      "catalog": "assets/appearance/objects/nut_bolt/nut/variants/v1/catalog.json",
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
+    }
+  },
+  "tasks": {"PickBolt": ["bolt"], "SeatNut": ["bolt", "nut"], "TurnNut": ["bolt", "nut"]}
+}
