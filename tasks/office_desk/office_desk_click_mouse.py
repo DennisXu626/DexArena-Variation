@@ -24,6 +24,7 @@ from tasks.robots.panda_wuji_hand_right_mobile_base import (
     PandaWujiHandRightMobileBase,
 )
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.office_desk.reset_scope import OfficeResetScopeMixin, office_capacity_config
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from mani_skill.utils.geometry.trimesh_utils import (
@@ -49,6 +50,7 @@ from tasks.config.sim_profiles import make_sim_config
 from tasks.scene_builders import TableSceneBuilder
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
+from tasks.office_desk.devices_appearance import appearance_enabled
 from tasks.office_desk.mouse_appearance import MouseAppearance
 
 
@@ -466,7 +468,7 @@ def _configure_task_articulation(articulation) -> None:
     reward_mode="sparse",
     render_mode="rgb_array",
 )
-class OfficeDeskClickMouseEnv(BaseEnv):
+class OfficeDeskClickMouseEnv(OfficeResetScopeMixin, BaseEnv):
     """Hold a valid left-button click for three consecutive control frames."""
 
     SUPPORTED_ROBOTS = [
@@ -502,9 +504,9 @@ class OfficeDeskClickMouseEnv(BaseEnv):
         # Disabled: no adapter, appearance RNG, material binding or reset writes.
         self._mouse_appearance = (
             MouseAppearance(mouse_appearance, num_envs)
-            if mouse_appearance and mouse_appearance.get("enabled", False) else None
+            if appearance_enabled(mouse_appearance, num_envs) else None
         )
-        runtime_sim_config = kwargs.pop("sim_config", None)
+        runtime_sim_config = office_capacity_config(kwargs.pop("sim_config", None), kwargs)
         if runtime_sim_config not in (None, {"control_freq": CONTROL_FREQUENCY}):
             raise ValueError(
                 "ClickMouse freezes the Plant configuration in tasks/config/"
@@ -938,10 +940,7 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                 device=self.device,
             )
             xyz[:, :2] = (
-                torch.rand(
-                    (batch_size, 2),
-                    device=self.device,
-                )
+                self._office_rand(env_idx, (2,))
                 * 2.0
                 - 1.0
             ) * self.mouse_xy_noise
@@ -952,10 +951,7 @@ class OfficeDeskClickMouseEnv(BaseEnv):
             xyz[:, 2] = self.mouse_z[env_idx]
 
             yaw = (
-                torch.rand(
-                    (batch_size,),
-                    device=self.device,
-                )
+                self._office_rand(env_idx, ())
                 * 2.0
                 - 1.0
             ) * self.mouse_yaw_noise
@@ -1038,11 +1034,7 @@ class OfficeDeskClickMouseEnv(BaseEnv):
             arm_indices = [active_names.index(name) for name in arm_names]
             if self.robot_init_qpos_noise > 0 and arm_indices:
                 qpos[:, arm_indices] += common.to_tensor(
-                    self._episode_rng.normal(
-                        0.0,
-                        self.robot_init_qpos_noise,
-                        (batch_size, len(arm_indices)),
-                    ),
+                    self._office_normal(env_idx, self.robot_init_qpos_noise, len(arm_indices)),
                     device=self.device,
                 )
             self.agent.reset(qpos)
@@ -1380,7 +1372,7 @@ class OfficeDeskClickMouseEnv(BaseEnv):
             & q["tip_over_button"]
             & (~wrong_button)
         )
-        self.press_started |= valid_enter
+        self.press_started |= self._reset_scoped_predicate(valid_enter)
 
         reset_attempt = (
             (~self.hold_completed)
@@ -1390,11 +1382,11 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                 | wrong_button
             )
         )
-        self.press_started = torch.where(
+        self.press_started = self._reset_scoped_value(self.press_started, torch.where(
             reset_attempt,
             torch.zeros_like(self.press_started),
             self.press_started,
-        )
+        ))
 
         valid_hold = (
             self.press_started
@@ -1403,7 +1395,7 @@ class OfficeDeskClickMouseEnv(BaseEnv):
             & (~wrong_button)
             & (~self.hold_completed)
         )
-        self.hold_counter = torch.where(
+        self.hold_counter = self._reset_scoped_value(self.hold_counter, torch.where(
             self.hold_completed,
             self.hold_counter,
             torch.where(
@@ -1413,18 +1405,18 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                     self.hold_counter
                 ),
             ),
-        )
-        self.hold_completed |= (
+        ))
+        self.hold_completed |= self._reset_scoped_predicate((
             self.hold_counter
             >= PRESS_HOLD_STEPS
-        )
+        ))
 
         valid_release = (
             self.hold_completed
             & left_released_now
             & right_released_now
         )
-        self.release_counter = torch.where(
+        self.release_counter = self._reset_scoped_value(self.release_counter, torch.where(
             self.released_after_hold,
             self.release_counter,
             torch.where(
@@ -1434,16 +1426,16 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                     self.release_counter
                 ),
             ),
-        )
-        self.released_after_hold |= (
+        ))
+        self.released_after_hold |= self._reset_scoped_predicate((
             self.release_counter >= RELEASE_STEPS
-        )
+        ))
 
         valid_final = (
             self.released_after_hold
             & q["inside_final_region"]
         )
-        self.final_counter = torch.where(
+        self.final_counter = self._reset_scoped_value(self.final_counter, torch.where(
             self.success_latched,
             self.final_counter,
             torch.where(
@@ -1453,7 +1445,7 @@ class OfficeDeskClickMouseEnv(BaseEnv):
                     self.final_counter
                 ),
             ),
-        )
+        ))
 
         # Simplified success: a valid left-button press sustained
         # for SUCCESS_PRESS_STEPS consecutive control steps. "Valid" = pressed
@@ -1463,11 +1455,12 @@ class OfficeDeskClickMouseEnv(BaseEnv):
         # success.
         # One shared implementation with the long task's click stage.
         pressing_now = pressed_enter & q["tip_over_button"] & (~wrong_button)
-        self.press_success_counter, _clicked = mouse_click_cycle_update(
+        self.press_success_counter, _clicked = self._office_scoped_results(
+            ("press_success_counter",), mouse_click_cycle_update(
             left_fraction, right_fraction, q["tip_over_button"],
             self.press_success_counter, latched=self.success_latched,
-        )
-        self.success_latched |= _clicked
+        ))
+        self.success_latched |= self._reset_scoped_predicate(_clicked)
         success = self.success_latched
 
         hold_progress = torch.clamp(

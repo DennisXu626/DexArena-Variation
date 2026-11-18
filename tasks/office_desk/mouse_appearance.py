@@ -5,6 +5,8 @@ from pathlib import Path
 
 import numpy as np
 
+from tasks.office_desk.devices_appearance import validate_appearance_config, validate_reset_indices, validate_reset_override
+
 CATALOG = Path(__file__).resolve().parents[1] / 'assets/variation/office_desk/mouse_101408/v1/catalog.json'
 ROLES = {'link_0': 'buttons', 'link_1': 'buttons', 'link_2': 'wheel', 'link_3': 'shell'}
 FIELDS = ('base_color', 'roughness', 'metallic')
@@ -12,6 +14,7 @@ FIELDS = ('base_color', 'roughness', 'metallic')
 
 class MouseAppearance:
     def __init__(self, config, num_envs):
+        validate_appearance_config(config, num_envs)
         self.config = copy.deepcopy(config)
         self.catalog = json.loads(CATALOG.read_text(encoding='utf-8'))
         seed = int(config.get('seed', 0))
@@ -82,22 +85,30 @@ class MouseAppearance:
         self.bindings[env_id] = bindings
 
     def finish_reset(self, env_idx, options):
+        indices = validate_reset_indices(env_idx, len(self.bindings))
         override = options.get('mouse_appearance', {})
-        for i in env_idx.tolist():
+        validate_reset_override(override, len(self.bindings))
+        requests = []
+        for i in indices:
             request = {**self.config, **self.config.get('per_env', {}).get(str(i), {}),
                        **override, **override.get('per_env', {}).get(str(i), {})}
             mode = request.get('mode', 'explicit')
             if mode == 'explicit':
-                name = request.get('scheme_id', 'original')
+                choices = [request.get('scheme_id', 'original')]
             elif mode == 'random_choice':
                 choices = request.get('scheme_ids', [])
-                if not choices or any(x not in self.catalog['schemes'] for x in choices):
+                if not isinstance(choices, list) or not choices:
                     raise ValueError('Mouse scheme_ids must be nonempty catalog choices')
-                name = str(self.rng[i].choice(choices))
             else:
                 raise ValueError(f'Unsupported Mouse selection mode: {mode}')
-            if name not in self.catalog['schemes']:
-                raise ValueError(f'Unknown Mouse scheme: {name}')
+            if any(name not in self.catalog['schemes'] for name in choices):
+                raise ValueError(f'Unknown Mouse scheme: {choices}')
+            if self.bindings[i] is None:
+                raise RuntimeError(f'Mouse environment is not bound: {i}')
+            requests.append((i, mode, choices))
+        selections = [(i, str(self.rng[i].choice(choices)) if mode == 'random_choice' else choices[0])
+                      for i, mode, choices in requests]
+        for i, name in selections:
             for role, part, material, native in self.bindings[i]:
                 params = native if name == 'original' else self.catalog['schemes'][name][role]
                 for key in FIELDS:
