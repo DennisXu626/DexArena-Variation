@@ -18,7 +18,8 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = '793c74798c3291155e7010a0688053c1fbe57faa'
-TASKS = ['OpenDrawer', 'PickCharger', 'InsertPlug', 'Long']
+TASKS = ['OpenDrawer', 'InsertPlug', 'PickCharger', 'Long']
+TASK_SEED = 7
 TASK_FILES = ['tasks/drawer_plug/drawer_plug_' + name + '.py' for name in
               ['long', 'open_drawer', 'pick_charger', 'insert_plug']]
 CAT = 'tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json'
@@ -216,8 +217,8 @@ def runtime(args):
                                       cmass=[plain(c.cmass_local_pose.p),plain(c.cmass_local_pose.q)])
         for i,d in enumerate(getattr(e,'_drawers',[])):
             rows[f'joints/{i}'] = dict(limits=plain(d.get_qlimits()), drives=[
-                dict(name=j.name, stiffness=j.stiffness, damping=j.damping,
-                     friction=j.friction, force_limit=j.force_limit) for j in d.active_joints])
+                dict(name=j.name, stiffness=plain(j.stiffness), damping=plain(j.damping),
+                     friction=plain(j.friction), force_limit=plain(j.force_limit)) for j in d.active_joints])
         return rows
 
     def state(e):
@@ -243,14 +244,56 @@ def runtime(args):
             if env0 and not k.startswith('joint/'): x,y=x[:1],y[:1]
             assert torch.equal(x,y), k
 
-    def frames(env, prefix):
+    def frames(env, prefix=None, *, masks=False):
         obs=env.unwrapped.get_obs()['sensor_data']
         images={k:v['rgb'].detach().cpu().numpy().copy() for k,v in obs.items()}
         images['human']=env.render().detach().cpu().numpy().copy()
-        for camera,rgb in images.items():
-            for i in range(len(rgb)):
-                Image.fromarray(rgb[i,...,:3]).save(args.output/f'{prefix}_{camera}_env{i}.png')
+        if prefix is not None:
+            for camera,rgb in images.items():
+                for i in range(len(rgb)):
+                    Image.fromarray(rgb[i,...,:3]).save(args.output/f'{prefix}_{camera}_env{i}.png')
+        if masks:
+            return images,{k:v['segmentation'].detach().cpu().numpy().copy()[...,0] for k,v in obs.items()}
         return images
+
+    def same_rgb(first, second, idx):
+        assert set(first)==set(second)
+        for name in first:
+            assert np.array_equal(first[name][idx],second[name][idx]), f'{name}: env{idx} RGB changed'
+
+    def target_pixel_counts(e, first, second, segmentation, idx):
+        groups={}
+        for key, i, raw in entries(e):
+            if i==idx and key!='charger':
+                groups.setdefault(key.split(':')[0],set()).add(getattr(raw,'entity',raw).per_scene_id)
+        results={}
+        for obj, ids in groups.items():
+            counts={}
+            for name, seg in segmentation.items():
+                mask=np.isin(seg[idx],list(ids))
+                changed=np.any(first[name][idx,...,:3]!=second[name][idx,...,:3],axis=-1)
+                counts[name]=dict(visible_pixels=int(mask.sum()),changed_pixels=int((mask & changed).sum()))
+            results[obj]=counts
+        return results
+
+    def same_state_visual_probe(env, actual, labels, after, segmentation, idx):
+        # Use the real writer with separate bookkeeping. Probe only selected materials at
+        # the post-reset state, so changing a pose or Charger cannot explain these pixels.
+        e=env.unwrapped
+        probe=copy.copy(actual)
+        probe.records=[]; probe.schemes=actual.schemes.copy(); probe.episodes=actual.episodes.copy()
+        selected=np.array([idx])
+        snapshot=state(e)
+        probe.finish_reset(e, selected, {'drawer_plug_appearance':{'mode':'explicit','scheme_id':labels[0]}})
+        try:
+            reference=frames(env)
+            counts=target_pixel_counts(e,reference,after,segmentation,idx)
+        finally:
+            probe.finish_reset(e, selected, {'drawer_plug_appearance':{'mode':'explicit','scheme_id':labels[1]}})
+        equal_state(snapshot,state(e))
+        restored=frames(env)
+        for i in range(e.num_envs): same_rgb(after,restored,i)
+        return counts
 
     def verify(e,ids):
         adapter=e._fixture_appearance
@@ -273,7 +316,7 @@ def runtime(args):
                     for part in s.parts:
                         for k in ['base_color','roughness','metallic']: np.testing.assert_allclose(getattr(part.material,k),p[k],atol=1e-7,rtol=0)
 
-    manifest=dict(head=head,job=os.environ['SLURM_JOB_ID'],files={f:hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in FILES+[__file__.replace(str(ROOT)+os.sep,'').replace('\\','/')]},
+    manifest=dict(head=head,job=os.environ['SLURM_JOB_ID'],seed=TASK_SEED,obs_mode='rgb+segmentation',files={f:hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in FILES+[__file__.replace(str(ROOT)+os.sep,'').replace('\\','/')]},
                   packages={p:metadata.version(p) for p in ['torch','sapien','mani_skill','gymnasium','numpy']},physics_steps=0)
     dump('manifest.json',manifest)
     results={'tasks':{},'realism':'pending human image review','status':'running'}
@@ -287,12 +330,12 @@ def runtime(args):
                 kw={} if config is None else {'drawer_plug_appearance':config}
                 if charger and task!='OpenDrawer': kw['charger_appearance']={'enabled':True,'scheme_id':'ivory_matte','seed':71}
                 return gym.make(f'DrawerPlug{task}-Sharpa-v1',num_envs=n,sim_backend='physx_cuda',
-                                reconfiguration_freq=0,obs_mode='rgb',render_mode='rgb_array',**kw)
+                                reconfiguration_freq=0,obs_mode='rgb+segmentation',render_mode='rgb_array',**kw)
             baseline=None
             baseline_rng=None
             for name in ['native','disabled','original','warm_white','neutral_grey']:
                 config=None if name=='native' else {'enabled':name!='disabled','scheme_id':name,'seed':91}
-                env=make(config); env.reset(seed=7); e=env.unwrapped
+                env=make(config); env.reset(seed=TASK_SEED); e=env.unwrapped
                 st,ph,ma=state(e),physical(e),materials(e)
                 if name=='native': baseline_rng=task_rng()
                 else: assert baseline_rng==task_rng(), 'Appearance changed native initialization RNG consumption'
@@ -304,12 +347,14 @@ def runtime(args):
                     for key,values in ma.items():
                         for slot,value in enumerate(values):
                             if value['role'] in ['hardware','hole']: assert value==baseline[2][key][slot]
-                    rgb=frames(env,f'{task}_{name}')
+                    rgb,seg=frames(env,f'{task}_{name}',masks=True)
                     if name in ['disabled','original']:
-                        for camera in rgb: assert np.array_equal(rgb[camera],baseline[3][camera]),camera
+                        for i in range(n): same_rgb(rgb,baseline[3],i)
                     if name in ['warm_white','neutral_grey']:
-                        assert any(not np.array_equal(rgb[k],baseline[3][k]) for k in rgb), 'No candidate RGB difference'
-                        env.reset(seed=7,options={'drawer_plug_appearance':{'scheme_id':'original'}})
+                        counts=target_pixel_counts(e,baseline[3],rgb,seg,0)
+                        dump(f'{task}_{name}_target_pixels.json',counts)
+                        assert any(x['changed_pixels'] for cs in counts.values() for x in cs.values()), 'No target-object RGB difference'
+                        env.reset(seed=TASK_SEED,options={'drawer_plug_appearance':{'scheme_id':'original'}})
                         verify(e,['original']*n)
                         assert materials(e)==baseline[2]
                         restored=frames(env,f'{task}_{name}_restore')
@@ -326,40 +371,68 @@ def runtime(args):
                     dump(f'{task}_{name}_native_rng.json',rng_trace)
                 env.close(); env=None
             row['checks']['fixed_native_physical']='passed'
+            dump('results.json',results)
             env=make({'enabled':True,'scheme_id':'warm_white','seed':91,
                       'per_env':{str(n-1):{'scheme_id':'neutral_grey'}}},charger=True)
-            env.reset(seed=7); e=env.unwrapped; a=e._fixture_appearance
-            initial_charger=copy.deepcopy(e._charger_appearance.records) if e._charger_appearance else None
-            for name,charger_name in [('warm_white','navy_satin'),('original','copper_metal')]:
-                before=state(e); ma=materials(e); records=copy.deepcopy(a.records); rng=copy.deepcopy(a.rng[0].bit_generator.state)
-                charger_rng=copy.deepcopy(e._charger_appearance.rng[0].bit_generator.state) if e._charger_appearance else None
+            env.reset(seed=TASK_SEED); e=env.unwrapped; a=e._fixture_appearance
+            selected=[1] if n==2 else [0]
+            idx=selected[0]
+            for name in ['warm_white','original'] if n==2 else ['neutral_grey','original']:
+                previous=a.schemes[idx]
+                before=state(e); ma=materials(e); records=copy.deepcopy(a.records)
+                rng=copy.deepcopy(a.rng[0].bit_generator.state)
+                charger_before=e._charger_appearance.schemes.copy() if e._charger_appearance else None
                 images=frames(env,f'{task}_before_{name}')
-                selected=[1] if n==2 else [0]
-                override={'scheme_id':name}
-                opts={'env_idx':torch.tensor(selected,device=e.device),'drawer_plug_appearance':override}
-                if e._charger_appearance is not None:
-                    opts['charger_appearance']={'scheme_id':charger_name}
+                opts={'env_idx':torch.tensor(selected,device=e.device),
+                      'drawer_plug_appearance':{'scheme_id':name}}
+                if charger_before is not None:
+                    opts['charger_appearance']={'scheme_id':charger_before[idx]}
                 env.reset(options=opts)
-                after=frames(env,f'{task}_after_{name}'); verify(e,['warm_white',name] if n==2 else [name])
+                after,seg=frames(env,f'{task}_after_{name}',masks=True)
+                verify(e,['warm_white',name] if n==2 else [name])
+                actual=materials(e)
                 if n==2:
                     equal_state(before,state(e),True)
-                    assert {k:v for k,v in ma.items() if k.endswith('/0')}=={k:v for k,v in materials(e).items() if k.endswith('/0')}
+                    assert {k:v for k,v in ma.items() if k.endswith('/0')}=={k:v for k,v in actual.items() if k.endswith('/0')}
                     assert [r for r in records if r['env_idx']==0]==[r for r in a.records if r['env_idx']==0]
                     assert rng==a.rng[0].bit_generator.state
-                    for camera in images: assert np.array_equal(images[camera][0],after[camera][0]),camera
-                    assert any(not np.array_equal(images[k][1],after[k][1]) for k in images), 'Selected environment has no RGB change'
-                    if e._charger_appearance:
-                        assert [r for r in initial_charger if r['env_idx']==0]==[r for r in e._charger_appearance.records if r['env_idx']==0]
-                        assert charger_rng==e._charger_appearance.rng[0].bit_generator.state
+                    same_rgb(images,after,0)
+                if charger_before is not None:
+                    assert e._charger_appearance.schemes==charger_before
+                    assert {k:v for k,v in ma.items() if k.startswith('charger/')}=={k:v for k,v in actual.items() if k.startswith('charger/')}
                 if name=='original':
-                    actual=materials(e); i=selected[0]
                     for key,value in baseline[2].items():
-                        if key.endswith('/'+str(i)) and not key.startswith('charger/'): assert actual[key]==value,key
+                        if key.endswith('/'+str(idx)) and not key.startswith('charger/'): assert actual[key]==value,key
+                if n==2:
+                    counts=same_state_visual_probe(env,a,(previous,name),after,seg,idx)
+                    dump(f'{task}_{name}_local_target_pixels.json',counts)
+                    assert any(x['changed_pixels'] for cs in counts.values() for x in cs.values()), 'No selected target-object RGB change at fixed state'
+                    verify(e,['warm_white',name]); assert materials(e)==actual
                 dump(f'{task}_{name}_records.json',a.records)
-            row['checks']['restore_isolation_and_charger']='passed' if n==2 else 'restore/Charger passed; isolation N/A'
+            row['checks']['restore_and_isolation']='passed' if n==2 else 'restoration passed; isolation N/A'
+            if e._charger_appearance is not None:
+                before=state(e); ma=materials(e); images=frames(env)
+                ca=e._charger_appearance
+                records=copy.deepcopy(ca.records); rng=copy.deepcopy(ca.rng[0].bit_generator.state)
+                env.reset(options={'env_idx':torch.tensor(selected,device=e.device),
+                                   'drawer_plug_appearance':{'scheme_id':'original'},
+                                   'charger_appearance':{'scheme_id':'navy_satin'}})
+                verify(e,['warm_white','original'] if n==2 else ['original'])
+                actual=materials(e)
+                assert ca.schemes[idx]=='navy_satin' and actual[f'charger/{idx}']!=ma[f'charger/{idx}']
+                assert {k:v for k,v in ma.items() if not k.startswith('charger/')}=={k:v for k,v in actual.items() if not k.startswith('charger/')}
+                if n==2:
+                    equal_state(before,state(e),True)
+                    same_rgb(images,frames(env),0)
+                    assert actual['charger/0']==ma['charger/0']
+                    assert [r for r in records if r['env_idx']==0]==[r for r in ca.records if r['env_idx']==0]
+                    assert rng==ca.rng[0].bit_generator.state
+                dump(f'{task}_charger_compatibility.json',dict(schemes=ca.schemes,records=ca.records,
+                     selected_material_before=ma[f'charger/{idx}'],selected_material_after=actual[f'charger/{idx}']))
+                row['checks']['charger_compatibility']='passed'
             if task=='Long':
                 for phase in ['charger_pick_place','charger_insert']:
-                    env.reset(seed=7,options={'task_phase':phase,'drawer_plug_appearance':{'scheme_id':'neutral_grey'}})
+                    env.reset(seed=TASK_SEED,options={'task_phase':phase,'drawer_plug_appearance':{'scheme_id':'neutral_grey'}})
                     verify(e,['neutral_grey']); frames(env,f'Long_engineering_{phase}')
                 row['checks']['native_phase_reset']='engineering only; no robot completion'
             env.close(); env=None
@@ -368,7 +441,7 @@ def runtime(args):
                 env=make({'enabled':True,'mode':'random_choice','scheme_ids':list(cat['schemes']),'seed':91})
                 trace=[]
                 for j in range(4):
-                    env.reset(seed=7 if j==0 else None, options={} if j==0 else {'env_idx':torch.tensor([n-1],device=env.unwrapped.device)})
+                    env.reset(seed=TASK_SEED if j==0 else None, options={} if j==0 else {'env_idx':torch.tensor([n-1],device=env.unwrapped.device)})
                     a=env.unwrapped._fixture_appearance; verify(env.unwrapped,a.schemes)
                     trace.append(copy.deepcopy(a.records))
                     count=len(a.records)
