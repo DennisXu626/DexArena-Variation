@@ -319,62 +319,161 @@ def runtime(args):
     manifest=dict(head=head,job=os.environ['SLURM_JOB_ID'],seed=TASK_SEED,obs_mode='rgb+segmentation',files={f:hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in FILES+[__file__.replace(str(ROOT)+os.sep,'').replace('\\','/')]},
                   packages={p:metadata.version(p) for p in ['torch','sapien','mani_skill','gymnasium','numpy']},physics_steps=0)
     dump('manifest.json',manifest)
-    results={'tasks':{},'realism':'pending human image review','status':'running'}
+    results={'tasks':{},'realism':'pending human image review','status':'running','builds_started':0}
     env=None
+    outer_cpu=torch.random.get_rng_state().clone()
+    gpu=torch.cuda.current_device()
+    outer_cuda=torch.cuda.get_rng_state(gpu).clone()
+    capture_schemes=('original','warm_white','neutral_grey')
+    capture_views={'OpenDrawer':('drawer',[452,0,850,330]),'InsertPlug':('socket',[603,319,733,430])}
+    baselines={}
+    candidate_pixels={}
+
+    def start_sequence():
+        # Reset the caller RNG once per independent sequence. Do not rewind it
+        # between steps; ManiSkill's seeded reset has its own internal seed scope.
+        torch.random.set_rng_state(outer_cpu)
+        torch.cuda.set_rng_state(outer_cuda,gpu)
+
+    def task_row(task):
+        return results['tasks'].setdefault(task,dict(status='running',num_envs=1 if task=='Long' else 2,checks={}))
+
+    def make(task,n,config=None,charger=False):
+        kw={} if config is None else {'drawer_plug_appearance':config}
+        if charger and task!='OpenDrawer':
+            kw['charger_appearance']={'enabled':True,'scheme_id':'ivory_matte','seed':71}
+        results['builds_started']+=1
+        dump('results.json',results)
+        return gym.make(f'DrawerPlug{task}-Sharpa-v1',num_envs=n,sim_backend='physx_cuda',
+                        reconfiguration_freq=0,obs_mode='rgb+segmentation',render_mode='rgb_array',**kw)
+
+    def check_rng(task,branch,stage,seq,reference):
+        actual=seq[stage]
+        if reference is not None and reference[stage]!=actual:
+            detail=dict(task=task,branch=branch,stage=stage,expected=reference[stage],actual=actual)
+            dump('first_rng_divergence.json',detail)
+            raise AssertionError(f'Torch RNG divergence: {detail}')
+
+    def state_hash(st):
+        return {k:digest(v.numpy()) for k,v in st.items()}
+
+    def fixed(task,name):
+        nonlocal env
+        n=task_row(task)['num_envs']
+        baseline=baselines.get(task)
+        ref=None if baseline is None else baseline[4]
+        seq={}
+        prefix=f'{task}_{name}'
+
+        def mark(stage):
+            seq[stage]=task_rng()
+            dump(f'{prefix}_rng.json',seq)
+            check_rng(task,name,stage,seq,ref)
+
+        effective='native' if name=='native_replay' else name
+        config=None if effective=='native' else {'enabled':name!='disabled','scheme_id':name,'seed':91}
+        start_sequence()
+        mark('before_build')
+        env=make(task,n,config)
+        mark('after_build')
+        env.reset(seed=TASK_SEED)
+        mark('after_seeded_reset')
+        e=env.unwrapped
+        # Keep original PNGs as soon as they are available, even when a
+        # later state/material assertion stops this branch.
+        rgb,seg=frames(env,prefix,masks=True)
+        st,ph,ma=state(e),physical(e),materials(e)
+        dump(f'{prefix}_state.json',st)
+        dump(f'{prefix}_physical.json',ph)
+        dump(f'{prefix}_materials.json',ma)
+        if baseline is not None:
+            dump(f'{prefix}_state_hashes.json',dict(expected=state_hash(baseline[0]),actual=state_hash(st)))
+            equal_state(baseline[0],st)
+            assert baseline[1]==ph, f'{prefix}: physical attributes'
+            if effective in ['native','disabled','original']:
+                assert baseline[2]==ma, f'{prefix}: baseline materials'
+                for idx in range(n): same_rgb(rgb,baseline[3],idx)
+            if effective not in ['native','disabled']:
+                verify(e,[name]*n)
+            for key,values in ma.items():
+                for slot,value in enumerate(values):
+                    if value['role'] in ['hardware','hole'] or key.startswith('charger/'):
+                        assert value==baseline[2][key][slot], (prefix,key,slot)
+            if name in capture_schemes[1:]:
+                counts=target_pixel_counts(e,baseline[3],rgb,seg,0)
+                candidate_pixels[task,name]=counts
+                dump(f'{prefix}_target_pixels.json',counts)
+        local=[]
+        for i in range(2):
+            env.reset(options={'env_idx':torch.tensor([n-1],device=e.device)})
+            mark(f'after_unseeded_local_reset_{i+1}')
+            local.append(state(e))
+            dump(f'{prefix}_local_{i+1}_state.json',local[-1])
+            if baseline is not None:
+                equal_state(baseline[5][i],local[-1])
+        env.close(); env=None
+        if baseline is None:
+            baselines[task]=(st,ph,ma,rgb,seq,local)
+
+    def record_group(task):
+        obj,box=capture_views[task]
+        names=[f'{task}_{name}_human_env0.png' for name in capture_schemes]
+        sizes=[]
+        for name in names:
+            with Image.open(args.output/name) as img: sizes.append(img.size)
+        assert sizes==[(1280,720)]*3,sizes
+        dump(f'{obj}_capture.json',dict(task=f'DrawerPlug{task}-Sharpa-v1',env_idx=0,seed=TASK_SEED,
+             camera='render_camera (human)',size=list(sizes[0]),crop_xyxy=box,
+             candidate_schemes=list(capture_schemes),frames=names,charger='native' if task=='InsertPlug' else 'absent',
+             exposure='unchanged task camera default',lighting='unchanged native task lighting',
+             case_initial_state='compared against native baseline'))
+
     try:
-        for task in TASKS:
-            n=1 if task=='Long' else 2
-            row=results['tasks'][task]={'status':'running','num_envs':n,'checks':{}}
-            started=time.monotonic()
-            def make(config=None,charger=False):
-                kw={} if config is None else {'drawer_plug_appearance':config}
-                if charger and task!='OpenDrawer': kw['charger_appearance']={'enabled':True,'scheme_id':'ivory_matte','seed':71}
-                return gym.make(f'DrawerPlug{task}-Sharpa-v1',num_envs=n,sim_backend='physx_cuda',
-                                reconfiguration_freq=0,obs_mode='rgb+segmentation',render_mode='rgb_array',**kw)
-            baseline=None
-            baseline_rng=None
-            for name in ['native','disabled','original','warm_white','neutral_grey']:
-                config=None if name=='native' else {'enabled':name!='disabled','scheme_id':name,'seed':91}
-                env=make(config); env.reset(seed=TASK_SEED); e=env.unwrapped
-                st,ph,ma=state(e),physical(e),materials(e)
-                if name=='native': baseline_rng=task_rng()
-                else: assert baseline_rng==task_rng(), 'Appearance changed native initialization RNG consumption'
-                if name=='native': baseline=(st,ph,ma,frames(env,f'{task}_native'))
-                else:
-                    equal_state(baseline[0],st); assert baseline[1]==ph
-                    if name in ['disabled','original']: assert baseline[2]==ma
-                    if name!='disabled': verify(e,[name]*n)
-                    for key,values in ma.items():
-                        for slot,value in enumerate(values):
-                            if value['role'] in ['hardware','hole']: assert value==baseline[2][key][slot]
-                    rgb,seg=frames(env,f'{task}_{name}',masks=True)
-                    if name in ['disabled','original']:
-                        for i in range(n): same_rgb(rgb,baseline[3],i)
-                    if name in ['warm_white','neutral_grey']:
-                        counts=target_pixel_counts(e,baseline[3],rgb,seg,0)
-                        dump(f'{task}_{name}_target_pixels.json',counts)
-                        assert any(x['changed_pixels'] for cs in counts.values() for x in cs.values()), 'No target-object RGB difference'
-                        env.reset(seed=TASK_SEED,options={'drawer_plug_appearance':{'scheme_id':'original'}})
-                        verify(e,['original']*n)
-                        assert materials(e)==baseline[2]
-                        restored=frames(env,f'{task}_{name}_restore')
-                        for camera in restored: assert np.array_equal(restored[camera],baseline[3][camera]),camera
-                dump(f'{task}_{name}_materials.json',ma); dump(f'{task}_{name}_physical.json',ph)
-                dump(f'{task}_{name}_state.json',st)
-                if name in ['native','disabled','original']:
-                    rng_trace=[]
-                    for _ in range(2):
-                        env.reset(options={'env_idx':torch.tensor([n-1],device=e.device)})
-                        rng_trace.append(task_rng())
-                    if name=='native': baseline_local_rng=rng_trace
-                    else: assert rng_trace==baseline_local_rng, 'Appearance changed native local-reset RNG consumption'
-                    dump(f'{task}_{name}_native_rng.json',rng_trace)
-                env.close(); env=None
-            row['checks']['fixed_native_physical']='passed'
+        # Gate the matrix on a genuine independent native replay. The first
+        # instance then doubles as the OpenDrawer reference.
+        task='OpenDrawer'; row=task_row(task)
+        fixed(task,'native')
+        fixed(task,'native_replay')
+        row['checks']['native_baseline_replay']='passed'
+        dump('results.json',results)
+        for task in capture_views:
+            row=task_row(task)
+            if task!='OpenDrawer': fixed(task,'native')
+            for scheme in capture_schemes: fixed(task,scheme)
+            record_group(task)
+            row['checks']['fixed_capture']='saved'
             dump('results.json',results)
-            env=make({'enabled':True,'scheme_id':'warm_white','seed':91,
+
+        for task in TASKS:
+            row=task_row(task); n=row['num_envs']; started=time.monotonic()
+            if task in capture_views:
+                fixed(task,'disabled')
+            else:
+                for case in ['native','disabled',*capture_schemes]: fixed(task,case)
+            for scheme in capture_schemes[1:]:
+                counts=candidate_pixels[task,scheme]
+                assert any(x['changed_pixels'] for group in counts.values() for x in group.values()), (task,scheme,'No target RGB difference')
+            baseline=baselines[task]
+            row['checks']['fixed_native_physical']='passed'
+            # One fresh instance serves both candidate restores and A5. Keep
+            # original Charger for restoration before testing joint configuration.
+            start_sequence()
+            env=make(task,n,{'enabled':True,'scheme_id':'warm_white','seed':91,
                       'per_env':{str(n-1):{'scheme_id':'neutral_grey'}}},charger=True)
-            env.reset(seed=TASK_SEED); e=env.unwrapped; a=e._fixture_appearance
+            e=env.unwrapped; a=e._fixture_appearance
+            for variant in capture_schemes[1:]:
+                env.reset(seed=TASK_SEED,options={'drawer_plug_appearance':{'scheme_id':variant}})
+                verify(e,[variant]*n)
+                opts={'drawer_plug_appearance':{'scheme_id':'original'}}
+                if e._charger_appearance is not None: opts['charger_appearance']={'scheme_id':'original'}
+                env.reset(seed=TASK_SEED,options=opts)
+                verify(e,['original']*n)
+                assert materials(e)==baseline[2]
+                equal_state(state(e),baseline[0])
+                restored_rgb=frames(env,f'{task}_{variant}_restore')
+                for idx in range(n): same_rgb(baseline[3],restored_rgb,idx)
+            row['checks']['both_candidates_restore']='passed'
+            env.reset(seed=TASK_SEED, options={'charger_appearance':{'scheme_id':'ivory_matte'}})
             selected=[1] if n==2 else [0]
             idx=selected[0]
             for name in ['warm_white','original'] if n==2 else ['neutral_grey','original']:
@@ -438,7 +537,8 @@ def runtime(args):
             env.close(); env=None
             traces=[]
             for repeat in range(2):
-                env=make({'enabled':True,'mode':'random_choice','scheme_ids':list(cat['schemes']),'seed':91})
+                start_sequence()
+                env=make(task,n,{'enabled':True,'mode':'random_choice','scheme_ids':list(cat['schemes']),'seed':91})
                 trace=[]
                 for j in range(4):
                     env.reset(seed=TASK_SEED if j==0 else None, options={} if j==0 else {'env_idx':torch.tensor([n-1],device=env.unwrapped.device)})
