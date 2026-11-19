@@ -3,7 +3,7 @@
   "model": "PartNet Mobility 45841",
   "asset_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
   "catalog": "../../../../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json",
-  "status": "Drawer component redesign CPU preparation; closed/open renders pending",
+  "status": "Accepted component finishes in OpenDrawer and PickCharger (runtime_003)",
   "visuals": [
     {
       "link": "link_0",

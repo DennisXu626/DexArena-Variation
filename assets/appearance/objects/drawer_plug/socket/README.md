@@ -1,6 +1,6 @@
 # 插座（drawer_plug.socket）
 
-**两套材质参数与接入已准备；未运行，真实感/RGB/隔离待验证。** 不计入已验收对象。
+**两套插座外观已通过 InsertPlug 双环境限定验收。** 原版、暖白及炭黑 PC 的同条件实景、原版恢复和局部 reset 隔离见[作业 121640](../../../../../docs/variation/evidence/drawer_socket/runtime_002/README.md)。
 
 原生程序模型：六个碰撞/视觉盒体构成板壳和真实盲孔，两片独立暗色内衬只参与视觉。[bindings](bindings.json)列明构建顺序。不新增孔洞或把孔画在平面上。
 
@@ -11,4 +11,4 @@
 
 唯一参数源：[catalog](../../../../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json)。[产品参考与许可](../drawer/REFERENCES.md)、[平面色板](../drawer/material_board.png)（非任务图）。
 
-实际加载InsertPlug、Long；OpenDrawer/PickCharger不适用。单个原生表示，Long工程路径待验证。[接口与待批准计划](../../../../../docs/variation/DRAWER_SOCKET_APPEARANCE.md)、[联合配置](../../../../../examples/variation/drawer_plug/fixtures/combined.json)、[原任务](../../../../../tasks/drawer_plug/drawer_plug_long.py)、[总索引](../../../README.md)。孔内对比与高光质量必须用实景验收；完整插入、训练、A6未验证。
+实际加载InsertPlug、Long；OpenDrawer/PickCharger不适用。作业 121640 覆盖 Long 单环境阶段 reset；抽屉返工后的作业 121691 只覆盖两个抽屉短任务。[用法与验证范围](../../../../../docs/variation/DRAWER_SOCKET_APPEARANCE.md)、[联合配置](../../../../../examples/variation/drawer_plug/fixtures/combined.json)、[原任务](../../../../../tasks/drawer_plug/drawer_plug_long.py)、[总索引](../../../README.md)。炭黑款的两个插孔可辨，指尖遮住部分孔缘；当前光照下的高光差异无法定量。完整插入、训练和 A6 未验证。

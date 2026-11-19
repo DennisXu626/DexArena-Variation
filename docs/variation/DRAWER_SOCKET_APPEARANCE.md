@@ -1,10 +1,17 @@
-# Drawer / Socket 外观：CPU准备与短检提案
+# 抽屉与插座外观
 
-基线main `793c74798c3291155e7010a0688053c1fbe57faa`。**GPU0，没有任务加载、渲染或作业提交；运行及真实感尚未验收。**
+`warm_white` 在抽屉上选择浅橡木抽面、暖白柜体及黑色把手，`neutral_grey` 选择石墨台面、中灰侧板、暖灰抽面及香槟色把手。两套均经 Dennis 审图确认。插座使用同名方案 ID，分别为暖白与炭黑哑光 PC。`original` 恢复任务原材质。
 
-## 最新 · 仅返工抽屉（等待运行授权）
+| 对象 | 限定验证范围 | 任务实景及记录 |
+|---|---|---|
+| 抽屉 | OpenDrawer 闭合、PickCharger 原生开屉 0.22 m，各 2 环境；初态与物理参数对照、恢复、随机复现、局部 reset 隔离 | [作业 121691](evidence/drawer_socket/runtime_003/README.md) |
+| 插座 | InsertPlug 双环境；原版对照、恢复、随机复现、局部 reset 隔离及 Charger 联动 | [作业 121640](evidence/drawer_socket/runtime_002/README.md) |
 
-抽屉前版视觉不通过，插座沿用 [作业 121640](evidence/drawer_socket/runtime_002/README.md) 的已验收结果。方案 ID 保持 `original`／`warm_white`（A · 浅橡木与暖白）／`neutral_grey`（B · 浅灰与石墨色）；[分件材料与产品链接](../../assets/appearance/objects/drawer_plug/drawer/README.md)。此节覆盖下文中的抽屉旧方案与旧预算，历史报告保留。
+Long 单环境阶段 reset 证据来自作业 121640，早于抽屉返工。完整机器人任务、训练及 A6 未验证。
+
+## 历史 · 抽屉返工拍摄提案（已执行）
+
+抽屉前版视觉不通过，插座沿用 [作业 121640](evidence/drawer_socket/runtime_002/README.md) 的已验收结果。方案 ID 保持 `original`／`warm_white`（A · 浅橡木与暖白）／`neutral_grey`（B · 浅灰与石墨色）；[分件材料与产品链接](../../assets/appearance/objects/drawer_plug/drawer/README.md)。此节覆盖早期的抽屉旧方案与旧预算，历史报告保留。
 
 - 新增 `--drawer-review`，只覆盖 OpenDrawer 和 PickCharger 各 2 环境，先做原生可重复对照，然后两任务各采 original、A、B。OpenDrawer 使用原生关闭 `0 m`，PickCharger 使用原生中抽开度 `0.22 m` 与原生 Charger。各任务的独立检查器相机配置在构建前固定：观察闭合时的全柜与台面和偏高前侧打开时的内箱。只改取证相机配置，场景、灯光、任务 reset、物理均原样。
 - 每组使用 env0、seed 7、1280×960、默认曝光，同 seed 完整状态和关节开度有断言；保持原图像素，并按组固定裁剪框。闭合检查全台面、侧板、三层把手；开屉检查外抽面、把手、内侧壁与底板。纯几何投影只验证构图范围，实际图像和遮挡待审。
@@ -27,7 +34,7 @@
 
 ## 配置与默认
 
-[关闭](../../examples/variation/drawer_plug/fixtures/default.json)、[original](../../examples/variation/drawer_plug/fixtures/original.json)、[逐环境固定](../../examples/variation/drawer_plug/fixtures/fixed.json)、[随机](../../examples/variation/drawer_plug/fixtures/random.json)、[Charger联合](../../examples/variation/drawer_plug/fixtures/combined.json)均可作为gym.make kwargs展开（仅在另获批准后运行）：
+[关闭](../../examples/variation/drawer_plug/fixtures/default.json)、[original](../../examples/variation/drawer_plug/fixtures/original.json)、[逐环境固定](../../examples/variation/drawer_plug/fixtures/fixed.json)、[随机](../../examples/variation/drawer_plug/fixtures/random.json)、[Charger联合](../../examples/variation/drawer_plug/fixtures/combined.json)均可作为gym.make kwargs展开：
 
 ```python
 kwargs = json.load(open("examples/variation/drawer_plug/fixtures/combined.json"))
@@ -48,11 +55,11 @@ records = env.unwrapped._fixture_appearance.records
 | OpenDrawer | 47网格/32板件/15硬件 | N/A | N/A |
 | PickCharger | 同上 | N/A | 原适配器与catalog |
 | InsertPlug | N/A | 6壳+2暗孔内衬 | 原适配器与catalog |
-| Long | 同上 | 同上 | 原适配器复用；新增入口放行/结束钩子，待工程检查 |
+| Long | 同上 | 同上 | 原适配器复用；返工前已做单环境阶段检查 |
 
 新[适配器](../../tasks/drawer_plug/fixture_appearance.py)只操作渲染参数/私有纹理。四任务在原生reset末尾调用；Socket使用原Charger的builder复制函数。Charger适配器及catalog逐字节不变。Long以前拒绝Charger配置，本次只放行白名单并调用原finish_reset，不改三部件参数，不冒充历史Long验收。
 
-抽屉按URDF语义/OBJ名绑定，未知网格报错。原图只读；首次渲染前建立环境私有稳定纹理，reset上传原像素或候选常量像素，维持UV/alpha/纹理身份。把手/滑轨不替换色图，物理builder不变。所有成功/奖励、机器人、位置/几何/物理代码在剥除明确列出的渲染钩子后与基线AST一致。
+抽屉按URDF语义/OBJ名绑定，未知网格报错。原图只读；首次渲染前建立环境私有稳定纹理，reset 上传原像素或分件方案像素，维持 UV、alpha 和纹理身份。分件方案为把手指定金属饰面，滑轨沿用原材质。所有成功/奖励、机器人、位置/几何/物理代码在剥除明确列出的渲染钩子后与基线AST一致。
 
 ## CPU预检
 
@@ -68,7 +75,7 @@ git diff --check
 
 运行环境按[SETUP](SETUP.md)既有Python3.10/Torch2.6/SAPIEN3.0.3/ManiSkill3.0.0b22复用，本轮未刷新服务器状态。源抽屉目录没有CoACD派生缓存；未来提交前须核对安装加载器是否需要生成、缓存身份和本线私有写盘路径。不能写回共享资产；不以先加载一次代替预检。未开始部署或服务器调查。
 
-## 一次短检提案（非授权）
+## 历史 · 首轮短检提案
 
 - 总墙钟75分钟，单卡≤600分配秒，应用540秒，最多一次提交，无重试。排队≤120秒；最迟第48分钟提交且余时≥27分钟；第60分钟开始最后15分钟收尾。
 - 32次环境构建：每任务native/disabled/3方案5次，联合Charger1次，随机复现2次，四任务合计32次。短任务各2env，Long1env。其余恢复和阶段检查用原实例reset；预算不足或任何关键断言失败即保存部分结果停止。
@@ -85,7 +92,7 @@ git diff --check
 
 只需新增确认：本轮一次作业/600秒/75分钟窗口，以及新Drawer Ceph根和其无硬配额采样越限风险。既有保护算法不另建、不重复申请；旧Cabinet路径授权不自动涵盖新根。此前披露的跨PGID后代及全部驱动写盘未证明边界保留。实际闭包/挂载/余量/队列/缓存身份在提交前刷新；出现新固定写盘或容量风险先停。
 
-## 人工真实感清单（待执行）
+## 历史 · 首轮审图清单
 
 1. 同seed/初态/相机/光照并排original与两候选；保存全景及从同一RGB裁出的近景，不将裁图冒充新相机视角。
 2. 抽屉外侧/可见内侧/封边/开合边界与三层面板一致；涂装和层压板没有不合理木纹，保留金属把手/滑轨，不能整柜同材质。
