@@ -1,0 +1,25 @@
+{
+  "head": "b29aeb98293f417b1683b725b258dd1608ee8f99",
+  "job": "121691",
+  "seed": 7,
+  "obs_mode": "rgb+segmentation",
+  "files": {
+    "tasks/drawer_plug/drawer_plug_long.py": "80895fc5e700c406419e847203524ed7e48753f474173d50f991ecd8e633dd86",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "70d9f964f4c74f86d9c1caa9681918b72b41db6b4438a266ff310473f9c9edc9",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "a7d8243daae418f736a387adf4c9ea1b4bda0f5dbbccf96019dc9214c76d28cd",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "9be4d4e8b923e6cdbef84733075c48333947a4a9e41ef7f0b4ec43971f04bff6",
+    "tasks/drawer_plug/fixture_appearance.py": "5058d61e1802298dc3e5c45ae05a0dee84fbe79482818f5ed88a388c38bfc07b",
+    "tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json": "19ea5d5274a9c9e38fa6bfbae6483c6af826453851972526b97ea08bb9752b4a",
+    "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
+    "tasks/assets/variation/drawer_plug/v1/catalog.json": "6b426f0cfe2f288291df419671b3952fd47c7a2cce54ec3acde869e9b695b047",
+    "tools/variation/check_drawer_socket.py": "ad197b639aff0ef7975c26b059b92c13dbef23a876501ca8c1446fb3ec389df5"
+  },
+  "packages": {
+    "torch": "2.6.0",
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "gymnasium": "0.29.1",
+    "numpy": "2.2.6"
+  },
+  "physics_steps": 0
+}

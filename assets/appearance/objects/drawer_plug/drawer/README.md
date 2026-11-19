@@ -1,6 +1,6 @@
 # 抽屉柜（drawer_plug.drawer）
 
-**抽屉视觉验收退回，已按真实部件返工并通过 CPU 静态核对；开、闭两组实景待批准。** [上轮任务实景与工程证据](../../../../../docs/variation/evidence/drawer_socket/runtime_002/README.md)记录旧配色。插座沿用旧结果。
+**已按真实部件返工，[开、闭两组任务实景与工程复测](../../../../../docs/variation/evidence/drawer_socket/runtime_003/README.md)已完成，待 Dennis 审图。** [上轮任务实景与工程证据](../../../../../docs/variation/evidence/drawer_socket/runtime_002/README.md)记录旧配色。插座沿用旧结果。
 
 PartNet Mobility 45841。[绑定表](bindings.json)逐项记录 47 个 URDF 视觉网格及 OBJ/MTL 绑定，附 96 个原资产文件的 SHA256。原几何、UV、任务初始化及物理行为不动。
 

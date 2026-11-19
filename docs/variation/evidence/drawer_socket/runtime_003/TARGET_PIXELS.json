@@ -1,0 +1,134 @@
+{
+  "OpenDrawer": {
+    "local_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4376,
+          "changed_pixels": 4376
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 29264,
+          "changed_pixels": 29264
+        }
+      }
+    },
+    "local_original": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4346,
+          "changed_pixels": 4346
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 28558,
+          "changed_pixels": 28558
+        }
+      }
+    },
+    "fixed_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4361,
+          "changed_pixels": 4361
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 26568,
+          "changed_pixels": 26568
+        }
+      }
+    },
+    "fixed_neutral_grey": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4361,
+          "changed_pixels": 4361
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 26568,
+          "changed_pixels": 26568
+        }
+      }
+    }
+  },
+  "PickCharger": {
+    "local_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3300,
+          "changed_pixels": 3259
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 4754,
+          "changed_pixels": 4754
+        }
+      }
+    },
+    "local_original": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3672,
+          "changed_pixels": 3621
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 2552,
+          "changed_pixels": 2552
+        }
+      }
+    },
+    "fixed_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3636,
+          "changed_pixels": 3594
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3565,
+          "changed_pixels": 3565
+        }
+      }
+    },
+    "fixed_neutral_grey": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3636,
+          "changed_pixels": 3594
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3565,
+          "changed_pixels": 3565
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "task": "DrawerPlugPickCharger-Sharpa-v1",
+  "env_idx": 0,
+  "seed": 7,
+  "camera": "render_camera (human)",
+  "size": [
+    1280,
+    960
+  ],
+  "crop_xyxy": [
+    285,
+    242,
+    1080,
+    895
+  ],
+  "candidate_schemes": [
+    "original",
+    "warm_white",
+    "neutral_grey"
+  ],
+  "frames": [
+    "PickCharger_original_human_env0.png",
+    "PickCharger_warm_white_human_env0.png",
+    "PickCharger_neutral_grey_human_env0.png"
+  ],
+  "camera_review": {
+    "stem": "drawer_open",
+    "eye": [
+      -0.95,
+      0.69,
+      1.16
+    ],
+    "aim": [
+      -0.04,
+      0.18,
+      0.3
+    ],
+    "fov": 0.73,
+    "crop": [
+      285,
+      242,
+      1080,
+      895
+    ],
+    "travel": 0.22
+  },
+  "charger": "native",
+  "exposure": "unchanged task camera default",
+  "lighting": "unchanged native task lighting",
+  "case_initial_state": "compared against native baseline",
+  "original_files": [
+    {
+      "file": "original_frames/PickCharger_original_human_env0.png",
+      "sha256": "a1a8eb16b7c11b3eb9c2823d6e510514f4bd8b1dfe33156dcfb467be9caf56ef"
+    },
+    {
+      "file": "original_frames/PickCharger_warm_white_human_env0.png",
+      "sha256": "0962406aad17ad4824277683cf9e89cd2bfb7f28a0168102a6c17dc3cc93f3b4"
+    },
+    {
+      "file": "original_frames/PickCharger_neutral_grey_human_env0.png",
+      "sha256": "e21d6a2f50e59448c40522ff433579567969090ad8252d64697c00801e67ebca"
+    }
+  ],
+  "comparison": "drawer_open_comparison.png",
+  "comparison_sha256": "01d5c5960cd14a245ea6a96697e73a772843fd6b2a9d786d0852c594786894ea"
+}
