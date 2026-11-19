@@ -1,0 +1,278 @@
+{
+  "OpenDrawer": {
+    "fixed_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4361,
+          "changed_pixels": 4240
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 26568,
+          "changed_pixels": 25351
+        }
+      }
+    },
+    "fixed_neutral_grey": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4361,
+          "changed_pixels": 4240
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 26568,
+          "changed_pixels": 25351
+        }
+      }
+    },
+    "local_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4326,
+          "changed_pixels": 4203
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 26538,
+          "changed_pixels": 25227
+        }
+      }
+    },
+    "local_original": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 4359,
+          "changed_pixels": 4237
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 30749,
+          "changed_pixels": 29285
+        }
+      }
+    }
+  },
+  "InsertPlug": {
+    "fixed_warm_white": {
+      "socket": {
+        "base_camera": {
+          "visible_pixels": 245,
+          "changed_pixels": 242
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3771,
+          "changed_pixels": 3600
+        }
+      }
+    },
+    "fixed_neutral_grey": {
+      "socket": {
+        "base_camera": {
+          "visible_pixels": 245,
+          "changed_pixels": 242
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3771,
+          "changed_pixels": 3600
+        }
+      }
+    },
+    "local_warm_white": {
+      "socket": {
+        "base_camera": {
+          "visible_pixels": 242,
+          "changed_pixels": 238
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 2244,
+          "changed_pixels": 2188
+        }
+      }
+    },
+    "local_original": {
+      "socket": {
+        "base_camera": {
+          "visible_pixels": 252,
+          "changed_pixels": 247
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 1973,
+          "changed_pixels": 1946
+        }
+      }
+    }
+  },
+  "PickCharger": {
+    "fixed_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3636,
+          "changed_pixels": 3534
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3565,
+          "changed_pixels": 3565
+        }
+      }
+    },
+    "fixed_neutral_grey": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3636,
+          "changed_pixels": 3534
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3565,
+          "changed_pixels": 3565
+        }
+      }
+    },
+    "local_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3538,
+          "changed_pixels": 3434
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 3790,
+          "changed_pixels": 3790
+        }
+      }
+    },
+    "local_original": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3573,
+          "changed_pixels": 3456
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "wrist_camera": {
+          "visible_pixels": 4708,
+          "changed_pixels": 4708
+        }
+      }
+    }
+  },
+  "Long": {
+    "fixed_warm_white": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3598,
+          "changed_pixels": 3521
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "left_wrist_camera": {
+          "visible_pixels": 26568,
+          "changed_pixels": 25351
+        },
+        "right_wrist_camera": {
+          "visible_pixels": 2452,
+          "changed_pixels": 2452
+        }
+      },
+      "socket": {
+        "base_camera": {
+          "visible_pixels": 252,
+          "changed_pixels": 246
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "left_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "right_wrist_camera": {
+          "visible_pixels": 2064,
+          "changed_pixels": 2020
+        }
+      }
+    },
+    "fixed_neutral_grey": {
+      "drawer": {
+        "base_camera": {
+          "visible_pixels": 3598,
+          "changed_pixels": 3521
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "left_wrist_camera": {
+          "visible_pixels": 26568,
+          "changed_pixels": 25351
+        },
+        "right_wrist_camera": {
+          "visible_pixels": 2452,
+          "changed_pixels": 2452
+        }
+      },
+      "socket": {
+        "base_camera": {
+          "visible_pixels": 252,
+          "changed_pixels": 246
+        },
+        "task_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "left_wrist_camera": {
+          "visible_pixels": 0,
+          "changed_pixels": 0
+        },
+        "right_wrist_camera": {
+          "visible_pixels": 2064,
+          "changed_pixels": 2020
+        }
+      }
+    }
+  }
+}

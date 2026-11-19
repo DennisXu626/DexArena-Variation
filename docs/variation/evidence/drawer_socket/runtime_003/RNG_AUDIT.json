@@ -1,0 +1,63 @@
+{
+  "OpenDrawer": {
+    "equal_branches": [
+      "disabled",
+      "original",
+      "warm_white",
+      "neutral_grey",
+      "native_replay"
+    ],
+    "native": {
+      "before_build": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "9b80ff957fcf6bc12a2371b46cac37878a0a377a6d05ed3830de9a78af8a4538"
+      },
+      "after_build": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "9b80ff957fcf6bc12a2371b46cac37878a0a377a6d05ed3830de9a78af8a4538"
+      },
+      "after_seeded_reset": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "9b80ff957fcf6bc12a2371b46cac37878a0a377a6d05ed3830de9a78af8a4538"
+      },
+      "after_unseeded_local_reset_1": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "ce3f7117b8a290a710c78041568f2de7dad6ec58bdc2b5f437ec2abfc7b11ab1"
+      },
+      "after_unseeded_local_reset_2": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "c941cd358ed79d987068526d7e109c7b70bc070b052b814fd63e5f06298e77c2"
+      }
+    }
+  },
+  "PickCharger": {
+    "equal_branches": [
+      "disabled",
+      "original",
+      "warm_white",
+      "neutral_grey"
+    ],
+    "native": {
+      "before_build": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "9b80ff957fcf6bc12a2371b46cac37878a0a377a6d05ed3830de9a78af8a4538"
+      },
+      "after_build": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "9b80ff957fcf6bc12a2371b46cac37878a0a377a6d05ed3830de9a78af8a4538"
+      },
+      "after_seeded_reset": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "9b80ff957fcf6bc12a2371b46cac37878a0a377a6d05ed3830de9a78af8a4538"
+      },
+      "after_unseeded_local_reset_1": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "1145a229e5914892a4404523397c20aace19749123139dfce5f8375d7061c0c8"
+      },
+      "after_unseeded_local_reset_2": {
+        "cpu": "116e988aef06d4ce2de6aa676fd3babcc7d2ba0326cd7257757863943e61c21a",
+        "cuda": "b42c099d9752043a0649c0020a5bdeb40bed27e0ecb3112c3e00eee8bf18040f"
+      }
+    }
+  }
+}

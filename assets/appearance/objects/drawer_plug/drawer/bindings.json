@@ -1,0 +1,1202 @@
+{
+  "logical_object": "drawer_plug.drawer",
+  "model": "PartNet Mobility 45841",
+  "asset_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+  "catalog": "../../../../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json",
+  "status": "Accepted component finishes in OpenDrawer and PickCharger (runtime_003)",
+  "visuals": [
+    {
+      "link": "link_0",
+      "visual_name": "vertical_side_panel-6",
+      "mesh": "textured_objs/original-7.obj",
+      "role": "cabinet_side",
+      "uv_vertices": 4,
+      "materials": [
+        {
+          "path": "textured_objs/original-7.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "vertical_side_panel-6",
+      "mesh": "textured_objs/original-6.obj",
+      "role": "cabinet_side",
+      "uv_vertices": 4,
+      "materials": [
+        {
+          "path": "textured_objs/original-6.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "vertical_side_panel-7",
+      "mesh": "textured_objs/original-4.obj",
+      "role": "cabinet_side",
+      "uv_vertices": 4,
+      "materials": [
+        {
+          "path": "textured_objs/original-4.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "vertical_side_panel-7",
+      "mesh": "textured_objs/original-3.obj",
+      "role": "cabinet_side",
+      "uv_vertices": 4,
+      "materials": [
+        {
+          "path": "textured_objs/original-3.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "back_panel-8",
+      "mesh": "textured_objs/original-15.obj",
+      "role": "cabinet_frame",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-15.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "bottom_panel-9",
+      "mesh": "textured_objs/original-10.obj",
+      "role": "cabinet_frame",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-10.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "bottom_panel-9",
+      "mesh": "textured_objs/original-9.obj",
+      "role": "cabinet_frame",
+      "uv_vertices": 4,
+      "materials": [
+        {
+          "path": "textured_objs/original-9.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "top_panel-10",
+      "mesh": "textured_objs/original-13.obj",
+      "role": "top",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-13.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "frame_horizontal_bar-11",
+      "mesh": "textured_objs/original-16.obj",
+      "role": "cabinet_frame",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-16.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_0",
+      "visual_name": "frame_horizontal_bar-12",
+      "mesh": "textured_objs/original-14.obj",
+      "role": "cabinet_frame",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-14.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_front-38",
+      "mesh": "textured_objs/original-25.obj",
+      "role": "inner_front_liner",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-25.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_front-38",
+      "mesh": "textured_objs/original-18.obj",
+      "role": "front",
+      "uv_vertices": 13,
+      "materials": [
+        {
+          "path": "textured_objs/original-18.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_side-39",
+      "mesh": "textured_objs/original-23.obj",
+      "role": "inner_side",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-23.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_side-40",
+      "mesh": "textured_objs/original-24.obj",
+      "role": "inner_side",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-24.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_back-41",
+      "mesh": "textured_objs/original-26.obj",
+      "role": "inner_back",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-26.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_bottom-42",
+      "mesh": "textured_objs/original-21.obj",
+      "role": "inner_bottom",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-21.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_bottom-42",
+      "mesh": "textured_objs/original-22.obj",
+      "role": "inner_bottom",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-22.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "handle-35",
+      "mesh": "textured_objs/original-30.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-30.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "handle-35",
+      "mesh": "textured_objs/original-31.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-31.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "handle-35",
+      "mesh": "textured_objs/original-32.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-32.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_slider-36",
+      "mesh": "textured_objs/original-27.obj",
+      "role": "slider",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-27.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_1",
+      "visual_name": "drawer_slider-37",
+      "mesh": "textured_objs/original-28.obj",
+      "role": "slider",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-28.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_front-29",
+      "mesh": "textured_objs/original-41.obj",
+      "role": "inner_front_liner",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-41.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_front-29",
+      "mesh": "textured_objs/original-34.obj",
+      "role": "front",
+      "uv_vertices": 13,
+      "materials": [
+        {
+          "path": "textured_objs/original-34.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_side-30",
+      "mesh": "textured_objs/original-40.obj",
+      "role": "inner_side",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-40.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_side-31",
+      "mesh": "textured_objs/original-39.obj",
+      "role": "inner_side",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-39.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_back-32",
+      "mesh": "textured_objs/original-42.obj",
+      "role": "inner_back",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-42.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_bottom-33",
+      "mesh": "textured_objs/original-37.obj",
+      "role": "inner_bottom",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-37.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_bottom-33",
+      "mesh": "textured_objs/original-38.obj",
+      "role": "inner_bottom",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-38.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "handle-26",
+      "mesh": "textured_objs/original-47.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-47.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "handle-26",
+      "mesh": "textured_objs/original-46.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-46.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "handle-26",
+      "mesh": "textured_objs/original-48.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-48.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_slider-27",
+      "mesh": "textured_objs/original-44.obj",
+      "role": "slider",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-44.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_2",
+      "visual_name": "drawer_slider-28",
+      "mesh": "textured_objs/original-43.obj",
+      "role": "slider",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-43.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_front-20",
+      "mesh": "textured_objs/original-57.obj",
+      "role": "inner_front_liner",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-57.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_front-20",
+      "mesh": "textured_objs/original-12.obj",
+      "role": "top_front_trim",
+      "uv_vertices": 4,
+      "materials": [
+        {
+          "path": "textured_objs/original-12.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_front-20",
+      "mesh": "textured_objs/original-50.obj",
+      "role": "front",
+      "uv_vertices": 13,
+      "materials": [
+        {
+          "path": "textured_objs/original-50.mtl",
+          "slots": [
+            "material_0_0",
+            "material_1_0"
+          ],
+          "maps": [
+            [
+              "map_Kd",
+              "../images/texture_0.jpg"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_side-21",
+      "mesh": "textured_objs/original-55.obj",
+      "role": "inner_side",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-55.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_side-22",
+      "mesh": "textured_objs/original-56.obj",
+      "role": "inner_side",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-56.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_back-23",
+      "mesh": "textured_objs/original-58.obj",
+      "role": "inner_back",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-58.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_bottom-24",
+      "mesh": "textured_objs/original-53.obj",
+      "role": "inner_bottom",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-53.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_bottom-24",
+      "mesh": "textured_objs/original-54.obj",
+      "role": "inner_bottom",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-54.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "handle-17",
+      "mesh": "textured_objs/original-62.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-62.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "handle-17",
+      "mesh": "textured_objs/original-63.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-63.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "handle-17",
+      "mesh": "textured_objs/original-64.obj",
+      "role": "handle",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-64.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_slider-18",
+      "mesh": "textured_objs/original-60.obj",
+      "role": "slider",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-60.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    },
+    {
+      "link": "link_3",
+      "visual_name": "drawer_slider-19",
+      "mesh": "textured_objs/original-59.obj",
+      "role": "slider",
+      "uv_vertices": 0,
+      "materials": [
+        {
+          "path": "textured_objs/original-59.mtl",
+          "slots": [
+            "material_0_0"
+          ],
+          "maps": []
+        }
+      ]
+    }
+  ],
+  "source_files": {
+    "images/texture_0.jpg": {
+      "bytes": 9570,
+      "sha256": "85b2e5105eb91bce14f8cf0d1ee0bfcc52c0bea9498edd49d6d8a11e69f7775d"
+    },
+    "mobility.urdf": {
+      "bytes": 14647,
+      "sha256": "8f8f5f4995caf167d3d19d74e6458d842bb1918f20186b1a4ad86c4eeede63c0"
+    },
+    "textured_objs/original-10.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-10.obj": {
+      "bytes": 752,
+      "sha256": "f437e468a8564b63feff93b9e0e284cc1bbb47eb597acac0f542277068643585"
+    },
+    "textured_objs/original-12.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-12.obj": {
+      "bytes": 422,
+      "sha256": "b51d52e5a25cbf42f784d9966619a764da66a42711415527f66653b621c72ba1"
+    },
+    "textured_objs/original-13.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-13.obj": {
+      "bytes": 744,
+      "sha256": "b4c08d86f424287c90fb8b3821006162ff933066811aebd83e6fe197dfd8f27f"
+    },
+    "textured_objs/original-14.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-14.obj": {
+      "bytes": 823,
+      "sha256": "0c13397d67179d748e4ef0dd9fe87ca17b9ea9db9992ede047f8fe80ca797cef"
+    },
+    "textured_objs/original-15.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-15.obj": {
+      "bytes": 834,
+      "sha256": "ff7acb7bb4571048b8d57e11c22f6121841a9ca0c8ca42f36ecd09e20c4e16bc"
+    },
+    "textured_objs/original-16.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-16.obj": {
+      "bytes": 839,
+      "sha256": "789c228d5a5ac9f5cceadee951cd5f0d6f62c5d9b2868228311bb6adfef59000"
+    },
+    "textured_objs/original-18.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-18.obj": {
+      "bytes": 1152,
+      "sha256": "3e6a4cbdc4310ac2d88b019f30aff9b63dc67d538af61450183ee9e96daf9c4a"
+    },
+    "textured_objs/original-21.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-21.obj": {
+      "bytes": 321,
+      "sha256": "145e89a986e465df6a4ad361ae684b500c31960ed70363863885cc0ce2f379e3"
+    },
+    "textured_objs/original-22.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-22.obj": {
+      "bytes": 321,
+      "sha256": "796627d84fea788db5da1a7fd5fb13f84cd36b973ab353d629ad1afe5ff71ef6"
+    },
+    "textured_objs/original-23.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-23.obj": {
+      "bytes": 688,
+      "sha256": "83b7073e864de17a9097524db4b041c6ce3dfbb4653b07bf9ecb7dbd25cc019e"
+    },
+    "textured_objs/original-24.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-24.obj": {
+      "bytes": 680,
+      "sha256": "ef5ca75be7bf203555a68fdc16be72e6c0a082ccb41f7decfbe29688f96ac664"
+    },
+    "textured_objs/original-25.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-25.obj": {
+      "bytes": 835,
+      "sha256": "fa711ec6187f6f98b65d97885d16549813a49a1e10af0f9ccad5002ecd0a581f"
+    },
+    "textured_objs/original-26.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-26.obj": {
+      "bytes": 843,
+      "sha256": "6a3e51ea15635a92aa67b39947df616bbcea4933b1c14310971c2b9554f70783"
+    },
+    "textured_objs/original-27.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-27.obj": {
+      "bytes": 1899,
+      "sha256": "54802d1bca374895ff8dde259074089a33e89d9526e0d430e0acc004104010d3"
+    },
+    "textured_objs/original-28.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-28.obj": {
+      "bytes": 1917,
+      "sha256": "377f827499d4d7c411981cde9a04001e259757765cd8e7def40aa72209ff21e9"
+    },
+    "textured_objs/original-3.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-3.obj": {
+      "bytes": 422,
+      "sha256": "a58253bbf709a6c6c1489f71dea16fd903cf5a381ed51cdff6172246bc438508"
+    },
+    "textured_objs/original-30.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-30.obj": {
+      "bytes": 1154,
+      "sha256": "1800934f542036fce0433013ce092142ce38873ef5f3fa36f0150e9ed32b394c"
+    },
+    "textured_objs/original-31.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-31.obj": {
+      "bytes": 5149,
+      "sha256": "113436d1e2fa8c2de95c0c337365fe20402673621ec7b3bd5a5229fd2724ef90"
+    },
+    "textured_objs/original-32.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-32.obj": {
+      "bytes": 5166,
+      "sha256": "3097f07e92f90b04cfa4f8d87a8d9cf9b7fa5439457ff24422311edb219ef1be"
+    },
+    "textured_objs/original-34.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-34.obj": {
+      "bytes": 1148,
+      "sha256": "9e2663fe141794ab07eb7ca550df7cedc45a7f83135ed87b12b31f39ec81630b"
+    },
+    "textured_objs/original-37.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-37.obj": {
+      "bytes": 321,
+      "sha256": "b29aac04562ee887711144ff79833458178d74dd4f0505bec7b2f62d0079c729"
+    },
+    "textured_objs/original-38.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-38.obj": {
+      "bytes": 321,
+      "sha256": "ce92827739c148ad77b9c11e2f5bee2ef9c294030e5041e1b67653fadcb5e923"
+    },
+    "textured_objs/original-39.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-39.obj": {
+      "bytes": 684,
+      "sha256": "54cc8eec491dadc18ecb5172fd5dcce5affc788b977ab4b14d0a556f1731a0d8"
+    },
+    "textured_objs/original-4.mtl": {
+      "bytes": 257,
+      "sha256": "69208b1897c5f14d8bfbaeedd1adf4a244446b125d560fe33a590b54675e4223"
+    },
+    "textured_objs/original-4.obj": {
+      "bytes": 834,
+      "sha256": "44e1e8bbd405340d2b520ec6c0244bb6f155519122d5381dc916b6f23e67222a"
+    },
+    "textured_objs/original-40.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-40.obj": {
+      "bytes": 676,
+      "sha256": "85f5f1c9a46b047e0a1b63ec00ee3d8b60d3641495e13183e9e611ab464881cd"
+    },
+    "textured_objs/original-41.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-41.obj": {
+      "bytes": 831,
+      "sha256": "adc4797a44dd80dd99c262e4643452edb63e65cb56f22299ee84dc8e064b0198"
+    },
+    "textured_objs/original-42.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-42.obj": {
+      "bytes": 839,
+      "sha256": "73400ed6d39c2bfb46cf0276231ba00d645a240010b1f6001d0d3a7205fe1be8"
+    },
+    "textured_objs/original-43.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-43.obj": {
+      "bytes": 1899,
+      "sha256": "2b466b06a0fe7f2a9649998f369b4f7093e52fd8fe0ff8946df81092b4e8d070"
+    },
+    "textured_objs/original-44.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-44.obj": {
+      "bytes": 1917,
+      "sha256": "c5a80147f148da43c7cece064226ede6656a800a5c0303f3aa1465c4e1391875"
+    },
+    "textured_objs/original-46.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-46.obj": {
+      "bytes": 1144,
+      "sha256": "3b80ac05d64e82260d242fa4975daf0f95e6d3fb92d946f3158feece4f209723"
+    },
+    "textured_objs/original-47.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-47.obj": {
+      "bytes": 5119,
+      "sha256": "75d35bded18e0acfdf0330552b1c94190fb07fae0c2a3ec2133f385a08f65b88"
+    },
+    "textured_objs/original-48.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-48.obj": {
+      "bytes": 5136,
+      "sha256": "5cfcd02caa4135c269a8cb7f81752c083ed494aac4def025eb5b13bc6f505b29"
+    },
+    "textured_objs/original-50.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-50.obj": {
+      "bytes": 1144,
+      "sha256": "ab8aeca33539aac1fd6757e7bc2889d4085bac1b1a453e0f0cb9ed880e414681"
+    },
+    "textured_objs/original-53.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-53.obj": {
+      "bytes": 317,
+      "sha256": "0a0de4084fe36f59e3f4fe3c8b406c98e59a9090ac0d4da680f1b66465dc0d20"
+    },
+    "textured_objs/original-54.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-54.obj": {
+      "bytes": 317,
+      "sha256": "2688c9a67c2ccd3372c08a9b0379583621984620d1656b809c9f9b1fbb680b52"
+    },
+    "textured_objs/original-55.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-55.obj": {
+      "bytes": 680,
+      "sha256": "488b32ff9d6d309b5b92a0bead1f10d05f9479182cf3ee4f622d9450a694aeae"
+    },
+    "textured_objs/original-56.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-56.obj": {
+      "bytes": 672,
+      "sha256": "93caf8df3cd638d91faaa93a1ae6cfd2a54d3c6895449cbb3cea2b243d097dbb"
+    },
+    "textured_objs/original-57.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-57.obj": {
+      "bytes": 827,
+      "sha256": "31308472fba541de415129575240701ccb5d353b8c3bd7a415e505f738500ed1"
+    },
+    "textured_objs/original-58.mtl": {
+      "bytes": 113,
+      "sha256": "5a0e0067eb977aa7e645a9b459860c3a138b55e664f9ae856eb639106899d616"
+    },
+    "textured_objs/original-58.obj": {
+      "bytes": 835,
+      "sha256": "3354333652a280f30c6fbcbd3c25043f78bc84b2fabc26fc2e25499922cec439"
+    },
+    "textured_objs/original-59.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-59.obj": {
+      "bytes": 1875,
+      "sha256": "29a3712368d192c0290842baf011646ee2bfedf4491c293c02ff5e6c77511f11"
+    },
+    "textured_objs/original-6.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-6.obj": {
+      "bytes": 418,
+      "sha256": "5b0a1420525ab410f0b3c9ed73560db3ba8fd330732fa9d91b7b05fbd1934426"
+    },
+    "textured_objs/original-60.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-60.obj": {
+      "bytes": 1893,
+      "sha256": "cdd1f15269d3a43a7e3e61e2a8f4d45a183a773e70d8b83ee6c25aea05d09a53"
+    },
+    "textured_objs/original-62.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-62.obj": {
+      "bytes": 1144,
+      "sha256": "4d9a6fa7553a3ebb7669a2f0ba911bf6eb78df9ecc0d1cbc1ec9226cd83283d3"
+    },
+    "textured_objs/original-63.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-63.obj": {
+      "bytes": 5119,
+      "sha256": "a28bbf3700fb2645cc797002209ff5b26f461ccb13fb2378a5c838193bd20916"
+    },
+    "textured_objs/original-64.mtl": {
+      "bytes": 164,
+      "sha256": "7e1a34521d2356b960b744e8227d87043b6db56afdd79b407e3d2e693f3d66d3"
+    },
+    "textured_objs/original-64.obj": {
+      "bytes": 5136,
+      "sha256": "4993dc54df1b86f62b61b401fb61d4a6ef96c2433c352cb1e1ad7a09672f1185"
+    },
+    "textured_objs/original-7.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-7.obj": {
+      "bytes": 824,
+      "sha256": "b3146bea8f4e4ad51eefe9917f38d6442c6684fd0cbff19a9d4a0cdc4fb48dec"
+    },
+    "textured_objs/original-9.mtl": {
+      "bytes": 257,
+      "sha256": "bbd6a3b373bf7b4492a4f5550a0dc430dbdec0cf3c95727655a804d7b6e6ef8d"
+    },
+    "textured_objs/original-9.obj": {
+      "bytes": 424,
+      "sha256": "bb1dcc7ce56708cba3c9e60755acc98396e4f005497047bc786d82582b5d231f"
+    }
+  },
+  "source_bytes": 99044
+}

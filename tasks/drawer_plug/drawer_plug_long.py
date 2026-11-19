@@ -386,6 +386,7 @@ class DrawerPlugLongEnv(BaseEnv):
         num_envs=1,
         reconfiguration_freq=None,
         charger_appearance=None,
+        drawer_plug_appearance=None,
         **kwargs,
     ):
         if "sim_config" in kwargs and kwargs["sim_config"] is not None:
@@ -399,10 +400,14 @@ class DrawerPlugLongEnv(BaseEnv):
         self.object_init_xy_noise = float(object_init_xy_noise)
         self._charger_appearance = None
         if charger_appearance and charger_appearance.get("enabled", False):
-            if type(self).__name__ not in {"DrawerPlugPickChargerEnv", "DrawerPlugInsertPlugEnv"}:
-                raise ValueError("Charger appearance pilot supports only PickCharger and InsertPlug")
+            if type(self).__name__ not in {"DrawerPlugPickChargerEnv", "DrawerPlugInsertPlugEnv", "DrawerPlugLongEnv"}:
+                raise ValueError("Charger appearance requires PickCharger, InsertPlug or Long")
             from tasks.drawer_plug.charger_appearance import ChargerAppearance
             self._charger_appearance = ChargerAppearance(charger_appearance, num_envs)
+        self._fixture_appearance = None
+        if drawer_plug_appearance and drawer_plug_appearance.get("enabled", False):
+            from tasks.drawer_plug.fixture_appearance import FixtureAppearance
+            self._fixture_appearance = FixtureAppearance(drawer_plug_appearance, num_envs)
         if not DRAWER_URDF_PATH.exists():
             raise FileNotFoundError(f"Drawer URDF not found: {DRAWER_URDF_PATH}")
         if reconfiguration_freq is None:
@@ -693,6 +698,10 @@ class DrawerPlugLongEnv(BaseEnv):
         # task needs, but unlike a static body it can still be re-placed each
         # episode -- GPU sim refuses to move static actors once the scene is
         # loaded. Fixed task actors use the same build-time scene-index pattern.
+        if self._fixture_appearance is not None:
+            # Same native eight boxes; reuse the accepted per-env material copy.
+            from tasks.drawer_plug.charger_appearance import ChargerAppearance
+            ChargerAppearance.isolate_builder_materials(builder)
         self.socket = builder.build_kinematic(name="socket")
 
     # -- charger ------------------------------------------------------------ #
@@ -1334,6 +1343,11 @@ class DrawerPlugLongEnv(BaseEnv):
                 charger_pose = self.charger.pose
                 self._charger_prev_p[env_idx] = charger_pose.p[env_idx]
                 self._charger_prev_q[env_idx] = charger_pose.q[env_idx]
+
+            if self._charger_appearance is not None:
+                self._charger_appearance.finish_reset(self, env_idx, options)
+            if self._fixture_appearance is not None:
+                self._fixture_appearance.finish_reset(self, env_idx, options)
 
     # ------------------------------------------------------------------ #
     # evaluation

@@ -52,6 +52,8 @@ class DrawerPlugInsertPlugEnv(DrawerPlugLongEnv):
             self._stage_charger_placed[env_idx] = True
             if self._charger_appearance is not None:
                 self._charger_appearance.finish_reset(self, env_idx, options)
+            if self._fixture_appearance is not None:
+                self._fixture_appearance.finish_reset(self, env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):
