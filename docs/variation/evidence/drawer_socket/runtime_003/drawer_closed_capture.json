@@ -1,0 +1,67 @@
+{
+  "task": "DrawerPlugOpenDrawer-Sharpa-v1",
+  "env_idx": 0,
+  "seed": 7,
+  "camera": "render_camera (human)",
+  "size": [
+    1280,
+    960
+  ],
+  "crop_xyxy": [
+    289,
+    198,
+    998,
+    870
+  ],
+  "candidate_schemes": [
+    "original",
+    "warm_white",
+    "neutral_grey"
+  ],
+  "frames": [
+    "OpenDrawer_original_human_env0.png",
+    "OpenDrawer_warm_white_human_env0.png",
+    "OpenDrawer_neutral_grey_human_env0.png"
+  ],
+  "camera_review": {
+    "stem": "drawer_closed",
+    "eye": [
+      -1.03,
+      -0.67,
+      0.79
+    ],
+    "aim": [
+      0.14,
+      0.18,
+      0.29
+    ],
+    "fov": 0.78,
+    "crop": [
+      289,
+      198,
+      998,
+      870
+    ],
+    "travel": 0.0
+  },
+  "charger": "absent",
+  "exposure": "unchanged task camera default",
+  "lighting": "unchanged native task lighting",
+  "case_initial_state": "compared against native baseline",
+  "original_files": [
+    {
+      "file": "original_frames/OpenDrawer_original_human_env0.png",
+      "sha256": "630bb2d4e17dd0926fa0606c17317277309f3646cffe2ec93ef920b9bb162806"
+    },
+    {
+      "file": "original_frames/OpenDrawer_warm_white_human_env0.png",
+      "sha256": "0dbfb7689c55cda9cdee31d46036b24499ec0a91237362b56a8ed1b96608c7f0"
+    },
+    {
+      "file": "original_frames/OpenDrawer_neutral_grey_human_env0.png",
+      "sha256": "7e63ff943341363a5fb5cfaa65e4b359ebceffb44484f7c8fc80b930b3a1adf6"
+    }
+  ],
+  "comparison": "drawer_closed_comparison.png",
+  "comparison_sha256": "8ddf8abe0277c742b1a6ec502dc55b790730b0c5bb10ff89110332d9106b9502"
+}
