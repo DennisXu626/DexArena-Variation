@@ -1,2 +1,3 @@
 # Preserve evidence hashes across checkouts.
 furniture_assembly/previews/runtime_check_20261117/** -text
+furniture_assembly/previews/runtime_finishes/**/*.json text eol=lf

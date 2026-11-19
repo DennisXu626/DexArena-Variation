@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "scope": "single-environment CPU material/state checks; no RGB or parallel isolation",
+  "manifest_sha256": "34d5206ca6c4cd6454e159ba7254035c5575ce472289f0e47b3fb5729e01b456",
+  "results_sha256": "7e57d49841da189f898b7e45f1c7c19c2866e12f41e50f1de34fa54a3a7be9ae",
+  "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+  "tasks": {
+    "LayFlatPanel": {
+      "native_state_sha256": "1dead42685ba1fb37d16c35535e45ed1245114d9f9e57cf03eb90f4c0d2a0e16",
+      "fixed_state_sha256": {
+        "original": "b1904feeaf45828ad5165891c0ce15c46accba49449645491d2b7656a3428ef4",
+        "variant_1": "89bd9ab2920ddc5f15619663f7bf47c211573ed1dd44ba0b6cd69077e636ecd7",
+        "variant_2": "af732c6e17cd7a4144310e4d1fc9cebd1ae847de9bb3e23c7e05160cf2417ff0",
+        "variant_3": "5b9401580e3d30e1448753c5f1d52484548455e194a3907db84953b7c47db677",
+        "variant_4": "41595cf19e454c3d5eb2a49a370efebb2ea63a95ee3ed4459710b22ad4958b1c",
+        "variant_5": "79bdf7af07d596f519f990850d31b2d339896c8376b8c2d6ba12771964cc696d",
+        "variant_6": "551405308e29ca84a478ef6808284aa840cc8eb40cf20a7cbaf51c192a7f5beb",
+        "variant_7": "b6854c45135bdfe4bde13171b5156259f3e582a86580fe1796c67b4e732f242c",
+        "variant_8": "7023a9fe861cc4f4bceae66743f34ada24893b532133602dc8c6d7432a65738c",
+        "variant_9": "9874561cb68a7b762de43bf2ae4963aad792d813cfa3247971b26c7cfc80ed83",
+        "variant_10": "13dff3db2d12d53ca909f97fe5a3488d1737d8ee787c10434a304745f6e1db9b"
+      }
+    },
+    "InsertRail": {
+      "native_state_sha256": "8407728bc9973c2f84a35eb1806dd0f2e93077245179fdbf56df52297e989488",
+      "fixed_state_sha256": {
+        "original": "5be33a6c1f10470e626d0c60605b32c9857151bdd9039082624dff865412b567",
+        "variant_1": "10023660efd25ddd50264d63bf0a7f0acf5490f3f331ee1d797ba702b5ea2440",
+        "variant_2": "c0e4e045e7062fba3e86281f3773d304f9b468c9c66b005515eb2a8204f64610",
+        "variant_3": "a1d0594fb4fd9f36bc098418854ac962721bb74eb7314ef2c86100c66f865337",
+        "variant_4": "b9f5ef0f78e42f8b05b51edf466afabce3a386753a16adc6dcc23216a50882e8",
+        "variant_5": "b52802fbc861773c16da3e829e040933c4ea34013c8b91530f5972e463d97085",
+        "variant_6": "09dec7a9a96a9c8ffff9118fac4431bd38b049a1a79f6aca8b74a6e53e09767d",
+        "variant_7": "d815f8b5b8da4d8bf43b998280ceb477ce0c43cca8782ce2525200738f791ba1",
+        "variant_8": "01e3988688ff6b2b1be72a2971a8a6b9ca289f3df70566541c3ff576b83957de",
+        "variant_9": "cc6819e70d55b2fedeb6d8eb7eadfa1c951d7f6a75e12aa38b2b343d4ed406b0",
+        "variant_10": "c82dd1be74385a8f5f8145dc3c04747512abc49c53e6753e1cbd9f60cdceda7a"
+      }
+    },
+    "FastenScrew": {
+      "native_state_sha256": "66ddd5bb7a1a249bd9e3df26b8d381e784e84d9f2f47787d75b087c6c4e68e4f",
+      "fixed_state_sha256": {
+        "original": "45dc27a358c78f7a3f21fd82172ce0cb188bb31e0384b84930db1589c8417641",
+        "variant_1": "44edfcd7dd22a58d9dadef6c950bf19cc1a2c44016f4eecba08b1cee7f77d511",
+        "variant_2": "4dd9823d953f731ae80a9080595ecb3e56f970ad9ab4649bff0dc8165d3f5e72",
+        "variant_3": "9269f5cc45f218bbd2986c680383dc5d3c6204f8edafa0e5dac3b679d3545326",
+        "variant_4": "6d00e746bf0d4412a2166b1406a1c56688a05f1c3c1728e9ef2fc4e4c000840e",
+        "variant_5": "9fff7a201617cdf639b3691996dceb17ff0a317ea10b271c64d639bf9580d190",
+        "variant_6": "42c67850ba21eaa82a06edd99eb0c2e8ba19850fa7c54312e0fd52b8673ef360",
+        "variant_7": "933f9be9c3dba80064666286e20e1ef362eeafba18a32fc6f55fe89a3add61b6",
+        "variant_8": "c48cfa8db5013c23aa2feef8ad4a7a7116b7fa0d456b1e3eb59a481d66141e81",
+        "variant_9": "9020125036fd41cfab3d5c7bfa42b41c7ea3f05065f727028ac6951429824eee",
+        "variant_10": "c1b7469f9bce2fbfb518151afb7386e9b313305b75f6e38348339735f5b502c8"
+      }
+    }
+  },
+  "console": {
+    "process_sha256": "f0ea74e80b727cb637f949647c56479320eee3d734611a4e6dd2018ac806c85d",
+    "returncode": 0,
+    "timed_out": false,
+    "streams_sha256": {
+      "stdout.txt": "c38d9cfd14d8fac8715406453d0c8381f50694e80e47d73fd85afb3d76cd27af",
+      "stderr.txt": "6713e9083b6a25ea418d14d2aa14487bf067db3b1dcf4c8cbe7b6b898d22ddab"
+    },
+    "known_warning_types": {
+      "optional_pinocchio_unavailable": 1,
+      "agent_registration_override:panda": 1,
+      "agent_registration_override:panda_wristcam": 1
+    },
+    "unreviewed_stderr_lines": 0,
+    "runner": {
+      "file": "run_check.py",
+      "sha256": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+    }
+  }
+}

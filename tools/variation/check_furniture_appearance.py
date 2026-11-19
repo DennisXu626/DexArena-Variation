@@ -30,7 +30,7 @@ TASKS = {
     'InsertRail': 'tasks/furniture_assembly/furniture_assembly_insert_rail.py',
     'FastenScrew': 'tasks/furniture_assembly/furniture_assembly_fasten_screw.py',
 }
-SCHEMES = ('original', 'variant_1', 'variant_2')
+SCHEMES = tuple(json.loads(CATALOG.read_text(encoding='utf-8'))['schemes'])
 FIELDS = ('base_color', 'roughness', 'metallic')
 MATERIAL_FIELDS = FIELDS + ('specular', 'emission', 'ior', 'transmission',
     'transmission_roughness', 'base_color_texture', 'roughness_texture',
@@ -50,11 +50,35 @@ def git(*arguments):
         '-C', str(ROOT), *arguments], text=True, encoding='utf-8').strip()
 
 
+def protected_scheme_fields(scheme):
+    """Ignore editable PBR values while retaining the alpha and role structure."""
+    protected = {}
+    for key, value in scheme.items():
+        if key == 'label':
+            continue
+        if key == 'base_color':
+            protected[key] = value[3:]
+        elif key == 'roughness' and isinstance(value, dict):
+            protected[key] = sorted(value)
+        elif key in ('roughness', 'metallic'):
+            protected[key] = None
+        elif isinstance(value, dict):
+            protected[key] = protected_scheme_fields(value)
+        else:
+            protected[key] = value
+    return protected
+
+
 def static_check(baseline):
     catalog = read(CATALOG)
     assert catalog['version'] == 'furniture-appearance-v1'
     assert catalog['scope'] == 'material_appearance'
     assert tuple(catalog['schemes']) == SCHEMES
+    assert SCHEMES[:3] == ('original', 'variant_1', 'variant_2')
+    assert len(SCHEMES) == len(set(SCHEMES))
+    released = '56a4aec4740b7139307e01048fa0e8e6ed430f14'
+    released_index = json.loads(git('show', f'{released}:{CATALOG.relative_to(ROOT).as_posix()}'))
+    assert catalog['tasks'] == released_index['tasks']
     sources = [ADAPTER, RESET_SCOPE, IMPEDANCE, 'tools/variation/check_furniture_appearance.py', *TASKS.values()]
     for source in sources:
         ast.parse((ROOT / source).read_text(encoding='utf-8'), filename=source)
@@ -62,10 +86,23 @@ def static_check(baseline):
         path = (ROOT / entry['catalog']).resolve()
         assert path.is_relative_to(ROOT.resolve()), entry
         obj = read(path)
+        old_entry = released_index['objects'][object_id]
+        old_obj = json.loads(git('show', f"{released}:{old_entry['catalog']}"))
         assert obj['object_id'].split('.')[-1] == object_id, object_id
         assert set(entry['scheme_map']) == set(SCHEMES), object_id
         assert entry['scheme_map']['original'] == 'original', object_id
-        assert set(entry['scheme_map'].values()) <= set(obj['schemes']), object_id
+        assert len(set(entry['scheme_map'].values())) == len(SCHEMES), object_id
+        assert set(entry['scheme_map'].values()) == set(obj['schemes']), object_id
+        assert entry['catalog'] == old_entry['catalog'], object_id
+        assert all(entry['scheme_map'][key] == value for key, value in old_entry['scheme_map'].items()), object_id
+        assert all(obj['schemes'][key] == value for key, value in old_obj['schemes'].items()), object_id
+        assert {k: v for k, v in obj.items() if k != 'schemes'} == {k: v for k, v in old_obj.items() if k != 'schemes'}, object_id
+        template = old_obj['schemes'][old_entry['scheme_map']['variant_1']]
+        for scheme in SCHEMES[3:]:
+            candidate = obj['schemes'][entry['scheme_map'][scheme]]
+            assert protected_scheme_fields(candidate) == protected_scheme_fields(template), (object_id, scheme)
+            if object_id == 'flat_panel':
+                assert candidate['metallic'] == 0, scheme
         for name, scheme in obj['schemes'].items():
             if name == 'original':
                 assert scheme['mode'] == 'restore_native'
@@ -165,7 +202,7 @@ else:
         assert example['task_id'] in [f'FurnitureAssembly{task}-Sharpa-v1' for task in TASKS], path
         assert isinstance(example['furniture_appearance']['enabled'], bool), path
     return {'status': 'passed', 'baseline': baseline, 'catalog_version': catalog['version'],
-            'objects': sorted(catalog['objects']), 'protected_task_methods': unchanged,
+            'objects': sorted(catalog['objects']), 'schemes': list(SCHEMES), 'protected_task_methods': unchanged,
             'reset_scope_normalizations': scope_normalizations,
             'impedance_reset_normalizations': normalized_impedance,
             'examples': len(examples), 'physics_steps': 0, 'runtime': 'NOT TESTED'}
@@ -458,7 +495,7 @@ def controller_counters(base):
     return values
 
 
-def prime_controller_target(base):
+def prime_controller_target(base, env_id=0):
     """Set a legal nontrivial action through the real controller without stepping."""
     controller = base.agent.controller
     space = controller.single_action_space
@@ -470,7 +507,7 @@ def prime_controller_target(base):
     movable = ((high - low) > 1e-3).nonzero().flatten()
     assert len(movable), 'No movable controller action dimension'
     column = int(movable[0])
-    action[0, column] += torch.minimum((high[column] - low[column]) * 0.1,
+    action[env_id, column] += torch.minimum((high[column] - low[column]) * 0.1,
                                      torch.tensor(0.05, device=base.device))
     assert ((action >= low) & (action <= high)).all()
     before = snapshot(base)
@@ -489,13 +526,13 @@ def prime_controller_target(base):
     physical_after = {path: after[path] for path in physical_before}
     assert not state_changes(physical_before, physical_after), 'Setting controller action changed physical state'
     targets = joint_targets(base)['robot']['position_target']
-    assert not torch.equal(targets[0], base.agent.robot.get_qpos()[0]), 'Controller target is trivial'
+    assert not torch.equal(targets[env_id], base.agent.robot.get_qpos()[env_id]), 'Controller target is trivial'
     effects, nontrivial = {}, {}
 
     def describe(controller, path):
         config = getattr(controller, 'config', None)
         if hasattr(controller, '_target_qpos'):
-            nontrivial[path] = not torch.equal(controller._target_qpos[0], controller.qpos[0])
+            nontrivial[path] = not torch.equal(controller._target_qpos[env_id], controller.qpos[env_id])
         if hasattr(config, 'gpu_apply'):
             effects[path] = {'type': type(controller).__name__,
                 'native_action_gpu_qf_apply': bool(base.scene.gpu_sim_enabled and config.gpu_apply),
@@ -506,14 +543,14 @@ def prime_controller_target(base):
     describe(controller, 'controller')
     assert nontrivial and all(nontrivial.values()), 'A controller target still equals its current joint positions'
     if any(row['type'] == 'FrankaJointImpedanceController' for row in effects.values()):
-        assert torch.count_nonzero(joint_targets(base)['robot']['qf'][0]), 'Impedance force precondition is trivial'
+        assert torch.count_nonzero(joint_targets(base)['robot']['qf'][env_id]), 'Impedance force precondition is trivial'
     return {'method': 'agent.set_action, including native impedance qf writes; native target apply/fetch; no step',
             'native_controller_effects': effects,
-            'nontrivial_targets_env0': nontrivial,
+            f'nontrivial_targets_env{env_id}': nontrivial,
             'action': plain(action), 'physics_steps': 0, 'physical_state_unchanged': True,
-            'controller_env0': controller_state(base, 0),
-            'generalized_forces_env0': plain(joint_targets(base)['robot']['qf'][0]),
-            'position_targets_env0': plain(targets[0])}
+            f'controller_env{env_id}': controller_state(base, env_id),
+            f'generalized_forces_env{env_id}': plain(joint_targets(base)['robot']['qf'][env_id]),
+            f'position_targets_env{env_id}': plain(targets[env_id])}
 
 
 def task_rng(base, env_id):
@@ -652,7 +689,7 @@ def selected_reset_check(env, seed, options, output, prefix, report):
         dump(output / f'{prefix}.json', report)
 
 
-def native_local_control(env, info, output, reset, capture, step):
+def native_local_control(env, info, output, reset, capture, step, *, bidirectional=False):
     """Separate capture synchronization from unselected-environment reset effects."""
     base = env.unwrapped
     initial = snapshot(base)
@@ -663,42 +700,46 @@ def native_local_control(env, info, output, reset, capture, step):
     diagnostic = {'first_capture_state_changes': state_changes(initial, first),
                   'repeat_capture_state_changes': state_changes(first, repeated),
                   'repeat_capture_pixel_changes': image_changes(first_images, repeat_images, output, 'native_capture')}
+    if bidirectional:
+        diagnostic['repeat_capture_pixel_changes_env1'] = image_changes(first_images, repeat_images, output, 'native_capture', env_id=1)
+        assert all(not item['changed_values'] for item in diagnostic['repeat_capture_pixel_changes_env1'].values())
     torch.save({'before_capture': initial, 'after_first_capture': first,
                 'after_repeat_capture': repeated}, output / 'native_capture_states.pt')
     save_image_pairs(first_images, repeat_images, output, 'native_capture')
     dump(output / 'native_capture_diagnostic.json', diagnostic)
     rounds = []
-    for index in range(2):
-        primed = prime_controller_target(base)
+    for index, selected in enumerate((1, 0) if bidirectional else (1, 1)):
+        frozen = 1 - selected
+        primed = prime_controller_target(base, frozen)
         if index == 1:
             info = step(primed)
         before_images = capture(env, info)
         before_state, before_materials = snapshot(base), materials(base)
-        before_controller = controller_state(base, 0)
+        before_controller = controller_state(base, frozen)
         before_counters = controller_counters(base)
-        before_rng, before_physical = task_rng(base, 0), physical(base)
-        _, info = reset(options={'env_idx': torch.tensor([1], device=base.device)})
+        before_rng, before_physical = task_rng(base, frozen), physical(base)
+        _, info = reset(options={'env_idx': torch.tensor([selected], device=base.device)})
         reset_state = snapshot(base)
         after_images = capture(env, info)
         after_state, after_materials = snapshot(base), materials(base)
-        after_controller = controller_state(base, 0)
+        after_controller = controller_state(base, frozen)
         after_counters = controller_counters(base)
-        after_rng, after_physical = task_rng(base, 0), physical(base)
-        row = {'selected': [1], 'appearance': 'disabled', 'physics_steps': 0,
+        after_rng, after_physical = task_rng(base, frozen), physical(base)
+        row = {'selected': [selected], 'appearance': 'disabled', 'physics_steps': 0,
             'controller_precondition': primed,
             'precondition_control_steps': int(index == 1),
             'precondition_physics_steps': base._sim_steps_per_control if index == 1 else 0,
-            'before_controller_env0': before_controller, 'after_controller_env0': after_controller,
+            f'before_controller_env{frozen}': before_controller, f'after_controller_env{frozen}': after_controller,
             'before_shared_controller_counters': before_counters, 'after_shared_controller_counters': after_counters,
             'controller_unchanged': before_controller == after_controller,
-            'reset_before_capture_state_changes': state_changes(before_state, reset_state, [0]),
-            'capture_state_changes': state_changes(reset_state, after_state, [0]),
-            'state_changes': state_changes(before_state, after_state, [0]),
-            'pixel_changes': image_changes(before_images, after_images, output, f'native_local_{index}'),
+            'reset_before_capture_state_changes': state_changes(before_state, reset_state, [frozen]),
+            'capture_state_changes': state_changes(reset_state, after_state, [frozen]),
+            'state_changes': state_changes(before_state, after_state, [frozen]),
+            'pixel_changes': image_changes(before_images, after_images, output, f'native_local_{index}', env_id=frozen),
             'before_materials': before_materials, 'after_materials': after_materials,
-            'materials_env0_unchanged': before_materials[0] == after_materials[0],
+            f'materials_env{frozen}_unchanged': before_materials[frozen] == after_materials[frozen],
             'physical_unchanged': before_physical == after_physical,
-            'before_task_rng_env0': before_rng, 'after_task_rng_env0': after_rng,
+            f'before_task_rng_env{frozen}': before_rng, f'after_task_rng_env{frozen}': after_rng,
             'task_rng_unchanged': before_rng == after_rng}
         torch.save({'before': before_state, 'after_reset_before_capture': reset_state,
                     'after_capture': after_state}, output / f'native_local_{index}.pt')
@@ -786,12 +827,12 @@ def run_task(task, args, output, result):
         native_images = capture_images(env, raw_info) if gpu else None
         if gpu:
             result['stage'] = 'native local reset control'
-            control = native_local_control(env, raw_info, output, checked_reset, capture_images, step_once)
+            control = native_local_control(env, raw_info, output, checked_reset, capture_images, step_once, bidirectional=True)
             result['checks']['native_local_reset_control'] = control
             for row in control['rounds']:
                 assert not row['state_changes'], 'Native unselected state changed'
                 assert not any(item['changed_values'] for item in row['pixel_changes'].values()), 'Native unselected RGB changed'
-                assert row['materials_env0_unchanged'] and row['physical_unchanged']
+                assert row[f"materials_env{1 - row['selected'][0]}_unchanged"] and row['physical_unchanged']
                 assert row['task_rng_unchanged'], 'Native unselected task RNG changed'
                 assert row['controller_unchanged'], 'Native unselected controller state changed'
         close()
@@ -802,6 +843,7 @@ def run_task(task, args, output, result):
         assert materials(base) == native and physical(base) == properties and info == native_info
         result['checks']['explicit_disabled'] = 'passed'
         close()
+        fixed_fingerprints = [set() for _ in range(num_envs)]
         for scheme in SCHEMES:
             result['stage'] = 'fixed ' + scheme
             base, info, raw_info = reset({'enabled': True, 'scheme_id': scheme})
@@ -825,11 +867,31 @@ def run_task(task, args, output, result):
                     else:
                         assert any(row['changed_values'] for name, row in differences.items()
                                    if not name.startswith('human')), 'Candidate RGB did not change'
+                for index in range(num_envs):
+                    fingerprint = tuple(hashlib.sha256(pixels[index].tobytes()).hexdigest()
+                        for name, pixels in sorted(observed_images.items()) if not name.startswith('human'))
+                    assert fingerprint not in fixed_fingerprints[index], f'{scheme}: duplicate task-camera RGB'
+                    fixed_fingerprints[index].add(fingerprint)
                 for camera, pixels in observed_images.items():
                     for index in range(num_envs):
                         Image.fromarray(pixels[index, ..., :3]).save(output / f'{scheme}_{camera}_env{index}.png')
                 assert records == base._furniture_appearance.records
             result['checks'][scheme] = {'status': 'passed', 'materials': measured, 'records': records}
+            if scheme in SCHEMES[3:]:
+                result['stage'] = 'restore original after ' + scheme
+                _, raw_info = checked_reset(seed=7, options={'furniture_appearance': {'scheme_id': 'original'}})
+                assert verify(base, ['original'] * num_envs, native) == native
+                assert not state_changes(baseline, snapshot(base)) and physical(base) == properties
+                restoration = {'materials_match_native': True, 'physical_state_match_native': True}
+                if gpu:
+                    restored_images = capture_images(env, raw_info)
+                    restoration['pixel_changes'] = {
+                        str(i): image_changes(native_images, restored_images, output, f'restored_{scheme}', env_id=i)
+                        for i in range(num_envs)}
+                    assert all(not row['changed_values'] for values in restoration['pixel_changes'].values()
+                               for row in values.values()), f'{scheme}: restored original RGB differs'
+                    save_image_pairs(observed_images, restored_images, output, f'restored_{scheme}')
+                result['checks'][scheme]['original_restoration'] = restoration
             close()
         if gpu:
             result['stage'] = 'original RGB restoration'
@@ -904,7 +966,7 @@ def run_task(task, args, output, result):
             close()
             base, info, _ = reset({'enabled': True, 'scheme_id': 'original'}, detail=False)
             detail_trace = []
-            for scheme in ('original', 'variant_1', 'variant_2', 'original'):
+            for scheme in (*SCHEMES, 'original'):
                 if detail_trace:
                     _, raw_info = checked_reset(seed=7, options={'furniture_appearance': {'scheme_id': scheme}})
                     info = plain(raw_info)
@@ -921,67 +983,73 @@ def run_task(task, args, output, result):
                 'reason': 'CPU uses one environment; no GPU batching or RGB isolation claim'}
         else:
             result['stage'] = 'two-environment local reset'
-            base, _, raw_info = reset({'enabled': True, 'scheme_id': 'variant_1',
-                'per_env': {'1': {'scheme_id': 'variant_2'}}})
-            verify(base, ['variant_1', 'variant_2'], native)
-            for index, scheme in enumerate(('original', 'variant_1')):
+            initial = [SCHEMES[-1], SCHEMES[3] if len(SCHEMES) > 3 else SCHEMES[-2]]
+            base, _, raw_info = reset({'enabled': True, 'scheme_id': initial[0],
+                'per_env': {'1': {'scheme_id': initial[1]}}})
+            verify(base, initial, native)
+            expected = initial.copy()
+            for index, selected in enumerate((1, 0)):
+                frozen = 1 - selected
+                scheme = 'original'
                 result['stage'] = f'two-environment local reset {index}'
                 adapter = base._furniture_appearance
-                primed = prime_controller_target(base)
+                primed = prime_controller_target(base, frozen)
                 if index == 1:
                     raw_info = step_once(primed)
                 before_state, before_materials = snapshot(base), materials(base)
-                before_controller = controller_state(base, 0)
+                before_controller = controller_state(base, frozen)
                 before_counters = controller_counters(base)
                 before_records = copy.deepcopy(adapter.records)
-                before_rng = copy.deepcopy(adapter.rng[0].bit_generator.state)
-                before_task_rng = task_rng(base, 0)
+                before_rng = copy.deepcopy(adapter.rng[frozen].bit_generator.state)
+                before_task_rng = task_rng(base, frozen)
                 before_images = capture_images(env, raw_info)
-                request = {'scheme_id': 'original'} if index == 0 else {
-                    'scheme_id': 'variant_2', 'per_env': {'1': {'scheme_id': 'variant_1'}}}
-                _, raw_info = checked_reset(options={'env_idx': torch.tensor([1], device=base.device),
+                request = {'scheme_id': scheme} if index == 0 else {
+                    'scheme_id': initial[0], 'per_env': {str(selected): {'scheme_id': scheme}}}
+                _, raw_info = checked_reset(options={'env_idx': torch.tensor([selected], device=base.device),
                                                 'furniture_appearance': request})
                 after_images = capture_images(env, raw_info)
                 after_state, after_materials = snapshot(base), materials(base)
-                after_controller = controller_state(base, 0)
+                after_controller = controller_state(base, frozen)
                 after_counters = controller_counters(base)
-                after_rng = copy.deepcopy(adapter.rng[0].bit_generator.state)
-                after_task_rng = task_rng(base, 0)
-                changes = state_changes(before_state, after_state, [0])
-                pixels = image_changes(before_images, after_images, output, f'local_{index}')
+                after_rng = copy.deepcopy(adapter.rng[frozen].bit_generator.state)
+                after_task_rng = task_rng(base, frozen)
+                changes = state_changes(before_state, after_state, [frozen])
+                pixels = image_changes(before_images, after_images, output, f'local_{index}', env_id=frozen)
                 selected_pixels = image_changes(before_images, after_images, output,
-                                                f'local_{index}', env_id=1)
-                row = {'selected': [1], 'scheme_id': scheme, 'state_changes': changes,
+                                                f'local_{index}', env_id=selected)
+                row = {'selected': [selected], 'scheme_id': scheme, 'state_changes': changes,
                        'controller_precondition': primed,
                        'precondition_control_steps': int(index == 1),
                        'precondition_physics_steps': base._sim_steps_per_control if index == 1 else 0,
-                       'before_controller_env0': before_controller, 'after_controller_env0': after_controller,
+                       f'before_controller_env{frozen}': before_controller, f'after_controller_env{frozen}': after_controller,
                        'before_shared_controller_counters': before_counters, 'after_shared_controller_counters': after_counters,
                        'controller_unchanged': before_controller == after_controller,
                        'pixel_changes': pixels, 'selected_pixel_changes': selected_pixels,
                        'before_materials': before_materials,
                        'after_materials': after_materials, 'before_records': before_records,
                        'after_records': copy.deepcopy(adapter.records),
-                       'before_appearance_rng_env0': before_rng, 'after_appearance_rng_env0': after_rng,
-                       'before_task_rng_env0': before_task_rng, 'after_task_rng_env0': after_task_rng,
+                       f'before_appearance_rng_env{frozen}': before_rng, f'after_appearance_rng_env{frozen}': after_rng,
+                       f'before_task_rng_env{frozen}': before_task_rng, f'after_task_rng_env{frozen}': after_task_rng,
                        'appearance_rng_unchanged': before_rng == after_rng,
                        'task_rng_unchanged': before_task_rng == after_task_rng}
                 torch.save({'before': before_state, 'after': after_state}, output / f'local_{index}.pt')
                 dump(output / f'local_{index}.json', row)
                 save_image_pairs(before_images, after_images, output, f'local_{index}')
                 result['checks'][f'local_reset_{index}'] = row
-                verify(base, ['variant_1', scheme], native)
+                expected[selected] = scheme
+                verify(base, expected, native)
+                assert after_materials[selected] == native[selected]
                 assert not changes and not any(value['changed_values'] for value in pixels.values())
                 assert any(value['changed_values'] for name, value in selected_pixels.items()
                            if not name.startswith('human')), 'Selected environment RGB did not change'
-                assert before_materials[0] == after_materials[0] and physical(base) == properties
+                assert before_materials[frozen] == after_materials[frozen] and physical(base) == properties
                 assert before_rng == after_rng, 'Unselected appearance RNG changed'
                 assert before_task_rng == after_task_rng, 'Unselected task RNG changed'
                 assert before_controller == after_controller, 'Unselected controller state changed'
-                assert [record for record in before_records if record['env_idx'] == 0] == [
-                    record for record in adapter.records if record['env_idx'] == 0]
+                assert [record for record in before_records if record['env_idx'] == frozen] == [
+                    record for record in adapter.records if record['env_idx'] == frozen]
                 assert adapter.records[:len(before_records)] == before_records
-                assert len(adapter.records) == len(before_records) + 1 and adapter.records[-1]['env_idx'] == 1
+                assert len(adapter.records) == len(before_records) + 1 and adapter.records[-1]['env_idx'] == selected
         result.update(status='diagnostic_passed' if native_readback else 'passed', stage='complete')
     finally:
         handling_error = sys.exc_info()[0] is not None
@@ -1079,7 +1147,7 @@ def main():
             'planned_control_steps_per_task': 2 if args.sim_backend == 'physx_cuda' else 0,
             'physics_steps': 'see results.json',
             'task_ids': [f'FurnitureAssembly{task}-Sharpa-v1' for task in selected],
-            'catalog_version': catalog['version'], 'job_id': os.environ.get('SLURM_JOB_ID'),
+            'catalog_version': catalog['version'], 'schemes': list(SCHEMES), 'job_id': os.environ.get('SLURM_JOB_ID'),
             'versions': {name: metadata.version(name) for name in ('torch', 'sapien', 'mani_skill', 'gymnasium', 'numpy')},
             'files': {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in files}}
         dump(args.output / 'manifest.json', manifest)

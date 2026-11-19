@@ -7,9 +7,11 @@ import re
 import shutil
 
 TASKS = ('LayFlatPanel', 'InsertRail', 'FastenScrew')
-SCHEMES = ('original', 'variant_1', 'variant_2')
 ROOT = next(parent for parent in Path(__file__).resolve().parents
             if (parent / 'tasks/furniture_assembly/appearance.py').is_file())
+CATALOG = ROOT / 'tasks/assets/variation/furniture_assembly/v1/catalog.json'
+SCHEMES = tuple(json.loads(CATALOG.read_text(encoding='utf-8'))['schemes'])
+CPU_SCHEMES = ('native_off', 'native_repeat', *SCHEMES)
 
 
 def require(condition, message):
@@ -148,7 +150,7 @@ def console_check(directory, run_directory, results, sdk_record):
     command = process['command']
     require((ROOT / command[command.index('--output') + 1]).resolve() == run_directory.resolve(),
             'Console logs belong to another capture')
-    runner = (ROOT / command[1]).resolve(strict=True)
+    runner = (ROOT / next(part for part in command[1:] if part.endswith('.py'))).resolve(strict=True)
     require(runner.name == 'run_check.py' and sdk_record['schema'] == 'portable-sdk-build-receipt'
             and sha(runner) == sdk_record['actual_toolchain']['recipe_sha256']['run_check.py'],
             'Console runner does not match the built SDK recipe')
@@ -237,46 +239,110 @@ def selected_check(directory, row):
         'raw_json_sha256': sha(directory / row['evidence']), 'raw_state_sha256': sha(path)}
 
 
-def local_check(row, native=False):
-    require(row['selected'] == [1] and not row['state_changes']
+def local_check(row, directory, prefix, native=False):
+    import numpy as np
+    from PIL import Image
+    import torch
+
+    require(row['selected'] in ([0], [1]), 'Invalid local reset direction')
+    selected = row['selected'][0]
+    frozen = 1 - selected
+    raw_pt = directory / f'{prefix}.pt'
+    states = torch.load(raw_pt, map_location='cpu', weights_only=True)
+    after_state = 'after_capture' if native else 'after'
+    for stage in (('after_reset_before_capture', after_state) if native else (after_state,)):
+        exact_state(states['before'], states[stage], env=frozen)
+    require(read(directory / f'{prefix}.json') == row, 'Local reset report differs from on-disk evidence')
+    for camera in row['pixel_changes']:
+        with Image.open(directory / f'{prefix}_{camera}_env{frozen}.png') as image:
+            frames = np.array(image)
+        require(frames.shape[1] % 2 == 0 and np.array_equal(*np.split(frames, 2, axis=1)),
+                'Unselected raw before/after RGB differs')
+    require(not row['state_changes']
             and row['controller_unchanged'] and row['task_rng_unchanged']
             and zero_pixels(row['pixel_changes']), 'Unselected isolation failed')
-    require(all(row['controller_precondition']['nontrivial_targets_env0'].values()),
+    require(all(row['controller_precondition'][f'nontrivial_targets_env{frozen}'].values()),
             'Controller precondition is trivial')
     precondition = row['controller_precondition']
     require(precondition['physics_steps'] == 0 and precondition['physical_state_unchanged']
-            and any(value != 0 for value in precondition['generalized_forces_env0']),
+            and any(value != 0 for value in precondition[f'generalized_forces_env{frozen}']),
             'Controller precondition lacks real force or changes physical state')
-    require(row['before_controller_env0'] == row['after_controller_env0'],
+    require(row[f'before_controller_env{frozen}'] == row[f'after_controller_env{frozen}'],
             'Unselected controller changed')
+    require(row[f'before_task_rng_env{frozen}'] == row[f'after_task_rng_env{frozen}'], 'Unselected task RNG changed')
     if native:
-        require(row['materials_env0_unchanged'] and row['physical_unchanged'],
+        require(row[f'materials_env{frozen}_unchanged'] and row['physical_unchanged'],
                 'Native physical/material isolation failed')
     else:
-        require(row['before_materials'][0] == row['after_materials'][0]
-                and row['appearance_rng_unchanged'], 'Unselected appearance changed')
+        require(row['before_materials'][frozen] == row['after_materials'][frozen]
+                and row['appearance_rng_unchanged']
+                and row[f'before_appearance_rng_env{frozen}'] == row[f'after_appearance_rng_env{frozen}'], 'Unselected appearance changed')
         require(changed_task_pixels(row['selected_pixel_changes']), 'Selected RGB is stale')
-        before = [r for r in row['before_records'] if r['env_idx'] == 0]
-        after = [r for r in row['after_records'] if r['env_idx'] == 0]
+        before = [r for r in row['before_records'] if r['env_idx'] == frozen]
+        after = [r for r in row['after_records'] if r['env_idx'] == frozen]
         require(before == after and row['after_records'][:-1] == row['before_records']
-                and row['after_records'][-1]['env_idx'] == 1, 'Episode records changed incorrectly')
-    return {'selected': [1], 'precondition_control_steps': row['precondition_control_steps'],
+                and row['after_records'][-1]['env_idx'] == selected, 'Episode records changed incorrectly')
+    return {'selected': [selected], 'unselected_env_idx': frozen, 'raw_state_sha256': sha(raw_pt),
+        'raw_json_sha256': sha(directory / f'{prefix}.json'), 'precondition_control_steps': row['precondition_control_steps'],
         'precondition_physics_steps': row['precondition_physics_steps'],
-        'controller_precondition': row['controller_precondition']['nontrivial_targets_env0'],
+        'controller_precondition': row['controller_precondition'][f'nontrivial_targets_env{frozen}'],
         'precondition_action_sha256': canonical_sha(precondition['action']),
-        'precondition_max_abs_force_env0': max(abs(v) for v in precondition['generalized_forces_env0']),
+        'precondition_max_abs_force': max(abs(v) for v in precondition[f'generalized_forces_env{frozen}']),
         'shared_controller_counters': {'before': row['before_shared_controller_counters'],
                                        'after': row['after_shared_controller_counters']},
         'unselected': {'state_changed_fields': 0, 'controller_changed': False,
             'materials_changed': False, 'task_rng_changed': False,
-            'controller_sha256': canonical_sha(row['before_controller_env0']),
-            'materials_sha256': canonical_sha(row['before_materials'][0]),
-            'task_rng_sha256': canonical_sha(row['before_task_rng_env0']),
+            'controller_sha256': canonical_sha(row[f'before_controller_env{frozen}']),
+            'materials_sha256': canonical_sha(row['before_materials'][frozen]),
+            'task_rng_sha256': canonical_sha(row[f'before_task_rng_env{frozen}']),
             'pixel_changes': pixel_metrics(row['pixel_changes'])},
         **({} if native else {'scheme_id': row['scheme_id'],
             'appearance_rng_changed': False, 'unselected_episode_records_changed': False,
-            'appearance_rng_sha256': canonical_sha(row['before_appearance_rng_env0']),
+            'appearance_rng_sha256': canonical_sha(row[f'before_appearance_rng_env{frozen}']),
             'selected_pixel_changes': pixel_metrics(row['selected_pixel_changes'])})}
+
+
+def fixed_rgb_check(directory, fixed):
+    import numpy as np
+    from PIL import Image
+    by_env = {0: set(), 1: set()}
+    for scheme in SCHEMES:
+        for env in by_env:
+            fingerprints = []
+            for camera in sorted(fixed[scheme]['pixels_vs_native'][str(env)]):
+                with Image.open(directory / f'{scheme}_{camera}_env{env}.png') as stream:
+                    frame = np.array(stream)
+                if not camera.startswith('human'):
+                    fingerprints.append(hashlib.sha256(frame.tobytes()).hexdigest())
+                if scheme == 'original':
+                    with Image.open(directory / f'native_capture_{camera}_env{env}.png') as stream:
+                        pair = np.array(stream)
+                    require(np.array_equal(pair, np.concatenate((frame, frame), axis=1)),
+                            f'{camera}/env{env}: original RGB differs from native repeat')
+                if scheme in SCHEMES[3:]:
+                    with Image.open(directory / f'restored_{scheme}_{camera}_env{env}.png') as stream:
+                        pair = np.array(stream)
+                    with Image.open(directory / f'original_{camera}_env{env}.png') as stream:
+                        original = np.array(stream)
+                    require(np.array_equal(pair, np.concatenate((frame, original), axis=1)),
+                            f'{scheme}/{camera}/env{env}: raw restoration RGB differs')
+            fingerprint = tuple(fingerprints)
+            require(fingerprint and fingerprint not in by_env[env], 'Fixed candidate camera RGB is not distinct')
+            by_env[env].add(fingerprint)
+    return {str(index): len(values) for index, values in by_env.items()}
+
+
+def measured_gpu_step(directory, prefix, after_key):
+    import torch
+
+    first = torch.load(directory / f'{prefix}_0.pt', map_location='cpu', weights_only=True)[after_key]
+    second = torch.load(directory / f'{prefix}_1.pt', map_location='cpu', weights_only=True)['before']
+    require(torch.equal(second['/elapsed_steps'], first['/elapsed_steps'] + 1),
+            'GPU isolation did not exercise a control step in both environments')
+    qpos = '/joint_targets/robot/qpos'
+    motion = (second[qpos] - first[qpos]).abs().amax(dim=1)
+    require(bool(torch.all(torch.isfinite(motion) & (motion > 0))), 'GPU control step did not move both robots')
+    return motion.tolist()
 
 
 def task_check(directory, task):
@@ -289,7 +355,7 @@ def task_check(directory, task):
     require(checks['default_disabled'] == checks['explicit_disabled'] ==
             checks['selection_precedence'] == 'passed', 'Interface checks failed')
     selected = [selected_check(directory, row) for row in checks['selected_reset_state']]
-    require(len(selected) >= 22, 'Selected reset coverage is incomplete')
+    require(len(selected) >= 22 + 2 * len(SCHEMES[3:]), 'Selected reset coverage is incomplete')
     fixed = {}
     for scheme in SCHEMES:
         require(checks[scheme]['status'] == 'passed', 'Fixed scheme failed')
@@ -300,6 +366,13 @@ def task_check(directory, task):
         fixed[scheme] = {'materials_sha256': canonical_sha(checks[scheme]['materials']),
             'records': checks[scheme]['records'],
             'pixels_vs_native': {i: pixel_metrics(v) for i, v in pixels.items()}}
+        if scheme in SCHEMES[3:]:
+            restored = checks[scheme]['original_restoration']
+            require(restored['materials_match_native'] is True and restored['physical_state_match_native'] is True
+                    and set(restored['pixel_changes']) == {'0', '1'} and all(zero_pixels(v) for v in restored['pixel_changes'].values()),
+                    'New candidate did not restore original materials, physical state or RGB')
+            fixed[scheme]['restoration_pixels'] = {i: pixel_metrics(v) for i, v in restored['pixel_changes'].items()}
+    distinct = fixed_rgb_check(directory, fixed)
     restoration = checks['original_rgb_restoration']
     require(restoration['status'] == 'passed'
             and all(zero_pixels(v) for v in restoration['pixel_changes'].values()),
@@ -307,32 +380,103 @@ def task_check(directory, task):
     native = checks['native_local_reset_control']
     require(len(native['rounds']) == 2
             and [row['precondition_control_steps'] for row in native['rounds']] == [0, 1]
-            and [checks[f'local_reset_{i}']['precondition_control_steps'] for i in range(2)] == [0, 1],
+            and [checks[f'local_reset_{i}']['precondition_control_steps'] for i in range(2)] == [0, 1]
+            and [row['selected'] for row in native['rounds']] == [[1], [0]]
+            and [checks[f'local_reset_{i}']['selected'] for i in range(2)] == [[1], [0]],
             'Missing pre/post-step isolation cases')
     capture = native['capture_diagnostic']
     require(not capture['first_capture_state_changes'] and not capture['repeat_capture_state_changes']
-            and zero_pixels(capture['repeat_capture_pixel_changes']), 'Capture changes state/RGB')
+            and zero_pixels(capture['repeat_capture_pixel_changes'])
+            and zero_pixels(capture['repeat_capture_pixel_changes_env1']), 'Capture changes state/RGB')
+    capture_path = directory / 'native_capture_states.pt'
+    import torch
+    states = torch.load(capture_path, map_location='cpu', weights_only=True)
+    exact_state(states['before_capture'], states['after_first_capture'])
+    exact_state(states['after_first_capture'], states['after_repeat_capture'])
     physical = read(directory / 'native_physical.json')
     return {'task_id': f"FurnitureAssembly{task['task']}-Sharpa-v1", 'status': 'passed',
         'control_steps': task['control_steps'], 'physics_steps': task['physics_steps'],
         'native_physical': {'file_sha256': sha(directory / 'native_physical.json'),
             'canonical_sha256': canonical_sha(physical),
             'entities_per_env': [len(scene) for scene in physical['scenes']]},
-        'fixed': fixed, 'selected_reset_checks': selected,
+        'fixed': fixed, 'distinct_fixed_task_camera_schemes': distinct, 'selected_reset_checks': selected,
+        'native_capture_state_sha256': sha(capture_path),
+        'gpu_step_maximum_joint_displacement_by_env': {
+            'native_off': measured_gpu_step(directory, 'native_local', 'after_capture'),
+            'appearance': measured_gpu_step(directory, 'local', 'after')},
         'original_rgb_restoration': {i: pixel_metrics(v) for i, v in restoration['pixel_changes'].items()},
         'random_reproducibility': checks['random_reproducibility'], 'selection_precedence': 'passed',
-        'native_local_reset': [local_check(row, native=True) for row in native['rounds']],
-        'appearance_local_reset': [local_check(checks[f'local_reset_{i}']) for i in range(2)]}
+        'native_local_reset': [local_check(row, directory, f'native_local_{i}', native=True)
+                               for i, row in enumerate(native['rounds'])],
+        'appearance_local_reset': [local_check(checks[f'local_reset_{i}'], directory, f'local_{i}') for i in range(2)]}
+
+
+def exact_state(left, right, env=None):
+    import torch
+
+    require(left and left.keys() == right.keys(), 'State field coverage differs')
+    for field, value in left.items():
+        actual = right[field]
+        require(value.shape == actual.shape and value.dtype == actual.dtype, f'State signature differs: {field}')
+        if env is not None:
+            require(value.ndim and value.shape[0] == 2, f'State lacks a two-environment axis: {field}')
+            value, actual = value[env], actual[env]
+        require(torch.equal(value, actual) and bool(torch.isfinite(value).all()), f'State changed or is nonfinite: {field}')
+
+
+def cpu_interface_check(root, gpu_identity, sdk_record, expected_native):
+    import torch
+
+    results = read(root / 'results.json')
+    manifest = read(root / 'manifest.json')
+    sdk = read(root / 'private_sdk.json')
+    require(results['status'] == 'passed' and results['source_hashes_unchanged'] is True
+            and results['control_steps'] == results['physics_steps'] == 0 and manifest['sim_backend'] == 'physx_cpu'
+            and manifest['num_envs'] == 1 and manifest['capture_path'] == 'not captured', 'CPU interface receipt scope differs')
+    require(manifest['files'] == gpu_identity['files'] and tuple(manifest['schemes']) == SCHEMES,
+            'CPU interface input identity differs from CUDA')
+    require(sdk['binaries_unchanged'] is True and sdk['before'] == sdk['after']
+            and sdk['artifact_sha256'] == sdk_record['artifact_sha256']
+            and sdk['version'] == manifest['versions']['sapien'] == sdk_record['version']
+            and {name: row['sha256'] for name, row in sdk['before'].items()} == expected_native,
+            'CPU interface did not use the verified SDK')
+    require([row['task'] for row in results['tasks']] == list(TASKS), 'CPU interface task coverage differs')
+    checked = {}
+    for row in results['tasks']:
+        task = row['task']
+        directory = root / task
+        checks = row['checks']
+        require(row['status'] == 'passed' and row['stage'] == 'complete'
+                and all(checks[name] == 'passed' for name in ('default_disabled', 'explicit_disabled', 'selection_precedence'))
+                and checks['minimal_visuals']['schemes'] == [*SCHEMES, 'original'], 'CPU interface checks are incomplete')
+        baseline = torch.load(directory / 'native_state.pt', map_location='cpu', weights_only=True)
+        states = {}
+        for name in SCHEMES:
+            state_path = directory / f'{name}_state.pt'
+            exact_state(baseline, torch.load(state_path, map_location='cpu', weights_only=True))
+            require(checks[name]['status'] == 'passed' and checks[name]['records'][-1]['scheme_id'] == name,
+                    f'{task}/{name}: CPU interface materials or episode record failed')
+            if name in SCHEMES[3:]:
+                require(checks[name]['original_restoration'] == {'materials_match_native': True, 'physical_state_match_native': True},
+                        f'{task}/{name}: CPU interface original restoration failed')
+            states[name] = sha(state_path)
+        checked[task] = {'native_state_sha256': sha(directory / 'native_state.pt'), 'fixed_state_sha256': states}
+    return {'status': 'passed', 'scope': results['scope'], 'manifest_sha256': sha(root / 'manifest.json'),
+            'results_sha256': sha(root / 'results.json'), 'private_sdk_sha256': sha(root / 'private_sdk.json'),
+            'tasks': checked}
 
 
 def cpu_check(root, gpu_identity):
+    import numpy as np
     import torch
+    expected_control = len(TASKS) * len(CPU_SCHEMES) * 60
     report = read(root / 'summary.json')
     require(report['status'] == 'passed' and report['source_hashes_unchanged']
             and report.get('control_steps_per_run') == 60
-            and report.get('total_control_steps') == 720
+            and report.get('total_control_steps') == expected_control
+            and report.get('completed_runs') == len(TASKS) * len(CPU_SCHEMES)
             and report.get('counts_complete') is True and report.get('unknown_runs') == [],
-            'Complete new 720-step CPU receipt required')
+            'CPU receipt must cover all catalog schemes and two native baselines')
     require(set(report['tasks']) == set(TASKS), 'CPU receipt lacks a task')
     source = report['source_sha256']
     for name, value in gpu_identity['files'].items():
@@ -342,7 +486,7 @@ def cpu_check(root, gpu_identity):
             'CPU dynamics tool must be deliverable')
     compact = {'scope': 'Single CPU environment; no RGB/GPU or task-completion claim',
         'summary_sha256': sha(root / 'summary.json'), 'seed': report['seed'],
-        'control_steps_per_run': 60, 'control_steps': 720,
+        'control_steps_per_run': 60, 'control_steps': expected_control,
         'physics_steps': report['total_physics_steps'], 'source_sha256': source,
         'source_lf_sha256': files_lf_identity(source),
         'source_hash_semantics': 'source_sha256 retains raw capture bytes; source_lf_sha256 verifies those bytes before UTF-8 .py/.json CRLF-to-LF normalization only.',
@@ -358,19 +502,30 @@ def cpu_check(root, gpu_identity):
         compact['command'] = receipt['command']
     control_total, physics_total = 0, 0
     for name in TASKS:
-        runs, action_hash, baseline = {}, None, None
-        for scheme in ('native_off', *SCHEMES):
+        runs, baseline = {}, None
+        require(set(report['tasks'][name]) == set(CPU_SCHEMES), 'Wrong CPU scheme coverage')
+        actions_path = root / name / 'actions.npy'
+        action_hash = sha(actions_path)
+        actions = np.load(actions_path, allow_pickle=False)
+        require(actions.dtype == np.float32 and actions.shape[0] == 60 and np.isfinite(actions).all(), 'Invalid CPU actions')
+        for scheme in CPU_SCHEMES:
             directory = root / name / scheme
             run = read(directory / 'run.json')
-            require(run['status'] == 'completed' and run['source_sha256'] == source,
+            require(run['status'] == 'completed' and run['source_sha256'] == source
+                    and run['task'] == name and run['scheme'] == scheme,
                     'CPU worker failed or source changed')
+            appearance = run['appearance_config']
+            require((appearance['enabled'] is False if scheme in ('native_off', 'native_repeat') else
+                     appearance['enabled'] is True and appearance['scheme_id'] == scheme), 'CPU scheme configuration differs')
             require(run['constructor_kwargs']['num_envs'] == 1
                     and run['constructor_kwargs']['sim_backend'] == 'physx_cpu'
                     and run['control_steps'] == 60 and not run['image_capture']
                     and run['actions']['legal'], 'CPU worker scope mismatch')
-            require(action_hash is None or action_hash == run['actions']['sha256'],
+            require(run['sapien_binary']['sha256'] == gpu_identity['binding_sha256']
+                    and run['packages']['sapien'] == gpu_identity['versions']['sapien'],
+                    'CPU worker SAPIEN binding/version differs from CUDA')
+            require(action_hash == run['actions']['sha256'] and list(actions.shape) == run['actions']['shape'],
                     'CPU modes used different actions')
-            action_hash = run['actions']['sha256']
             trajectory_path = directory / 'trajectory.pt'
             states = torch.load(trajectory_path, map_location='cpu', weights_only=True)
             require(len(states) == 61, 'CPU trajectory misses initial/step samples')
@@ -378,7 +533,8 @@ def cpu_check(root, gpu_identity):
                 baseline = states
             for expected, actual in zip(baseline, states):
                 require(expected.keys() == actual.keys(), 'CPU trajectory fields differ')
-                require(all(torch.equal(value, actual[field]) and bool(torch.isfinite(value).all())
+                require(all(value.dtype == actual[field].dtype and value.shape == actual[field].shape
+                            and torch.equal(value, actual[field]) and bool(torch.isfinite(value).all())
                             for field, value in expected.items()), 'CPU trajectory difference/nonfinite state')
             if scheme != 'native_off':
                 comparison = read(directory / 'comparison.json')
@@ -399,7 +555,7 @@ def cpu_check(root, gpu_identity):
         require(motion > 0, 'CPU trajectory does not exercise motion')
         compact['tasks'][name] = {'actions_sha256': action_hash,
             'maximum_joint_displacement_rad': motion, 'runs': runs}
-    require(control_total == 720 and physics_total == report['total_physics_steps'],
+    require(control_total == expected_control and physics_total == expected_control * 20 == report['total_physics_steps'],
             'CPU total step count mismatch')
     return compact
 
@@ -411,6 +567,8 @@ def main():
     parser.add_argument('--sdk-artifacts', type=Path, required=True)
     parser.add_argument('--sdk-lock', type=Path, help='Required for portable build receipts')
     parser.add_argument('--cpu-run', type=Path, required=True)
+    parser.add_argument('--cpu-interface', type=Path, required=True)
+    parser.add_argument('--cpu-interface-console', type=Path, required=True)
     parser.add_argument('--fixed-camera', choices=('human', 'base_camera', 'external_camera'), default='human')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
@@ -433,6 +591,7 @@ def main():
                 and results['test_mode'] == manifest['test_mode'] == 'standard'
                 and results.get('source_hashes_unchanged') is True,
                 'Diagnostic, incomplete or failed acceptance cannot be exported')
+        require(tuple(manifest['schemes']) == SCHEMES, 'Capture does not cover the current catalog order')
         require(manifest['sim_backend'] == 'physx_cuda' and manifest['num_envs'] == 2
                 and manifest['capture_path'] == 'original ManiSkill RGB cameras',
                 'CPU/readback fallback cannot be exported')
@@ -443,6 +602,8 @@ def main():
         require(required_loaded <= set(sdk['before']), 'Loaded SDK/PhysX identity is incomplete')
         require(all(value['sha256'] == expected_loaded[name]
                     for name, value in sdk['before'].items()), 'Loaded SDK does not match artifact lock')
+        require(all(sha(Path(value['path'])) == value['sha256'] for value in sdk['before'].values()),
+                'Current loaded SDK file bytes differ from capture')
         if sdk_record['schema'] == 'portable-sdk-build-receipt':
             require(sdk.get('artifact_sha256') == sdk_record['artifact_sha256']
                     and sdk.get('version') == manifest['versions']['sapien'] == sdk_record['version']
@@ -451,6 +612,7 @@ def main():
                     'Loaded portable SDK/version/PhysX does not match build receipt')
         identity = {'git_commit': manifest['git_commit'], 'files': manifest['files'],
             'files_lf_sha256': files_lf_identity(manifest['files']),
+            'binding_sha256': next(value['sha256'] for name, value in sdk['before'].items() if name.endswith('.pyd')),
             'source_hash_semantics': {
                 'files': 'Unchanged raw capture-time file-byte SHA-256.',
                 'files_lf_sha256': 'Current bytes first verified against files; UTF-8 .py/.json only; CRLF replaced by LF; all other bytes unchanged.'},
@@ -487,11 +649,18 @@ def main():
     require(sum(row['control_steps'] for row in prepared.values()) == 6
             and sum(row['physics_steps'] for row in prepared.values()) == 120, 'Incomplete dynamic coverage')
     cpu = cpu_check(args.cpu_run, source_identity)
+    loaded = {name: expected_loaded[name] for name in required_loaded}
+    interface = cpu_interface_check(args.cpu_interface, source_identity, sdk_record, loaded)
+    interface['console'] = console_check(args.cpu_interface_console, args.cpu_interface,
+                                         read(args.cpu_interface / 'results.json'), sdk_record)
     summary['identity'] = source_identity
+    summary['schemes'] = list(SCHEMES)
     # No filesystem output is created until every acceptance check above succeeds.
     args.output.mkdir(parents=True)
     write(args.output / 'cpu_checks.json', cpu)
+    write(args.output / 'cpu_interface.json', interface)
     summary['cpu_dynamics'] = {'checks': 'cpu_checks.json', 'sha256': sha(args.output / 'cpu_checks.json')}
+    summary['cpu_interface'] = {'checks': 'cpu_interface.json', 'sha256': sha(args.output / 'cpu_interface.json')}
     for name, value in prepared.items():
         (args.output / name).mkdir()
         write(args.output / name / 'checks.json', value)
