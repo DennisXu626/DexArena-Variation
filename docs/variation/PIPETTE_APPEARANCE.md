@@ -30,9 +30,11 @@ records = env.unwrapped._pipette_appearance.records
 
 省略外观配置或关闭时，不创建外观材质、随机流或记录器。启用时在建场前按环境克隆材质，保留组件内部原有共享拓扑，捕获完整原生 PBR；原任务及短任务阶段初始化完成后统一应用方案。original 准确恢复捕获值，render 不重抽方案。
 
-`random_choice` 从 `scheme_ids` 选择；外观 RNG 按环境独立，显式选择不消耗随机数。覆盖顺序为构造公共 → 构造 per_env → reset 公共 → reset per_env；`per_env` 仅接受实际环境编号的标准字符串键（如 `"0"`）和字典值，所有选中方案通过校验后才抽样或修改材质。记录包含 env_idx、episode_index、scheme_id、catalog_version。enabled／seed 只在构造配置中设置；局部 reset 隔离任务随机流、控制器缓冲及评价锁存状态。
+覆盖顺序为构造公共 → 构造 `per_env` → reset 公共 → reset `per_env`。`per_env` 使用实际环境编号的标准字符串键（如 `"0"`）和字典值。外观启用时，公开 `reset` 在进入父类前校验所有选中环境的有效显式 ID 或完整 `random_choice` 列表。无效方案在任务初始化、抽样、物理写入和材质修改前即被拒绝。外观关闭时，合法形状的 reset 覆盖不会启用外观。
 
-显式 `env_idx` 必须严格递增，接受整数序列或一维整数张量；reset 会在当前设备使用 long 索引，保持调用方参数不变。任务 seed 仅可随全环境 reset 设置。`reset_to_env_states` 保留原生恢复行为，不能同时指定 `pipette_appearance` 覆盖。
+外观 RNG 按环境独立，显式方案不抽样。记录包含 `env_idx`、`episode_index`、`scheme_id`、`catalog_version`。`enabled` 和外观 `seed` 在构造时设置。局部 reset 隔离任务随机流、控制器缓冲及评价锁存状态。
+
+显式 `env_idx` 必须严格递增，支持整数序列或一维整数张量。reset 使用当前设备的 long 索引，保持调用方参数不变。任务 seed 仅可随全环境 reset 设置。`reset_to_env_states` 走原生恢复路径并保留当前外观，组合 `pipette_appearance` 覆盖会遭拒绝。
 
 [关闭示例](../../examples/variation/pipette_transfer/default.json) · [固定示例](../../examples/variation/pipette_transfer/fixed.json) · [随机示例](../../examples/variation/pipette_transfer/random.json)
 
@@ -44,7 +46,9 @@ native_off、original、jade、coral 的验收统一使用上述“修复 defaul
 
 **验收**
 
-证据与可复现输入：[正式运行摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime/summary.json) · [实际任务相机补充检查](../../assets/appearance/objects/pipette_transfer/previews/runtime/rendering_probe_summary.json)。
+公开入口 CPU 合同使用记录副作用的父类替身，覆盖显式与随机有效请求、优先顺序、局部选择、恢复和 disabled 分支。未知方案用例的父 reset、任务和外观随机抽样、状态及锁写入计数均为零。
+
+成功路径的 CPU、Windows v5 CUDA 和相机结果采用归档中记录的采集身份。见[正式运行摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime/summary.json)和[任务相机补充检查](../../assets/appearance/objects/pipette_transfer/previews/runtime/rendering_probe_summary.json)。
 
 | 检查 | 已验证范围 |
 |---|---|
@@ -60,23 +64,18 @@ Aspirate 的部分原相机视图存在遮挡或无偏置时盘不可见，补�
 
 **正式任务实景**
 
-AspirateLiquid：original、jade、coral。
-
-![Aspirate original](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/original_human_env0.png)
-![Aspirate jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/jade_human_env0.png)
-![Aspirate coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/coral_human_env0.png)
-
-DispenseLiquid：original、jade、coral。
-
-![Dispense original](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/original_human_env0.png)
-![Dispense jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/jade_human_env0.png)
-![Dispense coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/coral_human_env0.png)
+| 任务 | `pipette_appearance` 固定方案 | `pipette_rendering` |
+|---|---|---|
+| AspirateLiquid | [original](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/original_human_env0.png) · [jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/jade_human_env0.png) · [coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/coral_human_env0.png) | 显式启用。样品杯透明 pass 和承托盘深度偏置 |
+| DispenseLiquid | [original](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/original_human_env0.png) · [jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/jade_human_env0.png) · [coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/coral_human_env0.png) | 显式启用。承托盘深度偏置 |
 
 **复现**
 
 ```powershell
-python -B tools/variation/check_pipette_runtime.py --static
+python -B tools/variation/check_pipette_runtime.py --static --baseline origin/main
 python -B tests/test_pipette_appearance.py
+python -B tools/variation/check_static.py
+python -B tools/variation/check_appearance_archive.py
 ```
 
 按[SDK 说明](../../tools/variation/sapien_sdk/README.md)准备 runtime、artifact 与 PhysX 路径，使用[通用启动器](../../tools/variation/sapien_sdk/run_task_check.py)运行 `check_pipette_runtime.py --approved-runtime --sim-backend physx_cuda --experimental-windows-cuda --gpu-memory-profile two_env --task AspirateLiquid`，DispenseLiquid 另进程运行；输出目录必须全新。启动器在原生导入前保留系统 Vulkan loader，并前后核对加载路径和 SHA256。

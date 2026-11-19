@@ -208,18 +208,14 @@ class PipetteAppearance:
                 raise RuntimeError('Pipette material shared across distinct original roles')
         self.bindings[env_id] = rows
 
-    def finish_reset(self, env_idx, options):
-        override = options.get('pipette_appearance', {})
+    def resolve_requests(self, indices, override):
+        """Validate effective choices without touching bindings, RNG or records."""
         validate_per_env(self.config, len(self.bindings))
         validate_per_env(override, len(self.bindings))
-        if not isinstance(override, dict) or {'enabled', 'seed'} & set(override):
+        if {'enabled', 'seed'} & set(override):
             raise ValueError('Pipette enabled/seed may change only at construction')
         if any({'enabled', 'seed'} & set(value) for value in override.get('per_env', {}).values()):
             raise ValueError('Pipette enabled/seed may change only at construction')
-        indices = env_idx.tolist()
-        if (not indices or any(type(i) is not int or not 0 <= i < len(self.bindings) for i in indices)
-                or len(indices) != len(set(indices))):
-            raise ValueError('Pipette env_idx must be nonempty, unique valid environment indices')
         requests = []
         for i in indices:
             request = {**self.config, **self.config.get('per_env', {}).get(str(i), {}),
@@ -233,10 +229,20 @@ class PipetteAppearance:
                     raise ValueError('Pipette scheme_ids must be nonempty catalog choices')
             else:
                 raise ValueError(f'Unsupported Pipette selection mode: {mode}')
-            if any(name not in self.catalog['schemes'] for name in choices):
+            if any(not isinstance(name, str) or name not in self.catalog['schemes'] for name in choices):
                 raise ValueError(f'Unknown Pipette scheme: {choices}')
             if not self.rendering_enabled and any(name != 'original' for name in choices):
                 raise ValueError('Pipette candidates require pipette_rendering={"enabled": True}')
+            requests.append((i, mode, choices))
+        return requests
+
+    def finish_reset(self, env_idx, options):
+        indices = env_idx.tolist()
+        if (not indices or any(type(i) is not int or not 0 <= i < len(self.bindings) for i in indices)
+                or len(indices) != len(set(indices))):
+            raise ValueError('Pipette env_idx must be nonempty, unique valid environment indices')
+        requests = []
+        for i, mode, choices in self.resolve_requests(indices, options.get('pipette_appearance', {})):
             if self.bindings[i] is None:
                 raise RuntimeError(f'Pipette environment is not bound: {i}')
             if any(part.material != material for _, _, part, material, _ in self.bindings[i]):

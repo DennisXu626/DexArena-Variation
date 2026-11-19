@@ -579,9 +579,11 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
         for x in (self.sample_cup,self.test_tube,self.tube_rack,self.pipette_stand,self.pipette):
             if x is not None: self.add_to_state_dict_registry(x)
     def reset(self,seed=None,options=None):
-        indices=validate_reset_request(seed,options,self.num_envs)
-        if self._pipette_appearance is not None:
-            validate_per_env(self._pipette_appearance.config,self.num_envs)
+        indices = validate_reset_request(seed, options, self.num_envs)
+        request = options or {}
+        if self._pipette_appearance is not None and "reset_to_env_states" not in request:
+            selected = range(self.num_envs) if indices is None else indices
+            self._pipette_appearance.resolve_requests(selected, request.get("pipette_appearance", {}))
         if indices is not None:
             env_idx=options["env_idx"]
             device=self._elapsed_steps.device

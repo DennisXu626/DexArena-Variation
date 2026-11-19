@@ -1,6 +1,7 @@
 """CPU-only contract checks; no task import or renderer construction."""
 import copy
 import ast
+from collections import Counter
 import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
@@ -19,7 +20,7 @@ MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
 
 
-def adapter(config=None):
+def adapter(config=None, material_type=SimpleNamespace):
     value = MODULE.PipetteAppearance({'enabled': True, **(config or {})}, 2, rendering_enabled=True)
     for i in range(2):
         rows = []
@@ -30,7 +31,7 @@ def adapter(config=None):
                       'ior': 1.46, 'emission': [0., 0., 0., 1.],
                       'transmission_roughness': .0}
             native.update({field: None for field in MODULE.MATERIAL_FIELDS if field.endswith('_texture')})
-            mat = SimpleNamespace(**copy.deepcopy(native))
+            mat = material_type(**copy.deepcopy(native))
             rows.append((oid, role, SimpleNamespace(material=mat), mat, copy.deepcopy(native)))
         value.bindings[i] = rows
     return value
@@ -42,6 +43,161 @@ def reset(value, ids=(0, 1), config=None):
 
 def state(value):
     return [copy.deepcopy(vars(row[3])) for bindings in value.bindings for row in bindings]
+
+
+def public_reset_spy(appearance, *, apply=False):
+    """Use the actual public method with a parent that records native reset effects."""
+    import torch
+    path = ROOT / 'tasks/pipette_transfer/pipette_transfer_long.py'
+    tree = ast.parse(path.read_text(encoding='utf-8'))
+    cls = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == 'PipetteTransferLongEnv')
+    method = next(node for node in cls.body if isinstance(node, ast.FunctionDef) and node.name == 'reset')
+
+    class Parent:
+        def reset(self, seed=None, options=None):
+            self.parent_calls.append((seed, options))
+            self.effects['native_reset'] += 1
+            self.effects['task_rng'] += 1
+            self.task_rng.random()
+            self.effects['state_write'] += 1
+            self.state['qpos'] += 1
+            self.effects['lock_write'] += 1
+            self.lock = True
+            request = options or {}
+            if apply and self._pipette_appearance is not None and 'reset_to_env_states' not in request:
+                indices = request.get('env_idx', np.arange(self.num_envs))
+                self._pipette_appearance.finish_reset(indices, request)
+            return 'parent_result'
+
+    source = ast.ClassDef(name='UnderTest', bases=[ast.Name(id='Parent', ctx=ast.Load())],
+                          keywords=[], body=[method], decorator_list=[])
+    namespace = {'Parent': Parent, 'torch': torch, 'validate_reset_request': MODULE.validate_reset_request}
+    exec(compile(ast.fix_missing_locations(ast.Module(body=[source], type_ignores=[])),
+                 str(path), 'exec'), namespace)
+    env = namespace['UnderTest']()
+    env._pipette_appearance = appearance
+    env.num_envs, env.parent_calls = 2, []
+    env._elapsed_steps = torch.zeros(2, dtype=torch.long)
+    env.effects, env.task_rng = Counter(), np.random.default_rng(7)
+    env.state, env.lock = {'qpos': 0}, False
+    return env
+
+
+class PublicResetTests(unittest.TestCase):
+    def counted_appearance(self, config=None, *, rendering_enabled=True):
+        writes = Counter()
+
+        class Material(SimpleNamespace):
+            def __setattr__(self, key, value):
+                writes['material_write'] += 1
+                super().__setattr__(key, value)
+
+        value = adapter(config, material_type=Material)
+        value.rendering_enabled = rendering_enabled
+
+        def choice(rng, choices):
+            writes['appearance_rng'] += 1
+            return rng.choice(choices)
+
+        value.rng = [SimpleNamespace(bit_generator=rng.bit_generator,
+                                     choice=lambda choices, rng=rng: choice(rng, choices)) for rng in value.rng]
+        env = public_reset_spy(value, apply=True)
+        env.effects = writes
+        return env, value
+
+    def assert_rejected_without_effects(self, env, options, message, *, seed=None):
+        value = env._pipette_appearance
+        def snapshot():
+            return copy.deepcopy((env.parent_calls, env.effects, env.task_rng.bit_generator.state,
+                                  env.state, env.lock, value.records, value.schemes, value.episodes,
+                                  [rng.bit_generator.state for rng in value.rng],
+                                  state(value) if all(value.bindings) else None))
+        before = snapshot()
+        with self.assertRaisesRegex(ValueError, message):
+            env.reset(seed=seed, options=options)
+        self.assertEqual(snapshot(), before)
+
+    def test_public_reset_rejects_a_last_env_typo_for_every_published_candidate(self):
+        env, value = self.counted_appearance()
+        for scheme in value.catalog['schemes'][1:]:
+            with self.subTest(scheme=scheme):
+                request = {'pipette_appearance': {'scheme_id': scheme, 'per_env': {
+                    '1': {'scheme_id': scheme + '_typo'}}}}
+                self.assert_rejected_without_effects(env, request, f'{scheme}_typo', seed=7)
+        self.assertEqual(env.effects, Counter())
+
+    def test_public_reset_checks_every_random_choice_before_any_draw(self):
+        env, _ = self.counted_appearance({'mode': 'random_choice', 'scheme_ids': ['jade', 'coral']})
+        request = {'pipette_appearance': {'per_env': {'1': {'scheme_ids': ['original', 'coral', 'wrong_id']}}}}
+        self.assert_rejected_without_effects(env, request, 'wrong_id')
+        request = {'pipette_appearance': {'per_env': {'1': {'scheme_ids': []}}}}
+        self.assert_rejected_without_effects(env, request, 'nonempty')
+
+    def test_public_reset_forwards_valid_ids_and_preserves_override_precedence(self):
+        env, value = self.counted_appearance({'scheme_id': 'original', 'per_env': {'1': {'scheme_id': 'coral'}}})
+        self.assertEqual(env.reset(seed=7), 'parent_result')
+        self.assertEqual(value.schemes, ['original', 'coral'])
+        for scheme in value.catalog['schemes']:
+            with self.subTest(scheme=scheme):
+                options = {'pipette_appearance': {'scheme_id': scheme}}
+                self.assertEqual(env.reset(options=options), 'parent_result')
+                self.assertIs(env.parent_calls[-1][1], options)
+                self.assertEqual(value.schemes, [scheme, scheme])
+        request = {'env_idx': [0], 'pipette_appearance': {'scheme_id': 'jade',
+                    'per_env': {'0': {'scheme_id': 'coral'}, '1': {'scheme_id': 'wrong_unselected'}}}}
+        preceding = value.schemes[1]
+        self.assertEqual(env.reset(options=request), 'parent_result')
+        self.assertEqual(value.schemes, ['coral', preceding])
+        self.assertEqual(request['env_idx'], [0])
+        self.assertEqual(env.effects['appearance_rng'], 0)
+        self.assert_rejected_without_effects(env, {**request, 'env_idx': [1]}, 'wrong_unselected')
+        random_request = {'env_idx': [1], 'pipette_appearance': {'mode': 'random_choice', 'scheme_ids': ['jade']}}
+        self.assertEqual(env.reset(options=random_request), 'parent_result')
+        self.assertEqual(value.schemes, ['coral', 'jade'])
+        self.assertEqual(env.effects['appearance_rng'], 1)
+
+    def test_public_reset_rejects_active_overrides_that_require_construction_or_rendering(self):
+        env, value = self.counted_appearance(rendering_enabled=False)
+        for request, message in (
+                ({'enabled': False}, 'only at construction'),
+                ({'per_env': {'1': {'seed': 9}}}, 'only at construction'),
+                ({'scheme_id': 'jade'}, 'pipette_rendering'),
+                ({'scheme_id': 'coral'}, 'pipette_rendering'),
+                ({'mode': 'random_choice', 'scheme_ids': ['original', 'jade']}, 'pipette_rendering'),
+                ({'mode': 'bad'}, 'Unsupported')):
+            with self.subTest(request=request):
+                self.assert_rejected_without_effects(env, {'pipette_appearance': request}, message)
+        self.assertEqual(env.reset(), 'parent_result')
+        self.assertEqual(value.schemes, ['original', 'original'])
+
+    def test_public_reset_preserves_disabled_and_state_restore_routes(self):
+        disabled = public_reset_spy(None)
+        options = {'pipette_appearance': {'scheme_id': 'jade'}}
+        self.assertEqual(disabled.reset(options=options), 'parent_result')
+        self.assertIs(disabled.parent_calls[-1][1], options)
+        self.assertIsNone(disabled._pipette_appearance)
+        env, value = self.counted_appearance({'mode': 'random_choice', 'scheme_ids': ['jade', 'coral']})
+        restore = {'reset_to_env_states': {'env_states': {'qpos': [1, 2]}}}
+        self.assert_rejected_without_effects(
+            env, {**restore, 'pipette_appearance': {'scheme_id': 'original'}}, 'state restoration')
+        self.assertEqual(env.reset(options=restore), 'parent_result')
+        self.assertIs(env.parent_calls[-1][1], restore)
+        self.assertEqual(value.records, [])
+        self.assertEqual(env.effects['appearance_rng'], 0)
+        self.assertEqual(env.effects['material_write'], 0)
+
+    def test_public_reset_preflights_initial_reconfigure_with_unbound_materials(self):
+        value = MODULE.PipetteAppearance({'scheme_id': 'jade', 'per_env': {'1': {'scheme_id': 'wrong_id'}}},
+                                        2, rendering_enabled=True)
+        env = public_reset_spy(value)
+        initial = {'reconfigure': True}
+        self.assert_rejected_without_effects(env, initial, 'wrong_id', seed=[2022, 2023])
+        self.assertEqual(env.effects, Counter())
+        valid = {**initial, 'pipette_appearance': {'scheme_id': 'coral'}}
+        self.assertEqual(env.reset(seed=[2022, 2023], options=valid), 'parent_result')
+        self.assertIs(env.parent_calls[-1][1], valid)
+        self.assertEqual(value.bindings, [None, None])
+        self.assertEqual(value.records, [])
 
 
 class PipetteAppearanceTests(unittest.TestCase):

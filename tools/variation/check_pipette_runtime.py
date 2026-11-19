@@ -635,16 +635,20 @@ def run_task(task, args, output, result):
         before_schemes = list(adapter.schemes)
         invalid_request = {'mode': 'random_choice', 'scheme_ids': ['jade', 'coral'],
                            'per_env': {str(num_envs - 1): {'mode': 'explicit', 'scheme_id': 'unknown'}}}
+        before_state = shared.snapshot(base)
+        before_task_rng = [shared.task_rng(base, i) for i in range(num_envs)]
         rejected = False
         error_type = None
         try:
-            adapter.finish_reset(torch.arange(num_envs, device=base.device), {'pipette_appearance': invalid_request})
+            env.reset(options={'pipette_appearance': invalid_request})
         except ValueError as error:
             rejected = True
             error_type = type(error).__name__
         assert rejected and before_mat == shared.materials(base)
         assert before_rng == [rng.bit_generator.state for rng in adapter.rng]
         assert before_records == adapter.records and before_episodes == adapter.episodes
+        assert before_task_rng == [shared.task_rng(base, i) for i in range(num_envs)]
+        assert not shared.state_changes(before_state, shared.snapshot(base))
         interface['invalid_request_atomicity'] = {'request': invalid_request, 'error_type': error_type,
             'before': {'materials': before_mat, 'appearance_rng': before_rng, 'episodes': before_episodes,
                        'schemes': before_schemes, 'records': before_records},
