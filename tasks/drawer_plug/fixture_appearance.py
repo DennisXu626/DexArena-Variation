@@ -69,7 +69,7 @@ class FixtureAppearance:
                                    role=role, material=material, native=native)
                     # The inspected Drawer source has map_Kd only. Do not silently
                     # retain wood bump/roughness maps if a different asset is used.
-                    if role in {'panel', 'shell'}:
+                    if (obj == 'drawer' and role != 'slider') or role == 'shell':
                         for channel in ('normal_texture', 'roughness_texture', 'metallic_texture'):
                             if getattr(material, channel) is not None:
                                 raise ValueError(f'Unreviewed {channel} on {obj}/{filename}')
@@ -81,14 +81,14 @@ class FixtureAppearance:
                     raise ValueError('Incomplete Drawer visual mesh coverage')
             if env.has_socket and {b['role'] for b in row if b['object'] == 'socket'} != {'shell', 'hole'}:
                 raise ValueError('Incomplete Socket visual coverage')
-            # One stable private texture per environment and source image. Bind
-            # before first render; reset uploads pixels, never swaps descriptors.
+            # One stable private texture per environment, source image and role:
+            # the shared wood map is retained on fronts but masked on the shell.
             pool = {}
             for binding in row:
                 texture = binding['native']['base_color_texture']
-                if binding['role'] != 'panel' or texture is None:
+                if binding['object'] != 'drawer' or binding['role'] == 'slider' or texture is None:
                     continue
-                source = texture.filename
+                source = (texture.filename, binding['role'])
                 if source not in pool:
                     pixels = texture.download().copy()
                     live = sr.RenderTexture2D(array=pixels, format=texture.format,
@@ -118,6 +118,39 @@ class FixtureAppearance:
         pixels[..., :3] = rgb.astype(pixels.dtype)
         return pixels
 
+    @staticmethod
+    def _surface_color(binding, params):
+        if params is None:
+            return binding['native']['base_color']
+        # The colour texture already contains the drawer finish. Apply the
+        # chosen colour only once; untextured pieces and sockets use base color.
+        rgb = [1.0, 1.0, 1.0] if 'live' in binding else params['base_color'][:3]
+        return [*rgb, float(binding['native']['base_color'][3])]
+
+    @staticmethod
+    def _texture_pixels(live, params):
+        if params is None:
+            return live['pixels']
+        mode = params.get('texture_mode', 'solid')
+        if mode == 'solid':
+            return FixtureAppearance._solid_pixels(live, params['base_color'][:3])
+        if mode != 'oak_tone':
+            raise ValueError(f'Unknown drawer texture mode: {mode}')
+        # Transform the existing texels in place in UV space; keep the native
+        # grain orientation and layout, including edge faces and alpha.
+        pixels = live['pixels'].copy()
+        scale = np.iinfo(pixels.dtype).max if np.issubdtype(pixels.dtype, np.integer) else 1.0
+        rgb = pixels[..., :3].astype(np.float32) / scale
+        if live['srgb']:
+            rgb = np.where(rgb <= .04045, rgb / 12.92, ((rgb + .055) / 1.055) ** 2.4)
+        luma = (rgb @ np.array([.2126, .7152, .0722], dtype=np.float32))[..., None]
+        sat = params['source_saturation']
+        rgb = np.clip((sat * rgb + (1 - sat) * luma) * params['source_gain'], 0, 1)
+        if live['srgb']:
+            rgb = np.where(rgb <= .0031308, 12.92 * rgb, 1.055 * rgb ** (1 / 2.4) - .055)
+        pixels[..., :3] = (np.rint(rgb * scale) if scale != 1 else rgb).astype(pixels.dtype)
+        return pixels
+
     def finish_reset(self, env, env_idx, options):
         self._bind(env)
         override = options.get('drawer_plug_appearance', {})
@@ -144,17 +177,20 @@ class FixtureAppearance:
                 for key in FIELDS:
                     setattr(material, key, native[key])
                 if params is not None:
-                    material.base_color = [*params['base_color'][:3], float(native['base_color'][3])]
+                    material.base_color = self._surface_color(binding, params)
                     material.roughness = params['roughness']
                     material.metallic = params['metallic']
                 if 'live' in binding:
                     live = binding['live']
                     if id(live) not in uploaded:
-                        pixels = live['pixels'] if params is None else self._solid_pixels(live, params['base_color'][:3])
+                        pixels = self._texture_pixels(live, params)
                         live['texture'].upload(pixels)
                         uploaded.add(id(live))
             self.schemes[i] = name
             self.episodes[i] += 1
-            self.records.append(dict(env_idx=i, episode_index=self.episodes[i], scheme_id=name,
-                                     catalog_version=self.catalog['version'],
-                                     objects=sorted({b['object'] for b in self.bindings[i]})))
+            objects = sorted({b['object'] for b in self.bindings[i]})
+            record = dict(env_idx=i, episode_index=self.episodes[i], scheme_id=name,
+                          catalog_version=self.catalog['version'], objects=objects)
+            if 'drawer' in objects:
+                record['drawer_revision'] = self.catalog['drawer_revision']
+            self.records.append(record)

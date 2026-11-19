@@ -2,7 +2,18 @@
 
 基线main `793c74798c3291155e7010a0688053c1fbe57faa`。**GPU0，没有任务加载、渲染或作业提交；运行及真实感尚未验收。**
 
-## 材料与唯一参数源
+## 最新 · 仅返工抽屉（等待运行授权）
+
+抽屉前版视觉不通过，插座沿用 [作业 121640](evidence/drawer_socket/runtime_002/README.md) 的已验收结果。方案 ID 保持 `original`／`warm_white`（A · 浅橡木与暖白）／`neutral_grey`（B · 浅灰与石墨色）；[分件材料与产品链接](../../assets/appearance/objects/drawer_plug/drawer/README.md)。此节覆盖下文中的抽屉旧方案与旧预算，历史报告保留。
+
+- 新增 `--drawer-review`，只覆盖 OpenDrawer 和 PickCharger 各 2 环境，先做原生可重复对照，然后两任务各采 original、A、B。OpenDrawer 使用原生关闭 `0 m`，PickCharger 使用原生中抽开度 `0.22 m` 与原生 Charger。各任务的独立检查器相机配置在构建前固定：观察闭合时的全柜与台面和偏高前侧打开时的内箱。只改取证相机配置，场景、灯光、任务 reset、物理均原样。
+- 每组使用 env0、seed 7、1280×960、默认曝光，同 seed 完整状态和关节开度有断言；保持原图像素，并按组固定裁剪框。闭合检查全台面、侧板、三层把手；开屉检查外抽面、把手、内侧壁与底板。纯几何投影只验证构图范围，实际图像和遮挡待审。
+- 拍齐六帧后用同一作业继续关闭/原版、物理初态、候选恢复、复现、局部隔离检查。预计 17 次构建（含一次额外原生对照），无物理步进，PickCharger 全程保留原 Charger，不重复插座或 Long。
+- **申请，不是批准**：总墙钟 60 分钟、单卡最多 240 分配秒（4 分钟调度）、应用 205 秒、只提交一次，排队最多 120 秒，最迟第 39 分钟提交且至少余 21 分钟，第 45 分钟进入至少 15 分钟收尾。只在新授权、刷新占用和通过只读预检后提交。
+- 续用 Ceph `/mnt/ceph2/xkl/DexArena/drawer_socket_appearance_20261117/runtime_003/`，预估新增 80–140 MiB 输出、一个约 85 MiB 的独立源码树及少量缓存；提交前度量整根历史留存和实际余量。用途与监控同上轮：整根 768 MiB 约每秒采样停止（非硬封顶）、日志 8 MiB、单文件 64 MiB、禁 core、共享资产只读、服务器最低余量 20 GiB、本机 D 盘 10 GiB。派生缓存与临时产物隔离，无自动重排、重试或扩大存储。D 盘日志 `D:/Logs/DexArena/drawer_socket_appearance/runtime_003/`。
+- [检查器](../../tools/variation/check_drawer_socket.py)入口为 `--drawer-review --approval <本轮批准记录> --output <私有子目录>/output`；具体验证脚本和包装需在提交前冻结并检查。CPU 准备不创建批准记录，不访问 GPU。
+
+## 历史 · 材料与唯一参数源（v1）
 
 [运行catalog](../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json)仅维护一份；对象档案只引用。[真实产品、工艺、许可与RoboDojo参考](../../assets/appearance/objects/drawer_plug/drawer/REFERENCES.md)；[平面设计色板](../../assets/appearance/objects/drawer_plug/drawer/material_board.png)不是任务图。
 

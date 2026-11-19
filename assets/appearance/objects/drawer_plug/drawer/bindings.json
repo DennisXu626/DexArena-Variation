@@ -3,13 +3,13 @@
   "model": "PartNet Mobility 45841",
   "asset_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
   "catalog": "../../../../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json",
-  "status": "CPU preparation only; not rendered or runtime verified",
+  "status": "Drawer component redesign CPU preparation; closed/open renders pending",
   "visuals": [
     {
       "link": "link_0",
       "visual_name": "vertical_side_panel-6",
       "mesh": "textured_objs/original-7.obj",
-      "role": "panel",
+      "role": "cabinet_side",
       "uv_vertices": 4,
       "materials": [
         {
@@ -31,7 +31,7 @@
       "link": "link_0",
       "visual_name": "vertical_side_panel-6",
       "mesh": "textured_objs/original-6.obj",
-      "role": "panel",
+      "role": "cabinet_side",
       "uv_vertices": 4,
       "materials": [
         {
@@ -53,7 +53,7 @@
       "link": "link_0",
       "visual_name": "vertical_side_panel-7",
       "mesh": "textured_objs/original-4.obj",
-      "role": "panel",
+      "role": "cabinet_side",
       "uv_vertices": 4,
       "materials": [
         {
@@ -75,7 +75,7 @@
       "link": "link_0",
       "visual_name": "vertical_side_panel-7",
       "mesh": "textured_objs/original-3.obj",
-      "role": "panel",
+      "role": "cabinet_side",
       "uv_vertices": 4,
       "materials": [
         {
@@ -97,7 +97,7 @@
       "link": "link_0",
       "visual_name": "back_panel-8",
       "mesh": "textured_objs/original-15.obj",
-      "role": "panel",
+      "role": "cabinet_frame",
       "uv_vertices": 0,
       "materials": [
         {
@@ -113,7 +113,7 @@
       "link": "link_0",
       "visual_name": "bottom_panel-9",
       "mesh": "textured_objs/original-10.obj",
-      "role": "panel",
+      "role": "cabinet_frame",
       "uv_vertices": 0,
       "materials": [
         {
@@ -129,7 +129,7 @@
       "link": "link_0",
       "visual_name": "bottom_panel-9",
       "mesh": "textured_objs/original-9.obj",
-      "role": "panel",
+      "role": "cabinet_frame",
       "uv_vertices": 4,
       "materials": [
         {
@@ -151,7 +151,7 @@
       "link": "link_0",
       "visual_name": "top_panel-10",
       "mesh": "textured_objs/original-13.obj",
-      "role": "panel",
+      "role": "top",
       "uv_vertices": 0,
       "materials": [
         {
@@ -167,7 +167,7 @@
       "link": "link_0",
       "visual_name": "frame_horizontal_bar-11",
       "mesh": "textured_objs/original-16.obj",
-      "role": "panel",
+      "role": "cabinet_frame",
       "uv_vertices": 0,
       "materials": [
         {
@@ -183,7 +183,7 @@
       "link": "link_0",
       "visual_name": "frame_horizontal_bar-12",
       "mesh": "textured_objs/original-14.obj",
-      "role": "panel",
+      "role": "cabinet_frame",
       "uv_vertices": 0,
       "materials": [
         {
@@ -199,7 +199,7 @@
       "link": "link_1",
       "visual_name": "drawer_front-38",
       "mesh": "textured_objs/original-25.obj",
-      "role": "panel",
+      "role": "inner_front_liner",
       "uv_vertices": 0,
       "materials": [
         {
@@ -215,7 +215,7 @@
       "link": "link_1",
       "visual_name": "drawer_front-38",
       "mesh": "textured_objs/original-18.obj",
-      "role": "panel",
+      "role": "front",
       "uv_vertices": 13,
       "materials": [
         {
@@ -237,7 +237,7 @@
       "link": "link_1",
       "visual_name": "drawer_side-39",
       "mesh": "textured_objs/original-23.obj",
-      "role": "panel",
+      "role": "inner_side",
       "uv_vertices": 0,
       "materials": [
         {
@@ -253,7 +253,7 @@
       "link": "link_1",
       "visual_name": "drawer_side-40",
       "mesh": "textured_objs/original-24.obj",
-      "role": "panel",
+      "role": "inner_side",
       "uv_vertices": 0,
       "materials": [
         {
@@ -269,7 +269,7 @@
       "link": "link_1",
       "visual_name": "drawer_back-41",
       "mesh": "textured_objs/original-26.obj",
-      "role": "panel",
+      "role": "inner_back",
       "uv_vertices": 0,
       "materials": [
         {
@@ -285,7 +285,7 @@
       "link": "link_1",
       "visual_name": "drawer_bottom-42",
       "mesh": "textured_objs/original-21.obj",
-      "role": "panel",
+      "role": "inner_bottom",
       "uv_vertices": 0,
       "materials": [
         {
@@ -301,7 +301,7 @@
       "link": "link_1",
       "visual_name": "drawer_bottom-42",
       "mesh": "textured_objs/original-22.obj",
-      "role": "panel",
+      "role": "inner_bottom",
       "uv_vertices": 0,
       "materials": [
         {
@@ -317,7 +317,7 @@
       "link": "link_1",
       "visual_name": "handle-35",
       "mesh": "textured_objs/original-30.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -333,7 +333,7 @@
       "link": "link_1",
       "visual_name": "handle-35",
       "mesh": "textured_objs/original-31.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -349,7 +349,7 @@
       "link": "link_1",
       "visual_name": "handle-35",
       "mesh": "textured_objs/original-32.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -365,7 +365,7 @@
       "link": "link_1",
       "visual_name": "drawer_slider-36",
       "mesh": "textured_objs/original-27.obj",
-      "role": "hardware",
+      "role": "slider",
       "uv_vertices": 0,
       "materials": [
         {
@@ -381,7 +381,7 @@
       "link": "link_1",
       "visual_name": "drawer_slider-37",
       "mesh": "textured_objs/original-28.obj",
-      "role": "hardware",
+      "role": "slider",
       "uv_vertices": 0,
       "materials": [
         {
@@ -397,7 +397,7 @@
       "link": "link_2",
       "visual_name": "drawer_front-29",
       "mesh": "textured_objs/original-41.obj",
-      "role": "panel",
+      "role": "inner_front_liner",
       "uv_vertices": 0,
       "materials": [
         {
@@ -413,7 +413,7 @@
       "link": "link_2",
       "visual_name": "drawer_front-29",
       "mesh": "textured_objs/original-34.obj",
-      "role": "panel",
+      "role": "front",
       "uv_vertices": 13,
       "materials": [
         {
@@ -435,7 +435,7 @@
       "link": "link_2",
       "visual_name": "drawer_side-30",
       "mesh": "textured_objs/original-40.obj",
-      "role": "panel",
+      "role": "inner_side",
       "uv_vertices": 0,
       "materials": [
         {
@@ -451,7 +451,7 @@
       "link": "link_2",
       "visual_name": "drawer_side-31",
       "mesh": "textured_objs/original-39.obj",
-      "role": "panel",
+      "role": "inner_side",
       "uv_vertices": 0,
       "materials": [
         {
@@ -467,7 +467,7 @@
       "link": "link_2",
       "visual_name": "drawer_back-32",
       "mesh": "textured_objs/original-42.obj",
-      "role": "panel",
+      "role": "inner_back",
       "uv_vertices": 0,
       "materials": [
         {
@@ -483,7 +483,7 @@
       "link": "link_2",
       "visual_name": "drawer_bottom-33",
       "mesh": "textured_objs/original-37.obj",
-      "role": "panel",
+      "role": "inner_bottom",
       "uv_vertices": 0,
       "materials": [
         {
@@ -499,7 +499,7 @@
       "link": "link_2",
       "visual_name": "drawer_bottom-33",
       "mesh": "textured_objs/original-38.obj",
-      "role": "panel",
+      "role": "inner_bottom",
       "uv_vertices": 0,
       "materials": [
         {
@@ -515,7 +515,7 @@
       "link": "link_2",
       "visual_name": "handle-26",
       "mesh": "textured_objs/original-47.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -531,7 +531,7 @@
       "link": "link_2",
       "visual_name": "handle-26",
       "mesh": "textured_objs/original-46.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -547,7 +547,7 @@
       "link": "link_2",
       "visual_name": "handle-26",
       "mesh": "textured_objs/original-48.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -563,7 +563,7 @@
       "link": "link_2",
       "visual_name": "drawer_slider-27",
       "mesh": "textured_objs/original-44.obj",
-      "role": "hardware",
+      "role": "slider",
       "uv_vertices": 0,
       "materials": [
         {
@@ -579,7 +579,7 @@
       "link": "link_2",
       "visual_name": "drawer_slider-28",
       "mesh": "textured_objs/original-43.obj",
-      "role": "hardware",
+      "role": "slider",
       "uv_vertices": 0,
       "materials": [
         {
@@ -595,7 +595,7 @@
       "link": "link_3",
       "visual_name": "drawer_front-20",
       "mesh": "textured_objs/original-57.obj",
-      "role": "panel",
+      "role": "inner_front_liner",
       "uv_vertices": 0,
       "materials": [
         {
@@ -611,7 +611,7 @@
       "link": "link_3",
       "visual_name": "drawer_front-20",
       "mesh": "textured_objs/original-12.obj",
-      "role": "panel",
+      "role": "top_front_trim",
       "uv_vertices": 4,
       "materials": [
         {
@@ -633,7 +633,7 @@
       "link": "link_3",
       "visual_name": "drawer_front-20",
       "mesh": "textured_objs/original-50.obj",
-      "role": "panel",
+      "role": "front",
       "uv_vertices": 13,
       "materials": [
         {
@@ -655,7 +655,7 @@
       "link": "link_3",
       "visual_name": "drawer_side-21",
       "mesh": "textured_objs/original-55.obj",
-      "role": "panel",
+      "role": "inner_side",
       "uv_vertices": 0,
       "materials": [
         {
@@ -671,7 +671,7 @@
       "link": "link_3",
       "visual_name": "drawer_side-22",
       "mesh": "textured_objs/original-56.obj",
-      "role": "panel",
+      "role": "inner_side",
       "uv_vertices": 0,
       "materials": [
         {
@@ -687,7 +687,7 @@
       "link": "link_3",
       "visual_name": "drawer_back-23",
       "mesh": "textured_objs/original-58.obj",
-      "role": "panel",
+      "role": "inner_back",
       "uv_vertices": 0,
       "materials": [
         {
@@ -703,7 +703,7 @@
       "link": "link_3",
       "visual_name": "drawer_bottom-24",
       "mesh": "textured_objs/original-53.obj",
-      "role": "panel",
+      "role": "inner_bottom",
       "uv_vertices": 0,
       "materials": [
         {
@@ -719,7 +719,7 @@
       "link": "link_3",
       "visual_name": "drawer_bottom-24",
       "mesh": "textured_objs/original-54.obj",
-      "role": "panel",
+      "role": "inner_bottom",
       "uv_vertices": 0,
       "materials": [
         {
@@ -735,7 +735,7 @@
       "link": "link_3",
       "visual_name": "handle-17",
       "mesh": "textured_objs/original-62.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -751,7 +751,7 @@
       "link": "link_3",
       "visual_name": "handle-17",
       "mesh": "textured_objs/original-63.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -767,7 +767,7 @@
       "link": "link_3",
       "visual_name": "handle-17",
       "mesh": "textured_objs/original-64.obj",
-      "role": "hardware",
+      "role": "handle",
       "uv_vertices": 0,
       "materials": [
         {
@@ -783,7 +783,7 @@
       "link": "link_3",
       "visual_name": "drawer_slider-18",
       "mesh": "textured_objs/original-60.obj",
-      "role": "hardware",
+      "role": "slider",
       "uv_vertices": 0,
       "materials": [
         {
@@ -799,7 +799,7 @@
       "link": "link_3",
       "visual_name": "drawer_slider-19",
       "mesh": "textured_objs/original-59.obj",
-      "role": "hardware",
+      "role": "slider",
       "uv_vertices": 0,
       "materials": [
         {

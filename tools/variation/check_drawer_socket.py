@@ -20,6 +20,12 @@ ROOT = Path(__file__).resolve().parents[2]
 BASE = '793c74798c3291155e7010a0688053c1fbe57faa'
 TASKS = ['OpenDrawer', 'InsertPlug', 'PickCharger', 'Long']
 TASK_SEED = 7
+DRAWER_REVIEW = {
+    'OpenDrawer': dict(stem='drawer_closed', eye=(-1.03, -.67, .79), aim=(.14, .18, .29),
+                       fov=.78, crop=[289,198,998,870], travel=0.0),
+    'PickCharger': dict(stem='drawer_open', eye=(-.95, .69, 1.16), aim=(-.04, .18, .30),
+                        fov=.73, crop=[285,242,1080,895], travel=.22),
+}
 TASK_FILES = ['tasks/drawer_plug/drawer_plug_' + name + '.py' for name in
               ['long', 'open_drawer', 'pick_charger', 'insert_plug']]
 CAT = 'tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json'
@@ -86,16 +92,40 @@ def static_check(asset_root=None):
     assert len(cat['drawer_mesh_roles']) == len(mapping['visuals']) == 47
     assert all(cat['drawer_mesh_roles'][Path(v['mesh']).name]['role'] == v['role'] for v in mapping['visuals'])
     assert {k for v in mapping['visuals'] for m in v['materials'] for k, _ in m['maps']} == {'map_Kd'}
-    for scheme in list(cat['schemes'].values())[1:]:
-        assert set(scheme['drawer']) == {'panel'} and set(scheme['socket']) == {'shell'}
-        for role in [scheme['drawer']['panel'], scheme['socket']['shell']]:
-            assert role['metallic'] == 0 and role['base_color'][3] == 1
+    previous = json.loads(subprocess.check_output(['git', '-C', str(ROOT), 'show',
+        '7b7f984697f0099b58c4ee32ef86e307ec81da7e:' + CAT]))
+    assert cat['version']==previous['version']
+    roles={v['role'] for v in mapping['visuals']}
+    assert roles=={'top','top_front_trim','cabinet_side','cabinet_frame','front',
+                   'inner_front_liner','inner_side','inner_back','inner_bottom','handle','slider'}
+    for name, scheme in cat['schemes'].items():
+        assert scheme.get('socket')==previous['schemes'][name].get('socket')
+        if name=='original': continue
+        assert set(scheme['drawer'])==roles-{'slider'}
+        for role, params in scheme['drawer'].items():
+            assert all(0<=v<=1 for v in params['base_color']+[params['roughness'],params['metallic']])
+            assert params['base_color'][3]==1
+            assert (params.get('texture_mode')=='oak_tone')==(name=='warm_white' and role=='front')
+        assert scheme['drawer']['top']==scheme['drawer']['top_front_trim']
+        assert len({tuple(scheme['drawer'][x]['base_color']) for x in
+                    ['inner_front_liner','inner_side','inner_back','inner_bottom']})==1
+    for link in ['link_1','link_2','link_3']:
+        by_link=[r for r in mapping['visuals'] if r['link']==link]
+        assert [r['role'] for r in by_link].count('front')==1
+        assert [r['role'] for r in by_link].count('handle')==3
+        assert [r['role'] for r in by_link].count('slider')==2
+        assert [r['role'] for r in by_link].count('inner_front_liner')==1
     for p in (ROOT / 'examples/variation/drawer_plug/fixtures').glob('*.json'):
         json.loads(p.read_text(encoding='utf-8'))
     if asset_root:
+        from xml.etree import ElementTree as ET
         for name, identity in mapping['source_files'].items():
             p = asset_root / name
             assert p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() == identity['sha256'], name
+        urdf=ET.parse(asset_root/'mobility.urdf')
+        actual={(l.get('name'),v.get('name'),v.find('geometry/mesh').get('filename'))
+                for l in urdf.findall('link') for v in l.findall('visual')}
+        assert actual=={(v['link'],v['visual_name'],v['mesh']) for v in mapping['visuals']}
     # Small CPU check of pixel encoding/alpha; no SAPIEN module is imported.
     spec = importlib.util.spec_from_file_location('fixture_cpu', ROOT / FILES[4])
     module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
@@ -104,6 +134,22 @@ def static_check(asset_root=None):
     converted = module.FixtureAppearance._solid_pixels({'pixels': pixels, 'srgb': True}, [.5, 0, 1])
     assert converted[0, 0].tolist() == [188, 0, 255, 128]
     assert pixels[0, 0].tolist() == [255, 255, 255, 128]
+    source=np.array([[[250,195,124,255],[197,136,76,81]]],dtype=np.uint8)
+    live={'pixels':source,'srgb':True}
+    design=cat['schemes']['warm_white']['drawer']
+    oak=module.FixtureAppearance._texture_pixels(live,design['front'])
+    white=module.FixtureAppearance._texture_pixels(live,design['cabinet_side'])
+    assert tuple(oak[0,0,:3])!=tuple(oak[0,1,:3])
+    assert tuple(white[0,0,:3])==tuple(white[0,1,:3])
+    assert np.array_equal(oak[...,3],source[...,3]) and np.array_equal(white[...,3],source[...,3])
+    assert np.array_equal(module.FixtureAppearance._texture_pixels(live,None),source)
+    assert source[0,0].tolist()==[250,195,124,255]
+    shader=module.FixtureAppearance
+    native={'base_color':[.62,.66,.72,1]}
+    assert shader._surface_color({'native':native},None)==native['base_color']
+    for name in ('warm_white','neutral_grey'):
+        params=cat['schemes'][name]['socket']['shell']
+        assert shader._surface_color({'native':native},params)==params['base_color']
     # Selection/record contract without renderer: empty bindings deliberately
     # cannot establish real material or RGB correctness.
     from types import SimpleNamespace
@@ -142,6 +188,7 @@ def runtime(args):
     import numpy as np
     import torch
     import sapien
+    from mani_skill.utils import sapien_utils
     from PIL import Image
     import tasks
     from tasks.drawer_plug.fixture_appearance import FixtureAppearance
@@ -302,12 +349,15 @@ def runtime(args):
             for b in row:
                 params=cat['schemes'][ids[i]].get(b['object'],{}).get(b['role'])
                 for k in ['base_color','roughness','metallic']:
-                    target=(params or b['native'])[k]
+                    target=(FixtureAppearance._surface_color(b,params) if k=='base_color'
+                            else (params or b['native'])[k])
                     np.testing.assert_allclose(getattr(b['material'],k),target,atol=1e-7,rtol=0)
                 if 'live' in b:
-                    expected=b['live']['pixels'] if params is None else FixtureAppearance._solid_pixels(b['live'],params['base_color'][:3])
+                    expected=FixtureAppearance._texture_pixels(b['live'],params)
                     assert np.array_equal(b['live']['texture'].download(),expected)
         assert all(r['catalog_version']==cat['version'] for r in adapter.records)
+        assert all(r.get('drawer_revision')==(cat['drawer_revision'] if 'drawer' in r['objects'] else None)
+                   for r in adapter.records)
         if e._charger_appearance is not None:
             cc=e._charger_appearance.catalog
             for i,entity in enumerate(e.charger._objs):
@@ -325,7 +375,10 @@ def runtime(args):
     gpu=torch.cuda.current_device()
     outer_cuda=torch.cuda.get_rng_state(gpu).clone()
     capture_schemes=('original','warm_white','neutral_grey')
-    capture_views={'OpenDrawer':('drawer',[452,0,850,330]),'InsertPlug':('socket',[603,319,733,430])}
+    review=bool(args.drawer_review)
+    matrix=list(DRAWER_REVIEW) if review else TASKS
+    capture_views=({t:(v['stem'],v['crop']) for t,v in DRAWER_REVIEW.items()} if review else
+                   {'OpenDrawer':('drawer',[452,0,850,330]),'InsertPlug':('socket',[603,319,733,430])})
     baselines={}
     candidate_pixels={}
 
@@ -342,6 +395,10 @@ def runtime(args):
         kw={} if config is None else {'drawer_plug_appearance':config}
         if charger and task!='OpenDrawer':
             kw['charger_appearance']={'enabled':True,'scheme_id':'ivory_matte','seed':71}
+        if review:
+            v=DRAWER_REVIEW[task]
+            kw['human_render_camera_configs']=dict(
+                pose=sapien_utils.look_at(v['eye'],v['aim']), width=1280,height=960,fov=v['fov'])
         results['builds_started']+=1
         dump('results.json',results)
         return gym.make(f'DrawerPlug{task}-Sharpa-v1',num_envs=n,sim_backend='physx_cuda',
@@ -379,6 +436,9 @@ def runtime(args):
         env.reset(seed=TASK_SEED)
         mark('after_seeded_reset')
         e=env.unwrapped
+        if review:
+            # Observe native task travel; no pose, lighting or physics intervention.
+            np.testing.assert_allclose(plain(e.drawer_travel),DRAWER_REVIEW[task]['travel'],atol=1e-6,rtol=0)
         # Keep original PNGs as soon as they are available, even when a
         # later state/material assertion stops this branch.
         rgb,seg=frames(env,prefix,masks=True)
@@ -397,7 +457,7 @@ def runtime(args):
                 verify(e,[name]*n)
             for key,values in ma.items():
                 for slot,value in enumerate(values):
-                    if value['role'] in ['hardware','hole'] or key.startswith('charger/'):
+                    if value['role'] in ['slider','hole'] or key.startswith('charger/'):
                         assert value==baseline[2][key][slot], (prefix,key,slot)
             if name in capture_schemes[1:]:
                 counts=target_pixel_counts(e,baseline[3],rgb,seg,0)
@@ -421,10 +481,12 @@ def runtime(args):
         sizes=[]
         for name in names:
             with Image.open(args.output/name) as img: sizes.append(img.size)
-        assert sizes==[(1280,720)]*3,sizes
+        assert sizes==[(1280,960) if review else (1280,720)]*3,sizes
         dump(f'{obj}_capture.json',dict(task=f'DrawerPlug{task}-Sharpa-v1',env_idx=0,seed=TASK_SEED,
              camera='render_camera (human)',size=list(sizes[0]),crop_xyxy=box,
-             candidate_schemes=list(capture_schemes),frames=names,charger='native' if task=='InsertPlug' else 'absent',
+             candidate_schemes=list(capture_schemes),frames=names,
+             camera_review=DRAWER_REVIEW[task] if review else None,
+             charger='native' if task in ('InsertPlug','PickCharger') else 'absent',
              exposure='unchanged task camera default',lighting='unchanged native task lighting',
              case_initial_state='compared against native baseline'))
 
@@ -444,7 +506,7 @@ def runtime(args):
             row['checks']['fixed_capture']='saved'
             dump('results.json',results)
 
-        for task in TASKS:
+        for task in matrix:
             row=task_row(task); n=row['num_envs']; started=time.monotonic()
             if task in capture_views:
                 fixed(task,'disabled')
@@ -459,7 +521,7 @@ def runtime(args):
             # original Charger for restoration before testing joint configuration.
             start_sequence()
             env=make(task,n,{'enabled':True,'scheme_id':'warm_white','seed':91,
-                      'per_env':{str(n-1):{'scheme_id':'neutral_grey'}}},charger=True)
+                      'per_env':{str(n-1):{'scheme_id':'neutral_grey'}}},charger=not review)
             e=env.unwrapped; a=e._fixture_appearance
             for variant in capture_schemes[1:]:
                 env.reset(seed=TASK_SEED,options={'drawer_plug_appearance':{'scheme_id':variant}})
@@ -568,6 +630,7 @@ if __name__ == '__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--static',action='store_true'); p.add_argument('--asset-root',type=Path)
     p.add_argument('--approval',type=Path); p.add_argument('--output',type=Path)
+    p.add_argument('--drawer-review',action='store_true',help='Only closed/open drawer task views and checks')
     args=p.parse_args()
     if args.static: print(json.dumps(static_check(args.asset_root),ensure_ascii=False))
     elif args.approval is None or args.output is None: p.error('runtime requires --approval and --output')
