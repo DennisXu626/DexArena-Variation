@@ -57,6 +57,28 @@ def validate_reset_override(override, num_envs):
         raise ValueError('Office enabled and seed are construction-only')
 
 
+def resolve_reset_requests(config, override, indices, schemes):
+    """Validate effective selections for the selected environments without side effects."""
+    requests = []
+    for index in indices:
+        request = {**config, **config.get('per_env', {}).get(str(index), {}),
+                   **override, **override.get('per_env', {}).get(str(index), {})}
+        mode = request.get('mode', 'explicit')
+        if mode == 'explicit':
+            choices = [request.get('scheme_id', 'original')]
+        elif mode == 'random_choice':
+            choices = request.get('scheme_ids', [])
+            if not isinstance(choices, list) or not choices:
+                raise ValueError(f'Office env {index} scheme_ids must be a nonempty list')
+        else:
+            raise ValueError(f'Unsupported Office selection mode for env {index}: {mode}')
+        for name in choices:
+            if not isinstance(name, str) or name not in schemes:
+                raise ValueError(f'Unknown Office appearance scheme for env {index}: {name!r}')
+        requests.append((index, mode, choices))
+    return requests
+
+
 def texture_descriptor(texture):
     return {name: getattr(texture, name) for name in TEXTURE_DESCRIPTOR_FIELDS}
 
@@ -452,20 +474,8 @@ class OfficeDevicesAppearance:
         override = options.get('office_devices_appearance', {})
         validate_reset_override(override, len(self.bindings))
         requests = []
-        for i in indices:
-            request = {**self.config, **self.config.get('per_env', {}).get(str(i), {}),
-                       **override, **override.get('per_env', {}).get(str(i), {})}
-            mode = request.get('mode', 'explicit')
-            if mode == 'explicit':
-                choices = [request.get('scheme_id', 'original')]
-            elif mode == 'random_choice':
-                choices = request.get('scheme_ids', [])
-                if not isinstance(choices, list) or not choices:
-                    raise ValueError('Office scheme_ids must be a nonempty list')
-            else:
-                raise ValueError(f'Unsupported Office selection mode: {mode}')
-            if any(name not in self.catalog['schemes'] for name in choices):
-                raise ValueError(f'Unknown Office appearance scheme: {choices}')
+        for i, mode, choices in resolve_reset_requests(
+                self.config, override, indices, self.catalog['schemes']):
             if self.bindings[i] is None:
                 raise RuntimeError(f'Office environment is not bound: {i}')
             requests.append((i, mode, choices, {name: self.scheme_parameters(name) for name in choices}))

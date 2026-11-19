@@ -5,7 +5,9 @@ from pathlib import Path
 
 import numpy as np
 
-from tasks.office_desk.devices_appearance import validate_appearance_config, validate_reset_indices, validate_reset_override
+from tasks.office_desk.devices_appearance import (
+    resolve_reset_requests, validate_appearance_config, validate_reset_indices, validate_reset_override,
+)
 
 CATALOG = Path(__file__).resolve().parents[1] / 'assets/variation/office_desk/mouse_101408/v1/catalog.json'
 ROLES = {'link_0': 'buttons', 'link_1': 'buttons', 'link_2': 'wheel', 'link_3': 'shell'}
@@ -88,24 +90,10 @@ class MouseAppearance:
         indices = validate_reset_indices(env_idx, len(self.bindings))
         override = options.get('mouse_appearance', {})
         validate_reset_override(override, len(self.bindings))
-        requests = []
-        for i in indices:
-            request = {**self.config, **self.config.get('per_env', {}).get(str(i), {}),
-                       **override, **override.get('per_env', {}).get(str(i), {})}
-            mode = request.get('mode', 'explicit')
-            if mode == 'explicit':
-                choices = [request.get('scheme_id', 'original')]
-            elif mode == 'random_choice':
-                choices = request.get('scheme_ids', [])
-                if not isinstance(choices, list) or not choices:
-                    raise ValueError('Mouse scheme_ids must be nonempty catalog choices')
-            else:
-                raise ValueError(f'Unsupported Mouse selection mode: {mode}')
-            if any(name not in self.catalog['schemes'] for name in choices):
-                raise ValueError(f'Unknown Mouse scheme: {choices}')
+        requests = resolve_reset_requests(self.config, override, indices, self.catalog['schemes'])
+        for i, _, _ in requests:
             if self.bindings[i] is None:
                 raise RuntimeError(f'Mouse environment is not bound: {i}')
-            requests.append((i, mode, choices))
         selections = [(i, str(self.rng[i].choice(choices)) if mode == 'random_choice' else choices[0])
                       for i, mode, choices in requests]
         for i, name in selections:

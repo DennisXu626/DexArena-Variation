@@ -28,9 +28,11 @@ env.reset(options={"env_idx": torch.tensor([1], device=env.unwrapped.device),
     "office_devices_appearance": {"scheme_id": "original"}})
 ```
 
-`random_choice` 从非空 `scheme_ids` 抽样。覆盖顺序为构造公共 → 构造 `per_env` → reset 公共 → reset `per_env`；`enabled` 和外观 `seed` 仅在构造的公共配置中设置。`per_env` 的键是规范的环境编号字符串，值为字典。传入的 `env_idx` 须严格递增；局部 reset 省略 reset `seed`；`reset_to_env_states` 不接受同时指定外观覆盖。
+`random_choice` 从非空 `scheme_ids` 抽样。覆盖顺序为构造公共 → 构造 `per_env` → reset 公共 → reset `per_env`。`enabled` 和外观 `seed` 仅在构造的公共配置中设置。`per_env` 使用规范的环境编号字符串和字典值。传入的 `env_idx` 须严格递增，局部 reset 省略 reset `seed`。状态恢复沿用原生状态恢复路径，同次调用禁止传入外观覆盖。
 
-每个环境有独立的私有材质、外观随机流和回合计数；显式选择不消耗外观随机数，渲染时不重抽。所有选中请求都通过校验后才抽样或更新材质。回合记录包含 `env_idx`、`episode_index`、`scheme_id` 和 `catalog_version`。
+启用外观时，首次初始化及普通 reset 均在进入原生 reset 前校验每个选中环境的有效模式及方案。随机模式校验完整候选列表。遇到错误时直接报错，原生 reset、任务随机流、状态和材质写入尚未开始。外观关闭时仍校验覆盖格式，任务直接沿用原生外观。
+
+每个环境有独立的私有材质、外观随机流和回合计数。显式选择和渲染均不抽样。回合记录包含 `env_idx`、`episode_index`、`scheme_id` 和 `catalog_version`。
 
 ## 原生槽与保护
 
@@ -45,6 +47,8 @@ env.reset(options={"env_idx": torch.tensor([1], device=env.unwrapped.device),
 ```powershell
 python -B tools/variation/check_office_devices.py --require-assets
 python -B -m unittest discover -s tests -p test_office_devices_appearance.py
+python -B tools/variation/check_static.py
+python -B tools/variation/check_appearance_archive.py
 python -B tools/variation/check_office_devices_dynamics.py --steps 60 --seed 7 `
   --sapien-root $sdk --artifact $receipt --physx-gpu-dir $physx --output outputs/office_cpu
 python -B tools/variation/sapien_sdk/run_task_check.py --repo-root . `
@@ -55,13 +59,14 @@ python -B tools/variation/sapien_sdk/run_task_check.py --repo-root . `
 
 输出目录须为新目录。CPU 接口检查使用同一启动器，指定 `--sim-backend physx_cpu` 并省略 CUDA 专用参数。`two_env` 只调整 GPU 接触缓冲容量；实际 SimConfig 完整写入报告。选中状态读回容差为 `atol=2e-6, rtol=0`，RGB 比较逐值精确。
 
-| 验收项 | 当前状态 |
+| 验收项 | 结果 |
 |---|---|
-| 配置、源资产、完整任务 AST、UV 证明及 CPU 选择契约 | 已通过 |
-| 三项 CPU 动态等价 | 关闭外观、重复基线、启用原版和两候选，每任务每设置 60 步；共 900 control / 18,000 physics steps，逐步状态、控制目标、奖励与判定差均为 0 |
-| 标准 CUDA 双环境 | 三项共 78 次选中状态读回、6 control / 120 physics steps；双向状态、控制器、随机流、记录及 RGB 隔离通过，原版恢复 RGB 差 0 |
+| 当前源码的公开 reset | CPU 替身覆盖三项真实入口。合法方案按覆盖顺序转发，末项无效方案和混入坏值的随机候选在原生调用前被拒绝 |
+| 当前源码的静态检查 | 源资产、完整任务 AST、76 面 UV 证明及仓库静态、档案检查通过 |
+| 历史 CPU 接口与动态 | 三项真实接口有原版和候选记录。关闭外观、重复基线、启用原版和两候选，每任务每设置 60 步，共 900 控制步、18,000 物理子步。逐步状态、控制目标、奖励与判定差均为 0 |
+| 历史 Windows 私有 SAPIEN v5 双环境 CUDA | 三项共 78 次选中状态读回、6 控制步、120 物理子步。双向状态、控制器、随机流、记录及 RGB 隔离通过，原版恢复 RGB 差 0 |
 
-[运行摘要](../../assets/appearance/objects/office_desk/previews/runtime/summary.json)记录本次验收源码、资产和 SDK 身份。[完整实景对照](../../assets/appearance/objects/office_desk/previews/runtime/)含原版、两候选与双向局部 reset 前后图。
+运行摘要记录历史采集的原始源码、资产和 SDK 身份。其 CPU、CUDA 和图像记录用于成功路径验收。完整实景对照含原版、两候选与双向局部 reset 前后图。 [运行摘要](../../assets/appearance/objects/office_desk/previews/runtime/summary.json) · [实景对照](../../assets/appearance/objects/office_desk/previews/runtime/)
 
 | OpenLaptop · petrol_satin | TypeKeys · indigo_satin | ClickMouse · navy_satin |
 |---|---|---|

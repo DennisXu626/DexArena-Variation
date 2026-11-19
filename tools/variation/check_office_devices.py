@@ -182,7 +182,8 @@ def source_check(baseline=BASELINE):
     imports = [node for node in mouse_current.body if isinstance(node, ast.ImportFrom)
                and node.module == 'tasks.office_desk.devices_appearance']
     assert len(imports) == 1 and [(alias.name, alias.asname) for alias in imports[0].names] == [
-        ('validate_appearance_config', None), ('validate_reset_indices', None), ('validate_reset_override', None)]
+        ('resolve_reset_requests', None), ('validate_appearance_config', None),
+        ('validate_reset_indices', None), ('validate_reset_override', None)]
     mouse_current.body.remove(imports[0])
     mouse_class = next(node for node in mouse_current.body if isinstance(node, ast.ClassDef) and node.name == 'MouseAppearance')
     constructor = next(node for node in mouse_class.body if isinstance(node, ast.FunctionDef) and node.name == '__init__')

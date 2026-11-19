@@ -4,7 +4,9 @@ import numpy as np
 import torch
 
 from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
-from tasks.office_desk.devices_appearance import validate_reset_indices, validate_reset_override
+from tasks.office_desk.devices_appearance import (
+    resolve_reset_requests, validate_reset_indices, validate_reset_override,
+)
 
 
 def office_capacity_config(config, kwargs):
@@ -23,18 +25,27 @@ def office_capacity_config(config, kwargs):
 class OfficeResetScopeMixin(FurnitureResetScopeMixin):
     def reset(self, seed=None, options=None):
         env_idx = options.get('env_idx') if options is not None else None
+        selected = range(self.num_envs)
         if env_idx is not None:
-            validate_reset_indices(env_idx, self.num_envs)
+            selected = validate_reset_indices(env_idx, self.num_envs)
         elif options is not None and 'env_idx' in options:
             options = dict(options)
             del options['env_idx']
         if seed is not None and not is_full_reset(env_idx, self.num_envs):
             raise ValueError('Office partial reset must omit seed; reseed only a full reset')
-        key = 'mouse_appearance' if hasattr(self, '_mouse_appearance') else 'office_devices_appearance'
+        if hasattr(self, '_mouse_appearance'):
+            key, appearance = 'mouse_appearance', self._mouse_appearance
+        else:
+            key, appearance = 'office_devices_appearance', getattr(self, '_office_devices_appearance', None)
+        override = {}
+        restoring = options is not None and 'reset_to_env_states' in options
         if options is not None and key in options:
-            if 'reset_to_env_states' in options:
+            if restoring:
                 raise ValueError('Office state restoration cannot include an appearance override')
-            validate_reset_override(options[key], self.num_envs)
+            override = options[key]
+            validate_reset_override(override, self.num_envs)
+        if appearance is not None and not restoring:
+            resolve_reset_requests(appearance.config, override, selected, appearance.catalog['schemes'])
         if env_idx is not None:
             indices = torch.as_tensor(env_idx, dtype=torch.long, device=self._elapsed_steps.device)
             if indices is not env_idx:

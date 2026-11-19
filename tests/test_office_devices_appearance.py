@@ -281,6 +281,203 @@ class OfficePartPreparation(unittest.TestCase):
             with self.assertRaises(RuntimeError):M.OfficePartMaterials(definition,root)
 
 
+class PublicOfficeReset(unittest.TestCase):
+    CASES = (
+        ('TypeKeys', 'type_keys', 'office_devices_appearance', 'keyboard', ('variant_1', 'variant_2'),
+         ('ochre_matte', 'indigo_satin')),
+        ('OpenLaptop', 'open_laptop', 'office_devices_appearance', 'laptop', ('variant_1', 'variant_2'),
+         ('terracotta_matte', 'petrol_satin')),
+        ('ClickMouse', 'click_mouse', 'mouse_appearance', 'mouse', ('ivory_matte', 'navy_satin'),
+         ('ivory_matte', 'navy_satin')),
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        class Native:
+            def reset(self, seed=None, options=None):
+                self.calls.append((seed, options))
+                self.task_draws += 1
+                self.state_writes += 1
+                if options is None:
+                    options = {}
+                if self.appearance is not None and 'reset_to_env_states' not in options:
+                    indices = options.get('env_idx', range(self.num_envs))
+                    for index in indices:
+                        index = int(index)
+                        if self.appearance.bindings[index] is None:
+                            self.appearance.bindings[index] = []
+                    self.appearance.finish_reset(list(map(int, indices)), options)
+                return 'observations', 'info'
+
+            def __setattr__(self, name, value):
+                if name in ('_furniture_reset_env_idx', '_furniture_reset_scope_masks'):
+                    self.scope_writes += 1
+                super().__setattr__(name, value)
+
+        def source(path):
+            return ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+
+        furniture = ROOT / 'tasks/furniture_assembly/reset_scope.py'
+        furniture_nodes = [
+            node for node in source(furniture).body
+            if getattr(node, 'name', None) in ('FurnitureResetScopeMixin', 'is_full_reset')
+        ]
+        namespace = {'BaseEnv': Native, 'torch': torch, 'np': np, '_MISSING': object()}
+        exec(compile(ast.Module(body=furniture_nodes, type_ignores=[]), str(furniture), 'exec'), namespace)
+
+        office = ROOT / 'tasks/office_desk'
+        scope_path = office / 'reset_scope.py'
+        scope = next(node for node in source(scope_path).body if isinstance(node, ast.ClassDef))
+        namespace.update(resolve_reset_requests=M.resolve_reset_requests,
+                         validate_reset_indices=M.validate_reset_indices,
+                         validate_reset_override=M.validate_reset_override)
+        exec(compile(ast.Module(body=[scope], type_ignores=[]), str(scope_path), 'exec'), namespace)
+
+        mouse_spec = importlib.util.spec_from_file_location('office_mouse_under_test', office / 'mouse_appearance.py')
+        mouse = importlib.util.module_from_spec(mouse_spec)
+        with patch.dict(sys.modules, {'tasks.office_desk.devices_appearance': M}):
+            mouse_spec.loader.exec_module(mouse)
+        namespace.update(OfficeDevicesAppearance=M.OfficeDevicesAppearance, MouseAppearance=mouse.MouseAppearance,
+                         appearance_enabled=M.appearance_enabled, DEFAULT_ROBOT_UID='mock',
+                         KEYBOARD_ASSET_DIR=office, LAPTOP_ASSET_DIR=office)
+        cls.env_classes = {}
+        for task, stem, key, *_ in cls.CASES:
+            task_path = office / f'office_desk_{stem}.py'
+            actual = next(node for node in source(task_path).body
+                          if isinstance(node, ast.ClassDef) and node.name == f'OfficeDesk{task}Env')
+            # Preserve the task's inheritance, constructor key and adapter initialization.
+            assert any(isinstance(dec, ast.Call) and ast.unparse(dec.func) == 'register_task'
+                       and ast.literal_eval(dec.args[0]) == f'OfficeDesk{task}' for dec in actual.decorator_list)
+            actual.decorator_list = []
+            constructor = next(node for node in actual.body if isinstance(node, ast.FunctionDef)
+                               and node.name == '__init__')
+            constructor.body = [
+                node for node in constructor.body if isinstance(node, ast.Assign)
+                and [ast.unparse(target) for target in node.targets] == [f'self._{key}']
+            ]
+            assert len(constructor.body) == 1
+            actual.body = [constructor] + [node for node in actual.body
+                                           if isinstance(node, ast.FunctionDef) and node.name == 'reset']
+            exec(compile(ast.Module(body=[actual], type_ignores=[]), str(task_path), 'exec'), namespace)
+            cls.env_classes[task] = namespace[actual.name]
+
+    def env(self, task, key, config=None):
+        kwargs = {} if config is None else {key: config}
+        instance = self.env_classes[task](num_envs=2, **kwargs)
+        instance.appearance = getattr(instance, f'_{key}')
+        instance.num_envs = 2
+        instance._elapsed_steps = torch.zeros(2, dtype=torch.int32)
+        instance._reconfig_counter = 1
+        instance.reconfiguration_freq = 0
+        instance.scene = object()
+        instance.gpu_sim_enabled = False
+        instance.calls = []
+        instance.task_draws = instance.state_writes = instance.scope_writes = 0
+        return instance
+
+    def reject(self, env, message, options=None):
+        adapter = env.appearance
+        before = None if adapter is None else (
+            copy.deepcopy([rng.bit_generator.state for rng in adapter.rng]),
+            tuple(adapter.bindings), adapter.schemes.copy(), adapter.episodes.copy(), adapter.records.copy())
+        with self.assertRaisesRegex(ValueError, message):
+            env.reset(options=options)
+        self.assertEqual((env.calls, env.task_draws, env.state_writes, env.scope_writes), ([], 0, 0, 0))
+        if adapter is not None:
+            self.assertEqual(before, ([rng.bit_generator.state for rng in adapter.rng], tuple(adapter.bindings),
+                                      adapter.schemes, adapter.episodes, adapter.records))
+
+    def test_later_explicit_and_random_errors_do_not_enter_native_reset(self):
+        for task, _, key, _, (first, second), _ in self.CASES:
+            for later, message in (
+                ({'mode': 'explicit', 'scheme_id': second + '_typo'}, 'env 1.*_typo'),
+                ({'scheme_ids': [first, second, 'typo']}, 'env 1.*typo'),
+                ({'scheme_ids': [first, {}]}, 'env 1.*scheme|scheme.*env 1'),
+                ({'scheme_ids': []}, 'env 1.*nonempty list'),
+                ({'mode': 'typo_mode'}, 'env 1.*typo_mode'),
+            ):
+                with self.subTest(task=task, later=later):
+                    env = self.env(task, key, {'enabled': True})
+                    self.reject(env, message, {key: {'mode': 'random_choice', 'scheme_ids': [first, second],
+                                                    'per_env': {'1': later}}})
+
+    def test_constructor_selection_with_unbound_adapter_and_state_restoration(self):
+        for task, _, key, _, (first, second), _ in self.CASES:
+            with self.subTest(task=task):
+                env = self.env(task, key, {'enabled': True, 'scheme_id': first,
+                                           'per_env': {'1': {'scheme_id': 'ctor_typo'}}})
+                self.assertEqual(env.appearance.bindings, [None, None])
+                self.reject(env, 'env 1.*ctor_typo')
+                restore = {'reset_to_env_states': {'env_states': object()}}
+                self.reject(env, 'state restoration', {**restore, key: {'scheme_id': second}})
+                self.assertEqual(env.reset(options=restore), ('observations', 'info'))
+                self.assertIs(env.calls[0][1], restore)
+                self.assertEqual(env.appearance.bindings, [None, None])
+                self.assertEqual(env.appearance.episodes, [0, 0])
+
+    def test_actual_public_ids_forward_with_all_four_precedence_levels(self):
+        for task, _, key, model, (first, second), mapped in self.CASES:
+            with self.subTest(task=task):
+                env = self.env(task, key, {'enabled': True, 'scheme_id': first,
+                                           'per_env': {'1': {'scheme_id': second}}})
+                adapter = env.appearance
+                if model == 'mouse':
+                    self.assertTrue(all(name in adapter.catalog['schemes'] for name in mapped))
+                    self.assertNotIn('variant_1', adapter.catalog['schemes'])
+                else:
+                    self.assertEqual(adapter.object_id, model)
+                    mapping = adapter.catalog['objects'][model]['scheme_map']
+                    self.assertEqual((mapping[first], mapping[second]), mapped)
+                before_rng = copy.deepcopy([rng.bit_generator.state for rng in adapter.rng])
+                self.assertEqual(env.reset(seed=7), ('observations', 'info'))
+                self.assertEqual(env.calls, [(7, None)])
+                self.assertEqual(adapter.schemes, [first, second])
+                options = {key: {'scheme_id': 'original', 'per_env': {'1': {'scheme_id': first}}}}
+                env.reset(options=options)
+                self.assertIs(env.calls[-1][1], options)
+                self.assertEqual(adapter.schemes, ['original', first])
+                self.assertEqual(before_rng, [rng.bit_generator.state for rng in adapter.rng])
+                env.reset(options={'env_idx': [0], key: {'mode': 'random_choice', 'scheme_ids': [first, second],
+                                                         'per_env': {'1': {'scheme_ids': ['unselected_typo']}}}})
+                self.assertEqual(env.calls[-1][1]['env_idx'].tolist(), [0])
+                self.assertIn(adapter.schemes[0], (first, second))
+                self.assertEqual(adapter.schemes[1], first)
+                self.assertEqual(adapter.episodes, [3, 2])
+                self.assertNotEqual(before_rng[0], adapter.rng[0].bit_generator.state)
+                self.assertEqual(before_rng[1], adapter.rng[1].bit_generator.state)
+
+    def test_disabled_defaults_ignore_selection_and_keep_constructor_only_controls(self):
+        for task, _, key, *_ in self.CASES:
+            for config in (None, {'enabled': False}):
+                with self.subTest(task=task, config=config):
+                    env = self.env(task, key, config)
+                    self.assertIsNone(env.appearance)
+                    self.reject(env, 'construction-only', {key: {'enabled': True}})
+                    self.reject(env, 'construction-only', {key: {'seed': 9}})
+                    options = {key: {'mode': 'random_choice', 'scheme_ids': ['inactive_typo']}}
+                    self.assertEqual(env.reset(options=options), ('observations', 'info'))
+                    self.assertIs(env.calls[0][1], options)
+
+    def test_all_expansion_ids_forward_and_reject_late_typo(self):
+        for task, _, key, _, original_candidates, _ in self.CASES:
+            probe = self.env(task, key, {'enabled': True})
+            ids = list(probe.appearance.catalog['schemes'])
+            self.assertEqual(ids[:3], ['original', *original_candidates])
+            expanded = ids[3:]
+            if len(ids) == 3:
+                continue
+            self.assertEqual(expanded, [f'variant_{index}' for index in range(3, 11)])
+            for name in expanded:
+                with self.subTest(task=task, scheme=name):
+                    env = self.env(task, key, {'enabled': True})
+                    self.reject(env, 'env 1.*_typo', {key: {'scheme_id': name,
+                                                            'per_env': {'1': {'scheme_id': name + '_typo'}}}})
+                    self.reject(env, 'env 1.*_typo', {key: {'mode': 'random_choice', 'scheme_ids': [name, 'original'],
+                                                            'per_env': {'1': {'scheme_ids': [name, name + '_typo']}}}})
+                    env.reset(options={key: {'scheme_id': name}})
+                    self.assertEqual(env.appearance.schemes, [name, name])
+
+
 class OfficeCapacityConfig(unittest.TestCase):
     def test_reset_preflight_rejects_before_any_native_write(self):
         source=ast.parse((ROOT/'tasks/office_desk/reset_scope.py').read_text(encoding='utf-8'))
@@ -290,6 +487,7 @@ class OfficeCapacityConfig(unittest.TestCase):
                 self.calls.append((seed,options));return 'delegated'
         namespace={'FurnitureResetScopeMixin':Parent,'is_full_reset':lambda idx,n:idx is None or {int(i) for i in idx}==set(range(n)),
                    'validate_reset_indices':M.validate_reset_indices,'validate_reset_override':M.validate_reset_override,
+                   'resolve_reset_requests':M.resolve_reset_requests,
                    'torch':torch}
         exec(compile(ast.Module(body=[cls],type_ignores=[]),'<office-reset-scope>','exec'),namespace)
         instance=namespace['OfficeResetScopeMixin']();instance.num_envs=2;instance.calls=[]
