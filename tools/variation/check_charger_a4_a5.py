@@ -17,6 +17,8 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[2]
 BOB_HEAD = '5185f1dd61f2de88ab7d4ada7a2ef77f01e6b207'
+# PR #2's squash commit has the same tree and is available in main's history.
+BOB_MAIN_COMMIT = '0c744fa2aea2ab9c722f2e9f52acffedd562761c'
 FILES = ['tasks/drawer_plug/' + n for n in ['drawer_plug_long.py', 'drawer_plug_pick_charger.py',
                                          'drawer_plug_insert_plug.py', 'charger_appearance.py']]
 CATALOG = ROOT / 'tasks/assets/variation/drawer_plug/v1/catalog.json'
@@ -37,7 +39,7 @@ if args.static:
     # This includes every success predicate, robot reset and physics builder.
     for file in FILES[:3]:
         original = subprocess.check_output(['git', '-c', 'safe.directory=' + ROOT.as_posix(),
-                                           '-C', str(ROOT), 'show', BOB_HEAD + ':' + file], text=True, encoding='utf-8')
+                                           '-C', str(ROOT), 'show', BOB_MAIN_COMMIT + ':' + file], text=True, encoding='utf-8')
         old = ast.parse(original)
         new = ast.parse((ROOT / file).read_text(encoding='utf-8'))
         # Normalize only the enumerated Drawer/socket visual hooks. The new

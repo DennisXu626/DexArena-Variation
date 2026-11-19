@@ -92,14 +92,19 @@ def static_check(asset_root=None):
     assert len(cat['drawer_mesh_roles']) == len(mapping['visuals']) == 47
     assert all(cat['drawer_mesh_roles'][Path(v['mesh']).name]['role'] == v['role'] for v in mapping['visuals'])
     assert {k for v in mapping['visuals'] for m in v['materials'] for k, _ in m['maps']} == {'map_Kd'}
-    previous = json.loads(subprocess.check_output(['git', '-C', str(ROOT), 'show',
-        '7b7f984697f0099b58c4ee32ef86e307ec81da7e:' + CAT]))
-    assert cat['version']==previous['version']
+    # Job 121640 validated these socket parameters at f51424c. Hash only
+    # the socket settings and catalog version, so drawer finishes may evolve.
+    socket_settings = {
+        'version': cat['version'],
+        'schemes': {name: scheme.get('socket') for name, scheme in cat['schemes'].items()},
+    }
+    encoded = json.dumps(socket_settings, sort_keys=True, separators=(',', ':')).encode('utf-8')
+    expected_socket_hash = '528c260ae9012547f7f768e515aafbbefd6f1bf6cb50b82f0a1c04dca5469ba8'
+    assert hashlib.sha256(encoded).hexdigest() == expected_socket_hash, 'Socket catalog differs from job 121640'
     roles={v['role'] for v in mapping['visuals']}
     assert roles=={'top','top_front_trim','cabinet_side','cabinet_frame','front',
                    'inner_front_liner','inner_side','inner_back','inner_bottom','handle','slider'}
     for name, scheme in cat['schemes'].items():
-        assert scheme.get('socket')==previous['schemes'][name].get('socket')
         if name=='original': continue
         assert set(scheme['drawer'])==roles-{'slider'}
         for role, params in scheme['drawer'].items():
