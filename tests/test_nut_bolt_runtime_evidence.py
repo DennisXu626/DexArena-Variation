@@ -163,7 +163,9 @@ class RawEvidenceTests(unittest.TestCase):
         common.capture = lambda env, info: {'camera': np.arange(12, dtype=np.uint8).reshape(2, 1, 2, 3)}
         common.image_changes = lambda *args, **kwargs: {'camera': {'changed_values': 0}}
         common.save_image_pairs = lambda *args, **kwargs: None
-        def native_prime(base):
+        primed_envs = []
+        def native_prime(base, env_id=0):
+            primed_envs.append(env_id)
             base.agent.controller._target_qpos[:] = 1
             base.forces[:] = .5
             return {'action': [[1., 1., 1.], [1., 1., 1.]]}
@@ -187,6 +189,7 @@ class RawEvidenceTests(unittest.TestCase):
             control = E.native_local(common, Environment(), {}, Path(directory), reset,
                 lambda: selected_ids[-1], result, common.dump)
             self.assertIs(common.prime_controller_target, native_prime)
+            self.assertEqual(primed_envs, [0, 0])
             self.assertEqual([row['selected_state_evidence'] for row in control['rounds']], selected_ids)
             self.assertEqual(result['control_steps'], 1)
             self.assertEqual(result['physics_steps'], 20)

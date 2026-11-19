@@ -189,9 +189,10 @@ def native_local(common, env, info, output, reset, selected_id, result, dump):
     base, receipts, captures = env.unwrapped, [], []
     native_prime = common.prime_controller_target
     prime_index = 0
-    def priming(base):
+    def priming(base, *prime_args, **prime_kwargs):
         nonlocal prime_index
-        row = prime(common, base, output, f'native_prime_{prime_index}', native_prime)
+        row = prime(common, base, output, f'native_prime_{prime_index}',
+                    lambda base: native_prime(base, *prime_args, **prime_kwargs))
         prime_index += 1
         return row
     def capture(environment, raw_info):

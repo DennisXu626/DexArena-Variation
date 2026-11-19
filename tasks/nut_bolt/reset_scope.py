@@ -18,10 +18,16 @@ class NutBoltResetScopeMixin(FurnitureResetScopeMixin):
                 options = {key: value for key, value in options.items() if key != 'env_idx'}
         if seed is not None and not is_full_reset(indices, self.num_envs):
             raise ValueError('Nut & Bolt partial reset must omit seed; reseed with a full reset')
+        override = {}
+        restoring = options is not None and 'reset_to_env_states' in options
         if options is not None and 'nut_bolt_appearance' in options:
-            if 'reset_to_env_states' in options:
+            if restoring:
                 raise ValueError('Nut & Bolt state restoration cannot include an appearance override')
-            validate_per_env(options['nut_bolt_appearance'], self.num_envs)
+            override = options['nut_bolt_appearance']
+            validate_per_env(override, self.num_envs)
+        if self._nut_bolt_appearance is not None and not restoring:
+            selected = range(self.num_envs) if indices is None else indices
+            self._nut_bolt_appearance.validate_selection(selected, override)
         if env_idx is not None:
             canonical = torch.as_tensor(env_idx, dtype=torch.long, device=self.device)
             if canonical is not env_idx:

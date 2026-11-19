@@ -23,7 +23,7 @@ records = env.unwrapped._nut_bolt_appearance.records
 
 选择优先级为构造公共 → 构造 `per_env` → reset 公共 → reset `per_env`。`per_env` 的键为从 `"0"` 到最后一个环境编号的规范字符串，值为配置字典。`mode="random_choice"` 与非空 `scheme_ids` 支持指定集合抽样；显式方案不消耗外观 RNG。各环境单独计数，每条回合记录含 `env_idx`、`episode_index`、`scheme_id`、`catalog_version`。render 不重抽。
 
-显式 `env_idx` 必须严格递增，局部 reset 必须省略任务 `seed`，`reset_to_env_states` 不接受同时指定的外观覆盖。
+公开 `reset` 先按上述优先级校验所有选中环境的有效方案。显式 ID 和随机列表中的每个 ID 均须在运行 catalog 中。校验通过后才进入原生重置，外观抽样和应用仍在任务初始化结束时进行。显式 `env_idx` 必须严格递增，局部 reset 必须省略任务 `seed`。直接恢复原生状态可使用 `reset_to_env_states`，与外观覆盖互斥。
 
 配置示例见 [default](../../examples/variation/nut_bolt/default.json)、[fixed](../../examples/variation/nut_bolt/fixed.json)、[random](../../examples/variation/nut_bolt/random.json)。
 
@@ -41,7 +41,9 @@ records = env.unwrapped._nut_bolt_appearance.records
 
 ## 验证
 
-[Windows v7 验收记录](../../assets/appearance/objects/nut_bolt/previews/runtime/summary.json)覆盖三项短任务。各通过 40 次选中状态读回及 2 控制步／40 物理步。两种局部 reset 方向均核对未选环境的状态、控制器、RNG、材质及 RGB。四个原生相机的未选环境、original 恢复和重复帧 RGB 均逐值一致。SeatNut 另核对原生 free／threaded 切换的首帧、重复帧与反向局部 reset。
+CPU 契约测试调用三项短任务的公开 `reset`，以替身计数核对末个环境的非法 ID 或随机列表末项非法时，原生重置、RNG、任务状态和锁写入均为零。合法请求、覆盖优先级、局部重置、初始化和状态恢复另有正例。
+
+[Windows v7 成功路径运行档案](../../assets/appearance/objects/nut_bolt/previews/runtime/summary.json)按记录的采集源码和 SDK 身份覆盖三项短任务。各通过 40 次选中状态读回及 2 控制步／40 物理步。两种局部 reset 方向均核对未选环境的状态、控制器、RNG、材质及 RGB。四个原生相机的未选环境、original 恢复和重复帧 RGB 均逐值一致。SeatNut 另核对原生 free／threaded 切换的首帧、重复帧与反向局部 reset。
 
 CPU 接口和动态回归通过。三个任务的五组同动作对照共 900 控制步／18,000 物理步，所有逐步动态状态与重复原任务基线精确一致，各组材质保持稳定。
 
@@ -67,6 +69,15 @@ SeatNut 与 TurnNut 的任务视角会被机械臂遮挡。先用关闭外观的
 
 ## 复现
 
+静态检查与公开 reset 契约可从仓库根运行。
+
+```powershell
+python -B tools/variation/check_static.py
+python -B tools/variation/check_appearance_archive.py
+python -B tools/variation/check_nut_bolt_appearance.py --static
+python -B -m unittest discover -s tests -p 'test_nut_bolt*.py'
+```
+
 正式检查使用同一份经源码、wheel 和运行文件校验的 [Windows SDK](../../tools/variation/sapien_sdk/native_lock/README.md)。以下命令从仓库根目录运行，指定 SDK 构建生成的 `runtime/`、`artifact.json` 和 `physx-runtime/`，每次使用新输出目录。
 
 ```powershell
@@ -80,7 +91,7 @@ python -B $launch @gpuArgs --task TurnNut --seed 26 --visibility-camera human --
 python -B tools/variation/check_nut_bolt_dynamics.py @sdkArgs --approved-runtime --steps 60 --seed 7 --output outputs/variation/nut_bolt/dynamics
 ```
 
-`two_env` 只调整检查进程的 GPU 容量预算。CPU 动态逐步对照原任务、原任务重复组、original 和两个候选的相同动作序列，覆盖每组 60 控制步，并核对材质稳定性。另可运行 `python -B tools/variation/check_nut_bolt_appearance.py --static` 和 `python -B -m unittest discover -s tests -p 'test_nut_bolt*.py'`。
+`two_env` 只调整检查进程的 GPU 容量预算。CPU 动态逐步对照原任务、原任务重复组、original 和各候选的相同动作序列，覆盖每组 60 控制步，并核对材质稳定性。
 
 [独立 SDK 验证记录](../../assets/appearance/objects/nut_bolt/previews/runtime/sdk_probe_checks.json)覆盖 [原生六轴锁定](../../tools/variation/sapien_sdk/native_lock/probes/check_runtime_lock.py) 的锁定、解锁、索引恢复和真实接触，以及 [光栅可见性](../../tools/variation/sapien_sdk/native_lock/tools/probe_batched_visibility.py) 的首帧、恢复和结构改动拒绝。两者均可通过 Windows SDK 文档中的 `launch_native_lock.py` 复现。
 

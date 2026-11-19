@@ -148,6 +148,26 @@ class NutBoltAppearance(FurnitureAppearance):
             seen.append(material)
         self.bindings[env_id] = bindings
 
+    def validate_selection(self, indices, override):
+        """Check effective requests before scene creation or episode state changes."""
+        schemes = self.catalog['schemes']
+        for index in indices:
+            key = str(index)
+            request = {**self.config, **self.config.get('per_env', {}).get(key, {}),
+                       **override, **override.get('per_env', {}).get(key, {})}
+            mode = request.get('mode', 'explicit')
+            if mode == 'explicit':
+                name = request.get('scheme_id', 'original')
+                if not isinstance(name, str) or name not in schemes:
+                    raise ValueError(f'Unknown Nut & Bolt scheme for env {index}: {name!r}')
+            elif mode == 'random_choice':
+                choices = request.get('scheme_ids', [])
+                if (not isinstance(choices, (list, tuple)) or not choices
+                        or any(not isinstance(name, str) or name not in schemes for name in choices)):
+                    raise ValueError(f'Nut & Bolt scheme_ids for env {index} must be nonempty catalog choices')
+            else:
+                raise ValueError(f'Unsupported Nut & Bolt selection mode for env {index}: {mode!r}')
+
     def finish_reset(self, env_idx, options):
         indices = reset_indices(env_idx, len(self.bindings))
         override = options.get('nut_bolt_appearance', {})

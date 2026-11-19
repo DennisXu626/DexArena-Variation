@@ -41,8 +41,12 @@ for row in rows:
         candidate_catalogs = list((directory / 'variants').rglob('catalog.json'))
         assert len(candidate_catalogs) == 1, row
         authored = read(candidate_catalogs[0])
-        expected_scope = ('furniture_appearance' if row['family'] == 'furniture_assembly'
-                          else 'authoring_and_single_environment_preview_only')
+        if row['family'] == 'furniture_assembly':
+            expected_scope = 'furniture_appearance'
+        elif (row['family'], row['object_id']) in {('nut_bolt', 'bolt'), ('nut_bolt', 'nut')}:
+            expected_scope = 'material_appearance'
+        else:
+            expected_scope = 'authoring_and_single_environment_preview_only'
         assert authored['scope'] == expected_scope, row
         assert authored['object_id'] == f"{row['family']}.{row['object_id']}", row
         assert authored['schemes']['original'] == {'mode': 'restore_native'}, row

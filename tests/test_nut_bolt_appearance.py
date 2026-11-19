@@ -8,7 +8,7 @@ import subprocess
 import sys
 from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import numpy as np
 import torch
@@ -58,34 +58,74 @@ class NativeResetSpy:
     def __init__(self):
         self.num_envs = 2
         self.device = 'cpu'
+        self.scene = None
+        self._reconfig_counter = 0
+        self.reconfiguration_freq = 0
+        self.gpu_sim_enabled = False
         self.rng = np.random.RandomState(71)
         self.native_state = np.array([[1., 2.], [3., 4.]])
         self.records = [{'env_idx': 0, 'episode_index': 1}]
-        self.appearance = adapter({'mode': 'random_choice', 'scheme_ids': ['original', 'variant_1']})
+        self._nut_bolt_appearance = adapter({'mode': 'random_choice', 'scheme_ids': ['original', 'variant_1']})
         self.calls = []
+        self.effects = []
+        self.run_episode = False
 
     def reset(self, seed=None, options=None):
         self.calls.append((seed, options))
         if seed is not None:
             self.rng = np.random.RandomState(seed)
+        self.effects.append('task_rng')
         self.native_state = self.rng.uniform(size=(2, 2))
+        self.effects.append('state_write')
         self.records.append({'native_reset': True})
+        if self.run_episode:
+            options = options or {}
+            if 'reset_to_env_states' not in options:
+                self._initialize_episode(options.get('env_idx', torch.arange(self.num_envs)), options)
         return self.native_state.copy()
 
+    def _write_task_state(self, *args, **kwargs):
+        self.effects.append('task_state_write')
 
-scope_tree = ast.parse((ROOT / 'tasks/furniture_assembly/reset_scope.py').read_text(encoding='utf-8'))
-full_reset_function = next(node for node in scope_tree.body
-                           if isinstance(node, ast.FunctionDef) and node.name == 'is_full_reset')
-scope_namespace = {}
-exec(compile(ast.Module(body=[full_reset_function], type_ignores=[]), '<main_full_reset_check>', 'exec'), scope_namespace)
-with patch.dict(sys.modules, {'tasks.furniture_assembly.reset_scope': SimpleNamespace(
-        FurnitureResetScopeMixin=NativeResetSpy, is_full_reset=scope_namespace['is_full_reset']),
-        'tasks.nut_bolt.appearance': MODULE}):
+    _reset_episode_buffers = _write_task_state
+    _initialize_workspace = _write_task_state
+    _place_bolt = _write_task_state
+    _place_nut_on_table = _write_task_state
+    _place_nut_on_platform = _write_task_state
+    _update_platform_pose = _write_task_state
+
+    def _refresh_hold_state(self):
+        self.effects.append('lock_write')
+
+
+with patch.dict(sys.modules, {'sapien': SimpleNamespace()}):
+    PARENT_SCOPE = load('furniture_reset_scope_cpu', 'tasks/furniture_assembly/reset_scope.py')
+with patch.dict(sys.modules, {'tasks.furniture_assembly.reset_scope': PARENT_SCOPE,
+                              'tasks.nut_bolt.appearance': MODULE}):
     RESET_MODULE = load('nut_bolt_reset_scope_cpu', 'tasks/nut_bolt/reset_scope.py')
 
 
-class ResetHarness(RESET_MODULE.NutBoltResetScopeMixin):
+class ResetHarness(RESET_MODULE.NutBoltResetScopeMixin, NativeResetSpy):
     pass
+
+
+def load_reset_task(file_name, method, namespace):
+    source = ROOT / f'tasks/nut_bolt/nut_bolt_{file_name}.py'
+    tree = ast.parse(source.read_text(encoding='utf-8'))
+    task, = [node for node in tree.body if isinstance(node, ast.ClassDef)]
+    task.decorator_list = []
+    task.body = [node for node in task.body if isinstance(node, ast.FunctionDef) and node.name == method]
+    assert len(task.body) == 1
+    env = {'torch': torch, **namespace}
+    exec(compile(ast.Module(body=[task], type_ignores=[]), str(source), 'exec'), env)
+    return env[task.name]
+
+
+LONG_TASK = load_reset_task('long', '_finish_appearance_reset', {
+    'NutBoltResetScopeMixin': RESET_MODULE.NutBoltResetScopeMixin, 'BaseEnv': NativeResetSpy,
+})
+SHORT_TASKS = {name: load_reset_task(name, '_initialize_episode', {'NutBoltLongEnv': LONG_TASK})
+               for name in ('seat_nut', 'pick_bolt', 'turn_nut')}
 
 
 class NutBoltResetScopeTests(unittest.TestCase):
@@ -94,7 +134,8 @@ class NutBoltResetScopeTests(unittest.TestCase):
         return {'native_rng': pickle.dumps(env.rng.get_state()),
                 'native_state': env.native_state.tobytes(),
                 'records': copy.deepcopy(env.records),
-                'appearance': state(env.appearance), 'calls': env.calls.copy(),
+                'appearance': state(env._nut_bolt_appearance), 'calls': env.calls.copy(),
+                'effects': env.effects.copy(),
                 'global_numpy_rng': pickle.dumps(np.random.get_state()),
                 'global_torch_rng': torch.get_rng_state().numpy().tobytes()}
 
@@ -167,6 +208,122 @@ class NutBoltResetScopeTests(unittest.TestCase):
             self.assertIs(env.calls[0][1]['nut_bolt_appearance'], options['nut_bolt_appearance'])
             self.assertTrue(torch.equal(env.calls[0][1]['env_idx'], torch.arange(2)))
             self.assertEqual(env.calls[0][1]['env_idx'].dtype, torch.long)
+
+    def task(self, name, config):
+        env = SHORT_TASKS[name]()
+        env.run_episode = True
+        env._nut_bolt_appearance = adapter(config)
+        appearance = env._nut_bolt_appearance
+        appearance.rng = [SimpleNamespace(bit_generator=rng.bit_generator, choice=Mock(wraps=rng.choice))
+                          for rng in appearance.rng]
+        return env
+
+    def assert_appearance_rejected(self, env, options, message, *, seed=None):
+        appearance = env._nut_bolt_appearance
+        before_choices = [rng.choice.call_count for rng in appearance.rng]
+        before = self.snapshot(env)
+        with self.assertRaisesRegex(ValueError, message):
+            env.reset(seed=seed, options=options)
+        self.assertEqual(self.snapshot(env), before)
+        self.assertEqual([rng.choice.call_count for rng in appearance.rng], before_choices)
+
+    def test_public_reset_rejects_last_explicit_id_before_native_reset(self):
+        for task in SHORT_TASKS:
+            env = self.task(task, {'mode': 'random_choice', 'scheme_ids': ['variant_1']})
+            options = {'env_idx': torch.arange(2), 'nut_bolt_appearance': {'per_env': {
+                '1': {'mode': 'explicit', 'scheme_id': 'wrong_id'},
+            }}}
+            with self.subTest(task=task):
+                self.assert_appearance_rejected(env, options, 'env 1.*wrong_id', seed=17)
+                self.assertEqual(env.calls, [])
+                self.assertEqual(env.effects, [])
+                for rng in env._nut_bolt_appearance.rng:
+                    rng.choice.assert_not_called()
+
+    def test_public_reset_checks_each_candidate_and_rejects_a_bad_random_tail(self):
+        for task in SHORT_TASKS:
+            env = self.task(task, {})
+            for scheme in env._nut_bolt_appearance.catalog['schemes']:
+                with self.subTest(task=task, scheme=scheme):
+                    valid = {'mode': 'random_choice', 'scheme_ids': [scheme]}
+                    options = {'nut_bolt_appearance': {'per_env': {
+                        '0': valid, '1': {**valid, 'scheme_ids': [scheme, f'{scheme}_typo']},
+                    }}}
+                    self.assert_appearance_rejected(env, options, 'scheme_ids for env 1')
+                    old_calls = len(env.calls)
+                    old_effects = len(env.effects)
+                    env.reset(options={'nut_bolt_appearance': valid})
+                    self.assertEqual(len(env.calls), old_calls + 1)
+                    self.assertEqual(env._nut_bolt_appearance.schemes, [scheme, scheme])
+                    effects = env.effects[old_effects:]
+                    self.assertEqual(effects[:2], ['task_rng', 'state_write'])
+                    self.assertIn('task_state_write', effects)
+                    self.assertEqual(effects[-1], 'lock_write')
+
+    def test_public_reset_resolves_precedence_for_selected_environments(self):
+        env = self.task('seat_nut', {'scheme_id': 'variant_1', 'per_env': {'1': {'scheme_id': 'variant_2'}}})
+        appearance = env._nut_bolt_appearance
+        env.reset()
+        self.assertEqual(appearance.schemes, ['variant_1', 'variant_2'])
+        env.reset(options={'env_idx': torch.tensor([1]), 'nut_bolt_appearance': {
+            'mode': 'explicit', 'scheme_id': 'original', 'per_env': {'0': {'scheme_id': 'wrong_id'}},
+        }})
+        self.assertEqual(appearance.schemes, ['variant_1', 'original'])
+        override = {'scheme_id': 'wrong_id', 'per_env': {
+            '0': {'scheme_id': 'variant_2'}, '1': {'scheme_id': 'variant_1'},
+        }}
+        options = {'nut_bolt_appearance': override}
+        env.reset(options=options)
+        self.assertIs(env.calls[-1][1], options)
+        self.assertEqual(appearance.schemes, ['variant_2', 'variant_1'])
+        self.assertEqual(appearance.episodes, [2, 3])
+
+    def test_public_reset_checks_effective_constructor_config_before_initial_binding(self):
+        env = self.task('seat_nut', {'per_env': {'1': {'scheme_id': 'wrong_id'}}})
+        env.run_episode = False  # Native scene construction is replaced by the spy.
+        appearance = env._nut_bolt_appearance
+        appearance.bindings = [None, None]
+        before = [copy.deepcopy(rng.bit_generator.state) for rng in appearance.rng]
+        with self.assertRaisesRegex(ValueError, 'env 1.*wrong_id'):
+            env.reset(options={'reconfigure': True})
+        self.assertEqual(env.calls, [])
+        self.assertEqual(env.effects, [])
+        options = {'reconfigure': True, 'nut_bolt_appearance': {'scheme_id': 'variant_1'}}
+        env.reset(options=options)
+        self.assertIs(env.calls[-1][1], options)
+        self.assertEqual(appearance.bindings, [None, None])
+        self.assertEqual([rng.bit_generator.state for rng in appearance.rng], before)
+
+    def test_public_reset_keeps_constructor_enablement_and_plain_restore(self):
+        env = self.task('seat_nut', {})
+        appearance = env._nut_bolt_appearance
+        env.reset(options={'nut_bolt_appearance': {'enabled': False, 'scheme_id': 'variant_1'}})
+        self.assertEqual(appearance.schemes, ['variant_1', 'variant_1'])
+        self.assert_appearance_rejected(env, {'nut_bolt_appearance': {
+            'enabled': False, 'scheme_id': 'wrong_id',
+        }}, 'Unknown.*wrong_id')
+        restore = {'env_idx': torch.tensor([1]), 'reset_to_env_states': {'env_states': {}}}
+        self.assert_appearance_rejected(env, {**restore, 'nut_bolt_appearance': {}}, 'state restoration')
+        before = state(appearance)
+        env.reset(options=restore)
+        self.assertIs(env.calls[-1][1], restore)
+        self.assertEqual(state(appearance), before)
+        env._nut_bolt_appearance = None
+        disabled = {'nut_bolt_appearance': {'enabled': True, 'scheme_id': 'wrong_id'}}
+        env.reset(options=disabled)
+        self.assertIsNone(env._nut_bolt_appearance)
+        self.assertIs(env.calls[-1][1], disabled)
+
+    def test_public_reset_rejects_invalid_selection_types_before_native_reset(self):
+        for override, message in (
+            ({'scheme_id': ['variant_1']}, 'Unknown Nut & Bolt scheme'),
+            ({'mode': 'unknown'}, 'Unsupported Nut & Bolt selection mode'),
+            ({'mode': 'random_choice', 'scheme_ids': []}, 'scheme_ids'),
+            ({'mode': 'random_choice', 'scheme_ids': 'variant_1'}, 'scheme_ids'),
+        ):
+            env = self.task('seat_nut', {})
+            with self.subTest(override=override):
+                self.assert_appearance_rejected(env, {'nut_bolt_appearance': override}, message)
 
 
 class NutBoltAppearanceTests(unittest.TestCase):
