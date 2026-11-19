@@ -1,0 +1,25 @@
+{
+  "head": "b4c944ad4f732c9c408cb1011c3388e3eb771314",
+  "production_files_unchanged": true,
+  "job_id": "121613",
+  "native_OpenDrawer_2env": "build, seeded reset, actual RGB and baseline state/material/physics capture; two native partial resets",
+  "explicit_disabled_OpenDrawer": "build and seeded reset reached; comparison assertion stopped before state/material/RGB equals assertions",
+  "first_failure": {
+    "file": "tools/variation/check_drawer_socket.py",
+    "line": 341,
+    "text": "Appearance changed native initialization RNG consumption"
+  },
+  "root_cause_assessment": "uncontrolled global Torch RNG comparison across independent instances (evidence includes native CUDA RNG changed by two unseeded resets); failing pair digests not both retained",
+  "not_run": [
+    "OpenDrawer original/warm_white/neutral_grey",
+    "PickCharger 2env",
+    "InsertPlug 2env",
+    "Long 1env",
+    "fixture restore and isolation",
+    "Charger compatibility",
+    "random reproducibility",
+    "visual acceptance"
+  ],
+  "comparison_images": "not available; native frame is not a material comparison",
+  "gpu_allocated_seconds": 14
+}
