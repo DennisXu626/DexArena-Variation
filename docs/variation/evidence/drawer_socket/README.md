@@ -9,3 +9,5 @@
 原始本机报告与成本位于维护者交付 `deliverables/drawer_socket_appearance/`；不复制原模型、私有环境或运行缓存。下一轮仅在Dennis另行批准后运行，失败停止，不自动重试。
 
 [运行续篇：作业 121613 原版实景与首个失败](runtime_001/README.md)。候选材质未运行，不是视觉验收。
+
+[第二轮：抽屉／插座实景对照及作业 121640](runtime_002/README.md)。工程短检已通过，待 Dennis 审图。
