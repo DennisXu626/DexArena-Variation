@@ -1,0 +1,49 @@
+{
+  "task": "CabinetPouringOpenCabinet-Sharpa-v1",
+  "env_idx": 0,
+  "seed": 7,
+  "door_qpos": -0.0,
+  "camera": {
+    "eye": [
+      -0.93,
+      -0.73,
+      1.01
+    ],
+    "target": [
+      0.11,
+      0.1,
+      0.38
+    ],
+    "fov": 0.75,
+    "crop": [
+      310,
+      40,
+      925,
+      870
+    ]
+  },
+  "resolution": [
+    1280,
+    960
+  ],
+  "frames": [
+    {
+      "file": "original_frames/OpenCabinet_original_env0.png",
+      "scheme_id": "original",
+      "sha256": "d03fdb52b94d272ab79af7b1a3c1131a54e5668bde17c6cb1df67b68463aa664"
+    },
+    {
+      "file": "original_frames/OpenCabinet_oak_warm_white_env0.png",
+      "scheme_id": "oak_warm_white",
+      "sha256": "f767c0ab0174b47f0bde3a5d1867650373541aa5dc2d5707971caa9c22130163"
+    },
+    {
+      "file": "original_frames/OpenCabinet_sage_walnut_env0.png",
+      "scheme_id": "sage_walnut",
+      "sha256": "e1249a5121835e5344a21d558bbf5c12ff5f4df42d9e5a950f825630aa5fa39f"
+    }
+  ],
+  "bottle": "absent",
+  "comparison": "cabinet_closed_comparison.png",
+  "comparison_sha256": "32a6c23001b37ddef5802b74432678bf627833edfee3d0ccda5ab1e42729204f"
+}
