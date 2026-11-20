@@ -59,17 +59,15 @@ class JuicePreparationCloseFridgeEnv(JuicePreparationOpenFridgeEnv):
             self.door_lower,
             self.door_upper,
         ))
-        qpos = self.fridge.get_qpos()
+        qpos = self.fridge.get_qpos()[env_idx].clone()
         qpos[:, 0] = initial_qpos
         self.fridge.set_qpos(qpos)
-        self.fridge.set_qvel(torch.zeros_like(self.fridge.get_qvel()))
+        self.fridge.set_qvel(torch.zeros_like(self.fridge.get_qvel()[env_idx]))
         self.initial_open_qpos = initial_qpos
         self.success_closed_qpos = door_success_qpos(
             self.door_lower, self.door_upper, SUCCESS_CLOSED_ANGLE_DEG
         )
-        self.hand_contact_latched = torch.zeros(
-            self.num_envs, dtype=torch.bool, device=self.device
-        )
+        self.hand_contact_latched[env_idx] = False
 
     def evaluate(self) -> dict[str, Any]:
         door_qpos = self.fridge.get_qpos()[:, 0]

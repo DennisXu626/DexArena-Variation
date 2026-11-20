@@ -769,10 +769,6 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
                 "legacy PartNet parameters and cannot reposition the custom "
                 "Juice refrigerator; use the shared task layout constants"
             )
-        if num_envs != 1:
-            raise ValueError(
-                "The refrigerator tasks currently support num_envs=1 only."
-            )
         if robot_uids not in ROBOT_UIDS:
             raise ValueError(f"Unsupported robot {robot_uids!r}; expected one of {ROBOT_UIDS}")
 
@@ -787,6 +783,9 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
         if reconfiguration_freq is None:
             reconfiguration_freq = 0
 
+        from .appearance import JuiceAppearance
+        config = kwargs.pop("juice_appearance", None)
+        self.juice_appearance = JuiceAppearance(config, num_envs) if config is not None else None
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         super().__init__(
             *args,
@@ -870,7 +869,11 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
 
         builder = builders[0]
         builder.disable_self_collisions = True
-        builder.set_scene_idxs([0])
+        builder.set_scene_idxs(list(range(self.num_envs)))
+        if self.juice_appearance is not None:
+            self.juice_appearance.begin_scene()
+            for link in builder.link_builders:
+                self.juice_appearance.bind_builder(link, range(self.num_envs))
         builder.initial_pose = sapien.Pose(p=CUSTOM_FRIDGE_ROOT_POS.tolist())
 
         self.fridge = builder.build(name="custom_tabletop_mini_fridge")
@@ -901,7 +904,7 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
             self.door_joint.set_friction(FRIDGE_DOOR_HINGE_FRICTION)
 
         qlimits = (
-            self.fridge.get_qlimits()
+            self.fridge.get_qlimits()[0]
             .detach()
             .cpu()
             .numpy()
@@ -942,7 +945,8 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
         else:
             self.agent.robot.set_pose(root_pose)
 
-    def _reset_agent(self, batch_size: int):
+    def _reset_agent(self, env_idx):
+        batch_size = len(env_idx)
         if hasattr(self.agent, "get_reset_pos"):
             initial = self.agent.get_reset_pos(device=self.device)
         else:
@@ -957,9 +961,9 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
         # map onto a different attitude from the first frame.
         qpos = apply_arm_init_qpos(self.agent, qpos)
 
-        for k in range(batch_size):
+        for k, index_env in enumerate(env_idx.tolist()):
             index, noise = arm_qpos_noise(
-                episode_rng(self, k), self.agent, 1, self.robot_init_qpos_noise, device=self.device)
+                episode_rng(self, index_env), self.agent, 1, self.robot_init_qpos_noise, device=self.device)
             qpos[k, index] += noise[0]
 
         self.agent.reset(qpos)
@@ -975,14 +979,15 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
             # TableSceneBuilder.initialize restores its own stock pose.
             set_work_table_pose(self)
             # Per-episode layout (first episode-RNG draw, family-wide order): fridge offset.
-            fdx, fdy = sample_juice_layout(layout_rng(self, int(env_idx[0])))["fridge"]
-            self._reset_agent(len(env_idx))
+            offsets = [sample_juice_layout(layout_rng(self, int(index)))["fridge"]
+                       for index in env_idx.tolist()]
+            self._reset_agent(env_idx)
 
             root_p = torch.tensor(
-                np.asarray(CUSTOM_FRIDGE_ROOT_POS, dtype=np.float64) + np.array([fdx, fdy, 0.0]),
+                np.asarray(CUSTOM_FRIDGE_ROOT_POS, dtype=np.float64) + np.array([[dx,dy,0.] for dx,dy in offsets]),
                 dtype=torch.float32,
                 device=self.device,
-            ).view(1, 3)
+            ).reshape(-1, 3)
             root_q = torch.tensor(
                 [1.0, 0.0, 0.0, 0.0],
                 dtype=torch.float32,
@@ -991,16 +996,18 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
 
             self.fridge.set_pose(Pose.create_from_pq(p=root_p, q=root_q))
 
-            qpos = self.fridge.get_qpos()
+            qpos = self.fridge.get_qpos()[env_idx].clone()
             qpos[:, 0] = self.door_lower
             self.fridge.set_qpos(qpos)
-            self.fridge.set_qvel(torch.zeros_like(self.fridge.get_qvel()))
+            self.fridge.set_qvel(torch.zeros_like(self.fridge.get_qvel()[env_idx]))
 
             self.success_settle_counter[env_idx] = 0
             self.success_latched[env_idx] = False
-            self.hand_contact_latched = torch.zeros(
-                self.num_envs, dtype=torch.bool, device=self.device
-            )
+            if not hasattr(self, "hand_contact_latched"):
+                self.hand_contact_latched = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
+            self.hand_contact_latched[env_idx] = False
+            if self.juice_appearance is not None:
+                self.juice_appearance.apply(env_idx.tolist(), options)
 
     # -------------------------------------------------------------------------
     # Geometry exposed to reward and policy

@@ -17,7 +17,7 @@
 
 ## 对象与状态
 
-按实际目录与清单复核：42个对象、10家族；已验收试点3；待适配35；无视觉不适用3；当前未加载1；外部推进待验收0。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与清单复核：42个对象、10家族；已验收试点3；待适配31；无视觉不适用3；当前未加载1；外部推进待验收4。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -33,10 +33,10 @@
 | furniture_assembly | [panel_rack](objects/furniture_assembly/panel_rack/README.md) | 待适配 |
 | furniture_assembly | [rail](objects/furniture_assembly/rail/README.md) | 待适配 |
 | furniture_assembly | [screw](objects/furniture_assembly/screw/README.md) | 待适配 |
-| juice_preparation | [mini_fridge](objects/juice_preparation/mini_fridge/README.md) | 待适配 |
-| juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 待适配 |
-| juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 待适配 |
-| juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 待适配 |
+| juice_preparation | [mini_fridge](objects/juice_preparation/mini_fridge/README.md) | 外部推进待最终验收（本分支限定验证） |
+| juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 外部推进待最终验收（本分支限定验证） |
+| juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 外部推进待最终验收（本分支限定验证） |
+| juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 外部推进待最终验收（本分支限定验证） |
 | meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 待适配 |
 | meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 待适配 |
 | meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 待适配 |
@@ -71,3 +71,7 @@
 [预览来源清单](preview_sources.json)记录M2历史图片原文件名、版本和SHA256。所有任务图均为历史SAPIEN实际渲染，本轮仅复制、解码和静态核对，没有GPU、仿真、重渲染、服务器连接或训练。平面标签文件不是任务应用效果。代码、HF选定素材revision与运行环境分别记载；V1静态模型图不能替代实际加载证据。
 
 第三方模型、纹理和字体按原来源及许可获取，详见[SETUP](../../docs/variation/SETUP.md)、[资源说明](../../tasks/assets/README.md)及[LICENSE](../../LICENSE)。本轮不修改既有运行代码、运行catalog／PNG、M3 PR或协作规范。静态核对使用[最小检查脚本](../../tools/variation/check_appearance_archive.py)。
+
+## Juice 本分支候选
+
+冰箱、苹果、搅拌机、盖已制作 original＋两新方案，并完成限定2env检查；未提前标正式验收。唯一方案与真实证据见[交付](../../docs/variation/JUICE_PREPARATION_APPEARANCE.md)。本页其它家族仍保留基线历史状态。

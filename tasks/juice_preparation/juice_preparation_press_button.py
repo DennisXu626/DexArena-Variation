@@ -528,6 +528,9 @@ class JuicePreparationPressButtonEnv(BaseEnv):
         if reconfiguration_freq is None:
             reconfiguration_freq = 1 if num_envs == 1 else 0
 
+        from .appearance import JuiceAppearance
+        config = kwargs.pop("juice_appearance", None)
+        self.juice_appearance = JuiceAppearance(config, num_envs) if config is not None else None
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         super().__init__(
             *args,
@@ -601,6 +604,8 @@ class JuicePreparationPressButtonEnv(BaseEnv):
         super()._load_agent(options, ROBOT_ROOT_POSE)
 
     def _load_scene(self, options: dict):
+        if self.juice_appearance is not None:
+            self.juice_appearance.begin_scene()
         self.table_scene = TableSceneBuilder(
             env=self,
             robot_init_qpos_noise=(
@@ -621,6 +626,7 @@ class JuicePreparationPressButtonEnv(BaseEnv):
             scale=self.global_scale,
             num_envs=self.num_envs,
             name="robocasa_blender023_press_button",
+            appearance=self.juice_appearance,
         )
         if not self.blender_is_articulation:
             raise RuntimeError(
@@ -867,7 +873,8 @@ class JuicePreparationPressButtonEnv(BaseEnv):
             self.button_joint,
             "set_drive_target",
         ):
-            self.button_joint.set_drive_target(rest)
+            if not self.gpu_sim_enabled:
+                self.button_joint.set_drive_target(rest)
         if hasattr(
             self.button_joint,
             "set_friction",
@@ -888,7 +895,7 @@ class JuicePreparationPressButtonEnv(BaseEnv):
         self,
         value: torch.Tensor | float,
     ) -> None:
-        qpos = self.blender.get_qpos().clone()
+        qpos = self.blender.get_qpos()[self.scene._reset_mask].clone()
         qpos[:, self.button_joint_index] = (
             torch.as_tensor(
                 value,
@@ -898,22 +905,28 @@ class JuicePreparationPressButtonEnv(BaseEnv):
         )
         self.blender.set_qpos(qpos)
 
-    def _calibrate_button_geometry(self) -> None:
+    def _calibrate_button_geometry(self, env_idx, geometries) -> None:
+        def sync():
+            if self.gpu_sim_enabled:
+                self.scene._gpu_apply_all()
+                self.scene.px.gpu_update_articulation_kinematics()
+                self.scene._gpu_fetch_all()
+
+        sync()
         """Measure joint motion and locate the real outer button surface."""
-        qpos = self.blender.get_qpos().clone()
+        qpos = self.blender.get_qpos()[self.scene._reset_mask].clone()
 
         qpos[:, self.button_joint_index] = (
             self.button_rest_qpos
         )
         self.blender.set_qpos(qpos)
+        sync()
         rest_link_position = (
-            self.button_link.pose.p.clone()
+            self.button_link.pose.p[env_idx].clone()
         )
         rest_link_rotation = (
             self.button_link.pose
-            .to_transformation_matrix()[
-                ..., :3, :3
-            ]
+            .to_transformation_matrix()[env_idx, :3, :3]
             .clone()
         )
 
@@ -921,8 +934,9 @@ class JuicePreparationPressButtonEnv(BaseEnv):
             self.button_pressed_qpos
         )
         self.blender.set_qpos(qpos)
+        sync()
         pressed_link_position = (
-            self.button_link.pose.p.clone()
+            self.button_link.pose.p[env_idx].clone()
         )
 
         delta = (
@@ -942,73 +956,33 @@ class JuicePreparationPressButtonEnv(BaseEnv):
                 "child link"
             )
 
-        self.button_press_direction = (
-            delta / world_travel
-        )
-        self.button_world_travel = (
-            world_travel.squeeze(1)
-        )
-
-        # The link origin is at the blender root in this asset and is not the
-        # visible button center. Measure the power_button body's outermost face
-        # in the direction opposite the physical press motion.
-        vertices_world = transform_points(
-            self.button_body_vertices_local,
-            self.geometry.blender_root,
-            self.geometry.blender_quat,
-        )
-        outward = (
-            -self.button_press_direction[0]
-            .detach()
-            .cpu()
-            .numpy()
-        )
-        projection = vertices_world @ outward
-        projection_span = float(
-            projection.max() - projection.min()
-        )
-        face_band = max(
-            0.0005,
-            0.08 * projection_span,
-        )
-        face_vertices = vertices_world[
-            projection
-            >= projection.max() - face_band
-        ]
-        face_center = face_vertices.mean(axis=0)
-
-        face_center_tensor = torch.tensor(
-            np.asarray(
-                [face_center],
-                dtype=np.float32,
-            ),
-            device=self.device,
-        ).expand(self.num_envs, -1).clone()
-
-        local_offset = torch.tensor(
-            self.button_local_offset,
-            dtype=face_center_tensor.dtype,
-            device=self.device,
-        )
-        face_center_tensor += torch.matmul(
-            rest_link_rotation,
-            local_offset.view(1, 3, 1),
-        ).squeeze(-1)
-
-        self.button_released_surface_position = (
-            face_center_tensor
-        )
-        self.button_released_link_position = (
-            rest_link_position
-        )
-
+        fields = {"button_press_direction": (3,), "button_world_travel": (),
+                  "button_released_surface_position": (3,), "button_released_link_position": (3,)}
+        for name, shape in fields.items():
+            if not hasattr(self, name):
+                setattr(self, name, torch.zeros((self.num_envs, *shape), device=self.device))
+        self.button_press_direction[env_idx] = delta / world_travel
+        self.button_world_travel[env_idx] = world_travel.squeeze(1)
+        self.button_released_link_position[env_idx] = rest_link_position
+        centers = []
+        for row, (index, geometry) in enumerate(zip(env_idx.tolist(), geometries)):
+            vertices = transform_points(self.button_body_vertices_local,
+                                        geometry.blender_root, geometry.blender_quat)
+            outward = -(delta[row] / world_travel[row]).detach().cpu().numpy()
+            projection = vertices @ outward
+            band = max(0.0005, 0.08 * float(projection.max() - projection.min()))
+            centers.append(vertices[projection >= projection.max() - band].mean(axis=0))
+        face_center_tensor = torch.as_tensor(np.asarray(centers), dtype=torch.float32, device=self.device)
+        offset = torch.as_tensor(self.button_local_offset, dtype=torch.float32, device=self.device)
+        face_center_tensor += (rest_link_rotation @ offset.view(1, 3, 1)).squeeze(-1)
+        self.button_released_surface_position[env_idx] = face_center_tensor
         qpos[:, self.button_joint_index] = (
             self.button_rest_qpos
         )
         self.blender.set_qpos(qpos)
         self.blender.set_qvel(
             torch.zeros_like(
-                self.blender.get_qvel()
+                self.blender.get_qvel()[env_idx]
             )
         )
 
@@ -1033,8 +1007,10 @@ class JuicePreparationPressButtonEnv(BaseEnv):
             # TableSceneBuilder.initialize restores its own stock pose.
             set_work_table_pose(self)
             # Per-episode layout (FIRST episode-RNG draw): the blender and its button move together.
-            bdx, bdy, byaw = sample_juice_layout(layout_rng(self, int(env_idx[0])))["blender"]
-            self.geometry = shifted_blender_geometry(self._geometry_nominal, bdx, bdy, byaw)
+            geometries = [shifted_blender_geometry(
+                self._geometry_nominal, *sample_juice_layout(layout_rng(self, int(index)))["blender"])
+                for index in env_idx.tolist()]
+            self.geometry = geometries[0]
 
             reset_robot_agent(
                 agent=self.agent,
@@ -1044,20 +1020,20 @@ class JuicePreparationPressButtonEnv(BaseEnv):
                 robot_init_qpos_noise=(
                     self.robot_init_qpos_noise
                 ),
-                episode_rng=self._episode_rng,
+                episode_rng=self._batched_episode_rng[int(env_idx[0])],
                 root_pose=ROBOT_ROOT_POSE,
             )
 
             blender_p = torch.tensor(
                 np.asarray(
-                    [self.geometry.blender_root],
+                    [g.blender_root for g in geometries],
                     dtype=np.float32,
                 ),
                 device=self.device,
             ).expand(batch_size, -1)
             blender_q = torch.tensor(
                 np.asarray(
-                    [self.geometry.blender_quat],
+                    [g.blender_quat for g in geometries],
                     dtype=np.float32,
                 ),
                 device=self.device,
@@ -1070,12 +1046,12 @@ class JuicePreparationPressButtonEnv(BaseEnv):
             )
             self.blender.set_qpos(
                 torch.zeros_like(
-                    self.blender.get_qpos()
+                    self.blender.get_qpos()[env_idx]
                 )
             )
             self.blender.set_qvel(
                 torch.zeros_like(
-                    self.blender.get_qvel()
+                    self.blender.get_qvel()[env_idx]
                 )
             )
             self._set_button_qpos(
@@ -1089,9 +1065,11 @@ class JuicePreparationPressButtonEnv(BaseEnv):
                     self.button_rest_qpos
                 )
 
-            self._calibrate_button_geometry()
+            self._calibrate_button_geometry(env_idx, geometries)
             self.button_hold_counter[env_idx] = 0
             self.success_latched[env_idx] = False
+            if self.juice_appearance is not None:
+                self.juice_appearance.apply(env_idx.tolist(), options)
 
     # ------------------------------------------------------------------
     # Task quantities

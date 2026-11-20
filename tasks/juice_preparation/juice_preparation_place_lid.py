@@ -816,6 +816,7 @@ def build_blender023(
     scale: float,
     num_envs: int,
     name: str,
+    appearance=None,
 ):
     """Build Blender023 as an articulation, with actor fallback."""
     template = MJCFObject(
@@ -840,6 +841,9 @@ def build_blender023(
         builder.disable_self_collisions = True
         if hasattr(builder, "set_name"):
             builder.set_name(name)
+        if appearance is not None:
+            for link in builder.link_builders:
+                appearance.bind_builder(link, scene_indices)
         blender = builder.build()
         template.articulation = blender
         configure_task_object_physics(blender, "hard_plastic")
@@ -870,6 +874,7 @@ def build_blender_lid(
     name: str,
     dynamic: bool,
     mass: float = BLENDER_LID_MASS,
+    appearance=None,
 ):
     """Build the separate Blender023 lid as one actor."""
     template = MJCFObject(
@@ -892,6 +897,8 @@ def build_blender_lid(
         q=quaternion,
     )
 
+    if appearance is not None:
+        appearance.bind_builder(builder, range(num_envs))
     if dynamic:
         lid = builder.build_dynamic(name=name)
         if hasattr(lid, "set_mass"):
@@ -1416,9 +1423,9 @@ def lid_seat_quantities(lid_pose, seat_position, *, device):
     stable)``. ``to_seat`` points from the lid to the seat.
     """
     position = lid_pose.p
-    seat_target = torch.tensor(
-        np.asarray(seat_position, dtype=np.float32), device=device
-    ).view(1, 3)
+    seat_target = torch.as_tensor(
+        seat_position, dtype=torch.float32, device=device
+    ).reshape(-1, 3)
     to_seat = seat_target - position
     xy_error = torch.linalg.norm(to_seat[:, :2], dim=1)
     z_error = torch.abs(to_seat[:, 2])
@@ -1535,6 +1542,9 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
         if reconfiguration_freq is None:
             reconfiguration_freq = 1 if num_envs == 1 else 0
 
+        from .appearance import JuiceAppearance
+        config = kwargs.pop("juice_appearance", None)
+        self.juice_appearance = JuiceAppearance(config, num_envs) if config is not None else None
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         super().__init__(
             *args,
@@ -1604,6 +1614,8 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
         super()._load_agent(options, ROBOT_ROOT_POSE)
 
     def _load_scene(self, options: dict):
+        if self.juice_appearance is not None:
+            self.juice_appearance.begin_scene()
         self.table_scene = TableSceneBuilder(
             env=self,
             robot_init_qpos_noise=self.robot_init_qpos_noise,
@@ -1622,6 +1634,7 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
             scale=self.global_scale,
             num_envs=self.num_envs,
             name="robocasa_blender023_place_lid",
+            appearance=self.juice_appearance,
         )
 
         (
@@ -1640,6 +1653,7 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
             name="robocasa_blender023_lid_dynamic",
             dynamic=True,
             mass=self.lid_mass,
+            appearance=self.juice_appearance,
         )
 
         self.picked_once = torch.zeros(
@@ -1685,8 +1699,12 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
                 )
                 for i in env_idx.tolist()
             ]
-            bdx, bdy, byaw = layouts[0]["blender"]
-            self.geometry = shifted_blender_geometry(self._geometry_nominal, bdx, bdy, byaw)
+            geometries = [shifted_blender_geometry(self._geometry_nominal, *x["blender"]) for x in layouts]
+            self.geometry = geometries[0]
+            if not hasattr(self, "_seat_positions"):
+                self._seat_positions = torch.zeros((self.num_envs, 3), device=self.device)
+            self._seat_positions[env_idx] = torch.as_tensor(
+                np.array([g.seat_position for g in geometries]), dtype=torch.float32, device=self.device)
             reset_robot_agent(
                 agent=self.agent,
                 robot_uids=self.robot_uids,
@@ -1695,19 +1713,19 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
                 robot_init_qpos_noise=(
                     self.robot_init_qpos_noise
                 ),
-                episode_rng=self._episode_rng,
+                episode_rng=self._batched_episode_rng[int(env_idx[0])],
             )
 
             blender_p = torch.tensor(
                 np.asarray(
-                    [self.geometry.blender_root],
+                    [g.blender_root for g in geometries],
                     dtype=np.float32,
                 ),
                 device=self.device,
             ).expand(batch_size, -1)
             blender_q = torch.tensor(
                 np.asarray(
-                    [self.geometry.blender_quat],
+                    [g.blender_quat for g in geometries],
                     dtype=np.float32,
                 ),
                 device=self.device,
@@ -1723,18 +1741,18 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
             if self.blender_is_articulation:
                 self.blender.set_qpos(
                     torch.zeros_like(
-                        self.blender.get_qpos()
+                        self.blender.get_qpos()[env_idx]
                     )
                 )
                 self.blender.set_qvel(
                     torch.zeros_like(
-                        self.blender.get_qvel()
+                        self.blender.get_qvel()[env_idx]
                     )
                 )
 
             lid_p = torch.tensor(
                 np.asarray(
-                    [self.geometry.lid_table_position],
+                    [g.lid_table_position for g in geometries],
                     dtype=np.float32,
                 ),
                 device=self.device,
@@ -1776,6 +1794,8 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
             self.released_once[env_idx] = False
             self.success_latched[env_idx] = False
             self.success_counter[env_idx] = 0
+            if self.juice_appearance is not None:
+                self.juice_appearance.apply(env_idx.tolist(), options)
 
     # ------------------------------------------------------------------
     # Task quantities
@@ -1844,7 +1864,7 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
             seated,
             stable,
         ) = lid_seat_quantities(
-            lid_pose, self.geometry.seat_position, device=self.device
+            lid_pose, self._seat_positions, device=self.device
         )
         seat_target = lid_position + lid_to_seat
 

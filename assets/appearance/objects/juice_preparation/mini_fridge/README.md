@@ -1,10 +1,10 @@
 # 迷你冰箱（juice_preparation.mini_fridge）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**本分支已制作并完成限定双环境验证，待 Dennis 最终审阅**。原版＋两候选；未标正式验收通过。
 
 原始角色：可动家电／冰箱门。V1资源说明：`assets/task_object_meshes/juice/tabletop_mini_fridge_v1/tabletop_mini_fridge.urdf`。
 
-尚无已验收新外观；原UV、材质槽及阶段绑定须在后续适配时针对实际资产核定，不能将静态图册视为加载证明。
+材质槽、阶段绑定、唯一 catalog 与实际证据见[Juice 交付](../../../../../docs/variation/JUICE_PREPARATION_APPEARANCE.md)。原模型／UV不改，原始资料边界保留。
 
 ## 资料与加载边界
 
@@ -20,3 +20,5 @@ V1对象键：`juice_preparation/mini_fridge`；V2对应键：`fridge`。代码�
 - [tasks/juice_preparation/juice_preparation_open_fridge.py](../../../../../tasks/juice_preparation/juice_preparation_open_fridge.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+本分支候选说明及未测范围统一见[Juice 交付](../../../../../docs/variation/JUICE_PREPARATION_APPEARANCE.md)；资料中的历史 HF revision 不是本次实际运行身份，见交付中的文件哈希。

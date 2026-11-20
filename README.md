@@ -1,6 +1,6 @@
 # DexArena Variation
 
-这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，当前是下面两个家族、四个任务的限定试点。
+这是基于 [官方 DexArena](https://github.com/SIPAIR-Elastic/DexArena) 的团队开发仓库。我们为灵巧操作任务增加物体外观、任务物体初始位姿（位置和朝向）配置，以及相邻子任务的区域对应。物体外观与位姿优先，场景背景扩展后置；最终目标是覆盖全部正式任务，团队已验收试点及本分支候选的范围分别列于能力清单。
 
 外观变化保持视觉／碰撞几何及物理参数不变；位姿只控制明确授权的任务物体，不自动随机化机器人。底层环境由ManiSkill管理，物理和渲染由SAPIEN提供，原对象素材仍按官方授权渠道取得。运行试点不需要AutoDemo算法工程、PPO、教师／学生模型、Dexonomy或任何训练检查点。
 
@@ -139,3 +139,7 @@ git push -u origin feat/bottle-appearance
 ## 来源与许可
 
 保留 [Apache-2.0 LICENSE](LICENSE)、[上游引用](docs/citation.bib)、[既有第三方NOTICE](utils/pi05_utils/NOTICE)和模型来源说明。原始DexArena、ManiSkill／SAPIEN及对象素材归各原作者；本团队新增内容只限已标明的variation实现、小贴图和协作入口，详见[来源映射](docs/variation/PROVENANCE.md)。私有仓库不替代第三方数据许可。
+
+## 本分支 Juice 候选交付
+
+四对象 original＋两套新外观，六个 Sharpa 入口已接入；2env 固定选择、局部 reset、逐槽恢复及短步进限定验证见 [Juice 交付](docs/variation/JUICE_PREPARATION_APPEARANCE.md)和[证据](docs/variation/evidence/juice_preparation/README.md)。待 Dennis 最终审阅，未宣称完整机器人成功、随机选择或其它规模通过。

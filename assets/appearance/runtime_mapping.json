@@ -78,10 +78,10 @@
     "families": 10,
     "status_counts": {
       "accepted_pilot": 3,
-      "pending_adaptation": 35,
+      "pending_adaptation": 31,
       "no_visual": 3,
       "not_loaded": 1,
-      "external_pending": 0
+      "external_pending": 4
     },
     "basis": "Actual objects/*/*/README.md directories and matching unique CSV rows; not adaptation-completion count"
   },
@@ -114,5 +114,11 @@
     "A6": "not_validated",
     "evidence": "docs/variation/evidence/charger_a4_a5/results.json",
     "policy": "Reference the single runtime catalog; no independent parameter or texture copy"
+  },
+  "juice_candidate": {
+    "status": "external_pending",
+    "catalog": "tasks/assets/variation/juice_preparation/v1/catalog.json",
+    "docs": "docs/variation/JUICE_PREPARATION_APPEARANCE.md",
+    "scope": "6 Sharpa tasks; 2env fixed schemes; limited checks; Dennis review pending"
   }
 }
