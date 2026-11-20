@@ -1,21 +1,26 @@
-# 橱柜（cabinet_pouring.cabinet）
+# 单门柜（cabinet_pouring.cabinet）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+**柜体专用 A/B 外观已实现，静态核对完成；等待开闭实景与局部 reset 实测。** 基线 main `aee41a3439287a17ce9d4c14c6320fa6f5b4579d`。PR #10 `a029a74e1309b5772f74e21e5b9a4e1d7a6b5602` 及其本地 R3 `987845965215856bd7b42d6601be70faa1b68066` 仅用于核对稳定纹理写法和许可证边界，未合并或搬运其代码、配色与派生图。
 
-原始角色：可动家具／柜门。V1资源说明：`assets/task_object_meshes/cabinet_pour/cabinet/mobility.urdf（visual 部件由 URDF 引用）`。
+## 实物与取舍
 
-M1实际加载：PickBottle加载柜体，UnscrewCap不加载。家具对象档案不授权场景背景扩展。
+- **A · 浅橡木门与暖白柜身**：主参考 [IKEA ENHET 白色／橡木效果单门吊柜](https://www.ikea.com/ae/en/p/enhet-wall-cb-w-1-shlf-door-white-oak-effect-s69321013/)，借鉴单门、浅橡木门与亮色柜身的材质分区及单层板的内外区分。门以沿长边的细直纹表达清漆橡木贴面，门边同饰面；暖白覆面、浅亚麻灰内衬和炭黑细哑光拉手是本模型方案，并非照搬商品的门纹方向或标配五金。
+- **B · 鼠尾草灰绿漆门与深胡桃木柜身**：主参考 [Cheshire Home Company Dane 单门储物吊柜，Oak & Sage Green](https://www.cheshirehomecompany.co.uk/dane-wall-cupboard-in-oak-and-sage-green)，借鉴低饱和草绿色与木饰面的组合、金属拉手，以及单门层板储物柜的尺度关系。本方案将木饰面改为深胡桃木，竖侧板沿高度、顶板沿前后、横梁随结构的长向；漆门均匀无纹，米白内衬提亮，五金为低光泽古铜色。并不声称商品使用胡桃木或古铜。
 
-## 资料与加载边界
+两款材质参数为仿真视觉设计。自制周期木纹用程序计算，不采样厂商图或原木纹像素；原资产仅提供现有 UV、纹理尺寸、格式与 alpha。原图只读，仓库**没有新增派生 PNG、资产、接缝、几何或 UV**。
 
-V1对象键：`cabinet_pouring/cabinet`；V2对应键：`cabinet`。代码调查基准e7d5c49d079153e77da1ce2bfde16edf67ee7fa8；V1视觉资料HF revision b197a198fe50f41d70f563cfa7c88d3cc9f528b6，此revision只说明调查素材，不保证所有后续运行资产等同。
+## 实际部件与材质槽
 
-- URDF articulation: visual/collision links + joints
+[唯一运行目录：网格/槽与参数](../../../../../tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json) · [70 个视觉源文件 SHA256](source_manifest.json)
 
-正式任务入口（保留家族区分，不凭同名合并）：CabinetPouringOpenCabinet-Sharpa-v1 ; CabinetPouringPickBottle-Sharpa-v1。
+| 结构 | 已核对的视觉语义 | 材质分区 |
+|---|---|---|
+| `link_0` 门板 | `original-34.obj` 外主面、`original-35.obj` 内主面，各是单独网格和槽，两者原本引用同一木纹文件；`25–32` 为门框和面板边 | 绑定可区分，A/B 都有意保持整门同工艺。主要门面的长向是 UV 的 V；规则对窄边单独选 U/V，未改 UV。 |
+| `link_0` 门把手 | `original-36.obj` 的四槽（含借用门板原图的一个槽），按真实网格归为金属 | A 炭黑哑光喷涂，B 古铜低光泽。碰撞使用原八片分解网格，未改。 |
+| `link_1` 外壳 | `7/8/16/17` 的 `texture_1.jpg` 槽是宽外侧面；`9/18` 为下侧板；`2/3/4/5/14/19/23` 为横竖梁／封边和下框；`10/11/12/20` 是原顶面角板 | A 暖白覆面；B 按宽侧面、顶板和横竖结构分配木纹方向。柜顶中央本来就开口，不封顶。 |
+| `link_1` 内衬 | `7/8/16/17` 中其余内侧槽；`13` 背板、`22` 底板、`21` 层板 | A 浅亚麻灰，B 米白。背板原槽含相对双面，一起按内衬处理。外侧/内侧不靠整柜统一叠色。 |
+| `link_1` 原有细节 | `original-37.obj`，独立小贴片 | 原材质、纹理和可见性不动。 |
 
-## 原始来源
+纹理在首次相机渲染前逐环境、按用途建立稳定私有纹理；reset 仅上传已计算像素。没 UV 的槽使用同饰面匹配的纯色，保持模型原几何。显式 `original` 恢复所有被写入的原始材质参数与像素。没有修改原瓶、盖、碗、珠子或工作台的外观控制。
 
-- [tasks/cabinet_pouring/cabinet_pouring_long.py](../../../../../tasks/cabinet_pouring/cabinet_pouring_long.py)
-
-原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+[柜体专用选择、复测范围与预算](../../../../../docs/variation/CABINET_SINGLE_DOOR.md)。正式入口：`CabinetPouringOpenCabinet-Sharpa-v1`、`CabinetPouringPickBottle-Sharpa-v1`。Long 和其它子任务未扩大支持。

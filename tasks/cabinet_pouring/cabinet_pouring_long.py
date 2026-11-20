@@ -500,9 +500,16 @@ class CabinetPouringLongEnv(BaseEnv):
         num_envs=1,
         reconfiguration_freq=None,
         variation=None,
+        cabinet_appearance=None,
         **kwargs,
     ):
         self._bottle_render_membership_dirty = False
+        self._cabinet_appearance = None
+        if cabinet_appearance and cabinet_appearance.get("enabled", False):
+            if type(self).__name__ not in {"CabinetPouringOpenCabinetEnv", "CabinetPouringPickBottleEnv"}:
+                raise ValueError("Cabinet appearance is supported by OpenCabinet and PickBottle")
+            from tasks.cabinet_pouring.cabinet_appearance import CabinetAppearance
+            self._cabinet_appearance = CabinetAppearance(cabinet_appearance, num_envs)
         self._variation = None
         if variation and any(
             variation.get(feature, {}).get("enabled", False)
@@ -878,6 +885,8 @@ class CabinetPouringLongEnv(BaseEnv):
         self.cabinet = Articulation.merge(self._cabinets, name="cabinet", merge_links=True)
         self.add_to_state_dict_registry(self.cabinet)
         self.door_link = self.cabinet.links_map["link_0"]
+        if self._cabinet_appearance is not None:
+            self._cabinet_appearance.bind(self._cabinets, CABINET_URDF_PATH)
 
     @staticmethod
     def _set_task_object_motion_limits(obj, max_linear_velocity: float):
