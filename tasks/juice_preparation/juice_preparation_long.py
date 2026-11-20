@@ -131,6 +131,7 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
             name="prepare_juice_loose_blender_lid",
             dynamic=True,
             mass=self.lid_mass,
+            appearance=self.juice_appearance,
         )
         self._select_button_joint()
         self._configure_button_joint()
@@ -177,27 +178,31 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
         with torch.device(self.device):
             # The lid table point already rides on the (randomized) blender; add the
             # family's lid offset + yaw from the same per-episode draw (JuicePreparationAppleToBlenderEnv).
-            ldx, ldy, lyaw = self._juice_layout["lid"]
-            lid_p = torch.tensor([self.blender_geometry.lid_table_position], dtype=torch.float32, device=self.device)
-            lid_p[:, 0] += ldx
-            lid_p[:, 1] += ldy
-            lid_q = torch.tensor([[float(np.cos(0.5 * lyaw)), 0.0, 0.0, float(np.sin(0.5 * lyaw))]], dtype=torch.float32, device=self.device)
-            zero3 = torch.zeros((self.num_envs, 3), device=self.device)
+            positions, quaternions = [], []
+            for index in env_idx.tolist():
+                ldx, ldy, lyaw = self._layouts_by_env[index]["lid"]
+                position = self._geometries_by_env[index].lid_table_position.copy()
+                position[:2] += (ldx, ldy)
+                positions.append(position)
+                quaternions.append([np.cos(0.5 * lyaw), 0.0, 0.0, np.sin(0.5 * lyaw)])
+            lid_p = torch.tensor(np.asarray(positions), dtype=torch.float32, device=self.device)
+            lid_q = torch.tensor(np.asarray(quaternions), dtype=torch.float32, device=self.device)
+            zero3 = torch.zeros((len(env_idx), 3), device=self.device)
             self.lid.set_pose(Pose.create_from_pq(lid_p, lid_q))
             self.lid.set_linear_velocity(zero3)
             self.lid.set_angular_velocity(zero3)
-            qpos = self.blender.get_qpos()
+            qpos = self.blender.get_qpos()[env_idx].clone()
             qpos[:, self.button_joint_index] = self.button_rest_qpos
             self.blender.set_qpos(qpos)
             self.button_joint.set_drive_target(self.button_rest_qpos)
-            self.stage = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
-            self.stage_counter = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
-            self.left_open_contact = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
-            self.left_close_contact = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
-            self.right_apple_contact = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
-            self.right_lid_contact = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
-            self.right_lid_lifted = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
-            self.success_latched = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
+            for name in ("stage", "stage_counter", "left_open_contact", "left_close_contact",
+                         "right_apple_contact", "right_lid_contact", "right_lid_lifted", "success_latched"):
+                if not hasattr(self, name):
+                    dtype = torch.long if name in ("stage", "stage_counter") else torch.bool
+                    setattr(self, name, torch.zeros(self.num_envs, dtype=dtype, device=self.device))
+                getattr(self, name)[env_idx] = 0
+            if self.juice_appearance is not None:
+                self.juice_appearance.apply(env_idx.tolist(), options)
 
     def _side_links(self, side: str):
         links = list(getattr(self.agent, f"{side}_tip_links", ()))
@@ -241,7 +246,7 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
     def _lid_quantities(self):
         """Stage 3 quantities, read from the lid subtask's shared predicate."""
         position, error, _, _, _, seated, stable = lid_seat_quantities(
-            self.lid.pose, self.blender_geometry.seat_position, device=self.device
+            self.lid.pose, self._batched_blender_geometry().seat_position, device=self.device
         )
         return position, error, seated, stable
 
@@ -253,14 +258,14 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
             position, collision_min_z, device=self.device, fridge_root_p=self.fridge.pose.p
         )
         in_blender, _, _ = apple_inside_blender(
-            position, self.blender_geometry, device=self.device
+            position, self._batched_blender_geometry(), device=self.device
         )
-        self.apple_motion = apple_motion_update(
+        self.apple_motion = self._juice_update(self.apple_motion, apple_motion_update(
             self.apple.pose,
             self.apple_motion,
             self._elapsed_steps,
             control_timestep=self.control_timestep,
-        )
+        ))
         return position, in_fridge, in_blender, apple_settled(self.apple_motion)
 
     def evaluate(self):
@@ -271,8 +276,8 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
         lid_p, lid_error, lid_seated, lid_stable = self._lid_quantities()
         left_contact_now = self._side_contacts("left", self.door_link)
 
-        at_open = stage == STAGE_OPEN_FRIDGE
-        self.left_open_contact |= at_open & left_contact_now
+        at_open = (stage == STAGE_OPEN_FRIDGE) & self._juice_active_mask()
+        self.left_open_contact |= (at_open & left_contact_now) & self._juice_active_mask()
         _, _, self.stage_counter = door_settle_update(
             door_qpos,
             door_qvel,
@@ -283,20 +288,20 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
         )
         advance = at_open & (self.stage_counter >= DOOR_SETTLE_STEPS)
         stage = torch.where(advance, stage + 1, stage)
-        self.stage_counter = torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter)
+        self.stage_counter = self._juice_update(self.stage_counter, torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter))
 
-        at_apple = stage == STAGE_MOVE_APPLE
-        self.right_apple_contact |= at_apple & self._side_contacts("right", self.apple)
+        at_apple = (stage == STAGE_MOVE_APPLE) & self._juice_active_mask()
+        self.right_apple_contact |= (at_apple & self._side_contacts("right", self.apple)) & self._juice_active_mask()
         (
             self.apple_left_fridge_latched,
             self.apple_lifted_latched,
-        ) = apple_route_latches(
+        ) = self._juice_update((self.apple_left_fridge_latched, self.apple_lifted_latched), apple_route_latches(
             apple_p,
             apple_in_fridge,
             self.apple_left_fridge_latched,
             self.apple_lifted_latched,
             active=at_apple,
-        )
+        ))
         apple_ok = (
             at_apple
             & self.apple_left_fridge_latched
@@ -304,13 +309,13 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
             & apple_in_blender
             & apple_stable
         )
-        self.stage_counter = self._tick_stage_counter(at_apple, apple_ok)
+        self.stage_counter = self._juice_update(self.stage_counter, self._tick_stage_counter(at_apple, apple_ok))
         advance = at_apple & (self.stage_counter >= APPLE_SETTLE_STEPS)
         stage = torch.where(advance, stage + 1, stage)
-        self.stage_counter = torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter)
+        self.stage_counter = self._juice_update(self.stage_counter, torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter))
 
-        at_close = stage == STAGE_CLOSE_FRIDGE
-        self.left_close_contact |= at_close & left_contact_now
+        at_close = (stage == STAGE_CLOSE_FRIDGE) & self._juice_active_mask()
+        self.left_close_contact |= (at_close & left_contact_now) & self._juice_active_mask()
         _, _, self.stage_counter = door_settle_update(
             door_qpos,
             door_qvel,
@@ -321,24 +326,24 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
         )
         advance = at_close & (self.stage_counter >= DOOR_SETTLE_STEPS)
         stage = torch.where(advance, stage + 1, stage)
-        self.stage_counter = torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter)
+        self.stage_counter = self._juice_update(self.stage_counter, torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter))
 
-        at_lid = stage == STAGE_PLACE_LID
-        self.right_lid_contact |= at_lid & self._side_contacts("right", self.lid)
+        at_lid = (stage == STAGE_PLACE_LID) & self._juice_active_mask()
+        self.right_lid_contact |= (at_lid & self._side_contacts("right", self.lid)) & self._juice_active_mask()
         lid_bottom_z = lid_p[:, 2] + float(self.blender_geometry.lid_lower[2])
         self.right_lid_lifted |= (
-            at_lid & (lid_bottom_z - TABLE_TOP_Z >= PICK_HEIGHT)
+            (at_lid & (lid_bottom_z - TABLE_TOP_Z >= PICK_HEIGHT)) & self._juice_active_mask()
         )
         lid_ok = (
             at_lid & self.right_lid_lifted & lid_seated & lid_stable
         )
-        self.stage_counter = self._tick_stage_counter(at_lid, lid_ok)
+        self.stage_counter = self._juice_update(self.stage_counter, self._tick_stage_counter(at_lid, lid_ok))
         advance = at_lid & (self.stage_counter >= LID_SETTLE_STEPS)
         stage = torch.where(advance, stage + 1, stage)
-        self.stage_counter = torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter)
+        self.stage_counter = self._juice_update(self.stage_counter, torch.where(advance, torch.zeros_like(self.stage_counter), self.stage_counter))
 
         button_qpos = self.blender.get_qpos()[:, self.button_joint_index]
-        at_button = stage == STAGE_PRESS_BUTTON
+        at_button = (stage == STAGE_PRESS_BUTTON) & self._juice_active_mask()
         button_progress, _, self.stage_counter = button_press_update(
             button_qpos,
             self.stage_counter,
@@ -348,12 +353,12 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
         )
         advance = at_button & (self.stage_counter >= BUTTON_HOLD_STEPS)
         stage = torch.where(advance, stage + 1, stage)
-        self.stage_counter = torch.where(
+        self.stage_counter = self._juice_update(self.stage_counter, torch.where(
             advance, torch.zeros_like(self.stage_counter), self.stage_counter
-        )
+        ))
 
-        self.stage = stage
-        self.success_latched |= stage >= STAGE_DONE
+        self.stage = self._juice_update(self.stage, stage)
+        self.success_latched |= (stage >= STAGE_DONE) & self._juice_active_mask()
         return {
             "success": self.success_latched,
             "task_success": self.success_latched,
@@ -425,7 +430,7 @@ class JuicePreparationLongEnv(JuicePreparationAppleToBlenderEnv):
             # plus the lid seat that rides on the blender.
             "fridge_pose": self.fridge.pose.raw_pose,
             "blender_pose": self.blender.pose.raw_pose,
-            "seat_target_position": torch.as_tensor(np.asarray(self.blender_geometry.seat_position, dtype=np.float32), device=self.device).view(1, 3).expand(self.num_envs, -1),
+            "seat_target_position": torch.as_tensor(np.asarray(self._batched_blender_geometry().seat_position, dtype=np.float32), device=self.device).reshape(self.num_envs, 3),
             "left_tcp_pose": self.agent.left_tcp_pose.raw_pose,
             "right_tcp_pose": self.agent.right_tcp_pose.raw_pose,
         }

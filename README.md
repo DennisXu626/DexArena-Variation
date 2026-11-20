@@ -147,3 +147,7 @@ Meal限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/
 
 
 Package Opening的OpenPackage／ExtractApple／Long三个Sharpa入口已交付，限定证据已查收、待PR9最终合并；[用法](docs/variation/PACKAGE_OPENING_APPEARANCE.md)、[方案身份及整合记录](docs/variation/evidence/package_opening/PR9-R2.md)。不把Package方案套成Cabinet Ocean／Citrus／Violet。
+
+## Juice Preparation 候选交付（PR #19）
+
+[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)提供四对象两套新外观和六个 Sharpa 入口；默认关闭，支持逐环境固定方案。历史双环境运行与本轮 CPU 修正的范围分列于[Juice 交付](docs/variation/JUICE_PREPARATION_APPEARANCE.md)和[R1 修正](docs/variation/JUICE_PR19_R1.md)。待最终审验，不扩大为随机、其它规模或完整机器人成功。

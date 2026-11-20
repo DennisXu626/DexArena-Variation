@@ -88,3 +88,7 @@ Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合�
 ## 7. Package Opening（PR9待最终合并）
 
 三对象original＋variant_1／variant_2、OpenPackage／ExtractApple／Long三个Sharpa入口已实现，87021三任务各2env的限定运行证据已查收。当前implemented_pending_review，不增加accepted计数。配置／恢复原版／局部reset等证据与边界见[用法](PACKAGE_OPENING_APPEARANCE.md)及[PR9-R2索引](evidence/package_opening/PR9-R2.md)。CPU只补非连续／乱序环境索引、候选和绑定顺序身份检查；不代表GPU随机路径、完整机器人或压力测试。
+
+## Juice Preparation：PR #19 候选，待最终审验
+
+[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)：冰箱、苹果、搅拌机和盖的 original＋两候选已完成人工预览；六个 Sharpa 入口支持固定选择及记录。历史2env局部reset／73槽恢复和16步零动作证据保留；R1补齐公开reset预校验、临界计数的行隔离、main整合及ID图注，CPU回归通过不等于新版本GPU验收。集合随机、其它规模／手型、完整机器人成功未测；冻结新head后待审验层安排GPU复验。详见[交付](JUICE_PREPARATION_APPEARANCE.md)、[R1修正](JUICE_PR19_R1.md)。其它家族的main状态与证据保留。
