@@ -1,0 +1,826 @@
+{
+  "summary_sha256": "a51ada322fb9dce66568c8b4bcfe1d55c74ec0874533f76863446395d2c4b2d4",
+  "control_steps": 600,
+  "physics_steps": 12000,
+  "source": {
+    "raw_sha256": {
+      "assets/appearance/objects/pipette_transfer/catalog.json": "2ec1309f1d07ba0023c55e5c5f66e944a31a1cb910f8d7ded953349bbde658bc",
+      "assets/appearance/objects/pipette_transfer/pipette/bindings.json": "cbd9c5e75846eec7535167136fc70cb44915840d7b30e3cb6a7bdde87018ece4",
+      "assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json": "24e44e1269c3643ab641338e07b96e2d82073eaed05fae92bf89ff75f53c415b",
+      "assets/appearance/objects/pipette_transfer/sample_cup/bindings.json": "ba999d5504cedfc9bf42492e22547e19c4b800ab7d2f293932f8957966e38c31",
+      "assets/appearance/objects/pipette_transfer/test_tube/bindings.json": "4285ee1ab06da4e7c4df742b69ac4ff8f2691993db27eaf39136583178cbfec8",
+      "assets/appearance/objects/pipette_transfer/tip_cup/bindings.json": "62c9a268576044d8a9542ce5fd3f3c06e354f5fb654c15f6f01e24d0eef75829",
+      "assets/appearance/objects/pipette_transfer/tube_rack/bindings.json": "7abc351e5384b74f744886e4567852cd594c6b397ccb6444ff1a2e79e13fdebc",
+      "tasks/__init__.py": "c58e1c183543c3923c2b041044312f9e13d9512c630e8c08157c92093b4bce33",
+      "tasks/assets/task_object_meshes/pipette/mobility.urdf": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+      "tasks/assets/task_object_meshes/pipette/README.md": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+      "tasks/assets/variation/pipette_transfer/v1/catalog.json": "5bb14ff3d10f1769342b61ec5968baaf082f732bc0dd3d6283fefc342e92d2ed",
+      "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": "3fbb246e5732d5c8f00c9eadec780312216ede82ac43cd21068540379d0ca7a0",
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "0b14e3fa4f23007a99b3cff921040c6ea82d3e261465aa7c3d052ace27be0b8f",
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "f86111b4241fa8ef2a8b829033d28390b80a9758ae0327e4ce63100da0a09544",
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "5677c3b01601bf8084b187fd18a1446db7f830c04d239435494c125205b972b3",
+      "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "d99278f2da7a3ec12e4e9937beb9242c933b7d90eb5330663d10f82a6db6684e",
+      "tasks/cabinet_pouring/variation.py": "1aaf7a74f74a57fc20b2932d9239989638a47dcf145cbeaadf31a1387bca01ab",
+      "tasks/config/__init__.py": "c00706d46b5c4da7e791e890e01729177f641ffdf2b4602b411ebec888aab4a7",
+      "tasks/config/code_fingerprint.py": "4066b9b78e60d95707f9ff0544f34f3eb1c6dd053de5cb0aacb7e1ace37a4d70",
+      "tasks/config/collection_targets.py": "43cd589b2fbb1904bcebbf9ea9befbad54e2cb62419c25aeffa8ae5f903c6ebf",
+      "tasks/config/contact_materials.py": "7b164cd063ce4353532ac510805c11b08512d19859aad672a4efbb7e05b386fa",
+      "tasks/config/energy_fence.py": "fb9344827b372b491daf5fe32e27acd49a2f40393faef1e437f98c4a2b6b3099",
+      "tasks/config/fingerprint_lineage.py": "a6a6c0ef474afbb42c4cc270187acc1dee9497ecc67c963e161d71af3d63c122",
+      "tasks/config/guidance_markers.py": "299f963e4834986fcbcf2b07a7477e75ebab4ddbc5f18ccc11e99001e264b95a",
+      "tasks/config/hands.py": "28ee1c670a80bfb73eeead124e1f9ad4c65f501386048e64b8d4a911a9b1e97c",
+      "tasks/config/layout_randomization.py": "4fd1e3caed613ecd4b595ed630260db1af7954c70c1b92cd528b8a68fcb305db",
+      "tasks/config/mass_properties.py": "91e7db6c781a2fd9366e0e645128621b2eadeedd718e70c69df12024fcff777c",
+      "tasks/config/object_materials.py": "49a9b2050ec27aea1c2bf68966f8e5f58765708713787abe52a5e329315ab9c3",
+      "tasks/config/sim_profiles.py": "cc91fd1985f72574a159b3e79cad38a44ef59a1c4abdeba43a3d619da1546191",
+      "tasks/config/task_state.py": "54663ace9db8c13899ecec5bf46be5b28c2352dc10b053d7253e80eecff8e711",
+      "tasks/config/workspace_rig.py": "4ef72264517d9500b995dbebb52c5c07e8b18e238b3aaf36c67b6f50bc93977f",
+      "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/drawer_plug/charger_appearance.py": "adedb85ff7db9eff7b25d9ebdff570f99f472f37f1f925f267c22569df23e79a",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py": "4bbca49ed7f591efb899087f554bd47be47b18b15614a777ccef6f119366aaf4",
+      "tasks/drawer_plug/drawer_plug_long.py": "176e29d59469070bc1dd431f5b14f835948d4f1b3499f1c1726e09efee3b218a",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py": "0eadd5329c8ba3c3a06b4d45ddea80302e06cf2baa2640f4b63b58e8db7822b4",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py": "3a9ae80864c1c20cd84634d5a8c13152884e4758d2753ea0298389aeb9e9d3af",
+      "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/furniture_assembly/appearance.py": "60f0c9d06be1f15abe7672dd9542d130666a998b2e0db9fc42c321b757341c15",
+      "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "0126c8fb833e6766f1c9f5171d915cec73d87793f2f4f838f0830121241f181c",
+      "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "97637298917bb95e9f25e798e284d2b0ad630e16a95e94165145c46bbfe4d80d",
+      "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "adc34d944be3e0b1ddc00e756622bcd52d65e30367fe41478c25bfebb6b2c7ae",
+      "tasks/furniture_assembly/furniture_assembly_long.py": "f5ded2f12d952c3809342c0e687ca72e398c7f6832a976c1b4803fc941d9e4a1",
+      "tasks/furniture_assembly/reset_scope.py": "5e045aac8d0e50d770baa0dfed283b31312430be4738831af15f3cfd7cc3db6e",
+      "tasks/juice_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/juice_preparation/juice_preparation_apple_to_blender.py": "fe60f0a4b33f20bca40a6142813e5597b4f9ee7b5793f21fbce4cd8f07e632ba",
+      "tasks/juice_preparation/juice_preparation_close_fridge.py": "f103ddab029a883eac0786eec0d2067ad0af6a37fb8f3fc838aafa3a85c24872",
+      "tasks/juice_preparation/juice_preparation_long.py": "50dc25d2adfa13def14b36231946818febed927d9e722a00ee711179f056944e",
+      "tasks/juice_preparation/juice_preparation_open_fridge.py": "ecdb1e3d5d3fbfd3dee93b186e2a8ca85da819cd37278f9e69b5df405097cfe6",
+      "tasks/juice_preparation/juice_preparation_place_lid.py": "0e72c8fd9c27c635bec121ac3ce2127616f94ac1cb5e8bb27e664db6b85d8575",
+      "tasks/juice_preparation/juice_preparation_press_button.py": "5ffbe3e93bd64a7c395eab5755f95814758634badab4ffaeb9ca1976c9c10828",
+      "tasks/meal_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/meal_preparation/appearance.py": "50161c719ee3058343fc709f33175d9498ea38faa2c4a3a162f7dc42ecb768e9",
+      "tasks/meal_preparation/appearance_textures.py": "b05324c44e68dffbeef4e806b9291b250f8cee1c30a80471d57837ae9bdc34f5",
+      "tasks/meal_preparation/meal_preparation_long.py": "98f71d059bf21c17e48b4747b62c8b6e751bc4e0b80079d27e8e6eec74d9b9c4",
+      "tasks/meal_preparation/meal_preparation_open_lunch_box.py": "8a298497da1c4001767b2f654a7e790a2ce2fcc0801d50864615caa7ddc67cb0",
+      "tasks/meal_preparation/meal_preparation_place_bread.py": "b71c20aa1f7e298afbc3bbd19d6a1faf7b7b3b7997bc15ef263b6f38fca389cc",
+      "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "d6c1d6218e37fce19e90610bed2bbf2e5354295725800f6955fbe5b195f3d8f8",
+      "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/nut_bolt/nut_bolt_long.py": "6983e3a1902dc1d5d3320a004f860213d6d58de1dc2375520e8de8d6c5f7f17f",
+      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "3e6610d2cbec2fdfae14dc79e8b851d806ac3baeaca1ea28978834daec919866",
+      "tasks/nut_bolt/nut_bolt_seat_nut.py": "c8e484e1ffe25b958b1e9ccc960fe94a869ba9c21159ee17aca4d7e69f6e4fd4",
+      "tasks/nut_bolt/nut_bolt_turn_nut.py": "1c4cedc211f38aa8dc863166e68ffbfe038bf6793ed17c7c581aaf8c5be94128",
+      "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/office_desk/mouse_appearance.py": "9015ca1403d30cd978f9435b91e41c709ff3f32ae7826209af681ab9996001a4",
+      "tasks/office_desk/office_desk_click_mouse.py": "684d1577bf64c5a7b5815447206299bd49f7d4905b63a6073a84b41df1b65641",
+      "tasks/office_desk/office_desk_long.py": "42dbb44534dababa7ca4546728b4304b28be8e29908500887baf7ce8e1e45f97",
+      "tasks/office_desk/office_desk_open_laptop.py": "5aabd574e57c9a931187bcf77b40736eaafb9c08c0798848a29420b31878582e",
+      "tasks/office_desk/office_desk_type_keys.py": "890474bec807945cf3ec483318791c7fa6624ecde29676f66c87283cbca169c1",
+      "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/package_opening/appearance.py": "f86f464b495232e32dc6bd2fa99f67138b906826c97b47caf5e7ed36c287753f",
+      "tasks/package_opening/package_opening_extract_apple.py": "dc8d2577c3e693ac372ee4cc1590306619833b889a2003da93c49dbc105b97c1",
+      "tasks/package_opening/package_opening_long.py": "479a1caa35062c3fdbd1748f50a67a6ecbab7dfb8c79311142423a33802170b5",
+      "tasks/package_opening/package_opening_open_package.py": "316830470eed9eba9f87737660a2cb1f66a60ab4810f7a9656c0fbe0a460ba49",
+      "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/pipette_transfer/appearance.py": "d6c8dd98b7a6f4fcbf9a439cf0afaca290d329fe60f1223159e9c71630aceee4",
+      "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "f8d53a4d410f1087ded229b1e58a11e3561cc084d59398cc34aec81ee2443624",
+      "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "5a287b2781c3fdb9816cdc197a56403476bcd92cb7192856aba58efcc4330d5b",
+      "tasks/pipette_transfer/pipette_transfer_long.py": "d9810bdd7b34ef8d01834a1e8e95de25ac65c3bb7148bd1883ed9cef9cf90c45",
+      "tasks/pipette_transfer/rendering.py": "7867c1bf5a21f71297ffd467214db4fedc85d492401facf09b836ae11494cbd8",
+      "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/robots/angled_mount.py": "3e7c463f4423f17d8e1421e6282e058f8c04822dc717417ea89a8871a0ea4740",
+      "tasks/robots/dual_arm_impedance_mixin.py": "65c982b84f6b8ade0d88e553e1eb0e798a19cc973cc510195f28cc515d7d8faa",
+      "tasks/robots/franka_joint_impedance_controller.py": "d705c01ea58d7109b737bd2dee5689b164e16f5dfc88a5ac5251192248238e89",
+      "tasks/robots/hand_controller_gains.py": "0d0b0bba6d2e1cc2f809a370cfecb3ca0a6dee96aa354bce05c37fbc0d06f0e0",
+      "tasks/robots/panda_base.py": "9bde96f2badc3a66b3c735201041b5faa38bf1fbd0681761bf4aa9297d3bb657",
+      "tasks/robots/panda_dual_gripper_mobile_base.py": "91c34337e8760885392dcf4d0e9715d71509fe7500f2adc84f238fd70af6acf2",
+      "tasks/robots/panda_dual_sharpa_hand.py": "19fba9459affa6668954561f7071acc6ef7ff2b0ccf862e861dd7eb41483bc82",
+      "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "00bf92e1851e8d153096218afc8c02af2798049f29b2ee452f397161f36fbda3",
+      "tasks/robots/panda_dual_wuji_hand.py": "9dcacce39f71b1d92e14518424369c39e51d4db6edc9340cf1a8e97e6b9d0e0f",
+      "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "9ced25ed1ead4adcd518cce3b099415e588817d1d23dda74c07055af42af2e77",
+      "tasks/robots/panda_dual_xhand_hand.py": "9573f9ffbf8fe525ac809a22827bc3900e0ab005ebbe4285d65729903aed994c",
+      "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "14c062fee161493e4db75f766363d5c8f16033cbdc1f732753405e017592fae1",
+      "tasks/robots/panda_gripper_left_mobile_base.py": "7ee19e81356442dfe6e86200628eea08d6a143085dbe96f67290b5574275d208",
+      "tasks/robots/panda_gripper_right_mobile_base.py": "f070dce37009835a83d6ac9e0057f1d3ec757d22e8ef62b7dc5e9eeea9971722",
+      "tasks/robots/panda_impedance.py": "99c42520e9a3161d4984e4d7d87e4dd773d25fb883f408bec6be361addd200d8",
+      "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "3333aa65cd0b0c1bb0302acdc5146ac499d364d4099e689b493ba271bdd9f56a",
+      "tasks/robots/panda_sharpa_hand_right.py": "533b821942a7b834efcba3449f695b17494d73ee6b4e44393f72be4caf7d5801",
+      "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "d36a5b7fb10e5c6c13f5b369e704959a135d7e23539331e9a633979b76cd4592",
+      "tasks/robots/panda_wuji_hand_left_mobile_base.py": "c3253ec752e611a7e85ff1874438dfc33409b7b7ccf2192e1a5562a063c29b83",
+      "tasks/robots/panda_wuji_hand_right.py": "b779fa8c4361964f11608c3564d5e68d67d69fcfb7ed9f0634d8ea3c14057f5b",
+      "tasks/robots/panda_wuji_hand_right_mobile_base.py": "3e82f5e13233abc9ce5b9f4aaadf53b976a519174e2ddf3d06ab416ae0ea5755",
+      "tasks/robots/panda_xhand_hand_left_mobile_base.py": "cc0ec17c811e19b297556c3460c543ff11a1030e28e147d8bcf94748b738c9c6",
+      "tasks/robots/panda_xhand_hand_right.py": "6c8b2b11baaaec32a79abd1404ce5df304b2be50b7d122b4569b9e0c488672a0",
+      "tasks/robots/panda_xhand_hand_right_mobile_base.py": "b5186a6eb14a8b2ab00f796d14bf9bf0c2ed18d8764d48a1defb9c840828ed22",
+      "tasks/scene_builders/__init__.py": "b8e71f3d14af2695a1033a71090354dbcf4384c8c6cafa9d47a295c0ee1b10bd",
+      "tasks/scene_builders/anchor.py": "fb17cd604ed4c4168a21c5887d9b0ba41d4adfdfb858050236734efea164249d",
+      "tasks/scene_builders/backgrounds.py": "39bab06603de2696d8e941be2f4cac8d6b728746ee4ed41b1ef1d994ce480260",
+      "tasks/scene_builders/camera_dr.py": "318645eaa0f813680892399c6c287224cacaf4cc739293836bb3fc3f7b719333",
+      "tasks/scene_builders/convert_labutopia.py": "31de41aedd8070603af0bfd91f03cb23e30174e7df80227ac9677b0d1fa3f46a",
+      "tasks/scene_builders/fetch_labutopia_scene.py": "ab9bafb71effc72050ca26a7f04a7239335b1ea15aa8f3b13068b69ce4fc22a5",
+      "tasks/scene_builders/fetch_objaverse_scene.py": "cac47e5e3c96f19698f6e43a7f99e7e4a568ee86bf52e63d4592b4d82428aa5e",
+      "tasks/scene_builders/find_glb_surfaces.py": "5f09d645460fe053a6f92665a9f2a75d5ec253afe84dda97dc926483c2a46fa5",
+      "tasks/scene_builders/labutopia.py": "8ed1ca9e44c0e618f210438de2509feea411da33e7630e83144b30aed597ac6f",
+      "tasks/scene_builders/lighting.py": "6dd7fb0163c01f9105a8a6769f41e2773e934658c3dbf6b67d019aa14d082e06",
+      "tasks/scene_builders/randomized_table.py": "9cdc304b1c731f66e69985b25ba89bcad8a1698bfdad484afb9929d0ddc7b878",
+      "tasks/scene_builders/render_labutopia.py": "614fc2f322e53b71abca33fda034d5ede1f4e8f8cfbf225f00a32f45eb551e5c",
+      "tasks/scene_builders/scene_library.py": "aa69ce52bd569833aa49418e7c802edabceb01d2e44c12a003e822797ea6e89d",
+      "tasks/scene_builders/table.py": "780d5fb1670e024fc24001fdea199e87e991fcd95cbe7d97066d63f38fe4654b",
+      "tasks/scene_builders/textures.py": "65e657cd2d7e98bfec2d49107c1c3d44d47f518282a70d171743d2594a9b6532",
+      "tasks/table_cleaning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/table_cleaning/table_cleaning_dump_dustpan.py": "50201dafa54c852978d9a7d04a520b7d03c35eee435611d6f15f5870502ef0ea",
+      "tasks/table_cleaning/table_cleaning_long.py": "916f368c70dcf147363a8e69aa967145c57264dbc507bb9d78a0234188935e5c",
+      "tasks/table_cleaning/table_cleaning_pick_debris.py": "c2fe9a43bb0a685b6b7a904d987a69403f215b5a0f7c3a6c9ea4b4d8d241eabe",
+      "tools/variation/check_furniture_appearance.py": "49fc6112885f8094c0ac715c131c4dc9745470bb7ef0017957e7dd1b7c357764",
+      "tools/variation/check_furniture_dynamics.py": "7cd6b4fb0b63e440fd16a86aaaea09f640061940526f162c1494338fbe7197d0",
+      "tools/variation/check_pipette_dynamics.py": "cb3432ef199095a43d8bdd6cfcc9ca1f77bd0ee1eba15257c01d503e268f51dc",
+      "tools/variation/check_pipette_runtime.py": "d6c0466ef798f094fa262e5222c6b68da1a55f31e634ecb91e7e1ecd0c9b082f",
+      "tools/variation/sapien_sdk/run_task_check.py": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb"
+    },
+    "lf_sha256": {
+      "assets/appearance/objects/pipette_transfer/catalog.json": "e7d6d7bfe495f1b722aab348a901bc0c90ad6c891a7c6396f45f630af45ff561",
+      "assets/appearance/objects/pipette_transfer/pipette/bindings.json": "40fe55f3e012c930f54a79948e790730f568c7b184874972c434ce119bc628ba",
+      "assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json": "73958fa7061f18da5ea2f0cf02a8d1cd6014a8acb66a1f382430a1416f9bef96",
+      "assets/appearance/objects/pipette_transfer/sample_cup/bindings.json": "1bd8fa3804e9a0db3d7a0376126d8321e8e6fe535472fe27763de6772637c5ee",
+      "assets/appearance/objects/pipette_transfer/test_tube/bindings.json": "467d0fdfce2a96cff0263169a27181726993b00eb1fa90d43639512558a3b8ab",
+      "assets/appearance/objects/pipette_transfer/tip_cup/bindings.json": "65ab9e5424ce5f9c474abc71fee1a0bd8a6fa669786acbec4248579c4cc37b48",
+      "assets/appearance/objects/pipette_transfer/tube_rack/bindings.json": "14a8023b3d23b83068ce31a36b9e4cc83691f0777c2e6cc4299e045372e903d3",
+      "tasks/__init__.py": "2030acebc725b7ee2dc7144e8bf60b11ab29b319535ac19158214d4bb778f7d4",
+      "tasks/assets/variation/pipette_transfer/v1/catalog.json": "5bb14ff3d10f1769342b61ec5968baaf082f732bc0dd3d6283fefc342e92d2ed",
+      "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": "52e63df7434d46e0b06341f86f1de29c76e133fcb214be279499ef77b77329a5",
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "bd5d1d6598950a4d380dd10c8b4b6952f80d17ea3352ec320f97b64947d5745b",
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "49e41cd5e8106c6bb1c00a04ac4f12eef9ab562ff575cf1e27fbb806e9b30724",
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "3eaf5f7e0bffb1a375b4af1ae81a17bb0d541450cf5914f3d04fec87c0875380",
+      "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "75dced699eb44417b998e0a4a6f48cf4e85b736f16d0fb257fe0cc787f9ff39a",
+      "tasks/cabinet_pouring/variation.py": "6aff3518f54fc7bf7913fe64b99542e19f1437792d98dc6c744cb90fda7d4746",
+      "tasks/config/__init__.py": "089f2af7f03496254cd5531b84baad9a08c3601c578a2ee0216f5ddfe67f7d5a",
+      "tasks/config/code_fingerprint.py": "bdd250487e656a61aad99828b42c91e86252c40e59bd2be782e749f965e1c302",
+      "tasks/config/collection_targets.py": "75227d736dd1951f787965f92b2b47afde8da2feac90e2d807263435bf092704",
+      "tasks/config/contact_materials.py": "165c0a1e3f5ce0803982098c1e34c373dd55cdff1cdb9a165f793e35a4f5d7bd",
+      "tasks/config/energy_fence.py": "0d57bb3e7ed9e56b3680e889b744f23df377b1b017d91089911859bf9f23cd48",
+      "tasks/config/fingerprint_lineage.py": "1b1def57271bf26ec7678a445c9c11a3bf4108ade654126d5f201ab985738c17",
+      "tasks/config/guidance_markers.py": "f08bb801a15c306122fb2cd0b502bc8f428280a91073757b98def331e8be09f4",
+      "tasks/config/hands.py": "cada26611e4c1576999bb77067d695871709cc31b161ab9feff4feb1e53e650f",
+      "tasks/config/layout_randomization.py": "b662d44cb7755e7f7fbe581de0f5a0f7bff55e38aad6fa1f5f8f5983866654cc",
+      "tasks/config/mass_properties.py": "660e06f6d7287ecf7f3d9ce47500249efe7e61c7b4ea5824af3b0036605434bb",
+      "tasks/config/object_materials.py": "7aa092093da4cea999ff3c76f92d26dc158d8f50e4d2a810758c8536c18af127",
+      "tasks/config/sim_profiles.py": "385653b80dcb3349d20e244102aee01e2ed0f1a6d78792b55396a74825f37e5e",
+      "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
+      "tasks/config/workspace_rig.py": "c8f93c6e1ae8951778c987dc0704efb0a21536a75bc1b95844ec95a9dc90d462",
+      "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py": "8bb9bd2b8658b2aa8d1066e02fb430384f9c11adf8171c1642de9175296b63f0",
+      "tasks/drawer_plug/drawer_plug_long.py": "834769897af83d17dc2a462dbf1dc4674fb3e5c6818b6306eb96e95fad5d13b8",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py": "fa68fe358316716d2b5359e35ee7da7d8d96f74707658f77ee72894a8b475f03",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py": "1fb5b9f44b57ec6be1d6d4447bfa801a028fe81f87b897f95cbcec778114d1ce",
+      "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
+      "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+      "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+      "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+      "tasks/furniture_assembly/furniture_assembly_long.py": "73608e52c17a535b0a21ffb61a8fd89b1916aad83057630829034f44931c614a",
+      "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+      "tasks/juice_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/juice_preparation/juice_preparation_apple_to_blender.py": "e00304c858103a299f4e7ee42ea9dc38bd1f5cd29c34ba02498d0193fb6e872e",
+      "tasks/juice_preparation/juice_preparation_close_fridge.py": "5a21b933e37052ae28e13e46163d53485cc4d6a656f20e5c98f76f14852c3253",
+      "tasks/juice_preparation/juice_preparation_long.py": "79bddd76c2db1c0e57f038e86210c8dff963b9f6a14703e4394709dbe68fd3dd",
+      "tasks/juice_preparation/juice_preparation_open_fridge.py": "7e45c84b96b391713918a35188d85adfe672416c5eb428ec1ec7bad6f35a71a8",
+      "tasks/juice_preparation/juice_preparation_place_lid.py": "f96ecf206d7cf7fdd160828478ff15d3d2a2d65ea120817def118859979e3d60",
+      "tasks/juice_preparation/juice_preparation_press_button.py": "0b3cf4504517dbc48de5d81578a18e231a8967b907e881909aec46841fcad1ca",
+      "tasks/meal_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/meal_preparation/appearance.py": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "tasks/meal_preparation/appearance_textures.py": "67b9450e92d0ee606528250a09b1d0346e583f09c8246f32de8de2ea3bbc28e6",
+      "tasks/meal_preparation/meal_preparation_long.py": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "tasks/meal_preparation/meal_preparation_open_lunch_box.py": "dd61b8e7ad8dbb798a104c451e32fdafa0fae704d535c616bb79a5ad6b6b9d76",
+      "tasks/meal_preparation/meal_preparation_place_bread.py": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
+      "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
+      "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/nut_bolt/nut_bolt_long.py": "553d8090352bbe24c7b732592925fa1f29c99b743f03760791c56edbf8b2b737",
+      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "fd7bbee7e49121b36fad4215c585851e7402e140ac8b5b83a399354c43d26c1c",
+      "tasks/nut_bolt/nut_bolt_seat_nut.py": "b5637412667d9106d9360267e40edffe97a9357c515b429787ec0ae2310c34c9",
+      "tasks/nut_bolt/nut_bolt_turn_nut.py": "89d160602146bfc71d1c8837cf27d9bf1af9aab87a9d7b9d521f3115ba4aa6e9",
+      "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/office_desk/mouse_appearance.py": "944327b9fabddd3f8d154dbfed2cbdff4d251dde207046072724d11c8566b3ac",
+      "tasks/office_desk/office_desk_click_mouse.py": "dc4ac8e5ace883eee4765fde5ce7f32d49cd215788965972d74a34945d817148",
+      "tasks/office_desk/office_desk_long.py": "0acc26306d8ff41b9455112031fcb904e0b24c837de95a4b5e6f71d016f01b38",
+      "tasks/office_desk/office_desk_open_laptop.py": "9652d8e572369adc87a6669eb35c7bc1d35cea431c88d1ddbad27d8974d67b2e",
+      "tasks/office_desk/office_desk_type_keys.py": "d0a347cc7e899cec7b008113718bcbb5fe06794462a90a2608fb1827a3f86d54",
+      "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/package_opening/appearance.py": "f86f464b495232e32dc6bd2fa99f67138b906826c97b47caf5e7ed36c287753f",
+      "tasks/package_opening/package_opening_extract_apple.py": "d327a6c2ee39aa2a6db567eea80c55c532cf19c6f84f80a5c4ca841678aca61d",
+      "tasks/package_opening/package_opening_long.py": "479a1caa35062c3fdbd1748f50a67a6ecbab7dfb8c79311142423a33802170b5",
+      "tasks/package_opening/package_opening_open_package.py": "0f53f59a0a91841defe224ff059f7d7e7cfb6fe35b4ea7ec8bd9499d1b2b4cff",
+      "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/pipette_transfer/appearance.py": "d6c8dd98b7a6f4fcbf9a439cf0afaca290d329fe60f1223159e9c71630aceee4",
+      "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "ce4feb2cde53a783e2b581b708ea50ef6c7dbc286e9a957105ed0582bdcb3347",
+      "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "b0a13fc7640d57e06cdd4e4e1bf0a682d8a8a021468fd0da6c8427813885e71b",
+      "tasks/pipette_transfer/pipette_transfer_long.py": "98da70866b39a49490cc9386820b987a69ba856b6e0bf4f252e60a68dce68581",
+      "tasks/pipette_transfer/rendering.py": "8cc5bce5a4faae2dd39c41a618d0e9653d200f4511700f562981ef8a35bd8748",
+      "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
+      "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
+      "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+      "tasks/robots/hand_controller_gains.py": "c8542a3a856aedf9b2687db6ca5e30fbb893fc8715f252b78af1fe1c19f1cdc5",
+      "tasks/robots/panda_base.py": "709bb5e7002f6d2af4e397b20f2e2d45ac685dc3ea2bc907a60512aafde78648",
+      "tasks/robots/panda_dual_gripper_mobile_base.py": "08b5d2dcc3499176244f7ce228990516fc0c7eee70a1568b934e277ed0a5dff5",
+      "tasks/robots/panda_dual_sharpa_hand.py": "b39d49835e7d7a3c64a344b3311ddece34cd10b33245d1130af0fb1d9421767f",
+      "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "27b59640e6a5be032cfe24f1298eeebfb600f1720151ec8f2a83176379043a22",
+      "tasks/robots/panda_dual_wuji_hand.py": "5d0b0ae91e4a58ef1a1e05b47fb3fbce81d5c4b144026ed7cecf6c9b6270feb2",
+      "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "f0f7b4c3cb094edeaf3c2a0f60dcb832c59c1a78ecef9512f511f40d5d379817",
+      "tasks/robots/panda_dual_xhand_hand.py": "40e7445790b07aec29c083e7fdf6d8b400d7d1ebd42d36fc8efe7d5be00a9ed0",
+      "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "f8c880151be70be212ca59223dc64ef755ec2200d16ca7f95a6fbf9f0938154b",
+      "tasks/robots/panda_gripper_left_mobile_base.py": "4acb353194c5a81ded23e0764b7ca792091a17a19f9ba9e7e97baf30ceef07e0",
+      "tasks/robots/panda_gripper_right_mobile_base.py": "95136d64ff7503ab08ff7f3db402304a9e8531c2f6bf2c564977c5c77af788f0",
+      "tasks/robots/panda_impedance.py": "1a6aeeba3887738758f0a2c0536f6703fd5ab6db2537b30d1c3ee9c02c3a0f85",
+      "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "4785c550f90d8eedb475acdecf9d9b868c729b60c070b9a7b62c5f1ffe8fbc32",
+      "tasks/robots/panda_sharpa_hand_right.py": "a46da81e87d33179dadc9a4e9f5961bd9c9fb287cdf06be39bac4f62217bbbf8",
+      "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "b2df2a781d33c2fadf607b8453846319ed0fd7638f313aa25f73226cee3c8579",
+      "tasks/robots/panda_wuji_hand_left_mobile_base.py": "477b0b57255bfd615b68a424241a5b0fc7cd12ddbc33a5341e3e8b0b6ac167e9",
+      "tasks/robots/panda_wuji_hand_right.py": "a62a9a7cad9bec524e273988b891de778184b214be0da128399f76278cb8e5a4",
+      "tasks/robots/panda_wuji_hand_right_mobile_base.py": "9aeddd05dadd3884e81ef27bc00a8b0b7ef6450c3bb9e8b5247d305ff533ef84",
+      "tasks/robots/panda_xhand_hand_left_mobile_base.py": "37239c14903ea500e3434aaefb8b293b20a0029a1fcd98588c998227d5a32ffa",
+      "tasks/robots/panda_xhand_hand_right.py": "c778abfc2ebae2366e52283a5e5162f35e4c6d8f6f27eb43f9bcba7b4a545a6b",
+      "tasks/robots/panda_xhand_hand_right_mobile_base.py": "0b350d12893f58031ce00d2e72f178f1e58576bf2484da300f518a17dac1c031",
+      "tasks/scene_builders/__init__.py": "53fcd8a549c1401d8d4680676da4938187f385edc63bf89de5008350cab3d287",
+      "tasks/scene_builders/anchor.py": "d492c02c643a7f71ebe45b1c6b84e51c2a8d7128e1d022ab410f27991a5263ab",
+      "tasks/scene_builders/backgrounds.py": "9612cbc52f45a70df0dfc8f08eca5d20fe4ebc28a8049d485ab8752e0bb92b00",
+      "tasks/scene_builders/camera_dr.py": "5da26be3d206903cabe25d3b5aa91ab1bd7992e1efc8d6f0b17d366b5c8b29a3",
+      "tasks/scene_builders/convert_labutopia.py": "c2fb33d92768d7f669212eb951db176d997b37002baecf030ba35f846d032001",
+      "tasks/scene_builders/fetch_labutopia_scene.py": "57c1085fdb12106c1f05a947ea9651af86008eacce1a4d301c55b8f37e9d2250",
+      "tasks/scene_builders/fetch_objaverse_scene.py": "62fca3d4b1f83a271cf05198de8601eb9e1dbf9d782ac66d14215eda0c08b6a4",
+      "tasks/scene_builders/find_glb_surfaces.py": "93523632c862b501ecebab4ee4d7379805e460fe1862ade068c622e04177d699",
+      "tasks/scene_builders/labutopia.py": "f0ef506b84964563dd184123814dfaf2a1918bba3eff1d33016fcec3052bdb7d",
+      "tasks/scene_builders/lighting.py": "7bb42f337fa8acdd4f091a42bf26c9d9ee9d77b98f8fe2cbf81d1e19e67130af",
+      "tasks/scene_builders/randomized_table.py": "59fdc6a5045ad25b96a53711b03da0102535019250dd53ef6ad6e124204a8df2",
+      "tasks/scene_builders/render_labutopia.py": "4979edc6ca0e22c6534d4423a583ab8170228171358a0650c8638ee0ba4daf1e",
+      "tasks/scene_builders/scene_library.py": "03fef87e26e8b4dafc467cb508bc179d8653a14187f2beef91ecfc39eae56390",
+      "tasks/scene_builders/table.py": "e69dd2152091851e63794699e03734b8570199e542889b7f0caae394da854d4d",
+      "tasks/scene_builders/textures.py": "95a2d5e1e18b73510174c4f4d40449c3a40af2b9afb82602619c403e6fdd5939",
+      "tasks/table_cleaning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/table_cleaning/table_cleaning_dump_dustpan.py": "331959e02d6e4c6c95c39c64e4f0bac3e3871b4058941c6bc9e83dab8d8fa561",
+      "tasks/table_cleaning/table_cleaning_long.py": "02de8ebaa612438a3d46ee866c3e2907620bb2e5f682bfe81543019ce3c05bce",
+      "tasks/table_cleaning/table_cleaning_pick_debris.py": "bc9cd131c31ea7657c0b97d86757f4620501cdd07e5b4af186ad9e45e2bbd749",
+      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
+      "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
+      "tools/variation/check_pipette_dynamics.py": "cb3432ef199095a43d8bdd6cfcc9ca1f77bd0ee1eba15257c01d503e268f51dc",
+      "tools/variation/check_pipette_runtime.py": "d6c0466ef798f094fa262e5222c6b68da1a55f31e634ecb91e7e1ecd0c9b082f",
+      "tools/variation/sapien_sdk/run_task_check.py": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb"
+    },
+    "tool_revision_differences": {}
+  },
+  "seed": 7,
+  "tasks": {
+    "AspirateLiquid": {
+      "actions_file": "AspirateLiquid/actions.npy",
+      "actions_sha256": "2ae0c1dcaf282acdb5e45e8ad31c50c0d6bc4f42b87043043af45129d8bcbad2",
+      "action_shape": [
+        60,
+        29
+      ],
+      "maximum_joint_displacement_rad": 0.015342950820922852,
+      "runs": {
+        "native_off": {
+          "actual_scheme_id": "native_off",
+          "run_sha256": "e75ac7a2a05926677b947d90ff66d295dfaeddcfce12b4f1dd7e6f3ea137e928",
+          "run_file": "AspirateLiquid/native_off/run.json",
+          "trajectory_file": "AspirateLiquid/native_off/trajectory.pt",
+          "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [
+              0
+            ],
+            "sample_cup_fixed_shading_modes": [
+              1
+            ],
+            "tip_render_ids": [
+              116
+            ]
+          }
+        },
+        "native_repeat": {
+          "actual_scheme_id": "native_off",
+          "run_sha256": "ef73455c5a7d1a09d96cae46ba627d6d401fcf25fc3e6e8ac077e3dfb680440b",
+          "run_file": "AspirateLiquid/native_repeat/run.json",
+          "trajectory_file": "AspirateLiquid/native_repeat/trajectory.pt",
+          "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [
+              0
+            ],
+            "sample_cup_fixed_shading_modes": [
+              1
+            ],
+            "tip_render_ids": [
+              116
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        },
+        "original": {
+          "actual_scheme_id": "original",
+          "run_sha256": "214f8339fea79ecda884a223742dbcfd006081b56b85a7a9903ea0a09f06bd2b",
+          "run_file": "AspirateLiquid/original/run.json",
+          "trajectory_file": "AspirateLiquid/original/trajectory.pt",
+          "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [
+              0
+            ],
+            "sample_cup_fixed_shading_modes": [
+              1
+            ],
+            "tip_render_ids": [
+              116
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        },
+        "jade": {
+          "actual_scheme_id": "jade",
+          "run_sha256": "bfce237115cbaa0a0ef9427e3761762a40de7bdaa160f4ec10542ab9e90e62bc",
+          "run_file": "AspirateLiquid/jade/run.json",
+          "trajectory_file": "AspirateLiquid/jade/trajectory.pt",
+          "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [
+              0
+            ],
+            "sample_cup_fixed_shading_modes": [
+              1
+            ],
+            "tip_render_ids": [
+              116
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        },
+        "coral": {
+          "actual_scheme_id": "coral",
+          "run_sha256": "aacd809c593d27a71da904197d0b8cef8e34c307670d7ea06083d666b2d65f39",
+          "run_file": "AspirateLiquid/coral/run.json",
+          "trajectory_file": "AspirateLiquid/coral/trajectory.pt",
+          "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [
+              0
+            ],
+            "sample_cup_fixed_shading_modes": [
+              1
+            ],
+            "tip_render_ids": [
+              116
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        }
+      }
+    },
+    "DispenseLiquid": {
+      "actions_file": "DispenseLiquid/actions.npy",
+      "actions_sha256": "2ae0c1dcaf282acdb5e45e8ad31c50c0d6bc4f42b87043043af45129d8bcbad2",
+      "action_shape": [
+        60,
+        29
+      ],
+      "maximum_joint_displacement_rad": 0.015329360961914062,
+      "runs": {
+        "native_off": {
+          "actual_scheme_id": "native_off",
+          "run_sha256": "51f1028392c723b4023e1ed229506a85acd90914598bd8c3d230da6451e05f85",
+          "run_file": "DispenseLiquid/native_off/run.json",
+          "trajectory_file": "DispenseLiquid/native_off/trajectory.pt",
+          "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [],
+            "sample_cup_fixed_shading_modes": [],
+            "tip_render_ids": [
+              124
+            ]
+          }
+        },
+        "native_repeat": {
+          "actual_scheme_id": "native_off",
+          "run_sha256": "e6cdde9dd0a2e8e83a96dbc68f48a0d1271919c7da2091f9babdd596ab01a2da",
+          "run_file": "DispenseLiquid/native_repeat/run.json",
+          "trajectory_file": "DispenseLiquid/native_repeat/trajectory.pt",
+          "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [],
+            "sample_cup_fixed_shading_modes": [],
+            "tip_render_ids": [
+              124
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        },
+        "original": {
+          "actual_scheme_id": "original",
+          "run_sha256": "ca035b1770dbfa72393d795a486e0669b3b01e66349e739d01fe1373cf9c59d5",
+          "run_file": "DispenseLiquid/original/run.json",
+          "trajectory_file": "DispenseLiquid/original/trajectory.pt",
+          "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [],
+            "sample_cup_fixed_shading_modes": [],
+            "tip_render_ids": [
+              124
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        },
+        "jade": {
+          "actual_scheme_id": "jade",
+          "run_sha256": "5db909929a3e22a368a3d393d52122a75375b4b6a1bb0d5bdb5446ae1a8847c0",
+          "run_file": "DispenseLiquid/jade/run.json",
+          "trajectory_file": "DispenseLiquid/jade/trajectory.pt",
+          "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [],
+            "sample_cup_fixed_shading_modes": [],
+            "tip_render_ids": [
+              124
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        },
+        "coral": {
+          "actual_scheme_id": "coral",
+          "run_sha256": "91a38b7857e71bcfd93daa9af312032a856ce43e21e967982c68b0b4490f8ca8",
+          "run_file": "DispenseLiquid/coral/run.json",
+          "trajectory_file": "DispenseLiquid/coral/trajectory.pt",
+          "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+          "samples": 61,
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "max_absolute_error_vs_native": 0,
+          "sdk": {
+            "sapien.dll": {
+              "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
+            },
+            "svulkan2.dll": {
+              "sha256": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+            },
+            "simsense.dll": {
+              "sha256": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd"
+            },
+            "PhysXDevice64.dll": {
+              "sha256": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54"
+            },
+            "PhysXGpu_64.dll": {
+              "sha256": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+            },
+            "pysapien.cp310-win_amd64.pyd": {
+              "sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+            }
+          },
+          "private_sdk_sha256": "431cc908cf4634d62865726c375056b8ba7d752f671a1a2a9bded0dc7bc46e16",
+          "sdk_python_map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+          "rendering_identity": {
+            "sample_cup_original_shading_modes": [],
+            "sample_cup_fixed_shading_modes": [],
+            "tip_render_ids": [
+              124
+            ]
+          },
+          "comparison_sha256": "7967fcf422572bc4069d7cc28723062087bbf8aaf92dbd266adb10414caa2997"
+        }
+      }
+    }
+  },
+  "sdk_python": {
+    "raw_sha256": {
+      "sapien/__init__.py": "da22af8b6068bd0cd59438eac0e23470f74627813e1418aa9f2dd62f116136c6",
+      "sapien/_oidn_tricks.py": "1f7b9437cac0771715db9709326ebcace4cbba70df04604553c160bff359705a",
+      "sapien/_vulkan_tricks.py": "0bac072f2422e9d471085e4660c53198dba614d7230863d2247f30444c4ed633",
+      "sapien/asset/__init__.py": "f85086d38572ba2a0b7c2b408db1c7c8554f2806641d8f4bc09f695158670988",
+      "sapien/core/__init__.py": "5beda47f2a30628299c008e2770a77d150ff16090caebfa0ceb32d5b04b59dc0",
+      "sapien/example/__init__.py": "bdc844ff9b9fcb025915075636ad7f70bb1dc93ec61c9cdbc8f174c2e0c104dd",
+      "sapien/example/empty.py": "8c470119922d38cb86f668c4237a440a335e38af1808cb9384c481e9602953b9",
+      "sapien/example/hello_world.py": "ac2a4fd75a7f09e6e6ffbefa1c69c5414b297206dfee1557862e1280ebe7df4b",
+      "sapien/example/load_urdf.py": "e5e80811329f8e58fee3f8515595cf4e6eb3f7c03a1bc63fdf94dbcb4b51a1f4",
+      "sapien/example/offscreen.py": "e65bdd96f33f5cb905bef0097689271249799f75ad362ff5eb8b7f2152d4d6ab",
+      "sapien/internal_renderer/__init__.py": "d316d346b244a85d08109b3e615571913e1f97e33acc2305c291f4eec4df9e8a",
+      "sapien/physx/__init__.py": "edd3ea3de40b43267f9607a08ff126570bc181da81fc47bdce402288dc0d1370",
+      "sapien/render/__init__.py": "8fc0d0afab3a606b31a7c6d2c587ab651c8b9f006c69e7c29a47972749ab49f6",
+      "sapien/sensor/__init__.py": "e0378d5084291902d8e794647602ff51695adc8613e99489cf9a6e11280895b3",
+      "sapien/sensor/activelight.py": "9210e57bc186675e1c2990b8506f527290c064aefe4e728d58d36ff06d338ccb",
+      "sapien/sensor/depth_processor.py": "a332c48aee83c3612f54e85d7f24a8f7e41d9f246ea830e1717b86c27d8b9bb2",
+      "sapien/sensor/sensor_base.py": "55c183b26c2a75d0886b637ceff74a41153edeb13f6f4628129be2e254a8c43d",
+      "sapien/sensor/simsense_component.py": "1ac37881b5ffd6277b537c5932b6a190aba970e5b8615cd2a9dce3b64f99f7c4",
+      "sapien/sensor/stereodepth.py": "16efeb5f0f8efdff0335af96c45e6cb3bbc9f6e39246b4ade76d076216b32df4",
+      "sapien/show_anything.py": "6d89763d06b783ad3e476a0933bbc0ad3efa8113a2ebb3f381a04f178e38b5de",
+      "sapien/utils/__init__.py": "75b5f0257cb0d18fb1ceb4dbee5c813a1e509f9015489cc6e3e409b7f22bcd72",
+      "sapien/utils/viewer/__init__.py": "2a8452a735662442194542cc2349a8ff35912c02a29ddd668e707cb3a3ee1a22",
+      "sapien/utils/viewer/articulation_window.py": "6b2926b879762e1e3c632edca3a6b230ad0a945328f9886ba6ec30a59186abf4",
+      "sapien/utils/viewer/camera_control.py": "8c3d9caa9c5c319c31a85067efaefddda274ccc992b7b44efd6d33f4db51a357",
+      "sapien/utils/viewer/contact_window.py": "4c706ff411b86373d4f2d4d8ff825bb18933173d5aa002af68a0bfb421b68495",
+      "sapien/utils/viewer/control_window.py": "08ecb39843e97e0cada7b69d47ded06e45027205a9061ae667a43cf1c256ae85",
+      "sapien/utils/viewer/entity_window.py": "8a5cfb90edbecc028d0f348065d89d9962208cefef9733479074f3c50f6cab9f",
+      "sapien/utils/viewer/imgui_ini.py": "8720b3411e8f1ac1dbab04fa0a97a18b3a85a1e4b0ad3eefbce57220261295c3",
+      "sapien/utils/viewer/keyframe_window.py": "72a2250a582ba9466e40db05b01878a5865f42ba437bdb14c753de1bde1119f9",
+      "sapien/utils/viewer/path_window.py": "1d2ee784e7ac47bcd49bf22bcdc0b4eacf6dd8c7e2758e643865d0706a9c734d",
+      "sapien/utils/viewer/plugin.py": "00d9df905ddcad8e86126a65f3596f7130343a3dc86d75113a487c0101d52639",
+      "sapien/utils/viewer/render_window.py": "a6593160c53a4902697b162599439920dbee804c39f0f51f2491a39181841197",
+      "sapien/utils/viewer/scene_window.py": "cc909c902cea2dbb56a533db826659c08b38933856a679fd5fd631b2db29f61e",
+      "sapien/utils/viewer/setting_window.py": "10f96ae3a2eac7032bcd2c5d899990b437fabdec7263329456a8b2c7e57aebce",
+      "sapien/utils/viewer/transform_window.py": "c381b98f1ad9a1d4a3759592b8f5ad7331bc47c2831b81bcb3bb6d24df917f88",
+      "sapien/utils/viewer/viewer.py": "50294b6de052d6ac548735fb6ca3e0b81ed9fba851b4a923d1160f85031d7dd2",
+      "sapien/version.py": "c179bc352016765206d45748fe4ff833fa7a64929e6392c1d37b691d73cdc4c5",
+      "sapien/wrapper/__init__.py": "bdc844ff9b9fcb025915075636ad7f70bb1dc93ec61c9cdbc8f174c2e0c104dd",
+      "sapien/wrapper/actor_builder.py": "06bb3cb1e9f20121038df055a14951e6e71ba87878cd34cc7c24537e6f0e1e8b",
+      "sapien/wrapper/articulation_builder.py": "a4aa9aea302ff1c41f2246e46c5ff17bd546beaba75f17d5003d30765ad87159",
+      "sapien/wrapper/coacd.py": "941d191b88b95f1a8ae0603b9c83c7f150c3e92b4bc855223e0844c209011dd8",
+      "sapien/wrapper/engine.py": "71903c654d652b281fa968523ce053b7199b03e665231b60e1914200f56a8381",
+      "sapien/wrapper/geometry/__init__.py": "bdc844ff9b9fcb025915075636ad7f70bb1dc93ec61c9cdbc8f174c2e0c104dd",
+      "sapien/wrapper/geometry/blender_usd_to_glb.py": "6ff9e33a6e2679d5328a53f8cf036bd3dff5e91c77af33c84b268f0dc8b35c4d",
+      "sapien/wrapper/geometry/cache.py": "b6fd19e9317383a623c7b2ab561b6ccc6d9cbe47dd63faf8b3deec8e973df250",
+      "sapien/wrapper/geometry/usd.py": "e3d0bac1f8d06d9bb6bb7fabeb49e5f0ea972dd5e95d9ab86874a0ad22f6f32c",
+      "sapien/wrapper/pinocchio_model.py": "054da1d3290002849065bc73870185b8639fe4768d62c2cf9e722f110fb4ec9e",
+      "sapien/wrapper/renderer.py": "92b2ede03ec07fdbd09ccb5c9974c3203488cb0a51e32f55aa36e4068f3759f6",
+      "sapien/wrapper/scene.py": "8509a93cc431addd00d07ea9ebdadc44779e9683031de9b97e759e7aea7197a0",
+      "sapien/wrapper/urchin/__init__.py": "1f441cfb4661dfd29959e5ce16e120ad5593326da964c61b05480e2dcf997113",
+      "sapien/wrapper/urchin/urdf.py": "623e3b86047036949a86b46754a675deb1362380323576b144f26383be6422bc",
+      "sapien/wrapper/urchin/utils.py": "2ffa95a384d263f3bc206b476d93ff99cd1ab4f4a07dc7b496d1769abc3e6da7",
+      "sapien/wrapper/urchin/version.py": "10b83f6a5cea706bd53f77018a93d611f298c4cb5bddd4f06f06e7b6e576c5e6",
+      "sapien/wrapper/urdf_exporter.py": "d403a48ec2bf6191dea2f74175f6cf5e3acb7481ed1c1c0ac5b6623285a1cc07",
+      "sapien/wrapper/urdf_loader.py": "ae86612e16a7c05c105eda394c00bf82a89367081f242c8202770140ab397b45"
+    },
+    "map_sha256": "3f9ab48105916476d887a3cd0925eb71da938e880c65501cbe6b1b83ea4b4738",
+    "file_count": 55,
+    "unchanged_during_capture": true
+  },
+  "cpu_gpu_overlap": {
+    "files": 128,
+    "map_sha256": "88702be24f5f525f2463aec4a556308e973b85a197709f6ce30b3e0be3bf2d27",
+    "explicit_tool_exclusions": [
+      "tools/variation/check_pipette_dynamics.py",
+      "tools/variation/check_pipette_rendering.py",
+      "tools/variation/check_pipette_runtime.py"
+    ]
+  },
+  "console": {
+    "process_sha256": "40fad58ead86219b6f2e53c828a42654beb08e51cf7fdddafcc7e6e29c8b2185",
+    "streams_sha256": {
+      "stdout.txt": "390560cfde6c89202a7447b66b40c732dfd0cc36a3a4d65f93bf6b1cd3f85420",
+      "stderr.txt": "fd8b4eafbf0642a230ea93fd9ae3e90df0005fea8f3983c706012db348f22a80"
+    },
+    "command": [
+      "{python}",
+      "-B",
+      "tools/variation/check_pipette_dynamics.py",
+      "--output",
+      "{capture_directory}",
+      "--steps",
+      "60",
+      "--seed",
+      "7",
+      "--sapien-root",
+      "{sdk_root}",
+      "--artifact",
+      "{sdk_artifact}",
+      "--physx-gpu-dir",
+      "{physx_gpu_directory}"
+    ],
+    "resources": {
+      "sha256": "f3145e6d232a42927af64434ebb2eca0ee832e3bacd504e8ddf3c8eba8b047ac",
+      "sample_count": 250,
+      "initial_free_mib": 5798,
+      "initial_util_percent": 1,
+      "max_delta_mib": 60,
+      "min_free_mib": 5738
+    }
+  }
+}

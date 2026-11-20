@@ -1,0 +1,11 @@
+{
+  "task_id": "PipetteTransferAspirateLiquid-Sharpa-v1",
+  "pipette_appearance": {
+    "enabled": true,
+    "scheme_id": "jade",
+    "seed": 71
+  },
+  "pipette_rendering": {
+    "enabled": true
+  }
+}
