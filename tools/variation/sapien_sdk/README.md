@@ -49,6 +49,6 @@ sapien.physx._enable_gpu()
 
 Optional preparation arguments `--download-cache PATH --source-reference CHECKOUT --dependency-reference DEPS` reuse SHA-checked archives and committed Git objects while creating new working trees. `prepared_inputs.json` records source/input hashes; `build_identity.json` records measured tools and recipe hashes; `artifact.json` identifies the wheel and matching native binaries. `run_check.py` verifies actual loaded SDK/PhysX paths and SHA before and after the standard repository checker. Keep these records and the build/checker logs together.
 
-For Linux, `python prepare.py --work-dir /path/to/new/private/build --common-only` prepares the common indexed fixes/capability and version hook. Linux compilation and runtime checks remain unverified; use upstream Linux build instructions with CUDA enabled and a distinct local suffix such as `dexarena.gpu1`.
+For Linux, use the separate [private Linux build and Furniture acceptance procedure](../../../docs/variation/FURNITURE_LINUX_RESET.md). It applies the same native indexed-writeback fixes and leaves the Windows build lock intact. The Windows acceptance records do not establish Linux runtime behavior.
 
 License/notice sources are listed in `lock.json`. Preserve SAPIEN and simsense licenses, svulkan2 per-file notices, dependency notices, and NVIDIA PhysX/CUDA terms when distributing a derived SDK. Keep source checkouts, wheels, DLLs, archives, caches and runtime directories outside Git. Patch hashes use LF bytes, as specified by this directory's `.gitattributes`.
