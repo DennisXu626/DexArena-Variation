@@ -1,6 +1,6 @@
 # PourBeads 的碗与模拟液滴
 
-实测提交 `59496b28d849df6c6e6a0d74c0a08accbf42f47b`，作业 123817。两物体的工程短检通过，待审图。每列使用相同的相机、初态和任务光照，顺序为 original、ocean、citrus、violet。
+实测提交 `59496b28d849df6c6e6a0d74c0a08accbf42f47b`，作业 123817。两物体的工程短检通过，Dennis 已确认碗的任务实景和模拟液滴的瓶外诊断图。每列使用相同的相机、初态和任务光照，顺序为 original、ocean、citrus、violet。
 
 ![原任务桌面上的碗和三个候选](bowl_comparison.png)
 

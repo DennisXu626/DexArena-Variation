@@ -1,6 +1,6 @@
 # 蓝色珠子（程序生成）（cabinet_pouring.beads）
 
-状态：**PourBeads 短任务实景与工程检查通过，待 Dennis 审图**。16 颗模拟液体的球使用程序材质，提供原版及 Ocean、Citrus、Violet。[瓶外诊断图、运行用法与验证范围](../../../../../docs/variation/evidence/pouring_bowl_beads/README.md)
+状态：**PourBeads 短任务实景与工程检查通过，Dennis 已确认实景**。16 颗模拟液体的球使用程序材质，提供原版及 Ocean、Citrus、Violet。[瓶外诊断图、运行用法与验证范围](../../../../../docs/variation/evidence/pouring_bowl_beads/README.md)
 
 原始角色：倒出的目标颗粒。V1资源说明：`代码创建球体 RenderMaterial`。
 

@@ -1,6 +1,6 @@
 # 目标碗（cabinet_pouring.bowl）
 
-状态：**PourBeads 短任务实景与工程检查通过，待 Dennis 审图**。原版及 Ocean、Citrus、Violet 使用原模型 UV，在内存中保留碗的明暗和纹样。[对照图、运行用法与验证范围](../../../../../docs/variation/evidence/pouring_bowl_beads/README.md)
+状态：**PourBeads 短任务实景与工程检查通过，Dennis 已确认实景**。原版及 Ocean、Citrus、Violet 使用原模型 UV，在内存中保留碗的明暗和纹样。[对照图、运行用法与验证范围](../../../../../docs/variation/evidence/pouring_bowl_beads/README.md)
 
 原始角色：接收珠子的容器。V1资源说明：`RoboCasa bowl/visual/model_normalized_0.obj`。
 
