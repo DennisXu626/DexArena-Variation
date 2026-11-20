@@ -42,6 +42,8 @@ records = env.unwrapped._pipette_appearance.records
 
 `pipette_rendering` 默认关闭，保留原生 minimal 默认相机路径。候选要求显式启用经核定的修复 default 管线：按每环境真实 tip_cup render-id 修复目标片元深度，并在建场、GPU 批处理前将 sample_cup 固定到透明 gbuffer pass。杯体 PBR 及底盘原 alpha 保留，其余对象不改 pass；reset 不改 shading_mode、Scene version、相机或 images。
 
+任务与模型预览仅接受已核定的 SAPIEN 3.0.3 default shader 文件对。LF 和 CRLF 各有一组精确字节哈希。启用修复时，先核对整个文件对，再应用同一片元补丁。
+
 native_off、original、jade、coral 的验收统一使用上述“修复 default shaders＋sample cup 固定透明 pass”配置。original 指该配置下的原生 PBR 及精确像素恢复；不声称与 stock default 或 minimal 的 RGB 相同。私有 shader 包按来源／补丁身份缓存，逐环境绑定实际 ID，不修改安装目录、顶点或世界位置。材质与深度参数读取唯一 catalog。
 
 **验收**
@@ -74,6 +76,7 @@ Aspirate 的部分原相机视图存在遮挡或无偏置时盘不可见，补�
 ```powershell
 python -B tools/variation/check_pipette_runtime.py --static --baseline origin/main
 python -B tests/test_pipette_appearance.py
+python -B tests/test_pipette_shader_sources.py
 python -B tools/variation/check_static.py
 python -B tools/variation/check_appearance_archive.py
 ```

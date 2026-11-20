@@ -42,7 +42,7 @@ def input_file_sha256():
     files += [ARCHIVE/key/'bindings.json' for key in
               ('pipette', 'sample_cup', 'test_tube', 'tube_rack', 'pipette_stand', 'tip_cup')]
     files += [tasks/name for name in ('pipette_transfer_long.py', 'pipette_transfer_aspirate_liquid.py',
-                                     'pipette_transfer_dispense_liquid.py')]
+                                     'pipette_transfer_dispense_liquid.py', 'rendering.py')]
     asset = ROOT/'tasks/assets/task_object_meshes/pipette'
     files += [asset/name for name in ('mobility.urdf', 'README.md') if (asset/name).is_file()]
     return {path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()

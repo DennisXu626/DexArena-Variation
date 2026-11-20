@@ -8,10 +8,28 @@ import tempfile
 
 _SHADER_PACKS = {}
 
-SOURCE_FRAGMENT_SHA256 = {
-    'gbuffer.frag': '96bf1cd4330f90e29d7456b90dfea9bc8c8a839458a32e31ae525863072028fb',
-    'gbuffer1.frag': '574745cffd6dd6b86ed9ecd2d94c7533fbe5b0cc0fdf36606efa5e1c5c5ab982',
-}
+# SAPIEN 3.0.3, commit 731622eac5b140b320076c8a1b6eb4b553c3ccd4,
+# and the identical sources checked out with CRLF for the Windows wheel.
+_SOURCE_FRAGMENT_SHA256 = (
+    {
+        'gbuffer.frag': '5fafc347dd9244be3ee5238f7e1fd04b2beaf90cab645a5f447c7b48ab55f7cf',
+        'gbuffer1.frag': '05e9c8ba41019ce89c793c51b514d8d9ffc9701c8de8f7020554afe648233c33',
+    },
+    {
+        'gbuffer.frag': '96bf1cd4330f90e29d7456b90dfea9bc8c8a839458a32e31ae525863072028fb',
+        'gbuffer1.frag': '574745cffd6dd6b86ed9ecd2d94c7533fbe5b0cc0fdf36606efa5e1c5c5ab982',
+    },
+)
+
+
+def reviewed_source_fragments(folder):
+    """Return exact reviewed bytes for one complete default shader pair."""
+    fragments = {name: (folder / name).read_bytes() for name in _SOURCE_FRAGMENT_SHA256[0]}
+    observed = {name: hashlib.sha256(data).hexdigest() for name, data in fragments.items()}
+    if observed not in _SOURCE_FRAGMENT_SHA256:
+        files = ', '.join(f'{name}={digest}' for name, digest in observed.items())
+        raise ValueError(f'Unreviewed SAPIEN default shader pair: {files}')
+    return fragments
 
 
 def hashes(folder):
@@ -30,9 +48,7 @@ class PipetteRendering:
         catalog = json.loads((root / 'assets/appearance/objects/pipette_transfer/catalog.json').read_text(encoding='utf-8'))
         self.bias = float(catalog['rendering']['tip_depth_bias_ndc'])
         source = Path(sapien.__file__).parent / 'vulkan_shader'
-        for name, expected in SOURCE_FRAGMENT_SHA256.items():
-            if hashlib.sha256((source / 'default' / name).read_bytes()).hexdigest() != expected:
-                raise ValueError(f'Unreviewed SAPIEN shader: {name}')
+        fragments = reviewed_source_fragments(source / 'default')
         source_hashes = {f'{name}/{key}': value for name in ('default', 'common')
                          for key, value in hashes(source / name).items()}
         constants = ('layout(constant_id=20) const int pipetteTipRenderId=-1;\n'
@@ -48,9 +64,9 @@ class PipetteRendering:
             output = Path(directory.name)
             for name in ('default', 'common'):
                 shutil.copytree(source / name, output / name)
-            for name in SOURCE_FRAGMENT_SHA256:
+            for name, data in fragments.items():
                 path = output / 'default' / name
-                text = path.read_text(encoding='utf-8')
+                text = data.decode('utf-8').replace('\r\n', '\n')
                 if text.count('#define SET_NUM 0') != 1 or text.count('void main() {') != 1:
                     raise ValueError(f'Unexpected shader patch anchors: {name}')
                 text = text.replace('#define SET_NUM 0', constants + '#define SET_NUM 0', 1)

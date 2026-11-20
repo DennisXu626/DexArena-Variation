@@ -4,12 +4,11 @@ from __future__ import annotations
 import hashlib
 import math
 from pathlib import Path
+from runpy import run_path
 import shutil
 
-SOURCE_FRAGMENT_SHA256 = {
-    'gbuffer.frag': '96bf1cd4330f90e29d7456b90dfea9bc8c8a839458a32e31ae525863072028fb',
-    'gbuffer1.frag': '574745cffd6dd6b86ed9ecd2d94c7533fbe5b0cc0fdf36606efa5e1c5c5ab982',
-}
+# Load the shared byte checks without importing the registered robot tasks.
+_RENDERING_SOURCE = Path(__file__).resolve().parents[2] / 'tasks/pipette_transfer/rendering.py'
 
 
 def shader_hashes(folder):
@@ -20,9 +19,8 @@ def shader_hashes(folder):
 def depth_shader(sapien, output):
     """Copy installed shaders into the run, preserving their Apache headers."""
     source = Path(sapien.__file__).parent/'vulkan_shader'
-    for name, expected in SOURCE_FRAGMENT_SHA256.items():
-        if hashlib.sha256((source/'default'/name).read_bytes()).hexdigest() != expected:
-            raise ValueError(f'Unreviewed SAPIEN shader: {name}')
+    reviewed_source_fragments = run_path(str(_RENDERING_SOURCE))['reviewed_source_fragments']
+    fragments = reviewed_source_fragments(source/'default')
     for name in ('default', 'common'):
         shutil.copytree(source/name, output/name)
     source_hashes = shader_hashes(output)
@@ -31,9 +29,9 @@ def depth_shader(sapien, output):
     patch = ('\n  gl_FragDepth = gl_FragCoord.z;\n'
              '  if (int(inSegmentation.x) == pipetteTipRenderId)\n'
              '    gl_FragDepth = clamp(gl_FragCoord.z-pipetteDepthBias, 0.0, 1.0);')
-    for name in SOURCE_FRAGMENT_SHA256:
+    for name, data in fragments.items():
         path = output/'default'/name
-        text = path.read_text(encoding='utf-8')
+        text = data.decode('utf-8').replace('\r\n', '\n')
         if text.count('#define SET_NUM 0') != 1 or text.count('void main() {') != 1:
             raise ValueError(f'Unexpected shader patch anchors: {name}')
         text = text.replace('#define SET_NUM 0', constants+'#define SET_NUM 0', 1)
