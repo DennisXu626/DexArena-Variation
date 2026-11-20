@@ -1,0 +1,767 @@
+{
+  "version": "cabinet-single-door-v1",
+  "asset_id": "Cabinet Pouring cabinet",
+  "base_color_space": "linear RGB",
+  "urdf_sha256": "eed1ddb9fdaad535ebdcff0ac27d322228b0452250574cb8c462be9720648416",
+  "meshes": {
+    "original-34.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-29.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-31.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-25.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-32.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-26.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-30.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-27.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-28.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-35.obj": {
+      "link": "link_0",
+      "visual": "cabinet_door_surface-4",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "door",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "door",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-36.obj": {
+      "link": "link_0",
+      "visual": "handle-5",
+      "slots": {
+        "texture_2.jpg": {
+          "slot": "material_0_0",
+          "role": "handle",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "handle",
+          "grain_axis": null
+        },
+        "texture_3.jpg": {
+          "slot": "material_2_0",
+          "role": "handle",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_3_0",
+          "role": "handle",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-21.obj": {
+      "link": "link_1",
+      "visual": "shelf-33",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shelf",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shelf",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-11.obj": {
+      "link": "link_1",
+      "visual": "other_leaf-18",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_top",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_top",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-20.obj": {
+      "link": "link_1",
+      "visual": "other_leaf-17",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_top",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_top",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-12.obj": {
+      "link": "link_1",
+      "visual": "other_leaf-16",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_top",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_top",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-10.obj": {
+      "link": "link_1",
+      "visual": "other_leaf-15",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_top",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_top",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-13.obj": {
+      "link": "link_1",
+      "visual": "back_panel-21",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "interior_back",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "interior_back",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-22.obj": {
+      "link": "link_1",
+      "visual": "bottom_panel-22",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "interior_floor",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "interior_floor",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-8.obj": {
+      "link": "link_1",
+      "visual": "vertical_side_panel-23",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-7.obj": {
+      "link": "link_1",
+      "visual": "vertical_side_panel-23",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-17.obj": {
+      "link": "link_1",
+      "visual": "vertical_side_panel-24",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-16.obj": {
+      "link": "link_1",
+      "visual": "vertical_side_panel-24",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "interior_side",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-37.obj": {
+      "link": "link_1",
+      "visual": "other_leaf-26",
+      "slots": {
+        "texture_4.png": {
+          "slot": "material_0_2",
+          "role": "native_detail",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-2.obj": {
+      "link": "link_1",
+      "visual": "frame_vertical_bar-34",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-4.obj": {
+      "link": "link_1",
+      "visual": "frame_vertical_bar-35",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-5.obj": {
+      "link": "link_1",
+      "visual": "frame_horizontal_bar-36",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        },
+        "texture_0.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-23.obj": {
+      "link": "link_1",
+      "visual": "frame_horizontal_bar-37",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-3.obj": {
+      "link": "link_1",
+      "visual": "frame_horizontal_bar-38",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        },
+        "texture_0.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-18.obj": {
+      "link": "link_1",
+      "visual": "base_side_panel-29",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_side",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-14.obj": {
+      "link": "link_1",
+      "visual": "base_side_panel-30",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        }
+      }
+    },
+    "original-9.obj": {
+      "link": "link_1",
+      "visual": "base_side_panel-31",
+      "slots": {
+        "texture_0.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_side",
+          "grain_axis": null
+        },
+        "texture_1.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_side",
+          "grain_axis": "V"
+        }
+      }
+    },
+    "original-19.obj": {
+      "link": "link_1",
+      "visual": "base_side_panel-32",
+      "slots": {
+        "texture_1.jpg": {
+          "slot": "material_0_0",
+          "role": "shell_edge",
+          "grain_axis": "U"
+        },
+        "untextured": {
+          "slot": "material_1_0",
+          "role": "shell_edge",
+          "grain_axis": null
+        },
+        "texture_0.jpg": {
+          "slot": "material_2_0",
+          "role": "shell_edge",
+          "grain_axis": "U"
+        }
+      }
+    }
+  },
+  "schemes": {
+    "original": {},
+    "oak_warm_white": {
+      "door": {
+        "color": [
+          0.56,
+          0.415,
+          0.265
+        ],
+        "roughness": 0.48,
+        "metallic": 0,
+        "wood": "oak"
+      },
+      "shell_top": {
+        "color": [
+          0.85,
+          0.799,
+          0.71
+        ],
+        "roughness": 0.61,
+        "metallic": 0,
+        "wood": null
+      },
+      "shell_side": {
+        "color": [
+          0.85,
+          0.799,
+          0.71
+        ],
+        "roughness": 0.61,
+        "metallic": 0,
+        "wood": null
+      },
+      "shell_edge": {
+        "color": [
+          0.85,
+          0.799,
+          0.71
+        ],
+        "roughness": 0.61,
+        "metallic": 0,
+        "wood": null
+      },
+      "interior_side": {
+        "color": [
+          0.55,
+          0.535,
+          0.504
+        ],
+        "roughness": 0.66,
+        "metallic": 0,
+        "wood": null
+      },
+      "interior_back": {
+        "color": [
+          0.55,
+          0.535,
+          0.504
+        ],
+        "roughness": 0.66,
+        "metallic": 0,
+        "wood": null
+      },
+      "interior_floor": {
+        "color": [
+          0.55,
+          0.535,
+          0.504
+        ],
+        "roughness": 0.66,
+        "metallic": 0,
+        "wood": null
+      },
+      "shelf": {
+        "color": [
+          0.55,
+          0.535,
+          0.504
+        ],
+        "roughness": 0.66,
+        "metallic": 0,
+        "wood": null
+      },
+      "handle": {
+        "color": [
+          0.023,
+          0.025,
+          0.027
+        ],
+        "roughness": 0.58,
+        "metallic": 0,
+        "wood": null
+      }
+    },
+    "sage_walnut": {
+      "door": {
+        "color": [
+          0.31,
+          0.383,
+          0.29
+        ],
+        "roughness": 0.68,
+        "metallic": 0,
+        "wood": null
+      },
+      "shell_top": {
+        "color": [
+          0.252,
+          0.127,
+          0.065
+        ],
+        "roughness": 0.46,
+        "metallic": 0,
+        "wood": "walnut"
+      },
+      "shell_side": {
+        "color": [
+          0.252,
+          0.127,
+          0.065
+        ],
+        "roughness": 0.46,
+        "metallic": 0,
+        "wood": "walnut"
+      },
+      "shell_edge": {
+        "color": [
+          0.252,
+          0.127,
+          0.065
+        ],
+        "roughness": 0.46,
+        "metallic": 0,
+        "wood": "walnut"
+      },
+      "interior_side": {
+        "color": [
+          0.76,
+          0.715,
+          0.639
+        ],
+        "roughness": 0.65,
+        "metallic": 0,
+        "wood": null
+      },
+      "interior_back": {
+        "color": [
+          0.76,
+          0.715,
+          0.639
+        ],
+        "roughness": 0.65,
+        "metallic": 0,
+        "wood": null
+      },
+      "interior_floor": {
+        "color": [
+          0.76,
+          0.715,
+          0.639
+        ],
+        "roughness": 0.65,
+        "metallic": 0,
+        "wood": null
+      },
+      "shelf": {
+        "color": [
+          0.76,
+          0.715,
+          0.639
+        ],
+        "roughness": 0.65,
+        "metallic": 0,
+        "wood": null
+      },
+      "handle": {
+        "color": [
+          0.39,
+          0.249,
+          0.119
+        ],
+        "roughness": 0.5,
+        "metallic": 0.83,
+        "wood": null
+      }
+    }
+  }
+}

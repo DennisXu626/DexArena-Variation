@@ -58,6 +58,8 @@ class CabinetPouringOpenCabinetEnv(CabinetPouringLongEnv):
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
             self._initialize_cabinet(env_idx, b, door_open=False)
+            if self._cabinet_appearance is not None:
+                self._cabinet_appearance.finish_reset(env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):
