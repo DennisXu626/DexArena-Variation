@@ -432,6 +432,27 @@ def configure_runtime():
     C.joint_signature = joint_signature
 
 
+def require_cuda_runtime(args):
+    """Check indexed GPU reset before creating any CUDA scene."""
+    windows_handles = []
+    if platform.system() == 'Windows':
+        assert args.experimental_windows_cuda
+        import ctypes
+        physx = (args.physx_gpu_dir.resolve(strict=True) if args.physx_gpu_dir
+                 else Path.home() / '.sapien/physx' / sapien.physx.version())
+        windows_handles.append(os.add_dll_directory(str(physx)))
+        windows_handles.extend(ctypes.WinDLL(str(physx / name))
+                               for name in ('PhysXDevice64.dll', 'PhysXGpu_64.dll'))
+        if not sapien.physx.is_gpu_enabled():
+            sapien.physx._enable_gpu()
+    capability = getattr(sapien.physx, 'indexed_gpu_apply_patch_version', None)
+    if not callable(capability) or capability() != 1:
+        raise RuntimeError('Office CUDA requires SAPIEN indexed_gpu_apply_patch_version() == 1')
+    if not sapien.physx.is_gpu_enabled():
+        raise RuntimeError('Launch Office CUDA with the verified SDK launcher and native PhysX GPU enabled')
+    return windows_handles
+
+
 def verify(base, ids, native):
     a=adapter(base);assert a.schemes==ids
     actual=C.materials(base);slots=logical_slots(base)
@@ -686,6 +707,8 @@ def run_task(task,args,output,result):
             primed=prime_controller(base,output,prefix)
             if index:info=step(primed,context)
             before_images=C.capture(env,info);before=C.snapshot(base)
+            before_marker = (base.key_target_marker.pose.raw_pose.detach().cpu().clone()
+                             if task == 'TypeKeys' and base.key_target_marker is not None else None)
             before_materials=C.materials(base);before_physical=physical(base)
             before_controller=C.controller_state(base,other);before_rng=C.task_rng(base,other)
             before_counters=C.controller_counters(base)
@@ -696,6 +719,8 @@ def run_task(task,args,output,result):
             if appearance:options[key]={'scheme_id':'original'}
             observation,info=checked_reset(options=options);selected_evidence=last_selected
             after_images=reset_images(env,observation);after=C.snapshot(base)
+            if before_marker is not None:
+                first_repeat(after_images,info,prefix+'_first_repeat')
             after_materials=C.materials(base);after_physical=physical(base)
             after_controller=C.controller_state(base,other);after_rng=C.task_rng(base,other)
             changes=C.state_changes(before,after,[other]);pixels=C.image_changes(before_images,after_images,output,prefix,other)
@@ -710,6 +735,18 @@ def run_task(task,args,output,result):
             assert not changes and not any(value['changed_values'] for value in pixels.values())
             assert before_controller==after_controller and before_rng==after_rng
             assert before_materials[other]==after_materials[other] and before_physical==after_physical
+            if before_marker is not None:
+                from tasks.office_desk.office_desk_type_keys import _key_target_marker_pose
+                after_marker = base.key_target_marker.pose.raw_pose.detach().cpu().clone()
+                slot = int(base.sequence_index[selected])
+                links = base._target_links[selected]
+                target_link = links[slot] if 0 <= slot < len(links) else None
+                pose = _key_target_marker_pose(target_link, pose=target_link.pose.sp if target_link is not None else None)
+                expected_marker = torch.as_tensor(np.concatenate([pose.p, pose.q]))
+                assert torch.equal(before_marker[other],after_marker[other])
+                torch.testing.assert_close(after_marker[selected],expected_marker,rtol=0,atol=2e-6)
+                row['guidance_marker'] = {'before': C.plain(before_marker), 'after': C.plain(after_marker),
+                                          'selected_expected': C.plain(expected_marker), 'selected_slot': slot}
             if appearance:
                 row.update(before_appearance_rng_unselected=before_appearance,
                     after_appearance_rng_unselected=copy.deepcopy(a.rng[other].bit_generator.state),
@@ -911,13 +948,9 @@ def main():
     before=source_hashes();assets=asset_hashes();external_before=None
     try:
         sys.path.insert(0,str(ROOT));configure_runtime()
-        if args.sim_backend=='physx_cuda' and platform.system()=='Windows':
-            assert args.experimental_windows_cuda
-            import ctypes
-            physx=args.physx_gpu_dir.resolve(strict=True) if args.physx_gpu_dir else Path.home()/'.sapien/physx'/sapien.physx.version()
-            dll_dir=os.add_dll_directory(str(physx));dlls=[ctypes.WinDLL(str(physx/name)) for name in ('PhysXDevice64.dll','PhysXGpu_64.dll')]
-            if not sapien.physx.is_gpu_enabled():sapien.physx._enable_gpu()
-            assert sapien.physx.indexed_gpu_apply_patch_version()==1
+        if args.sim_backend == 'physx_cuda':
+            # Retain the Windows loader and DLL handles through capture.
+            sdk_handles = require_cuda_runtime(args)
         from mani_skill.utils import download_asset
         def reject(*unused,**kwargs):raise RuntimeError('Asset download disabled during verification')
         download_asset.download=reject;download_asset.download_from_hf_datasets=reject
@@ -941,7 +974,9 @@ def main():
         report['source_hashes_unchanged']=before==source_hashes();report['asset_hashes_unchanged']=assets==asset_hashes()
         report['external_hashes_unchanged']=external_before is not None and external_before==external_hashes()
         report['robot_asset_hashes_unchanged']=all(closure_unchanged(row.get('asset_closure_sha256',{})) for row in report['tasks'])
-        if not all(report[field] for field in ('source_hashes_unchanged','asset_hashes_unchanged','external_hashes_unchanged','robot_asset_hashes_unchanged')):report.update(status='failed',formal_acceptance='failed',error='Inputs changed during verification')
+        if not all(report[field] for field in ('source_hashes_unchanged','asset_hashes_unchanged','external_hashes_unchanged','robot_asset_hashes_unchanged')):
+            report.update(status='failed', formal_acceptance='failed')
+            report.setdefault('error', 'Inputs changed during verification')
         report['elapsed_seconds']=time.monotonic()-start
         report['physics_steps']=sum(row.get('physics_steps',0) for row in report['tasks'])
         report['control_steps']=sum(row.get('control_steps',0) for row in report['tasks'])
