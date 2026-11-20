@@ -1,5 +1,7 @@
 # 单门柜 A/B · 使用与拍图复测
 
+[实际关门／开门对照和工程证据](evidence/cabinet_single_door/runtime_001/README.md)已交付，待 Dennis 审图。下方保留原拍摄计划和预算口径。
+
 [对象档案与两件实物参考](../../assets/appearance/objects/cabinet_pouring/cabinet/README.md) · [运行目录](../../tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json) · [CPU／后续运行检查器](../../tools/variation/check_cabinet_single_door.py)
 
 柜体专用 `cabinet_appearance` 不依赖旧 `variation`。默认略去或设 `enabled=False` 时保持原来路径；以下只配置柜子，瓶子仍为原版：
