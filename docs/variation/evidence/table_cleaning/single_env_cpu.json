@@ -1,0 +1,392 @@
+{
+  "status": "passed",
+  "reference_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "reference_lf_sha256": "02de8ebaa612438a3d46ee866c3e2907620bb2e5f682bfe81543019ce3c05bce",
+  "scope": "CPU real source methods with actor/tensor spies; bin/pan/debris layout and robot initialization only; no simulator",
+  "cases": [
+    {
+      "seed": 0,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 0,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 1,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 1,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 2,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 2,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 3,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 3,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 4,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 4,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 5,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 5,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 6,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 6,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 7,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 7,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 8,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 8,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 9,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 9,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 10,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 10,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 11,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 11,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 12,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 12,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 13,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 13,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 14,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 14,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 15,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 15,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 16,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 16,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 17,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 17,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 18,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 18,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 19,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 19,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 20,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 20,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 21,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 21,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 22,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 22,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 23,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 23,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 24,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 24,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 25,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 25,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 26,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 26,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 27,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 27,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 28,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 28,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 29,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 29,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 30,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 30,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 31,
+      "noise": 0.0,
+      "max_delta": 0.0,
+      "rng_equal": true
+    },
+    {
+      "seed": 31,
+      "noise": 0.02,
+      "max_delta": 0.0,
+      "rng_equal": true
+    }
+  ]
+}

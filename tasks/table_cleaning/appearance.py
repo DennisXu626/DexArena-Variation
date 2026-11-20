@@ -71,7 +71,8 @@ class CleaningAppearance:
         srgb = [int(color[i:i + 2], 16) / 255 for i in (1, 3, 5)]
         return [c/12.92 if c <= .04045 else ((c+.055)/1.055)**2.4 for c in srgb] + [1.]
 
-    def reset(self, indices, options):
+    def resolve_requests(self, indices, options):
+        """Validate every selected ID without touching RNG, bindings or records."""
         overrides = options.get("table_cleaning_appearance", {})
         requests = []
         for index in indices:
@@ -82,7 +83,10 @@ class CleaningAppearance:
             if scheme not in self.catalog["schemes"]:
                 raise ValueError(f"Unknown Table Cleaning appearance: {scheme}")
             requests.append((index, scheme))
-        for index, scheme in requests:
+        return requests
+
+    def reset(self, indices, options):
+        for index, scheme in self.resolve_requests(indices, options):
             if self.applied[index] != scheme:
                 body, frame, textures, base, roughness, frame_base = self.bindings[index]
                 recipe = self.catalog["schemes"][scheme]

@@ -11,6 +11,7 @@ from PIL import Image
 import sapien
 import torch
 from render_table_cleaning import use_verified_collision_cache, native, PICK, DUMP, LONG
+from table_cleaning_contract import check_catalog, check_materials
 
 CONFIG = {"per_env": {"0": {"scheme_id": "variant_1"}, "1": {"scheme_id": "variant_2"}}}
 
@@ -73,6 +74,7 @@ def trial(task_id, enabled, out):
         env.reset(seed=7, options={"reconfigure": True})
         before = frame(env)
         m_before = [material_state(task, i) for i in (0,1)]
+        source_pixels = task.cleaning_appearance.pixels["original"].copy() if enabled else None
         s_before = state(task, 0)
         record_before = dict(task.cleaning_appearance.records[0]) if enabled else None
         options = {"env_idx": torch.tensor([1], device=task.device)}
@@ -97,18 +99,22 @@ def trial(task_id, enabled, out):
         task.step(torch.zeros(env.action_space.shape, device=task.device))
         return {"before": m_before, "after": m_after, "env0_rgb": delta(before[0],after[0]),
                 "env0_state": state_changes, "env1_state": state(task,1),
-                "after_rgb": after, "before_rgb": before, "records": records}
+                "after_rgb": after, "before_rgb": before, "records": records,
+                "source_pixels": source_pixels}
     finally:
         env.close()
 
 
 def check(task_id,out):
     a,b = trial(task_id,False,out),trial(task_id,True,out)
+    semantic = [check_materials(a["before"][i], b["before"][i], scheme, b["source_pixels"])
+                for i, scheme in enumerate(("variant_1", "variant_2"))]
     changed = [[k for k,v in b["before"][i].items() if a["before"][i].get(k) != v] for i in (0,1)]
     restored = delta(a["after_rgb"][1], b["after_rgb"][1])
     images = [delta(a["before_rgb"][i],b["before_rgb"][i]) for i in (0,1)]
     states = {k:delta(v,b["env1_state"][k]) for k,v in a["env1_state"].items()}
-    result = {"changed_slots": changed, "appearance_image_differences": images,
+    result = {"scheme_material_contract": semantic,
+              "changed_slots": changed, "appearance_image_differences": images,
               "env0_state_differences": b["env0_state"], "native_env0_state_differences": a["env0_state"],
               "env0_rgb": b["env0_rgb"], "native_env0_rgb": a["env0_rgb"],
               "restored_rgb": restored, "env1_materials_match_original": a["after"][1] == b["after"][1],
@@ -124,6 +130,8 @@ def check(task_id,out):
 
 
 def main():
+    catalog = Path(__file__).resolve().parents[2] / "tasks/assets/variation/table_cleaning/v1/catalog.json"
+    check_catalog(json.loads(catalog.read_text(encoding="utf-8")))
     assets,out = map(Path,sys.argv[1:])
     out.mkdir(parents=True,exist_ok=True)
     native.GLB_CACHE = assets/"glb_cache"

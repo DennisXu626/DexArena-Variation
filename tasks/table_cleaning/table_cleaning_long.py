@@ -771,8 +771,9 @@ class TableCleanBase(BaseEnv):
         """Where the bin is built this episode.
 
         The bin is a STATIC body, so its per-episode offset has to be drawn when the
-        scene is (re)built -- and every reset rebuilds it (reconfiguration_freq=1 for
-        the single env this task supports). ManiSkill seeds the episode RNG before
+        scene is (re)built. By default single-env resets rebuild the scene, while
+        multi-env scenes are built once and local resets retain their static bins.
+        ManiSkill seeds the episode RNG before
         reconfiguring and re-seeds it afterwards, so a draw from the episode RNG here
         would be repeated verbatim by the first draw of `_initialize_episode`. The
         offset therefore comes from a stream derived from the episode seed."""
@@ -916,6 +917,12 @@ class TableCleanBase(BaseEnv):
             self.cleaning_appearance.reset(env_idx.tolist(), options)
 
     def reset(self, seed=None, options=None):
+        # Reject all selected IDs before BaseEnv can reseed, rebuild or write state.
+        selected = (options or {}).get("env_idx")
+        if self.cleaning_appearance is not None:
+            indices = range(self.num_envs) if selected is None else (
+                selected.tolist() if hasattr(selected, "tolist") else selected)
+            self.cleaning_appearance.resolve_requests(indices, options or {})
         # BaseEnv calls evaluate() for every row to assemble reset observations.
         # Keep the episode bookkeeping of rows that were not reset.
         selected = (options or {}).get("env_idx")
