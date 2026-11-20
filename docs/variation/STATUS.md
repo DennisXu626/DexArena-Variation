@@ -2,9 +2,11 @@
 
 [Drawer / Socket 外观](DRAWER_SOCKET_APPEARANCE.md)已限定验收。抽屉 A 浅橡木与暖白、B 浅灰与石墨色通过 OpenDrawer／PickCharger 双环境验证及开闭审图。插座暖白／炭黑 PC 通过 InsertPlug 双环境验证。两者均覆盖原版恢复、随机复现和局部 reset 隔离。Long 单环境阶段验证只覆盖抽屉返工前版本。
 
-这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中12个对象为 `accepted_pilot`。各对象的任务覆盖和验证边界见对应条目。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
+这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中14个对象为 `accepted_pilot`。各对象的任务覆盖和验证边界见对应条目。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
 
 **Cabinet & Pouring 单门柜。** `cabinet_appearance` 独立选择 `original`、`oak_warm_white` 或 `sage_walnut`。Dennis 已确认两套柜体外观。OpenCabinet 原生闭门和 PickBottle 原生 90° 开门各 2 环境通过原版恢复、局部 reset 隔离和柜外材质对照。PickBottle 使用原版瓶子。验收限于这两个入口。[用法](CABINET_SINGLE_DOOR.md) · [实景与工程证据](evidence/cabinet_single_door/runtime_001/README.md)
+
+**PourBeads 接收碗和模拟液滴。** Dennis 已确认 Ocean、Citrus、Violet 三款外观。PourBeads 两环境通过目标部件判色、原版恢复及局部 reset 隔离。碗在正式任务原位拍摄，16 颗原尺寸模拟液滴在独立实例中移到瓶外展示。完整倾倒、Long 和 A6 未测。[用法、实景与运行证据](evidence/pouring_bowl_beads/README.md)
 
 ## 1. 瓶身／瓶盖外观
 

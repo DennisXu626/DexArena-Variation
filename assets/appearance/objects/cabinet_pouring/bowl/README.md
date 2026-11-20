@@ -1,10 +1,10 @@
 # 目标碗（cabinet_pouring.bowl）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**PourBeads 短任务实景与工程检查通过，Dennis 已确认实景**。原版及 Ocean、Citrus、Violet 使用原模型 UV，在内存中保留碗的明暗和纹样。[对照图、运行用法与验证范围](../../../../../docs/variation/evidence/pouring_bowl_beads/README.md)
 
 原始角色：接收珠子的容器。V1资源说明：`RoboCasa bowl/visual/model_normalized_0.obj`。
 
-M1两试点未加载，Long／PourBeads家族分支使用；保留待适配，不把试点未加载误写成整个家族无对象。
+M1 两试点未加载该对象。Long 使用原碗，本次外观接入和实测覆盖 PourBeads。
 
 ## 资料与加载边界
 

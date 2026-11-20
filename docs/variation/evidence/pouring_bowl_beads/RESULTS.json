@@ -1,0 +1,282 @@
+{
+  "head": "59496b28d849df6c6e6a0d74c0a08accbf42f47b",
+  "job": "123817",
+  "seed": 71,
+  "builds": 4,
+  "views": {
+    "bowl": {
+      "frames": {
+        "original": {
+          "file": "bowl_original.png",
+          "sha256": "2a4df18a25167e592061fda90052925af39cb5dcc411b6bd3885213d0c89f5be"
+        },
+        "ocean": {
+          "file": "bowl_ocean.png",
+          "sha256": "493f5dc67732e205427cd25b94ec9241094be23481de85ec04f16fa80f77b424"
+        },
+        "citrus": {
+          "file": "bowl_citrus.png",
+          "sha256": "24877b0a8738dc2af7618b87a70e3ecf5b9dbe5f645572d1c13b98feef1279e7"
+        },
+        "violet": {
+          "file": "bowl_violet.png",
+          "sha256": "fe662319e40d0b486ef91c3c1d7252eb0a9974fc7ed93d8954e00f339afb75c4"
+        }
+      },
+      "colours": {
+        "ocean_env0": {
+          "scheme_id": "ocean",
+          "matched_pixels": 34250,
+          "chromatic_pixels": 34250,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            170.0,
+            230.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 34250
+        },
+        "ocean_env1": {
+          "scheme_id": "ocean",
+          "matched_pixels": 34770,
+          "chromatic_pixels": 34770,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            170.0,
+            230.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 34770
+        },
+        "citrus_env0": {
+          "scheme_id": "citrus",
+          "matched_pixels": 34250,
+          "chromatic_pixels": 34250,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            25.0,
+            65.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 34250
+        },
+        "citrus_env1": {
+          "scheme_id": "citrus",
+          "matched_pixels": 34770,
+          "chromatic_pixels": 34770,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            25.0,
+            65.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 34770
+        },
+        "violet_env0": {
+          "scheme_id": "violet",
+          "matched_pixels": 34250,
+          "chromatic_pixels": 34250,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            260.0,
+            305.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 34250
+        },
+        "violet_env1": {
+          "scheme_id": "violet",
+          "matched_pixels": 34770,
+          "chromatic_pixels": 34770,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            260.0,
+            305.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 34770
+        }
+      },
+      "camera": [
+        [
+          -0.43,
+          -0.84,
+          0.37
+        ],
+        [
+          -0.2,
+          -0.5,
+          0.045
+        ],
+        0.7
+      ],
+      "diagnostic": false,
+      "radius_m": 0.004,
+      "bead_count": 16,
+      "selected_env": {
+        "scheme_id": "violet",
+        "matched_pixels": 34372,
+        "chromatic_pixels": 34372,
+        "matched_fraction": 1.0,
+        "hue_window_degrees": [
+          260.0,
+          305.0
+        ],
+        "min_saturation": 0.25,
+        "min_value": 26,
+        "min_channel_span": 18
+      },
+      "local_reset": "passed"
+    },
+    "beads": {
+      "frames": {
+        "original": {
+          "file": "beads_original.png",
+          "sha256": "f1550af1be221c078e62fa5171395a7fba41b51fc6895c16cb54cb1d3a244313"
+        },
+        "ocean": {
+          "file": "beads_ocean.png",
+          "sha256": "6b6aab852326d12d4db80d493abcfe6ba8bf47e5b3a011ed7e6b45b912aef3b6"
+        },
+        "citrus": {
+          "file": "beads_citrus.png",
+          "sha256": "05fab3820ff1c818b4466c667f86935857a7777a486823fd19941c27473263a4"
+        },
+        "violet": {
+          "file": "beads_violet.png",
+          "sha256": "a0cbba46543291cbbd6526f54a4ece58752b217af33ecab7ed19ff3346edebad"
+        }
+      },
+      "colours": {
+        "ocean_env0": {
+          "scheme_id": "ocean",
+          "matched_pixels": 24146,
+          "chromatic_pixels": 24146,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            170.0,
+            230.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 24146
+        },
+        "ocean_env1": {
+          "scheme_id": "ocean",
+          "matched_pixels": 24146,
+          "chromatic_pixels": 24146,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            170.0,
+            230.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 24146
+        },
+        "citrus_env0": {
+          "scheme_id": "citrus",
+          "matched_pixels": 24146,
+          "chromatic_pixels": 24146,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            25.0,
+            65.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 24146
+        },
+        "citrus_env1": {
+          "scheme_id": "citrus",
+          "matched_pixels": 24146,
+          "chromatic_pixels": 24146,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            25.0,
+            65.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 24146
+        },
+        "violet_env0": {
+          "scheme_id": "violet",
+          "matched_pixels": 24146,
+          "chromatic_pixels": 24146,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            260.0,
+            305.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 24146
+        },
+        "violet_env1": {
+          "scheme_id": "violet",
+          "matched_pixels": 24146,
+          "chromatic_pixels": 24146,
+          "matched_fraction": 1.0,
+          "hue_window_degrees": [
+            260.0,
+            305.0
+          ],
+          "min_saturation": 0.25,
+          "min_value": 26,
+          "min_channel_span": 18,
+          "object_pixels": 24146
+        }
+      },
+      "camera": [
+        [
+          1.0,
+          0.9,
+          0.6
+        ],
+        [
+          1.0,
+          1.0,
+          0.5
+        ],
+        0.65
+      ],
+      "diagnostic": true,
+      "radius_m": 0.004,
+      "bead_count": 16,
+      "selected_env": {
+        "scheme_id": "violet",
+        "matched_pixels": 24146,
+        "chromatic_pixels": 24146,
+        "matched_fraction": 1.0,
+        "hue_window_degrees": [
+          260.0,
+          305.0
+        ],
+        "min_saturation": 0.25,
+        "min_value": 26,
+        "min_channel_span": 18
+      },
+      "local_reset": "passed"
+    }
+  },
+  "issues": [],
+  "status": "passed"
+}
