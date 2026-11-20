@@ -66,6 +66,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from mani_skill.agents.robots.panda.panda import Panda
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.juice_preparation.reset_guard import JuiceResetMixin
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from tasks.config.hands import register_task
@@ -721,7 +722,7 @@ def resolve_fridge_urdf(explicit_path: str | None) -> Path:
     control_mode="pd_joint_pos",
     render_mode="rgb_array",
 )
-class JuicePreparationOpenFridgeEnv(BaseEnv):
+class JuicePreparationOpenFridgeEnv(JuiceResetMixin, BaseEnv):
     """Open the Juice refrigerator with the assigned left-arm robot."""
 
     SUPPORTED_ROBOTS = list(ROBOT_UIDS)
@@ -1158,7 +1159,7 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
         )
 
         arm_qvel_norm = self._arm_qvel_norm()
-        self.hand_contact_latched |= self._hand_contacts_door()
+        self.hand_contact_latched |= (self._hand_contacts_door()) & self._juice_active_mask()
 
         target_denominator = max(
             self.target_open_qpos - self.door_lower,
@@ -1181,13 +1182,14 @@ class JuicePreparationOpenFridgeEnv(BaseEnv):
                 self.success_settle_counter,
                 threshold_qpos=self.success_open_qpos,
                 opening=True,
+                active=self._juice_active_mask(),
             )
         )
         door_static = torch.abs(door_qvel) <= DOOR_STATIC_THRESHOLD
         success_now = (
             self.success_settle_counter >= SUCCESS_SETTLE_STEPS
         )
-        self.success_latched |= success_now
+        self.success_latched |= (success_now) & self._juice_active_mask()
 
         return {
             "success": self.success_latched,

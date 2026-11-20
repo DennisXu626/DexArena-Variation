@@ -77,7 +77,7 @@ class JuicePreparationCloseFridgeEnv(JuicePreparationOpenFridgeEnv):
         tcp_to_handle = torch.linalg.norm(
             self._task_tcp_position() - handle_position, dim=1
         )
-        self.hand_contact_latched |= self._hand_contacts_door()
+        self.hand_contact_latched |= (self._hand_contacts_door()) & self._juice_active_mask()
 
         denominator = max(self.initial_open_qpos - self.door_lower, 1e-6)
         close_progress = torch.clamp(
@@ -92,10 +92,11 @@ class JuicePreparationCloseFridgeEnv(JuicePreparationOpenFridgeEnv):
                 self.success_settle_counter,
                 threshold_qpos=self.success_closed_qpos,
                 opening=False,
+                active=self._juice_active_mask(),
             )
         )
         door_static = torch.abs(door_qvel) <= DOOR_STATIC_THRESHOLD
-        self.success_latched |= self.success_settle_counter >= SUCCESS_SETTLE_STEPS
+        self.success_latched |= (self.success_settle_counter >= SUCCESS_SETTLE_STEPS) & self._juice_active_mask()
         return {
             "success": self.success_latched,
             "task_success": self.success_latched,

@@ -1,0 +1,14 @@
+--- a/setup.py
++++ b/setup.py
+@@ -103,6 +103,11 @@
+ 
+ 
+ version = generate_version()
++local_version = os.environ.get("SAPIEN_LOCAL_VERSION")
++if local_version:
++    if "+" in version or not re.fullmatch(r"[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*", local_version):
++        raise ValueError("SAPIEN_LOCAL_VERSION must be a valid PEP 440 local suffix")
++    version += "+" + re.sub(r"[-_]", ".", local_version).lower()
+ 
+ if args.get_version:
+     print(version)

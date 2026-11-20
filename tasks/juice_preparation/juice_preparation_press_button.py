@@ -97,6 +97,7 @@ for path in (REPO_ROOT, TASK_DIR):
         sys.path.insert(0, str(path))
 
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.juice_preparation.reset_guard import JuiceResetMixin
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from tasks.config.hands import register_task
@@ -429,7 +430,7 @@ def _joint_type_name(joint) -> str:
     control_mode="pd_joint_pos",
     render_mode="rgb_array",
 )
-class JuicePreparationPressButtonEnv(BaseEnv):
+class JuicePreparationPressButtonEnv(JuiceResetMixin, BaseEnv):
     """Press and hold Blender023's spring-loaded power button."""
 
     SUPPORTED_ROBOTS = [
@@ -1197,14 +1198,14 @@ class JuicePreparationPressButtonEnv(BaseEnv):
     def evaluate(self):
         q = self._task_quantities()
 
-        self.button_hold_counter = torch.where(
+        self.button_hold_counter = self._juice_update(self.button_hold_counter, torch.where(
             q["button_pressed"],
             self.button_hold_counter + 1,
             torch.zeros_like(self.button_hold_counter),
-        )
+        ))
         self.success_latched |= (
-            self.button_hold_counter
-            >= BUTTON_HOLD_STEPS
+            (self.button_hold_counter
+            >= BUTTON_HOLD_STEPS) & self._juice_active_mask()
         )
 
         hold_progress = torch.clamp(

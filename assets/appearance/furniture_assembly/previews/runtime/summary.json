@@ -1,0 +1,540 @@
+{
+  "format": "furniture-runtime-evidence-v1",
+  "status": "passed",
+  "scope": "Appearance/reset acceptance; three short tasks; two CUDA environments; no policy/task-success claim",
+  "image_selection": {
+    "fixed_camera": "human",
+    "isolation_camera": "base_camera",
+    "encoding": "unchanged original PNG bytes"
+  },
+  "exporter": {
+    "file": "compact_furniture_runtime.py",
+    "sha256": "99c3cd11c09576e99ec2c28cdd1676b8a19c9738b150dd1ed8f6ba6532ad62e0",
+    "lf_sha256": "99c3cd11c09576e99ec2c28cdd1676b8a19c9738b150dd1ed8f6ba6532ad62e0"
+  },
+  "sdk": {
+    "wheel_sha256": "c93e2165a3bf3057b3efa945552a4753827753af5ea1ef0c76ec080201613110",
+    "source_commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+    "native_files": {
+      "OpenImageDenoise.dll": "baa77825c5ae945c2e29f328c0addce4cb3d1c459c37894d66e52935235a8fcd",
+      "OpenImageDenoise_core.dll": "e98e8744ccd0818e00fb97b75f2d5b27d10540840a408c340dcd35739d3f4ebc",
+      "OpenImageDenoise_device_cuda.dll": "395b08d47395b7804d8932b8b4ca603a84a896ac52b3c5bb676cf3ed555f0094",
+      "pysapien.cp310-win_amd64.pyd": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9",
+      "sapien.dll": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4",
+      "simsense.dll": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd",
+      "svulkan2.dll": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+    },
+    "artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+    "schema": "portable-sdk-build-receipt",
+    "version": "3.0.3+dexarena.gpu1.wininterop5",
+    "lock_sha256": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+    "patches": [
+      {
+        "file": "patches/0001-indexed-gpu-apply.patch",
+        "group": "common",
+        "sha256": "89013895a06bb1eec1fa06463e3a37c9430159e71ad75896f90ea01f33cc6faf"
+      },
+      {
+        "file": "patches/0002-indexed-capability.patch",
+        "group": "common",
+        "sha256": "4117827f52151de92fb3ae36b59c5a770214b3511c245dc68f1c2117ef51f253"
+      },
+      {
+        "file": "patches/0101-windows-vulkan-cuda.patch",
+        "group": "windows",
+        "sha256": "32b3abfd331830041f1928908bdcddb9766afbc68a511cbe9c73326bbecf546e"
+      },
+      {
+        "file": "patches/0102-windows-pybind-name.patch",
+        "group": "windows",
+        "sha256": "01758742cd72d4c6fa8271637114d28106b63720ba7e7c82e2150d4e3547c417"
+      },
+      {
+        "file": "patches/0103-windows-driver-loader.patch",
+        "group": "windows",
+        "sha256": "fa4c8cd69010b63ab9298789039ac7a5c9f9d9cb729dc9e81d9a58e17544be2a"
+      },
+      {
+        "file": "patches/0200-local-build-version.patch",
+        "group": "packaging",
+        "sha256": "787f1afc90e47f7da9a4a59d8e995405bf0db6d2e16558a637573b6cc1d98749"
+      }
+    ],
+    "reference_toolchain": {
+      "python": "3.10.22",
+      "cmake": "4.0.1",
+      "ninja": "1.11.1.git.kitware.jobserver-1",
+      "msvc": "19.43.34810",
+      "toolset": "14.43.34808",
+      "cuda_nvcc": "12.4.131",
+      "cuda_runtime_headers": "12.4.127",
+      "sapien_kernel_architectures": [
+        "60",
+        "61",
+        "70",
+        "75",
+        "80",
+        "86"
+      ],
+      "flags": [
+        "--use-local-env",
+        "-allow-unsupported-compiler"
+      ],
+      "max_compile_jobs": 4
+    },
+    "actual_toolchain": {
+      "started_utc": "2026-11-17T00:43:58.3065510Z",
+      "python": {
+        "python": "3.10.22",
+        "setuptools": "84.0.0",
+        "wheel": "0.48.0",
+        "pointer_bytes": 8
+      },
+      "cmake": "4.0.1",
+      "ninja": "1.11.1.git.kitware.jobserver-1",
+      "msvc_toolset": "14.43.34808",
+      "msvc_file_version": "19.43.34810.0",
+      "nvcc_raw": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Thu_Mar_28_02:30:10_Pacific_Daylight_Time_2024\nCuda compilation tools, release 12.4, V12.4.131\nBuild cuda_12.4.r12.4/compiler.34097967_0",
+      "cuda_flags": "--use-local-env -allow-unsupported-compiler",
+      "max_compile_jobs": 4,
+      "lock_sha256": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+      "prepared_inputs_sha256": "4b2f2e4393e7934e7d4e057b0205ea6d48ac19a48de293594d6c6fd9166da1e4",
+      "recipe_sha256": {
+        "prepare.py": "401169eefc6441f7adf0ebf2a48377adeeda8ce921329627eee0ef762d415d14",
+        "build_windows.ps1": "7dddd07a6a4e58f30afdb58ec3603cb3bfae55d44e6e6546f8a9bc21fade51ae",
+        "unpack_wheel.py": "b1214b7caaedc5debb1b5e18c5f6ab73500279ac4e11e4ff140d11eaef3b4870",
+        "run_check.py": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+      },
+      "completed_utc": "2026-11-17T00:50:13.4726034Z"
+    },
+    "actual_source": {
+      "record_canonical_sha256": "05ebb8b0f09137e9f605afd0742bf167216e55860da0c6a268e231dfd8c4528f",
+      "source": {
+        ".": {
+          "commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+          "tracked_files": 1554,
+          "tracked_files_map_sha256": "2e1d96d68ede351e5d942e7fa6772a2165403cc343f1f8912e59f5c3f7c9b999"
+        },
+        "3rd_party/sapien-vulkan-2": {
+          "commit": "2ad24e1e96d88d3dd00fb1a7821ffcef42ab1ed9",
+          "tracked_files": 358,
+          "tracked_files_map_sha256": "079dccd082698539d1003fc3c283bc8630f62df05aa7e3a6bc69059d77daee3c"
+        },
+        "3rd_party/sapien-vulkan-2/3rd_party/googletest": {
+          "commit": "71140c3ca7a87bb1b5b9c9f1500fea8858cce344",
+          "tracked_files": 244,
+          "tracked_files_map_sha256": "8d48e79ee39f20b45cf16a28f1b0b23e877dab892e8109e2ce280d5d905d2411"
+        },
+        "3rd_party/simsense": {
+          "commit": "9340b6069ce78ecf0432cd3336ac9b4d296e09e7",
+          "tracked_files": 22,
+          "tracked_files_map_sha256": "fa0ff963ccbe11b2ffc6d9bbe301bad4d9043451fd6071841964604762d85ba3"
+        }
+      },
+      "dependencies": {
+        "assimp": {
+          "commit": "0ea31aa6734336dc1e62c6d9bde3e49b6d71b811",
+          "tracked_tree_sha256": "8765b1170501d294c70ffc7cb1737f71e2c3342f9879ffad477207f9f36cbe4d"
+        },
+        "deflate": {
+          "commit": "495fee110ebb48a5eb63b75fd67e42b2955871e2",
+          "tracked_tree_sha256": "c41490c2ca632b38c2cb9766ff5cdc35bccc9e3da104e6e4db3adc31af90636e"
+        },
+        "eigen": {
+          "commit": "3147391d946bb4b6c68edd901f2add6ac1f31f8c",
+          "tracked_tree_sha256": "8677871702ba35373616522bb68e6daf37373b7083c7414c88fc07c08b36863a"
+        },
+        "glfw": {
+          "commit": "901d30b973c536f26b74bca1134c5892d54b251d",
+          "tracked_tree_sha256": "8656567c66e6d517e620ad3a219200d5c29d79f3d09d5ce4d2a04c2666ef5361"
+        },
+        "glm": {
+          "commit": "bf71a834948186f4097caa076cd2663c69a10e1e",
+          "tracked_tree_sha256": "2ba660fa7700fc5ca2526cb1fde6d0e2bd4cd601f51cb051e754b0f7b3651ba0"
+        },
+        "glslang": {
+          "commit": "77551c429f86c0e077f26552b7c1c0f12a9f235e",
+          "tracked_tree_sha256": "afcea2849672236b9379ded37765584f8bfd233e3b469debe9ca211e552d5d3b"
+        },
+        "imath": {
+          "commit": "d690a3fcff4e877ead5ae56c7e964595ade8a35e",
+          "tracked_tree_sha256": "4b1271bb98871aa84ab2765daabcc7a9763afbe1436b889260ca6474d65e65b5"
+        },
+        "imgui": {
+          "commit": "ef07ddf087c879baff8c0cac0ff1f40b7f0f060c",
+          "tracked_tree_sha256": "6f9b0b3430f36614ec084f92fb8bd0679445aeb833cf4b8e113be5148eddc02c"
+        },
+        "imguifiledialog": {
+          "commit": "cc6dd28874f359c1b51fa93a8907c8ee9d13843b",
+          "tracked_tree_sha256": "691553e930e4ba6de704b0835de61f191a45806642b9b43bceceb0169982f024"
+        },
+        "imguizmo": {
+          "commit": "664cf2d73864a36b2a8b5091d33fc4578c885eca",
+          "tracked_tree_sha256": "5d861ba74b0117f4dfb626ed9cf0834fa37f0935c6fbaf4ac6331760b376e43e"
+        },
+        "ktx": {
+          "commit": "91ace88675ac59a97e55d0378a6602a9ae6b98bd",
+          "tracked_tree_sha256": "0e72c8e7dc46b4701e79478caf1d9df41869ebbed72393d61818f224469ef849"
+        },
+        "openexr": {
+          "commit": "737b2707a001e67f3812d86a639c3d037efe2ea8",
+          "tracked_tree_sha256": "309f05156097c9cc1d8780dea94d16165faaaa2e02ffce43e522d827f60c56de"
+        },
+        "openvr": {
+          "commit": "455756f7c4646d9bcd636e67d2449da1f69002ae",
+          "tracked_tree_sha256": "3e945d1f7bd50cba740c6618e8c93800127fb8101973172132574b1453504788"
+        },
+        "pybind11": {
+          "commit": "06e8ee2e357fc2fd6e36de431fa0ca0049aafc7d",
+          "tracked_tree_sha256": "627e34ed37a60ad6620666cb3a4525477d8446a8e1bb770e0eada41012f2fb5e"
+        },
+        "spdlog": {
+          "commit": "de0dbfa3596a18cd70a4619b6a9766847a941276",
+          "tracked_tree_sha256": "b39340d8d2ea888dd950d469ece7c7983bfad2510d5ec6c5ea09e7888342baf3"
+        },
+        "spirv-cross": {
+          "commit": "d26c233e1c2629fec1ae1b6fdf538958e5d52bff",
+          "tracked_tree_sha256": "56c97e3a309137aa9d3822eaf98d2244210efca7770a106e4ddd6af2b9b4e189"
+        },
+        "vulkan": {
+          "commit": "b379292b2ab6df5771ba9870d53cf8b2c9295daf",
+          "tracked_tree_sha256": "22c035253e5650f62139332a0598f0975a0f4672097ac2dc79c2146bab7499ab"
+        },
+        "zlib": {
+          "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+          "tracked_tree_sha256": "b19995dd47c825ecbe4305614e0ec305784e533aaa55a962d5320f7b8f713d48"
+        }
+      },
+      "archive_trees": {
+        "deps/physx5-src": "aa89e2f29942f613823a84c900559f0cd20ebb6fe9eda9599f7ca32142a0bbf4",
+        "deps/oidn-src": "032fc739ef2390219d081d46e5b313ae7dbbdf4c4dc2d19ee3620a878b7ae7f3",
+        "cuda": "b4526679a75af36cfc488b5b1e3b8a34fc56843cb7c7444c1c030bca28521d2f",
+        "physx-runtime": "a0cb2521478f8ad9eddd965a53c6e3b13d9441900ec62dc7d89692397436b554"
+      },
+      "hash_semantics": "Complete prepared-source record and tracked-file maps are represented by canonical JSON SHA-256; no path or file-byte normalization."
+    },
+    "physx_gpu": {
+      "version": "105.1-physx-5.3.1.patch0",
+      "url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/windows-dll.zip",
+      "archive_sha256": "3951650caa3b77d2fe671ab1418db31f142c29daaa6e32e2520f90e8f7455baa",
+      "dll_sha256": {
+        "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+        "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+      },
+      "gpu_kernel_compiler": "NVIDIA precompiled; compiler version not published; identity pinned by archive and DLL SHA"
+    },
+    "build_acceptance": "Build identity only. Verify loaded native DLL paths/SHA, capability, actual CUDA physics/RGB, and formal multi-env reset separately."
+  },
+  "captures": [
+    {
+      "results_sha256": "da81e574d4b43f0b280d7fc79fbaa964fd3a24349f47c068bbb14bd0a2857887",
+      "manifest_sha256": "6378b65e3b3378288bf04bf9153602a84147c14d3a4b8137f764eda989e607db",
+      "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "manifest": {
+        "platform": "Windows",
+        "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 22:57:13) [MSC v.1944 64 bit (AMD64)]",
+        "sim_backend": "physx_cuda",
+        "num_envs": 2,
+        "test_mode": "standard",
+        "gpu_bootstrap": "cached official DLLs + process-local sapien.physx._enable_gpu",
+        "experimental_windows_cuda": true,
+        "catalog_version": "furniture-appearance-v1"
+      },
+      "command": [
+        "tools/variation/check_furniture_appearance.py",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}",
+        "--output",
+        "{capture_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cuda",
+        "--experimental-windows-cuda",
+        "--task",
+        "LayFlatPanel"
+      ],
+      "capture_path": "original ManiSkill RGB cameras",
+      "task_ids": [
+        "FurnitureAssemblyLayFlatPanel-Sharpa-v1"
+      ],
+      "control_steps": 2,
+      "physics_steps": 40,
+      "console": {
+        "process_sha256": "1be4048ea83ca0dfa512aea802294b499ea348894006a6de5c46063fb3eeb571",
+        "returncode": 0,
+        "timed_out": false,
+        "streams_sha256": {
+          "stdout.txt": "483243ebae291b1729fdb79152045393602963e9c3fbc2ce3b95a9fd35c9b786",
+          "stderr.txt": "8f7f1c2438db17c62b852c2dae3cfa81856b4ecaa5f5099804f1929984c80e23"
+        },
+        "known_warning_types": {
+          "optional_pinocchio_unavailable": 1,
+          "agent_registration_override:panda": 1,
+          "agent_registration_override:panda_wristcam": 1
+        },
+        "unreviewed_stderr_lines": 0,
+        "runner": {
+          "file": "run_check.py",
+          "sha256": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+        }
+      }
+    },
+    {
+      "results_sha256": "ac30e34c724e988845e280e36855cc0879e94c19dd081b91677c22aaa05cc53b",
+      "manifest_sha256": "a2835a9bf65d95d032d7d97ad3205be721e708aae23394c1d3201c8e1bcc4a0c",
+      "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "manifest": {
+        "platform": "Windows",
+        "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 22:57:13) [MSC v.1944 64 bit (AMD64)]",
+        "sim_backend": "physx_cuda",
+        "num_envs": 2,
+        "test_mode": "standard",
+        "gpu_bootstrap": "cached official DLLs + process-local sapien.physx._enable_gpu",
+        "experimental_windows_cuda": true,
+        "catalog_version": "furniture-appearance-v1"
+      },
+      "command": [
+        "tools/variation/check_furniture_appearance.py",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}",
+        "--output",
+        "{capture_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cuda",
+        "--experimental-windows-cuda",
+        "--task",
+        "InsertRail"
+      ],
+      "capture_path": "original ManiSkill RGB cameras",
+      "task_ids": [
+        "FurnitureAssemblyInsertRail-Sharpa-v1"
+      ],
+      "control_steps": 2,
+      "physics_steps": 40,
+      "console": {
+        "process_sha256": "562086b4af523a21cd7fe8e3d6b9b2899e3dc70f8c66bf1006eccf8c20fc3c0a",
+        "returncode": 0,
+        "timed_out": false,
+        "streams_sha256": {
+          "stdout.txt": "5698c9e035432e858c5edb659dca7a9dca54995abcefc7f291c85a27ad1a2e9a",
+          "stderr.txt": "970cfbbf9563ead0b2205c13f58596b7fe4b7b0682ff6f7e732025fd932f1304"
+        },
+        "known_warning_types": {
+          "optional_pinocchio_unavailable": 1,
+          "agent_registration_override:panda": 1,
+          "agent_registration_override:panda_wristcam": 1
+        },
+        "unreviewed_stderr_lines": 0,
+        "runner": {
+          "file": "run_check.py",
+          "sha256": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+        }
+      }
+    },
+    {
+      "results_sha256": "e5cd64d7c5f88bacade2b451cf372bd483eb175f4201a07f7c3672bd0ae4a6c6",
+      "manifest_sha256": "0af6c2652d40c8ee34957543ccefe3dd30d801bd27d7e7887a8c914436dec090",
+      "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "manifest": {
+        "platform": "Windows",
+        "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 22:57:13) [MSC v.1944 64 bit (AMD64)]",
+        "sim_backend": "physx_cuda",
+        "num_envs": 2,
+        "test_mode": "standard",
+        "gpu_bootstrap": "cached official DLLs + process-local sapien.physx._enable_gpu",
+        "experimental_windows_cuda": true,
+        "catalog_version": "furniture-appearance-v1"
+      },
+      "command": [
+        "tools/variation/check_furniture_appearance.py",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}",
+        "--output",
+        "{capture_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cuda",
+        "--experimental-windows-cuda",
+        "--task",
+        "FastenScrew"
+      ],
+      "capture_path": "original ManiSkill RGB cameras",
+      "task_ids": [
+        "FurnitureAssemblyFastenScrew-Sharpa-v1"
+      ],
+      "control_steps": 2,
+      "physics_steps": 40,
+      "console": {
+        "process_sha256": "54c9206835c64fba4d595cf77b17ffddd8a8db9a84317bf0be8298a2b30d2f4c",
+        "returncode": 0,
+        "timed_out": false,
+        "streams_sha256": {
+          "stdout.txt": "2f49e0fbb45603c57160a0377db9365b619965afc00ee3c9f0d543c5608dc88e",
+          "stderr.txt": "b571eb644067afc209ce196754380b81ce53a7306d43f52f3cfb1ed54e42e7c3"
+        },
+        "known_warning_types": {
+          "optional_pinocchio_unavailable": 1,
+          "agent_registration_override:panda": 1,
+          "agent_registration_override:panda_wristcam": 1
+        },
+        "unreviewed_stderr_lines": 0,
+        "runner": {
+          "file": "run_check.py",
+          "sha256": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+        }
+      }
+    }
+  ],
+  "tasks": {
+    "LayFlatPanel": {
+      "checks": "LayFlatPanel/checks.json",
+      "sha256": "d4f1007bd70af8e8afefe0d680a55d964c236d7669dd4337eb3050979f0dd4d8"
+    },
+    "InsertRail": {
+      "checks": "InsertRail/checks.json",
+      "sha256": "0a496526a0cbe94ab41fd7aeec8885cfcff88a7ef8def98d9f92c582c11f341f"
+    },
+    "FastenScrew": {
+      "checks": "FastenScrew/checks.json",
+      "sha256": "0d91a2583ea85d67393fddfe17eb05baf6b5fe5951960d8ecf4edafee2f56784"
+    }
+  },
+  "images": {
+    "LayFlatPanel/original_human_env0.png": {
+      "sha256": "4ceb77ba284c207574d6194c6243151bca43fac8d386b8bedfb140596a15b5a6",
+      "bytes": 422487
+    },
+    "LayFlatPanel/variant_1_human_env0.png": {
+      "sha256": "5d1b151a98c8831cdd965e3ff050ebf92d2079edcf1f0e07620d899b7f324feb",
+      "bytes": 422350
+    },
+    "LayFlatPanel/variant_2_human_env0.png": {
+      "sha256": "e0d5715cbf2534e3c6647c8c679ba69350c10344fe99eb65904dcfff52bce98b",
+      "bytes": 422775
+    },
+    "LayFlatPanel/local_0_base_camera_env0.png": {
+      "sha256": "ec5edad27057174bef93ba8d314a2b89782f472b347e8b95682f1d5e01d710fb",
+      "bytes": 132175
+    },
+    "LayFlatPanel/local_0_base_camera_env1.png": {
+      "sha256": "c121744933fda7566b804a2960cda3e59b7d0c75f134b7654da5aedae5eea349",
+      "bytes": 158478
+    },
+    "LayFlatPanel/local_1_base_camera_env0.png": {
+      "sha256": "19572efc3c147afe97644defb33bed308a15320cfd48491a7c60b70e72056a1f",
+      "bytes": 131006
+    },
+    "LayFlatPanel/local_1_base_camera_env1.png": {
+      "sha256": "9509e57eb86d5cd781e43097e4e126c806d9e107ac9896429f3209471ad0e297",
+      "bytes": 158977
+    },
+    "InsertRail/original_human_env0.png": {
+      "sha256": "5c2ea604a14ea13beed4bc71b044e9132d72a3a11482cba2ef70b7f58e358dda",
+      "bytes": 431298
+    },
+    "InsertRail/variant_1_human_env0.png": {
+      "sha256": "19c4b4a38b03516cbef71d8e080ae30d8b35ddb7d011d5518b121b556f7c9c33",
+      "bytes": 430977
+    },
+    "InsertRail/variant_2_human_env0.png": {
+      "sha256": "0af24cc5824176261fccace2d9834d90a7cc31c0f714f848b7743f7dfbb04edc",
+      "bytes": 430619
+    },
+    "InsertRail/local_0_base_camera_env0.png": {
+      "sha256": "2f444fb72fe5cccec0b54d8df658bef4b6939b9201967ee8969983c37dd674b9",
+      "bytes": 134149
+    },
+    "InsertRail/local_0_base_camera_env1.png": {
+      "sha256": "3546030fee1408b15feafd5302d05ac1f48047983db56284617caf4439d5d7cd",
+      "bytes": 147668
+    },
+    "InsertRail/local_1_base_camera_env0.png": {
+      "sha256": "8cadc261c535d7876da9047c4b30bbc72d73e724fc7c3f995da78064bf5e7ea7",
+      "bytes": 134170
+    },
+    "InsertRail/local_1_base_camera_env1.png": {
+      "sha256": "cff274216b8c7f4262aa1ada989f6074c26ef9a042b8d27cb76468535915b87f",
+      "bytes": 151364
+    },
+    "FastenScrew/original_human_env0.png": {
+      "sha256": "3f2e672f6c3c7e457a4418c73f1e3570ab0199229a329b79b44161e103d26164",
+      "bytes": 469928
+    },
+    "FastenScrew/variant_1_human_env0.png": {
+      "sha256": "f1692e60e3aa6cadc10577b0e616d792f829c297c82ff4f0362675cdd15434ce",
+      "bytes": 469581
+    },
+    "FastenScrew/variant_2_human_env0.png": {
+      "sha256": "86b03cc020b127cbe38f676c81452367226e12a32da198e4952ba9398429f563",
+      "bytes": 469624
+    },
+    "FastenScrew/local_0_base_camera_env0.png": {
+      "sha256": "652d6d463568ed7c8f175efd55627a513f621bb0a1f3a612fbcd0dbec843679f",
+      "bytes": 134939
+    },
+    "FastenScrew/local_0_base_camera_env1.png": {
+      "sha256": "286d7b8ae4085abecb8372240521f3b3fe97539595526e8f52ba295ea77f4b6e",
+      "bytes": 152687
+    },
+    "FastenScrew/local_1_base_camera_env0.png": {
+      "sha256": "8d8df335f9693ecea0184ece4f991d42df89734f5167487aa4a89f67edc95fc4",
+      "bytes": 134953
+    },
+    "FastenScrew/local_1_base_camera_env1.png": {
+      "sha256": "4d0e3896e814719c9ade2a2c4b9934c4df3dc5caaa91903cb9f2338264292224",
+      "bytes": 153973
+    }
+  },
+  "identity": {
+    "git_commit": "cee6a2d9cd25aad8ba5edaf2422759a930926d5b",
+    "files": {
+      "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
+      "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+      "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
+      "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
+      "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+      "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+      "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+      "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "b9c2fbf0d30c2ca5ee9a9890254a575a958a81c4cf50dbe058b46998f6fe8c45",
+      "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "c4bbf0ababa43ad868d11d184593e65c53ad7d1cb66d70c2c1222bf41e02574c",
+      "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "545784afe0e3da47e3b25830ab9ddd3a472c014f85dc72d7f71aa642d7206b61",
+      "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "be4a7ac44559cae4254bfdac75a4414916a2f12bbdd5f5b064cd1b9ffeb00597"
+    },
+    "files_lf_sha256": {
+      "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
+      "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+      "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
+      "tasks/assets/variation/furniture_assembly/v1/catalog.json": "9b9e532d88cf51496eee5af8dddba3d6bea26a34d95e29dbcd89d9f557b4d775",
+      "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+      "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+      "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+      "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "b9c2fbf0d30c2ca5ee9a9890254a575a958a81c4cf50dbe058b46998f6fe8c45",
+      "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "c4bbf0ababa43ad868d11d184593e65c53ad7d1cb66d70c2c1222bf41e02574c",
+      "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "545784afe0e3da47e3b25830ab9ddd3a472c014f85dc72d7f71aa642d7206b61",
+      "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "be4a7ac44559cae4254bfdac75a4414916a2f12bbdd5f5b064cd1b9ffeb00597"
+    },
+    "source_hash_semantics": {
+      "files": "Unchanged raw capture-time file-byte SHA-256.",
+      "files_lf_sha256": "Current bytes first verified against files; UTF-8 .py/.json only; CRLF replaced by LF; all other bytes unchanged."
+    },
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+      "mani_skill": "3.0.0b22",
+      "gymnasium": "0.29.1",
+      "numpy": "2.2.6"
+    },
+    "physx_version": "105.1-physx-5.3.1.patch0",
+    "physx_gpu_library_sha256": {
+      "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+      "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+    }
+  },
+  "cpu_dynamics": {
+    "checks": "cpu_checks.json",
+    "sha256": "cbfc3c05838d6645c2d88a999ed651554b906120c365b32d0a6f0c718f63d33f"
+  }
+}

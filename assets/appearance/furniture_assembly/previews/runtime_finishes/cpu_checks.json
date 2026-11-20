@@ -1,0 +1,774 @@
+{
+  "scope": "Single CPU environment; no RGB/GPU or task-completion claim",
+  "summary_sha256": "8a863f15503e2b51ae81d72b254152b3f4e50debf37f47b94e9850c6e2133099",
+  "seed": 7,
+  "control_steps_per_run": 60,
+  "control_steps": 2340,
+  "physics_steps": 46800,
+  "source_sha256": {
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "73608e52c17a535b0a21ffb61a8fd89b1916aad83057630829034f44931c614a",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
+    "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tasks/robots/hand_controller_gains.py": "c8542a3a856aedf9b2687db6ca5e30fbb893fc8715f252b78af1fe1c19f1cdc5",
+    "tasks/robots/panda_base.py": "709bb5e7002f6d2af4e397b20f2e2d45ac685dc3ea2bc907a60512aafde78648",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "08b5d2dcc3499176244f7ce228990516fc0c7eee70a1568b934e277ed0a5dff5",
+    "tasks/robots/panda_dual_sharpa_hand.py": "b39d49835e7d7a3c64a344b3311ddece34cd10b33245d1130af0fb1d9421767f",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "27b59640e6a5be032cfe24f1298eeebfb600f1720151ec8f2a83176379043a22",
+    "tasks/robots/panda_dual_wuji_hand.py": "5d0b0ae91e4a58ef1a1e05b47fb3fbce81d5c4b144026ed7cecf6c9b6270feb2",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "f0f7b4c3cb094edeaf3c2a0f60dcb832c59c1a78ecef9512f511f40d5d379817",
+    "tasks/robots/panda_dual_xhand_hand.py": "40e7445790b07aec29c083e7fdf6d8b400d7d1ebd42d36fc8efe7d5be00a9ed0",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "f8c880151be70be212ca59223dc64ef755ec2200d16ca7f95a6fbf9f0938154b",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "4acb353194c5a81ded23e0764b7ca792091a17a19f9ba9e7e97baf30ceef07e0",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "95136d64ff7503ab08ff7f3db402304a9e8531c2f6bf2c564977c5c77af788f0",
+    "tasks/robots/panda_impedance.py": "1a6aeeba3887738758f0a2c0536f6703fd5ab6db2537b30d1c3ee9c02c3a0f85",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "4785c550f90d8eedb475acdecf9d9b868c729b60c070b9a7b62c5f1ffe8fbc32",
+    "tasks/robots/panda_sharpa_hand_right.py": "a46da81e87d33179dadc9a4e9f5961bd9c9fb287cdf06be39bac4f62217bbbf8",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "b2df2a781d33c2fadf607b8453846319ed0fd7638f313aa25f73226cee3c8579",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "477b0b57255bfd615b68a424241a5b0fc7cd12ddbc33a5341e3e8b0b6ac167e9",
+    "tasks/robots/panda_wuji_hand_right.py": "a62a9a7cad9bec524e273988b891de778184b214be0da128399f76278cb8e5a4",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "9aeddd05dadd3884e81ef27bc00a8b0b7ef6450c3bb9e8b5247d305ff533ef84",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "37239c14903ea500e3434aaefb8b293b20a0029a1fcd98588c998227d5a32ffa",
+    "tasks/robots/panda_xhand_hand_right.py": "c778abfc2ebae2366e52283a5e5162f35e4c6d8f6f27eb43f9bcba7b4a545a6b",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "0b350d12893f58031ce00d2e72f178f1e58576bf2484da300f518a17dac1c031",
+    "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
+    "tasks/assets/variation/furniture_assembly/v1/catalog.json": "670a5c22489e641d1a3ba345f093f5f72f2039dd944a75b52b801c975441729f",
+    "tools/variation/check_furniture_dynamics.py": "9df5261aab58b7f32775f838be7146b61e6935c302349430a655b699f9ea3f9b",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "e1d00308b6a7103a5300d20275958b59623ec74f9134fd7fd46014323ae28c5d",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "0dc5df239a7ea40fa9c29920d1e8cad62c2f2487991718642c7c60faa67f2939",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "46a13182281ef461efee8c1b6e33327dc9171f7c70ed712a1af60bbacf294e70",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "43b3a18efc2967d564be277b09cfc05f9d364b0a003ce7375832074f9c256654"
+  },
+  "source_lf_sha256": {
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "73608e52c17a535b0a21ffb61a8fd89b1916aad83057630829034f44931c614a",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
+    "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tasks/robots/hand_controller_gains.py": "c8542a3a856aedf9b2687db6ca5e30fbb893fc8715f252b78af1fe1c19f1cdc5",
+    "tasks/robots/panda_base.py": "709bb5e7002f6d2af4e397b20f2e2d45ac685dc3ea2bc907a60512aafde78648",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "08b5d2dcc3499176244f7ce228990516fc0c7eee70a1568b934e277ed0a5dff5",
+    "tasks/robots/panda_dual_sharpa_hand.py": "b39d49835e7d7a3c64a344b3311ddece34cd10b33245d1130af0fb1d9421767f",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "27b59640e6a5be032cfe24f1298eeebfb600f1720151ec8f2a83176379043a22",
+    "tasks/robots/panda_dual_wuji_hand.py": "5d0b0ae91e4a58ef1a1e05b47fb3fbce81d5c4b144026ed7cecf6c9b6270feb2",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "f0f7b4c3cb094edeaf3c2a0f60dcb832c59c1a78ecef9512f511f40d5d379817",
+    "tasks/robots/panda_dual_xhand_hand.py": "40e7445790b07aec29c083e7fdf6d8b400d7d1ebd42d36fc8efe7d5be00a9ed0",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "f8c880151be70be212ca59223dc64ef755ec2200d16ca7f95a6fbf9f0938154b",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "4acb353194c5a81ded23e0764b7ca792091a17a19f9ba9e7e97baf30ceef07e0",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "95136d64ff7503ab08ff7f3db402304a9e8531c2f6bf2c564977c5c77af788f0",
+    "tasks/robots/panda_impedance.py": "1a6aeeba3887738758f0a2c0536f6703fd5ab6db2537b30d1c3ee9c02c3a0f85",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "4785c550f90d8eedb475acdecf9d9b868c729b60c070b9a7b62c5f1ffe8fbc32",
+    "tasks/robots/panda_sharpa_hand_right.py": "a46da81e87d33179dadc9a4e9f5961bd9c9fb287cdf06be39bac4f62217bbbf8",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "b2df2a781d33c2fadf607b8453846319ed0fd7638f313aa25f73226cee3c8579",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "477b0b57255bfd615b68a424241a5b0fc7cd12ddbc33a5341e3e8b0b6ac167e9",
+    "tasks/robots/panda_wuji_hand_right.py": "a62a9a7cad9bec524e273988b891de778184b214be0da128399f76278cb8e5a4",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "9aeddd05dadd3884e81ef27bc00a8b0b7ef6450c3bb9e8b5247d305ff533ef84",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "37239c14903ea500e3434aaefb8b293b20a0029a1fcd98588c998227d5a32ffa",
+    "tasks/robots/panda_xhand_hand_right.py": "c778abfc2ebae2366e52283a5e5162f35e4c6d8f6f27eb43f9bcba7b4a545a6b",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "0b350d12893f58031ce00d2e72f178f1e58576bf2484da300f518a17dac1c031",
+    "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
+    "tasks/assets/variation/furniture_assembly/v1/catalog.json": "670a5c22489e641d1a3ba345f093f5f72f2039dd944a75b52b801c975441729f",
+    "tools/variation/check_furniture_dynamics.py": "9df5261aab58b7f32775f838be7146b61e6935c302349430a655b699f9ea3f9b",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "e1d00308b6a7103a5300d20275958b59623ec74f9134fd7fd46014323ae28c5d",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "0dc5df239a7ea40fa9c29920d1e8cad62c2f2487991718642c7c60faa67f2939",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "46a13182281ef461efee8c1b6e33327dc9171f7c70ed712a1af60bbacf294e70",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "43b3a18efc2967d564be277b09cfc05f9d364b0a003ce7375832074f9c256654"
+  },
+  "source_hash_semantics": "source_sha256 retains raw capture bytes; source_lf_sha256 verifies those bytes before UTF-8 .py/.json CRLF-to-LF normalization only.",
+  "tasks": {
+    "LayFlatPanel": {
+      "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+      "maximum_joint_displacement_rad": 0.015316963195800781,
+      "runs": {
+        "native_off": {
+          "run_sha256": "62dc8f912828eab817eee86f9ef04f880364cd3ae99c8e288dbf8b99e3e19a3a",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "native_repeat": {
+          "run_sha256": "d050150c9d20a14343c2ce6e14d0d6c62c2fa52e53aeec23aa7a1007b63e5897",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "original": {
+          "run_sha256": "77acc0dd1313c861ff6d03b4b7be9c8d8859b93c3524e84ec277dfe17f52ecf4",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_1": {
+          "run_sha256": "18c823156b4158a1693b67e8129cd76d9614a6a4e21549c0fc04a34d41a55dde",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_2": {
+          "run_sha256": "ff892d2ac1ff0175096f4fea4c500c12df615c9aba38993758726075df5507fc",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_3": {
+          "run_sha256": "0677816adcbc0392445777d48c7cdd115b96ef5cea811ffe298c0510330d59ad",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_4": {
+          "run_sha256": "f0c786ff2e62770c5a65cb39b0b7e1c64eb3b15d791c561cf036bec6a7f5e479",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_5": {
+          "run_sha256": "abd04978a7ae0d0204449af99af1261417493e20035708e93b9d5f7d2ffff8a1",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_6": {
+          "run_sha256": "5c0fea24efc4056423102d9004415232be2acceef13db1f40108cfb9ddc10ea3",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_7": {
+          "run_sha256": "c7827d140e9d37fbff01dce874b44e70f9f0acad35a641a6bce909fc73076b0e",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_8": {
+          "run_sha256": "85892beb1e77dd62e7f214e979fe32b0b8c1d53bab5abbb20202c03d26dc55a8",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_9": {
+          "run_sha256": "a37402adcb28c9cadbdf3d6cd8bc156c8e131582e773bfca78809f98ec6eb38b",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_10": {
+          "run_sha256": "0819695b62027246c3375b2e2e52d3b695d3819d111d6d93cc9d661f08b8956d",
+          "trajectory_sha256": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        }
+      }
+    },
+    "InsertRail": {
+      "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+      "maximum_joint_displacement_rad": 0.015330791473388672,
+      "runs": {
+        "native_off": {
+          "run_sha256": "a01ad7d1bbae00f47eb954e042f53627f51a81c03408204599b2ebf8eb1a6563",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "native_repeat": {
+          "run_sha256": "910632731892d7a10eaf5878b9953c2150795184ed7aafdf186e87c7b2410ad3",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "original": {
+          "run_sha256": "082c4b407c1d0fbdb9a9cfe6cd12bdb1154c31d6b03bc38e27396afab5f6bb31",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_1": {
+          "run_sha256": "f20fc2cabe9a5859af03bc06f1e8ee6604864c44d88c5350fab856add692750b",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_2": {
+          "run_sha256": "b1b1b28fccce6990e2e913bd6d6d2f3a778eea977369cca24e5e9908fb911688",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_3": {
+          "run_sha256": "5480caeacad202bcc2713c4629d6d060faf3260a007e15eb7093acef44df6bb6",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_4": {
+          "run_sha256": "2444700b0ed75ce15b937daeb724f022ff9abe42b99f4deed350f572c2516377",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_5": {
+          "run_sha256": "bed2bf250ada121000600ec474b28d89d67bf92de0ff284f71eb4e8252a5d0fc",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_6": {
+          "run_sha256": "4acc8bc781ac5a854a287f49b1f8eea89ecf58f2e2b4b50a52e350391781956f",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_7": {
+          "run_sha256": "04d9c01950cdd4a6797c07cfd456efd2a1291a02ec9791438342cee467b1f467",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_8": {
+          "run_sha256": "75c60a39df8a9260487c87d261ae44199384e799e6c4cd4ee9bba7bb926c3d78",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_9": {
+          "run_sha256": "3823dc61b2e09ad2d38b78e5913dea5ab615dc812ef9eeb56c1365c2ccfe69cd",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_10": {
+          "run_sha256": "bea9ba72777e65a50ba1330ec4ad3f50d5f16a1332393084c0f54af75061cb4b",
+          "trajectory_sha256": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": true,
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        }
+      }
+    },
+    "FastenScrew": {
+      "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+      "maximum_joint_displacement_rad": 0.015330791473388672,
+      "runs": {
+        "native_off": {
+          "run_sha256": "54ba62360f1e4f5f13bc94acd72be04a350af9fda7a8a0b1b3a84c54900e5186",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "native_repeat": {
+          "run_sha256": "7c5ad4cf8bce44ac456626b273df53ea4501288cf4d990861df6e1c95534647a",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "original": {
+          "run_sha256": "7d0ad00be38ede1d9cffcb8517aaef465e27f85a52cd4694c1336cd71ed17a7d",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_1": {
+          "run_sha256": "cdefe8daa4bdd754313b463aed90cf6c2344156c0f7edf04faf3d2673170822f",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_2": {
+          "run_sha256": "fbe7a28ce2729986c813dd30e4472ae8d09170d677bfde16bb256b84ef79b769",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_3": {
+          "run_sha256": "8d3d8fbbbd8cde683f8dbabb81dd340037e1f27396b58620f28b906d3bd0a72f",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_4": {
+          "run_sha256": "fb0f3349e7952d5f25ddd677c565b8c184e337d79feb2515daeff479dcb25d55",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_5": {
+          "run_sha256": "aefc9b954d2a784f1fca61966860ed84f0d6be0b4f5762b97010b689e5483c18",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_6": {
+          "run_sha256": "e78ab7228415e0bfd245f3860616183f016334099ccab5e7e3fea6a00904eed5",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_7": {
+          "run_sha256": "88ca07b1b7d593ad0b970ba791a96633fa27e86a1afc8198b28e09e98a22ee25",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_8": {
+          "run_sha256": "fbc4148031fdcc4f6131909b4c93bf59e70667d30e3aaefa1e52a229042a5942",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_9": {
+          "run_sha256": "0dede06013c8557c8e6cd6c30a34479c78a1e9c32702f16923f2aa5a7cfc7320",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        },
+        "variant_10": {
+          "run_sha256": "5e9a37d207acd73ea824cb84528be4099ba9ef3394db87ce181f668848c62efd",
+          "trajectory_sha256": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "control_steps": 60,
+          "physics_steps": 1200,
+          "samples": 61,
+          "max_absolute_error_vs_native": 0,
+          "panel_color_jitter": "not applicable",
+          "packages": {
+            "sapien": "3.0.3+dexarena.gpu1.wininterop5",
+            "mani_skill": "3.0.0b22",
+            "torch": "2.6.0+cu124",
+            "numpy": "2.2.6",
+            "gymnasium": "0.29.1"
+          },
+          "sapien_binary_sha256": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+        }
+      }
+    }
+  }
+}

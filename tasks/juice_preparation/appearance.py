@@ -83,18 +83,27 @@ class JuiceAppearance:
             return component
         builder.build_render_component = build
 
-    def apply(self, indices, options):
-        from .appearance_colors import recolor_shell, recolor_apple
+    def resolve_requests(self, indices, options):
+        """Resolve all selected rows before any task or rendering mutation."""
         request = options.get("juice_appearance",{})
+        requests = []
         for i in indices:
             r={**self.config,**self.config.get("per_env",{}).get(str(i),{}),
                **request,**request.get("per_env",{}).get(str(i),{})}
             scheme=r.get("scheme_id","original")
             if scheme not in self.catalog["schemes"]:
                 raise ValueError(scheme)
-            recipe=self.catalog["schemes"][scheme]
+            requests.append((i, scheme))
+        return requests
+
+    def apply(self, indices, options):
+        requests = self.resolve_requests(indices, options)
+        for i, _ in requests:
             if not self.bindings[i]:
                 raise RuntimeError(f"Incomplete bindings {i}: {list(self.bindings[i])}")
+        from .appearance_colors import recolor_shell, recolor_apple
+        for i, scheme in requests:
+            recipe=self.catalog["schemes"][scheme]
             for role,slots in self.bindings[i].items():
                 for material,source in slots:
                     if role == "fridge":

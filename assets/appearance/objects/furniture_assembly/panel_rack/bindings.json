@@ -1,0 +1,68 @@
+{
+  "version": "furniture-rack-bindings-v1",
+  "logical_object": "furniture_assembly.panel_rack",
+  "source_reference_commit": "acd6ba232b8da7a97fd313aa3df8a9f595fd55e0",
+  "catalog": "variants/v1/catalog.json",
+  "runtime_handle": "env.unwrapped.rack",
+  "object_type": "kinematic Actor",
+  "native_builder": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: build_panel_rack",
+  "roles": {
+    "body": {
+      "source_variable": "body",
+      "parts": "Two straight walls, two angled lead-ins, four outer ribs",
+      "shape_count": 8,
+      "editable": true
+    },
+    "plate": {
+      "source_variable": "plate",
+      "parts": "Base plate",
+      "shape_count": 1,
+      "editable": true
+    },
+    "pad": {
+      "source_variable": "pad",
+      "parts": "Two slot liners and four rubber feet sharing one role",
+      "shape_count": 6,
+      "editable": false
+    },
+    "bolt": {
+      "source_variable": "bolt",
+      "parts": "Eight wall-fixing bolt-head visuals",
+      "shape_count": 8,
+      "editable": false
+    },
+    "decal": {
+      "source_variable": "decal",
+      "parts": "Nine yellow front-edge warning stripes",
+      "shape_count": 9,
+      "editable": false
+    }
+  },
+  "representations": {
+    "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
+      "source": "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py: _load_scene / _initialize_episode",
+      "type": "repositionable kinematic fixture",
+      "shape_count": 32,
+      "collision_shape_count": 5,
+      "native_mass_kg": 1.917
+    }
+  },
+  "absent_from_short_tasks": [
+    "FurnitureAssemblyInsertRail-Sharpa-v1",
+    "FurnitureAssemblyFastenScrew-Sharpa-v1"
+  ],
+  "binding_boundary": "Resolve rack._objs to its Entity and match native roughness/metallic within that entity. Validate role shape counts for visual_detail. Preserve pad/bolt/decal and non-target material fields; do not bind by scene-wide color or shape order.",
+  "evidence": {
+    "summary": "assets/appearance/furniture_assembly/previews/runtime/summary.json",
+    "tasks": [
+      "LayFlatPanel"
+    ],
+    "scope": "task_appearance_and_reset_acceptance"
+  },
+  "runtime_interface": {
+    "kwarg": "furniture_appearance",
+    "adapter": "tasks/furniture_assembly/appearance.py: FurnitureAppearance",
+    "family_catalog": "tasks/assets/variation/furniture_assembly/v1/catalog.json",
+    "status": "runtime_verified_pending_review"
+  }
+}

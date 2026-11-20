@@ -322,7 +322,7 @@ def _add_flap_tabs(builder, urdf_path: Path, scale: float) -> None:
 
 
 def _load_urdf(scene, path, scene_idx, name, scale, pose, fixed=True,
-               decomposition="none", flap_tabs=False):
+               decomposition="none", flap_tabs=False, appearance=None):
     """Load a PartNet URDF.
 
     ``decomposition="coacd"`` is required for any part with a HOLE through it.
@@ -347,13 +347,15 @@ def _load_urdf(scene, path, scene_idx, name, scale, pose, fixed=True,
     builder = loader.parse(str(path))["articulation_builders"][0]
     if flap_tabs:
         _add_flap_tabs(builder, Path(path), scale)
+    if appearance is not None:
+        appearance.prepare_box(builder, scene_idx)
     builder.set_scene_idxs([scene_idx])
     builder.initial_pose = pose
     return builder.build(name=name, fix_root_link=fixed)
 
 
 def _load_robocasa_actor(scene, relative_path, scene_idx, name, pose, kinematic,
-                         single_convex_hull: bool = False):
+                         single_convex_hull: bool = False, appearance=None):
     path = ROBOCASA_OBJECT_DIR / relative_path / "model.xml"
     loader = scene.create_mjcf_loader()
     loader.scale = np.ones(3, dtype=np.float32)
@@ -374,6 +376,8 @@ def _load_robocasa_actor(scene, relative_path, scene_idx, name, pose, kinematic,
         )
     builder.set_scene_idxs([scene_idx])
     builder.initial_pose = pose
+    if appearance is not None and name.startswith("apple_"):
+        appearance.prepare_apple(builder)
     return builder.build_kinematic(name) if kinematic else builder.build_dynamic(name)
 
 
@@ -522,13 +526,16 @@ def build_package_scene(env, config: PackageSceneConfig) -> SceneHandles:
     """
     table = TableSceneBuilder(env=env)
     table.build()
+    appearance = env.package_appearance
+    if appearance is not None:
+        appearance.begin_scene()
     boxes, plates, apples = [], [], []
     for scene_idx in range(env.num_envs):
         if env.LOAD_PACKAGE:
             boxes.append(_load_urdf(
                 env.scene, PACKAGE_URDF_PATH, scene_idx, f"package_{scene_idx}",
                 config.box_scale, sapien.Pose(p=config.box_pos), fixed=True,
-                flap_tabs=True,
+                flap_tabs=True, appearance=appearance,
             ))
         if env.LOAD_PLATE:
             plates.append(_load_robocasa_actor(
@@ -539,8 +546,13 @@ def build_package_scene(env, config: PackageSceneConfig) -> SceneHandles:
             apples.append(_load_robocasa_actor(
                 env.scene, "apple/apple_0", scene_idx, f"apple_{scene_idx}",
                 sapien.Pose(p=config.apple_pos), kinematic=False,
-                single_convex_hull=APPLE_SINGLE_CONVEX_HULL,
+                single_convex_hull=APPLE_SINGLE_CONVEX_HULL, appearance=appearance,
             ))
+
+    if appearance is not None:
+        for name, actors in (("box", boxes), ("plate", plates), ("apple", apples)):
+            for index, actor in enumerate(actors):
+                appearance.bind(name, actor, index)
 
     for task_object in [*boxes, *apples]:
         _set_task_object_energy_fence(task_object)
@@ -887,6 +899,7 @@ class PackageOpeningLongEnv(BaseEnv):
         robot_uids=DEFAULT_ROBOT_UID,
         initial_box_open=False,
         robot_init_qpos_noise=FROZEN_ROBOT_INIT_QPOS_NOISE,
+        package_appearance=None,
         **kwargs,
     ):
 
@@ -928,6 +941,11 @@ class PackageOpeningLongEnv(BaseEnv):
         if float(robot_init_qpos_noise) < 0.0:
             raise ValueError("robot_init_qpos_noise must be non-negative")
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
+        self.package_appearance = None
+        if package_appearance is not None:
+            from .appearance import PackageAppearance
+
+            self.package_appearance = PackageAppearance(package_appearance, kwargs.get("num_envs", 1))
 
         self.scene_config = PackageSceneConfig(initial_box_open=initial_box_open)
         # Unconditional: the layout belongs to the shared rig, not to the robot
@@ -1078,6 +1096,8 @@ class PackageOpeningLongEnv(BaseEnv):
             torch.zeros((batch_size, 3), device=self.device)
         )
         self.task_evaluator.reset(env_idx)
+        if self.package_appearance is not None:
+            self.package_appearance.finish_reset(env_idx, options)
 
     def evaluate(self):
         return self.task_evaluator.evaluate(self)
@@ -1181,6 +1201,8 @@ class PackageOpeningSubtaskEnv(PackageOpeningLongEnv):
             )
 
         self.task_evaluator.reset(env_idx)
+        if self.package_appearance is not None:
+            self.package_appearance.finish_reset(env_idx, options)
         self.task_evaluator.stage[env_idx] = self.TARGET_STAGE
 
     @staticmethod

@@ -22,3 +22,7 @@
 结果精简仅将重复字典变为内容寻址引用，数值与纹理身份未舍弃；原始大 JSON 和 PNG 留在 verification-123675、verification-123676 输出目录，raw_result_sha256 和 image_sha256 可复核。图片需由提交者附 PR，不能只提供个人本地文件路径。
 
 静态核对见[static_checks.json](static_checks.json)。check_static 和 Juice 源码／结果／签名核对通过。原归档检查的字节哈希受本机既有 Cabinet JSON 的 CRLF 影响，直接运行失败；仅在内存对 JSON 作 LF 规范化后全项通过，未改共享检查脚本或 Cabinet 素材，不能将此写成原命令直接通过。
+
+## PR19-R1 之后的使用边界
+
+本目录原有 results／signatures／manifest／receipts 保持为历史运行，不代表当前 R1 修正已在 GPU 复跑。新增 r1_cpu／r1_checks／r1_manifest 单列本轮作者侧验证。见[R1 报告](../../JUICE_PR19_R1.md)；新 head 冻结后由审验层安排执行层验证。

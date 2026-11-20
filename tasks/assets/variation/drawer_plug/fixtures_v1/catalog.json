@@ -1,0 +1,491 @@
+{
+  "version": "drawer-socket-appearance-v1",
+  "colour_space": "linear RGB for base_color; source texture upload follows its sRGB flag",
+  "schemes": {
+    "original": {},
+    "warm_white": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.86,
+            0.82,
+            0.75,
+            1
+          ],
+          "roughness": 0.62,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.86,
+            0.82,
+            0.75,
+            1
+          ],
+          "roughness": 0.62,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.82,
+            0.78,
+            0.71,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.82,
+            0.78,
+            0.71,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.765,
+            0.622,
+            0.428,
+            1
+          ],
+          "roughness": 0.52,
+          "metallic": 0,
+          "texture_mode": "oak_tone",
+          "source_saturation": 0.7,
+          "source_gain": [
+            0.9,
+            1.1,
+            1.32
+          ]
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.027,
+            0.027,
+            0.029,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.87,
+            0.84,
+            0.77,
+            1
+          ],
+          "roughness": 0.4,
+          "metallic": 0
+        }
+      }
+    },
+    "neutral_grey": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.088,
+            0.093,
+            0.102,
+            1
+          ],
+          "roughness": 0.55,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.088,
+            0.093,
+            0.102,
+            1
+          ],
+          "roughness": 0.55,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.26,
+            0.275,
+            0.29,
+            1
+          ],
+          "roughness": 0.64,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.26,
+            0.275,
+            0.29,
+            1
+          ],
+          "roughness": 0.64,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.55,
+            0.53,
+            0.5,
+            1
+          ],
+          "roughness": 0.66,
+          "metallic": 0
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.7,
+            0.53,
+            0.36,
+            1
+          ],
+          "roughness": 0.47,
+          "metallic": 0.8
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.055,
+            0.06,
+            0.064,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        }
+      }
+    }
+  },
+  "drawer_mesh_roles": {
+    "original-7.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-6"
+    },
+    "original-6.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-6"
+    },
+    "original-4.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-7"
+    },
+    "original-3.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-7"
+    },
+    "original-15.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "back_panel-8"
+    },
+    "original-10.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "bottom_panel-9"
+    },
+    "original-9.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "bottom_panel-9"
+    },
+    "original-13.obj": {
+      "link": "link_0",
+      "role": "top",
+      "semantic": "top_panel-10"
+    },
+    "original-16.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "frame_horizontal_bar-11"
+    },
+    "original-14.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "frame_horizontal_bar-12"
+    },
+    "original-25.obj": {
+      "link": "link_1",
+      "role": "inner_front_liner",
+      "semantic": "drawer_front-38"
+    },
+    "original-18.obj": {
+      "link": "link_1",
+      "role": "front",
+      "semantic": "drawer_front-38"
+    },
+    "original-23.obj": {
+      "link": "link_1",
+      "role": "inner_side",
+      "semantic": "drawer_side-39"
+    },
+    "original-24.obj": {
+      "link": "link_1",
+      "role": "inner_side",
+      "semantic": "drawer_side-40"
+    },
+    "original-26.obj": {
+      "link": "link_1",
+      "role": "inner_back",
+      "semantic": "drawer_back-41"
+    },
+    "original-21.obj": {
+      "link": "link_1",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-42"
+    },
+    "original-22.obj": {
+      "link": "link_1",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-42"
+    },
+    "original-30.obj": {
+      "link": "link_1",
+      "role": "handle",
+      "semantic": "handle-35"
+    },
+    "original-31.obj": {
+      "link": "link_1",
+      "role": "handle",
+      "semantic": "handle-35"
+    },
+    "original-32.obj": {
+      "link": "link_1",
+      "role": "handle",
+      "semantic": "handle-35"
+    },
+    "original-27.obj": {
+      "link": "link_1",
+      "role": "slider",
+      "semantic": "drawer_slider-36"
+    },
+    "original-28.obj": {
+      "link": "link_1",
+      "role": "slider",
+      "semantic": "drawer_slider-37"
+    },
+    "original-41.obj": {
+      "link": "link_2",
+      "role": "inner_front_liner",
+      "semantic": "drawer_front-29"
+    },
+    "original-34.obj": {
+      "link": "link_2",
+      "role": "front",
+      "semantic": "drawer_front-29"
+    },
+    "original-40.obj": {
+      "link": "link_2",
+      "role": "inner_side",
+      "semantic": "drawer_side-30"
+    },
+    "original-39.obj": {
+      "link": "link_2",
+      "role": "inner_side",
+      "semantic": "drawer_side-31"
+    },
+    "original-42.obj": {
+      "link": "link_2",
+      "role": "inner_back",
+      "semantic": "drawer_back-32"
+    },
+    "original-37.obj": {
+      "link": "link_2",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-33"
+    },
+    "original-38.obj": {
+      "link": "link_2",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-33"
+    },
+    "original-47.obj": {
+      "link": "link_2",
+      "role": "handle",
+      "semantic": "handle-26"
+    },
+    "original-46.obj": {
+      "link": "link_2",
+      "role": "handle",
+      "semantic": "handle-26"
+    },
+    "original-48.obj": {
+      "link": "link_2",
+      "role": "handle",
+      "semantic": "handle-26"
+    },
+    "original-44.obj": {
+      "link": "link_2",
+      "role": "slider",
+      "semantic": "drawer_slider-27"
+    },
+    "original-43.obj": {
+      "link": "link_2",
+      "role": "slider",
+      "semantic": "drawer_slider-28"
+    },
+    "original-57.obj": {
+      "link": "link_3",
+      "role": "inner_front_liner",
+      "semantic": "drawer_front-20"
+    },
+    "original-12.obj": {
+      "link": "link_3",
+      "role": "top_front_trim",
+      "semantic": "drawer_front-20"
+    },
+    "original-50.obj": {
+      "link": "link_3",
+      "role": "front",
+      "semantic": "drawer_front-20"
+    },
+    "original-55.obj": {
+      "link": "link_3",
+      "role": "inner_side",
+      "semantic": "drawer_side-21"
+    },
+    "original-56.obj": {
+      "link": "link_3",
+      "role": "inner_side",
+      "semantic": "drawer_side-22"
+    },
+    "original-58.obj": {
+      "link": "link_3",
+      "role": "inner_back",
+      "semantic": "drawer_back-23"
+    },
+    "original-53.obj": {
+      "link": "link_3",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-24"
+    },
+    "original-54.obj": {
+      "link": "link_3",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-24"
+    },
+    "original-62.obj": {
+      "link": "link_3",
+      "role": "handle",
+      "semantic": "handle-17"
+    },
+    "original-63.obj": {
+      "link": "link_3",
+      "role": "handle",
+      "semantic": "handle-17"
+    },
+    "original-64.obj": {
+      "link": "link_3",
+      "role": "handle",
+      "semantic": "handle-17"
+    },
+    "original-60.obj": {
+      "link": "link_3",
+      "role": "slider",
+      "semantic": "drawer_slider-18"
+    },
+    "original-59.obj": {
+      "link": "link_3",
+      "role": "slider",
+      "semantic": "drawer_slider-19"
+    }
+  },
+  "protected_roles": [
+    "drawer.hardware",
+    "socket.hole"
+  ],
+  "source_urdf_sha256": "8f8f5f4995caf167d3d19d74e6458d842bb1918f20186b1a4ad86c4eeede63c0",
+  "references": "assets/appearance/objects/drawer_plug/drawer/REFERENCES.md",
+  "status": "CPU prepared; parameter estimates, no runtime or visual acceptance",
+  "drawer_revision": "component-materials-v2"
+}

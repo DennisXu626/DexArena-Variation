@@ -1,0 +1,46 @@
+{
+  "task": "DrawerPlugOpenDrawer-Sharpa-v1",
+  "env_idx": 0,
+  "seed": 7,
+  "camera": "render_camera (human)",
+  "size": [
+    1280,
+    720
+  ],
+  "crop_xyxy": [
+    452,
+    0,
+    850,
+    330
+  ],
+  "candidate_schemes": [
+    "original",
+    "warm_white",
+    "neutral_grey"
+  ],
+  "frames": [
+    "OpenDrawer_original_human_env0.png",
+    "OpenDrawer_warm_white_human_env0.png",
+    "OpenDrawer_neutral_grey_human_env0.png"
+  ],
+  "charger": "absent",
+  "exposure": "unchanged task camera default",
+  "lighting": "unchanged native task lighting",
+  "case_initial_state": "compared against native baseline",
+  "original_files": [
+    {
+      "file": "original_frames/OpenDrawer_original_human_env0.png",
+      "sha256": "e4df210aa935fd824dccfbdc8d2bf372373d77b1f0bb7b41522ae11ab2deb25b"
+    },
+    {
+      "file": "original_frames/OpenDrawer_warm_white_human_env0.png",
+      "sha256": "8ef21dce254b822b3731c67dddd0a13c8e57b19fbb987989148c5746fb049f95"
+    },
+    {
+      "file": "original_frames/OpenDrawer_neutral_grey_human_env0.png",
+      "sha256": "1ee8068ed186ea465e43d839dad2fa575d6143df6ac5942f9da80fc34a2662a4"
+    }
+  ],
+  "comparison": "drawer_comparison.png",
+  "comparison_sha256": "662ef2c0837cd12f0cd43f02fd498bb36099b0f33d59718f0bece939d70b3cf8"
+}

@@ -105,6 +105,7 @@ for path in (REPO_ROOT, TASK_DIR):
         sys.path.insert(0, str(path))
 
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.juice_preparation.reset_guard import JuiceResetMixin
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from tasks.config.hands import register_task
@@ -1466,7 +1467,7 @@ def lid_seat_quantities(lid_pose, seat_position, *, device):
     control_mode="pd_joint_pos",
     render_mode="rgb_array",
 )
-class JuicePreparationPlaceLidEnv(BaseEnv):
+class JuicePreparationPlaceLidEnv(JuiceResetMixin, BaseEnv):
     """Pick the loose lid, seat it on Blender023, release, and retreat."""
 
     SUPPORTED_ROBOTS = [
@@ -1950,9 +1951,9 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
     def evaluate(self):
         q = self._task_quantities()
 
-        self.picked_once |= q["lid_lift_height"] >= PICK_HEIGHT
+        self.picked_once |= (q["lid_lift_height"] >= PICK_HEIGHT) & self._juice_active_mask()
         self.transported_once |= (
-            self.picked_once
+            (self.picked_once
             & (
                 q["lid_xy_error"]
                 <= TRANSPORT_XY_TOL
@@ -1961,14 +1962,14 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
                 q["lid_position"][:, 2]
                 >= q["seat_target_position"][:, 2]
                 + TRANSPORT_Z_MARGIN
-            )
+            )) & self._juice_active_mask()
         )
         self.seated_once |= (
-            q["lid_seated"] & q["lid_stable"]
+            (q["lid_seated"] & q["lid_stable"]) & self._juice_active_mask()
         )
         self.released_once |= (
-            self.seated_once
-            & q["end_effector_clear"]
+            (self.seated_once
+            & q["end_effector_clear"]) & self._juice_active_mask()
         )
 
         # Success is the physical end state itself: the lid is fully aligned,
@@ -1977,14 +1978,14 @@ class JuicePreparationPlaceLidEnv(BaseEnv):
         final_condition = (
             self.picked_once & q["lid_seated"] & q["lid_stable"]
         )
-        self.success_counter = torch.where(
+        self.success_counter = self._juice_update(self.success_counter, torch.where(
             final_condition,
             self.success_counter + 1,
             torch.zeros_like(self.success_counter),
-        )
+        ))
         self.success_latched |= (
-            self.success_counter
-            >= SUCCESS_SETTLE_STEPS
+            (self.success_counter
+            >= SUCCESS_SETTLE_STEPS) & self._juice_active_mask()
         )
 
         return {

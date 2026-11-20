@@ -1,8 +1,8 @@
 # Juice Preparation 外观与双环境验证交付
 
-状态：四对象的 original＋两套新外观已制作，用户已完成人工预览审查；六任务限定双环境验证通过，待 Dennis 最终审阅。尚未提交、推送或发起 PR，不代表正式集成验收通过。
+状态：四对象的 original＋两套新外观已制作，用户已完成人工预览审查；六任务限定双环境验证通过，待 Dennis 最终审阅。[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)已发起；本轮 R1 作者修正与 main 整合待用户提交，不代表正式集成验收通过。
 
-分支 `codex/juice-preparation-appearance`，来自团队本地固定基线 `acd6ba232b8da7a97fd313aa3df8a9f595fd55e0`；未包含其它家族开发提交，尚未同步更晚的远端 main，提 PR 前需核对。
+分支 `codex/juice-preparation-appearance`，来自团队本地固定基线 `acd6ba232b8da7a97fd313aa3df8a9f595fd55e0`；现已整合 main 的 aee41a3439287a17ce9d4c14c6320fa6f5b4579d，并保留其它家族已合入内容；本地合并和 R1 修正尚未提交。
 
 ## 部件、方案与素材
 
@@ -42,7 +42,7 @@ records = env.unwrapped.juice_appearance.records
 
 仅选中环境在 reset 时应用方案。记录 env_idx、scheme_id、catalog_version、episode_index；构造器也会 reset，计数不等于用户显式 reset 次数。当前成套固定选择，未实现集合随机和任意对象混搭。
 
-## 实际运行
+## 历史 GPU 运行（R1 修正前）
 
 最终作业 **123675**（Long，48 秒）、**123676**（五个子任务，122 秒），Server 3 / lyg0295 / G7，均 COMPLETED、ExitCode 0:0。详见 [结构化证据](evidence/juice_preparation/README.md)。
 
@@ -93,3 +93,7 @@ PR 建议附已审查的六组 original／两候选近景对照，以及 Long �
 已测限 Sharpa、2env、seed 7、机器人初态噪声 0、固定方案、原生初态附近局部 reset 和 16 步零动作。未测其它手型／规模／seed、非零噪声、随机方案、长时间压力或完整机器人成功轨迹；未对已处于成功临界阶段的环境做局部 reset，不外推所有阶段计数器的隔离。原任务判定的完整成功轨迹仍待负责人验收。
 
 早期排障作业不作最终通过依据；部分短时 scontrol 记录已过期，明确列为无法从当前控制器追溯。最终收据已导出。私有运行副本、临时资产及图像暂保留审查；未删除共享资源，也未批准或合并 PR。
+
+## PR19-R1 作者修正
+
+错误请求预校验、局部 reset 临界状态保护、main 冲突解决和按 ID 标图已完成作者侧修正，CPU 回归通过；新版本 GPU 复验待 head 冻结后安排。完整命令、证据边界与版本见[R1 修正报告](JUICE_PR19_R1.md)。

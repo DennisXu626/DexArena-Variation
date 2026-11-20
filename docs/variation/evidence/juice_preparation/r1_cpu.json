@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "tests": 10,
+  "failures": 0,
+  "errors": 0,
+  "torch": "2.6.0+cpu",
+  "torch_device": "cpu",
+  "public_reset_invalid_cases": 12,
+  "critical_reset_cases": 20,
+  "scope": "actual reset/evaluate/helpers; external BaseEnv, geometry and render inputs replaced; no simulator/GPU",
+  "frozen_head": "fc028483b5d865c05ee6e7e18b95975c836c9935"
+}

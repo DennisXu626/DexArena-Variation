@@ -1,21 +1,23 @@
-# 金属导轨（程序生成）（furniture_assembly.rail）
+# 导轨（furniture_assembly.rail）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+方案选择、正式接口、复现与验收范围见[家族说明](../../../../../docs/variation/FURNITURE_APPEARANCE.md)。
 
-原始角色：待装入的长条部件。V1资源说明：`程序构造几何和 RenderMaterial；具体部件代码入口在 furniture_assembly_insert_rail.py`。
+## 方案与部件
 
-V2 rail_screw同时描述rail与其转动螺钉子部件；与screw分目录记录逻辑对象，不按每条初始化行复制资产。
+唯一参数源：[catalog](variants/v1/catalog.json)；部件对应：[bindings](bindings.json)。original恢复当前实例捕获的原生材质；variant_1为深蓝金属／深蓝槽唇，variant_2为香槟铜金属／深铜槽唇。
 
-## 资料与加载边界
+| 角色 | 源码材质 | 部件 | InsertRail／FastenScrew shape数 |
+|---|---|---|---|
+| metal_body | steel | C形底板、两个竖直侧壁 | 3／3 |
+| channel_details | dark | 卷唇、底板冲压槽视觉 | 22／11 |
 
-V1对象键：`furniture_assembly/rail`；V2对应键：`rail_screw`。代码调查基准e7d5c49d079153e77da1ce2bfde16edf67ee7fa8；V1视觉资料HF revision b197a198fe50f41d70f563cfa7c88d3cc9f528b6，此revision只说明调查素材，不保证所有后续运行资产等同。
+两角色随方案变化并保持明暗对比。仅绑定rail_body link；[screw_head](../screw/README.md)独立处理，保留槽孔几何、关节及其余材质字段。
 
-- visual/collision rail with articulated revolute screw
+## 任务表示与来源
 
-正式任务入口（保留家族区分，不凭同名合并）：FurnitureAssemblyInsertRail-Sharpa-v1 ; FurnitureAssemblyFastenScrew-Sharpa-v1。
+| 正式短任务 | 原生表示／总shape数 | 来源 |
+|---|---|---|
+| InsertRail-Sharpa | 可搬运root；25，各1part | [build_slider_rail](../../../../../tasks/furniture_assembly/furniture_assembly_insert_rail.py) |
+| FastenScrew-Sharpa | 固定root；14，各1part | [build_wing_screw_rail／_add_rail_body](../../../../../tasks/furniture_assembly/furniture_assembly_fasten_screw.py) |
 
-## 原始来源
-
-- [tasks/furniture_assembly/furniture_assembly_insert_rail.py](../../../../../tasks/furniture_assembly/furniture_assembly_insert_rail.py)
-
-原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+InsertRail使用show_screw_bosses=False，卷唇／冲压槽循环在两侧壁内重复两遍；FastenScrew仅添加一遍，均保留各自原生几何。

@@ -23,7 +23,13 @@ VIEWS = {
     "loose_lid": ("PlaceLid", "native loose-lid reset"),
     "seated_lid_button": ("PressButton", "native integrated-lid reset"),
 }
-LABELS = ("Original", "Sage / Golden Apple", "Terracotta / Green Apple")
+LABELS = {"original": "Original", "variant_1": "Sage / Golden Apple",
+          "variant_2": "Terracotta / Green Apple"}
+
+
+def comparison_columns(schemes):
+    """Bind each image and label to its stable ID, regardless of JSON order."""
+    return [(scheme, f"{scheme} | {LABELS.get(scheme, scheme)}") for scheme in schemes]
 
 
 def rgb_hex(color):
@@ -214,12 +220,18 @@ def capture(out, view, scheme, recipe):
 
 
 def contact_sheet(out,view,schemes):
-    panels = [Image.open(out/f"{view}_{k}.png").convert("RGB") for k in schemes]
+    columns = comparison_columns(schemes)
+    if not columns:
+        raise ValueError("No schemes to compare")
+    panels = [Image.open(out/f"{view}_{scheme}.png").convert("RGB") for scheme, _ in columns]
     w,h = panels[0].size
     sheet = Image.new("RGB",(len(panels)*w,h+44),"#1B2027")
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",23)
+    try:
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",23)
+    except OSError:
+        font = ImageFont.load_default()
     draw = ImageDraw.Draw(sheet)
-    for i,(label,panel) in enumerate(zip(LABELS,panels)):
+    for i, ((scheme, label), panel) in enumerate(zip(columns, panels)):
         draw.text((i*w+15,8),label,fill="white",font=font)
         sheet.paste(panel,(i*w,44))
     sheet.save(out/f"{view}_comparison.png")

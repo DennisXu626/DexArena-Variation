@@ -51,6 +51,7 @@ if str(TASK_DIR) not in sys.path:
     sys.path.insert(0, str(TASK_DIR))
 
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.juice_preparation.reset_guard import JuiceResetMixin
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from tasks.config.hands import register_task
@@ -941,7 +942,7 @@ def blender_shift_from_pose(nominal, position, quaternion) -> tuple[float, float
     control_mode="pd_joint_pos",
     render_mode="rgb_array",
 )
-class JuicePreparationAppleToBlenderEnv(BaseEnv):
+class JuicePreparationAppleToBlenderEnv(JuiceResetMixin, BaseEnv):
     SUPPORTED_ROBOTS = list(ROBOT_UIDS)
     agent: Any
 
@@ -1365,18 +1366,18 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
         (
             self.apple_left_fridge_latched,
             self.apple_lifted_latched,
-        ) = apple_route_latches(
+        ) = self._juice_update((self.apple_left_fridge_latched, self.apple_lifted_latched), apple_route_latches(
             apple_position,
             in_fridge,
             self.apple_left_fridge_latched,
             self.apple_lifted_latched,
-        )
-        self.apple_motion = apple_motion_update(
+        ))
+        self.apple_motion = self._juice_update(self.apple_motion, apple_motion_update(
             self.apple.pose,
             self.apple_motion,
             self._elapsed_steps,
             control_timestep=self.control_timestep,
-        )
+        ))
         stable_now = (
             in_blender
             & apple_settled(self.apple_motion)
@@ -1384,18 +1385,18 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             & self.apple_lifted_latched
         )
 
-        self.stable_counter = torch.where(
+        self.stable_counter = self._juice_update(self.stable_counter, torch.where(
             stable_now,
             self.stable_counter + 1,
             torch.zeros_like(
                 self.stable_counter
             ),
-        )
+        ))
         success_now = (
             self.stable_counter
             >= SUCCESS_SETTLE_STEPS
         )
-        self.success_latched |= success_now
+        self.success_latched |= (success_now) & self._juice_active_mask()
 
         door_qpos = self.fridge.get_qpos()[:, 0]
         door_qvel = self.fridge.get_qvel()[:, 0]
