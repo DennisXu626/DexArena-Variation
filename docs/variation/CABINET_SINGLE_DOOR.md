@@ -1,6 +1,6 @@
 # 单门柜 A/B · 使用与拍图复测
 
-[实际关门／开门对照和工程证据](evidence/cabinet_single_door/runtime_001/README.md)已交付，待 Dennis 审图。下方保留原拍摄计划和预算口径。
+两套外观经 Dennis 审图确认。作业 123798 覆盖 OpenCabinet 和 PickBottle，各 2 环境；原版恢复、局部 reset 隔离和柜外材质对照通过。[关门／开门实景与工程证据](evidence/cabinet_single_door/runtime_001/README.md)
 
 [对象档案与两件实物参考](../../assets/appearance/objects/cabinet_pouring/cabinet/README.md) · [运行目录](../../tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json) · [CPU／后续运行检查器](../../tools/variation/check_cabinet_single_door.py)
 
@@ -24,7 +24,7 @@ env.reset(options={"env_idx": torch.tensor([1], device=env.unwrapped.device),
 - 每任务两个独立 env 构建（原生、开启柜体），一轮内复用初始化：原生对照、采三帧、原版恢复、局部 A/B 两次。用相同外层 Torch RNG 和 seed 对比状态；记录门角，检查逐槽参数/像素、原版恢复 RGB、env0 状态/材质/RGB 不变及选中环境 RGB 改变，检查柜外所有已加载可渲染材质快照和原瓶状态。无机器人动作、训练、A6 或 Long。
 - 入口：`python -B tools/variation/check_cabinet_single_door.py --approval <批准记录> --output <本线私有输出>`。脚本要求授权范围 `cabinet_single_door_rgb`、确切 Git head 和单卡 Slurm 分配。静态入口用 `--static-asset <只读柜体目录>`。无 GPU 运行时不能宣称 SAPIEN 槽或实际 RGB 验收。
 
-## 独立拍图预算申请（尚未授权）
+## 历史拍摄预算提案（作业 123798 已完成）
 
 - 总墙钟 **60 分钟**，最多 **一次单卡作业、240 分配秒**，应用上限 **205 秒**，排队上限 120 秒，不重试、不重排。第 39 分钟为最晚提交点、剩余至少 21 分钟；第 45 分钟开始至少 15 分钟收尾。失败保留已取帧、首个错误和调度终态，不能补提。
 - 提议 Ceph 专用根 `/mnt/ceph2/xkl/DexArena/cabinet_door_finish_20261120/`（本轮只读核对，并未创建）；复用 `/mnt/ceph2/DexArena/assets/task_object_meshes/cabinet_pour` 只读资产。读到 39 个柜体碰撞引用齐全，包括 8 片现有把手分解。瓶件派生文件如原任务要求生成，必须核对并隔离到本线私有目录。共享环境和资产不写入。

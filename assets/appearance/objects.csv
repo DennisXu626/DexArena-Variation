@@ -1,5 +1,5 @@
 family,object_id,name_zh,status,directory,published_variants,v1_object_key,v2_semantic_groups
-cabinet_pouring,cabinet,橱柜,pending_adaptation,objects/cabinet_pouring/cabinet,,cabinet_pouring/cabinet,cabinet
+cabinet_pouring,cabinet,橱柜,accepted_pilot,objects/cabinet_pouring/cabinet,oak_warm_white;sage_walnut,cabinet_pouring/cabinet,cabinet
 cabinet_pouring,bottle,瓶身,accepted_pilot,objects/cabinet_pouring/bottle,ocean;citrus;violet,cabinet_pouring/bottle,cabinet_bottle
 cabinet_pouring,bottle_cap,瓶盖,accepted_pilot,objects/cabinet_pouring/bottle_cap,ocean;citrus;violet,cabinet_pouring/bottle_cap,bottle_cap
 cabinet_pouring,bowl,目标碗,pending_adaptation,objects/cabinet_pouring/bowl,,cabinet_pouring/bowl,bowl

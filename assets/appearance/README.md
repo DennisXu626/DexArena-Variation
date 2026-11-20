@@ -17,11 +17,11 @@
 
 ## 对象与状态
 
-按实际目录与CSV复核：42个对象、10家族；已验收限定试点11（原有4＋Meal5＋抽屉和插座2）；待适配24；无视觉不适用3；当前未加载1；已实现待审验3；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与CSV复核：42个对象、10家族；已验收限定试点12（原有4＋Meal5＋抽屉和插座2＋单门柜1）；待适配23；无视觉不适用3；当前未加载1；已实现待审验3；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
-| cabinet_pouring | [cabinet](objects/cabinet_pouring/cabinet/README.md) | 待适配 |
+| cabinet_pouring | [cabinet](objects/cabinet_pouring/cabinet/README.md) | 已完成限定试点（OpenCabinet／PickBottle，各 2 环境） |
 | cabinet_pouring | [bottle](objects/cabinet_pouring/bottle/README.md) | 已完成试点（继承M2验收） |
 | cabinet_pouring | [bottle_cap](objects/cabinet_pouring/bottle_cap/README.md) | 已完成试点（继承M2验收） |
 | cabinet_pouring | [bowl](objects/cabinet_pouring/bowl/README.md) | 待适配 |
