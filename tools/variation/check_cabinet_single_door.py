@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import traceback
 
 import numpy as np
 
@@ -199,72 +200,128 @@ def run(approval_path, output):
         return gym.make(f'CabinetPouring{task}-Sharpa-v1',num_envs=2,sim_backend='physx_cuda',
                         obs_mode='rgb',render_mode='rgb_array',reconfiguration_freq=0,
                         human_render_camera_configs=camera,**opt)
-    report=dict(commit=head,job_id=os.environ['SLURM_JOB_ID'],seed=SEED,results={})
-    for task,view in VIEWS.items():
-        camera=dict(pose=sapien_utils.look_at(view['eye'],view['target']),fov=view['fov'],
-                    width=SIZE[0],height=SIZE[1])
-        with_native=construct(task,camera)
-        try:
-            with_native.reset(seed=SEED); n=with_native.unwrapped
-            state=[batch_state(n,i) for i in (0,1)]
-            ref=render(with_native); mats=[snapshot(n,i) for i in (0,1)]
-            angle=n.cabinet.get_qpos().detach().cpu().numpy()[:,0].tolist()
-            target_angle=0 if task=='OpenCabinet' else np.pi/2
-            np.testing.assert_allclose(angle,target_angle,atol=1e-5,rtol=0)
-        finally:
-            with_native.close()
-        env=construct(task,camera,cabinet_appearance=dict(enabled=True,scheme_id='original'))
-        try:
-            e=env.unwrapped
-            files=[]
-            for sid in SCHEMES:
-                env.reset(seed=SEED,options={'cabinet_appearance':{'scheme_id':sid}})
-                assert [batch_state(e,i) for i in (0,1)] == state
-                rgb=render(env)
-                sig=[snapshot(e,i) for i in (0,1)]
-                assert all(sig[i][1]==mats[i][1] for i in (0,1))
-                assert e._cabinet_appearance.schemes==[sid,sid]
-                if sid=='original':
-                    assert np.array_equal(ref,rgb) and sig==mats
-                else:
-                    assert not np.array_equal(ref,rgb) and sig[0][0]!=mats[0][0]
-                    for row in e._cabinet_appearance.bindings[0]:
-                        finish=e._cabinet_appearance.catalog['schemes'][sid][row['role']]
-                        m=row['material']
-                        assert abs(m.roughness-finish['roughness'])<1e-6
-                        assert abs(m.metallic-finish['metallic'])<1e-6
-                        if 'live' in row:
-                            live=row['live']
-                            assert np.array_equal(live['texture'].download(),live['pixels'][sid])
-                file=output/f'{task}_{sid}_env0.png'
-                Image.fromarray(rgb[0]).save(file)
-                files.append(dict(file=file.name,scheme_id=sid,sha256=sha(file)))
-            dump(f'{task}_capture.json',dict(task=f'CabinetPouring{task}-Sharpa-v1',env_idx=0,
-                 seed=SEED,door_qpos=angle[0],camera=view,resolution=SIZE,frames=files,
-                 bottle='native' if task=='PickBottle' else 'absent'))
-            for sid in SCHEMES[1:]:
-                env.reset(seed=SEED,options={'cabinet_appearance':{'scheme_id':sid}})
-                env.reset(seed=SEED,options={'cabinet_appearance':{'scheme_id':'original'}})
-                assert [snapshot(e,i) for i in (0,1)]==mats
-                assert np.array_equal(render(env),ref)
-            for sid in SCHEMES[1:]:
-                env.reset(seed=SEED)
-                before=snapshot(e,0); before_state=batch_state(e,0)
-                pre=render(env); before_outside=snapshot(e,1)[1]
-                # No physics step; native seed/zero display changes in env0.
-                env.reset(seed=SEED,options={'env_idx':torch.tensor([1],device=e.device),
-                                            'cabinet_appearance':{'scheme_id':sid}})
-                post=render(env)
-                assert batch_state(e,0)==before_state and snapshot(e,0)==before
-                assert snapshot(e,1)[1]==before_outside
-                assert np.array_equal(pre[0],post[0])
-                assert snapshot(e,1)[0]!=mats[1][0] and e._cabinet_appearance.schemes==['original',sid]
-                assert not np.array_equal(pre[1],post[1])
-            report['results'][task]=dict(restore='passed',isolation='passed',
-                                         other_materials='unchanged',door_qpos=angle)
-            dump('RESULTS.json',report)
-        finally:
-            env.close()
+    report=dict(commit=head,job_id=os.environ['SLURM_JOB_ID'],seed=SEED,results={},builds=0)
+    baselines={}
+    stage='startup'
+    task=None
+
+    def make(task, camera, **options):
+        report['builds']+=1
+        dump('RESULTS.json',report)
+        return construct(task,camera,**options)
+
+    def select(env, sid, idx=None):
+        options={'cabinet_appearance':{'scheme_id':sid}}
+        if idx is not None:
+            options['env_idx']=torch.tensor([idx],device=env.unwrapped.device)
+        env.reset(seed=SEED,options=options)
+
+    def check_material(e, sid):
+        scheme=e._cabinet_appearance.catalog['schemes'][sid]
+        for row in e._cabinet_appearance.bindings[0]:
+            finish=scheme[row['role']]
+            m=row['material']
+            assert abs(m.roughness-finish['roughness'])<1e-6
+            assert abs(m.metallic-finish['metallic'])<1e-6
+            if 'live' in row:
+                live=row['live']
+                assert np.array_equal(live['texture'].download(),live['pixels'][sid])
+
+    try:
+        # Each capture pass closes its two-env instance before opening the
+        # next, bounding VRAM. A fresh instance per task drives regression.
+        for task,view in VIEWS.items():
+            row=report['results'][task]={'capture':'pending','regression':'pending'}
+            camera=dict(pose=sapien_utils.look_at(view['eye'],view['target']),fov=view['fov'],
+                        width=SIZE[0],height=SIZE[1])
+            stage='native_reset_baseline'
+            env=make(task,camera)
+            try:
+                env.reset(seed=SEED); n=env.unwrapped
+                state=[batch_state(n,i) for i in (0,1)]
+                ref=render(env)
+                Image.fromarray(ref[0]).save(output/f'{task}_native_baseline_env0.png')
+                mats=[snapshot(n,i) for i in (0,1)]
+                angle=n.cabinet.get_qpos().detach().cpu().numpy()[:,0].tolist()
+                target_angle=0 if task=='OpenCabinet' else np.pi/2
+                np.testing.assert_allclose(angle,target_angle,atol=1e-5,rtol=0)
+            finally:
+                env.close()
+            del n, env
+            stage='cabinet_capture_construct'
+            env=make(task,camera,cabinet_appearance=dict(enabled=True,scheme_id='original'))
+            try:
+                e=env.unwrapped
+                record=dict(task=f'CabinetPouring{task}-Sharpa-v1',env_idx=0,
+                            seed=SEED,door_qpos=angle[0],camera=view,resolution=SIZE,frames=[],
+                            bottle='native' if task=='PickBottle' else 'absent')
+                for sid in SCHEMES:
+                    stage=f'capture_{sid}'
+                    select(env,sid)
+                    rgb=render(env)
+                    file=output/f'{task}_{sid}_env0.png'
+                    Image.fromarray(rgb[0]).save(file)
+                    record['frames'].append(dict(file=file.name,scheme_id=sid,sha256=sha(file)))
+                    dump(f'{task}_capture.json',record)
+                    assert [batch_state(e,i) for i in (0,1)]==state, 'Capture initial state drift'
+                    assert e._cabinet_appearance.schemes==[sid,sid]
+                    np.testing.assert_allclose(e.cabinet.get_qpos().detach().cpu().numpy()[:,0],
+                                               angle,atol=1e-5,rtol=0)
+                    if sid=='original':
+                        assert np.array_equal(ref,rgb), 'Explicit original RGB differs from native'
+                        assert all(snapshot(e,i)==mats[i] for i in (0,1)), 'Original materials differ from native'
+                        row['original_baseline']='passed'
+                    else:
+                        assert not np.array_equal(ref[0],rgb[0]), 'Candidate RGB unchanged'
+                row['capture']='passed'
+                baselines[task]=(camera,state,ref,mats,angle)
+                dump('RESULTS.json',report)
+            finally:
+                env.close()
+            del e, env
+
+        for task,(camera,state,ref,mats,angle) in baselines.items():
+            row=report['results'][task]
+            stage='cabinet_regression_construct'
+            env=make(task,camera,cabinet_appearance=dict(enabled=True,scheme_id='original'))
+            try:
+                e=env.unwrapped
+                for sid in SCHEMES[1:]:
+                    stage=f'{sid}_binding_restore'
+                    select(env,sid)
+                    assert [batch_state(e,i) for i in (0,1)]==state
+                    assert all(snapshot(e,i)[1]==mats[i][1] for i in (0,1)), 'Non-cabinet material changed'
+                    assert snapshot(e,0)[0]!=mats[0][0]
+                    check_material(e,sid)
+                    with Image.open(output/f'{task}_{sid}_env0.png') as image:
+                        assert np.array_equal(render(env)[0],np.asarray(image))
+                    select(env,'original')
+                    assert all(snapshot(e,i)==mats[i] for i in (0,1)), 'Material restore mismatch'
+                    assert np.array_equal(render(env),ref), 'RGB restore mismatch'
+                for sid in SCHEMES[1:]:
+                    stage=f'{sid}_env1_isolation'
+                    env.reset(seed=SEED)
+                    before=snapshot(e,0); before_state=batch_state(e,0)
+                    pre=render(env); before_outside=snapshot(e,1)[1]
+                    select(env,sid,1)
+                    post=render(env)
+                    assert batch_state(e,0)==before_state and snapshot(e,0)==before
+                    assert snapshot(e,1)[1]==before_outside
+                    assert np.array_equal(pre[0],post[0])
+                    assert snapshot(e,1)[0]!=mats[1][0] and e._cabinet_appearance.schemes==['original',sid]
+                    assert not np.array_equal(pre[1],post[1])
+                row.update(regression='passed',restore='passed',isolation='passed',
+                           other_materials='unchanged',door_qpos=angle)
+                dump('RESULTS.json',report)
+            finally:
+                env.close()
+            del e, env
+        report['status']='passed'
+        dump('RESULTS.json',report)
+    except Exception:
+        report.update(status='failed',failed_task=task,failed_stage=stage,traceback=traceback.format_exc()[-8000:])
+        dump('RESULTS.json',report)
+        raise
 
 
 if __name__=='__main__':
