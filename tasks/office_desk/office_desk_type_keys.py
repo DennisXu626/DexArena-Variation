@@ -30,6 +30,8 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.office_desk.reset_scope import OfficeResetScopeMixin, is_full_reset, office_capacity_config
+from tasks.office_desk.devices_appearance import OfficeDevicesAppearance, appearance_enabled
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from mani_skill.utils.geometry.trimesh_utils import get_component_meshes, merge_meshes
@@ -533,19 +535,15 @@ def build_key_target_marker(scene, name="key_target_marker"):
     return builder.build_kinematic(name=name)
 
 
-def move_key_target_marker(marker, key_link, park=False):
-    """Float the marker over `key_link`'s cap, or park it out of sight."""
-    if marker is None:
-        return
+def _key_target_marker_pose(key_link, park=False, pose=None):
     if park or key_link is None:
-        marker.set_pose(sapien.Pose(p=[0.0, 0.0, KEY_MARKER_PARKED_Z]))
-        return
+        return sapien.Pose(p=[0.0, 0.0, KEY_MARKER_PARKED_Z])
     # Place it over the CAP, computed from the link's own collision geometry.
     # Neither the wrapper pose nor the raw entity pose works: this asset gives
     # every key link the same frame origin (the keyboard root) and carries the
     # per-key offset inside the mesh, so all five keys would report one point.
     raw = key_link._objs[0] if hasattr(key_link, "_objs") else key_link
-    pose = raw.entity.pose
+    pose = raw.entity.pose if pose is None else pose
     rot = np.asarray(pose.to_transformation_matrix(), dtype=float)[:3, :3]
     origin = np.asarray(pose.p, dtype=float)
     low = high = None
@@ -562,13 +560,16 @@ def move_key_target_marker(marker, key_link, park=False):
         low = world.min(0) if low is None else np.minimum(low, world.min(0))
         high = world.max(0) if high is None else np.maximum(high, world.max(0))
     if low is None:
-        marker.set_pose(sapien.Pose(p=[0.0, 0.0, KEY_MARKER_PARKED_Z]))
-        return
+        return sapien.Pose(p=[0.0, 0.0, KEY_MARKER_PARKED_Z])
     centre = (low + high) / 2.0
-    marker.set_pose(
-        sapien.Pose(p=[float(centre[0]), float(centre[1]),
-                       float(high[2]) + KEY_MARKER_HEIGHT])
-    )
+    return sapien.Pose(p=[float(centre[0]), float(centre[1]),
+                          float(high[2]) + KEY_MARKER_HEIGHT])
+
+
+def move_key_target_marker(marker, key_link, park=False):
+    """Float the marker over `key_link`'s cap, or park it out of sight."""
+    if marker is not None:
+        marker.set_pose(_key_target_marker_pose(key_link, park=park))
 
 
 PRESS_PAD_SUFFIXES = (("_fingertip", "_elastomer"),)
@@ -597,7 +598,7 @@ def press_contact_link(agent, tip_link):
     render_mode="rgb_array",
     model_id="",
 )
-class OfficeDeskTypeKeysEnv(BaseEnv):
+class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
     """Full-key physical keyboard with a P-A-I-R-Enter success sequence."""
 
     SUPPORTED_ROBOTS = [
@@ -638,9 +639,14 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
         render_height: int = 720,
         num_envs: int = 1,
         reconfiguration_freq=None,
+        office_devices_appearance: dict | None = None,
         **kwargs,
     ):
-        runtime_sim_config = kwargs.pop("sim_config", None)
+        self._office_devices_appearance = (
+            OfficeDevicesAppearance(office_devices_appearance, num_envs, "keyboard", KEYBOARD_ASSET_DIR)
+            if appearance_enabled(office_devices_appearance, num_envs) else None
+        )
+        runtime_sim_config = office_capacity_config(kwargs.pop("sim_config", None), kwargs)
         if runtime_sim_config not in (None, {"control_freq": CONTROL_FREQ}):
             raise ValueError(
                 "DexKeyboardType freezes the Plant configuration in tasks/config/"
@@ -835,9 +841,13 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
                 lb.collision_groups[2] |= 1 << 29
             builder.set_scene_idxs([scene_index])
             builder.initial_pose = sapien.Pose()
+            if self._office_devices_appearance is not None:
+                self._office_devices_appearance.isolate_builder_materials(builder, scene_index)
             keyboard = builder.build(
                 name=f"keyboard-{model_id}-{scene_index}"
             )
+            if self._office_devices_appearance is not None:
+                self._office_devices_appearance.bind(keyboard, scene_index)
             self.remove_from_state_dict_registry(keyboard)
             _configure_task_articulation(keyboard)
 
@@ -895,9 +905,10 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
                     force_limit=KEY_FORCE_LIMIT,
                     mode="force",
                 )
-                joint.set_drive_target(
-                    float(released[key_index])
-                )
+                if not self.scene.gpu_sim_enabled:
+                    joint.set_drive_target(
+                        float(released[key_index])
+                    )
                 if hasattr(joint, "set_friction"):
                     joint.set_friction(
                         KEY_JOINT_FRICTION
@@ -1062,6 +1073,11 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
         for env_id, keyboard in enumerate(
             self._keyboards
         ):
+            if self.scene.gpu_sim_enabled:
+                joints = keyboard.get_active_joints()
+                release_targets = self._all_key_released[env_id].tolist()
+                for joint, target in zip(joints, release_targets, strict=True):
+                    joint.set_drive_target(target)
             qpos = keyboard.get_qpos().clone()
             qvel = keyboard.get_qvel().clone()
             qpos[:] = self._all_key_released[env_id]
@@ -1133,11 +1149,7 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
         arm_indices = [active_names.index(name) for name in arm_names]
         if self.robot_init_qpos_noise > 0 and arm_indices:
             qpos[:, arm_indices] += common.to_tensor(
-                self._episode_rng.normal(
-                    0.0,
-                    self.robot_init_qpos_noise,
-                    (batch_size, len(arm_indices)),
-                ),
+                self._office_normal(env_idx, self.robot_init_qpos_noise, len(arm_indices)),
                 device=self.device,
             )
         self.agent.reset(qpos)
@@ -1157,18 +1169,18 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
             )
             xyz[:, 0] = (
                 KEYBOARD_SPAWN_CENTER[0]
-                + (torch.rand(batch_size, device=self.device) * 2.0 - 1.0)
+                + (self._office_rand(env_idx, ()) * 2.0 - 1.0)
                 * self.keyboard_random_x
             )
             xyz[:, 1] = (
                 KEYBOARD_SPAWN_CENTER[1]
-                + (torch.rand(batch_size, device=self.device) * 2.0 - 1.0)
+                + (self._office_rand(env_idx, ()) * 2.0 - 1.0)
                 * self.keyboard_random_y
             )
             xyz[:, 2] = self.keyboard_zs[env_idx]
 
             yaw = (
-                torch.rand(batch_size, device=self.device) * 2.0 - 1.0
+                self._office_rand(env_idx, ()) * 2.0 - 1.0
             ) * self.keyboard_random_yaw
             for local_index, env_id in enumerate(env_idx.tolist()):
                 yaw[local_index] += float(
@@ -1241,6 +1253,9 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
             self.keyboard_spawn_yaw[env_idx, 0] = yaw
 
             self._reset_agent(env_idx)
+
+        if self._office_devices_appearance is not None:
+            self._office_devices_appearance.finish_reset(env_idx, options)
 
     # ------------------------------------------------------------------
     # State quantities
@@ -1366,6 +1381,17 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
         """Float the marker over whichever cap must be pressed next."""
         marker = getattr(self, "key_target_marker", None)
         if marker is None or not self._target_links:
+            return
+        if self.scene.gpu_sim_enabled and self.num_envs > 1:
+            indices = marker._scene_idxs[marker.scene._reset_mask[marker._scene_idxs]]
+            poses = []
+            for env_id in indices.tolist():
+                links = self._target_links[env_id]
+                slot = int(self.sequence_index[env_id])
+                key = links[slot] if 0 <= slot < len(links) else None
+                poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
+            if poses:
+                marker.set_pose(Pose.create(poses, device=marker.device))
             return
         # sequence_index, not _current_target_slot(): the latter clamps, which
         # would leave the marker sitting on the last cap after the run is done.
@@ -1505,12 +1531,12 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
                 "release_counter": self.release_counter,
             },
         )
-        self.press_started = _state["press_started"]
-        self.press_achieved = _state["press_achieved"]
-        self.hold_completed = _state["hold_completed"]
-        self.press_hold_counter = _state["press_hold_counter"]
-        self.released_after_hold = _state["released_after_hold"]
-        self.release_counter = _state["release_counter"]
+        self.press_started = self._reset_scoped_value(self.press_started, _state["press_started"])
+        self.press_achieved = self._reset_scoped_value(self.press_achieved, _state["press_achieved"])
+        self.hold_completed = self._reset_scoped_value(self.hold_completed, _state["hold_completed"])
+        self.press_hold_counter = self._reset_scoped_value(self.press_hold_counter, _state["press_hold_counter"])
+        self.released_after_hold = self._reset_scoped_value(self.released_after_hold, _state["released_after_hold"])
+        self.release_counter = self._reset_scoped_value(self.release_counter, _state["release_counter"])
 
         # A key cycle ends as soon as the key has validly sprung back for the
         # required release steps. No hover-above-old-key or arm-static phase is
@@ -1534,7 +1560,7 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
 
         # Advance exactly one key after a complete press/hold/release cycle.
         # Reset per-key state so the next target must complete its own cycle.
-        advance_mask = cycle_success & (~self.success_latched)
+        advance_mask = self._reset_scoped_predicate(cycle_success & (~self.success_latched))
         env_ids = torch.arange(self.num_envs, device=self.device)
         completed_slots = self._current_target_slot()
         self.sequence_completed[
@@ -1547,7 +1573,7 @@ class OfficeDeskTypeKeysEnv(BaseEnv):
             self.sequence_index,
         )
         sequence_success = self.sequence_index >= TARGET_SEQUENCE_LENGTH
-        self.success_latched |= sequence_success
+        self.success_latched |= self._reset_scoped_predicate(sequence_success)
         self._update_key_target_marker()
 
         reset_cycle = advance_mask

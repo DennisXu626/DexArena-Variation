@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "version": "office-devices-appearance-v2",
+  "scope": "material_appearance",
+  "schemes": [
+    "original",
+    "variant_1",
+    "variant_2"
+  ],
+  "objects": {
+    "laptop": {
+      "catalog": "assets/appearance/objects/office_desk/laptop/catalog.json",
+      "scheme_map": {
+        "original": "original",
+        "variant_1": "terracotta_matte",
+        "variant_2": "petrol_satin"
+      }
+    },
+    "keyboard": {
+      "catalog": "assets/appearance/objects/office_desk/keyboard/catalog.json",
+      "scheme_map": {
+        "original": "original",
+        "variant_1": "ochre_matte",
+        "variant_2": "indigo_satin"
+      }
+    }
+  },
+  "tasks": {
+    "OpenLaptop": [
+      "laptop"
+    ],
+    "TypeKeys": [
+      "keyboard"
+    ]
+  }
+}
