@@ -197,8 +197,8 @@ class OfficeSelections(unittest.TestCase):
 class OfficePartPreparation(unittest.TestCase):
     def test_triangle_partition_preserves_indices_attributes_and_texture_handle(self):
         from PIL import Image, ImageDraw
-        with tempfile.TemporaryDirectory(dir=ROOT / '.local') as folder:
-            root=Path(folder);source=root/'mesh.obj';source.write_bytes(b'partition source')
+        with tempfile.TemporaryDirectory() as folder, patch.object(M, 'ROOT', Path(folder).resolve()):
+            root=M.ROOT;source=root/'mesh.obj';source.write_bytes(b'partition source')
             texture_path=root/'texture.jpg';texture_path.write_bytes(b'unchanged texture bytes')
             vertices=np.asarray([[0,0,0],[1,0,0],[0,1,0],[2,0,0],[3,0,0],[2,1,0]],dtype=np.float32)
             triangles=np.asarray([[0,1,2],[3,4,5]],dtype=np.uint32)
@@ -211,7 +211,7 @@ class OfficePartPreparation(unittest.TestCase):
             mask=np.zeros((16,16),dtype=np.uint8);mask[10:15,10:15]=255
             rows=[[[10,15]] if 10<=y<15 else [] for y in range(16)]
             proof=root/'proof.json';proof.write_text(__import__('json').dumps({'size':[16,16],'key_mask_rows':rows}),encoding='utf-8')
-            partition={'proof':proof.relative_to(ROOT).as_posix(),'proof_sha256':hashlib.sha256(proof.read_bytes()).hexdigest(),
+            partition={'proof':proof.name,'proof_sha256':hashlib.sha256(proof.read_bytes()).hexdigest(),
                 'texture':'texture.jpg','texture_sha256':hashlib.sha256(texture_path.read_bytes()).hexdigest(),
                 'key_uv_mask_sha256':hashlib.sha256(mask.tobytes()).hexdigest(),'protected_mask_sha256':hashlib.sha256(mask.tobytes()).hexdigest(),
                 'margin_texels':0,'mipmap_levels':1,'safe_triangles':1,
