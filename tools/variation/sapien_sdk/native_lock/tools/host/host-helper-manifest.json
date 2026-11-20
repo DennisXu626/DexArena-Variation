@@ -1,0 +1,79 @@
+{
+  "schema": "dexarena-clean-host-helper-manifest-v1",
+  "scope": "Authoring and CPU static validation only; no helper main, downloads, compilation, native load or GPU run",
+  "copied_sources": {
+    "prepare_physx.py": {
+      "source": "investigation-root/prepare_physx.py",
+      "source_sha256": "ccac7860ffa300795aba5ce59ee518049527d4665a8c006bf5fba09ff872346a",
+      "helper_sha256": "e8659cf3a712e168c36edd332ffcdae99c7edac2128c66a6dc50a9de10e67f2d"
+    },
+    "build_host.py": {
+      "source": "investigation-root/build_host.py",
+      "source_sha256": "6ee5eafc6c3138b2fc79c7eeda715fef29ba3f3602876243fe307632a2234a30",
+      "helper_sha256": "4b98bd2e87d63fe2d527e692ca0155312b47c78672c6cb07e2d6a444bb2fb308"
+    },
+    "stage_host.py": {
+      "source": "investigation-root/stage_host.py",
+      "source_sha256": "b6fef81bb9eb406d31140f46c9a7745643e4be0e9ef5d6e6ac174cc13df61119",
+      "helper_sha256": "2836ff55f447b585080c748b475b2fc8095ca4cb887d278d69dd938dc029a5a8"
+    }
+  },
+  "readme_sha256": "7c1e1deeab420fc5b9a5441d068b133e6ee98555b60e2b52beec1722cb2e120f",
+  "injected_globals": {
+    "all": [
+      "BASE",
+      "VENDOR"
+    ],
+    "build_host.py": [
+      "CMAKE",
+      "NINJA",
+      "VSDEV",
+      "GPU_IDENTITY"
+    ],
+    "stage_host.py": [
+      "GPU_IDENTITY",
+      "DUMPBIN (optional)"
+    ]
+  },
+  "gpu_identity_source": "published v5 lock.runtime_physx; no artifact.json shim",
+  "changes": [
+    "Remove workstation-specific BASE/VENDOR/tool paths; require explicit injection",
+    "Accept explicit build_host.main(argv) for orchestrator arguments",
+    "Replace vendor artifact lookup with injected GPU_IDENTITY and verify both actual DLL SHA256 values",
+    "Retain official Git-blob validation; additionally pin official archive and patch0 source SHA256 values",
+    "Retain two-job limit, raw compiler-prefix capture, UTF-8 CMake input, Ninja header dependencies and source/build/stage manifest guards",
+    "Retain native patch/C capability and the build-only DLL-copy guard; no physics algorithm changes",
+    "Rename local configure command list to configure_command so build_host.main reaches the injected-path guard without shadowing configure()",
+    "At function execution load sibling write_msvc_prefix.py; reuse its strict UTF-8/GetACP fallback decoder and UTF-8 CMake writer, retain raw prefix plus input/projection metadata; ANSI projection is not claimed as actual Ninja encoding"
+  ],
+  "checks": {
+    "python_ast_parsed": true,
+    "personal_default_paths_absent": true,
+    "vendor_artifact_lookups_absent": true,
+    "helper_mains_executed": false,
+    "compiled": false,
+    "downloaded": false,
+    "gpu_run": false,
+    "import_has_no_main_side_effects": true,
+    "uninjected_paths_rejected": true,
+    "published_runtime_physx_mapping_accepted": true,
+    "actual_two_gpu_dll_hashes_checked_read_only": true,
+    "mismatched_gpu_dll_hash_rejected": true,
+    "missing_gpu_identity_rejected": true,
+    "main_functions_executed": false,
+    "compiler_executed": false,
+    "network_executed": false,
+    "extracted_main_with_early_stop_configure_stub_passed": true,
+    "actual_helper_main_executed": false,
+    "common_decoder_loaded_at_function_call": true,
+    "CP936_and_UTF8_prefix_pure_stubs_emit_same_valid_UTF8_CMake": true,
+    "raw_prefix_preserved_in_plan_metadata": true,
+    "input_UTF8_and_payload_helper_SHA_recorded": true,
+    "invalid_prefix_bytes_rejected_strictly": true,
+    "ANSI_projection_marked_candidate_only": true,
+    "native_lock_deps_at_least_20_guard_retained": true,
+    "raw_CMake_payload_claim_superseded": true,
+    "actual_prefix_compiler_main_or_GPU_executed": false,
+    "top_level_msvc_prefix_helper_sha256_in_plan": true
+  }
+}

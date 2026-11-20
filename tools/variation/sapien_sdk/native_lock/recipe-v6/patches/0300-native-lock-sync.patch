@@ -1,0 +1,80 @@
+--- a/include/sapien/physx/physx_system.h
++++ b/include/sapien/physx/physx_system.h
+@@ -38,6 +38,8 @@
+ 
+ // Compiled-library capability; stock 3.0.3 does not provide this symbol.
+ unsigned indexedGpuApplyPatchVersion();
++// Calls a symbol defined by the patched PhysX host object, not a version constant.
++unsigned nativeGpuLockSyncPatchVersion();
+ class PhysxArticulation;
+ class PhysxMaterial;
+ class PhysxRigidBodyComponent;
+--- a/src/physx/physx_system.cpp
++++ b/src/physx/physx_system.cpp
+@@ -32,6 +32,9 @@
+ #include <cuda_runtime.h>
+ #endif
+ 
++// Defined in the patched PhysX ScBodyCore object. Linking stock PhysX must fail.
++extern "C" unsigned dexarena_physx_native_lock_sync_patch_version();
++
+ using namespace physx;
+ namespace sapien {
+ namespace physx {
+@@ -42,6 +45,10 @@
+ #else
+   return 0;
+ #endif
++}
++
++unsigned nativeGpuLockSyncPatchVersion() {
++  return ::dexarena_physx_native_lock_sync_patch_version();
+ }
+ 
+ struct SapienBodyDataTest {
+--- a/python/pybind/physx.cpp
++++ b/python/pybind/physx.cpp
+@@ -194,6 +194,8 @@
+   auto m = sapien.def_submodule("physx");
+   m.def("indexed_gpu_apply_patch_version", &indexedGpuApplyPatchVersion,
+         "Version of the compiled indexed GPU apply fix; zero means unavailable.");
++  m.def("native_gpu_lock_sync_patch_version", &nativeGpuLockSyncPatchVersion,
++        "Version reported by the linked native PhysX lock-sync patch; runtime validation is separate.");
+ 
+   auto PyPhysxSceneConfig = py::classh<PhysxSceneConfig>(m, "PhysxSceneConfig");
+   PyPhysxSceneConfig.def(py::init<>())
+--- a/src/physx/rigid_component.cpp
++++ b/src/physx/rigid_component.cpp
+@@ -133,12 +133,26 @@
+ }
+ 
+ void PhysxRigidDynamicComponent::setLockedMotionAxes(std::array<bool, 6> const &axes) {
+-  getPxActor()->setRigidDynamicLockFlag(PxRigidDynamicLockFlag::eLOCK_LINEAR_X, axes[0]);
+-  getPxActor()->setRigidDynamicLockFlag(PxRigidDynamicLockFlag::eLOCK_LINEAR_Y, axes[1]);
+-  getPxActor()->setRigidDynamicLockFlag(PxRigidDynamicLockFlag::eLOCK_LINEAR_Z, axes[2]);
+-  getPxActor()->setRigidDynamicLockFlag(PxRigidDynamicLockFlag::eLOCK_ANGULAR_X, axes[3]);
+-  getPxActor()->setRigidDynamicLockFlag(PxRigidDynamicLockFlag::eLOCK_ANGULAR_Y, axes[4]);
+-  getPxActor()->setRigidDynamicLockFlag(PxRigidDynamicLockFlag::eLOCK_ANGULAR_Z, axes[5]);
++  PxRigidDynamicLockFlags flags{};
++  if (axes[0]) {
++    flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_X;
++  }
++  if (axes[1]) {
++    flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Y;
++  }
++  if (axes[2]) {
++    flags |= PxRigidDynamicLockFlag::eLOCK_LINEAR_Z;
++  }
++  if (axes[3]) {
++    flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_X;
++  }
++  if (axes[4]) {
++    flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Y;
++  }
++  if (axes[5]) {
++    flags |= PxRigidDynamicLockFlag::eLOCK_ANGULAR_Z;
++  }
++  getPxActor()->setRigidDynamicLockFlags(flags);
+ }
+ std::array<bool, 6> PhysxRigidDynamicComponent::getLockedMotionAxes() const {
+   auto flags = getPxActor()->getRigidDynamicLockFlags();

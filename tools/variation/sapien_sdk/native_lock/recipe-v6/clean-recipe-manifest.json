@@ -1,0 +1,104 @@
+{
+  "schema": "dexarena-clean-v7-visibility-recipe-v1",
+  "status": "recipe_metadata_only_not_downloaded_not_built_not_runtime_validated",
+  "source_recipe_lock_sha256": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+  "source_recipe_files_sha256": {
+    ".gitattributes": "1db49594ea5a9bd1a780b938f5ff33830ed994f0efb98308c09f14d6a3e64613",
+    "build_windows.ps1": "7dddd07a6a4e58f30afdb58ec3603cb3bfae55d44e6e6546f8a9bc21fade51ae",
+    "lock.json": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+    "patches/0001-indexed-gpu-apply.patch": "89013895a06bb1eec1fa06463e3a37c9430159e71ad75896f90ea01f33cc6faf",
+    "patches/0002-indexed-capability.patch": "4117827f52151de92fb3ae36b59c5a770214b3511c245dc68f1c2117ef51f253",
+    "patches/0101-windows-vulkan-cuda.patch": "32b3abfd331830041f1928908bdcddb9766afbc68a511cbe9c73326bbecf546e",
+    "patches/0102-windows-pybind-name.patch": "01758742cd72d4c6fa8271637114d28106b63720ba7e7c82e2150d4e3547c417",
+    "patches/0103-windows-driver-loader.patch": "fa4c8cd69010b63ab9298789039ac7a5c9f9d9cb729dc9e81d9a58e17544be2a",
+    "patches/0200-local-build-version.patch": "787f1afc90e47f7da9a4a59d8e995405bf0db6d2e16558a637573b6cc1d98749",
+    "prepare.py": "401169eefc6441f7adf0ebf2a48377adeeda8ce921329627eee0ef762d415d14",
+    "README.md": "8dd08ab9e39eba609fa3099468b584d4a917ba89ddc6c0a49feef21091076846",
+    "run_check.py": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474",
+    "unpack_wheel.py": "b1214b7caaedc5debb1b5e18c5f6ab73500279ac4e11e4ff140d11eaef3b4870"
+  },
+  "bundle_recipe_lock_sha256": "3885f7c3a8bdb5200e3ed97264c29f5512b3ac2161c030d821c18b8f9da92a3b",
+  "bundle_preparer_sha256": "4e9cd9867e246c076753e391245715c0e5c08acf845889f7c126af1c8a2a6833",
+  "bundle_msvc_prefix_helper_sha256": "180ecfc9142995c0f32abf0bbfb278d5e5a5f62ca0a1bac8465cf77779f74dfd",
+  "additional_patch": {
+    "file": "patches/0300-native-lock-sync.patch",
+    "group": "common",
+    "sha256": "cf38bbf5d653711bc6d3d7dace011d22ae5535555f2acf5591cab88158fbf5c7"
+  },
+  "output_local_version": "3.0.3+dexarena.gpu1.wininterop7",
+  "output_lock_sha256": "1e13f16fd5f3f9a31ae74fa5bda4071f695ccb356294c5b091aeb74627de4eb8",
+  "output_recipe_files_sha256": {
+    ".gitattributes": "1db49594ea5a9bd1a780b938f5ff33830ed994f0efb98308c09f14d6a3e64613",
+    "build_windows.ps1": "520986f2a09976cfe9f6c831b73aebe0f2d88d6b4056de786ebc7bc5c00d5611",
+    "lock.json": "1e13f16fd5f3f9a31ae74fa5bda4071f695ccb356294c5b091aeb74627de4eb8",
+    "patches/0001-indexed-gpu-apply.patch": "89013895a06bb1eec1fa06463e3a37c9430159e71ad75896f90ea01f33cc6faf",
+    "patches/0002-indexed-capability.patch": "4117827f52151de92fb3ae36b59c5a770214b3511c245dc68f1c2117ef51f253",
+    "patches/0101-windows-vulkan-cuda.patch": "32b3abfd331830041f1928908bdcddb9766afbc68a511cbe9c73326bbecf546e",
+    "patches/0102-windows-pybind-name.patch": "01758742cd72d4c6fa8271637114d28106b63720ba7e7c82e2150d4e3547c417",
+    "patches/0103-windows-driver-loader.patch": "fa4c8cd69010b63ab9298789039ac7a5c9f9d9cb729dc9e81d9a58e17544be2a",
+    "patches/0200-local-build-version.patch": "787f1afc90e47f7da9a4a59d8e995405bf0db6d2e16558a637573b6cc1d98749",
+    "patches/0300-native-lock-sync.patch": "cf38bbf5d653711bc6d3d7dace011d22ae5535555f2acf5591cab88158fbf5c7",
+    "prepare.py": "046560e50ca6f8b2f393f4f7df4363f74f2005fb2af43ef55d2319fdebbdb735",
+    "README.md": "7d2a725b3fe0f7ee9593b1722ee23338cff34bf51788d91d7deb45edd6252625",
+    "run_check.py": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474",
+    "unpack_wheel.py": "6422b00b331beff2a935194fe2003bfea283e7a18eb0087b5a418465d732cfae",
+    "write_msvc_prefix.py": "180ecfc9142995c0f32abf0bbfb278d5e5a5f62ca0a1bac8465cf77779f74dfd",
+    "patches/0310-batched-render-visibility.patch": "c2ba1228814bd4d28cc73f8b26cbeb80c30bc73dc24010ad11402898f8921382"
+  },
+  "checks": {
+    "source_recipe_hashes_verified": true,
+    "all_seven_patches_match_LF_hashes": true,
+    "modified_prepare_python_parses": true,
+    "modified_unpack_python_parses": true,
+    "unpack_runtime_writes_after_identity_validation": true,
+    "jobs_limit": 2,
+    "vcvars_toolset_branch": "14.43; exact locked toolset/compiler checks retained",
+    "msvc_prefix_capture": "raw bytes recorded; strict UTF-8 then Windows GetACP decode; UTF-8 CMake input",
+    "process_temp_directory": "work/tmp after VS environment import; no system environment change",
+    "physx_stage_parameter_required": true,
+    "reverse_verifier": "reverse_order_scratch_application",
+    "followup_visibility_apply_check": true,
+    "reference_lfs_objects_checked_by_sha256_before_checkout": true
+  },
+  "not_run": [
+    "source download/preparation",
+    "verify_work against a full prepared source",
+    "PhysX or SAPIEN build/link",
+    "capability import",
+    "GPU simulation",
+    "family regression"
+  ],
+  "visibility_patch": {
+    "file": "patches/0310-batched-render-visibility.patch",
+    "group": "common",
+    "sha256": "c2ba1228814bd4d28cc73f8b26cbeb80c30bc73dc24010ad11402898f8921382"
+  },
+  "visibility_preparer_sha256": "205b9949fdf3f5633b225a24b4f99a8b02e03a016d20363c361285a69e4d0fc7",
+  "visibility_base_artifact_sha256": "1ebbb0366907884e0e3689e26084bafe33a8e82c863f55c5ff67ff123bd438be",
+  "visibility_source_files": {
+    "3rd_party/sapien-vulkan-2/include/svulkan2/scene/scene.h": {
+      "v6_sha256": "e9690abadd731319fc4c1cd0febf8da3c9d5010254e5a1e59a4a9716e757b09f",
+      "v7_expected_lf_sha256": "e15c89c785d8242ffa993e27a7befaeb6926b4415fb4a751dac29d9ad6a1ef95"
+    },
+    "3rd_party/sapien-vulkan-2/src/scene/scene.cpp": {
+      "v6_sha256": "f6ad182db628c2fa5cbb48fdb038d3d4d72130146221676f33d26e32fd97ae51",
+      "v7_expected_lf_sha256": "ca92681e4773377d32e3c9febaa691c397c03edc91463db1d2a271e5599119f8"
+    },
+    "3rd_party/sapien-vulkan-2/src/scene/object.cpp": {
+      "v6_sha256": "f2fed1778c18d273856a960e7fbdb7446e94163675effa7413f20f20e7145afb",
+      "v7_expected_lf_sha256": "a8a102671de9e082555e84d466bd196450ca82035489e3536f88f57436283a22"
+    },
+    "3rd_party/sapien-vulkan-2/include/svulkan2/renderer/renderer.h": {
+      "v6_sha256": "0404e1f3bfe75fd29d43d6c6da943f28192a98f7089f914c71950c3ad9115bfc",
+      "v7_expected_lf_sha256": "fb394ac12bc0f2de905c8fd4ab791f28b67cd3abf3c29061e2045a7bb30e3e7d"
+    },
+    "3rd_party/sapien-vulkan-2/src/renderer/renderer.cpp": {
+      "v6_sha256": "0039414ae92152a697e3287822db0fdd68912d2a8433345c0d27e6331a3e3a8a",
+      "v7_expected_lf_sha256": "af145f5bf61f63f2c8b840a222a7942200d0058e24c5d1dc1721788a87311f9d"
+    },
+    "src/sapien_renderer/batched_render_system.cpp": {
+      "v6_sha256": "c9fa5a1e3a21629b8ac2b9e41e9e0120e86033f2d0a1c3f7069e60aa6d67c0e4",
+      "v7_expected_lf_sha256": "1071898f0bcf8887aa5af4a53c11d3a138ebfd5bc06031aea4f3b4584eea6b71"
+    }
+  }
+}
