@@ -1,5 +1,5 @@
 {
-  "version": "package-opening-preview-v2",
+  "version": "package-opening-preview-v3",
   "objects": {
     "box": {
       "original": {
@@ -26,6 +26,94 @@
         },
         "roughness": 0.68,
         "metallic": 0
+      },
+      "variant_3": {
+        "label": "Sage",
+        "colors": {
+          "body": "#637D68",
+          "flap": "#B8C9AE",
+          "floor": "#E8EBDD",
+          "tab": "#3B5142"
+        },
+        "roughness": 0.76,
+        "metallic": 0
+      },
+      "variant_4": {
+        "label": "Lavender",
+        "colors": {
+          "body": "#79678F",
+          "flap": "#C5B7D5",
+          "floor": "#EEE7F1",
+          "tab": "#514061"
+        },
+        "roughness": 0.68,
+        "metallic": 0
+      },
+      "variant_5": {
+        "label": "Charcoal Rose",
+        "colors": {
+          "body": "#3E454D",
+          "flap": "#AEB7BF",
+          "floor": "#E2E5E7",
+          "tab": "#20272E"
+        },
+        "roughness": 0.76,
+        "metallic": 0
+      },
+      "variant_6": {
+        "label": "Coral",
+        "colors": {
+          "body": "#B96350",
+          "flap": "#E7AC92",
+          "floor": "#F3E1D4",
+          "tab": "#803E32"
+        },
+        "roughness": 0.68,
+        "metallic": 0
+      },
+      "variant_7": {
+        "label": "Mustard Indigo",
+        "colors": {
+          "body": "#BA943B",
+          "flap": "#E6D28E",
+          "floor": "#F4EACB",
+          "tab": "#7E6224"
+        },
+        "roughness": 0.76,
+        "metallic": 0
+      },
+      "variant_8": {
+        "label": "Ocean Ice",
+        "colors": {
+          "body": "#244C73",
+          "flap": "#B8D8EA",
+          "floor": "#E8EFF5",
+          "tab": "#35465C"
+        },
+        "roughness": 0.68,
+        "metallic": 0
+      },
+      "variant_9": {
+        "label": "Sand Ochre",
+        "colors": {
+          "body": "#AF9270",
+          "flap": "#E0CFB0",
+          "floor": "#F1E7D5",
+          "tab": "#755B42"
+        },
+        "roughness": 0.76,
+        "metallic": 0
+      },
+      "variant_10": {
+        "label": "Burgundy Sky",
+        "colors": {
+          "body": "#783C50",
+          "flap": "#C699A7",
+          "floor": "#EEE0E5",
+          "tab": "#4C2332"
+        },
+        "roughness": 0.68,
+        "metallic": 0
       }
     },
     "apple": {
@@ -44,6 +132,70 @@
         "roughness": 0.44,
         "metallic": 0,
         "include_yellow_skin": true
+      },
+      "variant_3": {
+        "label": "Sage",
+        "color": "#C83D42",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_4": {
+        "label": "Lavender",
+        "color": "#DC8735",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_5": {
+        "label": "Charcoal Rose",
+        "color": "#D97DA0",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_6": {
+        "label": "Coral",
+        "color": "#B8C96B",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_7": {
+        "label": "Mustard Indigo",
+        "color": "#8252A1",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_8": {
+        "label": "Ocean Ice",
+        "color": "#E8E1CF",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_9": {
+        "label": "Sand Ochre",
+        "color": "#453345",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
+      },
+      "variant_10": {
+        "label": "Burgundy Sky",
+        "color": "#47AEB8",
+        "roughness": 0.4,
+        "metallic": 0,
+        "include_yellow_skin": true,
+        "match_target_value": true
       }
     },
     "plate": {
@@ -60,6 +212,54 @@
         "label": "Ivory Satin Glaze",
         "color": "#EFE0BC",
         "roughness": 0.54,
+        "metallic": 0
+      },
+      "variant_3": {
+        "label": "Sage",
+        "color": "#E7B19A",
+        "roughness": 0.42,
+        "metallic": 0
+      },
+      "variant_4": {
+        "label": "Lavender",
+        "color": "#414A53",
+        "roughness": 0.76,
+        "metallic": 0
+      },
+      "variant_5": {
+        "label": "Charcoal Rose",
+        "color": "#985468",
+        "roughness": 0.54,
+        "metallic": 0
+      },
+      "variant_6": {
+        "label": "Coral",
+        "color": "#653D70",
+        "roughness": 0.28,
+        "metallic": 0
+      },
+      "variant_7": {
+        "label": "Mustard Indigo",
+        "color": "#414F8D",
+        "roughness": 0.5,
+        "metallic": 0
+      },
+      "variant_8": {
+        "label": "Ocean Ice",
+        "color": "#A4D0C9",
+        "roughness": 0.25,
+        "metallic": 0
+      },
+      "variant_9": {
+        "label": "Sand Ochre",
+        "color": "#C58C3E",
+        "roughness": 0.58,
+        "metallic": 0
+      },
+      "variant_10": {
+        "label": "Burgundy Sky",
+        "color": "#8ABDDD",
+        "roughness": 0.25,
         "metallic": 0
       }
     }
@@ -79,6 +279,46 @@
       "box": "blue_gray",
       "apple": "green",
       "plate": "ivory_satin"
+    },
+    "variant_3": {
+      "box": "variant_3",
+      "apple": "variant_3",
+      "plate": "variant_3"
+    },
+    "variant_4": {
+      "box": "variant_4",
+      "apple": "variant_4",
+      "plate": "variant_4"
+    },
+    "variant_5": {
+      "box": "variant_5",
+      "apple": "variant_5",
+      "plate": "variant_5"
+    },
+    "variant_6": {
+      "box": "variant_6",
+      "apple": "variant_6",
+      "plate": "variant_6"
+    },
+    "variant_7": {
+      "box": "variant_7",
+      "apple": "variant_7",
+      "plate": "variant_7"
+    },
+    "variant_8": {
+      "box": "variant_8",
+      "apple": "variant_8",
+      "plate": "variant_8"
+    },
+    "variant_9": {
+      "box": "variant_9",
+      "apple": "variant_9",
+      "plate": "variant_9"
+    },
+    "variant_10": {
+      "box": "variant_10",
+      "apple": "variant_10",
+      "plate": "variant_10"
     }
   }
 }

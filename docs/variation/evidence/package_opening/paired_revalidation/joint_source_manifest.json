@@ -1,0 +1,22 @@
+{
+  "base": "aee41a3",
+  "working_tree": "uncommitted snapshot",
+  "files": {
+    "tasks/meal_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/meal_preparation/appearance.py": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+    "tasks/meal_preparation/appearance_textures.py": "a6da38488ee40f5cf01222efc92c98a8f37b99b57e05cd518e3e7ffe24991484",
+    "tasks/meal_preparation/meal_preparation_long.py": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+    "tasks/meal_preparation/meal_preparation_open_lunch_box.py": "8a298497da1c4001767b2f654a7e790a2ce2fcc0801d50864615caa7ddc67cb0",
+    "tasks/meal_preparation/meal_preparation_place_bread.py": "b71c20aa1f7e298afbc3bbd19d6a1faf7b7b3b7997bc15ef263b6f38fca389cc",
+    "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "d6c1d6218e37fce19e90610bed2bbf2e5354295725800f6955fbe5b195f3d8f8",
+    "tasks/assets/variation/meal_preparation/v1/catalog.json": "f09cc4030ff1ae20f100d240981285d2f5f719b779e6953fa0ea4b9994996063",
+    "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/package_opening/appearance.py": "f8251353e0a2cbbc0f6a5073765c285b2d73867049cb57e9aaa804b0c0465e18",
+    "tasks/package_opening/package_opening_extract_apple.py": "dc8d2577c3e693ac372ee4cc1590306619833b889a2003da93c49dbc105b97c1",
+    "tasks/package_opening/package_opening_long.py": "9f6b353a03df28f000ab8103b65868d143877b2555fc663e1507bd6c33a2887e",
+    "tasks/package_opening/package_opening_open_package.py": "316830470eed9eba9f87737660a2cb1f66a60ab4810f7a9656c0fbe0a460ba49",
+    "tasks/assets/variation/package_opening/v1/catalog.json": "cf9e6763ebac31810add109eb5a256ea9e5024524c26eea0569c2ad3f2257d35",
+    "tools/variation/check_ten_environment_paired.py": "ed71766c8ddccdd30f11a1c3100c382618b1f0c3444b188ba9a53cb6b1881d7a",
+    "tools/variation/check_package_short_trace_paired.py": "111aa4dcd16c3865f2055a0eb3bc4d46be44b6b01828d6e00a3b162ed4b8ac95"
+  }
+}

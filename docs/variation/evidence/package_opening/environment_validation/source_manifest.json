@@ -1,0 +1,17 @@
+{
+  "base": "aee41a3439287a17ce9d4c14c6320fa6f5b4579d",
+  "working_tree": "uncommitted snapshot",
+  "files": {
+    "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/package_opening/appearance.py": "f8251353e0a2cbbc0f6a5073765c285b2d73867049cb57e9aaa804b0c0465e18",
+    "tasks/package_opening/package_opening_extract_apple.py": "dc8d2577c3e693ac372ee4cc1590306619833b889a2003da93c49dbc105b97c1",
+    "tasks/package_opening/package_opening_long.py": "9f6b353a03df28f000ab8103b65868d143877b2555fc663e1507bd6c33a2887e",
+    "tasks/package_opening/package_opening_open_package.py": "316830470eed9eba9f87737660a2cb1f66a60ab4810f7a9656c0fbe0a460ba49",
+    "tasks/assets/variation/package_opening/v1/catalog.json": "cf9e6763ebac31810add109eb5a256ea9e5024524c26eea0569c2ad3f2257d35",
+    "tools/variation/check_ten_environment.py": "024ebca69b6b3c1c6e7268732cb3d789d07e15e7272f8515f554dadf25b19373",
+    "tools/variation/check_package_short_trace.py": "124d8e84d0a93acfddf605e3da10dd1ea74bbf84545854a826d9f5faa284f80f",
+    "tools/variation/check_package_native_trace.py": "211913f311d719f4eea34f0247eab0f8a1b3148f5821cbb4a8284cb2a4423fdd"
+  },
+  "open_checker": "inputs/checker-123844.py",
+  "extract_long_checker": "inputs/checker-123846.py"
+}

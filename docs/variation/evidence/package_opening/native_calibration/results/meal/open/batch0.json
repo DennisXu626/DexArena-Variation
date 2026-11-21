@@ -1,0 +1,2023 @@
+{
+  "job": "124658",
+  "gpu": "7",
+  "batch": 0,
+  "family": "meal",
+  "task": "MealPreparationOpenLunchBox-Sharpa-v1",
+  "seed_schedule": [
+    7,
+    7,
+    7,
+    19,
+    41
+  ],
+  "rows": [
+    {
+      "repeat": 0,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 2,
+              "mean_abs": 1.3020833333333334e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  16,
+                  274
+                ],
+                [
+                  23,
+                  259
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  447,
+                  452
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 216,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 87,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 11542,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1548,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4518,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1208,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 4.470348358154297e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 4,
+              "pixels": 4,
+              "mean_abs": 1.736111111111111e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  18,
+                  259
+                ],
+                [
+                  19,
+                  272
+                ],
+                [
+                  20,
+                  273
+                ],
+                [
+                  22,
+                  272
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 5.651403356481481e-07,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  436,
+                  488
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 230,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 99,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 13889,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 956,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4508,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1189,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 1,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 2,
+              "mean_abs": 1.3020833333333334e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  16,
+                  274
+                ],
+                [
+                  23,
+                  259
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  447,
+                  452
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 216,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 87,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 11542,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1548,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4518,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1208,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 4.470348358154297e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 4,
+              "pixels": 4,
+              "mean_abs": 1.736111111111111e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  18,
+                  259
+                ],
+                [
+                  19,
+                  272
+                ],
+                [
+                  20,
+                  273
+                ],
+                [
+                  22,
+                  272
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 5.651403356481481e-07,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  436,
+                  488
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 230,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 99,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 13889,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 956,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4508,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1189,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 2,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 2,
+              "mean_abs": 1.3020833333333334e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  16,
+                  274
+                ],
+                [
+                  23,
+                  259
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  447,
+                  452
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 216,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 87,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 11542,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1548,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4518,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1208,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 4.470348358154297e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 4,
+              "pixels": 4,
+              "mean_abs": 1.736111111111111e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  18,
+                  259
+                ],
+                [
+                  19,
+                  272
+                ],
+                [
+                  20,
+                  273
+                ],
+                [
+                  22,
+                  272
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 5.651403356481481e-07,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  436,
+                  488
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 230,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 99,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 13889,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 956,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4508,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1189,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 3,
+      "seed": 19,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 4.340277777777778e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  32,
+                  257
+                ]
+              ]
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 216,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 86,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 11542,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1261,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4518,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1235,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 7.450580596923828e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 6,
+              "pixels": 3,
+              "mean_abs": 2.604166666666667e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  7,
+                  285
+                ],
+                [
+                  18,
+                  257
+                ],
+                [
+                  31,
+                  254
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  430,
+                  500
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 230,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 95,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 13889,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1198,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4508,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1190,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 4,
+      "seed": 41,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 4,
+              "pixels": 4,
+              "mean_abs": 1.736111111111111e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  3,
+                  268
+                ],
+                [
+                  22,
+                  258
+                ],
+                [
+                  23,
+                  257
+                ],
+                [
+                  27,
+                  252
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  445,
+                  464
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 216,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 82,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 11542,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1192,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4518,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1239,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 1.1920928955078125e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 7.450580596923828e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 5,
+              "pixels": 3,
+              "mean_abs": 2.170138888888889e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  12,
+                  273
+                ],
+                [
+                  13,
+                  256
+                ],
+                [
+                  13,
+                  280
+                ]
+              ]
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 230,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 95,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 13889,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1050,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4508,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1181,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    }
+  ],
+  "native_only": true
+}

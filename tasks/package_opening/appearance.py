@@ -23,12 +23,12 @@ def linear_rgba(color):
             for v in srgb_hex(color)] + [1.0]
 
 
-def recolor_apple(source, target, include_yellow_skin=False):
+def recolor_apple(source, target, include_yellow_skin=False, match_target_value=False):
     rgb = source.convert("RGB")
     rgba = source.convert("RGBA")
     hsv = np.asarray(rgb.convert("HSV"), dtype=np.float32) / 255
     hue, sat, value = np.moveaxis(hsv, -1, 0)
-    target_h, target_s, _ = colorsys.rgb_to_hsv(*srgb_hex(target))
+    target_h, target_s, target_v = colorsys.rgb_to_hsv(*srgb_hex(target))
     hue_delta = (hue + .5) % 1 - .5
     # Red, saturated fruit skin only. Fade the mask over hue, saturation and
     # near-black pixels so highlights, stem recess and neutral detail survive.
@@ -46,9 +46,11 @@ def recolor_apple(source, target, include_yellow_skin=False):
         sat_weight = np.clip((sat - .095) / .265, 0, 1)
         hue_spread = .16
     weight = (hue_weight * sat_weight * dark_weight)[..., None]
+    mapped_value = (target_v * np.clip(value / .85, 0, 1) if match_target_value
+                    else np.clip(value * .96 + .02, 0, 1))
     mapped = np.stack(((target_h + hue_spread * hue_delta) % 1,
                        np.clip(sat * target_s / .82, 0, 1),
-                       np.clip(value * .96 + .02, 0, 1)), axis=-1)
+                       mapped_value), axis=-1)
     recolored = np.asarray(Image.fromarray(np.rint(mapped * 255).astype(np.uint8), "HSV").convert("RGB"),
                            dtype=np.float32)
     result = np.asarray(rgba).copy()
@@ -186,7 +188,8 @@ class PackageAppearance:
                                 if choice not in self.apple_pixels:
                                     self.apple_pixels[choice], _ = recolor_apple(
                                         Image.fromarray(self.apple_pixels["original"]),
-                                        recipe["color"], recipe.get("include_yellow_skin", False)
+                                        recipe["color"], recipe.get("include_yellow_skin", False),
+                                        recipe.get("match_target_value", False)
                                     )
                                 # Keep the bound Vulkan texture descriptor stable across partial resets.
                                 material.base_color_texture.upload(self.apple_pixels[choice])

@@ -28,3 +28,7 @@ V1对象键：`package_opening/package`；V2对应键：`package_box`。代码�
 variant_1→kraft暖棕；variant_2→blue_gray蓝灰。body15／flap2／tab2／floor1／accent1槽按角色绑定，粉色色带accent保留原版。盒内苹果拼图的盒体仍original，不能据此声称两套开盖纸盒都已视觉核对。
 
 无数字方案入口；env_idx、材质槽、recipe ID和方案序号分别记录。开包装／取苹果／Long接入及87021限定双环境证据保留；受控成功判定不代表完整机器人轨迹，GPU随机路径未验证。
+
+## 十套扩展候选
+
+原两套保留，新增八套已生成G7真实任务场景预览，待用户审图及后续并行验证；见[十套方案](../../../../../docs/variation/PACKAGE_EXPAND_TO_10.md)。不将新八套标为正式验收通过。

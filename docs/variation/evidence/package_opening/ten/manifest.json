@@ -1,0 +1,636 @@
+{
+  "job": "123820",
+  "gpu": "7",
+  "backend": "CPU physics + GPU rendering",
+  "seed": 7,
+  "schemes": [
+    "original",
+    "variant_1",
+    "variant_2",
+    "variant_3",
+    "variant_4",
+    "variant_5",
+    "variant_6",
+    "variant_7",
+    "variant_8",
+    "variant_9",
+    "variant_10"
+  ],
+  "catalog_version": "package-opening-preview-v3",
+  "catalog_sha256": "cf9e6763ebac31810add109eb5a256ea9e5024524c26eea0569c2ad3f2257d35",
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "views": {
+    "box_closed": {
+      "reference": {
+        "task": "PackageOpeningOpenPackage-Sharpa-v1",
+        "poses": {
+          "box": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10383625328540802,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "qpos": [
+          [
+            -2.2237906455993652,
+            -2.0294687747955322
+          ]
+        ],
+        "camera_p": [
+          -0.15319953858852386,
+          -0.5226809978485107,
+          0.4438362419605255
+        ],
+        "camera_q": [
+          0.654223620891571,
+          -0.2683122456073761,
+          0.2683122456073761,
+          0.654223620891571
+        ],
+        "fovy": 0.85
+      },
+      "records": {
+        "original": {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 2
+        },
+        "variant_1": {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 3
+        },
+        "variant_2": {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 4
+        },
+        "variant_3": {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 5
+        },
+        "variant_4": {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 6
+        },
+        "variant_5": {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 7
+        },
+        "variant_6": {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 8
+        },
+        "variant_7": {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 9
+        },
+        "variant_8": {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 10
+        },
+        "variant_9": {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 11
+        },
+        "variant_10": {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 12
+        }
+      }
+    },
+    "box_open": {
+      "reference": {
+        "task": "PackageOpeningExtractApple-Sharpa-v1",
+        "poses": {
+          "box": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10383625328540802,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "apple": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10121549665927887,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "plate": [
+            [
+              -0.1677524894475937,
+              0.3087414801120758,
+              0.012000000104308128,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "qpos": [
+          [
+            -0.306390643119812,
+            -0.11206885427236557
+          ]
+        ],
+        "camera_p": [
+          -0.15319953858852386,
+          -0.5626810193061829,
+          0.5338362455368042
+        ],
+        "camera_q": [
+          0.6566961407661438,
+          -0.2622024714946747,
+          0.2622024714946747,
+          0.6566962003707886
+        ],
+        "fovy": 0.93
+      },
+      "records": {
+        "original": {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 2
+        },
+        "variant_1": {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 3
+        },
+        "variant_2": {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 4
+        },
+        "variant_3": {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 5
+        },
+        "variant_4": {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 6
+        },
+        "variant_5": {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 7
+        },
+        "variant_6": {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 8
+        },
+        "variant_7": {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 9
+        },
+        "variant_8": {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 10
+        },
+        "variant_9": {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 11
+        },
+        "variant_10": {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 12
+        }
+      }
+    },
+    "apple": {
+      "reference": {
+        "task": "PackageOpeningExtractApple-Sharpa-v1",
+        "poses": {
+          "box": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10383625328540802,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "apple": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10121549665927887,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "plate": [
+            [
+              -0.1677524894475937,
+              0.3087414801120758,
+              0.012000000104308128,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "qpos": [
+          [
+            -0.306390643119812,
+            -0.11206885427236557
+          ]
+        ],
+        "camera_p": [
+          -0.15319953858852386,
+          -0.18768100440502167,
+          0.34121549129486084
+        ],
+        "camera_q": [
+          0.525676429271698,
+          -0.47293156385421753,
+          0.47293156385421753,
+          0.525676429271698
+        ],
+        "fovy": 0.65
+      },
+      "records": {
+        "original": {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 2
+        },
+        "variant_1": {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 3
+        },
+        "variant_2": {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 4
+        },
+        "variant_3": {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 5
+        },
+        "variant_4": {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 6
+        },
+        "variant_5": {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 7
+        },
+        "variant_6": {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 8
+        },
+        "variant_7": {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 9
+        },
+        "variant_8": {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 10
+        },
+        "variant_9": {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 11
+        },
+        "variant_10": {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 12
+        }
+      }
+    },
+    "apple_in_box": {
+      "reference": {
+        "task": "PackageOpeningExtractApple-Sharpa-v1",
+        "poses": {
+          "box": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10383625328540802,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "apple": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10121549665927887,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "plate": [
+            [
+              -0.1677524894475937,
+              0.3087414801120758,
+              0.012000000104308128,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "qpos": [
+          [
+            -0.306390643119812,
+            -0.11206885427236557
+          ]
+        ],
+        "camera_p": [
+          -0.15319953858852386,
+          -0.4726809859275818,
+          0.6912155151367188
+        ],
+        "camera_q": [
+          0.610120415687561,
+          -0.35742563009262085,
+          0.35742563009262085,
+          0.6101203560829163
+        ],
+        "fovy": 0.76
+      },
+      "records": {
+        "original": {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 2
+        },
+        "variant_1": {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 3
+        },
+        "variant_2": {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 4
+        },
+        "variant_3": {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 5
+        },
+        "variant_4": {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 6
+        },
+        "variant_5": {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 7
+        },
+        "variant_6": {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 8
+        },
+        "variant_7": {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 9
+        },
+        "variant_8": {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 10
+        },
+        "variant_9": {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 11
+        },
+        "variant_10": {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 12
+        }
+      }
+    },
+    "plate": {
+      "reference": {
+        "task": "PackageOpeningExtractApple-Sharpa-v1",
+        "poses": {
+          "box": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10383625328540802,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "apple": [
+            [
+              -0.15319953858852386,
+              -0.1626809984445572,
+              0.10121549665927887,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "plate": [
+            [
+              -0.1677524894475937,
+              0.3087414801120758,
+              0.012000000104308128,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "qpos": [
+          [
+            -0.306390643119812,
+            -0.11206885427236557
+          ]
+        ],
+        "camera_p": [
+          -0.1677524894475937,
+          0.2687414884567261,
+          0.3720000088214874
+        ],
+        "camera_q": [
+          0.5276235938072205,
+          -0.47075825929641724,
+          0.47075825929641724,
+          0.5276235938072205
+        ],
+        "fovy": 0.8
+      },
+      "records": {
+        "original": {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 2
+        },
+        "variant_1": {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 3
+        },
+        "variant_2": {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 4
+        },
+        "variant_3": {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 5
+        },
+        "variant_4": {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 6
+        },
+        "variant_5": {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 7
+        },
+        "variant_6": {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 8
+        },
+        "variant_7": {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 9
+        },
+        "variant_8": {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 10
+        },
+        "variant_9": {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 11
+        },
+        "variant_10": {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "catalog_version": "package-opening-preview-v3",
+          "episode_index": 12
+        }
+      }
+    }
+  }
+}

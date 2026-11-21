@@ -1,0 +1,27 @@
+JobId=125106 JobName=pb-min-diag
+   UserId=pb(1044) GroupId=pb(1044) MCS_label=N/A
+   Priority=1 Nice=0 Account=(null) QOS=normal
+   JobState=FAILED Reason=NonZeroExitCode Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0
+   RunTime=00:00:25 TimeLimit=00:15:00 TimeMin=N/A
+   SubmitTime=2026-11-21T06:43:13 EligibleTime=2026-11-21T06:43:13
+   AccrueTime=2026-11-21T06:43:13
+   StartTime=2026-11-21T06:43:13 EndTime=2026-11-21T06:43:38 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-21T06:43:13 Scheduler=Main
+   Partition=a800 AllocNode:Sid=lyg0295:2306686
+   ReqNodeList=lyg0295 ExcNodeList=(null)
+   NodeList=lyg0295
+   BatchHost=lyg0295
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=2,mem=474480M,node=1,billing=2,gres/shard=1
+   AllocTRES=cpu=2,node=1,billing=2,gres/shard=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/home/pb/minimal-diagnosis-20261121/run.sh
+   WorkDir=/data/home/pb/minimal-diagnosis-20261121
+   StdErr=/data/home/pb/minimal-diagnosis-20261121/slurm-125106.out
+   StdIn=/dev/null
+   StdOut=/data/home/pb/minimal-diagnosis-20261121/slurm-125106.out
+   TresPerNode=gres/shard:idx7:1

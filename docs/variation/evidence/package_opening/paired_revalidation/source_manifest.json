@@ -1,0 +1,14 @@
+{
+  "base": "aee41a3",
+  "working_tree": "uncommitted snapshot",
+  "files": {
+    "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/package_opening/appearance.py": "f8251353e0a2cbbc0f6a5073765c285b2d73867049cb57e9aaa804b0c0465e18",
+    "tasks/package_opening/package_opening_extract_apple.py": "dc8d2577c3e693ac372ee4cc1590306619833b889a2003da93c49dbc105b97c1",
+    "tasks/package_opening/package_opening_long.py": "9f6b353a03df28f000ab8103b65868d143877b2555fc663e1507bd6c33a2887e",
+    "tasks/package_opening/package_opening_open_package.py": "316830470eed9eba9f87737660a2cb1f66a60ab4810f7a9656c0fbe0a460ba49",
+    "tasks/assets/variation/package_opening/v1/catalog.json": "cf9e6763ebac31810add109eb5a256ea9e5024524c26eea0569c2ad3f2257d35",
+    "tools/variation/check_ten_environment_paired.py": "ed71766c8ddccdd30f11a1c3100c382618b1f0c3444b188ba9a53cb6b1881d7a",
+    "tools/variation/check_package_short_trace_paired.py": "111aa4dcd16c3865f2055a0eb3bc4d46be44b6b01828d6e00a3b162ed4b8ac95"
+  }
+}
