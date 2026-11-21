@@ -1,0 +1,242 @@
+{
+  "plate": {
+    "task": "MealPreparationPlaceBread-Sharpa-v1",
+    "seed": 7,
+    "scene": {
+      "pose": [
+        [
+          -0.12071431428194046,
+          -0.5338303446769714,
+          0.023655399680137634,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "box_qpos": [
+        [
+          1.630930781364441
+        ]
+      ],
+      "camera_p": [
+        -0.12071431428194046,
+        -0.653830349445343,
+        0.5736554265022278
+      ],
+      "camera_q": [
+        0.5517469048500061,
+        -0.442238986492157,
+        0.442238986492157,
+        0.5517469644546509
+      ],
+      "fovy": 0.83
+    },
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2",
+      "variant_3",
+      "variant_4",
+      "variant_5",
+      "variant_6",
+      "variant_7",
+      "variant_8",
+      "variant_9",
+      "variant_10"
+    ],
+    "backend": "CPU physics + GPU rendering; native reset state"
+  },
+  "spoon": {
+    "task": "MealPreparationScoopTomato-Sharpa-v1",
+    "seed": 7,
+    "scene": {
+      "pose": [
+        [
+          -0.05629526823759079,
+          -0.26621854305267334,
+          0.030132748186588287,
+          -0.5,
+          0.5,
+          0.5,
+          -0.5
+        ]
+      ],
+      "box_qpos": [
+        [
+          1.630930781364441
+        ]
+      ],
+      "camera_p": [
+        -0.03129526972770691,
+        -0.26621854305267334,
+        0.5101327300071716
+      ],
+      "camera_q": [
+        -0.0,
+        0.7071067690849304,
+        0.0,
+        -0.7071067690849304
+      ],
+      "fovy": 0.87
+    },
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2",
+      "variant_3",
+      "variant_4",
+      "variant_5",
+      "variant_6",
+      "variant_7",
+      "variant_8",
+      "variant_9",
+      "variant_10"
+    ],
+    "backend": "CPU physics + GPU rendering; native reset state"
+  },
+  "bread": {
+    "task": "MealPreparationPlaceBread-Sharpa-v1",
+    "seed": 7,
+    "scene": {
+      "pose": [
+        [
+          -0.24215199053287506,
+          -0.11683441698551178,
+          0.020780157297849655,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "box_qpos": [
+        [
+          1.630930781364441
+        ]
+      ],
+      "camera_p": [
+        -0.24215199053287506,
+        -0.21183441579341888,
+        0.2507801651954651
+      ],
+      "camera_q": [
+        0.5915012359619141,
+        -0.3874613642692566,
+        0.3874613642692566,
+        0.5915011763572693
+      ],
+      "fovy": 0.77
+    },
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2",
+      "variant_3",
+      "variant_4",
+      "variant_5",
+      "variant_6",
+      "variant_7",
+      "variant_8",
+      "variant_9",
+      "variant_10"
+    ],
+    "backend": "CPU physics + GPU rendering; native reset state"
+  },
+  "ball_food": {
+    "task": "MealPreparationScoopTomato-Sharpa-v1",
+    "seed": 7,
+    "scene": {
+      "pose": [
+        [
+          -0.18822942674160004,
+          0.07791534811258316,
+          0.04542941227555275,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "box_qpos": [
+        [
+          1.630930781364441
+        ]
+      ],
+      "camera_p": [
+        -0.18822942674160004,
+        -0.007084651850163937,
+        0.2754293978214264
+      ],
+      "camera_q": [
+        0.5837960243225098,
+        -0.3989764451980591,
+        0.3989764451980591,
+        0.583795964717865
+      ],
+      "fovy": 0.62
+    },
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2",
+      "variant_3",
+      "variant_4",
+      "variant_5",
+      "variant_6",
+      "variant_7",
+      "variant_8",
+      "variant_9",
+      "variant_10"
+    ],
+    "backend": "CPU physics + GPU rendering; native reset state"
+  },
+  "box": {
+    "task": "MealPreparationOpenLunchBox-Sharpa-v1",
+    "seed": 7,
+    "scene": {
+      "pose": [
+        [
+          -0.1868990659713745,
+          0.07308849692344666,
+          3.725290298461914e-09,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "box_qpos": [
+        [
+          0.05999999865889549
+        ]
+      ],
+      "camera_p": [
+        0.13310092687606812,
+        -0.3269115090370178,
+        0.4000000059604645
+      ],
+      "camera_q": [
+        0.4937686026096344,
+        -0.06451047211885452,
+        0.5061547756195068,
+        0.7041578888893127
+      ],
+      "fovy": 0.78
+    },
+    "schemes": [
+      "original",
+      "variant_1",
+      "variant_2",
+      "variant_3",
+      "variant_4",
+      "variant_5",
+      "variant_6",
+      "variant_7",
+      "variant_8",
+      "variant_9",
+      "variant_10"
+    ],
+    "backend": "CPU physics + GPU rendering; native reset state"
+  }
+}

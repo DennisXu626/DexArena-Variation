@@ -1,5 +1,5 @@
 {
-  "version": "meal-preparation-v1",
+  "version": "meal-preparation-v3",
   "schemes": {
     "original": {},
     "variant_1": {
@@ -30,7 +30,7 @@
       "bread": {
         "Material.052": {
           "color": "#FFFFFF",
-          "texture": "bagel_light_generated.png",
+          "texture": "bagel_roast01_generated.png",
           "roughness": 0.76,
           "metallic": 0
         }
@@ -89,7 +89,7 @@
       "bread": {
         "Material.052": {
           "color": "#FFFFFF",
-          "texture": "bagel_dark_generated.png",
+          "texture": "bagel_roast02_generated.png",
           "roughness": 0.76,
           "metallic": 0
         }
@@ -115,6 +115,470 @@
         "box_lid": {
           "color": "#C48679",
           "roughness": 0.38,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_3": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#E8DAB6",
+          "roughness": 0.44,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#C6BEA6",
+          "roughness": 0.44,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#C6C9BD",
+          "roughness": 0.42,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#667C54",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast03_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#D87532",
+          "roughness": 0.52,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#536B50",
+          "roughness": 0.76,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#EEE9D8",
+          "roughness": 0.76,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#A8BA91",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_4": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#E2A18D",
+          "roughness": 0.32,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#BA7362",
+          "roughness": 0.32,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#B8C7CE",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#CE765D",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast04_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#9CCB45",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#233F54",
+          "roughness": 0.48,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#E1E9E5",
+          "roughness": 0.48,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#527B8B",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_5": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#343C43",
+          "roughness": 0.52,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#687179",
+          "roughness": 0.52,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#777C80",
+          "roughness": 0.42,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#D3AA43",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast05_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#36B8BD",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#B18B31",
+          "roughness": 0.65,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#F2E9CE",
+          "roughness": 0.65,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#DDC47C",
+          "roughness": 0.65,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_6": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#DDD2E4",
+          "roughness": 0.36,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#9C8AA9",
+          "roughness": 0.36,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#CBC2D2",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#58415F",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast06_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#4268D0",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#76658C",
+          "roughness": 0.58,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#ECE5EE",
+          "roughness": 0.58,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#B7A5C6",
+          "roughness": 0.58,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_7": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#B8BEC0",
+          "roughness": 0.3,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#747F85",
+          "roughness": 0.3,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#BDB8B1",
+          "roughness": 0.42,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#75384E",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast07_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#8650C4",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#722F43",
+          "roughness": 0.42,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#F0E1DA",
+          "roughness": 0.42,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#B16C7A",
+          "roughness": 0.42,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_8": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#254C42",
+          "roughness": 0.25,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#6C8974",
+          "roughness": 0.25,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#B3BDB7",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#D4B681",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast08_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#E788B1",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#478D87",
+          "roughness": 0.4,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#E6EFE5",
+          "roughness": 0.4,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#A3CCC1",
+          "roughness": 0.4,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_9": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#C68A32",
+          "roughness": 0.48,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#805638",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#B87333",
+          "roughness": 0.34,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#E7DCC5",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast09_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#E9E3D5",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#B59A77",
+          "roughness": 0.84,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#F5EBDD",
+          "roughness": 0.84,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#E0CFAB",
+          "roughness": 0.84,
+          "metallic": 0
+        }
+      }
+    },
+    "variant_10": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#6C7883",
+          "roughness": 0.34,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#C6CCD0",
+          "roughness": 0.34,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#4E5963",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#9C6248",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast10_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#41454C",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#D5D9DA",
+          "roughness": 0.54,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#AAB4BB",
+          "roughness": 0.54,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#F1F0E9",
+          "roughness": 0.54,
           "metallic": 0
         }
       }

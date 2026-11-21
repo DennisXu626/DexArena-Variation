@@ -1,0 +1,10 @@
+{
+  "base": "aee41a3439287a17ce9d4c14c6320fa6f5b4579d",
+  "parent_source_manifest": "../ten_source_manifest.json",
+  "state": "uncommitted working tree",
+  "overrides": {
+    "tasks/assets/variation/meal_preparation/v1/catalog.json": "f09cc4030ff1ae20f100d240981285d2f5f719b779e6953fa0ea4b9994996063",
+    "tasks/meal_preparation/appearance_textures.py": "a6da38488ee40f5cf01222efc92c98a8f37b99b57e05cd518e3e7ffe24991484"
+  },
+  "deployed_source_hashes": "deployed-sha256.txt"
+}

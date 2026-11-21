@@ -1,0 +1,27 @@
+JobId=123834 JobName=pb-meal-rest
+   UserId=pb(1044) GroupId=pb(1044) MCS_label=N/A
+   Priority=1 Nice=0 Account=(null) QOS=normal
+   JobState=FAILED Reason=NonZeroExitCode Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0
+   RunTime=00:03:30 TimeLimit=00:20:00 TimeMin=N/A
+   SubmitTime=2026-11-20T09:21:40 EligibleTime=2026-11-20T09:21:40
+   AccrueTime=2026-11-20T09:21:40
+   StartTime=2026-11-20T09:21:40 EndTime=2026-11-20T09:25:10 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-20T09:21:40 Scheduler=Main
+   Partition=a800 AllocNode:Sid=lyg0295:562443
+   ReqNodeList=lyg0295 ExcNodeList=(null)
+   NodeList=lyg0295
+   BatchHost=lyg0295
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=2,mem=474480M,node=1,billing=2,gres/shard=1
+   AllocTRES=cpu=2,node=1,billing=2,gres/shard=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/home/pb/meal-a4a5-final-20261120/run-rest.sh
+   WorkDir=/data/home/pb/meal-a4a5-final-20261120
+   StdErr=/data/home/pb/meal-a4a5-final-20261120/slurm-123834.out
+   StdIn=/dev/null
+   StdOut=/data/home/pb/meal-a4a5-final-20261120/slurm-123834.out
+   TresPerNode=gres/shard:idx7:1

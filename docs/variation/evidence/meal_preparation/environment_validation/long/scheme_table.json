@@ -1,0 +1,705 @@
+[
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "original",
+    "actual": [
+      "original",
+      "original"
+    ],
+    "expected": {},
+    "image": "original_human_env0.png",
+    "sha256": "cff73249c77a6de9bac38ce18eccc4e121729e355e6f1fd048b5a2578de3b193",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_1",
+    "actual": [
+      "variant_1",
+      "variant_1"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#274A88",
+          "roughness": 0.28,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#A5B4C4",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#CBD0D6",
+          "roughness": 0.24,
+          "metallic": 0.83
+        },
+        "grip": {
+          "color": "#294875",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast01_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#EDAE36",
+          "roughness": 0.42,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#57768A",
+          "roughness": 0.72,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#E8EFF2",
+          "roughness": 0.72,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#9AB7C6",
+          "roughness": 0.72,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_1_human_env0.png",
+    "sha256": "8c1585f34422a0d4bac580d351a84c8e2a0635aa74232a36399f9f3b39ee8898",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_2",
+    "actual": [
+      "variant_2",
+      "variant_2"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#FFFFFF",
+          "roughness": 0.48,
+          "metallic": 0,
+          "texture": "plate_green_rim.png"
+        },
+        "plate_bottom": {
+          "color": "#F3EAD6",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#56606B",
+          "roughness": 0.48,
+          "metallic": 0.72
+        },
+        "grip": {
+          "color": "#D38A5C",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast02_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#88284C",
+          "roughness": 0.56,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#A84C3C",
+          "roughness": 0.38,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#D8CDC0",
+          "roughness": 0.38,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#C48679",
+          "roughness": 0.38,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_2_human_env0.png",
+    "sha256": "600ce8624869498ec8389ccc1548334cd74cb368a6c9fee67b644c3fec653449",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_3",
+    "actual": [
+      "variant_3",
+      "variant_3"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#E8DAB6",
+          "roughness": 0.44,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#C6BEA6",
+          "roughness": 0.44,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#C6C9BD",
+          "roughness": 0.42,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#667C54",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast03_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#D87532",
+          "roughness": 0.52,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#536B50",
+          "roughness": 0.76,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#EEE9D8",
+          "roughness": 0.76,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#A8BA91",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_3_human_env0.png",
+    "sha256": "3107e70b5440755d2d3b4af35e1e2f7e2c77d587f744a6d7013d908cd3213078",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_4",
+    "actual": [
+      "variant_4",
+      "variant_4"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#E2A18D",
+          "roughness": 0.32,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#BA7362",
+          "roughness": 0.32,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#B8C7CE",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#CE765D",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast04_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#9CCB45",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#233F54",
+          "roughness": 0.48,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#E1E9E5",
+          "roughness": 0.48,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#527B8B",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_4_human_env0.png",
+    "sha256": "1cef8c86b37ad4de67c6b9fe7937128b1ed5d7b0f5b8622b453bda57590c6728",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_5",
+    "actual": [
+      "variant_5",
+      "variant_5"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#343C43",
+          "roughness": 0.52,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#687179",
+          "roughness": 0.52,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#777C80",
+          "roughness": 0.42,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#D3AA43",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast05_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#36B8BD",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#B18B31",
+          "roughness": 0.65,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#F2E9CE",
+          "roughness": 0.65,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#DDC47C",
+          "roughness": 0.65,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_5_human_env0.png",
+    "sha256": "1cda90251351bd0e14396d7de0d5c9034d45db3551c958823eb4bd8e0e7013a2",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_6",
+    "actual": [
+      "variant_6",
+      "variant_6"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#DDD2E4",
+          "roughness": 0.36,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#9C8AA9",
+          "roughness": 0.36,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#CBC2D2",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#58415F",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast06_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#4268D0",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#76658C",
+          "roughness": 0.58,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#ECE5EE",
+          "roughness": 0.58,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#B7A5C6",
+          "roughness": 0.58,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_6_human_env0.png",
+    "sha256": "2b6c54cf704d8ff55ad54aa30b62023a78c8fff4f9fd5519c2f8e6e8fcaacb91",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_7",
+    "actual": [
+      "variant_7",
+      "variant_7"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#B8BEC0",
+          "roughness": 0.3,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#747F85",
+          "roughness": 0.3,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#BDB8B1",
+          "roughness": 0.42,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#75384E",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast07_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#8650C4",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#722F43",
+          "roughness": 0.42,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#F0E1DA",
+          "roughness": 0.42,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#B16C7A",
+          "roughness": 0.42,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_7_human_env0.png",
+    "sha256": "2b5abf0456d4efefd753c4d620251fe74025541b1a4783ed900ea2b446b0e8b1",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_8",
+    "actual": [
+      "variant_8",
+      "variant_8"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#254C42",
+          "roughness": 0.25,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#6C8974",
+          "roughness": 0.25,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#B3BDB7",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#D4B681",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast08_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#E788B1",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#478D87",
+          "roughness": 0.4,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#E6EFE5",
+          "roughness": 0.4,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#A3CCC1",
+          "roughness": 0.4,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_8_human_env0.png",
+    "sha256": "ca83ea18e02eccbc02511f4b2ae517d6d256f69eded162a0c201d7a9ba95ff9b",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_9",
+    "actual": [
+      "variant_9",
+      "variant_9"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#C68A32",
+          "roughness": 0.48,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#805638",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#B87333",
+          "roughness": 0.34,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#E7DCC5",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast09_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#E9E3D5",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#B59A77",
+          "roughness": 0.84,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#F5EBDD",
+          "roughness": 0.84,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#E0CFAB",
+          "roughness": 0.84,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_9_human_env0.png",
+    "sha256": "a9f6ccdf97cde2e5fd6ef686719f9b0e5dfd8b9b197ec056959faca9912d8ebb",
+    "A4": "passed"
+  },
+  {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "request": "variant_10",
+    "actual": [
+      "variant_10",
+      "variant_10"
+    ],
+    "expected": {
+      "pizza_plate": {
+        "plate_top": {
+          "color": "#6C7883",
+          "roughness": 0.34,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#C6CCD0",
+          "roughness": 0.34,
+          "metallic": 0
+        }
+      },
+      "spoon": {
+        "wire_140088225": {
+          "color": "#4E5963",
+          "roughness": 0.3,
+          "metallic": 0.8
+        },
+        "grip": {
+          "color": "#9C6248",
+          "roughness": 0.78,
+          "metallic": 0
+        }
+      },
+      "bread": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_roast10_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      },
+      "round_ball_food": {
+        "default.012": {
+          "color": "#41454C",
+          "roughness": 0.46,
+          "metallic": 0
+        }
+      },
+      "box": {
+        "box_base": {
+          "color": "#D5D9DA",
+          "roughness": 0.54,
+          "metallic": 0
+        },
+        "inner_floor": {
+          "color": "#AAB4BB",
+          "roughness": 0.54,
+          "metallic": 0
+        },
+        "box_lid": {
+          "color": "#F1F0E9",
+          "roughness": 0.54,
+          "metallic": 0
+        }
+      }
+    },
+    "image": "variant_10_human_env0.png",
+    "sha256": "bb707115ba20c972d5e1979f8761fd1e493ccdcb9f31da1f97f9979a869c2fa5",
+    "A4": "passed"
+  }
+]

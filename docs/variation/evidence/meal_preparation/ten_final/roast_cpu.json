@@ -1,0 +1,105 @@
+{
+  "scope": "CPU actual texture; every channel of every pixel nonincreasing with roast level",
+  "results": [
+    {
+      "scheme": "variant_1",
+      "mean_rgb": [
+        199.40309619903564,
+        178.91794776916504,
+        104.83804512023926
+      ],
+      "mean_srgb_luminance": 177.92452135410312,
+      "sha256": "c0c0c96e0b934baf847e1d4a65b3f0baa7cd413b604f30b22650400faf91c707"
+    },
+    {
+      "scheme": "variant_2",
+      "mean_rgb": [
+        183.03976249694824,
+        147.82130813598633,
+        71.70877742767334
+      ],
+      "mean_srgb_luminance": 149.81342681598665,
+      "sha256": "5825d6a1e003a87317864312a94b55a7dd8ad57d8a25a2d48264b2e35071b201"
+    },
+    {
+      "scheme": "variant_3",
+      "mean_rgb": [
+        160.41162395477295,
+        117.25549221038818,
+        47.28343200683594
+      ],
+      "mean_srgb_luminance": 121.37850307254786,
+      "sha256": "0b4902181631f56fc5545047f8a72eff2737237fb8c4500cd9838198252e1334"
+    },
+    {
+      "scheme": "variant_4",
+      "mean_rgb": [
+        139.38976955413818,
+        90.9353199005127,
+        32.254212379455566
+      ],
+      "mean_srgb_luminance": 96.9999599338531,
+      "sha256": "12a61baf1451067af0ec1110ba1eeba6e3a28859645fba47b60e33defdf0ff21"
+    },
+    {
+      "scheme": "variant_5",
+      "mean_rgb": [
+        117.99899864196777,
+        67.9910535812378,
+        21.302908897399902
+      ],
+      "mean_srgb_luminance": 75.25185865497592,
+      "sha256": "275c60e21514a532448317cee3035c1d0f4bb9bdf278ce87051313d912599e72"
+    },
+    {
+      "scheme": "variant_6",
+      "mean_rgb": [
+        96.19446277618408,
+        49.224382400512695,
+        14.53258228302002
+      ],
+      "mean_srgb_luminance": 56.70547351989746,
+      "sha256": "fb0659096c36c3b58f27bf489bd6e520f5c9456bf38dfda71c740f197e2d239f"
+    },
+    {
+      "scheme": "variant_7",
+      "mean_rgb": [
+        72.48047733306885,
+        33.13787078857422,
+        9.423877716064453
+      ],
+      "mean_srgb_luminance": 39.789958640098554,
+      "sha256": "39522a9cb5f1c97a4ded6c8569981568c3da8f748eb0003a9ba20c9ee0b58366"
+    },
+    {
+      "scheme": "variant_8",
+      "mean_rgb": [
+        50.989867210388184,
+        21.41298007965088,
+        5.601020812988281
+      ],
+      "mean_srgb_luminance": 26.559402824592585,
+      "sha256": "b240bca2a85bac0f76dadd2d8adb54b37ab59c95d6e4c4874d40f977c85f4bd2"
+    },
+    {
+      "scheme": "variant_9",
+      "mean_rgb": [
+        32.75735378265381,
+        12.636775016784668,
+        2.9297399520874023
+      ],
+      "mean_srgb_luminance": 16.213562130737298,
+      "sha256": "2d369767f234dee3aef3685428954d6e43c866f0caba3365cde162003feb5f4c"
+    },
+    {
+      "scheme": "variant_10",
+      "mean_rgb": [
+        16.876741409301758,
+        6.398002624511719,
+        1.3016223907470703
+      ],
+      "mean_srgb_luminance": 8.257823837280279,
+      "sha256": "b5fd9545b69c6790991d8c58544c218e666ed224285a29cc55ca73b7bd2a0aa9"
+    }
+  ]
+}

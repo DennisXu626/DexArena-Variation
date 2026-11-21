@@ -1,0 +1,27 @@
+JobId=125378 JobName=pb-serial-trace
+   UserId=pb(1044) GroupId=pb(1044) MCS_label=N/A
+   Priority=1 Nice=0 Account=(null) QOS=normal
+   JobState=COMPLETED Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:03:43 TimeLimit=00:10:00 TimeMin=N/A
+   SubmitTime=2026-11-21T08:10:02 EligibleTime=2026-11-21T08:10:02
+   AccrueTime=2026-11-21T08:10:02
+   StartTime=2026-11-21T08:10:02 EndTime=2026-11-21T08:13:45 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-21T08:10:02 Scheduler=Main
+   Partition=a800 AllocNode:Sid=lyg0295:3273400
+   ReqNodeList=lyg0295 ExcNodeList=(null)
+   NodeList=lyg0295
+   BatchHost=lyg0295
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=2,mem=474480M,node=1,billing=2,gres/shard=1
+   AllocTRES=cpu=2,node=1,billing=2,gres/shard=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/home/pb/paired-full-20261121/run-trace.sh
+   WorkDir=/data/home/pb/paired-full-20261121
+   StdErr=/data/home/pb/paired-full-20261121/slurm-125378.out
+   StdIn=/dev/null
+   StdOut=/data/home/pb/paired-full-20261121/slurm-125378.out
+   TresPerNode=gres/shard:idx7:1

@@ -1,0 +1,42 @@
+{
+  "scheme": "variant_1",
+  "selected": 0,
+  "before": {
+    "state": "c3bf3973cc4d7531f43534d4227ef2317fb0fb8be6d6090f8d38182de4300896",
+    "info": "3caa7455ae2eaf460ef4599fd850e82168cbc8254b18e6f294672d7f3ab1cd2f",
+    "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+    "materials": "f84d6194e5ddd225f434784f546f564d62365f9695aeda27f51087abdb11b3e9",
+    "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+    "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+    "records": "f7df5c5c57cad75806be18854982d1823b3ae72258e308c9b682fc7c5de5fe26"
+  },
+  "after": {
+    "state": "24341da09a9853b0b79de7ca62c3d6e4756c582e39ba4e8375b27bc033bcea39",
+    "info": "b6710b55706b655f3708ca740156b2e210c7d5b32edd4b545631d438f2a88de2",
+    "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+    "materials": "352a8151b2f4dafce134bc746214a7bffd6d83e3760f53ad7a0f7f5b0c531503",
+    "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+    "rng": "779971f586a0df5f98e5aa15b1d7c6f106677b2a989710b562040c1b8058bfab",
+    "records": "4be5260f5cd0264a104034472c3c47b019f106bd3a4e063ebfcb232922c48d96"
+  },
+  "before_images": {
+    "base_camera/env0": "a5_variant_1_selected0_before_base_camera_env0.png",
+    "base_camera/env1": "a5_variant_1_selected0_before_base_camera_env1.png",
+    "left_wrist_camera/env0": "a5_variant_1_selected0_before_left_wrist_camera_env0.png",
+    "left_wrist_camera/env1": "a5_variant_1_selected0_before_left_wrist_camera_env1.png",
+    "right_wrist_camera/env0": "a5_variant_1_selected0_before_right_wrist_camera_env0.png",
+    "right_wrist_camera/env1": "a5_variant_1_selected0_before_right_wrist_camera_env1.png",
+    "human/env0": "a5_variant_1_selected0_before_human_env0.png",
+    "human/env1": "a5_variant_1_selected0_before_human_env1.png"
+  },
+  "after_images": {
+    "base_camera/env0": "a5_variant_1_selected0_after_base_camera_env0.png",
+    "base_camera/env1": "a5_variant_1_selected0_after_base_camera_env1.png",
+    "left_wrist_camera/env0": "a5_variant_1_selected0_after_left_wrist_camera_env0.png",
+    "left_wrist_camera/env1": "a5_variant_1_selected0_after_left_wrist_camera_env1.png",
+    "right_wrist_camera/env0": "a5_variant_1_selected0_after_right_wrist_camera_env0.png",
+    "right_wrist_camera/env1": "a5_variant_1_selected0_after_right_wrist_camera_env1.png",
+    "human/env0": "a5_variant_1_selected0_after_human_env0.png",
+    "human/env1": "a5_variant_1_selected0_after_human_env1.png"
+  }
+}

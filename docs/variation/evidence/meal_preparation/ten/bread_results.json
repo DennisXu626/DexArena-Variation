@@ -1,0 +1,1722 @@
+[
+  {
+    "scheme": "variant_1",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 1,
+      "max_delta": 1
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#E8EFF2"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#9AB7C6"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#9AB7C6"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "fe8a78e0d0c972b486a7eea8677362cd543cf166cc5712aa4c91df7d0161e87e"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "2692618b72d10df7bfcc0265df429b0ab43b0616ff5d2f21c79a084995a42309"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "8910b76d8cd2451b7f06641ace0a80670a608f3f8fa0848857c0ba7450050f60"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#294875"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "e7d106c9e5b4fd5ae335b28e4517d30dff02fa36288679bd2707eccf5b1ac357"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#EDAE36"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_1",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#57768A"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#E8EFF2"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#9AB7C6"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#9AB7C6"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "fe8a78e0d0c972b486a7eea8677362cd543cf166cc5712aa4c91df7d0161e87e"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "2692618b72d10df7bfcc0265df429b0ab43b0616ff5d2f21c79a084995a42309"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "8910b76d8cd2451b7f06641ace0a80670a608f3f8fa0848857c0ba7450050f60"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#294875"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "e7d106c9e5b4fd5ae335b28e4517d30dff02fa36288679bd2707eccf5b1ac357"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#EDAE36"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_2",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 1,
+      "max_delta": 1
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#D8CDC0"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#C48679"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#C48679"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "3202ed8a9f7ece2a5f4a1dfc10e88459291a072c1b3e15a700d4e4af77dd668f"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "da47510d2b7d297becaad13bd724beec8c5d5f99a4a05c1045d39ffdd4cb4a22"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "1e28a9eb19a3d99ce696ab01d81fa8b7fee052fc157412f5ce0a417b0d075f20"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#D38A5C"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "dbec19670eaf9566070dcf52619a0dd689f3601be91be1f3fd81fb2834264669"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#88284C"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_2",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#A84C3C"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#D8CDC0"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#C48679"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#C48679"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "3202ed8a9f7ece2a5f4a1dfc10e88459291a072c1b3e15a700d4e4af77dd668f"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "da47510d2b7d297becaad13bd724beec8c5d5f99a4a05c1045d39ffdd4cb4a22"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "1e28a9eb19a3d99ce696ab01d81fa8b7fee052fc157412f5ce0a417b0d075f20"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#D38A5C"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "dbec19670eaf9566070dcf52619a0dd689f3601be91be1f3fd81fb2834264669"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#88284C"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_3",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#EEE9D8"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A8BA91"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A8BA91"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "8e91c2072764db8aef2ae61004ff03ed3ee9039ad785d6b85df926e8316dc918"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "981803c9a14ebde0ffa1714fdeaebfd8b0bd7537d7c4eb5fa947cdc4e570809b"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "15bc64c3f470405e436b1cc5dd38d11302030db279ed52f801e426ba6c1ffb26"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#667C54"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "bdedb8d6446e182bcce31b0f2feff36efa8bbac429a0dc5771c0e33a74a08f37"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#D87532"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_3",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#536B50"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#EEE9D8"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A8BA91"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A8BA91"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "8e91c2072764db8aef2ae61004ff03ed3ee9039ad785d6b85df926e8316dc918"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "981803c9a14ebde0ffa1714fdeaebfd8b0bd7537d7c4eb5fa947cdc4e570809b"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "15bc64c3f470405e436b1cc5dd38d11302030db279ed52f801e426ba6c1ffb26"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#667C54"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "bdedb8d6446e182bcce31b0f2feff36efa8bbac429a0dc5771c0e33a74a08f37"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#D87532"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_4",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#E1E9E5"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#527B8B"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#527B8B"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "5d90a36da590f8ace40523ba55272f8e96b3231ab1d372f0a0092af5b412a085"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "ca8a5923857d56194ddbb385daf956dcc2fcc988095d85c010e304fc35c692e2"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "de2e6cc7536e99f71cbbcd79e782ed8cf73ea2ba1f9373137f8afbebdf11578c"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#CE765D"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "ef480340a7b06d752844bbe1c6fc3dc90449cfd5a507a72752d710e87a00ee2d"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#B63E35"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_4",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#233F54"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#E1E9E5"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#527B8B"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#527B8B"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "5d90a36da590f8ace40523ba55272f8e96b3231ab1d372f0a0092af5b412a085"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "ca8a5923857d56194ddbb385daf956dcc2fcc988095d85c010e304fc35c692e2"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "de2e6cc7536e99f71cbbcd79e782ed8cf73ea2ba1f9373137f8afbebdf11578c"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#CE765D"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "ef480340a7b06d752844bbe1c6fc3dc90449cfd5a507a72752d710e87a00ee2d"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#B63E35"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_5",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 1,
+      "max_delta": 1
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#F2E9CE"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#DDC47C"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#DDC47C"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "e395ce3f4c088515c289f12cfab20a3a9d19444a1b4497b819f2e86485a90495"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "0428e8dcf2c4409619acbb56d9e8efc3261356a8d7ed143236441af14fa1390e"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "32a934256f287cb47b2446116aebe13a51781fb3c57392bbea6b7137d675d340"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#D3AA43"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "d656bd0e70ed25d46984c36f00f8e17be94770a2b902fa9b9d505dc6a4d12cc6"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#C54B32"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_5",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B18B31"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#F2E9CE"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#DDC47C"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#DDC47C"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "e395ce3f4c088515c289f12cfab20a3a9d19444a1b4497b819f2e86485a90495"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "0428e8dcf2c4409619acbb56d9e8efc3261356a8d7ed143236441af14fa1390e"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "32a934256f287cb47b2446116aebe13a51781fb3c57392bbea6b7137d675d340"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#D3AA43"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "d656bd0e70ed25d46984c36f00f8e17be94770a2b902fa9b9d505dc6a4d12cc6"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#C54B32"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_6",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#ECE5EE"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B7A5C6"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B7A5C6"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "4d6677dc5b0c2c2cd71967c0622b3fb24972d58977a59745a2ac2c3b27363f54"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "258156b185127a6018054aa43eb5ee8a2d07b22c4bf28b10adc6ced2bf5ce6da"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "b59a7e1b19b22d092fb3c47248ceec57726a5cbb0ef4741278bd93a28c0e9104"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#58415F"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "2a3c3d0ac195467da356df1bee1f8ddecf258ef38dea0babceb7c66a7d4154ff"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#AE4263"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_6",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#76658C"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#ECE5EE"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B7A5C6"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B7A5C6"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "4d6677dc5b0c2c2cd71967c0622b3fb24972d58977a59745a2ac2c3b27363f54"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "258156b185127a6018054aa43eb5ee8a2d07b22c4bf28b10adc6ced2bf5ce6da"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "b59a7e1b19b22d092fb3c47248ceec57726a5cbb0ef4741278bd93a28c0e9104"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#58415F"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "2a3c3d0ac195467da356df1bee1f8ddecf258ef38dea0babceb7c66a7d4154ff"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#AE4263"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_7",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#F0E1DA"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B16C7A"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B16C7A"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "fd59a5d86e7d91d9270f6b791976573d8a4dc241be1d5b524127cf8b86354c15"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "661d520a28d45549c2c2984a9a3a944d04daf23e71bd2634040f569fe842a0f3"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "b8608833c8943c5be926c77bde481162f52c46f366ab24fb8181a148f836af29"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#75384E"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "c8df2106ff72e89b76be460f3e8c91ee62d1755c01397dec4825c5f167e8bca4"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#E19536"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_7",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#722F43"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#F0E1DA"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B16C7A"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#B16C7A"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "fd59a5d86e7d91d9270f6b791976573d8a4dc241be1d5b524127cf8b86354c15"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "661d520a28d45549c2c2984a9a3a944d04daf23e71bd2634040f569fe842a0f3"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "b8608833c8943c5be926c77bde481162f52c46f366ab24fb8181a148f836af29"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#75384E"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "c8df2106ff72e89b76be460f3e8c91ee62d1755c01397dec4825c5f167e8bca4"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#E19536"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_8",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#E6EFE5"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A3CCC1"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A3CCC1"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "aea57decc47e73443163d2fa280a6c53a9e6c42ef6528ada170b94ad346877f0"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "9bbc01cee34ebb2d334d27f5375cf1171e927c52355f26d4877117c3407eba54"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "06841c4dc3980d07729d4bc8dfacda15adef82e9285bcb08d4e17e5f88f0acb3"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#D4B681"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "f2d6fec9b20cf29b5a60703721e33f58d08a55ce0ee48ce02dc671e8b05430b7"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#DB6A35"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_8",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#478D87"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#E6EFE5"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A3CCC1"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#A3CCC1"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "aea57decc47e73443163d2fa280a6c53a9e6c42ef6528ada170b94ad346877f0"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "9bbc01cee34ebb2d334d27f5375cf1171e927c52355f26d4877117c3407eba54"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "06841c4dc3980d07729d4bc8dfacda15adef82e9285bcb08d4e17e5f88f0acb3"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#D4B681"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "f2d6fec9b20cf29b5a60703721e33f58d08a55ce0ee48ce02dc671e8b05430b7"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#DB6A35"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_9",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#F5EBDD"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#E0CFAB"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#E0CFAB"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "f2871a587791ff990213b28cd71e9ec9d4384f6f49ac5a11ab77297ececc628e"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "54c19588b455f12e25d5ec9e2ea52a34deea37f147957fc3982cede6e3eaff92"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "2964669a84411437430ebce015378c5524b728dbb3399b62b595d5278e612d3f"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#4C527D"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "546f7d86328f98769ac2fd7eb5f12ac433f0175527257a3d8215973cdd174f08"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#A83E38"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_9",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#B59A77"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#F5EBDD"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#E0CFAB"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#E0CFAB"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "f2871a587791ff990213b28cd71e9ec9d4384f6f49ac5a11ab77297ececc628e"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "54c19588b455f12e25d5ec9e2ea52a34deea37f147957fc3982cede6e3eaff92"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "2964669a84411437430ebce015378c5524b728dbb3399b62b595d5278e612d3f"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#4C527D"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "546f7d86328f98769ac2fd7eb5f12ac433f0175527257a3d8215973cdd174f08"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#A83E38"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_10",
+    "selected": 1,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_0",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#AAB4BB"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#F1F0E9"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#F1F0E9"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "280179774d6d9b7d6f4b95dba99c8210f0ff82f2acbce8398138c324ed33bb58"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "a7e37486f3057c1407269b3f57db01d11bb30ed3863047fc58577e0ce8cea275"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "229158048afcdacbbfe3170f5449c43216d956c5c1915b658b79188696098162"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#9C6248"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "3749400c7bc6e1b5a458c36822f86c2aa5d3fb8af217d66dbf23f6ed3ce2859e"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#D9B64B"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  },
+  {
+    "scheme": "variant_10",
+    "selected": 0,
+    "restored_slots": 22,
+    "other_state_delta": [
+      {
+        "field": "/actors/spoon",
+        "max_abs_delta": 1.1920928955078125e-07
+      },
+      {
+        "field": "/actors/bread",
+        "max_abs_delta": 2.384185791015625e-07
+      },
+      {
+        "field": "/articulations/procedural_box_1",
+        "max_abs_delta": 7.450580596923828e-09
+      }
+    ],
+    "other_rgb": {
+      "changed_channels": 0,
+      "max_delta": 0
+    },
+    "semantic": [
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/box_base",
+        "color": "#D5D9DA"
+      },
+      {
+        "role": "box/inner_floor",
+        "color": "#AAB4BB"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#F1F0E9"
+      },
+      {
+        "role": "box/box_lid",
+        "color": "#F1F0E9"
+      },
+      {
+        "role": "pizza_plate/plate_top",
+        "pixels_sha256": "280179774d6d9b7d6f4b95dba99c8210f0ff82f2acbce8398138c324ed33bb58"
+      },
+      {
+        "role": "pizza_plate/plate_bottom",
+        "pixels_sha256": "a7e37486f3057c1407269b3f57db01d11bb30ed3863047fc58577e0ce8cea275"
+      },
+      {
+        "role": "spoon/wire_140088225",
+        "pixels_sha256": "229158048afcdacbbfe3170f5449c43216d956c5c1915b658b79188696098162"
+      },
+      {
+        "role": "spoon/grip",
+        "color": "#9C6248"
+      },
+      {
+        "role": "bread/Material.052",
+        "pixels_sha256": "3749400c7bc6e1b5a458c36822f86c2aa5d3fb8af217d66dbf23f6ed3ce2859e"
+      },
+      {
+        "role": "round_ball_food/default.012",
+        "color": "#D9B64B"
+      }
+    ],
+    "other_record_and_rng_unchanged": true
+  }
+]
