@@ -75,6 +75,7 @@ from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import sapien_utils
 from tasks.config.hands import register_task
 from mani_skill.utils.structs.pose import Pose
+from mani_skill.utils.structs.actor import Actor
 
 from tasks.config.sim_profiles import make_sim_config
 from tasks.config.workspace_rig import (
@@ -401,13 +402,14 @@ def build_brush(scene, position, yaw_deg=90.0, kinematic=False):
             else b.build_dynamic(name="brush")), lift
 
 
-def build_dustpan(scene, position, yaw_deg=DUSTPAN_MOUTH_YAW_DEG):
+def build_dustpan(scene, position, yaw_deg=DUSTPAN_MOUTH_YAW_DEG, *, scene_idx=0, visual_path=None):
     """Dustpan as a dynamic body (it must be liftable). CoACD collision."""
     s, q, lift, ext = glb_frame(UID_DUSTPAN, DUSTPAN_WIDTH)
     q_tot = _qmul(_yaw_q(yaw_deg), q)
     b = scene.create_actor_builder()
+    b.set_scene_idxs([scene_idx])
     path = str(GLB_CACHE / f"{UID_DUSTPAN}.glb")
-    b.add_visual_from_file(filename=path, scale=[s] * 3, pose=sapien.Pose(q=q_tot))
+    b.add_visual_from_file(filename=visual_path or path, scale=[s] * 3, pose=sapien.Pose(q=q_tot))
     b.add_multiple_convex_collisions_from_file(
         filename=path, scale=[s] * 3, pose=sapien.Pose(q=q_tot), density=500,
         material=object_material("hard_plastic", dominant="pad"),
@@ -422,7 +424,7 @@ def build_dustpan(scene, position, yaw_deg=DUSTPAN_MOUTH_YAW_DEG):
                          half_length=DUSTPAN_GRIP_HALF_LENGTH,
                          material=sapien.render.RenderMaterial(base_color=[0.12, 0.12, 0.14, 1.0], roughness=0.9))
     b.initial_pose = sapien.Pose(p=[position[0], position[1], lift + 0.002])
-    return b.build_dynamic(name="dustpan"), lift, ext
+    return b.build_dynamic(name="dustpan" if scene_idx == 0 else f"dustpan_{scene_idx}"), lift, ext
 
 
 BIN_FLOOR_SLAB_HALF_H = 0.020    # m; the slab reaches 40 mm below the visual floor (no tunnelling at pour speeds)
@@ -449,7 +451,7 @@ def bin_floor_frame(uid: str = UID_BIN, target_width: float = BIN_WIDTH):
     return floor_z, floor_r
 
 
-def build_bin(scene, position, width=BIN_WIDTH):
+def build_bin(scene, position, width=BIN_WIDTH, *, scene_idx=0, visual_path=None):
     """Trash bin as a STATIC body: the exact triangle mesh for the walls plus an
     explicit floor slab.
 
@@ -467,9 +469,10 @@ def build_bin(scene, position, width=BIN_WIDTH):
     s, q, lift, ext = glb_frame(UID_BIN, width)
     floor_z_local, floor_r = bin_floor_frame(UID_BIN, width)
     b = scene.create_actor_builder()
+    b.set_scene_idxs([scene_idx])
     path = str(GLB_CACHE / f"{UID_BIN}.glb")
     material = object_material("hard_plastic", dominant="table")
-    b.add_visual_from_file(filename=path, scale=[s] * 3, pose=sapien.Pose(q=q))
+    b.add_visual_from_file(filename=visual_path or path, scale=[s] * 3, pose=sapien.Pose(q=q))
     b.add_nonconvex_collision_from_file(
         filename=path, scale=[s] * 3, pose=sapien.Pose(q=q), density=500,
         material=material)
@@ -485,7 +488,7 @@ def build_bin(scene, position, width=BIN_WIDTH):
             material=material)
     z0 = lift + 0.002
     b.initial_pose = sapien.Pose(p=[position[0], position[1], z0])
-    actor = b.build_static(name="trashcan")
+    actor = b.build_static(name="trashcan" if scene_idx == 0 else f"trashcan_{scene_idx}")
     _attach_bin_wall_backstop(actor, floor_z_local, floor_r, ext, lift)
     return actor, lift, ext, float(z0 + floor_z_local)
 
@@ -537,7 +540,8 @@ def _attach_bin_wall_backstop(actor, floor_z_local, floor_r, ext, lift):
             component.attach(shape)
 
 
-def build_debris(scene, positions, prepare_mjcf, mass=DEBRIS_MASS, scale=DEBRIS_SCALE):
+def build_debris(scene, positions, prepare_mjcf, mass=DEBRIS_MASS, scale=DEBRIS_SCALE,
+                 *, scene_idx=0, appearance=None):
     """RoboCasa sugar cubes. MJCF already ships convex collision -- no CoACD.
 
     `prepare_mjcf` is prepare_robocasa_mjcf (defined above), passed in
@@ -555,9 +559,11 @@ def build_debris(scene, positions, prepare_mjcf, mass=DEBRIS_MASS, scale=DEBRIS_
         t = MJCFObject(scene=scene, name=f"debris{i}_t", mjcf_path=str(patched),
                        scale=scale)
         b = t.actor_builder
-        b.set_scene_idxs([0])
+        b.set_scene_idxs([scene_idx])
+        if appearance is not None:
+            appearance.prepare_debris(b)
         b.initial_pose = sapien.Pose(p=[x, y, scale * DEBRIS_SIZE / 2 + 0.004])
-        a = b.build_dynamic(name=f"debris_{i}")
+        a = b.build_dynamic(name=f"debris_{i}" if scene_idx == 0 else f"debris_{scene_idx}_{i}")
         for o in a._objs:
             c = o.find_component_by_type(physx.PhysxRigidDynamicComponent)
             if c is not None:
@@ -660,19 +666,18 @@ class TableCleanBase(BaseEnv):
 
     def __init__(self, *args, robot_uids=ROBOT_UID_SHARPA,
                  num_envs=1,
-                 debris_count=PICK_DEBRIS_COUNT,
+                 debris_count=PICK_DEBRIS_COUNT, table_cleaning_appearance=None,
                  robot_init_qpos_noise=ARM_INIT_QPOS_NOISE_STD, reconfiguration_freq=None, **kwargs):
         # ManiSkill only *warns* when robot_uids is outside SUPPORTED_ROBOTS,
         # so an unknown robot would load and then silently misbehave. Reject it.
         if robot_uids not in self.SUPPORTED_ROBOTS:
             raise ValueError(
                 f"{type(self).__name__} supports {self.SUPPORTED_ROBOTS}; got {robot_uids!r}.")
-        # Single-env only: the episode-layout helpers emit one pose each.
-        if int(num_envs) != 1:
-            raise ValueError(
-                f"{type(self).__name__} supports num_envs=1 only (got "
-                f"{num_envs}): its episode-layout helpers emit a single pose."
-            )
+        self.cleaning_appearance = None
+        if table_cleaning_appearance is not None:
+            from .appearance import CleaningAppearance
+
+            self.cleaning_appearance = CleaningAppearance(table_cleaning_appearance, num_envs)
         self.debris_count = int(debris_count)
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         if self.robot_init_qpos_noise < 0:
@@ -720,49 +725,62 @@ class TableCleanBase(BaseEnv):
         self.table_scene.build()
         set_work_table_pose(self)
 
-        self.pan, self.pan_lift, self.pan_ext = build_dustpan(
-            self.scene, DUSTPAN_POS)
-        self._set_mass(self.pan, DUSTPAN_MASS)
-        # (user): the pan must REST ON ITS PLATFORM. With the volume-
-        # based centre of mass (x = -0.011, pulled back by the grip sleeve) the
-        # pan tipped 29 deg onto its handle at rest. A real dustpan's mass is in
-        # the moulded body; the foam grip is light -- so the centre of mass is
-        # pinned over the platform.
-        for o in self.pan._objs:
-            c = o.find_component_by_type(physx.PhysxRigidDynamicComponent)
-            if c is not None:
-                c.cmass_local_pose = sapien.Pose(list(DUSTPAN_CMASS_LOCAL))
+        appearance = self.cleaning_appearance
+        if appearance is not None:
+            appearance.begin_scene()
+        pans, bins, debris_batches = [], [], []
+        for index in range(self.num_envs):
+            pan_visual = appearance.private_glb(GLB_CACHE, UID_DUSTPAN, index) if appearance else None
+            bin_visual = appearance.private_glb(GLB_CACHE, UID_BIN, index) if appearance else None
+            pan, self.pan_lift, self.pan_ext = build_dustpan(
+                self.scene, DUSTPAN_POS, scene_idx=index, visual_path=pan_visual)
+            self._set_mass(pan, DUSTPAN_MASS)
+            # The moulded platform carries the mass, rather than the foam grip.
+            for entity in pan._objs:
+                component = entity.find_component_by_type(physx.PhysxRigidDynamicComponent)
+                component.cmass_local_pose = sapien.Pose(list(DUSTPAN_CMASS_LOCAL))
+            bin_actor, self.bin_lift, self.bin_ext, self.bin_floor_z = build_bin(
+                self.scene, self._bin_layout_xy(index), scene_idx=index, visual_path=bin_visual)
+            debris = build_debris(
+                self.scene, _debris_xy(self.debris_count, PICK_DEBRIS_SPAWN_SPAN, DEBRIS_CENTER),
+                prepare_robocasa_mjcf, mass=PICK_DEBRIS_MASS, scale=PICK_DEBRIS_SCALE,
+                scene_idx=index, appearance=appearance)
+            for actor in (pan, *debris):
+                set_task_object_energy_fence(actor)
+            if appearance is not None:
+                appearance.bind(index, pan, bin_actor, debris)
+            pans.append(pan)
+            bins.append(bin_actor)
+            debris_batches.append(debris)
 
-        self.bin, self.bin_lift, self.bin_ext, self.bin_floor_z = build_bin(
-            self.scene, self._bin_layout_xy())
-
+        self.pan, self.bin, self.debris = pans[0], bins[0], debris_batches[0]
+        if self.num_envs > 1:
+            self.pan = Actor.merge(pans, "dustpan_batch")
+            self.bin = Actor.merge(bins, "trashcan_batch")
+            self.debris = [Actor.merge(list(batch), f"debris_batch_{i}")
+                           for i, batch in enumerate(zip(*debris_batches))]
+        # Capture native orientations before any episode yaw is added.
+        self._built_pan_q = pans[0].initial_pose.q[0].detach().cpu().numpy()
+        self._built_debris_q = [actor.initial_pose.q[0].detach().cpu().numpy()
+                                for actor in debris_batches[0]]
         self._measure_pan_interior()
-        self.debris = build_debris(
-            self.scene,
-            _debris_xy(self.debris_count, PICK_DEBRIS_SPAWN_SPAN, DEBRIS_CENTER),
-            prepare_robocasa_mjcf,
-            mass=PICK_DEBRIS_MASS,
-            scale=PICK_DEBRIS_SCALE,
-        )
-
-        for free_body in (self.pan, *self.debris):
-            set_task_object_energy_fence(free_body)
 
         self._alloc_buffers()
 
-    def _bin_layout_xy(self):
+    def _bin_layout_xy(self, index=0):
         """Where the bin is built this episode.
 
         The bin is a STATIC body, so its per-episode offset has to be drawn when the
-        scene is (re)built -- and every reset rebuilds it (reconfiguration_freq=1 for
-        the single env this task supports). ManiSkill seeds the episode RNG before
+        scene is (re)built. By default single-env resets rebuild the scene, while
+        multi-env scenes are built once and local resets retain their static bins.
+        ManiSkill seeds the episode RNG before
         reconfiguring and re-seeds it afterwards, so a draw from the episode RNG here
         would be repeated verbatim by the first draw of `_initialize_episode`. The
         offset therefore comes from a stream derived from the episode seed."""
         seed = getattr(self, "_episode_seed", None)
         if seed is None:
             return BIN_POS
-        rng = layout_rng(self, 0, salt=LAYOUT_STREAM_SALT + 2)   # the static bin: its own stream
+        rng = layout_rng(self, index, salt=LAYOUT_STREAM_SALT + 2)   # the static bin: its own stream
         dx, dy, _ = uniform_offset(rng, BIN_RANDOM_XY)
         return (BIN_POS[0] + dx, BIN_POS[1] + dy)
 
@@ -804,25 +822,20 @@ class TableCleanBase(BaseEnv):
     def _place_in_pan(self, b, env_idx=None):
         """Seat the debris on the dustpan floor, in the PAN's frame (episode RNG)."""
         f = self._pan_floor
-        first = 0 if env_idx is None else int(torch.as_tensor(env_idx).reshape(-1)[0])
-        rng = layout_rng(self, first, salt=LAYOUT_STREAM_SALT + 1)   # the pan load: its own stream
-        n = len(self.debris)
-        xs = np.linspace(f["x"][0], f["x"][1], n)
+        indices = list(range(b)) if env_idx is None else env_idx.tolist()
+        local = np.empty((b, len(self.debris), 3))
+        xs = np.linspace(f["x"][0], f["x"][1], len(self.debris))
+        for row, index in enumerate(indices):
+            rng = layout_rng(self, index, salt=LAYOUT_STREAM_SALT + 1)
+            for i, x in enumerate(xs):
+                local[row, i] = (x, float(rng.uniform(*f["y"])) * 0.75,
+                                 f["z"] + PICK_DEBRIS_SCALE * DEBRIS_SIZE / 2)
         pose = self.pan.pose
-        R = pose.to_transformation_matrix()[0, :3, :3].detach().cpu().numpy()
-        origin = pose.p[0].detach().cpu().numpy()
-        for i, d in enumerate(self.debris):
-            local = np.array([
-                xs[i],
-                float(rng.uniform(f["y"][0], f["y"][1])) * 0.75,
-                f["z"] + PICK_DEBRIS_SCALE * DEBRIS_SIZE / 2], dtype=np.float64)
-            world = origin + R @ local
-            p = torch.tensor(world, dtype=torch.float32,
-                             device=self.device).view(1, 3).expand(b, -1).clone()
-            d.set_pose(Pose.create_from_pq(p, d.pose.q))
-            zero = torch.zeros(b, 3, dtype=torch.float32, device=self.device)
-            d.set_linear_velocity(zero)
-            d.set_angular_velocity(zero)
+        matrices = pose.to_transformation_matrix()[indices, :3, :3]
+        offsets = torch.as_tensor(local, dtype=pose.p.dtype, device=self.device)
+        world = offsets @ matrices.transpose(-1, -2) + pose.p[indices, None, :]
+        for i, actor in enumerate(self.debris):
+            self._place_batch(actor, world[:, i], actor.pose.q[indices])
 
     def _set_mass(self, actor, mass):
         """Explicit mass with a realizable inertia (tasks/config/mass_properties)."""
@@ -853,7 +866,8 @@ class TableCleanBase(BaseEnv):
             getattr(self, f)[env_idx] = False
 
     # ----------------------------------------------------------- episode
-    def _reset_robot(self, b):
+    def _reset_robot(self, env_idx):
+        b = len(env_idx)
         """Reset from the agent's own rest keyframe, arm on the shared start pose."""
         kf = self.agent.keyframes["rest"].qpos
         qpos = torch.tensor(kf, dtype=torch.float32,
@@ -861,53 +875,73 @@ class TableCleanBase(BaseEnv):
         qpos[:, :7] = torch.tensor(ARM_INIT_QPOS, dtype=torch.float32,
                                    device=self.device)
         qpos[:, 7:] = 0.0
-        for k in range(b):
+        for k, env in enumerate(env_idx.tolist()):
             index, noise = arm_qpos_noise(
-                episode_rng(self, k), self.agent, 1, self.robot_init_qpos_noise, device=self.device)
+                episode_rng(self, env), self.agent, 1, self.robot_init_qpos_noise, device=self.device)
             qpos[k, index] += noise[0]
         self.agent.reset(qpos)
         self.agent.robot.set_root_pose(ROBOT_ROOT)
 
-    def _place(self, actor, xy, z, b, yaw_deg=None, yaw_delta_deg=0.0):
-        """Place at (xy, z). `yaw_deg` sets an absolute yaw; otherwise the built
-        orientation is kept and turned by `yaw_delta_deg` about the vertical."""
-        p = torch.tensor([xy[0], xy[1], z], dtype=torch.float32,
-                         device=self.device).view(1, 3).expand(b, -1).clone()
-        if yaw_deg is None:
-            q = actor.pose.q
-            if yaw_delta_deg:
-                built = q[0].detach().cpu().numpy().astype(np.float64)
-                q = torch.tensor(quat_mul_wxyz(yaw_quat_wxyz(np.deg2rad(yaw_delta_deg)), built),
-                                 dtype=torch.float32, device=self.device).view(1, 4).expand(b, -1)
-        else:
-            a = np.deg2rad(yaw_deg) / 2
-            q = torch.tensor([np.cos(a), 0.0, 0.0, np.sin(a)],
-                             dtype=torch.float32,
-                             device=self.device).view(1, 4).expand(b, -1)
+    def _place_batch(self, actor, positions, quaternions):
+        p = torch.as_tensor(positions, dtype=torch.float32, device=self.device)
+        q = torch.as_tensor(quaternions, dtype=torch.float32, device=self.device)
         actor.set_pose(Pose.create_from_pq(p, q))
-        zero = torch.zeros(b, 3, dtype=torch.float32, device=self.device)
+        zero = torch.zeros((len(p), 3), dtype=torch.float32, device=self.device)
         actor.set_linear_velocity(zero)
         actor.set_angular_velocity(zero)
 
-    def _place_scene_start(self, env_idx):
-        """The long task's reset: dustpan at rest, debris loose on the table."""
-        b = len(env_idx)
+    def _place_scene_start(self, env_idx, options):
+        """Reset the selected environments to the shared loose-debris layout."""
         self.table_scene.initialize(env_idx)
         set_work_table_pose(self)
-        # Per-episode layout (single env): pan offset + yaw, then the pieces scattered
-        # around DEBRIS_CENTER with a minimum separation, each with a random yaw.
-        # Drawn BEFORE the robot reset so the layout is the first episode-RNG draw.
-        rng = layout_rng(self, int(env_idx.reshape(-1)[0]))
-        self._reset_robot(b)
-        dx, dy, yaw = uniform_offset(rng, PAN_RANDOM_XY, PAN_RANDOM_YAW_DEG)
-        self._place(self.pan, (DUSTPAN_POS[0] + dx, DUSTPAN_POS[1] + dy), PAN_REST_Z, b,
-                    yaw_delta_deg=float(np.rad2deg(yaw)))
-        rest_z = PICK_DEBRIS_SCALE * DEBRIS_SIZE / 2
-        spots = scatter_xy(rng, self.debris_count, DEBRIS_CENTER,
-                           DEBRIS_SCATTER_HALF_SPAN, DEBRIS_MIN_SEPARATION)
-        for d, (x, y) in zip(self.debris, spots):
-            self._place(d, (x, y), rest_z + 0.004, b, yaw_delta_deg=float(rng.uniform(0.0, 360.0)))
+        streams = [layout_rng(self, index) for index in env_idx.tolist()]
+        self._reset_robot(env_idx)
+        pan_positions, pan_rotations = [], []
+        debris_positions = [[] for _ in self.debris]
+        debris_rotations = [[] for _ in self.debris]
+        for rng in streams:
+            dx, dy, yaw = uniform_offset(rng, PAN_RANDOM_XY, PAN_RANDOM_YAW_DEG)
+            pan_positions.append((DUSTPAN_POS[0] + dx, DUSTPAN_POS[1] + dy, PAN_REST_Z))
+            pan_rotations.append(quat_mul_wxyz(yaw_quat_wxyz(yaw), self._built_pan_q))
+            spots = scatter_xy(rng, self.debris_count, DEBRIS_CENTER,
+                               DEBRIS_SCATTER_HALF_SPAN, DEBRIS_MIN_SEPARATION)
+            for i, (x, y) in enumerate(spots):
+                debris_positions[i].append((x, y, PICK_DEBRIS_SCALE * DEBRIS_SIZE / 2 + 0.004))
+                yaw = np.deg2rad(rng.uniform(0.0, 360.0))
+                debris_rotations[i].append(quat_mul_wxyz(yaw_quat_wxyz(yaw), self._built_debris_q[i]))
+        self._place_batch(self.pan, pan_positions, np.asarray(pan_rotations))
+        for actor, positions, rotations in zip(self.debris, debris_positions, debris_rotations):
+            self._place_batch(actor, positions, np.asarray(rotations))
         self._reset_buffers(env_idx)
+        if self.cleaning_appearance is not None:
+            self.cleaning_appearance.reset(env_idx.tolist(), options)
+
+    def reset(self, seed=None, options=None):
+        # Reject all selected IDs before BaseEnv can reseed, rebuild or write state.
+        selected = (options or {}).get("env_idx")
+        if self.cleaning_appearance is not None:
+            indices = range(self.num_envs) if selected is None else (
+                selected.tolist() if hasattr(selected, "tolist") else selected)
+            self.cleaning_appearance.resolve_requests(indices, options or {})
+        # BaseEnv calls evaluate() for every row to assemble reset observations.
+        # Keep the episode bookkeeping of rows that were not reset.
+        selected = (options or {}).get("env_idx")
+        if selected is None or self.num_envs == 1 or len(selected) == self.num_envs:
+            return super().reset(seed=seed, options=options)
+        keep = torch.ones(self.num_envs, dtype=torch.bool, device=self.device)
+        keep[selected] = False
+        fields = ("stage", "hold", "success_latched", *self.FLAG_NAMES)
+        saved = {key: getattr(self, key)[keep].clone() for key in fields}
+        previous = getattr(self, "_debris_local_prev", None)
+        old_local = [value[keep].clone() for value in previous] if previous else None
+        try:
+            return super().reset(seed=seed, options=options)
+        finally:
+            for key, value in saved.items():
+                getattr(self, key)[keep] = value
+            if old_local is not None:
+                for value, old in zip(self._debris_local_prev, old_local):
+                    value[keep] = old
 
     # -------------------------------------------------------- predicates
     _FINGER_KEYS = (("thumb", "finger1"), ("index", "finger2"), ("middle", "mid_", "finger3"),
@@ -1230,7 +1264,7 @@ class TableCleaningLongEnv(TableCleanBase):
 
     def _initialize_episode(self, env_idx, options):
         with torch.device(self.device):
-            self._place_scene_start(env_idx)
+            self._place_scene_start(env_idx, options)
 
     def evaluate(self):
         n_pan, picked_now = self._update_pick(self._pick_target)

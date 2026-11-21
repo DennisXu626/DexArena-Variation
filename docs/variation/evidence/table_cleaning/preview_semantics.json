@@ -1,0 +1,141 @@
+{
+  "status": "passed",
+  "preview_job": "90644",
+  "manifest_sha256": "28628340eed43747db3e6ff5f7dd26e0ddf8cd40665321c504ecf5073dec351c",
+  "records": [
+    {
+      "view": "pick_scene",
+      "scheme_id": "variant_1",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "c6849764ee44dca21de956b3a2c607d1e2eb6ff7e179eed0e26b03e9ba8a2c46",
+        "srgb": true
+      }
+    },
+    {
+      "view": "pick_scene",
+      "scheme_id": "variant_2",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "1cd8a360f7fdb139a589c5276931d6a8bb1f2a9a458bb73445751d8ef7431e68",
+        "srgb": true
+      }
+    },
+    {
+      "view": "pan_loaded",
+      "scheme_id": "variant_1",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "c6849764ee44dca21de956b3a2c607d1e2eb6ff7e179eed0e26b03e9ba8a2c46",
+        "srgb": true
+      }
+    },
+    {
+      "view": "pan_loaded",
+      "scheme_id": "variant_2",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "1cd8a360f7fdb139a589c5276931d6a8bb1f2a9a458bb73445751d8ef7431e68",
+        "srgb": true
+      }
+    },
+    {
+      "view": "bin_floor",
+      "scheme_id": "variant_1",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "c6849764ee44dca21de956b3a2c607d1e2eb6ff7e179eed0e26b03e9ba8a2c46",
+        "srgb": true
+      }
+    },
+    {
+      "view": "bin_floor",
+      "scheme_id": "variant_2",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "1cd8a360f7fdb139a589c5276931d6a8bb1f2a9a458bb73445751d8ef7431e68",
+        "srgb": true
+      }
+    },
+    {
+      "view": "long_scene",
+      "scheme_id": "variant_1",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "c6849764ee44dca21de956b3a2c607d1e2eb6ff7e179eed0e26b03e9ba8a2c46",
+        "srgb": true
+      }
+    },
+    {
+      "view": "long_scene",
+      "scheme_id": "variant_2",
+      "pan_color_and_roughness_match": true,
+      "bin_frame_color_match": true,
+      "same_state_camera_light_setup": true,
+      "sugar_texture": {
+        "shape": [
+          512,
+          512,
+          4
+        ],
+        "sha256": "1cd8a360f7fdb139a589c5276931d6a8bb1f2a9a458bb73445751d8ef7431e68",
+        "srgb": true
+      }
+    }
+  ],
+  "image_review": {
+    "pan_loaded_comparison.png": "pan body teal / brick and sugar pink / pale blue clearly visible; bin absent",
+    "bin_floor_comparison.png": "warm gray / blue gray bin rim and pink / pale blue sugar visible; sugar controlled placed in bin; mesh walls unchanged",
+    "pick_scene_comparison.png": "whole-scene context; pan partially cropped, sugar small; use other close-ups for color judgement"
+  },
+  "scope": "Reused original local PNGs + manifest, not PR attachment download. Sugar hue visually checked; old texture bytes not recomputed from asset; no new GPU."
+}
