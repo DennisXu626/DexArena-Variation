@@ -116,7 +116,7 @@ def run(approval, output, *, followup=None):
     auth=read(approval)
     head=git('rev-parse','HEAD').decode().strip()
     scopes={'label-probe':'cabinet_label_probe','targeted':'cabinet_pouring_followup',
-            'remaining':'cabinet_cap_pour_followup'}
+            'remaining':'cabinet_cap_pour_followup','finish':'cabinet_stage_and_pour_finish'}
     assert auth['approved'] is True and auth['scope']==scopes.get(followup,FAMILY+'_ten_variants')
     if followup:
         assert auth.get('blockers_resolved') is True
@@ -129,6 +129,12 @@ def run(approval, output, *, followup=None):
         reused=auth['reused_pick_bottle']
         assert reused['job_id']=='128933' and reused['status']=='passed'
         assert len(reused['manifest_sha256'])==64
+    elif followup=='finish':
+        reused=auth['reused_evidence']
+        assert set(reused)=={'128861','128933','128943'}
+        for evidence in reused.values():
+            assert evidence['verified'] is True
+            assert len(evidence['manifest_sha256'])==len(evidence['results_sha256'])==64
     assert head==auth['frozen_head'] and os.environ.get('SLURM_JOB_ID')
     assert os.environ.get('SLURM_JOB_GPUS','').isdigit()
     limit=Path(auth['storage_root']).resolve(strict=True)
@@ -582,7 +588,7 @@ if __name__=='__main__':
     p.add_argument('--static',action='store_true')
     p.add_argument('--approval',type=Path)
     p.add_argument('--output',type=Path)
-    p.add_argument('--followup',choices=('label-probe','targeted','remaining'))
+    p.add_argument('--followup',choices=('label-probe','targeted','remaining','finish'))
     p.add_argument('--gallery',type=Path,help='Compose boards from existing task RGB; no simulation')
     args=p.parse_args()
     if args.static: print(json.dumps(static(),ensure_ascii=False))

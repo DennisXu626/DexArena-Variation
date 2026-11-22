@@ -216,13 +216,16 @@ class Followup:
 
     @staticmethod
     def review(env,i=0):
-        scene=env.unwrapped.scene
+        task=env.unwrapped
+        # Use the same membership refresh as the production RGB and sensor paths.
+        task._refresh_bottle_render_group()
+        scene=task.scene
         scene.update_render(update_sensors=False,update_human_render_cameras=True)
         camera=scene.human_render_cameras['render_camera']
         camera.capture()
         frame=camera.get_obs(rgb=True,depth=False,segmentation=True,position=False)
         params=camera.get_params()
-        cpu=lambda x:x[i].detach().cpu().numpy().copy()
+        cpu=lambda x:(x if i is None else x[i]).detach().cpu().numpy().copy()
         return SimpleNamespace(rgb=cpu(frame['rgb'])[...,:3],seg=cpu(frame['segmentation'])[...,0],
                                K=cpu(params['intrinsic_cv']),E=cpu(params['extrinsic_cv']))
 
@@ -310,11 +313,13 @@ class Followup:
         assert hashlib.sha256(path.read_bytes()).hexdigest()==self.bottle_catalog[code]['sha256']
         return image_pixels(path),dict(scheme=code,file=path.name,sha256=self.bottle_catalog[code]['sha256'])
 
-    def label_frame(self,env,sid,native,flip,stem,i=0):
-        frame=self.review(env,i)
+    def label_frame(self,env,sid,native,flip,stem,i=0,*,frame=None,meta=None):
+        if frame is None:
+            frame=self.review(env,i)
+        if meta is None:
+            meta=self.save_review(stem,frame)
         name,obj,mask,uv,(_,tex,mesh)=self.geometry(env.unwrapped,i,frame)
-        meta=dict(files={'review':self.image(stem,frame.rgb)},
-                  mask=self.image(stem+'_label_mask',mask.astype(np.uint8)*255),
+        meta.update(mask=self.image(stem+'_label_mask',mask.astype(np.uint8)*255),
                   representation=name,mesh=Path(mesh).name,label_pixels=int(mask.sum()),
                   bound_filename=Path(tex.filename or '').name,bound_texels=digest(tex.download()))
         if sid!='original':
@@ -520,10 +525,20 @@ class Followup:
         from tasks.cabinet_pouring.cabinet_pouring_long import BOTTLE_REP_OPEN
         e=env.unwrapped
         self.h.full_reset(env,self.h.opts(PROBE))
-        stage=row['engineered_stage_switch']={'scope':'checker-only trigger, no robot action','frames':{}}
+        stage=row['engineered_stage_switch']={
+            'scope':'checker-only trigger, no robot action','scheme':PROBE,'frames':{}}
+        if native is None:
+            slots=[slot for slot in e._variation._bindings[0]
+                   if slot['name']=='source_fixed' and slot['role']=='body_label']
+            assert len(slots)==1
+            native=slots[0]['label_native'][...,:3]
         previous=self.h.materials(e,0)
         passive=self.custody(e,1)
-        for kind in ('attached','free','open'):
+        stages=(('attached','source_fixed','cap_fixed'),('free','source_fixed','cap_twin'),
+                ('open','source_open','cap_twin'))
+        for kind,bottle_expected,cap_expected in stages:
+            stage['attempted_stage']=kind
+            self.save()
             if kind=='free':
                 e._swap_in_twin(0)
                 e._sync_bottle_representation_runtime(torch.tensor([0],device=e.device))
@@ -531,18 +546,45 @@ class Followup:
             elif kind=='open':
                 e._swap_to_open_bottle(torch.tensor([True,False],device=e.device))
                 assert int(e._active_bottle_rep[0])==BOTTLE_REP_OPEN
-            frame,meta,_=self.label_frame(env,PROBE,native,flip,f'UnscrewCap_engineered_{kind}')
-            cap_name,_,mark=self.geometry(e,0,frame,cap=True)
-            meta.update(cap_representation=cap_name,marker_pixels=int(mark.sum()),
-                        marker_mask=self.image(f'UnscrewCap_engineered_{kind}_marker',mark.astype(np.uint8)*255))
-            stage['frames'][kind]=meta
+            batch=self.review(env,i=None)
+            frame=SimpleNamespace(**{key:value[0] for key,value in vars(batch).items()})
+            other={key:value[1] for key,value in vars(batch).items()}
+            if kind=='attached':
+                other_baseline=other
+            stem=f'UnscrewCap_engineered_{kind}'
+            meta=stage['frames'][kind]=self.save_review(stem,frame)
             self.save()
-            assert preferred(meta['image_score'],'wanted')
-        assert stage['frames']['attached']['representation']=='source_fixed'
-        assert stage['frames']['free']['cap_representation']=='cap_twin'
-        assert stage['frames']['open']['representation']=='source_open'
-        assert self.h.materials(e,0)==previous and self.custody(e,1)==passive
+            assert np.array_equal(frame.K,row['camera']['intrinsic'])
+            assert np.array_equal(frame.E,row['camera']['extrinsic'])
+            self.label_frame(env,PROBE,native,flip,stem,frame=frame,meta=meta)
+            self.save()
+            cap_name,cap,mark=self.geometry(e,0,frame,cap=True)
+            meta.update(cap_representation=cap_name,cap_pixels=int(cap.sum()),marker_pixels=int(mark.sum()),
+                        marker_median_rgb=np.median(frame.rgb[mark],axis=0).tolist(),
+                        marker_mask=self.image(f'UnscrewCap_engineered_{kind}_marker',mark.astype(np.uint8)*255))
+            current=self.custody(e,1)
+            meta['passive_env']={key:passive[key]==current[key] for key in passive}
+            meta['passive_env'].update({key:np.array_equal(other[key],other_baseline[key]) for key in other})
+            self.save()
+            assert meta['representation']==bottle_expected and cap_name==cap_expected,(kind,meta)
+            assert preferred(meta['image_score'],'wanted'),(kind,meta['image_score'])
+            assert all(meta['passive_env'].values()),(kind,meta['passive_env'])
+            assert self.h.materials(e,0)==previous,(kind,'selected materials changed')
+            meta['verified_slots']=self.h.verify_bindings(e,0,PROBE)
+            meta['status']='passed'
         stage['status']='passed'
+        self.save()
+
+    def cap_finish(self,reused):
+        row=self.report['tasks']['UnscrewCap']=dict(status='running',reused_fixed_job=128943,
+                                                   camera=reused['camera'])
+        self.save()
+        with contextlib.closing(self.h.make('UnscrewCap',{'enabled':True,'seed':109},
+                                             review_view=row['camera']['view'])) as env:
+            self.cap_switch(env,row,None,reused['flip_v'])
+        self.random('UnscrewCap',row)
+        row['status']='passed'
+        self.save()
 
     def random(self,task,row):
         traces=[]
@@ -552,6 +594,7 @@ class Followup:
                     env.reset(seed=7,options=self.h.opts(None,idx,mode='random_choice'))
                 traces.append(env.unwrapped.family_appearance_records)
         row['random_reproducibility']=traces
+        self.save()
         assert traces[0]==traces[1] and [x['env_idx'] for x in traces[0]]==[0,1,0,1,1,0,1]
 
     def task_matrix(self,task,auth):
@@ -561,6 +604,7 @@ class Followup:
         with contextlib.closing(self.h.make(task,{'enabled':True,'seed':109},review_view=view)) as env:
             e=env.unwrapped
             for sid in self.h.variants:
+                row['attempted_scheme']=sid
                 _,info=self.h.full_reset(env,self.h.opts(sid))
                 # Recheck only task baselines needed by this evidence; never recapture the cabinets.
                 if task!='PickBottle':
@@ -574,11 +618,19 @@ class Followup:
                     row['last_verified_slots']=[self.h.verify_bindings(e,i,sid,bottle_only=task=='PickBottle')
                                                 for i in (0,1)]
                 if task=='PourBeads':
+                    stem=f'{task}_{sid}_review'
+                    row['captures'][sid]=self.save_review(stem,frame)
+                    if sid!='original':
+                        row['captures'][sid]['verified_slots']=row['last_verified_slots']
+                    self.save()
                     mask,inner,rim=self.bowl_masks(e,frame,0)
-                    row['captures'][sid]=self.save_review(f'{task}_{sid}_review',frame,mask)
+                    row['captures'][sid]['object_mask']=self.image(stem+'_mask',mask.astype(np.uint8)*255)
+                    row['captures'][sid]['native_particles_in_source']=info['num_in_source'].detach().cpu().tolist()
                     for name,zone in [('surface',inner),('inner_silhouette_band',rim)]:
                         changed=int(np.any(frame.rgb[zone]!=original.rgb[zone],axis=-1).sum())
-                        row['captures'][sid][name]=dict(pixels=int(zone.sum()),changed=changed)
+                        row['captures'][sid][name]=dict(pixels=int(zone.sum()),changed=changed,
+                            mask=self.image(f'{stem}_{name}_mask',zone.astype(np.uint8)*255))
+                        self.save()
                         assert changed>0 if sid!='original' else changed==0
                     assert len(e.particles)==16 and e.particle_radius==.004
                 else:
@@ -628,22 +680,30 @@ class Followup:
                     self.h.verify_bindings(e,0,sid)
                 self.h.bead_display(e)
                 frame=self.review(env)
+                stem=f'PourBeads_diagnostic_{sid}'
+                event=row['captures'][sid]=dict(**self.save_review(stem,frame),spheres=[])
+                self.save()
                 if baseline is None:
                     baseline=frame
                     baseline_state=self.h.task_state(e,0)
+                    row['camera']=dict(view=BEAD_VIEW,intrinsic=frame.K.tolist(),extrinsic=frame.E.tolist())
                 else:
                     assert self.h.task_state(e,0)==baseline_state
-                union=np.zeros_like(frame.seg,dtype=bool)
-                values=[]
-                for particle in e.particles:
+                    assert np.array_equal(frame.K,baseline.K) and np.array_equal(frame.E,baseline.E)
+                sphere_ids=np.zeros_like(frame.seg,dtype=np.uint8)
+                for ordinal,particle in enumerate(e.particles,1):
                     current=frame.seg==self.entity(particle,0).per_scene_id
+                    changed=int(np.any(frame.rgb[current]!=baseline.rgb[current],axis=-1).sum())
+                    event['spheres'].append(dict(ordinal=ordinal,pixels=int(current.sum()),changed=changed))
                     assert current.sum()>=8,'individual bead not visible'
                     assert np.array_equal(current,baseline.seg==self.entity(particle,0).per_scene_id)
-                    changed=int(np.any(frame.rgb[current]!=baseline.rgb[current],axis=-1).sum())
                     assert changed>0 if sid!='original' else changed==0
-                    union|=current
-                    values.append(dict(pixels=int(current.sum()),changed=changed,median_rgb=np.median(frame.rgb[current],axis=0).tolist()))
-                row['captures'][sid]=dict(**self.save_review(f'PourBeads_diagnostic_{sid}',frame,union),spheres=values)
+                    sphere_ids[current]=ordinal
+                    event['spheres'][-1].update(median_rgb=np.median(frame.rgb[current],axis=0).tolist(),
+                                                mask_sha256=digest(current))
+                event['sphere_id_mask']=self.image(stem+'_sphere_ids',sphere_ids)
+                union=sphere_ids!=0
+                event['object_mask']=self.image(stem+'_mask',union.astype(np.uint8)*255)
                 row['same_coordinate_crops']={'beads':self.crop(union)}
                 self.save()
         row['status']='passed'
@@ -660,7 +720,13 @@ def run(phase,auth,*,report,output,**hooks):
             report['status']='probe_ready_for_frame_review'
         else:
             tasks=('PickBottle','UnscrewCap','PourBeads')
-            if phase=='remaining':
+            if phase=='finish':
+                report['reused_pick_bottle_job']=128933
+                report['reused_unscrew_cap_fixed_job']=128943
+                task='UnscrewCap'
+                check.cap_finish(auth['reused_evidence']['128943'])
+                tasks=('PourBeads',)
+            elif phase=='remaining':
                 report['reused_pick_bottle_job']=128933
                 tasks=tasks[1:]
             for task in tasks:
