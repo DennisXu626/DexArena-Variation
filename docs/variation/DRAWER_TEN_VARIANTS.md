@@ -1,6 +1,6 @@
 # Drawer & Plug 十套家族外观
 
-基线 `f0a09c9d1722abc831fd5c62ae77a42c9dece95c`。三个短任务已取得十套实景与固定方案证据。作业 128860 和 128908 合并覆盖随机复现、逐款恢复与双向 A5。InsertPlug 已补 Charger 同位姿恢复证据及无遮挡双孔十一格，待 Dennis 审阅。已有单对象验收记录继续适用其原版本。
+基线 `f0a09c9d1722abc831fd5c62ae77a42c9dece95c`。三个短任务已取得十套实景与固定方案证据。作业 128860 和 128908 合并覆盖随机复现、逐款恢复与双向 A5。InsertPlug 已补 Charger 同位姿恢复证据及无遮挡双孔十一格。Dennis 已审图并验收三个短任务的十套外观。已有单对象验收记录继续适用其原版本。
 
 ## 家族编号与实际对象表
 
@@ -22,7 +22,7 @@
 
 ## 绑定与证据范围
 
-| 任务 | 实际加载的外观对象 | 取景与待确认内容 |
+| 任务 | 实际加载的外观对象 | 实景取景与可见部件 |
 |---|---|---|
 | OpenDrawer | 抽屉柜 | 原生闭合，台面、三层抽面与把手入镜 |
 | PickCharger | 抽屉柜、Charger | 原生中屉 0.22 m，拍内壁、底板、壳体与插脚 |
@@ -72,6 +72,6 @@ python -B tools/variation/check_drawer_ten_variants.py --gallery PATH_TO_APPROVE
 
 任务短检经新授权后用同一脚本的 `--approval` 和 `--output`。原始 PNG、分割掩膜内的可见及变化像素、同坐标裁剪、选择记录、运行 manifest、首个失败和作业收据分开留存。拼图由真实原帧制成，每行至多三款。实际可见性、印刷方向、五金和内外分件需要人工审图。
 
-[本轮任务实景与 A4／A5 结果](evidence/drawer_ten_variants/runtime_001/README.md)。草稿待 Dennis 审图。
+[本轮任务实景与 A4／A5 结果](evidence/drawer_ten_variants/runtime_001/README.md)。
 
 [InsertPlug 三项补测结果](evidence/drawer_ten_variants/runtime_002/README.md)。生产文件沿用作业 128860 实测版本。
