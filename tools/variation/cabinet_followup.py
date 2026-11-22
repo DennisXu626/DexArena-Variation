@@ -21,10 +21,16 @@ LABEL_MARGIN = .10
 LABEL_MIN_CORRELATION = .32
 BOWL_VIEW = ([-.43, -.84, .37], [-.20, -.50, .045], .70)
 BEAD_VIEW = ([1., .90, .60], [1., 1., .50], .65)
+CLOSEOUT_CHECKS = ('unscrew-random','pour-task','pour-droplets','cap-diagnostic')
 
 
 def digest(pixels):
     return hashlib.sha256(np.ascontiguousarray(pixels).tobytes()).hexdigest()
+
+
+def pack_entity_ids(segmentation):
+    """Store each full 32-bit entity ID losslessly in four PNG bytes."""
+    return np.ascontiguousarray(segmentation,dtype='<u4').view(np.uint8).reshape(*segmentation.shape,4)
 
 
 def inset(mask):
@@ -522,7 +528,7 @@ class Followup:
 
     def cap_switch(self,env,row,native,flip):
         import torch
-        from tasks.cabinet_pouring.cabinet_pouring_long import BOTTLE_REP_OPEN
+        from tasks.cabinet_pouring.cabinet_pouring_long import BOTTLE_REP_OPEN, CAP_TURN_SWITCH_HOLD_STEPS
         e=env.unwrapped
         self.h.full_reset(env,self.h.opts(PROBE))
         stage=row['engineered_stage_switch']={
@@ -540,12 +546,18 @@ class Followup:
             stage['attempted_stage']=kind
             self.save()
             if kind=='free':
-                e._swap_in_twin(0)
-                e._sync_bottle_representation_runtime(torch.tensor([0],device=e.device))
-                e._flush_bottle_representation_state()
+                # Seed only env 0 at the qualification boundary. evaluate() owns
+                # detachment, friction, rigid-data sync and the placement marker.
+                e._cap_twist[0]=e.cap_success_rotation
+                e._cap_turn_hold_count[0]=CAP_TURN_SWITCH_HOLD_STEPS-1
+                e._cap_turn_last_eval_step[0]=e._elapsed_steps[0]-1
+                stage['free_trigger']=dict(path='UnscrewCap.evaluate -> _cap_status',env_idx=0,
+                                           twist=float(e.cap_success_rotation),
+                                           seeded_hold_count=CAP_TURN_SWITCH_HOLD_STEPS-1)
+                self.save()
+                e.evaluate()
             elif kind=='open':
                 e._swap_to_open_bottle(torch.tensor([True,False],device=e.device))
-                assert int(e._active_bottle_rep[0])==BOTTLE_REP_OPEN
             batch=self.review(env,i=None)
             frame=SimpleNamespace(**{key:value[0] for key,value in vars(batch).items()})
             other={key:value[1] for key,value in vars(batch).items()}
@@ -553,6 +565,14 @@ class Followup:
                 other_baseline=other
             stem=f'UnscrewCap_engineered_{kind}'
             meta=stage['frames'][kind]=self.save_review(stem,frame)
+            if kind=='attached' and row.get('archived_attached_sha256'):
+                meta['matches_128997_attached']=meta['files']['review']['sha256']==row['archived_attached_sha256']
+            self.save_stage_evidence(e,batch,stem,meta)
+            if kind=='free':
+                assert bool(e._cap_detached[0]) and bool(e._cap_free[0])
+                assert bool(e._stage_cap_turned[0]) and not bool(e._stage_cap_placed[0])
+            elif kind=='open':
+                assert int(e._active_bottle_rep[0])==BOTTLE_REP_OPEN
             self.save()
             assert np.array_equal(frame.K,row['camera']['intrinsic'])
             assert np.array_equal(frame.E,row['camera']['extrinsic'])
@@ -575,14 +595,53 @@ class Followup:
         stage['status']='passed'
         self.save()
 
-    def cap_finish(self,reused):
+    def save_stage_evidence(self,e,batch,stem,meta):
+        from sapien.render import RenderBodyComponent
+
+        environments=meta['environments']={}
+        for i in (0,1):
+            prefix=f'{stem}_env{i}'
+            rgb=meta['files']['review'] if i==0 else self.image(prefix,batch.rgb[i])
+            seg=batch.seg[i]
+            environments[str(i)]=dict(rgb=rgb,entity_segmentation=self.image(prefix+'_entity_ids',pack_entity_ids(seg)),
+                segmentation_format='RGBA bytes least-significant first, decode as little-endian uint32')
+        self.save()
+        for i in (0,1):
+            seg=batch.seg[i]
+            names={int(entity.per_scene_id):entity.name for entity in e.scene.sub_scenes[i].entities}
+            ids,counts=np.unique(seg,return_counts=True)
+            count_by_id={int(entity_id):int(count) for entity_id,count in zip(ids,counts)}
+            foreground=[dict(entity_id=entity_id,name=names.get(entity_id,'unmapped'),pixels=count)
+                        for entity_id,count in sorted(count_by_id.items(),key=lambda item:(-item[1],item[0]))
+                        if entity_id!=0][:12]
+            actors={}
+            for name in ('source','source_fixed','source_open','cap_fixed','cap_twin'):
+                actor=getattr(e,name)
+                entity=self.entity(actor,i)
+                entity_id=int(entity.per_scene_id)
+                render=entity.find_component_by_type(RenderBodyComponent)
+                actors[name]=dict(entity_id=entity_id,name=entity.name,pixels=count_by_id.get(entity_id,0),
+                                  pose_m_wxyz=actor.pose.raw_pose[i].detach().cpu().tolist(),
+                                  visibility=float(render.visibility) if render is not None else None)
+            world_to_cv=batch.E[i]
+            cv_to_world=world_to_cv[:,:3].T
+            environments[str(i)].update(foreground=foreground,actors=actors,
+                flags={name: getattr(e,name)[i].item() for name in ('_active_bottle_rep','_cap_detached',
+                    '_cap_free','_stage_cap_turned','_stage_cap_placed')},
+                camera=dict(intrinsic=batch.K[i].tolist(),extrinsic=world_to_cv.tolist(),
+                            position_world_m=(-cv_to_world@world_to_cv[:,3]).tolist(),
+                            cv_to_world_rotation=cv_to_world.tolist()))
+        self.save()
+
+    def cap_finish(self,reused,*,with_random=True,attached_reference=None):
         row=self.report['tasks']['UnscrewCap']=dict(status='running',reused_fixed_job=128943,
-                                                   camera=reused['camera'])
+                                                   camera=reused['camera'],archived_attached_sha256=attached_reference)
         self.save()
         with contextlib.closing(self.h.make('UnscrewCap',{'enabled':True,'seed':109},
                                              review_view=row['camera']['view'])) as env:
             self.cap_switch(env,row,None,reused['flip_v'])
-        self.random('UnscrewCap',row)
+        if with_random:
+            self.random('UnscrewCap',row)
         row['status']='passed'
         self.save()
 
@@ -718,6 +777,24 @@ def run(phase,auth,*,report,output,**hooks):
         if phase=='label-probe':
             check.probe()
             report['status']='probe_ready_for_frame_review'
+        elif phase in CLOSEOUT_CHECKS:
+            report['reused_jobs']=[128861,128933,128943,128997]
+            if phase=='unscrew-random':
+                task='UnscrewCap'
+                row=report['tasks'][task]=dict(status='running')
+                check.random(task,row)
+                row['status']='passed'
+            elif phase=='pour-task':
+                task='PourBeads'
+                check.task_matrix(task,auth)
+            elif phase=='pour-droplets':
+                task='PourBeads_diagnostic'
+                check.beads()
+            else:
+                task='UnscrewCap'
+                check.cap_finish(auth['reused_evidence']['128943'],with_random=False,
+                                 attached_reference=auth['reused_evidence']['128997']['attached_frame_sha256'])
+            report['status']='engineering_passed_pending_visual_review' if phase!='unscrew-random' else 'passed'
         else:
             tasks=('PickBottle','UnscrewCap','PourBeads')
             if phase=='finish':
