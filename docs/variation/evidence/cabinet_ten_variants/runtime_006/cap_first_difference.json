@@ -1,0 +1,227 @@
+{
+  "job": "129056",
+  "stage": "free",
+  "trigger": {
+    "path": "UnscrewCap.evaluate -> _cap_status",
+    "env_idx": 0,
+    "twist": 3.141592653589793,
+    "seeded_hold_count": 2
+  },
+  "attached_matches_128997": true,
+  "entity_counts_inside_old_label_region": [
+    {
+      "entity_id": 57,
+      "name": "scene-0_bottle_placement_region",
+      "pixels": 986
+    },
+    {
+      "entity_id": 3,
+      "name": "mobile_base_link_6",
+      "pixels": 501
+    }
+  ],
+  "envs": {
+    "0": {
+      "rgb_equal": false,
+      "entity_ids_equal": false,
+      "camera_equal": true,
+      "before_flags": {
+        "_active_bottle_rep": 1,
+        "_cap_detached": false,
+        "_cap_free": false,
+        "_stage_cap_turned": false,
+        "_stage_cap_placed": false
+      },
+      "after_flags": {
+        "_active_bottle_rep": 1,
+        "_cap_detached": true,
+        "_cap_free": true,
+        "_stage_cap_turned": true,
+        "_stage_cap_placed": false
+      },
+      "source_fixed_pose_equal": true,
+      "source_fixed_pixels": [
+        10447,
+        0
+      ],
+      "free_cap_pixels": [
+        0,
+        0
+      ],
+      "free_cap_world_pose": [
+        -0.2280430793762207,
+        -0.19467759132385254,
+        0.13358628749847412,
+        4.371138828673793e-08,
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "foreground_before": [
+        {
+          "entity_id": 54,
+          "name": "scene-0_table-workspace",
+          "pixels": 417333
+        },
+        {
+          "entity_id": 55,
+          "name": "scene-0_ground",
+          "pixels": 135853
+        },
+        {
+          "entity_id": 3,
+          "name": "mobile_base_link_6",
+          "pixels": 108202
+        },
+        {
+          "entity_id": 10,
+          "name": "panda_link0",
+          "pixels": 13285
+        },
+        {
+          "entity_id": 62,
+          "name": "source_container",
+          "pixels": 10447
+        },
+        {
+          "entity_id": 63,
+          "name": "source_cap",
+          "pixels": 4810
+        }
+      ],
+      "foreground_after": [
+        {
+          "entity_id": 3,
+          "name": "mobile_base_link_6",
+          "pixels": 315429
+        },
+        {
+          "entity_id": 54,
+          "name": "scene-0_table-workspace",
+          "pixels": 120011
+        },
+        {
+          "entity_id": 55,
+          "name": "scene-0_ground",
+          "pixels": 80865
+        },
+        {
+          "entity_id": 10,
+          "name": "panda_link0",
+          "pixels": 59214
+        },
+        {
+          "entity_id": 57,
+          "name": "scene-0_bottle_placement_region",
+          "pixels": 34889
+        },
+        {
+          "entity_id": 12,
+          "name": "panda_link2",
+          "pixels": 27520
+        }
+      ]
+    },
+    "1": {
+      "rgb_equal": true,
+      "entity_ids_equal": true,
+      "camera_equal": true,
+      "before_flags": {
+        "_active_bottle_rep": 1,
+        "_cap_detached": false,
+        "_cap_free": false,
+        "_stage_cap_turned": false,
+        "_stage_cap_placed": false
+      },
+      "after_flags": {
+        "_active_bottle_rep": 1,
+        "_cap_detached": false,
+        "_cap_free": false,
+        "_stage_cap_turned": false,
+        "_stage_cap_placed": false
+      },
+      "source_fixed_pose_equal": true,
+      "source_fixed_pixels": [
+        11569,
+        11569
+      ],
+      "free_cap_pixels": [
+        0,
+        0
+      ],
+      "free_cap_world_pose": [
+        0.0,
+        0.0,
+        5.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "foreground_before": [
+        {
+          "entity_id": 54,
+          "name": "scene-1_table-workspace",
+          "pixels": 413195
+        },
+        {
+          "entity_id": 55,
+          "name": "scene-1_ground",
+          "pixels": 137229
+        },
+        {
+          "entity_id": 3,
+          "name": "mobile_base_link_6",
+          "pixels": 109048
+        },
+        {
+          "entity_id": 10,
+          "name": "panda_link0",
+          "pixels": 13285
+        },
+        {
+          "entity_id": 62,
+          "name": "source_container",
+          "pixels": 11569
+        },
+        {
+          "entity_id": 63,
+          "name": "source_cap",
+          "pixels": 5643
+        }
+      ],
+      "foreground_after": [
+        {
+          "entity_id": 54,
+          "name": "scene-1_table-workspace",
+          "pixels": 413195
+        },
+        {
+          "entity_id": 55,
+          "name": "scene-1_ground",
+          "pixels": 137229
+        },
+        {
+          "entity_id": 3,
+          "name": "mobile_base_link_6",
+          "pixels": 109048
+        },
+        {
+          "entity_id": 10,
+          "name": "panda_link0",
+          "pixels": 13285
+        },
+        {
+          "entity_id": 62,
+          "name": "source_container",
+          "pixels": 11569
+        },
+        {
+          "entity_id": 63,
+          "name": "source_cap",
+          "pixels": 5643
+        }
+      ]
+    }
+  }
+}
