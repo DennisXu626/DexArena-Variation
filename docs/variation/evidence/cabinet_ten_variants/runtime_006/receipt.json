@@ -1,0 +1,79 @@
+{
+  "job_id": "129056",
+  "frozen_head": "952af8c36ab1ae8392c7e6b8cfc28b19b4a212f9",
+  "checks": {
+    "unscrew-random": {
+      "status": "passed",
+      "started_utc": "2026-11-22T07:57:26+00:00",
+      "exit_code": 0,
+      "checker_status": "passed",
+      "ended_utc": "2026-11-22T07:57:43+00:00",
+      "evidence": "unscrew-random/results.json"
+    },
+    "pour-task": {
+      "status": "passed",
+      "started_utc": "2026-11-22T07:57:43+00:00",
+      "exit_code": 0,
+      "checker_status": "engineering_passed_pending_visual_review",
+      "ended_utc": "2026-11-22T07:58:23+00:00",
+      "evidence": "pour-task/results.json"
+    },
+    "pour-droplets": {
+      "status": "passed",
+      "started_utc": "2026-11-22T07:58:23+00:00",
+      "exit_code": 0,
+      "checker_status": "engineering_passed_pending_visual_review",
+      "ended_utc": "2026-11-22T07:58:43+00:00",
+      "evidence": "pour-droplets/results.json"
+    },
+    "cap-diagnostic": {
+      "status": "assertion_failed",
+      "started_utc": "2026-11-22T07:58:43+00:00",
+      "exit_code": 1,
+      "checker_status": "failed",
+      "ended_utc": "2026-11-22T07:59:00+00:00",
+      "evidence": "cap-diagnostic/results.json"
+    }
+  },
+  "status": "incomplete",
+  "gpu_allocated_seconds": 96,
+  "application_seconds": 93.43,
+  "queue_seconds": 0.0,
+  "allocations": 1,
+  "physical_gpu": 3,
+  "verified_pngs": 92,
+  "unindexed_pngs": 0,
+  "scheduler": {
+    "JobState": "FAILED",
+    "ExitCode": "1:0",
+    "NodeList": "lyg0295",
+    "TimeLimit": "00:08:00",
+    "RunTime": "00:01:36",
+    "SubmitTime": "2026-11-22T07:57:24",
+    "StartTime": "2026-11-22T07:57:24",
+    "EndTime": "2026-11-22T07:59:00",
+    "AllocTRES": "cpu=2,node=1,billing=2,gres/shard=1",
+    "Requeue": "0",
+    "Restarts": "0"
+  },
+  "accounting_source": "scontrol terminal JobState and RunTime; sacct unavailable",
+  "scheduler_queue_empty": true,
+  "watcher_absent": true,
+  "cleanup": {
+    "pgid": 989416,
+    "errors": [],
+    "TERM_sent": false,
+    "KILL_sent": false,
+    "live_remaining": [],
+    "zombie_remaining": [],
+    "complete": true
+  },
+  "owned_process_group": [],
+  "visible_job_cgroup_members": [],
+  "deployment_root_bytes": 685708881,
+  "capacity_sampled_peak_bytes": 703983857,
+  "final_size_bytes": 703987640,
+  "min_ceph_free_bytes": 263863664640,
+  "capacity_sampled_stop_bytes": 805306368,
+  "stop_reason": null
+}

@@ -80,6 +80,181 @@
       "label_texture": "violet.png",
       "sha256": "94f477cdddf0ef60999736d23f7a09be54cd7c3fb53b18c7ba2329540b509b73",
       "description": "VIOLET original graphic label; contrasting asymmetric native top stripe and side tick"
+    },
+    "spring_water": {
+      "body_color": [
+        0.07036009569659588,
+        0.31398871337571754,
+        0.39157247774972326,
+        1
+      ],
+      "cap_color": [
+        0.7835377915261935,
+        0.9215818562772946,
+        0.9215818562772946,
+        1
+      ],
+      "reference_color": [
+        0.02217388479338738,
+        0.06301001765316767,
+        0.10702310297826761,
+        1
+      ],
+      "roughness": 0.34,
+      "metallic": 0,
+      "label_texture": "spring_water.png",
+      "sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4",
+      "description": "SPRING WATER project-drawn label; asymmetric top stripe and side tick"
+    },
+    "black_tea": {
+      "body_color": [
+        0.4851499400560704,
+        0.2581828529215958,
+        0.08865558628577294,
+        1
+      ],
+      "cap_color": [
+        0.08865558628577294,
+        0.02315336617811041,
+        0.01520851442291271,
+        1
+      ],
+      "reference_color": [
+        0.7912979403326302,
+        0.5271151257058131,
+        0.27467731206038465,
+        1
+      ],
+      "roughness": 0.55,
+      "metallic": 0,
+      "label_texture": "black_tea.png",
+      "sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7",
+      "description": "BLACK TEA project-drawn label; asymmetric top stripe and side tick"
+    },
+    "peach_juice": {
+      "body_color": [
+        0.7758222183174236,
+        0.35153259950043936,
+        0.32314320911295075,
+        1
+      ],
+      "cap_color": [
+        0.39675523072562685,
+        0.07618538148130785,
+        0.05780543019106723,
+        1
+      ],
+      "reference_color": [
+        0.9911020971138298,
+        0.9130986517934192,
+        0.7529422167760779,
+        1
+      ],
+      "roughness": 0.47,
+      "metallic": 0,
+      "label_texture": "peach_juice.png",
+      "sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208",
+      "description": "PEACH NECTAR project-drawn label; asymmetric top stripe and side tick"
+    },
+    "mineral_silver": {
+      "body_color": [
+        0.3762621229909065,
+        0.4910208498478356,
+        0.5457244613701866,
+        1
+      ],
+      "cap_color": [
+        0.07036009569659588,
+        0.08021982031446832,
+        0.09084171118340768,
+        1
+      ],
+      "reference_color": [
+        0.9215818562772946,
+        0.9130986517934192,
+        0.8549926081242338,
+        1
+      ],
+      "roughness": 0.24,
+      "metallic": 0.12,
+      "label_texture": "mineral_silver.png",
+      "sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a",
+      "description": "MINERAL WATER project-drawn label; asymmetric top stripe and side tick"
+    },
+    "green_tea": {
+      "body_color": [
+        0.22696587351009836,
+        0.3277780980565422,
+        0.12213877222960187,
+        1
+      ],
+      "cap_color": [
+        0.7230551289219693,
+        0.7304607400903537,
+        0.4396571738409188,
+        1
+      ],
+      "reference_color": [
+        0.0202885630566524,
+        0.03688945040110004,
+        0.02217388479338738,
+        1
+      ],
+      "roughness": 0.64,
+      "metallic": 0,
+      "label_texture": "green_tea.png",
+      "sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff",
+      "description": "GREEN TEA project-drawn label; asymmetric top stripe and side tick"
+    },
+    "berry_soda": {
+      "body_color": [
+        0.5583403896342679,
+        0.05448027644244237,
+        0.14702726649759498,
+        1
+      ],
+      "cap_color": [
+        0.021219010376003555,
+        0.01520851442291271,
+        0.042311410620809675,
+        1
+      ],
+      "reference_color": [
+        0.9215818562772946,
+        0.5394794890121072,
+        0.10946171077829933,
+        1
+      ],
+      "roughness": 0.33,
+      "metallic": 0,
+      "label_texture": "berry_soda.png",
+      "sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8",
+      "description": "BERRY SODA project-drawn label; asymmetric top stripe and side tick"
+    },
+    "coffee_milk": {
+      "body_color": [
+        0.16826940018969075,
+        0.0953074666309647,
+        0.06662593864377289,
+        1
+      ],
+      "cap_color": [
+        0.5775804404296506,
+        0.39675523072562685,
+        0.238397573812271,
+        1
+      ],
+      "reference_color": [
+        0.0295568344378088,
+        0.02217388479338738,
+        0.01520851442291271,
+        1
+      ],
+      "roughness": 0.72,
+      "metallic": 0,
+      "label_texture": "coffee_milk.png",
+      "sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81",
+      "description": "COFFEE & MILK project-drawn label; asymmetric top stripe and side tick"
     }
   }
 }

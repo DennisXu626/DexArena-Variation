@@ -19,3 +19,7 @@ V1对象键：`cabinet_pouring/beads`；V2对应键：`beads`。代码调查基�
 - [tasks/cabinet_pouring/cabinet_pouring_long.py](../../../../../tasks/cabinet_pouring/cabinet_pouring_long.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+## 十套家族外观
+
+[十行映射、部件材料和实物参考](../../../../../docs/variation/CABINET_TEN_VARIANTS.md)。新增选型已接入短任务并完成 CPU 核对，实际渲染和运行验收待补。既有已验收方案继续引用原 catalog。

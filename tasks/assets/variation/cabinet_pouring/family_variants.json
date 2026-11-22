@@ -1,0 +1,60 @@
+{
+  "version": "cabinet-ten-v1",
+  "schemes": {
+    "original": {
+      "cabinet": "original",
+      "bottle": "original",
+      "pouring": "original"
+    },
+    "variant_1": {
+      "cabinet": "oak_warm_white",
+      "bottle": "ocean",
+      "pouring": "ocean"
+    },
+    "variant_2": {
+      "cabinet": "sage_walnut",
+      "bottle": "citrus",
+      "pouring": "citrus"
+    },
+    "variant_3": {
+      "cabinet": "smoked_linen",
+      "bottle": "violet",
+      "pouring": "violet"
+    },
+    "variant_4": {
+      "cabinet": "birch_dust_blue",
+      "bottle": "spring_water",
+      "pouring": "spring_water"
+    },
+    "variant_5": {
+      "cabinet": "cream_nickel",
+      "bottle": "black_tea",
+      "pouring": "black_tea"
+    },
+    "variant_6": {
+      "cabinet": "walnut_ivory",
+      "bottle": "peach_juice",
+      "pouring": "peach_juice"
+    },
+    "variant_7": {
+      "cabinet": "slate_ash",
+      "bottle": "mineral_silver",
+      "pouring": "mineral_silver"
+    },
+    "variant_8": {
+      "cabinet": "brick_putty",
+      "bottle": "green_tea",
+      "pouring": "green_tea"
+    },
+    "variant_9": {
+      "cabinet": "reed_birch",
+      "bottle": "berry_soda",
+      "pouring": "berry_soda"
+    },
+    "variant_10": {
+      "cabinet": "ink_maple",
+      "bottle": "coffee_milk",
+      "pouring": "coffee_milk"
+    }
+  }
+}

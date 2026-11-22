@@ -1,0 +1,99 @@
+{
+  "job": 128933,
+  "head": "87afa53d5262b6667a6f0e8dac0ecee538781318",
+  "crop_xyxy": [
+    400,
+    195,
+    560,
+    324
+  ],
+  "cap_mask_proxy": "reconstructed lid silhouette; archived per-pixel segmentation unavailable",
+  "frame_checks": [
+    {
+      "frame": {
+        "file": "UnscrewCap_native_view0.png",
+        "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b",
+        "size_wh": [
+          960,
+          720
+        ]
+      },
+      "archived_gate": "('cap_fixed', 0, 4810)",
+      "view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "reconstructed_cap_position_m": [
+        -0.2280430793762207,
+        -0.19467759132385254,
+        0.13158629066346217
+      ],
+      "geometry": {
+        "old": {
+          "projected_marker_pixels": 599443,
+          "cap_overlap_pixels": 0,
+          "cap_inset_pixels": 0
+        },
+        "scaled": {
+          "projected_marker_pixels": 364,
+          "cap_overlap_pixels": 364,
+          "cap_inset_pixels": 204
+        }
+      },
+      "rgb_red_control_pixels": 364,
+      "scaled_inset_matching_red_pixels": 204
+    },
+    {
+      "frame": {
+        "file": "UnscrewCap_native_view1.png",
+        "sha256": "88fd95d9776f66aa6b5b7ea15933922392bf3702e92a0504965d348cacf9af99",
+        "size_wh": [
+          960,
+          720
+        ]
+      },
+      "archived_gate": "('cap_fixed', 0, 7221)",
+      "view": [
+        [
+          0.001956920623779307,
+          -0.47467759132385257,
+          0.3700863918662071
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "reconstructed_cap_position_m": [
+        -0.2280430793762207,
+        -0.19467759132385254,
+        0.13158629066346217
+      ],
+      "geometry": {
+        "old": {
+          "projected_marker_pixels": 473939,
+          "cap_overlap_pixels": 0,
+          "cap_inset_pixels": 0
+        },
+        "scaled": {
+          "projected_marker_pixels": 494,
+          "cap_overlap_pixels": 494,
+          "cap_inset_pixels": 286
+        }
+      },
+      "rgb_red_control_pixels": 495,
+      "scaled_inset_matching_red_pixels": 286
+    }
+  ]
+}

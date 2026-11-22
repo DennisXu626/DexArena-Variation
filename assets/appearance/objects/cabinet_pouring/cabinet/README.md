@@ -24,3 +24,7 @@
 纹理在首次相机渲染前逐环境、按用途建立稳定私有纹理；reset 仅上传已计算像素。没 UV 的槽使用同饰面匹配的纯色，保持模型原几何。显式 `original` 恢复所有被写入的原始材质参数与像素。没有修改原瓶、盖、碗、珠子或工作台的外观控制。
 
 [柜体专用配置与验收范围](../../../../../docs/variation/CABINET_SINGLE_DOOR.md)。正式入口：`CabinetPouringOpenCabinet-Sharpa-v1`、`CabinetPouringPickBottle-Sharpa-v1`。Long 和其它子任务未扩大支持。
+
+## 十套家族外观
+
+[十行映射、部件材料和实物参考](../../../../../docs/variation/CABINET_TEN_VARIANTS.md)。新增选型已接入短任务并完成 CPU 核对，实际渲染和运行验收待补。既有已验收方案继续引用原 catalog。

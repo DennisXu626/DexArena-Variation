@@ -1,0 +1,1304 @@
+{
+  "family": "cabinet_pouring",
+  "head": "952af8c36ab1ae8392c7e6b8cfc28b19b4a212f9",
+  "seed": 7,
+  "job": "129056",
+  "tasks": {
+    "PourBeads": {
+      "status": "passed",
+      "captures": {
+        "original": {
+          "files": {
+            "review": {
+              "file": "PourBeads_original_review.png",
+              "sha256": "1af59cdbf1251ca7ab923fb35be63ce698a64ed245467cda303cca8ad22af474",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "object_mask": {
+            "file": "PourBeads_original_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 0,
+            "mask": {
+              "file": "PourBeads_original_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 0,
+            "mask": {
+              "file": "PourBeads_original_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "original",
+                "beads": "original",
+                "bowl": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "original",
+                "beads": "original",
+                "bowl": "original"
+              }
+            }
+          ]
+        },
+        "variant_1": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_1_review.png",
+              "sha256": "c3c2981febaa586c30db83cb1bbb470e588de5440fc3f11de0672d9ea5ee507f",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_1_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_1_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_1_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "ocean",
+                "beads": "ocean",
+                "bowl": "ocean"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "ocean",
+                "beads": "ocean",
+                "bowl": "ocean"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_2": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_2_review.png",
+              "sha256": "c3667680881a19d2d1eaf0fd6ab2f6d9a6debc38e59b3e32e3e94b99c9a8826e",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_2_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_2_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_2_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "citrus",
+                "beads": "citrus",
+                "bowl": "citrus"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "citrus",
+                "beads": "citrus",
+                "bowl": "citrus"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_3": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_3_review.png",
+              "sha256": "30522ddab110f718a013233dd642835137e2846869b3f13574f2250ebce747fe",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_3_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_3_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_3_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "violet",
+                "beads": "violet",
+                "bowl": "violet"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "violet",
+                "beads": "violet",
+                "bowl": "violet"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_4": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_4_review.png",
+              "sha256": "4563b22b6d79beb55cd6c78a4c99f1f8c3805c04a96b8d2ce9a2ced004270f55",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_4_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_4_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_4_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "spring_water",
+                "beads": "spring_water",
+                "bowl": "spring_water"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "spring_water",
+                "beads": "spring_water",
+                "bowl": "spring_water"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_5": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_5_review.png",
+              "sha256": "b9941ee31d697a8076dd14889c324b025459223e2c7fe5ee205236bd1e1c3427",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_5_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_5_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_5_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "black_tea",
+                "beads": "black_tea",
+                "bowl": "black_tea"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "black_tea",
+                "beads": "black_tea",
+                "bowl": "black_tea"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_6": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_6_review.png",
+              "sha256": "5709733709f7e9e82a48abd9afe0332b9ff2c944bfc1a40f948c37bcdac42b45",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_6_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_6_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_6_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "peach_juice",
+                "beads": "peach_juice",
+                "bowl": "peach_juice"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "peach_juice",
+                "beads": "peach_juice",
+                "bowl": "peach_juice"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_7": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_7_review.png",
+              "sha256": "2254f628d1987df0cc4dcecba844f3c21cd90d724e9bb9f5da6b848b0245ab00",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_7_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_7_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_7_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "mineral_silver",
+                "beads": "mineral_silver",
+                "bowl": "mineral_silver"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "mineral_silver",
+                "beads": "mineral_silver",
+                "bowl": "mineral_silver"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_8": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_8_review.png",
+              "sha256": "497d842e29d2820ca6c0a6769246dbb51beea17c0ed4f53fbd21b5ca8db09621",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_8_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_8_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_8_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "green_tea",
+                "beads": "green_tea",
+                "bowl": "green_tea"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "green_tea",
+                "beads": "green_tea",
+                "bowl": "green_tea"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_9": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_9_review.png",
+              "sha256": "eae69ceab7d0c0a635b4edb4b15834d2ce9605b388ad8177ad50053e5b6693b4",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_9_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_9_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_9_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "berry_soda",
+                "beads": "berry_soda",
+                "bowl": "berry_soda"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "berry_soda",
+                "beads": "berry_soda",
+                "bowl": "berry_soda"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_10": {
+          "files": {
+            "review": {
+              "file": "PourBeads_variant_10_review.png",
+              "sha256": "998ecfd3bc15b2a362bfd9af2512f2c50b71aa81dbcd02653bc5d737fc4c2008",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "verified_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "bowl": 1,
+              "beads": 16
+            }
+          ],
+          "object_mask": {
+            "file": "PourBeads_variant_10_review_mask.png",
+            "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "native_particles_in_source": [
+            16,
+            16
+          ],
+          "surface": {
+            "pixels": 63588,
+            "changed": 63588,
+            "mask": {
+              "file": "PourBeads_variant_10_review_surface_mask.png",
+              "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "inner_silhouette_band": {
+            "pixels": 4228,
+            "changed": 4228,
+            "mask": {
+              "file": "PourBeads_variant_10_review_inner_silhouette_band_mask.png",
+              "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "coffee_milk",
+                "beads": "coffee_milk",
+                "bowl": "coffee_milk"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "coffee_milk",
+                "beads": "coffee_milk",
+                "bowl": "coffee_milk"
+              }
+            }
+          ],
+          "restored": true
+        }
+      },
+      "gallery_camera": "review",
+      "native_view_trials": [
+        {
+          "view": [
+            [
+              -0.43,
+              -0.84,
+              0.37
+            ],
+            [
+              -0.2,
+              -0.5,
+              0.045
+            ],
+            0.7
+          ],
+          "files": {
+            "review": {
+              "file": "PourBeads_native_view0.png",
+              "sha256": "1af59cdbf1251ca7ab923fb35be63ce698a64ed245467cda303cca8ad22af474",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        }
+      ],
+      "same_coordinate_crops": {
+        "bowl": [
+          290,
+          209,
+          674,
+          490
+        ]
+      },
+      "camera": {
+        "view": [
+          [
+            -0.43,
+            -0.84,
+            0.37
+          ],
+          [
+            -0.2,
+            -0.5,
+            0.045
+          ],
+          0.7
+        ],
+        "intrinsic": [
+          [
+            986.224365234375,
+            0.0,
+            480.0
+          ],
+          [
+            0.0,
+            986.224365234375,
+            360.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "extrinsic": [
+          [
+            0.828283429145813,
+            -0.5603092908859253,
+            -2.980232594040899e-08,
+            -0.11449789255857468
+          ],
+          [
+            -0.34780585765838623,
+            -0.5141478180885315,
+            -0.7840172648429871,
+            -0.2913542687892914
+          ],
+          [
+            0.43929219245910645,
+            0.6493884921073914,
+            -0.6207390427589417,
+            0.9640552997589111
+          ]
+        ]
+      },
+      "flip_v": null,
+      "attempted_scheme": "variant_10",
+      "last_verified_slots": [
+        {
+          "source/body_surface": 2,
+          "source/body_label": 1,
+          "bowl": 1,
+          "beads": 16
+        },
+        {
+          "source/body_surface": 2,
+          "source/body_label": 1,
+          "bowl": 1,
+          "beads": 16
+        }
+      ],
+      "isolation": [
+        {
+          "selected": 1,
+          "passive": {
+            "state": true,
+            "materials": true,
+            "rng": true,
+            "records": true,
+            "all_camera_rgb": true,
+            "review_rgb": true
+          },
+          "before": {
+            "files": {
+              "review": {
+                "file": "PourBeads_reset1_before.png",
+                "sha256": "a52ccb66d32b34e8297170cf3d17e87ca150cc97e24d22235da8a842042e91c0",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "PourBeads_reset1_after.png",
+                "sha256": "abbe77d2ffa83ac69800c00c338ed41c90613faaef35dada1979a2cd7475ba5a",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "bowl_common_pixels": 65217,
+          "status": "passed"
+        },
+        {
+          "selected": 0,
+          "passive": {
+            "state": true,
+            "materials": true,
+            "rng": true,
+            "records": true,
+            "all_camera_rgb": true,
+            "review_rgb": true
+          },
+          "before": {
+            "files": {
+              "review": {
+                "file": "PourBeads_reset0_before.png",
+                "sha256": "4563b22b6d79beb55cd6c78a4c99f1f8c3805c04a96b8d2ce9a2ced004270f55",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "PourBeads_reset0_after.png",
+                "sha256": "9a179c4305da81ae1b84c69be1518fc0030aac0d426b69e8d7b32a82ae9396f6",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "bowl_common_pixels": 64814,
+          "status": "passed"
+        }
+      ],
+      "random_reproducibility": [
+        [
+          {
+            "env_idx": 0,
+            "episode_index": 1,
+            "family_id": "original",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "original",
+              "beads": "original",
+              "bowl": "original"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 1,
+            "family_id": "original",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "original",
+              "beads": "original",
+              "bowl": "original"
+            }
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 2,
+            "family_id": "variant_6",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "peach_juice",
+              "beads": "peach_juice",
+              "bowl": "peach_juice"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 2,
+            "family_id": "variant_1",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "ocean",
+              "beads": "ocean",
+              "bowl": "ocean"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 3,
+            "family_id": "variant_2",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "citrus",
+              "beads": "citrus",
+              "bowl": "citrus"
+            }
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 3,
+            "family_id": "variant_6",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "peach_juice",
+              "beads": "peach_juice",
+              "bowl": "peach_juice"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 4,
+            "family_id": "variant_8",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "green_tea",
+              "beads": "green_tea",
+              "bowl": "green_tea"
+            }
+          }
+        ],
+        [
+          {
+            "env_idx": 0,
+            "episode_index": 1,
+            "family_id": "original",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "original",
+              "beads": "original",
+              "bowl": "original"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 1,
+            "family_id": "original",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "original",
+              "beads": "original",
+              "bowl": "original"
+            }
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 2,
+            "family_id": "variant_6",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "peach_juice",
+              "beads": "peach_juice",
+              "bowl": "peach_juice"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 2,
+            "family_id": "variant_1",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "ocean",
+              "beads": "ocean",
+              "bowl": "ocean"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 3,
+            "family_id": "variant_2",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "citrus",
+              "beads": "citrus",
+              "bowl": "citrus"
+            }
+          },
+          {
+            "env_idx": 0,
+            "episode_index": 3,
+            "family_id": "variant_6",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "peach_juice",
+              "beads": "peach_juice",
+              "bowl": "peach_juice"
+            }
+          },
+          {
+            "env_idx": 1,
+            "episode_index": 4,
+            "family_id": "variant_8",
+            "catalog_version": "cabinet-ten-v1",
+            "objects": {
+              "bottle": "green_tea",
+              "beads": "green_tea",
+              "bowl": "green_tea"
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "status": "engineering_passed_pending_visual_review",
+  "phase": "pour-task",
+  "reused_job": 128861,
+  "reused_jobs": [
+    128861,
+    128933,
+    128943,
+    128997
+  ]
+}

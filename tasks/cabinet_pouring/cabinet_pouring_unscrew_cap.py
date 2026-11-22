@@ -96,7 +96,9 @@ class CabinetPouringUnscrewCapEnv(CabinetPouringLongEnv):
             self._stage_bottle_out[env_idx] = True
             self._stage_bottle_placed[env_idx] = True
             self._sync_placement_region_markers(env_idx)
-            if self._variation is not None:
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            elif self._variation is not None:
                 self._variation.finish_reset(env_idx, options)
 
     def evaluate(self):
