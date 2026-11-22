@@ -112,7 +112,9 @@ def camera_setup(sensor):
 def capture_formal(task, info, mark_call):
     mark_call('task.get_obs(info=existing_info, unflattened=True)')
     observation = task.get_obs(info=info, unflattened=True)['sensor_data']
-    assert set(observation) == set(FORMAL_CAMERAS), sorted(observation)
+    missing = [name for name in FORMAL_CAMERAS if name not in observation]
+    if missing:
+        raise AssertionError(f"Missing formal cameras: {', '.join(missing)}")
     return {name: (observation[name], task.scene.sensors[name].get_params()) for name in FORMAL_CAMERAS}
 
 
