@@ -18,3 +18,7 @@ PartNet Mobility 45841。[绑定表](bindings.json)逐项记录 47 个 URDF 视�
 唯一参数源：[catalog](../../../../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json)，抽屉记录 `drawer_revision=component-materials-v2`，沿用原方案 ID。显式 original 恢复原参数及原像素。同图不同角色分别绑定稳定私有纹理，局部 reset 上传像素；滑轨不绑定变体色图。
 
 [产品依据](REFERENCES.md) · [用法与验收范围](../../../../../docs/variation/DRAWER_SOCKET_APPEARANCE.md) · [检查脚本](../../../../../tools/variation/check_drawer_socket.py)。只复测 OpenDrawer、PickCharger；插座不适用。Long 的抽屉也沿用该目录，但这次不追加 Long 渲染、完整任务、训练、A6 或规模化验证。
+
+## 十套家族外观
+
+[十行映射、部件材料和实物参考](../../../../../docs/variation/DRAWER_TEN_VARIANTS.md)。新增选型已接入短任务并完成 CPU 核对，实际渲染和运行验收待补。既有已验收方案继续引用原 catalog。

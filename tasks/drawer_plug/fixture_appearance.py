@@ -134,6 +134,19 @@ class FixtureAppearance:
         mode = params.get('texture_mode', 'solid')
         if mode == 'solid':
             return FixtureAppearance._solid_pixels(live, params['base_color'][:3])
+        if mode.startswith('grain_'):
+            # Use the source UV-aligned grain as a neutral relief signal,
+            # then paint veneer brightness/chroma without rotating its fibres.
+            pixels = live['pixels'].copy()
+            scale = np.iinfo(pixels.dtype).max if np.issubdtype(pixels.dtype, np.integer) else 1.0
+            luma = pixels[..., :3].astype(np.float32) @ np.array([.2126,.7152,.0722],dtype=np.float32)
+            grain = np.clip((luma - np.mean(luma)) / max(1e-6, 2.5*np.std(luma)), -1, 1)
+            contrast = {'grain_ash': .15, 'grain_oak': .23, 'grain_walnut': .34}[mode]
+            rgb = np.clip(np.asarray(params['base_color'][:3])*(1+contrast*grain[...,None]),0,1)
+            if live['srgb']:
+                rgb = np.where(rgb <= .0031308, 12.92*rgb, 1.055*rgb**(1/2.4)-.055)
+            pixels[..., :3] = (np.rint(rgb*scale) if scale!=1 else rgb).astype(pixels.dtype)
+            return pixels
         if mode != 'oak_tone':
             raise ValueError(f'Unknown drawer texture mode: {mode}')
         # Transform the existing texels in place in UV space; keep the native
