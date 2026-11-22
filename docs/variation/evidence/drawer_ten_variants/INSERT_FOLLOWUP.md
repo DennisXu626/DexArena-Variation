@@ -1,6 +1,6 @@
 # InsertPlug 三项补测
 
-本轮复用 [作业 128860](runtime_001/README.md)。OpenDrawer、PickCharger 已通过的固定方案、恢复、随机复现和双向隔离继续有效。InsertPlug 的固定方案、逐款恢复、同 seed 初态、env1 reset 仍使用原证据。GPU 补测尚未执行。
+本轮复用 [作业 128860](runtime_001/README.md)。OpenDrawer、PickCharger 已通过的固定方案、恢复、随机复现和双向隔离继续有效。InsertPlug 的固定方案、逐款恢复、同 seed 初态、env1 reset 仍使用原证据。[GPU 补测结果与实景](runtime_002/README.md)已记录，判据如下。
 
 | 补测 | 通过依据 |
 |---|---|

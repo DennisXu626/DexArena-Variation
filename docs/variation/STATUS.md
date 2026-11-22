@@ -2,7 +2,7 @@
 
 [Drawer / Socket 外观](DRAWER_SOCKET_APPEARANCE.md)已限定验收。抽屉 A 浅橡木与暖白、B 浅灰与石墨色通过 OpenDrawer／PickCharger 双环境验证及开闭审图。插座暖白／炭黑 PC 通过 InsertPlug 双环境验证。两者均覆盖原版恢复、随机复现和局部 reset 隔离。Long 单环境阶段验证只覆盖抽屉返工前版本。
 
-[Drawer & Plug 十套家族外观](DRAWER_TEN_VARIANTS.md)已拍齐三个短任务的十套实景及固定方案恢复。OpenDrawer／PickCharger 随机及 A5 通过。InsertPlug 第二个方向的 Charger 像素判据未通过，随机复现未运行。旧对象的限定验收保留。
+[Drawer & Plug 十套家族外观](DRAWER_TEN_VARIANTS.md)已拍齐三个短任务的十套实景及固定方案恢复。OpenDrawer／PickCharger 的随机及 A5 沿用作业 128860。InsertPlug 随机复现、env0 恢复和双孔十一格补测通过，双向 A5 证据已齐。待 Dennis 审阅，旧对象的限定验收保留。
 
 这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中14个对象为 `accepted_pilot`。各对象的任务覆盖和验证边界见对应条目。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
 
