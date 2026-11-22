@@ -1,0 +1,43 @@
+{
+  "job_id": "129060",
+  "groups": {
+    "appearance_off": {
+      "base_camera": {
+        "test_status": "未运行",
+        "verdict": null,
+        "reason": "启动保护创建应用子进程前退出，无帧"
+      },
+      "task_wrist_camera": {
+        "test_status": "未运行",
+        "verdict": null,
+        "reason": "启动保护创建应用子进程前退出，无帧"
+      },
+      "render_camera": {
+        "test_status": "未运行",
+        "verdict": null,
+        "reason": "启动保护创建应用子进程前退出，无帧"
+      }
+    },
+    "variant_9": {
+      "base_camera": {
+        "test_status": "未运行",
+        "verdict": null,
+        "reason": "启动保护创建应用子进程前退出，无帧"
+      },
+      "task_wrist_camera": {
+        "test_status": "未运行",
+        "verdict": null,
+        "reason": "启动保护创建应用子进程前退出，无帧"
+      },
+      "render_camera": {
+        "test_status": "未运行",
+        "verdict": null,
+        "reason": "启动保护创建应用子进程前退出，无帧"
+      }
+    }
+  },
+  "complete": false,
+  "frames": [],
+  "segmentation_files": [],
+  "source": "No application output; startup failure before creation of A or B"
+}
