@@ -1,0 +1,1117 @@
+{
+  "family": "cabinet_pouring",
+  "head": "0ed5ce09da945eeb0609f7a32fcb082cf50185cb",
+  "seed": 7,
+  "job": "128943",
+  "tasks": {
+    "UnscrewCap": {
+      "status": "running",
+      "captures": {
+        "original": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_original_review.png",
+              "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_original_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "7f1d8a9e21dedf3bb3bb76ff89382dc4087d7fff5dd6922a6b3de301e8644478",
+          "template_orientation_scores": [
+            0.9886775903323061,
+            -0.1857022423357065
+          ],
+          "marker_mask": {
+            "file": "UnscrewCap_original_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            214.0,
+            74.0,
+            74.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "original",
+                "beads": "original",
+                "cap": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "original",
+                "beads": "original",
+                "cap": "original"
+              }
+            }
+          ]
+        },
+        "variant_1": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_1_review.png",
+              "sha256": "a82bd0aa8790e05bf27059b50d83b36e014fac1dcde2f888dc4f55e1db0723af",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_1_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "d0af46b4ed9e64c9d7c63a266c9577b1b115ed7be6f3c9ac87b58fd9e9e80ba2",
+          "wanted_asset": {
+            "scheme": "ocean",
+            "file": "ocean.png",
+            "sha256": "5503fa8c1c1dc823d8643ddcbded7c0e7854f7d2c192455eef197f75ab7da6ef"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": 0.10149914168732323,
+            "wanted": 0.995092908075186
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_1_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            229.0,
+            218.0,
+            81.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "ocean",
+                "beads": "ocean",
+                "cap": "ocean"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "ocean",
+                "beads": "ocean",
+                "cap": "ocean"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_2": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_2_review.png",
+              "sha256": "877e00d8971526594aa80bf7c74b2e014168c0178832c78f184445c423f9d401",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_2_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "f6e8f9cb43f176f4a58a48edcd0ac0b56d0d8c5f4d6bc8e5a710977a6522744b",
+          "wanted_asset": {
+            "scheme": "citrus",
+            "file": "citrus.png",
+            "sha256": "c3dea2e0fd3c2a8240788459dd336f5f151a76b7ef24605937cdff143870658e"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": 0.0685140638586833,
+            "wanted": 0.9954936534235954
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_2_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            56.0,
+            89.0,
+            66.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "citrus",
+                "beads": "citrus",
+                "cap": "citrus"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "citrus",
+                "beads": "citrus",
+                "cap": "citrus"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_3": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_3_review.png",
+              "sha256": "0a4c64a2e6c6e5c121bc362ba2cdd7a716be6bcc718c65f06657a74e229928b7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_3_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "50a8730228b2a99aa063c5c090decb0434783d9eff3933110f7c681babd43513",
+          "wanted_asset": {
+            "scheme": "violet",
+            "file": "violet.png",
+            "sha256": "94f477cdddf0ef60999736d23f7a09be54cd7c3fb53b18c7ba2329540b509b73"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": 0.052259601037333465,
+            "wanted": 0.9966859140563906
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_3_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            57.0,
+            221.0,
+            202.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "violet",
+                "beads": "violet",
+                "cap": "violet"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "violet",
+                "beads": "violet",
+                "cap": "violet"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_4": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_4_review.png",
+              "sha256": "dba6f5788cf667306f89074dde932e1add4769bcb39f9847819d49ac3997162a",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_4_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "28018f1926961e54f7c8c8785d0bfb2dac3a4d3ccb9efde70ee9d4e6b917e9a1",
+          "wanted_asset": {
+            "scheme": "spring_water",
+            "file": "spring_water.png",
+            "sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": 0.21661473103440054,
+            "wanted": 0.9386584359838209
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_4_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            42.0,
+            66.0,
+            84.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "spring_water",
+                "beads": "spring_water",
+                "cap": "spring_water"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "spring_water",
+                "beads": "spring_water",
+                "cap": "spring_water"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_5": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_5_review.png",
+              "sha256": "cec273413fa1b0b8473ca583ad88f350a90df994ac9cb50d41b8f24d393d3aa2",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_5_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "199e71e776f2c22332ddcbcf863ccf17709d402af767a5df8a36ee8bdabb3ca3",
+          "wanted_asset": {
+            "scheme": "black_tea",
+            "file": "black_tea.png",
+            "sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": -0.40041455350014976,
+            "wanted": 0.9921134867690314
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_5_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            208.0,
+            173.0,
+            129.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "black_tea",
+                "beads": "black_tea",
+                "cap": "black_tea"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "black_tea",
+                "beads": "black_tea",
+                "cap": "black_tea"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_6": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_6_review.png",
+              "sha256": "8a427801bbbbed2e6bd85a3b7c8845bbf588602a4f65883600b6e90c7a771204",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_6_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "e2044ca6a42ad9ac0986f23277f6beb663bb3771bf3ef0b575f98e3833687cd3",
+          "wanted_asset": {
+            "scheme": "peach_juice",
+            "file": "peach_juice.png",
+            "sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": -0.3996945791879249,
+            "wanted": 0.9915524280418416
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_6_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            230.0,
+            222.0,
+            203.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "peach_juice",
+                "beads": "peach_juice",
+                "cap": "peach_juice"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "peach_juice",
+                "beads": "peach_juice",
+                "cap": "peach_juice"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_7": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_7_review.png",
+              "sha256": "089241855f2d2c7d42e7a336297d25e0d3f42e8e36b1e6ee1a4cd43583fbd633",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_7_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "3c0384647dcd606f72b20527c27c03c40dfee82258e4c0c7052f1f28ef742d7d",
+          "wanted_asset": {
+            "scheme": "mineral_silver",
+            "file": "mineral_silver.png",
+            "sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": -0.4005039203948828,
+            "wanted": 0.9919465170717531
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_7_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            215.0,
+            214.0,
+            208.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "mineral_silver",
+                "beads": "mineral_silver",
+                "cap": "mineral_silver"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "mineral_silver",
+                "beads": "mineral_silver",
+                "cap": "mineral_silver"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_8": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_8_review.png",
+              "sha256": "b20f494fa7d5acd60418b5391422ebee6836f55776acfc3b2f98ded77f4d1da3",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_8_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "c52ad30f068592e7740b25715ce206c2169b422b980b66f39c0ec19b71641ce3",
+          "wanted_asset": {
+            "scheme": "green_tea",
+            "file": "green_tea.png",
+            "sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": -0.024331595574792152,
+            "wanted": 0.9293780397958481
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_8_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            43.0,
+            54.0,
+            45.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "green_tea",
+                "beads": "green_tea",
+                "cap": "green_tea"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "green_tea",
+                "beads": "green_tea",
+                "cap": "green_tea"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_9": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_9_review.png",
+              "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_9_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "185ff9f492fae33c56ddb6028e1762b54cd2764c4a35c7e1b63ff06eb5a7bc7b",
+          "wanted_asset": {
+            "scheme": "berry_soda",
+            "file": "berry_soda.png",
+            "sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": -0.39225546551592605,
+            "wanted": 0.9890737110793779
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_9_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            222.0,
+            174.0,
+            85.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "berry_soda",
+                "beads": "berry_soda",
+                "cap": "berry_soda"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "berry_soda",
+                "beads": "berry_soda",
+                "cap": "berry_soda"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_10": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_10_review.png",
+              "sha256": "c77d1a607ae50363cf2ff68591a77e9d71cdb2be62645cfb0240a41fc0799c35",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_10_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "representation": "source_fixed",
+          "mesh": "original-3.obj",
+          "label_pixels": 1487,
+          "bound_filename": "",
+          "bound_texels": "e4afbe19da9d5d7ccb77bd818ce3b24614f1223e3d43e581c6c6caa50bc2d46f",
+          "wanted_asset": {
+            "scheme": "coffee_milk",
+            "file": "coffee_milk.png",
+            "sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81"
+          },
+          "bound_matches_catalog_pixels": true,
+          "image_score": {
+            "native": -0.27953499654441244,
+            "wanted": 0.9639644185543236
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_10_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_pixels": 204,
+          "marker_median_rgb": [
+            49.0,
+            44.0,
+            38.0
+          ],
+          "records": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "coffee_milk",
+                "beads": "coffee_milk",
+                "cap": "coffee_milk"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "coffee_milk",
+                "beads": "coffee_milk",
+                "cap": "coffee_milk"
+              }
+            }
+          ],
+          "restored": true
+        }
+      },
+      "gallery_camera": "review",
+      "native_view_trials": [
+        {
+          "view": [
+            [
+              0.2019569206237793,
+              -0.06467759132385253,
+              0.40008639186620715
+            ],
+            [
+              -0.2280430793762207,
+              -0.19467759132385254,
+              0.06008639186620712
+            ],
+            0.83
+          ],
+          "files": {
+            "review": {
+              "file": "UnscrewCap_native_view0.png",
+              "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "native_scores": [
+            {
+              "native": 0.9886775903323061,
+              "wanted": -0.36017748213388606
+            },
+            {
+              "native": -0.1857022423357065,
+              "wanted": 0.14824634747943408
+            }
+          ]
+        }
+      ],
+      "same_coordinate_crops": {
+        "label": [
+          428,
+          300,
+          529,
+          399
+        ],
+        "bottle_cap": [
+          424,
+          226,
+          535,
+          461
+        ],
+        "cap_marker": [
+          425,
+          226,
+          535,
+          323
+        ]
+      },
+      "camera": {
+        "view": [
+          [
+            0.2019569206237793,
+            -0.06467759132385253,
+            0.40008639186620715
+          ],
+          [
+            -0.2280430793762207,
+            -0.19467759132385254,
+            0.06008639186620712
+          ],
+          0.83
+        ],
+        "intrinsic": [
+          [
+            817.0885620117188,
+            0.0,
+            480.0
+          ],
+          [
+            0.0,
+            817.0885620117188,
+            360.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "extrinsic": [
+          [
+            -0.2893894612789154,
+            0.9572112560272217,
+            2.2351738238057806e-08,
+            0.12035433202981949
+          ],
+          [
+            0.5776746273040771,
+            0.17464579641819,
+            -0.7973649501800537,
+            0.21364516019821167
+          ],
+          [
+            -0.7632467746734619,
+            -0.2307489961385727,
+            -0.6034973859786987,
+            0.38066983222961426
+          ]
+        ]
+      },
+      "flip_v": false,
+      "last_verified_slots": [
+        {
+          "source/body_surface": 2,
+          "source/body_label": 1,
+          "source_fixed/body_surface": 2,
+          "source_fixed/body_label": 1,
+          "source_open/body_surface": 2,
+          "source_open/body_label": 1,
+          "cap/cap_surface": 1,
+          "cap/cap_reference": 2,
+          "cap_fixed/cap_surface": 1,
+          "cap_fixed/cap_reference": 2,
+          "cap_twin/cap_surface": 1,
+          "cap_twin/cap_reference": 2,
+          "beads": 16
+        },
+        {
+          "source/body_surface": 2,
+          "source/body_label": 1,
+          "source_fixed/body_surface": 2,
+          "source_fixed/body_label": 1,
+          "source_open/body_surface": 2,
+          "source_open/body_label": 1,
+          "cap/cap_surface": 1,
+          "cap/cap_reference": 2,
+          "cap_fixed/cap_surface": 1,
+          "cap_fixed/cap_reference": 2,
+          "cap_twin/cap_surface": 1,
+          "cap_twin/cap_reference": 2,
+          "beads": 16
+        }
+      ],
+      "isolation": [
+        {
+          "selected": 1,
+          "passive": {
+            "state": true,
+            "materials": true,
+            "rng": true,
+            "records": true,
+            "all_camera_rgb": true,
+            "review_rgb": true
+          },
+          "before": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset1_before.png",
+                "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset1_after.png",
+                "sha256": "dacbfbbf7f340f7637e71cf6302677cafa31f5f021ea4dc8ef7097bcb5f58ed9",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "restored_label": {
+            "representation": "source_fixed",
+            "pixels": 1042,
+            "scores": {
+              "native": 0.9867797625125402,
+              "wanted": -0.24374050355954685
+            }
+          },
+          "restored_cap": {
+            "representation": "cap_fixed",
+            "marker_pixels": 165
+          },
+          "status": "passed"
+        },
+        {
+          "selected": 0,
+          "passive": {
+            "state": true,
+            "materials": true,
+            "rng": true,
+            "records": true,
+            "all_camera_rgb": true,
+            "review_rgb": true
+          },
+          "before": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset0_before.png",
+                "sha256": "dba6f5788cf667306f89074dde932e1add4769bcb39f9847819d49ac3997162a",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset0_after.png",
+                "sha256": "5430415bbb9a9302d98ca37466908f213e5437303a7c419c609f7672d75feeb3",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "restored_label": {
+            "representation": "source_fixed",
+            "pixels": 1982,
+            "scores": {
+              "native": 0.9846565823782828,
+              "wanted": -0.36637279094243996
+            }
+          },
+          "restored_cap": {
+            "representation": "cap_fixed",
+            "marker_pixels": 131
+          },
+          "status": "passed"
+        }
+      ],
+      "engineered_stage_switch": {
+        "scope": "checker-only trigger, no robot action",
+        "frames": {
+          "attached": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_engineered_attached.png",
+                "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "mask": {
+              "file": "UnscrewCap_engineered_attached_label_mask.png",
+              "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "representation": "source_fixed",
+            "mesh": "original-3.obj",
+            "label_pixels": 1487,
+            "bound_filename": "",
+            "bound_texels": "185ff9f492fae33c56ddb6028e1762b54cd2764c4a35c7e1b63ff06eb5a7bc7b",
+            "wanted_asset": {
+              "scheme": "berry_soda",
+              "file": "berry_soda.png",
+              "sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8"
+            },
+            "bound_matches_catalog_pixels": true,
+            "image_score": {
+              "native": -0.39225546551592605,
+              "wanted": 0.9890737110793779
+            },
+            "cap_representation": "cap_fixed",
+            "marker_pixels": 204,
+            "marker_mask": {
+              "file": "UnscrewCap_engineered_attached_marker.png",
+              "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "status": "failed",
+  "phase": "remaining",
+  "reused_job": 128861,
+  "reused_pick_bottle_job": 128933,
+  "failed_task": "UnscrewCap",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_004/source/tools/variation/cabinet_followup.py\", line 667, in run\n    check.task_matrix(task,auth)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_004/source/tools/variation/cabinet_followup.py\", line 612, in task_matrix\n    self.cap_switch(env,row,native,flip)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_004/source/tools/variation/cabinet_followup.py\", line 534, in cap_switch\n    frame,meta,_=self.label_frame(env,PROBE,native,flip,f'UnscrewCap_engineered_{kind}')\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_004/source/tools/variation/cabinet_followup.py\", line 314, in label_frame\n    frame=self.review(env,i)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_004/source/tools/variation/cabinet_followup.py\", line 220, in review\n    scene.update_render(update_sensors=False,update_human_render_cameras=True)\n  File \"/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/site-packages/mani_skill/envs/scene.py\", line 399, in update_render\n    self._sapien_update_render(\n  File \"/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/site-packages/mani_skill/envs/scene.py\", line 422, in _sapien_update_render\n    self.render_system_group.update_render()\nRuntimeError: Modifying a scene (add/remove object/camera) is not allowed after creating the batched render system.\n"
+}

@@ -1,0 +1,496 @@
+{
+  "head": "0ed5ce09da945eeb0609f7a32fcb082cf50185cb",
+  "seed": 7,
+  "job": "128943",
+  "phase": "remaining",
+  "status": "failed",
+  "UnscrewCap": {
+    "status": "running",
+    "camera": {
+      "view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "intrinsic": [
+        [
+          817.0885620117188,
+          0.0,
+          480.0
+        ],
+        [
+          0.0,
+          817.0885620117188,
+          360.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "extrinsic": [
+        [
+          -0.2893894612789154,
+          0.9572112560272217,
+          2.2351738238057806e-08,
+          0.12035433202981949
+        ],
+        [
+          0.5776746273040771,
+          0.17464579641819,
+          -0.7973649501800537,
+          0.21364516019821167
+        ],
+        [
+          -0.7632467746734619,
+          -0.2307489961385727,
+          -0.6034973859786987,
+          0.38066983222961426
+        ]
+      ]
+    },
+    "same_coordinate_crops": {
+      "label": [
+        428,
+        300,
+        529,
+        399
+      ],
+      "bottle_cap": [
+        424,
+        226,
+        535,
+        461
+      ],
+      "cap_marker": [
+        425,
+        226,
+        535,
+        323
+      ]
+    },
+    "frames": {
+      "captures": {
+        "original": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_original_review.png",
+              "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_original_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_original_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_1": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_1_review.png",
+              "sha256": "a82bd0aa8790e05bf27059b50d83b36e014fac1dcde2f888dc4f55e1db0723af",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_1_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_1_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_2": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_2_review.png",
+              "sha256": "877e00d8971526594aa80bf7c74b2e014168c0178832c78f184445c423f9d401",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_2_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_2_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_3": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_3_review.png",
+              "sha256": "0a4c64a2e6c6e5c121bc362ba2cdd7a716be6bcc718c65f06657a74e229928b7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_3_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_3_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_4": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_4_review.png",
+              "sha256": "dba6f5788cf667306f89074dde932e1add4769bcb39f9847819d49ac3997162a",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_4_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_4_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_5": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_5_review.png",
+              "sha256": "cec273413fa1b0b8473ca583ad88f350a90df994ac9cb50d41b8f24d393d3aa2",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_5_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_5_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_6": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_6_review.png",
+              "sha256": "8a427801bbbbed2e6bd85a3b7c8845bbf588602a4f65883600b6e90c7a771204",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_6_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_6_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_7": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_7_review.png",
+              "sha256": "089241855f2d2c7d42e7a336297d25e0d3f42e8e36b1e6ee1a4cd43583fbd633",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_7_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_7_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_8": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_8_review.png",
+              "sha256": "b20f494fa7d5acd60418b5391422ebee6836f55776acfc3b2f98ded77f4d1da3",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_8_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_8_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_9": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_9_review.png",
+              "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_9_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_9_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_10": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_variant_10_review.png",
+              "sha256": "c77d1a607ae50363cf2ff68591a77e9d71cdb2be62645cfb0240a41fc0799c35",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "UnscrewCap_variant_10_review_label_mask.png",
+            "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "marker_mask": {
+            "file": "UnscrewCap_variant_10_marker_mask.png",
+            "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        }
+      },
+      "native_view_trials": {
+        "0": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_native_view0.png",
+              "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        }
+      },
+      "isolation": {
+        "0": {
+          "before": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset1_before.png",
+                "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset1_after.png",
+                "sha256": "dacbfbbf7f340f7637e71cf6302677cafa31f5f021ea4dc8ef7097bcb5f58ed9",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          }
+        },
+        "1": {
+          "before": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset0_before.png",
+                "sha256": "dba6f5788cf667306f89074dde932e1add4769bcb39f9847819d49ac3997162a",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_reset0_after.png",
+                "sha256": "5430415bbb9a9302d98ca37466908f213e5437303a7c419c609f7672d75feeb3",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          }
+        }
+      },
+      "engineered_stage_switch": {
+        "frames": {
+          "attached": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_engineered_attached.png",
+                "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "mask": {
+              "file": "UnscrewCap_engineered_attached_label_mask.png",
+              "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "marker_mask": {
+              "file": "UnscrewCap_engineered_attached_marker.png",
+              "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "unindexed_frames": [],
+  "verified_indexed_png_files": 41
+}
