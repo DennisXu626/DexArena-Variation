@@ -1,0 +1,127 @@
+{
+  "version": "nut-bolt-nut-bindings-v1",
+  "logical_object": "nut_bolt.nut",
+  "catalog": "variants/v1/catalog.json",
+  "source": "tasks/nut_bolt/nut_bolt_long.py",
+  "stage": "formal_integration_runtime_pending",
+  "formal_task_integration": true,
+  "roles": {
+    "reference_face": {
+      "editable": true,
+      "segment_indices": [
+        0
+      ],
+      "source": "angle=0, center along local +x; added candidate material contrast only"
+    },
+    "body": {
+      "editable": true,
+      "segment_indices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "representations": {
+    "SeatNut": {
+      "free": {
+        "handle": "env.unwrapped.nut",
+        "type": "dynamic Actor",
+        "source": "_load_nut",
+        "expected_visual_records": 6
+      },
+      "threaded": {
+        "handle": "env.unwrapped.threaded_nut",
+        "articulation": "env.unwrapped.nut_revolute",
+        "root_link": "nut_mount",
+        "joint": "nut_turn_joint",
+        "type": "fixed-root continuous z revolute",
+        "source": "_load_threaded_nut / generated threaded_nut_revolute.urdf",
+        "expected_visual_records": 6
+      },
+      "initial_active": "free",
+      "visibility_owner": "native _sync_nut_visibility; inactive twin parked at z=5m and hidden",
+      "formal_appearance_supported": true
+    },
+    "TurnNut": {
+      "free": {
+        "handle": "env.unwrapped.nut",
+        "type": "dynamic Actor",
+        "source": "_load_nut",
+        "expected_visual_records": 6
+      },
+      "threaded": {
+        "handle": "env.unwrapped.threaded_nut",
+        "articulation": "env.unwrapped.nut_revolute",
+        "root_link": "nut_mount",
+        "joint": "nut_turn_joint",
+        "type": "fixed-root continuous z revolute",
+        "source": "_load_threaded_nut / generated threaded_nut_revolute.urdf",
+        "expected_visual_records": 6
+      },
+      "initial_active": "threaded",
+      "visibility_owner": "native _sync_nut_visibility; inactive twin parked at z=5m and hidden",
+      "formal_appearance_supported": true
+    },
+    "Long": {
+      "free": {
+        "handle": "env.unwrapped.nut",
+        "type": "dynamic Actor",
+        "source": "_load_nut",
+        "expected_visual_records": 6
+      },
+      "threaded": {
+        "handle": "env.unwrapped.threaded_nut",
+        "articulation": "env.unwrapped.nut_revolute",
+        "root_link": "nut_mount",
+        "joint": "nut_turn_joint",
+        "type": "fixed-root continuous z revolute",
+        "source": "_load_threaded_nut / generated threaded_nut_revolute.urdf",
+        "expected_visual_records": 6
+      },
+      "initial_active": "free",
+      "visibility_owner": "native _sync_nut_visibility; inactive twin parked at z=5m and hidden",
+      "formal_appearance_supported": false
+    }
+  },
+  "absent_from": [
+    "PickBolt"
+  ],
+  "preserve": [
+    "central assembly opening and all six box transforms",
+    "joint, root fixation, mass and collision groups",
+    "native active/parked twin poses and visibility"
+  ],
+  "original_material": {
+    "free": {
+      "base_color": [
+        0.9,
+        0.5,
+        0.1,
+        1.0
+      ],
+      "roughness": 0.6,
+      "metallic": 0.3
+    },
+    "threaded": {
+      "base_color": [
+        0.9,
+        0.5,
+        0.1,
+        1.0
+      ],
+      "roughness": "native loader default; capture at bind",
+      "metallic": "native loader default; capture at bind"
+    }
+  },
+  "rotation_reference": {
+    "original": "none; six uniformly colored segments are sixfold symmetric",
+    "candidates": "existing segment 0 receives contrasting material in both representations; no added geometry"
+  },
+  "uv": {
+    "new": "none",
+    "original": "procedural/URDF boxes; no source mesh or texture references"
+  }
+}

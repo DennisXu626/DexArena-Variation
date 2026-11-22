@@ -1,0 +1,70 @@
+{
+  "version": "nut-bolt-nut-appearance-v1",
+  "object_id": "nut_bolt.nut",
+  "scope": "material_appearance",
+  "fields": [
+    "base_color",
+    "roughness",
+    "metallic"
+  ],
+  "preserve_roles": [],
+  "new_uv": false,
+  "new_textures": [],
+  "schemes": {
+    "original": {
+      "mode": "restore_native"
+    },
+    "variant_1": {
+      "mode": "material_override",
+      "label": "Teal and ivory",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.025,
+            0.34,
+            0.29,
+            1.0
+          ],
+          "roughness": 0.48,
+          "metallic": 0.5
+        },
+        "reference_face": {
+          "base_color": [
+            0.93,
+            0.86,
+            0.62,
+            1.0
+          ],
+          "roughness": 0.46,
+          "metallic": 0.35
+        }
+      }
+    },
+    "variant_2": {
+      "mode": "material_override",
+      "label": "Ivory and burgundy",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.82,
+            0.79,
+            0.68,
+            1.0
+          ],
+          "roughness": 0.62,
+          "metallic": 0.25
+        },
+        "reference_face": {
+          "base_color": [
+            0.36,
+            0.025,
+            0.07,
+            1.0
+          ],
+          "roughness": 0.48,
+          "metallic": 0.4
+        }
+      }
+    }
+  }
+}

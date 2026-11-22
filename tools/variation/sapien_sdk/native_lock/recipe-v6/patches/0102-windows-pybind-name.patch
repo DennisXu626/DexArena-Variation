@@ -1,0 +1,31 @@
+--- a/python/pybind/sapien.cpp
++++ b/python/pybind/sapien.cpp
+@@ -270,21 +270,21 @@
+ 
+   PyCudaArray
+       .def(py::init<>([](py::object obj) {
+-             auto interface = obj.attr("__cuda_array_interface__").cast<py::dict>();
+-
+-             auto shape = interface["shape"].cast<py::tuple>().cast<std::vector<int>>();
+-             auto type = interface["typestr"].cast<std::string>();
++             auto cudaInterface = obj.attr("__cuda_array_interface__").cast<py::dict>();
++
++             auto shape = cudaInterface["shape"].cast<py::tuple>().cast<std::vector<int>>();
++             auto type = cudaInterface["typestr"].cast<std::string>();
+              py::dtype dtype(type);
+ 
+              std::vector<int> strides;
+-             if (interface.contains("strides") && !interface["strides"].is_none()) {
++             if (cudaInterface.contains("strides") && !cudaInterface["strides"].is_none()) {
+                // has stride
+-               strides = interface["strides"].cast<py::tuple>().cast<std::vector<int>>();
++               strides = cudaInterface["strides"].cast<py::tuple>().cast<std::vector<int>>();
+              } else {
+                strides = ShapeToStrides(shape, dtype.itemsize());
+              }
+ 
+-             auto data = interface["data"].cast<py::tuple>();
++             auto data = cudaInterface["data"].cast<py::tuple>();
+              void *ptr = reinterpret_cast<void *>(data[0].cast<uintptr_t>());
+ 
+              return CudaArrayHandle{.shape = shape,
