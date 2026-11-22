@@ -1,0 +1,9 @@
+{
+  "task_id": "PipetteTransferAspirateLiquid-Sharpa-v1",
+  "pipette_appearance": {
+    "enabled": false
+  },
+  "pipette_rendering": {
+    "enabled": false
+  }
+}

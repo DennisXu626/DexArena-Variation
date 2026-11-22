@@ -1,0 +1,92 @@
+{
+  "object_id": "pipette",
+  "representation": "free_root_articulation",
+  "source": "tasks/pipette_transfer/pipette_transfer_long.py",
+  "builder": "_load_pipette",
+  "expected_visual_count": 6,
+  "roles": {
+    "body": {
+      "editable": true,
+      "link": "base",
+      "visual_index": 0,
+      "material_name": "body",
+      "required_geometry": "cylinder",
+      "status": "verified"
+    },
+    "rear_grip": {
+      "editable": false,
+      "link": "base",
+      "visual_index": 1,
+      "material_name": "rear_grip",
+      "required_geometry": "cylinder",
+      "status": "verified"
+    },
+    "shoulder": {
+      "editable": false,
+      "link": "base",
+      "visual_index": 2,
+      "material_name": "shoulder",
+      "required_geometry": "cylinder",
+      "status": "verified"
+    },
+    "nozzle": {
+      "editable": false,
+      "link": "base",
+      "visual_index": 3,
+      "material_name": "nozzle",
+      "required_geometry": "cylinder",
+      "status": "verified"
+    },
+    "tip": {
+      "editable": false,
+      "link": "tip",
+      "visual_index": 0,
+      "material_name": "tipmat",
+      "required_geometry": "cylinder",
+      "status": "verified"
+    },
+    "plunger": {
+      "editable": false,
+      "link": "plunger",
+      "visual_index": 0,
+      "material_name": "plungermat",
+      "required_geometry": "cylinder",
+      "status": "verified"
+    }
+  },
+  "preserve": [
+    "visual_geometry",
+    "collision_geometry",
+    "mass",
+    "joints",
+    "physical_materials",
+    "initial_pose",
+    "openings",
+    "original_uv_and_textures"
+  ],
+  "new_uv": false,
+  "new_textures": [],
+  "asset": "tasks/assets/task_object_meshes/pipette/mobility.urdf",
+  "binding_status": "verified",
+  "preserve_links": [
+    "tip",
+    "plunger"
+  ],
+  "preserve_other_visuals": true,
+  "guard": "Only base visual[0] may change; all five other visuals and the plunger joint are protected",
+  "asset_sha256": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+  "readme_sha256": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+  "expected_collision_count": 6,
+  "link_visual_counts": {
+    "base": 4,
+    "tip": 1,
+    "plunger": 1
+  },
+  "source_details": {
+    "all_visuals_opaque": true,
+    "external_meshes": [],
+    "textures": [],
+    "uv_definition": false,
+    "graduations_or_labels_defined": false
+  }
+}
