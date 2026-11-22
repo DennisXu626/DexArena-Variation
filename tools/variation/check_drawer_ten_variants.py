@@ -3,6 +3,7 @@
 import argparse
 import ast
 import copy
+import contextlib
 import hashlib
 import importlib.util
 import json
@@ -105,15 +106,119 @@ def static():
         choices = [sid for _, sid, _ in selector.select(np.array([0, 1]), {})]
         assert choices == ['variant_1', 'variant_10'] if mode == 'explicit' else all(x in VARIANTS[1:] for x in choices)
     extra = validate_assets(c)
+    extra['insert_followup_controls']=check_insert_followup_cpu()
     assert not any(n in sys.modules for n in ('tasks','torch','sapien','mani_skill'))
     return dict(status='passed',family=FAMILY,scopes=list(TASKS),variants=len(VARIANTS)-1,
                 legacy_catalog_values='exact',scope='CPU only',assets=extra)
 
 
-def run(approval, output):
+def visible_box_parts(size, intrinsic, extrinsic, boxes):
+    """Project existing render boxes and label the nearest part along each camera ray."""
+    height, width = size
+    y, x = np.indices((height, width), dtype=np.float64)
+    pixels = np.stack((x + .5, y + .5, np.ones_like(x)), axis=-1)
+    rotation, translation = extrinsic[:, :3], extrinsic[:, 3]
+    origin = -rotation.T @ translation
+    rays = ((pixels @ np.linalg.inv(intrinsic).T) @ rotation).reshape(-1, 3)
+    nearest = np.full(len(rays), np.inf)
+    parts = np.full(len(rays), -1, dtype=np.int16)
+    for index, (transform, half_size) in enumerate(boxes):
+        basis, center = transform[:3, :3], transform[:3, 3]
+        o = (origin - center) @ basis
+        d = rays @ basis
+        parallel = np.abs(d) < 1e-12
+        constrained = np.where(parallel, 1., d)
+        first, second = (-half_size-o)/constrained, (half_size-o)/constrained
+        near = np.where(parallel, -np.inf, np.minimum(first, second)).max(axis=1)
+        far = np.where(parallel, np.inf, np.maximum(first, second)).min(axis=1)
+        hit = (near > 0) & (far >= near) & (near < nearest)
+        hit &= ~np.any(parallel & (np.abs(o) > half_size), axis=1)
+        nearest[hit], parts[hit] = near[hit], index
+    return parts.reshape(height, width)
+
+
+def interior(mask):
+    """Use only interior pixels so raster boundaries cannot masquerade as an occluder."""
+    clean = np.zeros_like(mask)
+    clean[1:-1, 1:-1] = (mask[1:-1, 1:-1] & mask[:-2, 1:-1] & mask[2:, 1:-1]
+                          & mask[1:-1, :-2] & mask[1:-1, 2:])
+    return clean
+
+
+def compare_charger_parts(actual, native, masks):
+    counts = {}
+    for label, mask in masks.items():
+        assert int(mask.sum()) >= 24, (label, 'too few visible pixels')
+        counts[label] = dict(pixels=int(mask.sum()), different=int(np.any(actual[mask] != native[mask], axis=-1).sum()))
+    return counts
+
+def socket_visibility(rgb, seg, id_, part_map):
+    present=seg==id_
+    interior_projection=[interior(part_map==j) for j in (6,7)]
+    shell=interior((part_map>=1)&(part_map<6)&present)
+    snapshot=[]
+    hull_median=float(np.median(rgb[shell].mean(axis=-1))) if int(shell.sum())>=100 else None
+    for geom in interior_projection:
+        visible=geom & present
+        expected_count=int(geom.sum())
+        visible_count=int(visible.sum())
+        hole_median=float(np.median(rgb[visible].mean(axis=-1))) if visible_count else None
+        snapshot.append(dict(projected_interior=expected_count,visible_interior=visible_count,
+                             shell_minus_hole=hull_median-hole_median if hull_median is not None and hole_median is not None else None))
+    return snapshot
+
+def socket_clear(measured):
+    return all(x['projected_interior']>=80 and x['visible_interior']==x['projected_interior']
+               and x['shell_minus_hole'] is not None and x['shell_minus_hole']>=8 for x in measured)
+
+
+def check_insert_followup_cpu():
+    def box(x,z,half):
+        pose=np.eye(4)
+        pose[:3,3]=[x,0,z]
+        return pose,np.array(half,dtype=float)
+
+    K=np.array([[200,0,120],[0,200,100],[0,0,1]],dtype=float)
+    E=np.eye(4)[:3]
+    projected=visible_box_parts((200,240),K,E,[
+        box(0,3,[.6,.55,.2]),box(-.25,2.6,[.07,.20,.23]),box(.25,2.6,[.07,.20,.23])])
+    masks={str(i):interior(projected==i) for i in range(3)}
+    native=np.full((200,240,3),100,dtype=np.uint8)
+    candidate=native.copy()
+    candidate[masks['0']]=160
+    exact=compare_charger_parts(native,native,masks)
+    wrong=compare_charger_parts(candidate,native,masks)
+    assert [x['different'] for x in exact.values()]==[0,0,0]
+    assert wrong['0']['different']==wrong['0']['pixels'] and not (wrong['1']['different'] or wrong['2']['different'])
+    try:
+        compare_charger_parts(native,native,{**masks,'1':np.zeros_like(masks['1'])})
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError('Empty Charger part mask must fail')
+
+    # A synthetic same-frame segmentation occluder over exactly one of two liners.
+    socket_map=np.full((90,100),3,dtype=np.int16)
+    socket_map[30:52,26:38]=6
+    socket_map[30:52,61:73]=7
+    rgb=np.full((90,100,3),95,dtype=np.uint8)
+    rgb[socket_map>=6]=15
+    entity=np.full((90,100),42,dtype=np.int16)
+    clear=socket_visibility(rgb,entity,42,socket_map)
+    assert socket_clear(clear)
+    entity[30:52,61:73]=99
+    assert not socket_clear(socket_visibility(rgb,entity,42,socket_map))
+    return dict(charger_parts=list(exact.values()),wrong_body_pixels=wrong['0']['different'],
+                empty_part_rejected=True,one_socket_hole_occluded_rejected=True)
+
+
+def run(approval, output, *, insert_followup=False):
     auth=read(approval)
     head=git('rev-parse','HEAD').decode().strip()
-    assert auth['approved'] is True and auth['scope']==FAMILY+'_ten_variants'
+    scope='drawer_plug_insert_followup' if insert_followup else FAMILY+'_ten_variants'
+    assert auth['approved'] is True and auth['scope']==scope
+    if insert_followup:
+        assert auth.get('blockers_resolved') is True
     assert head==auth['frozen_head'] and os.environ.get('SLURM_JOB_ID')
     assert os.environ.get('SLURM_JOB_GPUS','').isdigit()
     limit=Path(auth['storage_root']).resolve(strict=True)
@@ -302,13 +407,17 @@ def run(approval, output):
     def full_reset(env, options=None):
         restore_outer_rng()
         return env.reset(seed=SEED, options=options)
-    def make(task, config=None, legacy=None):
+    def make(task, config=None, legacy=None, review_view=None):
         restore_outer_rng()
         eye,at,fov=VIEWS[task]
         camera=dict(width=960,height=720,fov=fov,pose=sapien_utils.look_at(eye,at))
+        review_camera=camera
+        if review_view is not None:
+            review_eye,review_at,review_fov=review_view
+            review_camera=dict(width=960,height=720,fov=review_fov,pose=sapien_utils.look_at(review_eye,review_at))
         return gym.make(TASK_PREFIX+task+'-Sharpa-v1',num_envs=2,sim_backend='physx_cuda',
             obs_mode='rgb+segmentation',render_mode='rgb_array',reconfiguration_freq=0,
-            sensor_configs={'base_camera':camera},human_render_camera_configs=camera,
+            sensor_configs={'base_camera':camera},human_render_camera_configs=review_camera,
             **({'family_appearance':config} if config is not None else (legacy or {})))
     tracked=git('diff','--name-only',BASE,'HEAD','--','tasks',
                 str(Path(__file__).resolve().relative_to(ROOT))).decode().splitlines()
@@ -319,6 +428,210 @@ def run(approval, output):
          asset_identity=auth['asset_identity'],
          hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in tracked}))
     report=dict(family=FAMILY,head=head,seed=SEED,job=os.environ['SLURM_JOB_ID'],tasks={},status='running')
+
+    def review_capture(env, i):
+        scene=env.unwrapped.scene
+        scene.update_render(update_sensors=False,update_human_render_cameras=True)
+        camera=scene.human_render_cameras['render_camera']
+        camera.capture()
+        data=camera.get_obs(rgb=True,depth=False,segmentation=True,position=False)
+        params=camera.get_params()
+        return (data['rgb'][i,...,:3].detach().cpu().numpy().copy(),
+                data['segmentation'][i,...,0].detach().cpu().numpy().copy(),
+                params['intrinsic_cv'][i].detach().cpu().numpy().copy(),
+                params['extrinsic_cv'][i].detach().cpu().numpy().copy())
+
+    def save_image(stem, pixels):
+        path=output/f'{stem}.png'
+        Image.fromarray(pixels).save(path)
+        return dict(file=path.name,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                    size_wh=list(pixels.shape[1::-1]))
+
+    def part_geometry(e, role, i, frame):
+        ent,=actors(e,i)[role]
+        body=ent.find_component_by_type(RenderBodyComponent)
+        actor=getattr(e,role)
+        matrix=actor.pose.to_transformation_matrix()[i].detach().cpu().numpy()
+        boxes=[(matrix @ shape.local_pose.to_transformation_matrix(), np.asarray(shape.half_size))
+               for shape in body.render_shapes]
+        part_map=visible_box_parts(frame[1].shape,frame[2],frame[3],boxes)
+        return ent.per_scene_id, part_map
+
+    def charger_slots(e,i):
+        ent,=actors(e,i)['charger']
+        body=ent.find_component_by_type(RenderBodyComponent)
+        box_parts=body.render_shapes
+        assert len(box_parts)==3 and np.allclose(box_parts[0].half_size,e.charger_half)
+        assert all(np.allclose(x.half_size,e.charger_prong_half) for x in box_parts[1:])
+        assert box_parts[1].local_pose.p[0]<0<box_parts[2].local_pose.p[0]
+        slots=[]
+        for box in box_parts:
+            part,=box.parts
+            slots.append(part.material)
+        return slots
+
+    def slot_finish(m):
+        return dict(base_color=np.asarray(m.base_color).tolist(),roughness=m.roughness,metallic=m.metallic)
+
+    def unchanged_env(e,i):
+        family=e._family_appearance
+        return dict(state=task_state(e,i),materials=materials(e,i),
+                    records=copy.deepcopy([r for r in family.records if r['env_idx']==i]),
+                    appearance_rng=copy.deepcopy(family.rng[i].bit_generator.state))
+
+    def replay_random_selection(task):
+        traces=[]
+        for _ in range(2):
+            with contextlib.closing(make(task,{'enabled':True,'seed':109})) as random_env:
+                for idx in (None,1,0,1):
+                    random_env.reset(seed=SEED,options=opts(None,idx,mode='random_choice'))
+                traces.append(random_env.unwrapped.family_appearance_records)
+        return traces
+
+    def charger_restore(task, row):
+        fields=('base_color','roughness','metallic')
+        with contextlib.closing(make(task)) as native_env:
+            full_reset(native_env)
+            native_snapshot=materials(native_env.unwrapped,0)
+            native=[slot_finish(m) for m in charger_slots(native_env.unwrapped,0)]
+        with contextlib.closing(make(task,{'enabled':True,'seed':109},review_view=CHARGER_CLOSE_VIEW)) as env:
+            e=env.unwrapped
+            family=e._family_appearance
+            full_reset(env, {'family_appearance':{'per_env':{
+                '0':{'scheme_id':'variant_4'},'1':{'scheme_id':'variant_10'}}}})
+            # Replay the earlier env1 reset as setup. Only the env0 direction is being tested.
+            env.reset(options=opts('original',1))
+            assert family.schemes[0]=='variant_4' and family.schemes[1]=='original'
+            candidate=[slot_finish(m) for m in charger_slots(e,0)]
+            assert candidate[0]!=native[0] and candidate[1:]==native[1:]
+            before=capture(env)
+            before_pose=e.charger.pose.raw_pose[0].detach().cpu().numpy().copy()
+            env1=unchanged_env(e,1)
+            row['task_camera_before']=save_frames(task,'followup_before',before)
+            env.reset(options=opts('original',0))
+            after=capture(env)
+            after_pose=e.charger.pose.raw_pose[0].detach().cpu().numpy().copy()
+            row.update(before_pose=before_pose.tolist(),after_pose=after_pose.tolist(),
+                       task_camera_after=save_frames(task,'followup_after',after),
+                       selected_record=copy.deepcopy(family.records[-1]))
+            env1_after=unchanged_env(e,1)
+            row['isolation']={k:v==env1_after[k] for k,v in env1.items()}
+            row['isolation']['all_camera_rgb']=rgb_equal(before,after,1)
+            assert all(row['isolation'].values()),row['isolation']
+            assert family.schemes[0]=='original' and family.records[-1]['env_idx']==0
+            assert materials(e,0)==native_snapshot
+            fixed_state=[task_state(e,i) for i in (0,1)]
+            actual=review_capture(env,0)
+            row['camera']=dict(view=CHARGER_CLOSE_VIEW,intrinsic=actual[2].tolist(),extrinsic=actual[3].tolist())
+            row['actual_frame']=save_image('Charger_post_reset_actual',actual[0])
+            id_,part_map=part_geometry(e,'charger',0,actual)
+            actor_mask=actual[1]==id_
+            row['same_frame_entity_id']=int(id_)
+            row['same_frame_segmentation']=save_image('Charger_post_reset_entity_mask',actor_mask.astype(np.uint8)*255)
+            masks={label:interior((part_map==part_id)&actor_mask)
+                   for part_id,label in enumerate(('body','negative_x_prong','positive_x_prong'))}
+            row['visible_part_pixels']={k:int(v.sum()) for k,v in masks.items()}
+            row['part_masks']={k:save_image(f'Charger_{k}_mask',v.astype(np.uint8)*255) for k,v in masks.items()}
+            row['native_finishes']=native
+            row['wrong_candidate_finishes']=candidate
+            slots=charger_slots(e,0)
+            frozen=[slot_finish(m) for m in slots]
+            def apply(selected):
+                for mat,settings in zip(slots,selected,strict=True):
+                    for key in fields:setattr(mat,key,settings[key])
+            try:
+                apply(native)
+                reference=review_capture(env,0)
+                apply(candidate)
+                negative=review_capture(env,0)
+            finally:
+                apply(frozen)
+            restored=review_capture(env,0)
+            row['native_reference']=save_image('Charger_same_pose_native_reference',reference[0])
+            row['negative_reference']=save_image('Charger_same_pose_wrong_candidate',negative[0])
+            for frame in (reference,negative,restored):
+                assert np.array_equal(actual[1],frame[1]) and np.array_equal(actual[2],frame[2]) and np.array_equal(actual[3],frame[3])
+            assert [task_state(e,i) for i in (0,1)]==fixed_state
+            assert np.array_equal(actual[0],restored[0]) and materials(e,0)==native_snapshot
+            assert unchanged_env(e,1)==env1 and rgb_equal(after,capture(env),1)
+            row['per_part_rgb']=compare_charger_parts(actual[0],reference[0],masks)
+            row['negative_control_rgb']=compare_charger_parts(negative[0],reference[0],masks)
+            assert all(entry['different']==0 for entry in row['per_part_rgb'].values())
+            assert row['negative_control_rgb']['body']['different']>0, 'negative control was not rejected'
+            row['status']='passed'
+
+    def socket_closeups(task,row):
+        # A blocked original may try the second predeclared viewpoint once; neither view moves the scene.
+        row['original_view_attempts']=[]
+        for index,view in enumerate(SOCKET_CLOSE_VIEWS):
+            with contextlib.closing(make(task,{'enabled':True,'seed':109},review_view=view)) as env:
+                e=env.unwrapped
+                full_reset(env,opts('original'))
+                first=review_capture(env,0)
+                id_,parts=part_geometry(e,'socket',0,first)
+                measurement=socket_visibility(first[0],first[1],id_,parts)
+                attempt=dict(view=view,holes=measurement,original=save_image(f'Socket_view_{index}_original',first[0]))
+                row['original_view_attempts'].append(attempt)
+                if not socket_clear(measurement):
+                    continue
+                row['camera']=dict(view=view,intrinsic=first[2].tolist(),extrinsic=first[3].tolist())
+                y,x=np.where(parts>=0)
+                h,w=first[1].shape
+                row['same_coordinate_crops']={'socket':[max(0,int(x.min())-18),max(0,int(y.min())-18),
+                    min(w,int(x.max())+19),min(h,int(y.max())+19)]}
+                row['loaded']={'socket':'fixture'}
+                row['gallery_camera']='render_camera'
+                row['captures']={}
+                fixed_state=task_state(e,0)
+                for sid in VARIANTS:
+                    if sid=='original':
+                        rgb,seg,K,E=first
+                    else:
+                        full_reset(env,opts(sid))
+                        rgb,seg,K,E=review_capture(env,0)
+                    holes=socket_visibility(rgb,seg,id_,parts)
+                    record=e.family_appearance_records[-2]
+                    row['captures'][sid]=dict(files={'render_camera':save_image(f'Socket_close_{sid}',rgb)},
+                                              holes=holes,record=record)
+                    dump('results.json',report)
+                    assert record['env_idx']==0 and record['family_id']==sid and record['objects']['socket']==catalog[sid]['fixture']
+                    assert socket_clear(holes),(sid,holes)
+                    assert task_state(e,0)==fixed_state and np.array_equal(seg,first[1])
+                    assert np.array_equal(K,first[2]) and np.array_equal(E,first[3])
+                row['entity_mask']=save_image('Socket_close_entity_mask',(first[1]==id_).astype(np.uint8)*255)
+                row['status']='passed'
+                return
+        raise AssertionError('Neither predeclared original view exposes both socket holes')
+
+    if insert_followup:
+        task='InsertPlug'
+        groups=report['tasks']
+        report['reused_job']=128860
+        try:
+            random=groups['random_reproducibility']={'status':'running'}
+            traces=replay_random_selection(task)
+            random['independent_records']=traces
+            expected_indices=[0,1,0,1,1,0,1]
+            assert all([entry['env_idx'] for entry in trace]==expected_indices for trace in traces)
+            assert all(entry['family_id'] in VARIANTS[1:] for entry in traces[0][2:])
+            assert all(entry['objects']=={'socket':catalog[entry['family_id']]['fixture'],
+                                          'charger':catalog[entry['family_id']]['charger']} for entry in traces[0])
+            assert traces[0]==traces[1], 'independent InsertPlug random traces differ'
+            random['status']='passed'
+            dump('results.json',report)
+            charger_restore(task,groups.setdefault('charger_env0_restore',{'status':'running'}))
+            dump('results.json',report)
+            socket_closeups(task,groups.setdefault('InsertPlug_socket_close',{'status':'running'}))
+            report['status']='engineering_passed_pending_visual_review'
+        except Exception:
+            last=list(groups)[-1]
+            groups[last]['status']='failed'
+            report.update(status='failed',failed_check=last,traceback=traceback.format_exc()[-8000:])
+            raise
+        finally:
+            dump('results.json',report)
+        return
+
     env=None
     try:
         for task,roles in TASKS.items():
@@ -397,12 +710,7 @@ def run(approval, output):
                 assert all(any(x['changed'] for x in cams.values()) for r,cams in phase['targets'].items() if r!='beads')
                 phase['passed']=True
             env.close();env=None
-            traces=[]
-            for _ in range(2):
-                env=make(task,{'enabled':True,'seed':109})
-                for idx in (None,1,0,1): env.reset(seed=SEED,options=opts(None,idx,mode='random_choice'))
-                traces.append(env.unwrapped._family_appearance.records.copy())
-                env.close();env=None
+            traces=replay_random_selection(task)
             assert traces[0]==traces[1]
             row['random_reproducibility']=traces[0]
             dump('results.json',report)
@@ -425,6 +733,14 @@ VIEWS={
  'OpenDrawer':([-1.03,-.67,.79],[.14,.18,.29],.78),
  'PickCharger':([-.95,.69,1.16],[-.04,.18,.30],.73),
  'InsertPlug':([-.62,-.94,.70],[-.17,-.38,.08],.75)}
+
+# Distinct supplemental cameras, on the positive-x side of the objects.
+CHARGER_CLOSE_VIEW=([.055,-.74,.26],[-.29,-.61,.032],.92)
+SOCKET_CLOSE_VIEWS=(
+    ([.055,-.44,.52],[-.125,-.38,.034],.48),
+    ([.145,-.23,.46],[-.125,-.38,.034],.53),
+)
+
 
 def validate_assets(table):
     fixture=load_standalone('fixture_appearance')
@@ -471,7 +787,7 @@ def gallery(root):
             board = Image.new('RGB', (width*columns, (height+26)*rows), '#182029')
             draw = ImageDraw.Draw(board)
             for i, sid in enumerate(ordered):
-                frame = frames[sid].get('files', frames[sid])['base_camera']
+                frame = frames[sid].get('files', frames[sid])[result.get('gallery_camera','base_camera')]
                 with Image.open(root/frame['file']) as source:
                     contents = source.crop(box) if box is not None else source.copy()
                 contents.thumbnail((width,height), Image.Resampling.LANCZOS)
@@ -486,9 +802,10 @@ if __name__=='__main__':
     p.add_argument('--static',action='store_true')
     p.add_argument('--approval',type=Path)
     p.add_argument('--output',type=Path)
+    p.add_argument('--insert-followup',action='store_true',help='Run only the three pending InsertPlug checks')
     p.add_argument('--gallery',type=Path,help='Compose boards from existing task RGB; no simulation')
     args=p.parse_args()
     if args.static: print(json.dumps(static(),ensure_ascii=False))
     elif args.gallery: gallery(args.gallery)
-    elif args.approval and args.output: run(args.approval,args.output)
+    elif args.approval and args.output: run(args.approval,args.output,insert_followup=args.insert_followup)
     else: p.error('Use --static or a separately authorized --approval and --output')
