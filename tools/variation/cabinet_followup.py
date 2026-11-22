@@ -16,6 +16,7 @@ BOTTLE_NAME = 'original-3.obj'
 NATIVE_LABEL = 'texture_1.jpg'
 PROBE = 'variant_9'
 MIN_LABEL = 240
+MIN_MARKER = 24
 LABEL_MARGIN = .10
 LABEL_MIN_CORRELATION = .32
 BOWL_VIEW = ([-.43, -.84, .37], [-.20, -.50, .045], .70)
@@ -31,6 +32,14 @@ def inset(mask):
     result[1:-1, 1:-1] = (mask[1:-1, 1:-1] & mask[1:-1, :-2] & mask[1:-1, 2:]
                          & mask[:-2, 1:-1] & mask[2:, 1:-1])
     return result
+
+
+def scaled_render_vertices(shape, part, marker):
+    # Box vertices are the shared unit mesh. SAPIEN stores the render scale
+    # in half_size for boxes and in scale for triangle-mesh shapes.
+    geometry = shape if marker else part
+    scale = shape.half_size if marker else getattr(shape, 'scale', 1.)
+    return np.asarray(geometry.vertices) * np.asarray(scale)
 
 
 def project_parts(size, intrinsic, extrinsic, meshes):
@@ -129,8 +138,11 @@ def static(directory):
     native_obs=sample_texture(native,plane[mask])
     for original_pixels in (native_obs, .76*native_obs+25):
         assert preferred(print_score(original_pixels,plane[mask],native,wanted,False),'native')
+    box=SimpleNamespace(vertices=np.array([[-1.,-1.,-1.],[1.,1.,1.]]),
+                        half_size=(.0128,.002,.0012))
+    assert np.allclose(np.ptp(scaled_render_vertices(box,None,True),axis=0),[.0256,.004,.0024])
     return dict(cpu_only=True,projected_test_pixels=int(mask.sum()),wanted_control=score,
-                wrong_print_rejected=True,probe_art_shape=list(probe.shape))
+                wrong_print_rejected=True,probe_art_shape=list(probe.shape),box_half_size_applied=True)
 
 
 def texture_pixels(source, native):
@@ -246,10 +258,8 @@ class Followup:
                 label=not cap and tex is not None
                 marker=cap and isinstance(shape,RenderShapeBox)
                 role=2 if marker else (1 if label else 0)
-                # Shape primitives expose their own vertices; source meshes
-                # expose unscaled mesh-part vertices and a separate scale.
                 geom=shape if marker else part
-                vertices=np.asarray(geom.vertices)*np.asarray(getattr(shape,'scale',1.))
+                vertices=scaled_render_vertices(shape,part,marker)
                 vertices=vertices @ T[:3,:3].T + T[:3,3]
                 meshes.append((role,vertices,np.asarray(geom.triangles),part.get_vertex_uv() if label else None))
                 if label:
@@ -257,8 +267,11 @@ class Followup:
                     label_slots.append((m,tex,shape.filename))
         roles,uv=project_parts(frame.seg.shape,frame.K,frame.E,meshes)
         obj=frame.seg==entity.per_scene_id
-        mask=inset((roles==(2 if cap else 1))&obj)
-        assert mask.sum()>=(24 if cap else MIN_LABEL),(name,int(mask.sum()),int(obj.sum()))
+        projected=roles==(2 if cap else 1)
+        overlap=projected&obj
+        mask=inset(overlap)
+        assert mask.sum()>=(MIN_MARKER if cap else MIN_LABEL),(
+            name,int(mask.sum()),int(obj.sum()),int(projected.sum()),int(overlap.sum()))
         assert int(obj.sum())>=(80 if cap else MIN_LABEL)
         if cap:
             return name,obj,mask
@@ -646,7 +659,11 @@ def run(phase,auth,*,report,output,**hooks):
             check.probe()
             report['status']='probe_ready_for_frame_review'
         else:
-            for task in ('PickBottle','UnscrewCap','PourBeads'):
+            tasks=('PickBottle','UnscrewCap','PourBeads')
+            if phase=='remaining':
+                report['reused_pick_bottle_job']=128933
+                tasks=tasks[1:]
+            for task in tasks:
                 check.task_matrix(task,auth)
             task='PourBeads_diagnostic'
             check.beads()
