@@ -1,0 +1,4699 @@
+{
+  "job": "128861",
+  "tested_head": "5eea5a740969cdceb57914cf0327be2984e89efb",
+  "seed": 7,
+  "status": "failed",
+  "failed_task": "UnscrewCap",
+  "tasks": {
+    "OpenCabinet": {
+      "loaded": {
+        "cabinet": "cabinet"
+      },
+      "camera": [
+        [
+          -0.93,
+          -0.73,
+          1.01
+        ],
+        [
+          0.11,
+          0.1,
+          0.38
+        ],
+        0.75
+      ],
+      "crops": {
+        "cabinet": [
+          251,
+          71,
+          666,
+          650
+        ]
+      },
+      "captures": {
+        "original": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_original_base_camera_env0.png",
+              "sha256": "9e0b0f7b35bfe98f720d7b5c2e1e2bc95bcfe7f0bc3de48a6e6b3e6e42bf3955",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_original_human_env0.png",
+              "sha256": "9e0b0f7b35bfe98f720d7b5c2e1e2bc95bcfe7f0bc3de48a6e6b3e6e42bf3955",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "original"
+              }
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 0,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 0,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_1": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_1_base_camera_env0.png",
+              "sha256": "768da36d2ead6ca6a7dc510c6820b9f4005a9a3113005f8b6d621e2b80423aa5",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_1_human_env0.png",
+              "sha256": "768da36d2ead6ca6a7dc510c6820b9f4005a9a3113005f8b6d621e2b80423aa5",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "oak_warm_white"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "oak_warm_white"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  149.0,
+                  132.0,
+                  109.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  148.0,
+                  130.0,
+                  106.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_2": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_2_base_camera_env0.png",
+              "sha256": "c9d1543a1548b085c244a468907a236590744e7a26bb7f50b01e3c4bdff5a946",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_2_human_env0.png",
+              "sha256": "c9d1543a1548b085c244a468907a236590744e7a26bb7f50b01e3c4bdff5a946",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "sage_walnut"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "sage_walnut"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  112.0,
+                  123.0,
+                  109.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  112.0,
+                  124.0,
+                  110.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_3": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_3_base_camera_env0.png",
+              "sha256": "efd205bb1c2aec63da5a9bdf394f51772753e1812f9d13eb99e8b58a0313c04a",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_3_human_env0.png",
+              "sha256": "efd205bb1c2aec63da5a9bdf394f51772753e1812f9d13eb99e8b58a0313c04a",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "smoked_linen"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "smoked_linen"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  82.0,
+                  58.0,
+                  43.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  82.0,
+                  58.0,
+                  44.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_4": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_4_base_camera_env0.png",
+              "sha256": "603128c231dd6840aee312e514e4b827da4d1ee413ca12c1b18641bc75405e90",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_4_human_env0.png",
+              "sha256": "603128c231dd6840aee312e514e4b827da4d1ee413ca12c1b18641bc75405e90",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "birch_dust_blue"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "birch_dust_blue"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  79.0,
+                  98.0,
+                  110.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  79.0,
+                  98.0,
+                  110.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_5": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_5_base_camera_env0.png",
+              "sha256": "d343f2b83d95bf21d88658b8c81dbca50dbbff3bf6bce067fb1e3da75662e1df",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_5_human_env0.png",
+              "sha256": "d343f2b83d95bf21d88658b8c81dbca50dbbff3bf6bce067fb1e3da75662e1df",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "cream_nickel"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "cream_nickel"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  180.0,
+                  166.0,
+                  135.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  180.0,
+                  166.0,
+                  135.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_6": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_6_base_camera_env0.png",
+              "sha256": "542fc88dec93c9d65302a7c3218ba9deedd8386efc0e052f89e4c141a186fb13",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_6_human_env0.png",
+              "sha256": "542fc88dec93c9d65302a7c3218ba9deedd8386efc0e052f89e4c141a186fb13",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "walnut_ivory"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "walnut_ivory"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  82.0,
+                  53.0,
+                  41.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  79.0,
+                  52.0,
+                  40.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_7": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_7_base_camera_env0.png",
+              "sha256": "da336a1864e772137d554ae818e9213d92aa83f8f971a51a60fa826346e3cce4",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_7_human_env0.png",
+              "sha256": "da336a1864e772137d554ae818e9213d92aa83f8f971a51a60fa826346e3cce4",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "slate_ash"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "slate_ash"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  55.0,
+                  62.0,
+                  71.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  56.0,
+                  63.0,
+                  72.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_8": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_8_base_camera_env0.png",
+              "sha256": "1b66c901d9a53714bf479801111d333319f2321ffa21c278241c0237d772d10e",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_8_human_env0.png",
+              "sha256": "1b66c901d9a53714bf479801111d333319f2321ffa21c278241c0237d772d10e",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "brick_putty"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "brick_putty"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  67.0,
+                  54.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  68.0,
+                  55.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_9": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_9_base_camera_env0.png",
+              "sha256": "d7a56f076b04b437c25b324714eef40e3ef81434093b35b7f4f399cf7f8615c8",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_9_human_env0.png",
+              "sha256": "d7a56f076b04b437c25b324714eef40e3ef81434093b35b7f4f399cf7f8615c8",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "reed_birch"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "reed_birch"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  131.0,
+                  127.0,
+                  91.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  131.0,
+                  127.0,
+                  91.0
+                ]
+              }
+            }
+          }
+        },
+        "variant_10": {
+          "files": {
+            "base_camera": {
+              "file": "OpenCabinet_variant_10_base_camera_env0.png",
+              "sha256": "048e967f992b76a8b4cb1b032a9dc9bc0da85469d76b126061cb8065452f554a",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenCabinet_variant_10_human_env0.png",
+              "sha256": "048e967f992b76a8b4cb1b032a9dc9bc0da85469d76b126061cb8065452f554a",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "ink_maple"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "ink_maple"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 172016,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  39.0,
+                  48.0,
+                  59.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 23662,
+                "before_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ],
+                "after_rgb_median": [
+                  39.0,
+                  48.0,
+                  59.0
+                ]
+              }
+            }
+          }
+        }
+      },
+      "legacy": {
+        "variant_1": {
+          "surfaces": [
+            "cabinet"
+          ],
+          "target_pixels": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 0,
+                "before_rgb_median": [
+                  149.0,
+                  132.0,
+                  109.0
+                ],
+                "after_rgb_median": [
+                  149.0,
+                  132.0,
+                  109.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 0,
+                "before_rgb_median": [
+                  148.0,
+                  130.0,
+                  106.0
+                ],
+                "after_rgb_median": [
+                  148.0,
+                  130.0,
+                  106.0
+                ]
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_2": {
+          "surfaces": [
+            "cabinet"
+          ],
+          "target_pixels": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 172016,
+                "changed": 0,
+                "before_rgb_median": [
+                  112.0,
+                  123.0,
+                  109.0
+                ],
+                "after_rgb_median": [
+                  112.0,
+                  123.0,
+                  109.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23662,
+                "changed": 0,
+                "before_rgb_median": [
+                  112.0,
+                  124.0,
+                  110.0
+                ],
+                "after_rgb_median": [
+                  112.0,
+                  124.0,
+                  110.0
+                ]
+              }
+            }
+          },
+          "material_equivalent": true
+        }
+      },
+      "random_reproducibility": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "original"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "original"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "family_id": "variant_6",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "walnut_ivory"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "family_id": "variant_1",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "oak_warm_white"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "family_id": "variant_2",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "sage_walnut"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 3,
+          "family_id": "variant_6",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "walnut_ivory"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "family_id": "variant_8",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "brick_putty"
+          }
+        }
+      ],
+      "isolation": [
+        {
+          "selected": 1,
+          "passed": true,
+          "mask_counts": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 166874,
+                "changed": 166874,
+                "before_rgb_median": [
+                  39.0,
+                  48.0,
+                  59.0
+                ],
+                "after_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 22147,
+                "changed": 22147,
+                "before_rgb_median": [
+                  39.0,
+                  48.0,
+                  59.0
+                ],
+                "after_rgb_median": [
+                  142.0,
+                  96.0,
+                  69.0
+                ]
+              }
+            }
+          }
+        },
+        {
+          "selected": 0,
+          "passed": true,
+          "mask_counts": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170377,
+                "changed": 170377,
+                "before_rgb_median": [
+                  79.0,
+                  98.0,
+                  110.0
+                ],
+                "after_rgb_median": [
+                  141.0,
+                  96.0,
+                  69.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 20596,
+                "changed": 20596,
+                "before_rgb_median": [
+                  79.0,
+                  98.0,
+                  110.0
+                ],
+                "after_rgb_median": [
+                  142.0,
+                  96.0,
+                  69.0
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "PickBottle": {
+      "loaded": {
+        "cabinet": "cabinet",
+        "bottle": "bottle",
+        "cap": "bottle",
+        "beads": "pouring"
+      },
+      "camera": [
+        [
+          -1.06,
+          -0.54,
+          1.02
+        ],
+        [
+          -0.06,
+          0.16,
+          0.35
+        ],
+        0.83
+      ],
+      "crops": {
+        "cabinet": [
+          214,
+          53,
+          723,
+          571
+        ],
+        "bottle": [
+          494,
+          251,
+          557,
+          351
+        ],
+        "cap": [
+          498,
+          228,
+          556,
+          280
+        ]
+      },
+      "captures": {
+        "original": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_original_base_camera_env0.png",
+              "sha256": "4b23a59d5076886334bb849816d31e20efe1339e8fcbff35af2a49f2f53a768a",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_original_human_env0.png",
+              "sha256": "4b23a59d5076886334bb849816d31e20efe1339e8fcbff35af2a49f2f53a768a",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "original",
+                "bottle": "original",
+                "beads": "original",
+                "cap": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "original",
+                "bottle": "original",
+                "beads": "original",
+                "cap": "original"
+              }
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 0,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 0,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 0,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 0,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_1": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_1_base_camera_env0.png",
+              "sha256": "b228f7a6fccd90da83d65b9d2240ee0997b647b9ec1600076827684634396f4c",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_1_human_env0.png",
+              "sha256": "b228f7a6fccd90da83d65b9d2240ee0997b647b9ec1600076827684634396f4c",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "oak_warm_white",
+                "bottle": "ocean",
+                "beads": "ocean",
+                "cap": "ocean"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "oak_warm_white",
+                "bottle": "ocean",
+                "beads": "ocean",
+                "cap": "ocean"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  146.0,
+                  144.0,
+                  140.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  161.0,
+                  157.0,
+                  149.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2416,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  77.0,
+                  149.0,
+                  153.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  37.0,
+                  62.0,
+                  84.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_2": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_2_base_camera_env0.png",
+              "sha256": "09324035c3a9bdfdec75a0f54cc568a7413e3d1a32e6f09ca871fde3a7a3f35d",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_2_human_env0.png",
+              "sha256": "09324035c3a9bdfdec75a0f54cc568a7413e3d1a32e6f09ca871fde3a7a3f35d",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "sage_walnut",
+                "bottle": "citrus",
+                "beads": "citrus",
+                "cap": "citrus"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "sage_walnut",
+                "bottle": "citrus",
+                "beads": "citrus",
+                "cap": "citrus"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  111.0,
+                  112.0,
+                  99.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  93.0,
+                  68.0,
+                  51.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2148,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  179.0,
+                  156.0,
+                  85.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  191.0,
+                  191.0,
+                  180.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_3": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_3_base_camera_env0.png",
+              "sha256": "6e6fe881417537d878917a88ac68bfc3190ef326c6a3370c7a394cf5dfcce479",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_3_human_env0.png",
+              "sha256": "6e6fe881417537d878917a88ac68bfc3190ef326c6a3370c7a394cf5dfcce479",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "smoked_linen",
+                "bottle": "violet",
+                "beads": "violet",
+                "cap": "violet"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "smoked_linen",
+                "bottle": "violet",
+                "beads": "violet",
+                "cap": "violet"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  83.0,
+                  59.0,
+                  45.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  49.0,
+                  39.0,
+                  31.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2417,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  128.0,
+                  86.0,
+                  145.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  95.0,
+                  44.0,
+                  125.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_4": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_4_base_camera_env0.png",
+              "sha256": "983c3eec2bb6fc981d2cc9f96706bcefb3de38cdf4170a2a20ce6f992a48aab8",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_4_human_env0.png",
+              "sha256": "983c3eec2bb6fc981d2cc9f96706bcefb3de38cdf4170a2a20ce6f992a48aab8",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "birch_dust_blue",
+                "bottle": "spring_water",
+                "beads": "spring_water",
+                "cap": "spring_water"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "birch_dust_blue",
+                "bottle": "spring_water",
+                "beads": "spring_water",
+                "cap": "spring_water"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  156.0,
+                  150.0,
+                  120.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  148.0,
+                  130.0,
+                  103.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2391,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  56.0,
+                  108.0,
+                  120.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  175.0,
+                  188.0,
+                  188.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_5": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_5_base_camera_env0.png",
+              "sha256": "11d832eea4c626f31eee996924b8fec6d2fe5fcd6f5d4df94f52664fca3b13f7",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_5_human_env0.png",
+              "sha256": "11d832eea4c626f31eee996924b8fec6d2fe5fcd6f5d4df94f52664fca3b13f7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "cream_nickel",
+                "bottle": "black_tea",
+                "beads": "black_tea",
+                "cap": "black_tea"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "cream_nickel",
+                "bottle": "black_tea",
+                "beads": "black_tea",
+                "cap": "black_tea"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  158.0,
+                  147.0,
+                  123.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  137.0,
+                  120.0,
+                  87.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2236,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  132.0,
+                  99.0,
+                  63.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  67.0,
+                  39.0,
+                  33.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_6": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_6_base_camera_env0.png",
+              "sha256": "e0e9318589aa81ce3b418ed72e4c04e81a3345ccaa85ab6a07da33554835e1a5",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_6_human_env0.png",
+              "sha256": "e0e9318589aa81ce3b418ed72e4c04e81a3345ccaa85ab6a07da33554835e1a5",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "walnut_ivory",
+                "bottle": "peach_juice",
+                "beads": "peach_juice",
+                "cap": "peach_juice"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "walnut_ivory",
+                "bottle": "peach_juice",
+                "beads": "peach_juice",
+                "cap": "peach_juice"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  140.0,
+                  136.0,
+                  126.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  161.0,
+                  153.0,
+                  140.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2363,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  163.0,
+                  114.0,
+                  110.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  129.0,
+                  62.0,
+                  55.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_7": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_7_base_camera_env0.png",
+              "sha256": "3ca049d25c88d883e38eb2c9aa4ef80d4dde3de16d022fdd14d722139f949902",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_7_human_env0.png",
+              "sha256": "3ca049d25c88d883e38eb2c9aa4ef80d4dde3de16d022fdd14d722139f949902",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "slate_ash",
+                "bottle": "mineral_silver",
+                "beads": "mineral_silver",
+                "cap": "mineral_silver"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "slate_ash",
+                "bottle": "mineral_silver",
+                "beads": "mineral_silver",
+                "cap": "mineral_silver"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  138.0,
+                  135.0,
+                  124.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  121.0,
+                  118.0,
+                  107.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2417,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  115.0,
+                  130.0,
+                  136.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  57.0,
+                  61.0,
+                  64.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_8": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_8_base_camera_env0.png",
+              "sha256": "451b180dc5c2656d2929b67036f37d51099bd157809ab5f5f9c3d32857c2650e",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_8_human_env0.png",
+              "sha256": "451b180dc5c2656d2929b67036f37d51099bd157809ab5f5f9c3d32857c2650e",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "brick_putty",
+                "bottle": "green_tea",
+                "beads": "green_tea",
+                "cap": "green_tea"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "brick_putty",
+                "bottle": "green_tea",
+                "beads": "green_tea",
+                "cap": "green_tea"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  157.0,
+                  142.0,
+                  126.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  143.0,
+                  129.0,
+                  115.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2152,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  94.0,
+                  111.0,
+                  71.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  169.0,
+                  170.0,
+                  135.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_9": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_9_base_camera_env0.png",
+              "sha256": "985cb45db7e3434cc3deb37a6f34a5cd7293ae6fe3f25e1b8506bc0e7519f38b",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_9_human_env0.png",
+              "sha256": "985cb45db7e3434cc3deb37a6f34a5cd7293ae6fe3f25e1b8506bc0e7519f38b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "reed_birch",
+                "bottle": "berry_soda",
+                "beads": "berry_soda",
+                "cap": "berry_soda"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "reed_birch",
+                "bottle": "berry_soda",
+                "beads": "berry_soda",
+                "cap": "berry_soda"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  116.0,
+                  82.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  91.0,
+                  78.0,
+                  65.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2391,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  141.0,
+                  50.0,
+                  77.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  35.0,
+                  30.0,
+                  47.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_10": {
+          "files": {
+            "base_camera": {
+              "file": "PickBottle_variant_10_base_camera_env0.png",
+              "sha256": "d873997968204c5ba15df1b1686bffcb84ba43ecc90d3ff75bb882995ebd6ae2",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickBottle_variant_10_human_env0.png",
+              "sha256": "d873997968204c5ba15df1b1686bffcb84ba43ecc90d3ff75bb882995ebd6ae2",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "ink_maple",
+                "bottle": "coffee_milk",
+                "beads": "coffee_milk",
+                "cap": "coffee_milk"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "cabinet": "ink_maple",
+                "bottle": "coffee_milk",
+                "beads": "coffee_milk",
+                "cap": "coffee_milk"
+              }
+            }
+          ],
+          "restored": true,
+          "verified_render_slots": [
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "shelf": 2,
+              "shell_top": 8,
+              "interior_back": 2,
+              "interior_floor": 2,
+              "interior_side": 8,
+              "shell_side": 10,
+              "shell_edge": 19,
+              "door": 20,
+              "handle": 4,
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 170500,
+                "before_rgb_median": [
+                  150.0,
+                  105.0,
+                  77.0
+                ],
+                "after_rgb_median": [
+                  134.0,
+                  127.0,
+                  112.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ],
+                "after_rgb_median": [
+                  153.0,
+                  137.0,
+                  107.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 2108,
+                "before_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ],
+                "after_rgb_median": [
+                  82.0,
+                  65.0,
+                  56.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 784,
+                "before_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ],
+                "after_rgb_median": [
+                  153.0,
+                  129.0,
+                  103.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        }
+      },
+      "legacy": {
+        "variant_1": {
+          "surfaces": [
+            "cabinet",
+            "bottle",
+            "cap"
+          ],
+          "target_pixels": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 0,
+                "before_rgb_median": [
+                  146.0,
+                  144.0,
+                  140.0
+                ],
+                "after_rgb_median": [
+                  146.0,
+                  144.0,
+                  140.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 0,
+                "before_rgb_median": [
+                  161.0,
+                  157.0,
+                  149.0
+                ],
+                "after_rgb_median": [
+                  161.0,
+                  157.0,
+                  149.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 1022,
+                "before_rgb_median": [
+                  77.0,
+                  149.0,
+                  153.0
+                ],
+                "after_rgb_median": [
+                  77.0,
+                  149.0,
+                  153.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 0,
+                "before_rgb_median": [
+                  37.0,
+                  62.0,
+                  84.0
+                ],
+                "after_rgb_median": [
+                  37.0,
+                  62.0,
+                  84.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_2": {
+          "surfaces": [
+            "cabinet",
+            "bottle",
+            "cap"
+          ],
+          "target_pixels": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 170500,
+                "changed": 0,
+                "before_rgb_median": [
+                  111.0,
+                  112.0,
+                  99.0
+                ],
+                "after_rgb_median": [
+                  111.0,
+                  112.0,
+                  99.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 0,
+                "before_rgb_median": [
+                  93.0,
+                  68.0,
+                  51.0
+                ],
+                "after_rgb_median": [
+                  93.0,
+                  68.0,
+                  51.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 1022,
+                "before_rgb_median": [
+                  183.0,
+                  156.0,
+                  85.0
+                ],
+                "after_rgb_median": [
+                  179.0,
+                  156.0,
+                  85.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 0,
+                "before_rgb_median": [
+                  191.0,
+                  191.0,
+                  180.0
+                ],
+                "after_rgb_median": [
+                  191.0,
+                  191.0,
+                  180.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_3": {
+          "surfaces": [
+            "bottle",
+            "cap"
+          ],
+          "target_pixels": {
+            "bottle": {
+              "base_camera": {
+                "visible": 2441,
+                "changed": 1022,
+                "before_rgb_median": [
+                  128.0,
+                  86.0,
+                  145.0
+                ],
+                "after_rgb_median": [
+                  128.0,
+                  86.0,
+                  145.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 784,
+                "changed": 0,
+                "before_rgb_median": [
+                  95.0,
+                  44.0,
+                  125.0
+                ],
+                "after_rgb_median": [
+                  95.0,
+                  44.0,
+                  125.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        }
+      },
+      "random_reproducibility": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "original",
+            "bottle": "original",
+            "beads": "original",
+            "cap": "original"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "original",
+            "bottle": "original",
+            "beads": "original",
+            "cap": "original"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "family_id": "variant_6",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "walnut_ivory",
+            "bottle": "peach_juice",
+            "beads": "peach_juice",
+            "cap": "peach_juice"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "family_id": "variant_1",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "oak_warm_white",
+            "bottle": "ocean",
+            "beads": "ocean",
+            "cap": "ocean"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "family_id": "variant_2",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "sage_walnut",
+            "bottle": "citrus",
+            "beads": "citrus",
+            "cap": "citrus"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 3,
+          "family_id": "variant_6",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "walnut_ivory",
+            "bottle": "peach_juice",
+            "beads": "peach_juice",
+            "cap": "peach_juice"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "family_id": "variant_8",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "cabinet": "brick_putty",
+            "bottle": "green_tea",
+            "beads": "green_tea",
+            "cap": "green_tea"
+          }
+        }
+      ],
+      "isolation": [
+        {
+          "selected": 1,
+          "passed": true,
+          "mask_counts": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 165747,
+                "changed": 165747,
+                "before_rgb_median": [
+                  134.0,
+                  127.0,
+                  115.0
+                ],
+                "after_rgb_median": [
+                  162.0,
+                  118.0,
+                  89.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 567,
+                "changed": 567,
+                "before_rgb_median": [
+                  149.0,
+                  133.0,
+                  103.0
+                ],
+                "after_rgb_median": [
+                  131.0,
+                  89.0,
+                  64.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 2260,
+                "changed": 2260,
+                "before_rgb_median": [
+                  82.0,
+                  65.0,
+                  56.0
+                ],
+                "after_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 673,
+                "changed": 673,
+                "before_rgb_median": [
+                  152.0,
+                  129.0,
+                  103.0
+                ],
+                "after_rgb_median": [
+                  108.0,
+                  95.0,
+                  95.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        {
+          "selected": 0,
+          "passed": true,
+          "mask_counts": {
+            "cabinet": {
+              "base_camera": {
+                "visible": 167356,
+                "changed": 167356,
+                "before_rgb_median": [
+                  156.0,
+                  150.0,
+                  120.0
+                ],
+                "after_rgb_median": [
+                  157.0,
+                  111.0,
+                  85.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1703,
+                "changed": 1703,
+                "before_rgb_median": [
+                  148.0,
+                  130.0,
+                  103.0
+                ],
+                "after_rgb_median": [
+                  129.0,
+                  88.0,
+                  63.0
+                ]
+              }
+            },
+            "bottle": {
+              "base_camera": {
+                "visible": 1806,
+                "changed": 1806,
+                "before_rgb_median": [
+                  56.0,
+                  108.0,
+                  120.0
+                ],
+                "after_rgb_median": [
+                  132.0,
+                  135.0,
+                  133.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 559,
+                "changed": 559,
+                "before_rgb_median": [
+                  175.0,
+                  189.0,
+                  189.0
+                ],
+                "after_rgb_median": [
+                  95.0,
+                  95.0,
+                  95.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "UnscrewCap": {
+      "loaded": {
+        "bottle": "bottle",
+        "cap": "bottle",
+        "beads": "pouring"
+      },
+      "camera": [
+        [
+          -0.62,
+          -0.54,
+          0.46
+        ],
+        [
+          -0.22,
+          -0.2,
+          0.14
+        ],
+        0.72
+      ],
+      "crops": {},
+      "captures": {
+        "original": {
+          "files": {
+            "base_camera": {
+              "file": "UnscrewCap_original_base_camera_env0.png",
+              "sha256": "736e4cd35668b33e6468bab82e711475cabab3a735dc02a45aa904264a84cca7",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "UnscrewCap_original_human_env0.png",
+              "sha256": "736e4cd35668b33e6468bab82e711475cabab3a735dc02a45aa904264a84cca7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "original",
+                "beads": "original",
+                "cap": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "original",
+                "beads": "original",
+                "cap": "original"
+              }
+            }
+          ],
+          "targets": {
+            "bottle": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        "variant_1": {
+          "files": {
+            "base_camera": {
+              "file": "UnscrewCap_variant_1_base_camera_env0.png",
+              "sha256": "736e4cd35668b33e6468bab82e711475cabab3a735dc02a45aa904264a84cca7",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "UnscrewCap_variant_1_human_env0.png",
+              "sha256": "736e4cd35668b33e6468bab82e711475cabab3a735dc02a45aa904264a84cca7",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "ocean",
+                "beads": "ocean",
+                "cap": "ocean"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "cabinet-ten-v1",
+              "objects": {
+                "bottle": "ocean",
+                "beads": "ocean",
+                "cap": "ocean"
+              }
+            }
+          ],
+          "verified_render_slots": [
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            }
+          ],
+          "targets": {
+            "bottle": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "cap": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            },
+            "beads": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        }
+      },
+      "legacy": {
+        "variant_1": {
+          "surfaces": [
+            "bottle",
+            "cap"
+          ]
+        },
+        "variant_2": {
+          "surfaces": [
+            "bottle",
+            "cap"
+          ]
+        },
+        "variant_3": {
+          "surfaces": [
+            "bottle",
+            "cap"
+          ]
+        }
+      },
+      "random_reproducibility": null,
+      "isolation": []
+    }
+  },
+  "unreached_tasks": [
+    "PourBeads",
+    "PourBeads_diagnostic"
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_001/source/tools/variation/check_cabinet_ten_variants.py\", line 380, in run\n    if r!='beads':assert any(c['changed'] for c in cams.values()),(task,sid,r,'no changed target pixels')\nAssertionError: ('UnscrewCap', 'variant_1', 'bottle', 'no changed target pixels')\n",
+  "visual": {
+    "label_comparison": {
+      "task": "PickBottle",
+      "camera": "base_camera",
+      "env_idx": 0,
+      "box_xyxy": [
+        515,
+        276,
+        538,
+        303
+      ],
+      "description": "Fixed observed frontal label patch; supporting image evidence only; not a shader diagnosis.",
+      "comparisons": {
+        "variant_1": {
+          "pixels": 621,
+          "exact_rgb_pixels": 0,
+          "mean_channel_delta": 2.4911433172302737,
+          "max_channel_delta": 59
+        },
+        "variant_2": {
+          "pixels": 621,
+          "exact_rgb_pixels": 215,
+          "mean_channel_delta": 0.5287171229200215,
+          "max_channel_delta": 50
+        },
+        "variant_3": {
+          "pixels": 621,
+          "exact_rgb_pixels": 0,
+          "mean_channel_delta": 4.54320987654321,
+          "max_channel_delta": 52
+        },
+        "variant_4": {
+          "pixels": 621,
+          "exact_rgb_pixels": 12,
+          "mean_channel_delta": 1.9082125603864735,
+          "max_channel_delta": 82
+        },
+        "variant_5": {
+          "pixels": 621,
+          "exact_rgb_pixels": 147,
+          "mean_channel_delta": 0.8513150831991412,
+          "max_channel_delta": 75
+        },
+        "variant_6": {
+          "pixels": 621,
+          "exact_rgb_pixels": 38,
+          "mean_channel_delta": 1.2920021470746108,
+          "max_channel_delta": 33
+        },
+        "variant_7": {
+          "pixels": 621,
+          "exact_rgb_pixels": 0,
+          "mean_channel_delta": 3.9683306494900696,
+          "max_channel_delta": 19
+        },
+        "variant_8": {
+          "pixels": 621,
+          "exact_rgb_pixels": 214,
+          "mean_channel_delta": 0.5507246376811594,
+          "max_channel_delta": 64
+        },
+        "variant_9": {
+          "pixels": 621,
+          "exact_rgb_pixels": 12,
+          "mean_channel_delta": 1.9554482018250134,
+          "max_channel_delta": 91
+        },
+        "variant_10": {
+          "pixels": 621,
+          "exact_rgb_pixels": 225,
+          "mean_channel_delta": 0.5050993022007515,
+          "max_channel_delta": 81
+        }
+      }
+    }
+  },
+  "manifest_file_hashes": {
+    "tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042",
+    "tasks/assets/variation/cabinet_pouring/family_variants.json": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083",
+    "tasks/assets/variation/cabinet_pouring/pouring_finishes.json": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1",
+    "tasks/assets/variation/cabinet_pouring/v1/berry_soda.png": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8",
+    "tasks/assets/variation/cabinet_pouring/v1/black_tea.png": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7",
+    "tasks/assets/variation/cabinet_pouring/v1/catalog.json": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca",
+    "tasks/assets/variation/cabinet_pouring/v1/coffee_milk.png": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81",
+    "tasks/assets/variation/cabinet_pouring/v1/green_tea.png": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff",
+    "tasks/assets/variation/cabinet_pouring/v1/mineral_silver.png": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a",
+    "tasks/assets/variation/cabinet_pouring/v1/peach_juice.png": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208",
+    "tasks/assets/variation/cabinet_pouring/v1/spring_water.png": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4",
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6",
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6",
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8",
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888",
+    "tasks/cabinet_pouring/family_appearance.py": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7",
+    "tasks/cabinet_pouring/pouring_appearance.py": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0",
+    "tasks/cabinet_pouring/variation.py": "db9b41344a3e3fdd6b3a674653f232e1d4957235cfb92fbbe69a8e045cb2a8ed",
+    "tools/variation/check_cabinet_ten_variants.py": "388658508e6d261a840a19dec801c9634d6d9ec3f3c52f57320d6cc0427f1e67"
+  },
+  "allocation": {
+    "seconds": 215,
+    "guard_seconds": 213.23999437503517,
+    "approved": 540,
+    "exit": "1:0",
+    "state": "FAILED",
+    "no_requeue": true,
+    "accounting": "scontrol terminal JobState and RunTime; sacct unavailable",
+    "cleanup_complete": true,
+    "owned_processes": [],
+    "job_cgroup_members": [],
+    "capacity_peak_bytes": 166636327
+  }
+}

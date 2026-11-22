@@ -6,7 +6,7 @@
 
 **Cabinet & Pouring 单门柜。** `cabinet_appearance` 独立选择 `original`、`oak_warm_white` 或 `sage_walnut`。Dennis 已确认两套柜体外观。OpenCabinet 原生闭门和 PickBottle 原生 90° 开门各 2 环境通过原版恢复、局部 reset 隔离和柜外材质对照。PickBottle 使用原版瓶子。验收限于这两个入口。[用法](CABINET_SINGLE_DOOR.md) · [实景与工程证据](evidence/cabinet_single_door/runtime_001/README.md)
 
-[Cabinet & Pouring 十套家族外观](CABINET_TEN_VARIANTS.md)已实现并完成 CPU 静态核对，短任务实景、A4／A5 和本轮审图待运行。旧对象的限定验收保留。
+[Cabinet & Pouring 十套家族外观](CABINET_TEN_VARIANTS.md)已取得关门、开门两组十套实景及相应工程断言。新标签画面待确认，UnscrewCap 在瓶身像素判据停止，PourBeads 和独立液滴诊断未运行。旧对象的限定验收保留。
 
 **PourBeads 接收碗和模拟液滴。** Dennis 已确认 Ocean、Citrus、Violet 三款外观。PourBeads 两环境通过目标部件判色、原版恢复及局部 reset 隔离。碗在正式任务原位拍摄，16 颗原尺寸模拟液滴在独立实例中移到瓶外展示。完整倾倒、Long 和 A6 未测。[用法、实景与运行证据](evidence/pouring_bowl_beads/README.md)
 

@@ -1,6 +1,6 @@
 # Cabinet & Pouring 十套家族外观
 
-基线 `f0a09c9d1722abc831fd5c62ae77a42c9dece95c`。新增实现和 CPU 证据在独立分支，任务实景、实际材质、A4／A5 运行结果及人工审图待另行批准运行。已有单对象验收记录继续适用其原版本。
+基线 `f0a09c9d1722abc831fd5c62ae77a42c9dece95c`。OpenCabinet／PickBottle 各已取得十套任务实景和适用工程证据。PickBottle 新印刷标签还没有清楚呈现在实景。UnscrewCap 在瓶身像素处停止；PourBeads 和独立液滴诊断未运行。已有单对象验收记录继续适用其原版本。
 
 ## 家族编号与实际对象表
 
@@ -73,3 +73,5 @@ python -B tools/variation/check_cabinet_ten_variants.py --gallery PATH_TO_APPROV
 ```
 
 任务短检经新授权后用同一脚本的 `--approval` 和 `--output`。原始 PNG、分割掩膜内的可见及变化像素、同坐标裁剪、选择记录、运行 manifest、首个失败和作业收据分开留存。拼图由真实原帧制成，每行至多三款。实际可见性、印刷方向、五金和内外分件需要人工审图。
+
+[本轮任务实景与 A4／A5 结果](evidence/cabinet_ten_variants/runtime_001/README.md)。草稿待 Dennis 审图。
