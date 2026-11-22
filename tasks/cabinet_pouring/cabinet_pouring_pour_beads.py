@@ -80,7 +80,9 @@ class CabinetPouringPourBeadsEnv(CabinetPouringLongEnv):
             self._stage_bottle_placed[env_idx] = True
             self._stage_cap_turned[env_idx] = True
             self._stage_cap_placed[env_idx] = True
-            if self._pouring_appearance is not None:
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            elif self._pouring_appearance is not None:
                 self._pouring_appearance.finish_reset(env_idx, options)
 
     def evaluate(self):

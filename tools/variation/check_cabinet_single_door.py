@@ -35,13 +35,15 @@ def sha(path):
 
 
 def static(asset):
+    from check_cabinet_ten_variants import static as check_family, old as family_base
+    check_family()
     import ast
     from collections import Counter
     from types import SimpleNamespace
     from xml.etree import ElementTree as ET
 
     catalog = load(CATALOG)
-    assert list(catalog['schemes']) == list(SCHEMES)
+    assert set(SCHEMES) <= set(catalog['schemes'])
     roles = Counter()
     meshes = catalog['meshes']
     source = load(SOURCE_MANIFEST)['files']
@@ -111,7 +113,7 @@ def static(asset):
     for path in paths:
         rel=path.relative_to(ROOT).as_posix()
         base=subprocess.check_output(['git','-C',str(ROOT),'show',BASE+':'+rel],encoding='utf-8')
-        s=path.read_text(encoding='utf-8')
+        s=family_base(path).decode('utf-8')
         # Remove only the exact cabinet opt-in and rendering hooks.
         s=s.replace('        cabinet_appearance=None,\n','')
         if path.stem.endswith('_long'):

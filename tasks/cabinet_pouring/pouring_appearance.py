@@ -1,5 +1,7 @@
 """Opt-in appearances of the receiving bowl and simulated liquid in PourBeads."""
 import copy
+import json
+from pathlib import Path
 
 import numpy as np
 from PIL import Image
@@ -12,6 +14,19 @@ PALETTE = {
     "citrus": ((1., .68, .25), .55, .35),
     "violet": ((.65, .28, .90), None, None),
 }
+
+NEW_FINISHES = json.loads((Path(__file__).resolve().parents[1] /
+    'assets/variation/cabinet_pouring/pouring_finishes.json').read_text(encoding='utf-8'))
+
+
+def glaze_pixels(native, color):
+    # Retain a restrained luminance structure without treating the original
+    # artwork as a distributed asset or assuming that this UV is split inside/out.
+    light = np.asarray(Image.fromarray(native[..., :3]).convert("L"), dtype=np.float32)
+    glaze = np.asarray(color) * 255
+    tinted = native.copy()
+    tinted[..., :3] = np.clip(glaze * (.81 + .19*light[..., None]/255), 0, 255).astype(np.uint8)
+    return tinted
 
 
 def tint_bowl(native, color):
@@ -33,27 +48,33 @@ class PouringAppearance:
         self.bindings = []
         self.schemes = []
         owners = []
-        for idx, raw in enumerate(bowl._objs):
-            body = raw.find_component_by_type(render.RenderBodyComponent)
-            parts = [p for shape in body.render_shapes for p in shape.parts]
-            if len(parts) != 1:
-                raise ValueError("Expected one native bowl material")
-            bowl_mat = parts[0].material
-            if bowl_mat in owners:
-                raise RuntimeError("Shared bowl material across environments")
-            owners.append(bowl_mat)
-            texture = bowl_mat.base_color_texture
-            native = texture.download().copy()
-            live = render.RenderTexture2D(array=native, format=texture.format,
-                mipmap_levels=texture.mipmap_levels, filter_mode=texture.filter_mode,
-                address_mode=texture.address_mode, srgb=texture.is_srgb)
-            bowl_mat.base_color_texture = live
-            pixels = {"original": native, **{s: tint_bowl(native, p[0]) for s, p in PALETTE.items()}}
+        for idx, raw in enumerate(bowl._objs if bowl is not None else [None] * len(particles[0]._objs)):
+            live = None
+            pixels = {}
+            materials = []
+            if raw is not None:
+                body = raw.find_component_by_type(render.RenderBodyComponent)
+                parts = [p for shape in body.render_shapes for p in shape.parts]
+                if len(parts) != 1:
+                    raise ValueError("Expected one native bowl material")
+                bowl_mat = parts[0].material
+                if bowl_mat in owners:
+                    raise RuntimeError("Shared bowl material across environments")
+                owners.append(bowl_mat)
+                texture = bowl_mat.base_color_texture
+                native = texture.download().copy()
+                live = render.RenderTexture2D(array=native, format=texture.format,
+                    mipmap_levels=texture.mipmap_levels, filter_mode=texture.filter_mode,
+                    address_mode=texture.address_mode, srgb=texture.is_srgb)
+                bowl_mat.base_color_texture = live
+                pixels = {"original": native, **{s: tint_bowl(native, p[0]) for s, p in PALETTE.items()}}
+
+                pixels.update({sid: glaze_pixels(native, p["glaze_srgb"]) for sid,p in NEW_FINISHES.items()})
+                materials.append((bowl_mat, "bowl"))
 
             # ManiSkill's build_sphere shares an explicit RenderMaterial between
             # environments. Isolate its visual before cameras are constructed.
             # The native entities, PhysX components, and state registry stay intact.
-            materials = [(bowl_mat, "bowl")]
             for particle in particles:
                 ent = particle._objs[idx]
                 old = ent.find_component_by_type(render.RenderBodyComponent)
@@ -77,14 +98,21 @@ class PouringAppearance:
 
     def finish_reset(self, env_idx, options):
         scheme = options.get("pouring_appearance", {}).get("scheme_id", self.default)
-        if scheme != "original" and scheme not in PALETTE:
+        if scheme != "original" and scheme not in PALETTE and scheme not in NEW_FINISHES:
             raise ValueError(f"Unknown PourBeads appearance: {scheme}")
         for idx in env_idx.tolist():
             texture, pixels, slots = self.bindings[idx]
-            texture.upload(pixels[scheme])
+            if texture is not None:
+                texture.upload(pixels[scheme])
             for mat, role, native_color, roughness, metallic in slots:
                 if scheme == "original":
                     mat.base_color, mat.roughness, mat.metallic = native_color, roughness, metallic
+                elif scheme in NEW_FINISHES:
+                    finish = NEW_FINISHES[scheme]
+                    rgb = [1.,1.,1.] if role == "bowl" else finish["liquid_linear"]
+                    mat.base_color = [*rgb, float(native_color[3])]
+                    mat.roughness = finish[role + "_roughness"]
+                    mat.metallic = 0.
                 else:
                     rgb, bowl_rough, bead_rough = PALETTE[scheme]
                     mat.base_color = [*rgb, float(native_color[3])]

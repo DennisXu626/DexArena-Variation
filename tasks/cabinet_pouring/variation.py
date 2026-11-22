@@ -24,12 +24,15 @@ ASSETS = Path(__file__).resolve().parents[1] / "assets/variation/cabinet_pouring
 
 
 class PilotVariation:
-    def __init__(self, env, config, num_envs):
+    def __init__(self, env, config, num_envs, *, family=False):
         self.env = env
         self.config = copy.deepcopy(config)
         self.appearance = bool(config.get("appearance", {}).get("enabled", False))
         self.initial_pose = bool(config.get("initial_pose", {}).get("enabled", False))
-        if type(env).__name__ not in {"CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv"}:
+        allowed = {"CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv"}
+        if family and not self.initial_pose:
+            allowed.add("CabinetPouringPourBeadsEnv")
+        if type(env).__name__ not in allowed:
             raise ValueError("This pilot variation supports only PickBottle and UnscrewCap")
         self.region = REGION
         if self.initial_pose:
@@ -147,6 +150,7 @@ class PilotVariation:
     def _collect_bindings(self):
         import sapien.render as sr
         names = ["source", "source_fixed", "source_open", "cap", "cap_fixed", "cap_twin"]
+        names = [name for name in names if getattr(self.env, name, None) is not None]
         objects = tuple(raw for name in names for raw in getattr(self.env, name)._objs)
         key = tuple(id(raw) for raw in objects)
         if self._binding_key == key:
