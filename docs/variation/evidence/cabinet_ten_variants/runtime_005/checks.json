@@ -1,0 +1,167 @@
+{
+  "family": "cabinet_pouring",
+  "head": "8fc1db86be19520d9212d7b4b06203cb75a6f39c",
+  "seed": 7,
+  "job": "128997",
+  "tasks": {
+    "UnscrewCap": {
+      "status": "running",
+      "reused_fixed_job": 128943,
+      "camera": {
+        "view": [
+          [
+            0.2019569206237793,
+            -0.06467759132385253,
+            0.40008639186620715
+          ],
+          [
+            -0.2280430793762207,
+            -0.19467759132385254,
+            0.06008639186620712
+          ],
+          0.83
+        ],
+        "intrinsic": [
+          [
+            817.0885620117188,
+            0.0,
+            480.0
+          ],
+          [
+            0.0,
+            817.0885620117188,
+            360.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "extrinsic": [
+          [
+            -0.2893894612789154,
+            0.9572112560272217,
+            2.2351738238057806e-08,
+            0.12035433202981949
+          ],
+          [
+            0.5776746273040771,
+            0.17464579641819,
+            -0.7973649501800537,
+            0.21364516019821167
+          ],
+          [
+            -0.7632467746734619,
+            -0.2307489961385727,
+            -0.6034973859786987,
+            0.38066983222961426
+          ]
+        ]
+      },
+      "engineered_stage_switch": {
+        "scope": "checker-only trigger, no robot action",
+        "scheme": "variant_9",
+        "frames": {
+          "attached": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_engineered_attached.png",
+                "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "mask": {
+              "file": "UnscrewCap_engineered_attached_label_mask.png",
+              "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "representation": "source_fixed",
+            "mesh": "original-3.obj",
+            "label_pixels": 1487,
+            "bound_filename": "",
+            "bound_texels": "185ff9f492fae33c56ddb6028e1762b54cd2764c4a35c7e1b63ff06eb5a7bc7b",
+            "wanted_asset": {
+              "scheme": "berry_soda",
+              "file": "berry_soda.png",
+              "sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8"
+            },
+            "bound_matches_catalog_pixels": true,
+            "image_score": {
+              "native": -0.39225546551592605,
+              "wanted": 0.9890737110793779
+            },
+            "cap_representation": "cap_fixed",
+            "cap_pixels": 4810,
+            "marker_pixels": 204,
+            "marker_median_rgb": [
+              222.0,
+              174.0,
+              85.0
+            ],
+            "marker_mask": {
+              "file": "UnscrewCap_engineered_attached_marker.png",
+              "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "passive_env": {
+              "state": true,
+              "materials": true,
+              "rng": true,
+              "records": true,
+              "rgb": true,
+              "seg": true,
+              "K": true,
+              "E": true
+            },
+            "verified_slots": {
+              "source/body_surface": 2,
+              "source/body_label": 1,
+              "source_fixed/body_surface": 2,
+              "source_fixed/body_label": 1,
+              "source_open/body_surface": 2,
+              "source_open/body_label": 1,
+              "cap/cap_surface": 1,
+              "cap/cap_reference": 2,
+              "cap_fixed/cap_surface": 1,
+              "cap_fixed/cap_reference": 2,
+              "cap_twin/cap_surface": 1,
+              "cap_twin/cap_reference": 2,
+              "beads": 16
+            },
+            "status": "passed"
+          },
+          "free": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_engineered_free.png",
+                "sha256": "7ba69fbf055d803cb77652c976d1d1246f1e39d0527c5416cf22c576778878d3",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          }
+        },
+        "attempted_stage": "free"
+      }
+    }
+  },
+  "status": "failed",
+  "phase": "finish",
+  "reused_job": 128861,
+  "reused_pick_bottle_job": 128933,
+  "reused_unscrew_cap_fixed_job": 128943,
+  "failed_task": "UnscrewCap",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_005/source/tools/variation/cabinet_followup.py\", line 727, in run\n    check.cap_finish(auth['reused_evidence']['128943'])\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_005/source/tools/variation/cabinet_followup.py\", line 584, in cap_finish\n    self.cap_switch(env,row,None,reused['flip_v'])\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_005/source/tools/variation/cabinet_followup.py\", line 559, in cap_switch\n    self.label_frame(env,PROBE,native,flip,stem,frame=frame,meta=meta)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_005/source/tools/variation/cabinet_followup.py\", line 321, in label_frame\n    name,obj,mask,uv,(_,tex,mesh)=self.geometry(env.unwrapped,i,frame)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_005/source/tools/variation/cabinet_followup.py\", line 276, in geometry\n    assert mask.sum()>=(MIN_MARKER if cap else MIN_LABEL),(\nAssertionError: ('source_fixed', 0, 0, 2669, 0)\n"
+}
