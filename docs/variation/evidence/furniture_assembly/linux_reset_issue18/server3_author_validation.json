@@ -1,0 +1,51 @@
+{
+  "scope": "Author-side Server 3 replay and independent raw-data readback for three Furniture short tasks",
+  "node": "lyg0295",
+  "slurm_job": 123819,
+  "physical_gpu_index": 7,
+  "gpu": "NVIDIA A800-SXM4-40GB",
+  "driver": "570.158.01",
+  "capture_commit": "45dd8cfe65e22e375356a127f4d595922c23d083",
+  "capture_tree": "25b2f78ace11a2bb5b00203f62ca16f8060312d2",
+  "capture_main": "e8b0b1b44e2f432e5deb5d46aee9b9ed07ca6453",
+  "pr_base": "f0a09c9d1722abc831fd5c62ae77a42c9dece95c",
+  "base_delta": [
+    "assets/appearance/README.md",
+    "assets/appearance/objects.csv",
+    "assets/appearance/objects/cabinet_pouring/beads/README.md",
+    "assets/appearance/objects/cabinet_pouring/bowl/README.md",
+    "assets/appearance/runtime_mapping.json",
+    "docs/variation/STATUS.md",
+    "docs/variation/evidence/pouring_bowl_beads/JOB_RECEIPT.json",
+    "docs/variation/evidence/pouring_bowl_beads/README.md",
+    "docs/variation/evidence/pouring_bowl_beads/RESULTS.json",
+    "docs/variation/evidence/pouring_bowl_beads/beads_comparison.png",
+    "docs/variation/evidence/pouring_bowl_beads/bowl_comparison.png",
+    "docs/variation/validation/README.md",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py",
+    "tasks/cabinet_pouring/pouring_appearance.py",
+    "tools/variation/cabinet_color_oracle.py",
+    "tools/variation/check_pouring_appearance.py"
+  ],
+  "checked_capture_source_count": 12,
+  "tasks": [
+    "LayFlatPanel",
+    "InsertRail",
+    "FastenScrew"
+  ],
+  "num_envs": 2,
+  "sdk": "3.0.3+dexarena.gpu1.linux1",
+  "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+  "standard_control_steps": 6,
+  "standard_physics_steps": 120,
+  "selected_reset_readbacks": 114,
+  "added_scheme_rgb_frames": 48,
+  "appearance_reset_directions": 6,
+  "original_restore_camera_pairs": 24,
+  "original_restore_changed_rgb_values": 0,
+  "independent_review_sha256": "fbf97163684b9de2ac61537d561294b379e7a30c811a2aeb49c9dc0e7a616f04",
+  "unverified": [
+    "Furniture Long task",
+    "complete robot policy or task success"
+  ]
+}

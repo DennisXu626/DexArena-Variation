@@ -1,0 +1,69 @@
+{
+  "schema": "dexarena-sapien-linux-lock-v1",
+  "base_lock_sha256": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+  "version": "3.0.3+dexarena.gpu1.linux1",
+  "patch_groups": ["common", "packaging"],
+  "build_image": "fxiangucsd/sapien-build-env@sha256:e63ef4e6fbb0cef2ab332b594a92e020e69bcc4ef99a067b773783060fcd0263",
+  "cuda_release": "11.8",
+  "wheel_platform": "manylinux_2_28_x86_64",
+  "probe_numpy": {
+    "version": "2.2.6",
+    "url": "https://files.pythonhosted.org/packages/b4/63/3de6a34ad7ad6646ac7d2f55ebc6ad439dbbf9c4370017c50cf403fb19b5/numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "fc7b73d02efb0e18c000e9ad8b83480dfcd5dfd11065997ed4c6747470ae8915"
+  },
+  "physx_host": {
+    "name": "physx5",
+    "url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/linux-release.zip",
+    "sha256": "3e9f0b74bb1319700fe0d0618e664bedef0db154a42b69baf129977d65b4b2c4",
+    "strip": 0
+  },
+  "physx_gpu": {
+    "version": "105.1-physx-5.3.1.patch0",
+    "url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/linux-so.zip",
+    "archive_sha256": "167a01aad7381afef963b89169968c289e7b653880a7a823c116d87ee5c00fc6",
+    "file": "libPhysXGpu_64.so",
+    "sha256": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706"
+  },
+  "archives": [
+    {
+      "name": "boost",
+      "url": "https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.tar.gz",
+      "sha256": "121da556b718fd7bd700b5f2e734f8004f1cfa78b7d30145471c526ba75a151c",
+      "strip": 1
+    },
+    {
+      "name": "tinyxml",
+      "url": "https://phoenixnap.dl.sourceforge.net/project/tinyxml/tinyxml/2.6.2/tinyxml_2_6_2.tar.gz",
+      "sha256": "15bdfdcec58a7da30adc87ac2b078e4417dbe5392f3afb719f9ba6d062645593",
+      "strip": 1
+    }
+  ],
+  "git_dependencies": [
+    {
+      "name": "urdfdom_headers",
+      "url": "https://github.com/ros/urdfdom_headers.git",
+      "commit": "2981892df9da19d10f58dc84de63820e4f554f63"
+    },
+    {
+      "name": "console_bridge",
+      "url": "https://github.com/ros/console_bridge.git",
+      "commit": "0828d846f2d4940b4e2b5075c6c724991d0cd308"
+    },
+    {
+      "name": "urdfdom",
+      "url": "https://github.com/ros/urdfdom.git",
+      "commit": "1ed7ca95b917f38feb4ff7bd1aa033baf2cfce0e"
+    },
+    {
+      "name": "pinocchio",
+      "url": "https://github.com/stack-of-tasks/pinocchio.git",
+      "commit": "a8ba226fc99213b66c98bcbe425827a633cde41d"
+    }
+  ],
+  "pinocchio_submodules": {
+    "cmake": {
+      "url": "https://github.com/jrl-umi3218/jrl-cmakemodules.git",
+      "commit": "7cf918642ffff34e6960b240aae87b0414c28860"
+    }
+  }
+}
