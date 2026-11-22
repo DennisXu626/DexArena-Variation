@@ -201,7 +201,7 @@ def run(approval, output, *, followup=None):
                     assert digest(m.base_color_texture.download())==digest(b['live']['pixels'][mapping['cabinet']])
                 counts[b['role']]=counts.get(b['role'],0)+1
         if e._variation is not None and e._variation.appearance:
-            from tasks.cabinet_pouring.variation import ASSETS
+            from tasks.cabinet_pouring.variation import ASSETS, resize_label_pixels
             adapter=e._variation
             params=adapter.catalog['schemes'][mapping['bottle']]
             label=adapter._textures[str(ASSETS / params['label_texture'])]
@@ -212,7 +212,10 @@ def run(approval, output, *, followup=None):
                 m=b['material']
                 assert_finish(m,rgb,params['roughness'],params['metallic'])
                 if role=='body_label':
-                    assert digest(m.base_color_texture.download())==digest(label.download())
+                    pixels=label.download()
+                    if 'label_live' in b:
+                        pixels=resize_label_pixels(pixels,b['label_native'])
+                    assert digest(m.base_color_texture.download())==digest(pixels)
                 counts[b['name']+'/'+role]=counts.get(b['name']+'/'+role,0)+1
         if not bottle_only and e._family_liquid is not None:
             from tasks.cabinet_pouring.pouring_appearance import PALETTE, NEW_FINISHES

@@ -23,11 +23,20 @@ TABLE_XY_REGION = {
 ASSETS = Path(__file__).resolve().parents[1] / "assets/variation/cabinet_pouring/v1"
 
 
+def resize_label_pixels(source, native):
+    from PIL import Image
+
+    mode = "RGBA" if native.shape[2] == 4 else "RGB"
+    return np.asarray(Image.fromarray(source).convert(mode).resize(
+        native.shape[1::-1], Image.Resampling.LANCZOS)).copy()
+
+
 class PilotVariation:
     def __init__(self, env, config, num_envs, *, family=False):
         self.env = env
         self.config = copy.deepcopy(config)
         self.appearance = bool(config.get("appearance", {}).get("enabled", False))
+        self._private_label_textures = family
         self.initial_pose = bool(config.get("initial_pose", {}).get("enabled", False))
         allowed = {"CabinetPouringPickBottleEnv", "CabinetPouringUnscrewCapEnv"}
         if family and not self.initial_pose:
@@ -157,6 +166,7 @@ class PilotVariation:
             return
         self._bindings = [[] for _ in range(self.env.num_envs)]
         owners = {}
+        label_materials = []
         for name in names:
             for i, raw in enumerate(getattr(self.env, name)._objs):
                 entity = getattr(raw, "entity", raw)
@@ -175,8 +185,23 @@ class PilotVariation:
                             role = "body_label" if original["base_color_texture"] is not None else "body_surface"
                         else:
                             role = "cap_reference" if isinstance(shape, sr.RenderShapeBox) else "cap_surface"
-                        self._bindings[i].append({"name": name, "role": role, "part": part_index,
-                                                  "material": material, "original": original})
+                        binding = {"name": name, "role": role, "part": part_index,
+                                   "material": material, "original": original}
+                        if role == "body_label" and self._private_label_textures:
+                            if any(material == previous for previous in label_materials):
+                                raise RuntimeError("Bottle label material is shared across representations")
+                            label_materials.append(material)
+                            old = original["base_color_texture"]
+                            pixels = old.download().copy()
+                            # The batched renderer retains the texture bound at first render.
+                            live = sr.RenderTexture2D(array=pixels, format=old.format,
+                                                      mipmap_levels=old.mipmap_levels,
+                                                      filter_mode=old.filter_mode,
+                                                      address_mode=old.address_mode, srgb=old.is_srgb)
+                            material.base_color_texture = live
+                            binding["label_live"] = live
+                            binding["label_native"] = pixels
+                        self._bindings[i].append(binding)
         self._binding_key = key
         self._bound_objects = objects
 
@@ -200,16 +225,25 @@ class PilotVariation:
             scheme = self.catalog["schemes"][scheme_id]
             for binding in self._bindings[i]:
                 material = binding["material"]
+                live = binding.get("label_live")
                 for k, value in binding["original"].items():
+                    if k == "base_color_texture" and live is not None:
+                        continue
                     setattr(material, k, value)
                 if scheme_id == "original":
+                    if live is not None:
+                        live.upload(binding["label_native"])
                     continue
                 role = binding["role"]
                 if role == "body_label":
                     texture_path = str(ASSETS / scheme["label_texture"])
                     if texture_path not in self._textures:
                         self._textures[texture_path] = sr.RenderTexture2D(filename=texture_path, mipmap_levels=4)
-                    material.base_color_texture = self._textures[texture_path]
+                    texture = self._textures[texture_path]
+                    if live is None:
+                        material.base_color_texture = texture
+                    else:
+                        live.upload(resize_label_pixels(texture.download(), binding["label_native"]))
                     material.base_color = [1, 1, 1, 1]
                 else:
                     color_key = {"body_surface": "body_color", "cap_surface": "cap_color", "cap_reference": "reference_color"}[role]
