@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "version": "office_desk.laptop.v1",
+  "stage": "runtime",
+  "object_id": "laptop",
+  "model_id": "10211",
+  "fields": [
+    "base_color",
+    "roughness",
+    "metallic"
+  ],
+  "schemes": {
+    "original": {
+      "restore": "captured_native"
+    },
+    "terracotta_matte": {
+      "bezel": {
+        "base_color": [
+          0.62,
+          0.14,
+          0.055,
+          1.0
+        ],
+        "roughness": 0.78,
+        "metallic": 0.0
+      }
+    },
+    "petrol_satin": {
+      "bezel": {
+        "base_color": [
+          0.025,
+          0.25,
+          0.32,
+          1.0
+        ],
+        "roughness": 0.34,
+        "metallic": 0.0
+      }
+    }
+  }
+}
