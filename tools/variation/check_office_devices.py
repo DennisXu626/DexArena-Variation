@@ -3,6 +3,7 @@ import argparse
 import ast
 import copy
 import hashlib
+from itertools import combinations
 import json
 import math
 from pathlib import Path
@@ -15,6 +16,9 @@ if str(_ROOT) not in sys.path:
 from tools.variation.office_devices_assets import ROOT, DEFAULT_ASSET_ROOT, OBJECT_IDS, inspect_assets, load_definition
 
 BASELINE = '56a4aec4740b7139307e01048fa0e8e6ed430f14'
+EXPANSION_BASELINE = '66c7a1569d92487ab918df31014e0d86a70f29c2'
+DEVICE_CATALOG = 'tasks/assets/variation/office_desk/devices/v1/catalog.json'
+MOUSE_CATALOG = 'tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json'
 TASKS = ('open_laptop', 'type_keys', 'click_mouse')
 FIELDS = ('base_color', 'roughness', 'metallic')
 
@@ -174,8 +178,6 @@ def source_check(baseline=BASELINE):
         result[task] = {'normalized_task_ast': 'identical_to_main', 'normalizations': counts}
     long_path = 'tasks/office_desk/office_desk_long.py'
     assert (ROOT / long_path).read_text(encoding='utf-8') == git('show', baseline + ':' + long_path)
-    for path in ('tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json',):
-        assert (ROOT / path).read_text(encoding='utf-8').strip() == git('show', baseline + ':' + path).strip()
     mouse_path = 'tasks/office_desk/mouse_appearance.py'
     mouse_current = ast.parse((ROOT / mouse_path).read_text(encoding='utf-8'))
     mouse_original = ast.parse(git('show', baseline + ':' + mouse_path))
@@ -198,12 +200,41 @@ def source_check(baseline=BASELINE):
 
 
 def catalog_check():
-    family = json.loads((ROOT / 'tasks/assets/variation/office_desk/devices/v1/catalog.json').read_text(encoding='utf-8'))
-    assert family['schemes'] == ['original', 'variant_1', 'variant_2']
+    def read_catalog(path):
+        return json.loads((ROOT / path).read_text(encoding='utf-8'))
+
+    def verify_extension(path, current, old_key):
+        previous = json.loads(git('show', EXPANSION_BASELINE + ':' + path))
+        old_schemes = previous[old_key]
+        new_schemes = current[old_key]
+        assert list(new_schemes)[:len(old_schemes)] == list(old_schemes)
+        if isinstance(old_schemes, dict):
+            assert all(new_schemes[name] == values for name, values in old_schemes.items())
+        assert current['version'] != previous['version']
+        return previous
+
+    def validate_material(params):
+        assert set(params) == set(FIELDS)
+        color = params['base_color']
+        assert len(color) == 4 and color[3] == 1
+        assert all(math.isfinite(value) and 0 <= value <= 1 for value in [*color, params['roughness'], params['metallic']])
+        return color[:3]
+
+    family = read_catalog(DEVICE_CATALOG)
+    previous_family = verify_extension(DEVICE_CATALOG, family, 'schemes')
+    added = [f'variant_{i}' for i in range(3, 11)]
+    assert family['schemes'] == previous_family['schemes'] + added
+    assert family['tasks'] == previous_family['tasks']
     for object_id in OBJECT_IDS:
         definition = load_definition(object_id)
-        catalog_path = ROOT / family['objects'][object_id]['catalog']
-        catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
+        entry = family['objects'][object_id]
+        old_entry = previous_family['objects'][object_id]
+        assert entry['catalog'] == old_entry['catalog']
+        assert entry['scheme_map'] == {**old_entry['scheme_map'], **{name: name for name in added}}
+        catalog = read_catalog(entry['catalog'])
+        previous = verify_extension(entry['catalog'], catalog, 'schemes')
+        assert {k:v for k,v in catalog.items() if k not in ('version','schemes')} == {
+            k:v for k,v in previous.items() if k not in ('version','schemes')}
         assert catalog['stage'] == 'runtime' and definition['runtime_integration'] == 'connected_short_task'
         assert definition['new_uv'] is False and definition['new_textures'] == []
         assert catalog['fields'] == list(FIELDS)
@@ -217,20 +248,28 @@ def catalog_check():
         else:
             assert not catalog.get('role_aliases')
         assert catalog['schemes']['original'] == {'restore': 'captured_native'}
-        assert set(family['objects'][object_id]['scheme_map'].values()) == set(catalog['schemes'])
+        assert list(entry['scheme_map'].values()) == list(catalog['schemes'])
         colors = []
         for name, roles in catalog['schemes'].items():
             if name == 'original':
                 continue
             assert set(roles) == {definition['editable_role']}
-            params = roles[definition['editable_role']]
-            assert set(params) == set(FIELDS)
-            color = params['base_color']
-            assert len(color) == 4 and color[3] == 1
-            assert all(math.isfinite(value) and 0 <= value <= 1 for value in [*color, params['roughness'], params['metallic']])
-            colors.append(color[:3])
-        assert math.dist(*colors) > .3
+            colors.append(validate_material(roles[definition['editable_role']]))
+        assert all(math.dist(a,b) > .3 for a,b in combinations(colors,2))
         assert len(definition['part_bindings']) == (1 if object_id == 'laptop' else 3)
+    mouse = read_catalog(MOUSE_CATALOG)
+    previous = verify_extension(MOUSE_CATALOG, mouse, 'schemes')
+    assert list(mouse['schemes']) == list(previous['schemes']) + added
+    assert {k:v for k,v in mouse.items() if k not in ('version','schemes')} == {
+        k:v for k,v in previous.items() if k not in ('version','schemes')}
+    colors = []
+    for name, roles in mouse['schemes'].items():
+        if name == 'original':
+            continue
+        assert set(roles) == set(mouse['binding'].values())
+        validated = {role: validate_material(params) for role, params in roles.items()}
+        colors.append(validated['shell'])
+    assert all(math.dist(a,b) > .3 for a,b in combinations(colors,2))
     return 'passed'
 
 

@@ -1,4 +1,4 @@
-"""Office CPU dynamics: native_off/original/two candidates, shared exact comparator."""
+"""Office CPU dynamics for every catalog scheme, with the shared exact comparator."""
 import argparse
 import copy
 from importlib import metadata
@@ -18,7 +18,7 @@ from tools.variation import check_office_devices_runtime as R
 
 ROOT=R.ROOT
 TASKS=tuple(R.TASKS)
-SCHEMES=('native_off','native_repeat','original','variant_1','variant_2')
+SCHEMES=('native_off','native_repeat',*R.DEVICE_SCHEMES)
 COMMON=dict(num_envs=1,sim_backend='physx_cpu',obs_mode='state',control_mode='pd_joint_pos',reward_mode='sparse',reconfiguration_freq=0,render_mode=None)
 
 
@@ -36,7 +36,9 @@ def worker(args):
     np,torch,gym,sapien=R.np,R.torch,R.gym,R.sapien
     import tasks
     torch.set_num_threads(1);env=None;start=time.perf_counter()
-    actual='native_off' if args.scheme in ('native_off','native_repeat') else R.SCHEMES[args.task][SCHEMES.index(args.scheme)-2]
+    legacy_mouse = dict(zip(R.DEVICE_SCHEMES[1:3], R.SCHEMES['ClickMouse'][1:3], strict=True))
+    actual = ('native_off' if args.scheme in ('native_off','native_repeat') else
+              legacy_mouse.get(args.scheme, args.scheme) if args.task == 'ClickMouse' else args.scheme)
     config={'enabled':False} if actual=='native_off' else {'enabled':True,'scheme_id':actual,'seed':71}
     report={'status':'running','task':args.task,'scheme':args.scheme,'actual_scheme_id':actual,'appearance_config':config,
         'seed':args.seed,'constructor_kwargs':COMMON,'source_sha256':source_hashes(),'requested_control_steps':args.steps,

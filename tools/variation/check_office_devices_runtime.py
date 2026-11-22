@@ -9,6 +9,7 @@ import copy
 import gc
 import hashlib
 from importlib import metadata
+from itertools import combinations
 import json
 import os
 from pathlib import Path
@@ -24,7 +25,10 @@ if str(ROOT) not in sys.path:
 from tools.variation import check_furniture_appearance as C
 from tools.variation.office_devices_materials import _RUNTIME as P
 TASKS = {'OpenLaptop':'laptop', 'TypeKeys':'keyboard', 'ClickMouse':'mouse'}
-SCHEMES = {'OpenLaptop':('original','variant_1','variant_2'), 'TypeKeys':('original','variant_1','variant_2'), 'ClickMouse':('original','ivory_matte','navy_satin')}
+MOUSE_CATALOG = ROOT / 'tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json'
+DEVICE_SCHEMES = tuple(json.loads(P.CATALOG.read_text(encoding='utf-8'))['schemes'])
+SCHEMES = {'OpenLaptop': DEVICE_SCHEMES, 'TypeKeys': DEVICE_SCHEMES,
+           'ClickMouse': tuple(json.loads(MOUSE_CATALOG.read_text(encoding='utf-8'))['schemes'])}
 BASELINE = '56a4aec4740b7139307e01048fa0e8e6ed430f14'
 MODEL_ASSET_ROOT = ROOT / 'tasks/assets/task_object_meshes/office'
 
@@ -569,6 +573,25 @@ def reset_images(env, observation):
     return C.validate_images(frames, env.unwrapped.num_envs)
 
 
+def compare_fixed_schemes(frames, output):
+    """Use the PR16 native human camera in both environments for all pairs."""
+    pairs = {}
+    for (left, before), (right, after) in combinations(frames.items(), 2):
+        rows = []
+        for a, b in zip(before, after, strict=True):
+            delta = np.abs(a.astype(np.int16) - b.astype(np.int16))
+            pixels = int(np.count_nonzero(delta.max(axis=-1) > 8))
+            rows.append({'pixels_over_8': pixels, 'fraction_over_8': pixels / delta[..., 0].size,
+                         'mean_absolute_difference': float(delta.mean())})
+        pairs[f'{left}/{right}'] = rows
+    path = output / 'fixed_scheme_pairwise.json'
+    dump(path, {'camera': 'human', 'schemes': list(frames), 'minimum_fraction_over_8': .001, 'pairs': pairs})
+    failures = [name for name, rows in pairs.items() if any(row['fraction_over_8'] < .001 for row in rows)]
+    assert not failures, f'Insufficient fixed camera RGB separation: {failures}'
+    return {'file': path.name, 'camera': 'human', 'pairs': len(pairs), 'minimum_observed_fraction':
+            min(row['fraction_over_8'] for rows in pairs.values() for row in rows)}
+
+
 def prime_controller(base,output,prefix):
     before=C.snapshot(base)
     report=C.prime_controller_target(base)
@@ -799,6 +822,8 @@ def run_task(task,args,output,result):
         interface['explicit_disabled']={'config':{'enabled':False},'adapter_present':adapter(base) is not None,
             'materials':C.materials(base),'physical':physical(base),'state_evidence':'explicit_disabled_state.pt'}
         result['checks']['explicit_disabled']='passed';close()
+        fixed_frames = {}
+        restorations = {}
         for scheme in schemes:
             result['stage']='fixed '+scheme;base,info=fresh({'enabled':True,'scheme_id':scheme},camera_first=True)
             if gpu:first_repeat(first_frames,info,'fixed_'+scheme+'_first_repeat')
@@ -830,22 +855,29 @@ def run_task(task,args,output,result):
                     else:assert any(value['changed_values'] for name,value in values.items() if not name.startswith('human')),'Candidate invisible in task camera'
                 for camera,pixels in images.items():
                     for i in range(n):Image.fromarray(pixels[i]).save(output/f'{scheme}_{camera}_env{i}.png')
+                fixed_frames[scheme] = images['human']
                 dump(output/(scheme+'_pixel_comparison.json'),differences)
                 assert records==adapter(base).records
-            result['checks'][scheme]={'status':'passed','materials':measured,'records':records};close()
+            result['checks'][scheme]={'status':'passed','materials':measured,'records':records}
+            if scheme != 'original':
+                result['stage'] = f'restore from {scheme}'
+                observation,info=checked_reset(seed=7,options={key:{'scheme_id':'original'}})
+                prefix = f'restored_from_{scheme}'
+                row = {'status': 'passed', 'state_evidence': last_selected if gpu else None}
+                if gpu:
+                    images=reset_images(env,observation)
+                    first_repeat(images,info,prefix+'_first_repeat')
+                    row['pixel_changes']={str(i):C.image_changes(native_images,images,output,prefix,i) for i in range(n)}
+                    assert not any(v['changed_values'] for cameras in row['pixel_changes'].values() for v in cameras.values())
+                verify(base,['original']*n,native)
+                assert not C.state_changes(baseline,C.snapshot(base)) and physical(base)==properties
+                capture_strip(prefix)
+                restorations[scheme] = row
+            close()
+        result['checks']['original_restoration_by_scheme'] = restorations
         if gpu:
-            result['stage']='original RGB restoration';base,info=fresh({'enabled':True,'scheme_id':schemes[2]},camera_first=True)
-            candidate_images=first_frames
-            capture_strip('restore_candidate', schemes[2])
-            observation,info=checked_reset(seed=7,options={key:{'scheme_id':'original'}})
-            images=reset_images(env,observation)
-            first_repeat(images,info,'restored_original_first_repeat')
-            differences={str(i):C.image_changes(native_images,images,output,'restored_original',i) for i in range(n)}
-            C.save_image_pairs(candidate_images,images,output,'original_restoration')
-            verify(base,['original']*n,native);assert not C.state_changes(baseline,C.snapshot(base)) and physical(base)==properties
-            capture_strip('restored_original')
-            assert not any(value['changed_values'] for values in differences.values() for value in values.values())
-            result['checks']['original_rgb_restoration']={'status':'passed','pixel_changes':differences};close()
+            result['stage'] = 'fixed pairwise RGB separation'
+            result['checks']['fixed_pairwise_rgb'] = compare_fixed_schemes(fixed_frames,output)
         random_config={'enabled':True,'mode':'random_choice','scheme_ids':list(schemes),'seed':71};traces=[]
         for repeat in range(2):
             result['stage']='random repeat '+str(repeat);env=make(random_config);trace=[]
@@ -886,8 +918,9 @@ def run_task(task,args,output,result):
                     'error': {'type': type(error).__name__, 'message': str(error)}}
             else:
                 raise AssertionError('Constructor accepted an out-of-range per_env key')
-            result['stage']='bidirectional local reset';base,info=fresh({'enabled':True,'scheme_id':schemes[1],'per_env':{'1':{'scheme_id':schemes[2]}}})
-            verify(base,[schemes[1],schemes[2]],native);rows,info=local_rounds(info,True)
+            left,right=schemes[-2:]
+            result['stage']='bidirectional local reset';base,info=fresh({'enabled':True,'scheme_id':left,'per_env':{'1':{'scheme_id':right}}})
+            verify(base,[left,right],native);rows,info=local_rounds(info,True)
             for index,row in enumerate(rows):result['checks'][f'local_reset_{index}']=row
             assert result['control_steps']==2 and result['physics_steps']==40
             result['stage']='diagnostic counter-scope fixtures';diagnostic=[]
@@ -960,6 +993,7 @@ def main():
         manifest['external_files']=external_before
         manifest['material_representation']='logical source visual/nativepart/groups; actual render topology retained separately per task'
         manifest['task_ids']=['OfficeDesk'+task+'-Sharpa-v1' for task in (args.task or TASKS)]
+        manifest['schemes']={task:list(SCHEMES[task]) for task in (args.task or TASKS)}
         manifest['planned_control_steps_per_task']=2 if args.sim_backend=='physx_cuda' else 0
         dump(args.output/'manifest.json',manifest)
         for task in args.task or TASKS:
