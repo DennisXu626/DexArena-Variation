@@ -1,6 +1,6 @@
 # Cabinet & Pouring 十套家族外观
 
-基线 `f0a09c9d1722abc831fd5c62ae77a42c9dece95c`。OpenCabinet／PickBottle 各已取得十套任务实景和适用工程证据。PickBottle 新印刷标签还没有清楚呈现在实景。UnscrewCap 在瓶身像素处停止；PourBeads 和独立液滴诊断未运行。已有单对象验收记录继续适用其原版本。
+Dennis 于 2026-11-22 批准四个短任务中的十套对象外观（`variant_1` 至 `variant_10`），原版单列。实景覆盖开闭柜、瓶签、附着盖标记和碗。16 颗液滴在独立场景中逐颗判色。阶段切换的渲染问题见下文。
 
 ## 家族编号与实际对象表
 
@@ -22,7 +22,7 @@
 
 ## 绑定与证据范围
 
-| 任务 | 实际加载的外观对象 | 取景、阶段与待确认内容 |
+| 任务 | 实际加载的外观对象 | 取景与阶段 |
 |---|---|---|
 | OpenCabinet | 柜子 | 原生关门，机位纳入门、把手和顶板 |
 | PickBottle | 柜子、动态瓶身、附着盖、16 颗液滴 | 原生开门 90°，柜内层板、开门内壁和瓶子 |
@@ -74,6 +74,8 @@ python -B tools/variation/check_cabinet_ten_variants.py --gallery PATH_TO_APPROV
 
 任务短检经新授权后用同一脚本的 `--approval` 和 `--output`。原始 PNG、分割掩膜内的可见及变化像素、同坐标裁剪、选择记录、运行 manifest、首个失败和作业收据分开留存。拼图由真实原帧制成，每行至多三款。实际可见性、印刷方向、五金和内外分件需要人工审图。
 
-[本轮任务实景与 A4／A5 结果](evidence/cabinet_ten_variants/runtime_001/README.md)。草稿待 Dennis 审图。
+作业 128861 验证柜体开闭，128933 补齐 PickBottle 瓶签，128943 验证 UnscrewCap 附着盖十款、逐款恢复与双向局部 reset。129056 补齐 UnscrewCap 随机复现，以及 PourBeads 的绑定、初态、恢复、随机复现、双向局部 reset 和瓶外液滴逐球检查。[柜体](evidence/cabinet_ten_variants/runtime_001/README.md) · [瓶签](evidence/cabinet_ten_variants/runtime_003/README.md) · [附着盖](evidence/cabinet_ten_variants/runtime_004/README.md) · [倾倒与液滴](evidence/cabinet_ten_variants/runtime_006/README.md)
 
-[定向瓶签、开盖和倾倒补测准备](evidence/cabinet_ten_variants/LABEL_AND_POUR_FOLLOWUP.md)。128861 已通过项原样保留。
+**已知问题：UnscrewCap 阶段切换时的画面跳变。** 作业 129056 在自由盖首帧拍到前景遮住瓶与盖。129064 的补充机位中两者保持可见，但默认基座相机在关闭外观和 `variant_9` 两组中，均把 442 个像素标为记录在桌下的瓶子放置标记。正式机位在切盖前就看不到瓶和盖，无法判断它们是否在切换后消失。根因仍待定位。Dennis 已将此问题留待会议反馈，本次批准范围为物体外观。[首次差异](evidence/cabinet_ten_variants/runtime_006/cap_first_difference.json) · [原生与第 9 套对照](evidence/cabinet_ten_variants/runtime_009/RESULTS.md)
+
+作业 129146 用 `variant_9` 重渲染演示回合 0 的全部 196 个记录状态（20 帧/秒，共 9.8 秒）。回放保留了约 8.75 秒处的画面跳变。该录像属于记录状态回放，完整机器人任务成功率、Long 和 A6 仍未验证。
