@@ -16,16 +16,16 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.variation import compact_task_runtime as audit
 from tools.variation import check_office_devices_runtime as runtime
-from tools.variation.check_office_devices import EXPANSION_BASELINE, catalog_check
+from tools.variation.check_office_devices import catalog_check
 
 FAMILY = 'office_desk'
 PROFILE = audit.PROFILES[FAMILY]
 REVIEW_IMAGES = (
+    'OpenLaptop/original_human_env0.png',
     'OpenLaptop/variant_3_human_env0.png',
-    'TypeKeys/variant_5_human_env0.png',
-    'ClickMouse/variant_8_human_env0.png',
+    'OpenLaptop/variant_10_human_env0.png',
     'TypeKeys/local_0_base_camera_env0.png',
-    'TypeKeys/local_1_base_camera_env0.png',
+    'TypeKeys/local_0_base_camera_env1.png',
 )
 
 
@@ -103,7 +103,7 @@ def check_strip(directory, evidence, parameters, native, fixed_materials, scheme
     return {'sha256': evidence['sha256'], 'stages': len(stages), 'arrays_recomputed': len(seen)}
 
 
-def check_task(root, task, sources, artifact, expected, required, images):
+def check_task(root, task, capture_commit, sources, artifact, expected, required, images):
     capture = root / f'{task}_cuda'
     directory = capture / task
     schemes = runtime.SCHEMES[task]
@@ -111,7 +111,7 @@ def check_task(root, task, sources, artifact, expected, required, images):
     results = audit.read(capture / 'results.json')
     row, = results['tasks']
     checks = row['checks']
-    assert manifest['git_commit'] == EXPANSION_BASELINE and manifest['files'] == sources
+    assert manifest['git_commit'] == capture_commit and manifest['files'] == sources
     assert manifest['num_envs'] == 2 and manifest['sim_backend'] == 'physx_cuda'
     assert manifest['capture_path'] == 'original ManiSkill CUDA RGB cameras'
     assert manifest['schemes'] == {task: list(schemes)}
@@ -251,13 +251,13 @@ def check_task(root, task, sources, artifact, expected, required, images):
             'mouse_collision': mouse, 'legacy_images_equal': list(schemes[:3])}, identity
 
 
-def check_cpu(batch, sources, manifests, artifact, expected, required):
+def check_cpu(batch, capture_commit, sources, manifests, artifact, expected, required):
     from tools.variation import check_office_devices_dynamics as D
 
     capture = batch / 'cpu_interface'
     interface = audit.read(capture / 'results.json')
     manifest = audit.read(capture / 'manifest.json')
-    assert manifest['git_commit'] == EXPANSION_BASELINE and manifest['files'] == sources
+    assert manifest['git_commit'] == capture_commit and manifest['files'] == sources
     assert interface['status'] == 'passed' and manifest['sim_backend'] == 'physx_cpu' and manifest['num_envs'] == 1
     assert all(interface[k] for k in ('source_hashes_unchanged', 'asset_hashes_unchanged',
                                       'robot_asset_hashes_unchanged', 'external_hashes_unchanged'))
@@ -273,7 +273,7 @@ def check_cpu(batch, sources, manifests, artifact, expected, required):
     root = batch / 'cpu_dynamics'
     summary = audit.read(root / 'summary.json')
     assert summary['status'] == 'passed' and summary['source_sha256'] == sources
-    assert summary['git_head'] == EXPANSION_BASELINE and summary['completed_runs'] == 39
+    assert summary['git_head'] == capture_commit and summary['completed_runs'] == 39
     assert summary['counts_complete'] and not summary['failures'] and not summary['unknown_runs']
     assert (summary['total_control_steps'], summary['total_physics_steps']) == (2340, 46800)
     runs = {}
@@ -329,18 +329,28 @@ def main():
     parser.add_argument('--batch', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--artifact', type=Path, required=True)
+    parser.add_argument('--capture-commit',
+                        help='Commit recorded by all CPU and CUDA captures (defaults to the current HEAD)')
     args = parser.parse_args()
     assert not args.output.exists()
-    assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() == EXPANSION_BASELINE
+    revision = args.capture_commit or 'HEAD'
+    capture_commit = subprocess.check_output(
+        ['git', 'rev-parse', '--verify', '--end-of-options', f'{revision}^{{commit}}'], cwd=ROOT, text=True).strip()
+    capture_tree = subprocess.check_output(
+        ['git', 'rev-parse', f'{capture_commit}^{{tree}}'], cwd=ROOT, text=True).strip()
     catalog_check()
     audit.configure(ROOT)
     sources = runtime.source_hashes()
+    if args.capture_commit:
+        changed = subprocess.check_output(
+            ['git', 'diff', '--name-only', capture_commit, '--', *sources], cwd=ROOT, text=True).splitlines()
+        assert not changed, f'Runtime source differs from the capture commit: {changed}'
     _, expected, required, sdk = audit.sdk_build_identity(FAMILY, ROOT, args.artifact,
                                                           ROOT / 'tools/variation/sapien_sdk/lock.json')
     tasks, captures, images = {}, {}, {}
     for task in runtime.TASKS:
-        tasks[task], captures[task] = check_task(args.batch, task, sources, args.artifact, expected, required, images)
-    cpu = check_cpu(args.batch, sources, captures, args.artifact, expected, required)
+        tasks[task], captures[task] = check_task(args.batch, task, capture_commit, sources, args.artifact, expected, required, images)
+    cpu = check_cpu(args.batch, capture_commit, sources, captures, args.artifact, expected, required)
     assert len(images) == 45 and set(REVIEW_IMAGES) <= images.keys()
     args.output.mkdir(parents=True)
     for name, path in images.items():
@@ -350,7 +360,7 @@ def main():
         assert audit.track(path) == audit.H.sha(target)
     assert sources == runtime.source_hashes()
     audit.H.write(args.output / 'summary.json', {'format': 'office-expansion-evidence-v1', 'status': 'passed',
-        'baseline': EXPANSION_BASELINE, 'source_identity': audit.source_identity(sources, ROOT), 'sdk': sdk,
+        'baseline': capture_commit, 'capture_tree': capture_tree, 'source_identity': audit.source_identity(sources, ROOT), 'sdk': sdk,
         'tasks': tasks, 'cpu': cpu, 'images': {name: audit.track(path) for name, path in images.items()},
         'review_images': list(REVIEW_IMAGES),
         'exporter_sha256': audit.track(Path(__file__)),

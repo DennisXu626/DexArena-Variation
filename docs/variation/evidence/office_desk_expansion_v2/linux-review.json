@@ -1,0 +1,157 @@
+{
+  "schema": "office-desk-expansion-linux-review-v1",
+  "status": "passed",
+  "scope": "Linux dual-environment standard CUDA family acceptance",
+  "slurm_job_id": 123860,
+  "snapshot": {
+    "commit": "6486d450858d64a597c1de71dd6b14703be6ddf6",
+    "tree": "23afef13156e19f1bc62d2ec25f46ed5c9725f72",
+    "parents": [
+      "e236e915fe5ec6814cb40f740eff0aced1b35715"
+    ]
+  },
+  "gpu": {
+    "name": "NVIDIA A800-SXM4-40GB",
+    "driver_version": "570.158.01"
+  },
+  "private_sdk": {
+    "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+    "version": "3.0.3+dexarena.gpu1.linux1",
+    "native_receipt_sha256": "2405aefa9577f2218ad2bb72134371531379eb8e2ac767568086590e0a06dccf",
+    "abi_log_sha256": "7bcbdd1e77b16e7c045a0ecb8235c5d33103fa136d4932e1bf9afa07a3e5d68c"
+  },
+  "task_native_receipt_sha256": {
+    "OpenLaptop": "fd3228760bcd18d5381dee6a4531664c83b3ca24d7f6916d631f7dfb9535999f",
+    "TypeKeys": "6d32120528ae514f470d02cd56b74b9a5a46b2134c4ba3702fa6b1af213cffd2",
+    "ClickMouse": "5d2123aebf80d9d5b9c50277385f815311a54cf63829212639392e3d518b73ff"
+  },
+  "tasks": {
+    "OpenLaptop": {
+      "manifest_sha256": "7b1b198564cf1c5b279eaeb24098b196140835d9cc46abb8965e69267eb35f61",
+      "results_sha256": "5c55fcb844261e3ee309db9b51419d7debb030cda8161d49eace0bad47ca9fb7",
+      "pair_checks": 110,
+      "minimum_fraction_over_8": 0.042938232421875,
+      "candidate_restorations": 60,
+      "selected_state_readbacks": 42,
+      "local_reset_camera_pairs": 12,
+      "control_steps": 2,
+      "physics_steps": 40
+    },
+    "TypeKeys": {
+      "manifest_sha256": "e01538ca80041138142dd118ca485005b5bb4cb90d071dcb876d56903a1a6c08",
+      "results_sha256": "63cb2a78c8f739254a10d30623a68cdd84ea9d0e903c4a374a7ef3d86960c8d8",
+      "pair_checks": 110,
+      "minimum_fraction_over_8": 0.005017361111111111,
+      "candidate_restorations": 80,
+      "selected_state_readbacks": 42,
+      "local_reset_camera_pairs": 16,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "keyboard_private_strip": {
+        "stages": 22,
+        "recomputed_arrays": 128,
+        "sha256": "2dab2bf0044d688627165d1502bb200d99360487e3c41d874071dc537650c8bf"
+      }
+    },
+    "ClickMouse": {
+      "manifest_sha256": "d41221634ab5137316c5f724f2884d4c71ccc557ea35c95e86ae08657c857f62",
+      "results_sha256": "c4dd23afe452bef7cdc5e2f5ecbb10b084d454722da55a2c2d3be2cf11c69219",
+      "pair_checks": 110,
+      "minimum_fraction_over_8": 0.0025418599446614585,
+      "candidate_restorations": 60,
+      "selected_state_readbacks": 42,
+      "local_reset_camera_pairs": 12,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "mouse_collision": {
+        "coacd_version": "1.0.14",
+        "coacd_files": {
+          "coacd/__init__.py": "c5730c358f078af8fe2d017fa7cb374f1511c2cca3da8fb15b25171786f01044",
+          "coacd/lib_coacd.so": "4c7134a59d9e96278d291703042063ecb52dd4c00a3574a5ee2c6de45fb0b487"
+        },
+        "trimesh_version": "5.2.1",
+        "trimesh_import_sha256": "a50d8a9c4346fa0c5f6ca0c234effd12c548b1bee58197abb8106cb5e79d3360",
+        "caches": {
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-1.obj.coacd.ply": {
+            "sha256": "cbbedd015fdbf5dcbf587e597b3da7d8b375fdeb61c353c96e4014499e79e25f",
+            "mesh_source_md5": "cb0f3b20f5eab9296db956b4f4e8a7b6"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-2.obj.coacd.ply": {
+            "sha256": "c90f148e147a36c058608f8019e76d45feec660d6a149c5bd214e3cdcf35134c",
+            "mesh_source_md5": "42840d8ff95f3c045f01b83a35b65dc0"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-3.obj.coacd.ply": {
+            "sha256": "a631e437fccb412faafe5432f7e8586c3254f5bfc2687d10da8d88ef143f14ed",
+            "mesh_source_md5": "d900818d54ef78a8060486fbaed975df"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-4.obj.coacd.ply": {
+            "sha256": "cccf838ab9704acb89db7ec830eb398040f090b4a44213dd89d22d26c3cc16d3",
+            "mesh_source_md5": "e63cf8f28103dc8738560ea05f6fef7d"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-5.obj.coacd.ply": {
+            "sha256": "6b90eae89236e7e7676e1619522ed71c03d653e0a73a920555701675dceb6d9d",
+            "mesh_source_md5": "beb8452e4a34196f3143dc7c3ca9385c"
+          }
+        },
+        "recomputed_caches": 5
+      }
+    }
+  },
+  "totals": {
+    "pair_checks": 330,
+    "candidate_restorations": 200,
+    "local_reset_camera_pairs": 40,
+    "selected_state_readbacks": 126,
+    "control_steps": 6,
+    "physics_steps": 120
+  },
+  "review_image_files": {
+    "linux/OpenLaptop/original_human_env0.png": {
+      "sha256": "90c6ccaaddeb9fe96181e9114a1b476ff4e9e1e78ff31c6c653246e593b5e8ac",
+      "dimensions": [
+        1024,
+        768
+      ]
+    },
+    "linux/OpenLaptop/variant_10_human_env0.png": {
+      "sha256": "bc925371fa2cf2d3714b44c1aabd411b4b62dc880ee1a6b06529f6a2d732c320",
+      "dimensions": [
+        1024,
+        768
+      ]
+    }
+  },
+  "graphite_human_camera": [
+    {
+      "env": 0,
+      "max_channel_delta": 153,
+      "pixels_over_8": 33768
+    },
+    {
+      "env": 1,
+      "max_channel_delta": 149,
+      "pixels_over_8": 35991
+    }
+  ],
+  "independent_review_sha256": "8b73aff681c09776bd63b5fc5f955d3f3adc1162acb8b6b0984812c280fbd7dc",
+  "source_and_asset_comparison": {
+    "release_runtime_commit": "473353f11321b7ba09e5f25132fa1fbc9ac132ce",
+    "identical_office_and_shared_runtime_git_blobs": 32,
+    "identical_office_model_and_cache_files": 460,
+    "capture_manifest_file_count": 140,
+    "differences_in_other_families": [
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py",
+      "tasks/drawer_plug/drawer_plug_long.py",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py",
+      "tasks/drawer_plug/fixture_appearance.py",
+      "tasks/nut_bolt/nut_bolt_long.py",
+      "tasks/nut_bolt/nut_bolt_pick_bolt.py",
+      "tasks/nut_bolt/nut_bolt_seat_nut.py",
+      "tasks/nut_bolt/nut_bolt_turn_nut.py",
+      "tasks/pipette_transfer/pipette_transfer_long.py"
+    ],
+    "identical_robot_dependency_git_blobs": 93
+  }
+}

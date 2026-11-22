@@ -1,14 +1,15 @@
 {
   "format": "office-expansion-evidence-v1",
   "status": "passed",
-  "baseline": "66c7a1569d92487ab918df31014e0d86a70f29c2",
+  "baseline": "473353f11321b7ba09e5f25132fa1fbc9ac132ce",
+  "capture_tree": "99d0e6cd72d4474c9b7a7d7c539d782218f151fc",
   "source_identity": {
     "raw_sha256": {
       "assets/appearance/objects/office_desk/keyboard/bindings.json": "4d557cb916ad24931e1d9a2bdac3000c37c8cf081c91e8a99af859f6545e097d",
       "assets/appearance/objects/office_desk/keyboard/catalog.json": "fa66ffefcef6bd6ca1bee1bd8b82b43177d11bbd43a87046eaaa6b46c508bb86",
       "assets/appearance/objects/office_desk/keyboard/key_uv_protection.json": "5df05c4c5c20f312e784086490908a16ede848ee6f94f39ab516a99837bc59d3",
       "assets/appearance/objects/office_desk/laptop/bindings.json": "55e5f06ad17a4a55257507a71385e04205a626456da8659ef4f144b8da13a252",
-      "assets/appearance/objects/office_desk/laptop/catalog.json": "b6ff28f9bd241c88d13875c0f586e3b737280c59ca579aeb3e08f5012c2c4641",
+      "assets/appearance/objects/office_desk/laptop/catalog.json": "aaffa383aabcd0de6f5d7ccd0a5afb39a1cc4a546057c89ed1ceb43fd7de1e79",
       "assets/appearance/objects/office_desk/previews/runtime/ClickMouse/checks.json": "dd2b4eb8690e2c5ce6dc32941ac799032a7f8a9cd57a132869b1990fcdf8cc08",
       "assets/appearance/objects/office_desk/previews/runtime/cpu_checks.json": "47b12170c6f7fb7755cf09ca0744480e80bd31d556545ac27f9b4e1902a8d677",
       "assets/appearance/objects/office_desk/previews/runtime/OpenLaptop/checks.json": "1305e311804af18c22f79e0851f3e0ee05a05dfb5c8ee1ebc26003aab91e7b6b",
@@ -18,11 +19,13 @@
       "tasks/assets/variation/office_desk/devices/v1/catalog.json": "c97051b6e4b72cca0f1602a0c0cfd281ff182bad68e2acd91f06af3eb674d625",
       "tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json": "cd07efebf65f94b471598ef60bc4618ec2cfba437a34a3539405631d1106f38c",
       "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "tasks/cabinet_pouring/cabinet_pouring_long.py": "52e63df7434d46e0b06341f86f1de29c76e133fcb214be279499ef77b77329a5",
-      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "bd5d1d6598950a4d380dd10c8b4b6952f80d17ea3352ec320f97b64947d5745b",
-      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "49e41cd5e8106c6bb1c00a04ac4f12eef9ab562ff575cf1e27fbb806e9b30724",
-      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "3eaf5f7e0bffb1a375b4af1ae81a17bb0d541450cf5914f3d04fec87c0875380",
+      "tasks/cabinet_pouring/cabinet_appearance.py": "6b9db1780ff64424eca4b9c522af37bf69f67f602edbb393d54c86dfa0461dae",
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": "b729843573582c9acb3ef01f89b78fd747493de81826cc6b4f5db2dd6a02c25a",
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "1d1bf07ad6c36215bcf5d79172d317c65ae62bdc27ba092331bb9069a1118a64",
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "88556f862832b44a489edb15d42e4d0178d668f0c37255a43bcb398f643516a4",
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "d67f3c474bc1dbde9e05faaf36b526153c5adee575c7f55cedaef75615b45e50",
       "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "75dced699eb44417b998e0a4a6f48cf4e85b736f16d0fb257fe0cc787f9ff39a",
+      "tasks/cabinet_pouring/pouring_appearance.py": "01b6f10dbb5942f1251fa3d04f65d98f5410da1811e88f2815cfd6002d6eebda",
       "tasks/cabinet_pouring/variation.py": "6aff3518f54fc7bf7913fe64b99542e19f1437792d98dc6c744cb90fda7d4746",
       "tasks/config/__init__.py": "089f2af7f03496254cd5531b84baad9a08c3601c578a2ee0216f5ddfe67f7d5a",
       "tasks/config/code_fingerprint.py": "bdd250487e656a61aad99828b42c91e86252c40e59bd2be782e749f965e1c302",
@@ -40,10 +43,12 @@
       "tasks/config/workspace_rig.py": "c8f93c6e1ae8951778c987dc0704efb0a21536a75bc1b95844ec95a9dc90d462",
       "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
-      "tasks/drawer_plug/drawer_plug_insert_plug.py": "8bb9bd2b8658b2aa8d1066e02fb430384f9c11adf8171c1642de9175296b63f0",
-      "tasks/drawer_plug/drawer_plug_long.py": "834769897af83d17dc2a462dbf1dc4674fb3e5c6818b6306eb96e95fad5d13b8",
-      "tasks/drawer_plug/drawer_plug_open_drawer.py": "fa68fe358316716d2b5359e35ee7da7d8d96f74707658f77ee72894a8b475f03",
-      "tasks/drawer_plug/drawer_plug_pick_charger.py": "1fb5b9f44b57ec6be1d6d4447bfa801a028fe81f87b897f95cbcec778114d1ce",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py": "b41754e4c8069dfff3aa7a082dd0501ec282ec2922cd73ef7e01d8e2d3aa9f44",
+      "tasks/drawer_plug/drawer_plug_long.py": "5b460d56c1f4c94879f24f6359fc17c66545292a35efb15eeaa84718abff9681",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py": "b63005b7afd18e4a2cad528fc97858ccf7884936ede9a1dd4363afb606748198",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py": "8724c11f6c614bbe1072c7cdecb0e48ebdcc79f994cb49675dd28141e01681f4",
+      "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+      "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
       "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
       "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
@@ -66,27 +71,32 @@
       "tasks/meal_preparation/meal_preparation_place_bread.py": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
       "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
       "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "tasks/nut_bolt/nut_bolt_long.py": "553d8090352bbe24c7b732592925fa1f29c99b743f03760791c56edbf8b2b737",
-      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "fd7bbee7e49121b36fad4215c585851e7402e140ac8b5b83a399354c43d26c1c",
-      "tasks/nut_bolt/nut_bolt_seat_nut.py": "b5637412667d9106d9360267e40edffe97a9357c515b429787ec0ae2310c34c9",
-      "tasks/nut_bolt/nut_bolt_turn_nut.py": "89d160602146bfc71d1c8837cf27d9bf1af9aab87a9d7b9d521f3115ba4aa6e9",
+      "tasks/nut_bolt/appearance.py": "17a3ff71c089b72c0538b62048470f08cd572f9c40920cd6c32fcb7306ddc243",
+      "tasks/nut_bolt/gpu_hold.py": "dc78b2adecef3f12db0cab684718ff2a44b87b979bbf5a6967795a0c82aa9907",
+      "tasks/nut_bolt/nut_bolt_long.py": "ccc03931d52b4b0876f6c9233b25b34a7bb7255640177a006f6ebd6c6156c7b1",
+      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "c249bafe219f0ac0a4efb634f8a8ae0f64273fa08dc2ebf6f572ac55c76c64f8",
+      "tasks/nut_bolt/nut_bolt_seat_nut.py": "56e7b52bd93ccfd28c5956f8e7261b1e0fb1712f5ad05e1a5390c537f9e84190",
+      "tasks/nut_bolt/nut_bolt_turn_nut.py": "ff110e48b624f5d2f986de757ac9e385ea7050f8bdd989ccf94b3c5b874bf89c",
+      "tasks/nut_bolt/reset_scope.py": "d3556681109af3e32a94c47d041b8dd8c6df3122528ba68bc4624a9e8fb5446e",
       "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "tasks/office_desk/devices_appearance.py": "a101034358288450c8929a12f10779c8f82392c3729d501a2aa3029aca0a9bbd",
-      "tasks/office_desk/mouse_appearance.py": "c73e1f264905f923115246856555a289eef2e03e53925b5f2a8f2ccb939a2314",
+      "tasks/office_desk/devices_appearance.py": "bb3a3e03fb2639e609ff271a0600e34929bc321fff9b454957f26a1139661489",
+      "tasks/office_desk/mouse_appearance.py": "f4a7a0f240364a517933231021aaeb4e49a1a7dd2c4bb8db5466be875a27bf8d",
       "tasks/office_desk/office_desk_click_mouse.py": "0d0c5bb3caca0969bebef200d94c9fa17ead566c5180fad41455ce11812e793a",
       "tasks/office_desk/office_desk_long.py": "0acc26306d8ff41b9455112031fcb904e0b24c837de95a4b5e6f71d016f01b38",
       "tasks/office_desk/office_desk_open_laptop.py": "c41cc31c937f7ebddf7df51001000a51dcc454e5e25f16edc93243dfe954d7a7",
       "tasks/office_desk/office_desk_type_keys.py": "3d716b4ae3b78c084b231c3ce4ef571a83fc26cf3cdc170ccaf4dcf4f8b78b23",
-      "tasks/office_desk/reset_scope.py": "a2e6feaa9802416e2f98e67bbd2074feeb5b704bf3b17f1c10bd2733e7d3b3c3",
+      "tasks/office_desk/reset_scope.py": "0492ca3d5c07de1b66f491e46d2a61ff128fb3669087a2818fff48491a0a6c2d",
       "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/package_opening/appearance.py": "f86f464b495232e32dc6bd2fa99f67138b906826c97b47caf5e7ed36c287753f",
       "tasks/package_opening/package_opening_extract_apple.py": "d327a6c2ee39aa2a6db567eea80c55c532cf19c6f84f80a5c4ca841678aca61d",
       "tasks/package_opening/package_opening_long.py": "479a1caa35062c3fdbd1748f50a67a6ecbab7dfb8c79311142423a33802170b5",
       "tasks/package_opening/package_opening_open_package.py": "0f53f59a0a91841defe224ff059f7d7e7cfb6fe35b4ea7ec8bd9499d1b2b4cff",
       "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/pipette_transfer/appearance.py": "737f61652006bb641573d0b1a8caa9a4b9edc905a6aaf16b0a28d3be0d0e6d77",
       "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "ce4feb2cde53a783e2b581b708ea50ef6c7dbc286e9a957105ed0582bdcb3347",
       "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "b0a13fc7640d57e06cdd4e4e1bf0a682d8a8a021468fd0da6c8427813885e71b",
-      "tasks/pipette_transfer/pipette_transfer_long.py": "306626cd373f4117f1a115c3784f91904468bc8e4abb41215fef24f879ead5fc",
+      "tasks/pipette_transfer/pipette_transfer_long.py": "3533c047e4cf2de867bb4007ef1e03fb67b996787df2df1ebad76aa9b2424b10",
+      "tasks/pipette_transfer/rendering.py": "4c1479e06274b7beaf26d90f5bc7834345a0794db6bc36582608a3ef4562c1d2",
       "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
       "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
@@ -132,11 +142,11 @@
       "tasks/table_cleaning/table_cleaning_long.py": "02de8ebaa612438a3d46ee866c3e2907620bb2e5f682bfe81543019ce3c05bce",
       "tasks/table_cleaning/table_cleaning_pick_debris.py": "bc9cd131c31ea7657c0b97d86757f4620501cdd07e5b4af186ad9e45e2bbd749",
       "tools/variation/audit_office_devices_uv.py": "c47c5f7041c6a36749ff231b49879c89643d8845d1b13f6d7d0491d6cf45c29f",
-      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
-      "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
-      "tools/variation/check_office_devices.py": "830908ec2997d1671a4f433c50a1bbd4b8d55f619a321bfefcf328de3a341c3e",
+      "tools/variation/check_furniture_appearance.py": "a95ced8933b7ca00d537d95d135e97cff464560ca2679e7a18b1a8c8d2a4281f",
+      "tools/variation/check_furniture_dynamics.py": "9df5261aab58b7f32775f838be7146b61e6935c302349430a655b699f9ea3f9b",
+      "tools/variation/check_office_devices.py": "0bf9ee4ed1cf879814156d9386314224598068da41363897f33df2f5ebd80365",
       "tools/variation/check_office_devices_dynamics.py": "1af50e255b614390ebba74a8f5e13148929635d17988b5011edac2c3daf62664",
-      "tools/variation/check_office_devices_runtime.py": "3deb3538c6049319b55c72aca80fb90160380708ad4311e21c15a6124c8e06d1",
+      "tools/variation/check_office_devices_runtime.py": "b0334816131188f6f02a658d53036a637e49223ffe0c1697d864da0e0c97f1a9",
       "tools/variation/office_devices_assets.py": "9f94a87ba6191329dc6094fb620dc31fb3b41ce08c7d1573c0ddc1b9e7de4173",
       "tools/variation/office_devices_materials.py": "6e19b3899a264d8c8786ea98f1dcb4edf552e89bb7a0777528b750db49eb6dfa",
       "tools/variation/office_devices_uv_proof.py": "9eee79e68e3459a5956fbf18633d03daf49ae2f482e94c28f9e68c8f5902b96a",
@@ -148,7 +158,7 @@
       "assets/appearance/objects/office_desk/keyboard/catalog.json": "fa66ffefcef6bd6ca1bee1bd8b82b43177d11bbd43a87046eaaa6b46c508bb86",
       "assets/appearance/objects/office_desk/keyboard/key_uv_protection.json": "5df05c4c5c20f312e784086490908a16ede848ee6f94f39ab516a99837bc59d3",
       "assets/appearance/objects/office_desk/laptop/bindings.json": "55e5f06ad17a4a55257507a71385e04205a626456da8659ef4f144b8da13a252",
-      "assets/appearance/objects/office_desk/laptop/catalog.json": "b6ff28f9bd241c88d13875c0f586e3b737280c59ca579aeb3e08f5012c2c4641",
+      "assets/appearance/objects/office_desk/laptop/catalog.json": "aaffa383aabcd0de6f5d7ccd0a5afb39a1cc4a546057c89ed1ceb43fd7de1e79",
       "assets/appearance/objects/office_desk/previews/runtime/ClickMouse/checks.json": "dd2b4eb8690e2c5ce6dc32941ac799032a7f8a9cd57a132869b1990fcdf8cc08",
       "assets/appearance/objects/office_desk/previews/runtime/cpu_checks.json": "47b12170c6f7fb7755cf09ca0744480e80bd31d556545ac27f9b4e1902a8d677",
       "assets/appearance/objects/office_desk/previews/runtime/OpenLaptop/checks.json": "1305e311804af18c22f79e0851f3e0ee05a05dfb5c8ee1ebc26003aab91e7b6b",
@@ -158,11 +168,13 @@
       "tasks/assets/variation/office_desk/devices/v1/catalog.json": "c97051b6e4b72cca0f1602a0c0cfd281ff182bad68e2acd91f06af3eb674d625",
       "tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json": "cd07efebf65f94b471598ef60bc4618ec2cfba437a34a3539405631d1106f38c",
       "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "tasks/cabinet_pouring/cabinet_pouring_long.py": "52e63df7434d46e0b06341f86f1de29c76e133fcb214be279499ef77b77329a5",
-      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "bd5d1d6598950a4d380dd10c8b4b6952f80d17ea3352ec320f97b64947d5745b",
-      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "49e41cd5e8106c6bb1c00a04ac4f12eef9ab562ff575cf1e27fbb806e9b30724",
-      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "3eaf5f7e0bffb1a375b4af1ae81a17bb0d541450cf5914f3d04fec87c0875380",
+      "tasks/cabinet_pouring/cabinet_appearance.py": "6b9db1780ff64424eca4b9c522af37bf69f67f602edbb393d54c86dfa0461dae",
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": "b729843573582c9acb3ef01f89b78fd747493de81826cc6b4f5db2dd6a02c25a",
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "1d1bf07ad6c36215bcf5d79172d317c65ae62bdc27ba092331bb9069a1118a64",
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "88556f862832b44a489edb15d42e4d0178d668f0c37255a43bcb398f643516a4",
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "d67f3c474bc1dbde9e05faaf36b526153c5adee575c7f55cedaef75615b45e50",
       "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "75dced699eb44417b998e0a4a6f48cf4e85b736f16d0fb257fe0cc787f9ff39a",
+      "tasks/cabinet_pouring/pouring_appearance.py": "01b6f10dbb5942f1251fa3d04f65d98f5410da1811e88f2815cfd6002d6eebda",
       "tasks/cabinet_pouring/variation.py": "6aff3518f54fc7bf7913fe64b99542e19f1437792d98dc6c744cb90fda7d4746",
       "tasks/config/__init__.py": "089f2af7f03496254cd5531b84baad9a08c3601c578a2ee0216f5ddfe67f7d5a",
       "tasks/config/code_fingerprint.py": "bdd250487e656a61aad99828b42c91e86252c40e59bd2be782e749f965e1c302",
@@ -180,10 +192,12 @@
       "tasks/config/workspace_rig.py": "c8f93c6e1ae8951778c987dc0704efb0a21536a75bc1b95844ec95a9dc90d462",
       "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
-      "tasks/drawer_plug/drawer_plug_insert_plug.py": "8bb9bd2b8658b2aa8d1066e02fb430384f9c11adf8171c1642de9175296b63f0",
-      "tasks/drawer_plug/drawer_plug_long.py": "834769897af83d17dc2a462dbf1dc4674fb3e5c6818b6306eb96e95fad5d13b8",
-      "tasks/drawer_plug/drawer_plug_open_drawer.py": "fa68fe358316716d2b5359e35ee7da7d8d96f74707658f77ee72894a8b475f03",
-      "tasks/drawer_plug/drawer_plug_pick_charger.py": "1fb5b9f44b57ec6be1d6d4447bfa801a028fe81f87b897f95cbcec778114d1ce",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py": "b41754e4c8069dfff3aa7a082dd0501ec282ec2922cd73ef7e01d8e2d3aa9f44",
+      "tasks/drawer_plug/drawer_plug_long.py": "5b460d56c1f4c94879f24f6359fc17c66545292a35efb15eeaa84718abff9681",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py": "b63005b7afd18e4a2cad528fc97858ccf7884936ede9a1dd4363afb606748198",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py": "8724c11f6c614bbe1072c7cdecb0e48ebdcc79f994cb49675dd28141e01681f4",
+      "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+      "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
       "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
       "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
@@ -206,27 +220,32 @@
       "tasks/meal_preparation/meal_preparation_place_bread.py": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
       "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
       "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "tasks/nut_bolt/nut_bolt_long.py": "553d8090352bbe24c7b732592925fa1f29c99b743f03760791c56edbf8b2b737",
-      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "fd7bbee7e49121b36fad4215c585851e7402e140ac8b5b83a399354c43d26c1c",
-      "tasks/nut_bolt/nut_bolt_seat_nut.py": "b5637412667d9106d9360267e40edffe97a9357c515b429787ec0ae2310c34c9",
-      "tasks/nut_bolt/nut_bolt_turn_nut.py": "89d160602146bfc71d1c8837cf27d9bf1af9aab87a9d7b9d521f3115ba4aa6e9",
+      "tasks/nut_bolt/appearance.py": "17a3ff71c089b72c0538b62048470f08cd572f9c40920cd6c32fcb7306ddc243",
+      "tasks/nut_bolt/gpu_hold.py": "dc78b2adecef3f12db0cab684718ff2a44b87b979bbf5a6967795a0c82aa9907",
+      "tasks/nut_bolt/nut_bolt_long.py": "ccc03931d52b4b0876f6c9233b25b34a7bb7255640177a006f6ebd6c6156c7b1",
+      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "c249bafe219f0ac0a4efb634f8a8ae0f64273fa08dc2ebf6f572ac55c76c64f8",
+      "tasks/nut_bolt/nut_bolt_seat_nut.py": "56e7b52bd93ccfd28c5956f8e7261b1e0fb1712f5ad05e1a5390c537f9e84190",
+      "tasks/nut_bolt/nut_bolt_turn_nut.py": "ff110e48b624f5d2f986de757ac9e385ea7050f8bdd989ccf94b3c5b874bf89c",
+      "tasks/nut_bolt/reset_scope.py": "d3556681109af3e32a94c47d041b8dd8c6df3122528ba68bc4624a9e8fb5446e",
       "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "tasks/office_desk/devices_appearance.py": "a101034358288450c8929a12f10779c8f82392c3729d501a2aa3029aca0a9bbd",
-      "tasks/office_desk/mouse_appearance.py": "c73e1f264905f923115246856555a289eef2e03e53925b5f2a8f2ccb939a2314",
+      "tasks/office_desk/devices_appearance.py": "bb3a3e03fb2639e609ff271a0600e34929bc321fff9b454957f26a1139661489",
+      "tasks/office_desk/mouse_appearance.py": "f4a7a0f240364a517933231021aaeb4e49a1a7dd2c4bb8db5466be875a27bf8d",
       "tasks/office_desk/office_desk_click_mouse.py": "0d0c5bb3caca0969bebef200d94c9fa17ead566c5180fad41455ce11812e793a",
       "tasks/office_desk/office_desk_long.py": "0acc26306d8ff41b9455112031fcb904e0b24c837de95a4b5e6f71d016f01b38",
       "tasks/office_desk/office_desk_open_laptop.py": "c41cc31c937f7ebddf7df51001000a51dcc454e5e25f16edc93243dfe954d7a7",
       "tasks/office_desk/office_desk_type_keys.py": "3d716b4ae3b78c084b231c3ce4ef571a83fc26cf3cdc170ccaf4dcf4f8b78b23",
-      "tasks/office_desk/reset_scope.py": "a2e6feaa9802416e2f98e67bbd2074feeb5b704bf3b17f1c10bd2733e7d3b3c3",
+      "tasks/office_desk/reset_scope.py": "0492ca3d5c07de1b66f491e46d2a61ff128fb3669087a2818fff48491a0a6c2d",
       "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/package_opening/appearance.py": "f86f464b495232e32dc6bd2fa99f67138b906826c97b47caf5e7ed36c287753f",
       "tasks/package_opening/package_opening_extract_apple.py": "d327a6c2ee39aa2a6db567eea80c55c532cf19c6f84f80a5c4ca841678aca61d",
       "tasks/package_opening/package_opening_long.py": "479a1caa35062c3fdbd1748f50a67a6ecbab7dfb8c79311142423a33802170b5",
       "tasks/package_opening/package_opening_open_package.py": "0f53f59a0a91841defe224ff059f7d7e7cfb6fe35b4ea7ec8bd9499d1b2b4cff",
       "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/pipette_transfer/appearance.py": "737f61652006bb641573d0b1a8caa9a4b9edc905a6aaf16b0a28d3be0d0e6d77",
       "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "ce4feb2cde53a783e2b581b708ea50ef6c7dbc286e9a957105ed0582bdcb3347",
       "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "b0a13fc7640d57e06cdd4e4e1bf0a682d8a8a021468fd0da6c8427813885e71b",
-      "tasks/pipette_transfer/pipette_transfer_long.py": "306626cd373f4117f1a115c3784f91904468bc8e4abb41215fef24f879ead5fc",
+      "tasks/pipette_transfer/pipette_transfer_long.py": "3533c047e4cf2de867bb4007ef1e03fb67b996787df2df1ebad76aa9b2424b10",
+      "tasks/pipette_transfer/rendering.py": "4c1479e06274b7beaf26d90f5bc7834345a0794db6bc36582608a3ef4562c1d2",
       "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
       "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
@@ -272,11 +291,11 @@
       "tasks/table_cleaning/table_cleaning_long.py": "02de8ebaa612438a3d46ee866c3e2907620bb2e5f682bfe81543019ce3c05bce",
       "tasks/table_cleaning/table_cleaning_pick_debris.py": "bc9cd131c31ea7657c0b97d86757f4620501cdd07e5b4af186ad9e45e2bbd749",
       "tools/variation/audit_office_devices_uv.py": "c47c5f7041c6a36749ff231b49879c89643d8845d1b13f6d7d0491d6cf45c29f",
-      "tools/variation/check_furniture_appearance.py": "ac1b8f31180d006e507abe75bce4d3692e04a8a63f974808f8ab2f4a5da89e5b",
-      "tools/variation/check_furniture_dynamics.py": "f12b7cd2e0d96326b3af70f19c2cc5f0985e495a024d3a9ff5dbe4b0a8ff9cd3",
-      "tools/variation/check_office_devices.py": "830908ec2997d1671a4f433c50a1bbd4b8d55f619a321bfefcf328de3a341c3e",
+      "tools/variation/check_furniture_appearance.py": "a95ced8933b7ca00d537d95d135e97cff464560ca2679e7a18b1a8c8d2a4281f",
+      "tools/variation/check_furniture_dynamics.py": "9df5261aab58b7f32775f838be7146b61e6935c302349430a655b699f9ea3f9b",
+      "tools/variation/check_office_devices.py": "0bf9ee4ed1cf879814156d9386314224598068da41363897f33df2f5ebd80365",
       "tools/variation/check_office_devices_dynamics.py": "1af50e255b614390ebba74a8f5e13148929635d17988b5011edac2c3daf62664",
-      "tools/variation/check_office_devices_runtime.py": "3deb3538c6049319b55c72aca80fb90160380708ad4311e21c15a6124c8e06d1",
+      "tools/variation/check_office_devices_runtime.py": "b0334816131188f6f02a658d53036a637e49223ffe0c1697d864da0e0c97f1a9",
       "tools/variation/office_devices_assets.py": "9f94a87ba6191329dc6094fb620dc31fb3b41ce08c7d1573c0ddc1b9e7de4173",
       "tools/variation/office_devices_materials.py": "6e19b3899a264d8c8786ea98f1dcb4edf552e89bb7a0777528b750db49eb6dfa",
       "tools/variation/office_devices_uv_proof.py": "9eee79e68e3459a5956fbf18633d03daf49ae2f482e94c28f9e68c8f5902b96a",
@@ -476,14 +495,14 @@
   },
   "tasks": {
     "OpenLaptop": {
-      "manifest_sha256": "4b8987ab3638b839d987333fa252c5526228ef36855333abc2fa167e37525a81",
-      "results_sha256": "7d7a9a573a40e7dbe25e1f2a09a633d0a63c13d908513acfa8bbb3df2137f669",
+      "manifest_sha256": "c45c556f3833d528da12621c09b90d07c977b4be257effdf9a7326f609aa94f3",
+      "results_sha256": "4df08cf40cc1918d77dd40a40a9e74fa20438a77eb3d05752d16b3e9ac6cd07d",
       "process": {
-        "started_utc": "2026-11-18T12:26:15.8216191Z",
-        "ended_utc": "2026-11-18T12:29:25.1072540Z",
+        "started_utc": "2026-11-22T08:42:05.0148042Z",
+        "ended_utc": "2026-11-22T08:44:16.9646697Z",
         "exit_code": 0,
         "stdout_sha256": "53e3814472321ca287791fd43ef4fa98ba45b834a0143d58b82ba6d824af0a25",
-        "stderr_sha256": "1c29a1d40d2ba7e3496c0d400f0ab9e1cf6b484ddd785fda1d9b4ab4fcd3cb41",
+        "stderr_sha256": "a195ecb94def41e4cd0306c4f5a985c973fe311433b5ece46f5b79a2f57a7b38",
         "arguments": [
           "{python}",
           "-B",
@@ -493,6 +512,12 @@
           "--checker",
           "tools/variation/check_office_devices_runtime.py",
           "--approved-runtime",
+          "--sapien-root",
+          "{sdk_root}",
+          "--artifact",
+          "{sdk_artifact}",
+          "--physx-gpu-dir",
+          "{physx_gpu_directory}",
           "--sim-backend",
           "physx_cuda",
           "--experimental-windows-cuda",
@@ -500,19 +525,13 @@
           "two_env",
           "--task",
           "OpenLaptop",
-          "--sapien-root",
-          "{sdk_root}",
-          "--artifact",
-          "{sdk_artifact}",
-          "--physx-gpu-dir",
-          "{physx_gpu_directory}",
           "--output",
           "{capture_directory}"
         ],
-        "receipt_sha256": "efb58e5feeae9f09080bea620f2b46b83f18447b24fcd3965f621413fa7ad246"
+        "receipt_sha256": "ac2f6e92a789a92cb59ca36760691505db60b63a6f52953b76bcf71d9bd3a5f5"
       },
       "sdk": {
-        "receipt_sha256": "ec7c9044629d2ef6738b1486d53679bab8c5bb032c9292c6f02445f7c0ec1ba6",
+        "receipt_sha256": "3d40d8ba425b369e820acf79a1f62a4d64c4a83a9e399e8e5451cd1ceeb6b80b",
         "binaries": {
           "sapien.dll": {
             "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
@@ -1279,14 +1298,14 @@
           ],
           "original/variant_10": [
             {
-              "pixels_over_8": 27882,
-              "fraction_over_8": 0.03545379638671875,
-              "mean_absolute_difference": 0.32527923583984375
+              "pixels_over_8": 33768,
+              "fraction_over_8": 0.042938232421875,
+              "mean_absolute_difference": 5.629851871066624
             },
             {
-              "pixels_over_8": 22633,
-              "fraction_over_8": 0.028779347737630207,
-              "mean_absolute_difference": 0.3325462341308594
+              "pixels_over_8": 35991,
+              "fraction_over_8": 0.045764923095703125,
+              "mean_absolute_difference": 5.806944105360243
             }
           ],
           "variant_1/variant_2": [
@@ -1389,12 +1408,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 4.059935675726996
+              "mean_absolute_difference": 1.9375826517740886
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 4.179770999484592
+              "mean_absolute_difference": 2.002877129448785
             }
           ],
           "variant_2/variant_3": [
@@ -1485,12 +1504,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 4.595609876844618
+              "mean_absolute_difference": 1.7848243713378906
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 4.721538543701172
+              "mean_absolute_difference": 1.8427225748697917
             }
           ],
           "variant_3/variant_4": [
@@ -1569,12 +1588,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 4.5532073974609375
+              "mean_absolute_difference": 2.5778321160210504
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 4.690414852566189
+              "mean_absolute_difference": 2.6604910956488714
             }
           ],
           "variant_4/variant_5": [
@@ -1641,12 +1660,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 2.4173719618055554
+              "mean_absolute_difference": 3.881530337863498
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 2.4891031053331165
+              "mean_absolute_difference": 4.0067494710286455
             }
           ],
           "variant_5/variant_6": [
@@ -1701,12 +1720,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 2.62483893500434
+              "mean_absolute_difference": 3.330292171902127
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 2.6988936530219183
+              "mean_absolute_difference": 3.440596686469184
             }
           ],
           "variant_6/variant_7": [
@@ -1749,12 +1768,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 5.55132336086697
+              "mean_absolute_difference": 1.546889411078559
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 5.701012081570095
+              "mean_absolute_difference": 1.5891647338867188
             }
           ],
           "variant_7/variant_8": [
@@ -1785,12 +1804,12 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 3.8207422892252603
+              "mean_absolute_difference": 2.595084720187717
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 3.9133983188205295
+              "mean_absolute_difference": 2.6827485826280384
             }
           ],
           "variant_8/variant_9": [
@@ -1809,24 +1828,24 @@
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 3.1885604858398438
+              "mean_absolute_difference": 2.9469278123643665
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 3.282464769151476
+              "mean_absolute_difference": 3.041974809434679
             }
           ],
           "variant_9/variant_10": [
             {
               "pixels_over_8": 33768,
               "fraction_over_8": 0.042938232421875,
-              "mean_absolute_difference": 1.9890238444010417
+              "mean_absolute_difference": 3.966189490424262
             },
             {
               "pixels_over_8": 35991,
               "fraction_over_8": 0.045764923095703125,
-              "mean_absolute_difference": 2.0425732930501304
+              "mean_absolute_difference": 4.096966213650173
             }
           ]
         }
@@ -1958,9 +1977,9 @@
           "records_sha256": "45be6187faa735d7f3e44e81219e433b4d347a8066bc612126f991330c3221be",
           "selected_pixels": {
             "base_camera": {
-              "changed_values": 25408,
+              "changed_values": 25383,
               "changed_pixels": 8480,
-              "max_absolute_error": 184
+              "max_absolute_error": 177
             },
             "wrist_camera": {
               "changed_values": 173466,
@@ -1968,9 +1987,9 @@
               "max_absolute_error": 172
             },
             "human": {
-              "changed_values": 221966,
+              "changed_values": 223130,
               "changed_pixels": 76209,
-              "max_absolute_error": 205
+              "max_absolute_error": 215
             }
           }
         },
@@ -2271,14 +2290,14 @@
       ]
     },
     "TypeKeys": {
-      "manifest_sha256": "1775f0f3b4e874497309c9c7ff0f425f0f21116373d12068a43148c1fae2f0ff",
-      "results_sha256": "a9368e1566e9483b42d3026279d276f1799889c792803ba3d5dfc112523226b0",
+      "manifest_sha256": "0b6a07a741b1d978bec3a9826c4948f6b600cd4d10fd6f2881c70aeaa4de6d69",
+      "results_sha256": "4dfc529c56941bb5ad325fcdc664e36fd8497d0876370e28e6f814d28f0a2ce6",
       "process": {
-        "started_utc": "2026-11-18T12:24:28.9321399Z",
-        "ended_utc": "2026-11-18T12:27:19.9429415Z",
+        "started_utc": "2026-11-22T08:44:16.9907378Z",
+        "ended_utc": "2026-11-22T08:47:09.5768590Z",
         "exit_code": 0,
         "stdout_sha256": "0a5cc64e6e11ffaddd7dc2ab12392699a4334f29da0c4a334b07b344d2cca37b",
-        "stderr_sha256": "c9ebb22125fa62650bf125768bd7bf654b78b25a29ae4d443591a22a0710a701",
+        "stderr_sha256": "ff656859c15129932bc8c37f0baab040f9f2657e0ab74698cf64b8b751620b10",
         "arguments": [
           "{python}",
           "-B",
@@ -2287,27 +2306,27 @@
           ".",
           "--checker",
           "tools/variation/check_office_devices_runtime.py",
+          "--approved-runtime",
           "--sapien-root",
           "{sdk_root}",
           "--artifact",
           "{sdk_artifact}",
           "--physx-gpu-dir",
           "{physx_gpu_directory}",
-          "--output",
-          "{capture_directory}",
-          "--approved-runtime",
           "--sim-backend",
           "physx_cuda",
           "--experimental-windows-cuda",
           "--gpu-memory-profile",
           "two_env",
           "--task",
-          "TypeKeys"
+          "TypeKeys",
+          "--output",
+          "{capture_directory}"
         ],
-        "receipt_sha256": "9c501d0a375bf0ae9e8556db31bcf55925e6ba0c8a7c279ba837301c6920c235"
+        "receipt_sha256": "5a6bc602c52b6a982ccd02bd7ed886b986e12170d080edc57e8d85efae589e4f"
       },
       "sdk": {
-        "receipt_sha256": "ec7c9044629d2ef6738b1486d53679bab8c5bb032c9292c6f02445f7c0ec1ba6",
+        "receipt_sha256": "3d40d8ba425b369e820acf79a1f62a4d64c4a83a9e399e8e5451cd1ceeb6b80b",
         "binaries": {
           "sapien.dll": {
             "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
@@ -4171,14 +4190,14 @@
       ]
     },
     "ClickMouse": {
-      "manifest_sha256": "0838420c3eb42240d65f23844b5f0fd288a9ce117b8137449569c02235180c3b",
-      "results_sha256": "c5ca95427bbbf133ea0923811385ffccbac3ef510f849d525fca2c8f7ff26548",
+      "manifest_sha256": "43e3548a32ea8dc6467e8cc78a47cf37a2b06b9d088abd997ae808910efd7572",
+      "results_sha256": "e29cf46479253aa5038608951114a0d3d61e78efe22c89837710630ef5e06b43",
       "process": {
-        "started_utc": "2026-11-18T12:29:25.1285281Z",
-        "ended_utc": "2026-11-18T12:31:22.9493681Z",
+        "started_utc": "2026-11-22T08:47:09.5813774Z",
+        "ended_utc": "2026-11-22T08:49:18.2585999Z",
         "exit_code": 0,
         "stdout_sha256": "b9fabc96b40844988365985c504d6641e1102f13fc676dfb28cb689715605c74",
-        "stderr_sha256": "e4c63e28aa63c397b0731d7ac39b1dac3f776603f9952c8339c9cd319be338bc",
+        "stderr_sha256": "683b8ddc1f035c81485914a85b1e50229885f545bf610881d88603450a33936c",
         "arguments": [
           "{python}",
           "-B",
@@ -4188,6 +4207,12 @@
           "--checker",
           "tools/variation/check_office_devices_runtime.py",
           "--approved-runtime",
+          "--sapien-root",
+          "{sdk_root}",
+          "--artifact",
+          "{sdk_artifact}",
+          "--physx-gpu-dir",
+          "{physx_gpu_directory}",
           "--sim-backend",
           "physx_cuda",
           "--experimental-windows-cuda",
@@ -4195,19 +4220,13 @@
           "two_env",
           "--task",
           "ClickMouse",
-          "--sapien-root",
-          "{sdk_root}",
-          "--artifact",
-          "{sdk_artifact}",
-          "--physx-gpu-dir",
-          "{physx_gpu_directory}",
           "--output",
           "{capture_directory}"
         ],
-        "receipt_sha256": "566bcb9f94f886c36dc9afc4aa8d3a441b04ed594cb2b8b0134c27fc295197da"
+        "receipt_sha256": "196a349842ea2ab3a15a5e33e2f90c09627696b2e84216595f50c306622db468"
       },
       "sdk": {
-        "receipt_sha256": "ec7c9044629d2ef6738b1486d53679bab8c5bb032c9292c6f02445f7c0ec1ba6",
+        "receipt_sha256": "3d40d8ba425b369e820acf79a1f62a4d64c4a83a9e399e8e5451cd1ceeb6b80b",
         "binaries": {
           "sapien.dll": {
             "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
@@ -6005,11 +6024,11 @@
   "cpu": {
     "interface": {
       "process": {
-        "started_utc": "2026-11-18T12:31:22.9526540Z",
-        "ended_utc": "2026-11-18T12:34:53.2695082Z",
+        "started_utc": "2026-11-22T08:50:08.5056289Z",
+        "ended_utc": "2026-11-22T09:01:22.4031986Z",
         "exit_code": 0,
         "stdout_sha256": "6db234ee3e67be7c23f8ea7ddde8dc8aa5496a729e5044bfbaa611a3fd2b3435",
-        "stderr_sha256": "de6b632a02239fbe2930fac65de33e617c3e9161ff069a1d76494a19b3432aa1",
+        "stderr_sha256": "c342e54102a7b7d4ccaefcbcb372db66578c73ef46de1bae3d6462e038649a82",
         "arguments": [
           "{python}",
           "-B",
@@ -6019,21 +6038,21 @@
           "--checker",
           "tools/variation/check_office_devices_runtime.py",
           "--approved-runtime",
-          "--sim-backend",
-          "physx_cpu",
           "--sapien-root",
           "{sdk_root}",
           "--artifact",
           "{sdk_artifact}",
           "--physx-gpu-dir",
           "{physx_gpu_directory}",
+          "--sim-backend",
+          "physx_cpu",
           "--output",
           "{capture_directory}"
         ],
-        "receipt_sha256": "c5d52f11d5821a0c93344018aae45dbb126e82c5fb8a3b9ac912657d403579c7"
+        "receipt_sha256": "f9893bcbf70258ba2ee8d388d2a41fec7b14fdf1e1f85f76c7b16430f588b89f"
       },
       "sdk": {
-        "receipt_sha256": "ec7c9044629d2ef6738b1486d53679bab8c5bb032c9292c6f02445f7c0ec1ba6",
+        "receipt_sha256": "3d40d8ba425b369e820acf79a1f62a4d64c4a83a9e399e8e5451cd1ceeb6b80b",
         "binaries": {
           "sapien.dll": {
             "sha256": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4"
@@ -6061,15 +6080,15 @@
           "retained_for_process_lifetime": true
         }
       },
-      "results_sha256": "3f75357a8fff9baa19ff8cfe6ad2d463dd112218e17027965b82729d361c6712",
-      "manifest_sha256": "a3e3d79ddf7ff152e9a50fdc8f28fd18ffcffd58e8c4fceae21b59b76dfd525b"
+      "results_sha256": "423e4c9732025fdf2d766ed7bb906422b80ea0604361d211feacfe75697290d3",
+      "manifest_sha256": "efd1eb548cc8d58b916bd43d710d5ae134fe9e8f663d5c455359586aeab5dc6e"
     },
     "dynamics": {
       "process": {
-        "started_utc": "2026-11-18T12:34:53.2736188Z",
-        "ended_utc": "2026-11-18T12:43:36.6909016Z",
+        "started_utc": "2026-11-22T09:01:22.4417236Z",
+        "ended_utc": "2026-11-22T09:09:51.4396036Z",
         "exit_code": 0,
-        "stdout_sha256": "f879ce257774b44daa97eda354e3e3d60f19e147151ed37984c75d2b41f47693",
+        "stdout_sha256": "e56ef014d6bac3eba3d9bbb67f90f69ff9e0af2703c2de6f0ea4a020d6fb986d",
         "stderr_sha256": "fd8b4eafbf0642a230ea93fd9ae3e90df0005fea8f3983c706012db348f22a80",
         "arguments": [
           "{python}",
@@ -6088,280 +6107,280 @@
           "--output",
           "{capture_directory}"
         ],
-        "receipt_sha256": "7360db3e5850313389793876a97f557dcec0d010d328d53861ed6839d9ef62c0"
+        "receipt_sha256": "dcea3de47e1b8142004238da1807e7aae81d4d0833cd7b3c470e36253265d859"
       },
-      "summary_sha256": "59eb9bb4a2ca03f1dd4e1c904d094b2c82c5bb31de108883fccecada35447714",
+      "summary_sha256": "2a13d23e1b0a854ae452a73850b552fcd11ac0e0b39e74d174442d6c19d151db",
       "runs": {
         "OpenLaptop/native_off": {
           "actual_scheme_id": "native_off",
           "samples": 61,
-          "run_sha256": "4c6aaf1993b41c9c21361a7382a8d16fb491fa2118abd8d0edd135680007564f",
+          "run_sha256": "101f5cebeacffe10b293317022ac4c45e10440c0a50d47bcbc3e44654727abd3",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/native_repeat": {
           "actual_scheme_id": "native_off",
           "samples": 61,
-          "run_sha256": "d060ba840a668e5623c454fcec99bcc1cd55d621f96fefcfe42ffe442e51d783",
+          "run_sha256": "5077ce98fdf814cba4c3f9499c0b7fae4c4616542407233193d700cefe2b9728",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/original": {
           "actual_scheme_id": "original",
           "samples": 61,
-          "run_sha256": "d26fcf39c54f50433c81bcd173f5e1f7c860197bfd1a5fdd574b6dddb0717dda",
+          "run_sha256": "aed680f337ef1802232ca49160d288777dee7b9a6fcfe234cc7e9b1575d4b988",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_1": {
           "actual_scheme_id": "variant_1",
           "samples": 61,
-          "run_sha256": "69cd6cf7670ebaea641bdd0cd38adccd8a51ea5132ccc419b019aedf2863093a",
+          "run_sha256": "923a02bdd30955242206912e6b858cb0ce4ea9e89b28d9f1babf9ee9ca50f814",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_2": {
           "actual_scheme_id": "variant_2",
           "samples": 61,
-          "run_sha256": "c17fa0ea4699f8e303c5fe47251fa75530ceeb289d5b854fe68768d65063ed34",
+          "run_sha256": "caf4165792f812e0434dcc726cc60c47eaff3ef16ae92e662bdb375914bd35e2",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_3": {
           "actual_scheme_id": "variant_3",
           "samples": 61,
-          "run_sha256": "e134285f564451171fe57de6c3b314fa6bc8a24f4ad03e024aaff02a64a048ec",
+          "run_sha256": "c336538588381fed6cd8543fa6b5e61948143bbfc249a5074cbb0ffc91afcac1",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_4": {
           "actual_scheme_id": "variant_4",
           "samples": 61,
-          "run_sha256": "e7f41b876ff9e3a534956367677fecb8fe5763640c9446b3baadcaea89a5b9ea",
+          "run_sha256": "a6f0331cde2cf38e80437e35005540fdcc91929035f7d7b03d749370f9e1856e",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_5": {
           "actual_scheme_id": "variant_5",
           "samples": 61,
-          "run_sha256": "e3f3cfe498f39ad748f7f7af715a3de5f0c53570004da1e6c3b4167074e51299",
+          "run_sha256": "2861b73e8f4aef39fb13990658fe453163aa9d12e3d81a345d2feab436a54e5f",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_6": {
           "actual_scheme_id": "variant_6",
           "samples": 61,
-          "run_sha256": "942bd8e8abe827ee9070109957e6005b9863e7e3236dfe68dac73f6d46801f9a",
+          "run_sha256": "3a488b72c34a78fcb5ad76e8060e152533bc743760891f647b5b5abb7c3eae1b",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_7": {
           "actual_scheme_id": "variant_7",
           "samples": 61,
-          "run_sha256": "306b034b1186350df481cf4b6b5f7befa9f81b65a077893dd5cc634f8123cabd",
+          "run_sha256": "6c05be0764a2b9e3311a5e2660692c29e4fa6ffbf1e891d542107176311c0e22",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_8": {
           "actual_scheme_id": "variant_8",
           "samples": 61,
-          "run_sha256": "43667133c7feda787ac8d1e333181328062987d1a30942cc22215cf5da2a6238",
+          "run_sha256": "42a2aca19a040f5a2902feb327d76c374c072dff6d958c9a9d9b4b8180fd53f8",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_9": {
           "actual_scheme_id": "variant_9",
           "samples": 61,
-          "run_sha256": "8900c4fa3187c7f9eb6dddf04ec985143f929e38194b71e185560d0bb24067cc",
+          "run_sha256": "ff2e1bcc955687f7f5f638fa4ee1f7fede6d37b78476bd7624243bb493f6ef7d",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "OpenLaptop/variant_10": {
           "actual_scheme_id": "variant_10",
           "samples": 61,
-          "run_sha256": "9ff0d4a8417e6bb0a6e7c48630286976aa1f1ee074771493b5426eee7cdce413",
+          "run_sha256": "a286e3eb1d159148532b36870e77986aa559ca7bcdad1ba964c06e2707ba27c5",
           "trajectory_sha256": "dbb318a035ca6b3b34f3f70426ca1aebab3cabb22c2176dd9d7ac50b7d2d40f7",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/native_off": {
           "actual_scheme_id": "native_off",
           "samples": 61,
-          "run_sha256": "fff3b3c4051f9acfbc4bb12f2e6a6674cfa24b649cedbe6626c70672ee35d66e",
+          "run_sha256": "4ab13efb847eaa68a986a52da871ef5b0509cf9a4e44ae43defad4c9ce11acc5",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/native_repeat": {
           "actual_scheme_id": "native_off",
           "samples": 61,
-          "run_sha256": "7ca9ebf4f1333427769d6a282eea4f3747dc292d836341daf6497eab62156a9a",
+          "run_sha256": "2ad244c129f7ee9857df29c2343d3d526d4dd3fd56cbd659008eb73b8e3c80aa",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/original": {
           "actual_scheme_id": "original",
           "samples": 61,
-          "run_sha256": "2e8ba74759d4575c7a475fac219083bd21ac0a8d33e4b93dbd55f0cab6e19e6b",
+          "run_sha256": "a3e9565700d3f1840af9b6d5a3157c19c6fed880690f3037f116c61fd1e7bad2",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_1": {
           "actual_scheme_id": "variant_1",
           "samples": 61,
-          "run_sha256": "66255126e53dc2809c1b84a727cb4981a48893600a9a9beefe9aac6bc502d010",
+          "run_sha256": "a16679f86f3dd8d346af2b3d76279b32c78bc90f94f23698d89af80cf5b5b473",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_2": {
           "actual_scheme_id": "variant_2",
           "samples": 61,
-          "run_sha256": "5c07d687f01c38228e4c6bd834a00bc82845bba34816ae27d82b93dad2797aa3",
+          "run_sha256": "3ba4fd6cb82acaa00b233f01d380bcf20d58ff3d4d9c1d29620d4c2b3fce4293",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_3": {
           "actual_scheme_id": "variant_3",
           "samples": 61,
-          "run_sha256": "2cd502218de33a27fa1da7cc0aaec086183230b26fb4d5b496a3fc2e94d41207",
+          "run_sha256": "d44fdea6baa30d55280fd09009b25d7b82f769b629393dec9bce09811399a051",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_4": {
           "actual_scheme_id": "variant_4",
           "samples": 61,
-          "run_sha256": "4cdf233acf013ae45f221bcfe47ac24f6b25ab64438a19dcd174234227e537e4",
+          "run_sha256": "12db0fecda35a74ba6bfe3f6940c81ca6e907858a744334337b38eabac61e84b",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_5": {
           "actual_scheme_id": "variant_5",
           "samples": 61,
-          "run_sha256": "455fe66fc0b972f531781f4238f42913a20de06d2b2ec7e7e51d5388e4ce5f7a",
+          "run_sha256": "cdbac49a4c900c709761174cc5441affd9e317bd7da8ad5ed3398d8183fd2567",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_6": {
           "actual_scheme_id": "variant_6",
           "samples": 61,
-          "run_sha256": "3b8100d17197df4d9d5ac7e3153372831b829fdcb4844ad531eb70d0801f893d",
+          "run_sha256": "2a1993035cedf2e2491bc1441f8268e7e09388ad4307d1bc3ce4b7bfb17cfba5",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_7": {
           "actual_scheme_id": "variant_7",
           "samples": 61,
-          "run_sha256": "0d4f3df12cc6b9fc36d058b4dd863935d16a8818cdc3e253eb64877e8e8ed783",
+          "run_sha256": "2f538dde0a2cd3a73547260117f8453f7a3a5e4b048d3a3638806dd43aa361c7",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_8": {
           "actual_scheme_id": "variant_8",
           "samples": 61,
-          "run_sha256": "e25c874adda60b2ea75c41587a70a2d7aa80e0bee5a7bf0d6653001f0ba3fa18",
+          "run_sha256": "5aa0b215e1a76ab8c12adbf9ff8eae507016ec22e943e410417593669815246d",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_9": {
           "actual_scheme_id": "variant_9",
           "samples": 61,
-          "run_sha256": "176aaf140df2eb8b9ed34e8de11e853b30827c5e3e72df0e2359a405b8653358",
+          "run_sha256": "bd497bb754d8623a1b739344dd50c42f0ce96304e874aaba01d9d754c5d9d3e8",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "TypeKeys/variant_10": {
           "actual_scheme_id": "variant_10",
           "samples": 61,
-          "run_sha256": "1ccf603347dfa1b724927df1e934f926781fdd043f6e7784e0a1b174a2a16703",
+          "run_sha256": "388d967ec0ca368d67c12a42a04908aaadc2d987a237a5a9e300ac0c2605cfd3",
           "trajectory_sha256": "22f636c8ccc7f5510b31a82a5f677167c2c459a44cb8186e6ff376cdee4f5f68",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/native_off": {
           "actual_scheme_id": "native_off",
           "samples": 61,
-          "run_sha256": "e120ec2c5634832f0ef343effef752fac536e17681c98c97ce4193458a0a5d07",
+          "run_sha256": "423c147469d303be05bb3a514f728711b4402481a0db0123bcf6d71bef2b6766",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/native_repeat": {
           "actual_scheme_id": "native_off",
           "samples": 61,
-          "run_sha256": "061d431a881fc9b84e4221472e2f812abff941028991cfc3112c5324d8e7becb",
+          "run_sha256": "e76d86341a44ba9dfab5f4f431db42067c0a944fd3747260818974f4b8f40343",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/original": {
           "actual_scheme_id": "original",
           "samples": 61,
-          "run_sha256": "f31009dabd5c2fec6878a648dcfef36cb2af055208aa7088b9b0ad2c9c78a25b",
+          "run_sha256": "21ce8a91a3cfe2a0010eb28801c2ce752d54f42f27f40688dc35afd42d86fb08",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_1": {
           "actual_scheme_id": "ivory_matte",
           "samples": 61,
-          "run_sha256": "df264bc2fbecc37f6cc6942ec706451333234ae8c798d98ac6a511679c51d674",
+          "run_sha256": "1db396634942bb05431db52b0663e4615a63089717f833f5307bc5a5b17a60a1",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_2": {
           "actual_scheme_id": "navy_satin",
           "samples": 61,
-          "run_sha256": "ee2b66d8a7945a1d682ed2198b4ab83dec927db633b10c17e5b5da4a36b2d134",
+          "run_sha256": "cd0fd8b9e6a15eeccb2003e05a6b506ce4ca628b4bfd3e67942023ce8467d211",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_3": {
           "actual_scheme_id": "variant_3",
           "samples": 61,
-          "run_sha256": "599e41fc6179f07fe67f9bd7793b1ddc53385a42be79b8623927799f5bddd854",
+          "run_sha256": "48a958ea633eb7fdd9205d643e485629e9dd48096055e585e0576358688f1a1a",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_4": {
           "actual_scheme_id": "variant_4",
           "samples": 61,
-          "run_sha256": "aa81958d2d55b0612bc99b014b64ee0943358ac67b8439907dae072352171b07",
+          "run_sha256": "d63d0f50720f120173e0d037cec1a338190c1555e1526d101769acc0dad948e9",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_5": {
           "actual_scheme_id": "variant_5",
           "samples": 61,
-          "run_sha256": "71f5f061f190d22db77388f941d5a273d4e59d80a86fec4c67fec135846bf92b",
+          "run_sha256": "8280ce782c25d5e21a3426744fd9edd8088cee98bf06c5926a7d601fe887921b",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_6": {
           "actual_scheme_id": "variant_6",
           "samples": 61,
-          "run_sha256": "2431e5f9d983e41b397a9d82ea601ad858c1cd9f2fdbf00115e5dee7031a1f79",
+          "run_sha256": "c85583096a74a7bb05e85cbfdee43e1f75870e20332e9f8d8ab5f905d5267c62",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_7": {
           "actual_scheme_id": "variant_7",
           "samples": 61,
-          "run_sha256": "9b736b63a45afc04d01d89da08138b011a29e50f0e8354311c0843b8cb9c8392",
+          "run_sha256": "c23d3c2fc734bb834c31ebe596d683b9d2c9e41eb09f3496a624f00fbb496f78",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_8": {
           "actual_scheme_id": "variant_8",
           "samples": 61,
-          "run_sha256": "60b17698b7e3f619ce13587c44d4ce8ce6fe40855aa8e6b6b5ae71d50d9432f6",
+          "run_sha256": "38598a975f679663f9d22fd1d48d700ba9e6f2927134e532907ff2de7ec4c395",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_9": {
           "actual_scheme_id": "variant_9",
           "samples": 61,
-          "run_sha256": "c989272a7a6ce22a6e0f533e1fe269ffa8d182ea92c0694a5989f7bed532b250",
+          "run_sha256": "0625ab3ff13ae6f4cc52972f2877a8087b108022e2c28997cd9a59c38153fe7a",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         },
         "ClickMouse/variant_10": {
           "actual_scheme_id": "variant_10",
           "samples": 61,
-          "run_sha256": "016650038d0dc3bf872ca56b3f0611f2857cd1750ea102d7f42de7914de2f86f",
+          "run_sha256": "4a74e1518f12c0228dc1104f56493ca3b7c03e4abfc00fc5d5c11efec05659ff",
           "trajectory_sha256": "5ab597f56c5d4ded0e95c3c09a85c086b57f2802cd9a101f02a8543a6937c674",
           "sdk": "83f928fa4c1f63aa20386b7338f17b9c5cd5d1d082f02f6bbaaf5298689d6ddf"
         }
@@ -6381,9 +6400,9 @@
     "OpenLaptop/variant_7_human_env0.png": "cae2036a2a544a3e145fdf244af691221ea5f1b9f68cb34b6827d7b9ebd88bb0",
     "OpenLaptop/variant_8_human_env0.png": "13c96da5211f8ef2b8d03d866d3afa07fa4371cf8680b4f62ee9c275ac6a61f7",
     "OpenLaptop/variant_9_human_env0.png": "301c57b37c957a57100714d8dcf6b7d62e4c70fd62cc78cabc1a798068e02b3f",
-    "OpenLaptop/variant_10_human_env0.png": "eb9d17ce8ec0ae6384a39423c6cfe4dbc093a24e595ab4b42a5486d5975bb02f",
+    "OpenLaptop/variant_10_human_env0.png": "d178b373aa2313f6e3bb8890d39526e9750bbc4b8b81ca22afc9b5aa79a9a420",
     "OpenLaptop/local_0_base_camera_env0.png": "05c12f6c9549c9b4bdca46c9bb8ccc756a4528e66e6ce1f2e2688a6104f1fa85",
-    "OpenLaptop/local_0_base_camera_env1.png": "13f38d8ba0f550c9e6713d7301751f993fb0a607bf4a8489c93d3e36053c72f9",
+    "OpenLaptop/local_0_base_camera_env1.png": "5c0fdb6e5fb54503b8e07c022b42e1987a4804bb5a4d1db54d828e1b2a6820af",
     "OpenLaptop/local_1_base_camera_env0.png": "d0baa86154074da9b1672c109b105afe70d362bfb55fcc06a13653fb83ab8c85",
     "OpenLaptop/local_1_base_camera_env1.png": "474853cfc9f9b84e9afa52c9d047ba68376df7e02ecaff980c98ed848463df34",
     "TypeKeys/original_human_env0.png": "8174cd4b99864db9bd0c7ed3a6960ccd8c45c8a71b57fb738ccdc7837afafac9",
@@ -6418,12 +6437,12 @@
     "ClickMouse/local_1_base_camera_env1.png": "bda432f2a1e09bcffb48eb9c6752ff6827dee674df833057f9efb20b536fbed3"
   },
   "review_images": [
+    "OpenLaptop/original_human_env0.png",
     "OpenLaptop/variant_3_human_env0.png",
-    "TypeKeys/variant_5_human_env0.png",
-    "ClickMouse/variant_8_human_env0.png",
+    "OpenLaptop/variant_10_human_env0.png",
     "TypeKeys/local_0_base_camera_env0.png",
-    "TypeKeys/local_1_base_camera_env0.png"
+    "TypeKeys/local_0_base_camera_env1.png"
   ],
-  "exporter_sha256": "921a31b1deed01c87b22b638730a7e92074695daade515f34a42dd9bb0c9629f",
+  "exporter_sha256": "d01bc323dc97de08812d9db9462680ed4b47a02fa159e7db975bfb9a25584b5b",
   "scope": "Windows native short tasks, fixed RGB, precise recovery, CPU dynamics and two CUDA environments"
 }
