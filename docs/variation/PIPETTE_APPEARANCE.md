@@ -46,11 +46,11 @@ records = env.unwrapped._pipette_appearance.records
 
 native_off、original 与候选的验收统一使用上述“修复 default shaders＋sample cup 固定透明 pass”配置。original 指该配置下的原生 PBR 及精确像素恢复；不声称与 stock default 或 minimal 的 RGB 相同。私有 shader 包按来源／补丁身份缓存，逐环境绑定实际 ID，不修改安装目录、顶点或世界位置。材质与深度参数读取唯一 catalog。
 
-**扩容验收**
+**Windows 历史扩容档案**
 
 [扩容摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/summary.json)与[全部 132 张固定原图的索引](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/fixed_frames.json)记录 Windows 两短任务的实测结果。每任务各 11 张可直接查看的原生 human 视角 PNG 分别存放在 [AspirateLiquid](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid) 和 [DispenseLiquid](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/DispenseLiquid)。
 
-CPU 公开入口合同逐项覆盖所有候选的合法转发与最后一个环境拼错方案时的零副作用拒绝。下表运行数据和图像采用各自归档记录的采集身份，样品杯透明 pass 与承托盘深度偏置证据均来自显式开启 `pipette_rendering` 的场景。
+CPU 公开入口合同逐项覆盖所有候选的合法转发与最后一个环境拼错方案时的零副作用拒绝。下表保留该批 Windows 扩容原始记录中的采集身份，样品杯透明 pass 与承托盘深度偏置证据均来自显式开启 `pipette_rendering` 的场景。
 
 | 验收 | 结果 |
 |---|---|
@@ -60,6 +60,32 @@ CPU 公开入口合同逐项覆盖所有候选的合法转发与最后一个环�
 | 原生模型和光学 | 六个独立模型恢复差 0。两组玻璃条纹对照覆盖十候选。任务深度共 56 次构造、112 组对照，Aspirate 有 5 组无共同可见承托盘像素 |
 
 精选五张实景。[Aspirate original](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/original_human_env0.png) · [Aspirate variant_8](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/variant_8_human_env0.png) · [Dispense variant_9](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/DispenseLiquid/variant_9_human_env0.png) · [局部 reset 选中 env1](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/local_variant_3_variant_4_1_base_camera_env1.png) · [同轮未选 env0](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/local_variant_3_variant_4_1_base_camera_env0.png)。
+
+**本地发布复验**
+
+Windows 受控 SAPIEN `3.0.3+dexarena.gpu1.wininterop5` 上重新运行两个短任务。最新[双环境 CUDA 复核](evidence/pipette_transfer/expansion/windows-gpu-review.json)记录 130 次选中状态读回、20 控制步、400 物理子步、990 组逐对象配色对照及 32 个新增方案局部 reset 方向。候选均恢复同初态 original，未选环境的三台相机 RGB 保持一致。历史扩容归档中 24 张公开 PNG 和 PR #14 的六张固定外观在本机重现，PNG 字节逐张一致。
+
+Pipette CPU 接口合同测试通过。[CPU 动态复核](evidence/pipette_transfer/expansion/windows-cpu-dynamics.json)记录两任务 26 轮、1,560 控制步与 31,200 物理子步。所有固定外观逐状态复现 native_off，逐帧复算已核对关节实际运动，并核对材质稳定记录。
+
+**Server 3 双环境复验**
+
+[AspirateLiquid 与 DispenseLiquid 的 Linux 运行证据](evidence/pipette_transfer/expansion/README.md)来自作业 `123819`。采集提交与发布运行提交的 Pipette 源码、运行 catalog、共享 reset 和验证工具路径逐个核对一致。
+
+| 检查 | Linux 实测 |
+|---|---|
+| 标准双环境 CUDA | 130 次选中状态读回、20 控制步、400 物理子步 |
+| 局部 reset、original 恢复 | 新增方案 32 个局部 reset 方向，未选状态和原三相机 RGB 一致，同初态恢复 original 的 RGB 差为 0 |
+| 可辨性 | 990 组逐对象配对全部通过，最低见证为 AspirateLiquid 样品杯的 92 个目标像素 |
+| 光学深度 | 112 个原相机／环境对照，按目标片元在两次构造中共同可见的像素复核 |
+
+Linux 使用 SDK 说明中的 wheel、artifact 和 PhysX 路径。下例采集 AspirateLiquid，DispenseLiquid 使用独立输出目录。对同一任务使用新目录，并增加 `--pipette-optical`，可运行任务深度补充检查。
+
+```bash
+python -B tools/variation/sapien_sdk/run_linux_check.py \
+  --checker pipette --task AspirateLiquid --approved-runtime --two-env-memory \
+  --wheel "$wheel" --artifact "$artifact" --physx-gpu-dir "$physx" \
+  --output "$capture/linux_aspirate"
+```
 
 **PR #14 验收档案**
 
@@ -75,7 +101,7 @@ CPU 公开入口合同逐项覆盖所有候选的合法转发与最后一个环�
 
 CUDA 使用显式 `two_env` GPU 缓冲容量配置；solver、contact、重力、休眠、频率、原相机尺寸与近远面保持任务定义。任何缓冲溢出、分配失败或 CPU 回退均失败。运行记录包含完整实际 SimConfig、源码／资产／外部 ManiSkill 文件闭包及私有 SDK 前后身份。
 
-Aspirate 的部分原相机视图存在遮挡或无偏置时盘不可见，补充摘要逐项标记 visibility_limit；不对无共同像素处声称 XYZ 验证。结果限定记录的任务、seed、视距、相机和显式渲染配置。Long、Linux 运行、真实流体及完整机器人任务成功未验收。
+Aspirate 的部分原相机视图存在遮挡或无偏置时盘不可见，补充摘要逐项标记 visibility_limit；不对无共同像素处声称 XYZ 验证。结果限定记录的任务、seed、视距、相机和显式渲染配置。该首批采集限 Windows 短任务；本次扩容的 Linux 结果见上文。真实流体及完整机器人任务成功留待独立验证。
 
 **正式任务实景**
 
