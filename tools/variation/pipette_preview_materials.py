@@ -4,6 +4,7 @@ from __future__ import annotations
 import ast
 import copy
 import hashlib
+from itertools import combinations
 import json
 import math
 from pathlib import Path
@@ -37,7 +38,8 @@ def input_file_sha256():
     tools = ROOT/'tools/variation'
     tasks = ROOT/'tasks/pipette_transfer'
     files = [tools/name for name in ('render_pipette_preview.py', 'pipette_preview_materials.py',
-                                     'check_pipette_appearance.py', 'pipette_render_fixes.py')]
+                                     'check_pipette_appearance.py', 'pipette_render_fixes.py',
+                                     'sapien_sdk/run_task_check.py')]
     files += [CATALOG]
     files += [ARCHIVE/key/'bindings.json' for key in
               ('pipette', 'sample_cup', 'test_tube', 'tube_rack', 'pipette_stand', 'tip_cup')]
@@ -312,8 +314,8 @@ def validate_catalog(catalog):
     if set(catalog['objects']) != expected:
         raise ValueError('Expected exactly six visible logical objects')
     candidates = catalog['candidate_ids']
-    if len(candidates) != 2 or len(set(candidates)) != 2 or 'original' in candidates:
-        raise ValueError('Expected two candidate IDs')
+    if len(candidates) < 2 or len(set(candidates)) != len(candidates) or 'original' in candidates:
+        raise ValueError('Expected at least two distinct candidate IDs')
     for key, obj in catalog['objects'].items():
         if set(obj['schemes']) != {'original', *candidates} or obj['schemes']['original'] != {}:
             raise ValueError(f'{key}: original must use captured native materials')
@@ -337,10 +339,12 @@ def validate_catalog(catalog):
                         raise ValueError('Glass candidates require RGB and controlled alpha within [.15, .4]')
                 elif 'base_color_alpha' in params:
                     raise ValueError('Only glass roles may change alpha')
-        rgb_a = [p['base_color_rgb'] for p in obj['schemes'][candidates[0]].values()]
-        rgb_b = [p['base_color_rgb'] for p in obj['schemes'][candidates[1]].values()]
-        if min(math.dist(a, b) for a, b in zip(rgb_a, rgb_b)) < .45:
-            raise ValueError(f'{key}: candidate RGB separation too small')
+        for left, right in combinations(candidates, 2):
+            for role in editable:
+                a = obj['schemes'][left][role]['base_color_rgb']
+                b = obj['schemes'][right][role]['base_color_rgb']
+                if math.dist(a, b) < .45:
+                    raise ValueError(f'{key}/{role}: RGB separation too small for {left} and {right}')
     return catalog
 
 

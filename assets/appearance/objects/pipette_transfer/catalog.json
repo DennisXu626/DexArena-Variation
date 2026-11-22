@@ -1,9 +1,17 @@
 {
-  "version": "pipette_transfer.foundation.v3",
-  "stage": "foundation_only",
+  "version": "pipette_transfer.material.v2",
+  "stage": "material_appearance",
   "candidate_ids": [
     "jade",
-    "coral"
+    "coral",
+    "variant_3",
+    "variant_4",
+    "variant_5",
+    "variant_6",
+    "variant_7",
+    "variant_8",
+    "variant_9",
+    "variant_10"
   ],
   "original_policy": "capture_and_restore_native_materials",
   "source_guard": {
@@ -66,6 +74,94 @@
             "roughness": 0.68,
             "metallic": 0.0
           }
+        },
+        "variant_3": {
+          "body": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "roughness": 0.72,
+            "metallic": 0.0
+          }
+        },
+        "variant_4": {
+          "body": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "roughness": 0.35,
+            "metallic": 0.0
+          }
+        },
+        "variant_5": {
+          "body": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "roughness": 0.46,
+            "metallic": 0.0
+          }
+        },
+        "variant_6": {
+          "body": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "roughness": 0.55,
+            "metallic": 0.0
+          }
+        },
+        "variant_7": {
+          "body": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "roughness": 0.42,
+            "metallic": 0.0
+          }
+        },
+        "variant_8": {
+          "body": {
+            "base_color_rgb": [
+              0.98,
+              0.66,
+              0.98
+            ],
+            "roughness": 0.64,
+            "metallic": 0.0
+          }
+        },
+        "variant_9": {
+          "body": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "roughness": 0.31,
+            "metallic": 0.0
+          }
+        },
+        "variant_10": {
+          "body": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "roughness": 0.52,
+            "metallic": 0.0
+          }
         }
       }
     },
@@ -120,6 +216,214 @@
               0.94,
               0.4,
               0.8
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_3": {
+          "wall": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_4": {
+          "wall": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_5": {
+          "wall": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_6": {
+          "wall": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_7": {
+          "wall": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_8": {
+          "wall": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_9": {
+          "wall": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_10": {
+          "wall": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
             ],
             "base_color_alpha": 0.35
           }
@@ -180,6 +484,214 @@
             ],
             "base_color_alpha": 0.35
           }
+        },
+        "variant_3": {
+          "wall": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_4": {
+          "wall": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_5": {
+          "wall": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_6": {
+          "wall": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_7": {
+          "wall": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_8": {
+          "wall": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_9": {
+          "wall": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "variant_10": {
+          "wall": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "base_color_alpha": 0.35
+          }
         }
       }
     },
@@ -206,6 +718,94 @@
             ],
             "roughness": 0.68,
             "metallic": 0.0
+          }
+        },
+        "variant_3": {
+          "frame": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "roughness": 0.72,
+            "metallic": 0.03
+          }
+        },
+        "variant_4": {
+          "frame": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "roughness": 0.35,
+            "metallic": 0.03
+          }
+        },
+        "variant_5": {
+          "frame": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "roughness": 0.46,
+            "metallic": 0.05
+          }
+        },
+        "variant_6": {
+          "frame": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "roughness": 0.55,
+            "metallic": 0.0
+          }
+        },
+        "variant_7": {
+          "frame": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "roughness": 0.42,
+            "metallic": 0.15
+          }
+        },
+        "variant_8": {
+          "frame": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "roughness": 0.64,
+            "metallic": 0.0
+          }
+        },
+        "variant_9": {
+          "frame": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "roughness": 0.31,
+            "metallic": 0.08
+          }
+        },
+        "variant_10": {
+          "frame": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "roughness": 0.52,
+            "metallic": 0.05
           }
         }
       }
@@ -234,6 +834,94 @@
             "roughness": 0.68,
             "metallic": 0.0
           }
+        },
+        "variant_3": {
+          "structure": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "roughness": 0.72,
+            "metallic": 0.03
+          }
+        },
+        "variant_4": {
+          "structure": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "roughness": 0.35,
+            "metallic": 0.03
+          }
+        },
+        "variant_5": {
+          "structure": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "roughness": 0.46,
+            "metallic": 0.05
+          }
+        },
+        "variant_6": {
+          "structure": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "roughness": 0.55,
+            "metallic": 0.0
+          }
+        },
+        "variant_7": {
+          "structure": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "roughness": 0.42,
+            "metallic": 0.15
+          }
+        },
+        "variant_8": {
+          "structure": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "roughness": 0.64,
+            "metallic": 0.0
+          }
+        },
+        "variant_9": {
+          "structure": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "roughness": 0.31,
+            "metallic": 0.08
+          }
+        },
+        "variant_10": {
+          "structure": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "roughness": 0.52,
+            "metallic": 0.05
+          }
         }
       }
     },
@@ -259,6 +947,94 @@
               0.59
             ],
             "roughness": 0.68,
+            "metallic": 0.0
+          }
+        },
+        "variant_3": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.96,
+              0.9,
+              0.44
+            ],
+            "roughness": 0.42,
+            "metallic": 0.0
+          }
+        },
+        "variant_4": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.98,
+              0.98,
+              0.98
+            ],
+            "roughness": 0.64,
+            "metallic": 0.0
+          }
+        },
+        "variant_5": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.5,
+              0.45,
+              0.98
+            ],
+            "roughness": 0.31,
+            "metallic": 0.0
+          }
+        },
+        "variant_6": {
+          "tip_cup": {
+            "base_color_rgb": [
+              1.0,
+              0.02,
+              0.56
+            ],
+            "roughness": 0.52,
+            "metallic": 0.0
+          }
+        },
+        "variant_7": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.015,
+              0.02,
+              0.04
+            ],
+            "roughness": 0.72,
+            "metallic": 0.0
+          }
+        },
+        "variant_8": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.08,
+              0.12,
+              0.9
+            ],
+            "roughness": 0.35,
+            "metallic": 0.0
+          }
+        },
+        "variant_9": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.05,
+              0.76,
+              0.94
+            ],
+            "roughness": 0.46,
+            "metallic": 0.0
+          }
+        },
+        "variant_10": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.02,
+              0.98,
+              0.08
+            ],
+            "roughness": 0.55,
             "metallic": 0.0
           }
         }

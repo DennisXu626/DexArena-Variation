@@ -5,6 +5,7 @@ import copy
 from contextlib import contextmanager
 import hashlib
 import importlib.metadata as metadata
+from itertools import combinations
 import json
 import os
 from pathlib import Path
@@ -17,8 +18,8 @@ import traceback
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 TASKS = ('AspirateLiquid', 'DispenseLiquid')
-SCHEMES = ('original', 'jade', 'coral')
 CATALOG = ROOT / 'tasks/assets/variation/pipette_transfer/v1/catalog.json'
+SCHEMES = tuple(json.loads(CATALOG.read_text(encoding='utf-8'))['schemes'])
 GPU_MEMORY_PROFILES = {
     'native': {},
     'two_env': {'max_rigid_contact_count': 2**17, 'max_rigid_patch_count': 2**16,
@@ -163,7 +164,8 @@ def static_check(baseline='HEAD'):
     from check_pipette_appearance import check
     foundation = check()
     catalog = read(CATALOG)
-    assert catalog['scope'] == 'material_appearance' and tuple(catalog['schemes']) == SCHEMES
+    parameters = read(ROOT / catalog['parameters'])
+    assert catalog['scope'] == 'material_appearance' and SCHEMES == ('original', *parameters['candidate_ids'])
     assert set(catalog['tasks']) == set(TASKS)
     for path in [*sorted((ROOT / 'tasks/pipette_transfer').glob('*.py')),
                  *sorted((ROOT / 'tools/variation').glob('*pipette*.py'))]:
@@ -199,16 +201,32 @@ def static_check(baseline='HEAD'):
                     node = Normalize().visit(node)
                 result.append(ast.dump(node, include_attributes=False))
         return result
-    assert methods(current, True) == methods(previous), 'Pipette geometry/judgment/reward/state AST changed'
+    assert methods(current) == methods(previous), 'Pipette geometry/judgment/reward/state AST changed'
+    methods(current, True)
     assert counts == {'predicate': 4, 'value': 2}, counts
     examples = sorted((ROOT / 'examples/variation/pipette_transfer').glob('*.json'))
     assert len(examples) == 3
     for path in examples:
         value = read(path)
         assert value['task_id'] in [f'PipetteTransfer{task}-Sharpa-v1' for task in TASKS]
+    previous_index = json.loads(subprocess.check_output(
+        ['git', 'show', baseline + ':' + CATALOG.relative_to(ROOT).as_posix()], cwd=ROOT, encoding='utf-8'))
+    previous_parameters = json.loads(subprocess.check_output(
+        ['git', 'show', baseline + ':' + previous_index['parameters']], cwd=ROOT, encoding='utf-8'))
+    assert SCHEMES[:len(previous_index['schemes'])] == tuple(previous_index['schemes'])
+    assert previous_parameters['rendering'] == parameters['rendering']
+    assert previous_index['bindings'] == catalog['bindings'] and previous_index['tasks'] == catalog['tasks']
+    for object_id, previous in previous_parameters['objects'].items():
+        schemes = parameters['objects'][object_id]['schemes']
+        for scheme, values in previous['schemes'].items():
+            assert schemes[scheme] == values, (object_id, scheme)
+        for values in schemes.values():
+            for role, material in values.items():
+                assert material.get('base_color_alpha') == previous['schemes']['jade'][role].get('base_color_alpha')
     return {'status': 'passed', 'scope': 'CPU source/configuration/mock checks only',
             'catalog_version': catalog['version'], 'baseline': baseline,
             'geometry_judgment_reward_state_unchanged': True, 'scope_normalizations': counts,
+            'retained_schemes_unchanged': previous_index['schemes'], 'schemes': SCHEMES,
             'foundation_checks': foundation['checks'], 'historical_model_previews': foundation['archived_model_previews'],
             'physics_steps': 0, 'runtime': 'NOT TESTED'}
 
@@ -317,6 +335,55 @@ def material_roles(base):
             assert len(indices) == 1
             result[f'/{env_id}/{indices[0]}/material'] = {'object_id': oid, 'role': role}
     return result
+
+
+def capture_witness_masks(base, output):
+    """Capture visible editable shapes from the seeded original task cameras."""
+    adapter = base._pipette_appearance
+    candidates = SCHEMES[1:]
+    cameras = {**base._sensors, 'human': base.scene.human_render_cameras['render_camera']}
+    ids = []
+    for env_idx, scene in enumerate(base.scene.sub_scenes):
+        by_object = {}
+        for entity in scene.entities:
+            body = entity.find_component_by_type(sapien.render.RenderBodyComponent)
+            if body is None:
+                continue
+            for shape in body.render_shapes:
+                for oid, role, part, _, _ in adapter.bindings[env_idx]:
+                    if role in adapter.scheme_parameters(oid, candidates[0]) and part in shape.parts:
+                        by_object.setdefault(oid, []).append(int(shape.per_scene_id))
+        ids.append(by_object)
+    attachments = {}
+    for name, sensor in cameras.items():
+        for env_idx, camera in enumerate(sensor.camera._render_cameras):
+            value = camera.get_picture_cuda('Segmentation').torch()
+            assert value.is_cuda
+            attachments[f'{name}_env{env_idx}'] = value[..., 0].detach().cpu().numpy().copy()
+    np.savez_compressed(output / 'witness_segmentation.npz', **attachments)
+    dump(output / 'witness_render_ids.json', ids)
+    return ids, attachments
+
+
+def appearance_witness(directory, schemes, ids, attachments):
+    from PIL import Image
+    frames = {(scheme, camera): np.asarray(Image.open(directory / f'{scheme}_{camera}.png')).astype(np.int16)
+              for scheme in schemes for camera in attachments}
+    rows = []
+    for env_idx, by_object in enumerate(ids):
+        for oid, render_ids in sorted(by_object.items()):
+            cameras = [(camera, np.isin(seg, render_ids)) for camera, seg in attachments.items()
+                       if camera.endswith(f'_env{env_idx}')]
+            for left, right in combinations(schemes, 2):
+                views = []
+                for camera, mask in cameras:
+                    delta = np.abs(frames[left, camera][mask] - frames[right, camera][mask]).max(axis=-1)
+                    views.append({'camera': camera, 'visible_pixels': int(mask.sum()),
+                                  'pixels_delta_ge_8': int((delta >= 8).sum()),
+                                  'mean_max_channel_delta': float(delta.mean()) if delta.size else 0.})
+                rows.append({'env_idx': env_idx, 'object_id': oid, 'schemes': [left, right], 'views': views,
+                             'passed': any(view['pixels_delta_ge_8'] >= 8 for view in views)})
+    return rows
 
 
 def prime_controller_targets(base):
@@ -579,8 +646,30 @@ def run_task(task, args, output, result):
                     for i, frame in enumerate(frames):
                         Image.fromarray(frame).save(output / f'{scheme}_{name}_env{i}.png')
                 assert records == base._pipette_appearance.records
+                if scheme == 'original':
+                    witness_ids, witness_segments = capture_witness_masks(base, output)
+                    assert all(set(row) == set(read(CATALOG)['tasks'][task]) for row in witness_ids)
+                else:
+                    _, restored_info = checked_reset(seed=7, options={'pipette_appearance': {'scheme_id': 'original'}})
+                    restored_materials = verify(base, ['original'] * num_envs, native)
+                    assert restored_materials == native
+                    assert not shared.state_changes(baseline, shared.snapshot(base))
+                    assert properties == shared.physical(base)
+                    restored_frames = images(restored_info)
+                    pixels = {str(i): shared.image_changes(native_images, restored_frames, output,
+                                                           f'restored_{scheme}', env_id=i) for i in range(num_envs)}
+                    shared.save_image_pairs(observed, restored_frames, output, f'restored_{scheme}')
+                    assert not any(row['changed_values'] for views in pixels.values() for row in views.values())
+                    result['checks'].setdefault('candidate_restorations', {})[scheme] = {
+                        'pixel_changes': pixels, 'selected_state_evidence': last_selected_evidence,
+                        'materials': restored_materials, 'records': copy.deepcopy(base._pipette_appearance.records)}
             result['checks'][scheme] = {'status': 'passed', 'materials': measured, 'records': records}
             close()
+        if gpu:
+            witness = appearance_witness(output, SCHEMES, witness_ids, witness_segments)
+            dump(output / 'witness_pairs.json', witness)
+            assert all(row['passed'] for row in witness), 'Candidate pair lacks a visible object-region RGB witness'
+            result['checks']['object_witness'] = {'evidence': 'witness_pairs.json', 'comparisons': len(witness)}
         traces = []
         for repeat in range(2):
             result['stage'] = f'random repeat {repeat}'
@@ -751,6 +840,21 @@ def run_task(task, args, output, result):
             dump(output / 'original_raw_changed_pixels.json', raw_rows)
             assert not any(row['changed_values'] for rows in pixels.values() for row in rows.values())
             result['checks']['original_rgb_restoration'] = {'status': 'passed', 'pixel_changes': pixels}
+            expanded = SCHEMES[3:]
+            result['checks']['expansion_local_pairs'] = {}
+            for i, first in enumerate(expanded):
+                second = expanded[(i + 1) % len(expanded)]
+                config = {'scheme_id': first, 'per_env': {'1': {'scheme_id': second}}}
+                _, info = checked_reset(seed=7, options={'pipette_appearance': config})
+                verify(base, [first, second], native)
+                rows = []
+                for selected in (1, 0):
+                    prefix = f'local_{first}_{second}_{selected}'
+                    info, row = local_round(base, info, selected, prefix, appearance=True, do_step=selected == 0)
+                    verify(base, [first, 'original'] if selected == 1 else ['original'] * num_envs, native)
+                    rows.append({'prefix': prefix, **row})
+                result['checks']['expansion_local_pairs'][first] = {
+                    'initial_schemes': [first, second], 'rounds': rows}
         else:
             result['checks']['local_reset_isolation'] = {'status': 'NOT TESTED', 'reason': 'CPU uses one environment'}
         result.update(status='passed', stage='complete')
@@ -814,7 +918,7 @@ def main():
             'command': sys.argv, 'platform': platform.system(), 'python': sys.version,
             'sim_backend': args.sim_backend, 'num_envs': 2 if args.sim_backend == 'physx_cuda' else 1,
             'task_ids': [f'PipetteTransfer{task}-Sharpa-v1' for task in selected],
-            'test_mode': 'standard', 'catalog_version': read(CATALOG)['version'],
+            'test_mode': 'standard', 'catalog_version': read(CATALOG)['version'], 'schemes': SCHEMES,
             'rendering_probe_only': args.rendering_probe_only,
             'gpu_memory_profile': args.gpu_memory_profile,
             'gpu_memory_overrides': GPU_MEMORY_PROFILES[args.gpu_memory_profile],

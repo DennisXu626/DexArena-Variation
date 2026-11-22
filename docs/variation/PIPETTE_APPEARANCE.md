@@ -1,6 +1,6 @@
 # Pipette Transfer 外观
 
-AspirateLiquid 与 DispenseLiquid 支持 original、jade、coral，保留六个可见逻辑对象的原版与两套额外外观。方案参数仅定义在[对象 catalog](../../assets/appearance/objects/pipette_transfer/catalog.json)；[运行索引](../../tasks/assets/variation/pipette_transfer/v1/catalog.json)引用参数、任务集合与绑定。
+AspirateLiquid 与 DispenseLiquid 的六个可见对象支持 original 加十套候选。扩容保留 jade 和 coral，追加 `variant_3` 至 `variant_10`。候选沿用既有材质角色，玻璃沿用各角色原有候选 alpha，吸头杯与周围支架使用不同配色。方案参数由[对象 catalog](../../assets/appearance/objects/pipette_transfer/catalog.json)定义，[运行索引](../../tasks/assets/variation/pipette_transfer/v1/catalog.json)列出方案、任务和绑定。
 
 | 对象 | 正式绑定与保护 |
 |---|---|
@@ -44,13 +44,26 @@ records = env.unwrapped._pipette_appearance.records
 
 任务与模型预览仅接受已核定的 SAPIEN 3.0.3 default shader 文件对。LF 和 CRLF 各有一组精确字节哈希。启用修复时，先核对整个文件对，再应用同一片元补丁。
 
-native_off、original、jade、coral 的验收统一使用上述“修复 default shaders＋sample cup 固定透明 pass”配置。original 指该配置下的原生 PBR 及精确像素恢复；不声称与 stock default 或 minimal 的 RGB 相同。私有 shader 包按来源／补丁身份缓存，逐环境绑定实际 ID，不修改安装目录、顶点或世界位置。材质与深度参数读取唯一 catalog。
+native_off、original 与候选的验收统一使用上述“修复 default shaders＋sample cup 固定透明 pass”配置。original 指该配置下的原生 PBR 及精确像素恢复；不声称与 stock default 或 minimal 的 RGB 相同。私有 shader 包按来源／补丁身份缓存，逐环境绑定实际 ID，不修改安装目录、顶点或世界位置。材质与深度参数读取唯一 catalog。
 
-**验收**
+**扩容验收**
 
-公开入口 CPU 合同使用记录副作用的父类替身，覆盖显式与随机有效请求、优先顺序、局部选择、恢复和 disabled 分支。未知方案用例的父 reset、任务和外观随机抽样、状态及锁写入计数均为零。
+[扩容摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/summary.json)与[全部 132 张固定原图的索引](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/fixed_frames.json)记录 Windows 两短任务的实测结果。每任务各 11 张可直接查看的原生 human 视角 PNG 分别存放在 [AspirateLiquid](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid) 和 [DispenseLiquid](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/DispenseLiquid)。
 
-成功路径的 CPU、Windows v5 CUDA 和相机结果采用归档中记录的采集身份。见[正式运行摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime/summary.json)和[任务相机补充检查](../../assets/appearance/objects/pipette_transfer/previews/runtime/rendering_probe_summary.json)。
+CPU 公开入口合同逐项覆盖所有候选的合法转发与最后一个环境拼错方案时的零副作用拒绝。下表运行数据和图像采用各自归档记录的采集身份，样品杯透明 pass 与承托盘深度偏置证据均来自显式开启 `pipette_rendering` 的场景。
+
+| 验收 | 结果 |
+|---|---|
+| 正式 CPU 接口与动态 | 两任务全部方案通过。每任务两次原生关闭和十一套固定方案各 60 步，共 1,560 控制步、31,200 物理子步，逐步状态差为零 |
+| 标准双环境 CUDA | 130 次选中状态读回，20 控制步、400 物理子步。双向局部 reset 的未选环境状态和三相机 RGB 保持一致，两任务每个候选在固定初态均恢复 original RGB 差 0 |
+| 逐对象可辨性 | 两任务合计 990 组相机遮罩对照通过。最弱的一组仍有 92 个目标像素的最大通道差达到 8 |
+| 原生模型和光学 | 六个独立模型恢复差 0。两组玻璃条纹对照覆盖十候选。任务深度共 56 次构造、112 组对照，Aspirate 有 5 组无共同可见承托盘像素 |
+
+精选五张实景。[Aspirate original](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/original_human_env0.png) · [Aspirate variant_8](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/variant_8_human_env0.png) · [Dispense variant_9](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/DispenseLiquid/variant_9_human_env0.png) · [局部 reset 选中 env1](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/local_variant_3_variant_4_1_base_camera_env1.png) · [同轮未选 env0](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/local_variant_3_variant_4_1_base_camera_env0.png)。
+
+**PR #14 验收档案**
+
+以下结果对应 original、jade、coral。见[正式运行摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime/summary.json)和[实际任务相机补充检查](../../assets/appearance/objects/pipette_transfer/previews/runtime/rendering_probe_summary.json)。
 
 | 检查 | 已验证范围 |
 |---|---|
@@ -66,10 +79,17 @@ Aspirate 的部分原相机视图存在遮挡或无偏置时盘不可见，补�
 
 **正式任务实景**
 
-| 任务 | `pipette_appearance` 固定方案 | `pipette_rendering` |
-|---|---|---|
-| AspirateLiquid | [original](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/original_human_env0.png) · [jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/jade_human_env0.png) · [coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/coral_human_env0.png) | 显式启用。样品杯透明 pass 和承托盘深度偏置 |
-| DispenseLiquid | [original](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/original_human_env0.png) · [jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/jade_human_env0.png) · [coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/coral_human_env0.png) | 显式启用。承托盘深度偏置 |
+AspirateLiquid：original、jade、coral。
+
+![Aspirate original](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/original_human_env0.png)
+![Aspirate jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/jade_human_env0.png)
+![Aspirate coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/AspirateLiquid/coral_human_env0.png)
+
+DispenseLiquid：original、jade、coral。
+
+![Dispense original](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/original_human_env0.png)
+![Dispense jade](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/jade_human_env0.png)
+![Dispense coral](../../assets/appearance/objects/pipette_transfer/previews/runtime/DispenseLiquid/coral_human_env0.png)
 
 **复现**
 
@@ -85,4 +105,35 @@ python -B tools/variation/check_appearance_archive.py
 
 CPU 使用 `check_pipette_dynamics.py --steps 60 --seed 7`，父进程传入 `--sapien-root --artifact --physx-gpu-dir`，每个 worker 独立核验 SDK。`check_pipette_rendering.py` 采集相机补充证据；`compact_pipette_rendering.py` 直接复核其 PNG／NPZ／PT。
 
-[正式证据导出器](../../tools/variation/compact_task_runtime.py) 使用 `--family pipette_transfer`、每项 CUDA 的 `--run / --console-run`、CPU 的 `--cpu-run / --cpu-console-run`、`--sdk-artifacts / --sdk-lock`、光学 `--probe-summary` 和新的 `--output` 目录。导出过程直接检查原始状态和图像，保留原 PNG 字节。
+[原 PR 证据导出器](../../tools/variation/compact_task_runtime.py) 用于原两候选的历史档案。静态校验以含首批实现的 main 为基线。运行证据记录实际 checkout、源码和资产 SHA、原生视角、布局 seed 7、`two_env` 缓冲配置和 Windows 私有 SAPIEN v5。
+
+**扩容复现**
+
+各命令在仓库根目录串行运行。准备审计过的原始 Pipette URDF，在 `$capture` 和 `$console` 下分别记录同名原始子目录与命令日志。以下为 AspirateLiquid 的 CUDA 采集，`$py` 是 Python 可执行文件。团队共用 GPU 时可由本机共享锁包装同一命令。
+
+```powershell
+$sdkArgs = @('--sapien-root', $runtime, '--artifact', $artifact, '--physx-gpu-dir', $physx)
+$captureArgs = @('tools/variation/sapien_sdk/run_task_check.py', '--repo-root', '.',
+    '--checker', 'tools/variation/check_pipette_runtime.py', '--output', "$capture/gpu_aspirate",
+    '--approved-runtime', '--sim-backend', 'physx_cuda', '--experimental-windows-cuda',
+    '--gpu-memory-profile', 'two_env', '--task', 'AspirateLiquid') + $sdkArgs
+$monitorArgs = @('--output', "$console/gpu_aspirate", '--delta-mib', '1792', '--timeout-s', '1800',
+    '--', $py, '-B') + $captureArgs
+& $py -B tools/variation/monitor_pipette_expansion.py @monitorArgs
+```
+
+按下表替换 checker、运行参数和两个输出子目录。CPU 项将监测上限设为 `1024` MiB。
+
+| 原始子目录 | checker 和参数 |
+|---|---|
+| `gpu_aspirate`、`gpu_dispense` | `check_pipette_runtime.py --approved-runtime --sim-backend physx_cuda --experimental-windows-cuda --gpu-memory-profile two_env --task <任务>` |
+| `cpu_interface` | `check_pipette_runtime.py --approved-runtime --sim-backend physx_cpu` |
+| `cpu_dynamics` | `check_pipette_dynamics.py --steps 60 --seed 7`，直接运行并传入三项私有 SDK 路径 |
+| `probe_aspirate`、`probe_dispense` | `check_pipette_rendering.py --approved-runtime --sim-backend physx_cuda --experimental-windows-cuda --gpu-memory-profile two_env --task <任务>` |
+| `model_<对象>` | `render_pipette_preview.py --render --verify-visuals --size 512 --objects <对象>`，六个对象各一进程 |
+
+```powershell
+python -B tools/variation/compact_pipette_expansion.py --captures $capture --consoles $console --sdk-artifact $artifact --output $archive
+```
+
+扩容复核从原始 PNG、任务分割、PT 状态和光学附件重算，保留原 PNG 字节。固定方案逐对象使用可编辑视觉片元的分割掩码做两两对照。每个环境须有一个原相机见证，对每对方案至少八个目标像素的最大通道差达到八个 RGB 级。每套恢复 original 和所有未选环境的 RGB 差均要求为零。条纹目标检查玻璃透视可读性，任务深度探针核验承托盘的目标片元偏置。

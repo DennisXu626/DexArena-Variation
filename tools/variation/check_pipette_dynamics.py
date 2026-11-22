@@ -1,4 +1,4 @@
-"""Exact CPU rollouts for native repeat/original/jade/coral; no task-success claim."""
+"""Exact CPU rollouts for two native controls and every catalog scheme."""
 import argparse
 import copy
 import hashlib
@@ -14,8 +14,9 @@ import traceback
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_pipette_runtime import TASKS, asset_closure, closure_unchanged, dump, external_hashes, read, sha, source_hashes as runtime_source_hashes
+from check_pipette_runtime import SCHEMES as MATERIAL_SCHEMES
 
-SCHEMES = ('native_off', 'native_repeat', 'original', 'jade', 'coral')
+SCHEMES = ('native_off', 'native_repeat', *MATERIAL_SCHEMES)
 
 
 def source_hashes():
