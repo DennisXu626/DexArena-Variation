@@ -1,0 +1,79 @@
+{
+  "reused_job": 128861,
+  "reused_job_GPU_seconds": 215,
+  "jobs": [
+    {
+      "job_id": "128927",
+      "frozen_head": "9f7edb497c1d79c7e93b2c8847c7439e8491e511",
+      "manifest_sha256": "0b5e01b6e75bd62d23e1caa8d78b78ae7eca1c3c2e49d6e35d25805ce1abf6a4",
+      "scheduler": {
+        "JobState": "COMPLETED",
+        "ExitCode": "0:0",
+        "SubmitTime": "2026-11-22T06:33:02",
+        "StartTime": "2026-11-22T06:33:02",
+        "EndTime": "2026-11-22T06:34:03",
+        "RunTime": "00:01:01",
+        "Requeue": "0",
+        "Restarts": "0",
+        "NodeList": "lyg0295",
+        "AllocTRES": "cpu=2,node=1,billing=2,gres/shard=1"
+      },
+      "gpu_allocated_seconds": 61,
+      "queue_seconds": 0,
+      "physical_gpu": 3,
+      "application_seconds": 58.686,
+      "cleanup": {
+        "pgid": 373996,
+        "errors": [],
+        "TERM_sent": false,
+        "KILL_sent": false,
+        "live_remaining": [],
+        "zombie_remaining": [],
+        "complete": true
+      },
+      "terminal_queue_empty": true,
+      "visible_job_cgroup_members": [],
+      "watcher_absent": true,
+      "root_sampled_peak_bytes": 269470571,
+      "ceph_min_free_bytes": 265675603968,
+      "accounting_fallback": "scontrol terminal JobState and RunTime; sacct unavailable"
+    },
+    {
+      "job_id": "128933",
+      "frozen_head": "87afa53d5262b6667a6f0e8dac0ecee538781318",
+      "manifest_sha256": "18fc984e6be76312413c0616defd6a50aa029cb8fa1bbc7d00dffc3e30ebb7e4",
+      "scheduler": {
+        "JobState": "FAILED",
+        "ExitCode": "1:0",
+        "SubmitTime": "2026-11-22T06:39:26",
+        "StartTime": "2026-11-22T06:39:28",
+        "EndTime": "2026-11-22T06:40:37",
+        "RunTime": "00:01:09",
+        "Requeue": "0",
+        "Restarts": "0",
+        "NodeList": "lyg0295",
+        "AllocTRES": "cpu=2,node=1,billing=2,gres/shard=1"
+      },
+      "gpu_allocated_seconds": 69,
+      "queue_seconds": 2,
+      "physical_gpu": 3,
+      "application_seconds": 66.417,
+      "cleanup": {
+        "pgid": 418804,
+        "errors": [],
+        "TERM_sent": false,
+        "KILL_sent": false,
+        "live_remaining": [],
+        "zombie_remaining": [],
+        "complete": true
+      },
+      "terminal_queue_empty": true,
+      "visible_job_cgroup_members": [],
+      "watcher_absent": true,
+      "root_sampled_peak_bytes": 375124487,
+      "ceph_min_free_bytes": 265247784960,
+      "accounting_fallback": "scontrol terminal JobState and RunTime; sacct unavailable"
+    }
+  ],
+  "followup_gpu_allocated_seconds": 130
+}
