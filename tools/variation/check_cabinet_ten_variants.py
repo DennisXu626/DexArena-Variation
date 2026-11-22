@@ -105,15 +105,25 @@ def static():
         choices = [sid for _, sid, _ in selector.select(np.array([0, 1]), {})]
         assert choices == ['variant_1', 'variant_10'] if mode == 'explicit' else all(x in VARIANTS[1:] for x in choices)
     extra = validate_assets(c)
+    from cabinet_followup import static as check_followup_static
+    extra['followup']=check_followup_static(DIR)
     assert not any(n in sys.modules for n in ('tasks','torch','sapien','mani_skill'))
     return dict(status='passed',family=FAMILY,scopes=list(TASKS),variants=len(VARIANTS)-1,
                 legacy_catalog_values='exact',scope='CPU only',assets=extra)
 
 
-def run(approval, output):
+def run(approval, output, *, followup=None):
     auth=read(approval)
     head=git('rev-parse','HEAD').decode().strip()
-    assert auth['approved'] is True and auth['scope']==FAMILY+'_ten_variants'
+    scopes={'label-probe':'cabinet_label_probe','targeted':'cabinet_pouring_followup'}
+    assert auth['approved'] is True and auth['scope']==scopes.get(followup,FAMILY+'_ten_variants')
+    if followup:
+        assert auth.get('blockers_resolved') is True
+    if followup=='targeted':
+        probe=auth['label_probe']
+        assert str(probe['job_id']).isdigit() and probe['visible_pattern_passed'] is True
+        assert probe['binding_path'] in {'current','private_upload'}
+        assert len(probe['manifest_sha256'])==64
     assert head==auth['frozen_head'] and os.environ.get('SLURM_JOB_ID')
     assert os.environ.get('SLURM_JOB_GPUS','').isdigit()
     limit=Path(auth['storage_root']).resolve(strict=True)
@@ -177,10 +187,10 @@ def run(approval, output):
         assert np.allclose(m.base_color,rgb,atol=1e-6,rtol=0)
         assert abs(m.roughness-roughness)<1e-6 and abs(m.metallic-metallic)<1e-6
 
-    def verify_bindings(e, i, sid):
+    def verify_bindings(e, i, sid, *, bottle_only=False):
         mapping=catalog[sid]
         counts={}
-        if e._cabinet_appearance is not None:
+        if not bottle_only and e._cabinet_appearance is not None:
             adapter=e._cabinet_appearance
             for b in adapter.bindings[i]:
                 params=adapter.catalog['schemes'][mapping['cabinet']][b['role']]
@@ -204,7 +214,7 @@ def run(approval, output):
                 if role=='body_label':
                     assert digest(m.base_color_texture.download())==digest(label.download())
                 counts[b['name']+'/'+role]=counts.get(b['name']+'/'+role,0)+1
-        if e._family_liquid is not None:
+        if not bottle_only and e._family_liquid is not None:
             from tasks.cabinet_pouring.pouring_appearance import PALETTE, NEW_FINISHES
             liquid=mapping['pouring']
             tex, pixels, materials=e._family_liquid.bindings[i]
@@ -312,13 +322,18 @@ def run(approval, output):
     def full_reset(env, options=None):
         restore_outer_rng()
         return env.reset(seed=SEED, options=options)
-    def make(task, config=None, diagnostic=False, legacy=None):
+    def make(task, config=None, diagnostic=False, legacy=None, review_view=None):
         restore_outer_rng()
         eye,at,fov=BEAD_CAMERA if diagnostic else VIEWS[task]
         camera=dict(width=960,height=720,fov=fov,pose=sapien_utils.look_at(eye,at))
+        review_camera=camera
+        if review_view:
+            review_eye,review_at,review_fov=review_view
+            review_camera=dict(width=960,height=720,fov=review_fov,
+                               pose=sapien_utils.look_at(review_eye,review_at))
         return gym.make(TASK_PREFIX+task+'-Sharpa-v1',num_envs=2,sim_backend='physx_cuda',
             obs_mode='rgb+segmentation',render_mode='rgb_array',reconfiguration_freq=0,
-            sensor_configs={'base_camera':camera},human_render_camera_configs=camera,
+            sensor_configs={'base_camera':camera},human_render_camera_configs=review_camera,
             **({'family_appearance':config} if config is not None else (legacy or {})))
     def bead_display(e):
         from mani_skill.utils.structs import Pose
@@ -331,6 +346,8 @@ def run(approval, output):
         e.scene._gpu_fetch_all()
     tracked=git('diff','--name-only',BASE,'HEAD','--','tasks',
                 str(Path(__file__).resolve().relative_to(ROOT))).decode().splitlines()
+    if followup:
+        tracked.append('tools/variation/cabinet_followup.py')
     from importlib.metadata import version
     dump('manifest.json',dict(head=head,baseline=BASE,seed=SEED,backend='physx_cuda',
          job=os.environ['SLURM_JOB_ID'],gpu=os.environ['SLURM_JOB_GPUS'],
@@ -338,6 +355,14 @@ def run(approval, output):
          asset_identity=auth['asset_identity'],
          hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in tracked}))
     report=dict(family=FAMILY,head=head,seed=SEED,job=os.environ['SLURM_JOB_ID'],tasks={},status='running')
+    if followup:
+        from cabinet_followup import run as run_followup
+
+        run_followup(followup, auth, report=report, output=output, make=make, full_reset=full_reset,
+                     opts=opts, capture=capture, snap=snap, task_state=task_state, materials=materials,
+                     verify_bindings=verify_bindings, rgb_equal=rgb_equal, bead_display=bead_display,
+                     variants=VARIANTS, catalog=catalog)
+        return
     env=None
     try:
         for task,roles in TASKS.items():
@@ -533,7 +558,8 @@ def gallery(root):
             board = Image.new('RGB', (width*columns, (height+26)*rows), '#182029')
             draw = ImageDraw.Draw(board)
             for i, sid in enumerate(ordered):
-                frame = frames[sid].get('files', frames[sid])['base_camera']
+                camera = result.get('gallery_camera','base_camera')
+                frame = frames[sid].get('files', frames[sid])[camera]
                 with Image.open(root/frame['file']) as source:
                     contents = source.crop(box) if box is not None else source.copy()
                 contents.thumbnail((width,height), Image.Resampling.LANCZOS)
@@ -548,9 +574,10 @@ if __name__=='__main__':
     p.add_argument('--static',action='store_true')
     p.add_argument('--approval',type=Path)
     p.add_argument('--output',type=Path)
+    p.add_argument('--followup',choices=('label-probe','targeted'))
     p.add_argument('--gallery',type=Path,help='Compose boards from existing task RGB; no simulation')
     args=p.parse_args()
     if args.static: print(json.dumps(static(),ensure_ascii=False))
     elif args.gallery: gallery(args.gallery)
-    elif args.approval and args.output: run(args.approval,args.output)
+    elif args.approval and args.output: run(args.approval,args.output,followup=args.followup)
     else: p.error('Use --static or a separately authorized --approval and --output')

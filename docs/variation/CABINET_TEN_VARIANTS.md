@@ -75,3 +75,5 @@ python -B tools/variation/check_cabinet_ten_variants.py --gallery PATH_TO_APPROV
 任务短检经新授权后用同一脚本的 `--approval` 和 `--output`。原始 PNG、分割掩膜内的可见及变化像素、同坐标裁剪、选择记录、运行 manifest、首个失败和作业收据分开留存。拼图由真实原帧制成，每行至多三款。实际可见性、印刷方向、五金和内外分件需要人工审图。
 
 [本轮任务实景与 A4／A5 结果](evidence/cabinet_ten_variants/runtime_001/README.md)。草稿待 Dennis 审图。
+
+[定向瓶签、开盖和倾倒补测准备](evidence/cabinet_ten_variants/LABEL_AND_POUR_FOLLOWUP.md)。128861 已通过项原样保留。
