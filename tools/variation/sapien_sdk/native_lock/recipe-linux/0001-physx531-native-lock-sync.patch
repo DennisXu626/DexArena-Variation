@@ -1,0 +1,26 @@
+--- a/physx/source/simulationcontroller/include/ScBodyCore.h
++++ b/physx/source/simulationcontroller/include/ScBodyCore.h
+@@ -106,3 +106,3 @@
+ 
+-		PX_FORCE_INLINE void				setRigidDynamicLockFlags(PxRigidDynamicLockFlags flags) { mCore.lockFlags = flags; }
++						void				setRigidDynamicLockFlags(PxRigidDynamicLockFlags flags);
+ 
+--- a/physx/source/simulationcontroller/src/ScBodyCore.cpp
++++ b/physx/source/simulationcontroller/src/ScBodyCore.cpp
+@@ -81,5 +81,16 @@
+ //
+ //--------------------------------------------------------------
+ 
++extern "C" unsigned dexarena_physx_native_lock_sync_patch_version()
++{
++	return 1;
++}
++
++void Sc::BodyCore::setRigidDynamicLockFlags(PxRigidDynamicLockFlags flags)
++{
++	mCore.lockFlags = flags;
++	updateBodySim(*this);
++}
++
+ void Sc::BodyCore::setBody2World(const PxTransform& p)
+ {

@@ -1,23 +1,7 @@
-# 笔记本电脑（model_id 10211）（office_desk.laptop）
+# 笔记本 10211
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+`original` 保留本次原生材质，`terracotta_matte / petrol_satin` 的唯一参数见 [catalog](catalog.json)。[绑定](bindings.json) 明确保护屏幕原图、底座、集成键盘、触控板、转轴和细节。
 
-原始角色：可动设备／屏幕盖。V1资源说明：`assets/task_object_meshes/office/10211/mobility.urdf`。
+OpenLaptop 每环境 `_laptops[env_id]`，scale=.3；只改 `link_1.visual[2] / screen_frame-16 / new-2.obj` 的 `material-0`。按原生part私有复制，其他5个材质槽保护；无新增UV/纹理，不整OBJ覆盖。源材质组三角位置指纹、Kd和2414三角形共同核定身份，不依赖part顺序。
 
-尚无已验收新外观；原UV、材质槽及阶段绑定须在后续适配时针对实际资产核定，不能将静态图册视为加载证明。
-
-## 资料与加载边界
-
-V1对象键：`office_desk/laptop`；V2对应键：`office_laptop`。代码调查基准e7d5c49d079153e77da1ce2bfde16edf67ee7fa8；V1视觉资料HF revision b197a198fe50f41d70f563cfa7c88d3cc9f528b6，此revision只说明调查素材，不保证所有后续运行资产等同。
-
-- TypeKeys._load_scene仅建keyboard；未加载laptop。旧表把Long场景带入短任务。
-- fixed-root articulation visual/collision model
-
-正式任务入口（保留家族区分，不凭同名合并）：OfficeDeskOpenLaptop-Sharpa-v1。
-
-## 原始来源
-
-- [tasks/office_desk/office_desk_long.py](../../../../../tasks/office_desk/office_desk_long.py)
-- [tasks/office_desk/office_desk_open_laptop.py](../../../../../tasks/office_desk/office_desk_open_laptop.py)
-
-原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+原资产 revision `b197a198fe50f41d70f563cfa7c88d3cc9f528b6`，282安装文件已核官方身份；URDF引用闭包166文件完整。模型不入Git。TypeKeys不加载laptop；Long未接入。[运行与验收边界](../../../../../docs/variation/OFFICE_DEVICES_APPEARANCE.md)。

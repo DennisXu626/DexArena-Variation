@@ -1,0 +1,1026 @@
+{
+  "tested_head": "5aafbc02212427489ddb298da9ed844fdab8e3bd",
+  "reused_job": 128860,
+  "reused_production": "f244804b92bb0ae43984ebce2876051c33d3f50b",
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.6.0",
+    "gymnasium": "0.29.1",
+    "numpy": "2.2.6"
+  },
+  "test_results": {
+    "family": "drawer_plug",
+    "head": "5aafbc02212427489ddb298da9ed844fdab8e3bd",
+    "seed": 7,
+    "job": "128908",
+    "tasks": {
+      "random_reproducibility": {
+        "status": "passed",
+        "independent_records": [
+          [
+            {
+              "env_idx": 0,
+              "episode_index": 1,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 1,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            },
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "warm_white",
+                "charger": "ivory_matte"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            },
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 4,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            }
+          ],
+          [
+            {
+              "env_idx": 0,
+              "episode_index": 1,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 1,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            },
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "warm_white",
+                "charger": "ivory_matte"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            },
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 4,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            }
+          ]
+        ]
+      },
+      "charger_env0_restore": {
+        "status": "passed",
+        "task_camera_before": {
+          "base_camera": {
+            "file": "InsertPlug_followup_before_base_camera_env0.png",
+            "sha256": "50f12766edc00e31a8897d507a1590dd64ab6408d47c2d22d1d3551061d2052e",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "human": {
+            "file": "InsertPlug_followup_before_human_env0.png",
+            "sha256": "f6442181f10b9d940fe4dab0657b4c188fc04d9f6ec5a89a5c834e5d2dc16811",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "before_pose": [
+          -0.2244584560394287,
+          -0.607496976852417,
+          0.035999998450279236,
+          0.5,
+          0.5,
+          -0.5,
+          -0.5
+        ],
+        "after_pose": [
+          -0.2806589603424072,
+          -0.5887994766235352,
+          0.035999998450279236,
+          0.5,
+          0.5,
+          -0.5,
+          -0.5
+        ],
+        "task_camera_after": {
+          "base_camera": {
+            "file": "InsertPlug_followup_after_base_camera_env0.png",
+            "sha256": "07e5f249c573f15780fef766878e7322aa6d4bcbd5257f642a35a311076048be",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "human": {
+            "file": "InsertPlug_followup_after_human_env0.png",
+            "sha256": "a30980d98aedbb606a28d3b13ec3454165a4bd4296b8c0e106745f658dcf978e",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "selected_record": {
+          "env_idx": 0,
+          "episode_index": 3,
+          "family_id": "original",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "socket": "original",
+            "charger": "original"
+          }
+        },
+        "isolation": {
+          "state": true,
+          "materials": true,
+          "records": true,
+          "appearance_rng": true,
+          "all_camera_rgb": true
+        },
+        "camera": {
+          "view": [
+            [
+              0.055,
+              -0.74,
+              0.26
+            ],
+            [
+              -0.29,
+              -0.61,
+              0.032
+            ],
+            0.92
+          ],
+          "intrinsic": [
+            [
+              726.6139526367188,
+              0.0,
+              480.0
+            ],
+            [
+              0.0,
+              726.6139526367188,
+              360.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "extrinsic": [
+            [
+              0.352609246969223,
+              0.9357707500457764,
+              0.0,
+              0.6730768084526062
+            ],
+            [
+              0.4921874403953552,
+              -0.18546192348003387,
+              -0.8505030274391174,
+              0.056818656623363495
+            ],
+            [
+              -0.7958759069442749,
+              0.2998952567577362,
+              -0.5259701609611511,
+              0.4024478495121002
+            ]
+          ]
+        },
+        "actual_frame": {
+          "file": "Charger_post_reset_actual.png",
+          "sha256": "a30980d98aedbb606a28d3b13ec3454165a4bd4296b8c0e106745f658dcf978e",
+          "size_wh": [
+            960,
+            720
+          ]
+        },
+        "same_frame_entity_id": 57,
+        "same_frame_segmentation": {
+          "file": "Charger_post_reset_entity_mask.png",
+          "sha256": "ba4d64dd7d1332b72d61159e058c59ad6e8e258e6d863c75bfd330235703556f",
+          "size_wh": [
+            960,
+            720
+          ]
+        },
+        "visible_part_pixels": {
+          "body": 19605,
+          "negative_x_prong": 1266,
+          "positive_x_prong": 1140
+        },
+        "part_masks": {
+          "body": {
+            "file": "Charger_body_mask.png",
+            "sha256": "eed1dbefdf6c27371bdcebb6f1090c2220e336fdd073fe0bcf15ddc383d0cf8c",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "negative_x_prong": {
+            "file": "Charger_negative_x_prong_mask.png",
+            "sha256": "6f757912b4bcd097d67f17ebc6721d8b0a1bb95ddcead6beeee9b32555d71f13",
+            "size_wh": [
+              960,
+              720
+            ]
+          },
+          "positive_x_prong": {
+            "file": "Charger_positive_x_prong_mask.png",
+            "sha256": "0cdadc63a68dd16040b989650de1072e721c942546bf7fcbf96466fea5327d00",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "native_finishes": [
+          {
+            "base_color": [
+              0.7200000286102295,
+              0.75,
+              0.800000011920929,
+              1.0
+            ],
+            "roughness": 0.09000000357627869,
+            "metallic": 1.0
+          },
+          {
+            "base_color": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "roughness": 0.05999999865889549,
+            "metallic": 1.0
+          },
+          {
+            "base_color": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "roughness": 0.05999999865889549,
+            "metallic": 1.0
+          }
+        ],
+        "wrong_candidate_finishes": [
+          {
+            "base_color": [
+              0.5647115111351013,
+              0.5394794940948486,
+              0.44520118832588196,
+              1.0
+            ],
+            "roughness": 0.7200000286102295,
+            "metallic": 0.0
+          },
+          {
+            "base_color": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "roughness": 0.05999999865889549,
+            "metallic": 1.0
+          },
+          {
+            "base_color": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "roughness": 0.05999999865889549,
+            "metallic": 1.0
+          }
+        ],
+        "native_reference": {
+          "file": "Charger_same_pose_native_reference.png",
+          "sha256": "a30980d98aedbb606a28d3b13ec3454165a4bd4296b8c0e106745f658dcf978e",
+          "size_wh": [
+            960,
+            720
+          ]
+        },
+        "negative_reference": {
+          "file": "Charger_same_pose_wrong_candidate.png",
+          "sha256": "fb04a0a0baf5414b9cb60ec4acca7f1bb9d0abd97cb1a7e21627df2f7b76b045",
+          "size_wh": [
+            960,
+            720
+          ]
+        },
+        "per_part_rgb": {
+          "body": {
+            "pixels": 19605,
+            "different": 0
+          },
+          "negative_x_prong": {
+            "pixels": 1266,
+            "different": 0
+          },
+          "positive_x_prong": {
+            "pixels": 1140,
+            "different": 0
+          }
+        },
+        "negative_control_rgb": {
+          "body": {
+            "pixels": 19605,
+            "different": 19605
+          },
+          "negative_x_prong": {
+            "pixels": 1266,
+            "different": 0
+          },
+          "positive_x_prong": {
+            "pixels": 1140,
+            "different": 0
+          }
+        },
+        "comparison_crop_xyxy": [
+          407,
+          246,
+          638,
+          472
+        ]
+      },
+      "InsertPlug_socket_close": {
+        "status": "passed",
+        "original_view_attempts": [
+          {
+            "view": [
+              [
+                0.055,
+                -0.44,
+                0.52
+              ],
+              [
+                -0.125,
+                -0.38,
+                0.034
+              ],
+              0.48
+            ],
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 96.66666666666667
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 96.66666666666667
+              }
+            ],
+            "original": {
+              "file": "Socket_view_0_original.png",
+              "sha256": "ab65d786de1caf25ffb063ffcd101f1a879762ae7bebe3a3366ffe0fb8fdfc55",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        ],
+        "camera": {
+          "view": [
+            [
+              0.055,
+              -0.44,
+              0.52
+            ],
+            [
+              -0.125,
+              -0.38,
+              0.034
+            ],
+            0.48
+          ],
+          "intrinsic": [
+            [
+              1471.0887451171875,
+              0.0,
+              480.0
+            ],
+            [
+              0.0,
+              1471.0887451171875,
+              360.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "extrinsic": [
+            [
+              0.3162277340888977,
+              0.9486832618713379,
+              -2.9802322387695312e-08,
+              0.4000281095504761
+            ],
+            [
+              0.8837239742279053,
+              -0.29457464814186096,
+              -0.36367255449295044,
+              0.01089208573102951
+            ],
+            [
+              -0.3450101613998413,
+              0.11500333249568939,
+              -0.9315268993377686,
+              0.5539709329605103
+            ]
+          ]
+        },
+        "same_coordinate_crops": {
+          "socket": [
+            238,
+            110,
+            775,
+            634
+          ]
+        },
+        "loaded": {
+          "socket": "fixture"
+        },
+        "gallery_camera": "render_camera",
+        "captures": {
+          "original": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_original.png",
+                "sha256": "ab65d786de1caf25ffb063ffcd101f1a879762ae7bebe3a3366ffe0fb8fdfc55",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 96.66666666666667
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 96.66666666666667
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            }
+          },
+          "variant_1": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_1.png",
+                "sha256": "92f016f1c3098c4c9a8b1b33ea8b77a7eb9f2aa5c77197771ad61226d0b7e9d6",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 184.66666666666666
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 184.66666666666666
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "warm_white",
+                "charger": "ivory_matte"
+              }
+            }
+          },
+          "variant_2": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_2.png",
+                "sha256": "556bd16e87b5e16116a3e620e9645876adfec42cd49b26a259e6d22faf2ff2d4",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 37.0
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 37.0
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 4,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            }
+          },
+          "variant_3": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_3.png",
+                "sha256": "f085fdc4c9d60fb4c454950c281b71f1112e967797e79673e688c342b41a44d5",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 160.33333333333334
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 160.33333333333334
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "ash_greige",
+                "charger": "copper_metal"
+              }
+            }
+          },
+          "variant_4": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_4.png",
+                "sha256": "1cd72f4b043b7e07ee195cf76382ff630643c50c23ed2392a8fc2c03ad716b2f",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 129.0
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 129.0
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 6,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "walnut_birch",
+                "charger": "pebble_pc"
+              }
+            }
+          },
+          "variant_5": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_5.png",
+                "sha256": "e802c97f90b0781d0a3e956f146823b3e95cc5966e8736cec4415895909a4f7b",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 78.33333333333333
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 78.33333333333333
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "mist_blue",
+                "charger": "slate_shell"
+              }
+            }
+          },
+          "variant_6": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_6.png",
+                "sha256": "2a8daa66ec43eaaf41115dde98914739f689a550e73ec24e09ec958763ebbd19",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 94.0
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 94.0
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 8,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            }
+          },
+          "variant_7": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_7.png",
+                "sha256": "415bbb19119387bf804eb9e8284c349030e210fdb6393b4defc0df839e9fe67a",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 154.33333333333334
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 154.33333333333334
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "cream_copper",
+                "charger": "sand_satin"
+              }
+            }
+          },
+          "variant_8": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_8.png",
+                "sha256": "c0ff46eb33dc01eb738c4f58d5a1c23b088d12ca8776fd06a82beaca341f7107",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 67.0
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 67.0
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 10,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            }
+          },
+          "variant_9": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_9.png",
+                "sha256": "8a5410e4311008033122ef7e347eb3fcf058097307ba61dd14a47be838917e48",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 31.0
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 31.0
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "midnight_linen",
+                "charger": "graphite_fine"
+              }
+            }
+          },
+          "variant_10": {
+            "files": {
+              "render_camera": {
+                "file": "Socket_close_variant_10.png",
+                "sha256": "0e913ea8643a9d43649eff51021253219d28eed8cd4a4c3b1d3c8d551c24d817",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "holes": [
+              {
+                "projected_interior": 2042,
+                "visible_interior": 2042,
+                "shell_minus_hole": 119.0
+              },
+              {
+                "projected_interior": 1987,
+                "visible_interior": 1987,
+                "shell_minus_hole": 119.0
+              }
+            ],
+            "record": {
+              "env_idx": 0,
+              "episode_index": 12,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "birch_plum",
+                "charger": "lilac_eggshell"
+              }
+            }
+          }
+        },
+        "entity_mask": {
+          "file": "Socket_close_entity_mask.png",
+          "sha256": "f94e7c7e9a531229cfeab36790928b62ea19ed047bccc68ecc14f390823fcea5",
+          "size_wh": [
+            960,
+            720
+          ]
+        }
+      }
+    },
+    "status": "engineering_passed_pending_visual_review",
+    "reused_job": 128860
+  },
+  "independent_frame_audit": {
+    "minimum_hole_contrast": 31.0,
+    "visible_pixels_per_hole": [
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ],
+      [
+        2042,
+        1987
+      ]
+    ],
+    "translation_m": 0.05922915834889217,
+    "full_frame_actual_equals_native_reference": true
+  },
+  "file_hashes": {
+    "tasks/assets/variation/drawer_plug/family_variants.json": "42b20ab6ff27209d5e0e3ce3191d04fa6f5165c63199b7bc1862d6a680e30284",
+    "tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json": "494ed9a832eefa2901194e0b45dcd4ae4a467b722dcfc80e279f0cb29ffe5275",
+    "tasks/assets/variation/drawer_plug/v1/catalog.json": "3239c3b72aa530b13e283d4a5651b210de76f8077c4b9941d640d7ec42380315",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "b41754e4c8069dfff3aa7a082dd0501ec282ec2922cd73ef7e01d8e2d3aa9f44",
+    "tasks/drawer_plug/drawer_plug_long.py": "5b460d56c1f4c94879f24f6359fc17c66545292a35efb15eeaa84718abff9681",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "b63005b7afd18e4a2cad528fc97858ccf7884936ede9a1dd4363afb606748198",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "8724c11f6c614bbe1072c7cdecb0e48ebdcc79f994cb49675dd28141e01681f4",
+    "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+    "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
+    "tools/variation/check_drawer_ten_variants.py": "ffefc3c9751372031b14376dbbf47c07ec237f5cea689ffe5983fb4e03748aec"
+  },
+  "allocation": {
+    "job_id": "128908",
+    "status": "COMPLETED",
+    "exit_code": "0:0",
+    "gpu_seconds": 30,
+    "application_seconds": 29.060228606685996,
+    "requeue": false,
+    "restarts": 0,
+    "source": "scontrol terminal JobState and RunTime; sacct unavailable",
+    "clean_pgid": true,
+    "owned_pgid": [],
+    "visible_cgroup": [],
+    "root_peak_bytes": 319605449,
+    "min_ceph_free_bytes": 266082451456,
+    "samples": 29
+  }
+}

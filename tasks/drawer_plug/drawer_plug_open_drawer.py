@@ -48,7 +48,9 @@ class DrawerPlugOpenDrawerEnv(DrawerPlugLongEnv):
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
             self._initialize_drawer(env_idx, b, travel=0.0)
-            if self._fixture_appearance is not None:
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            elif self._fixture_appearance is not None:
                 self._fixture_appearance.finish_reset(self, env_idx, options)
 
     def evaluate(self):

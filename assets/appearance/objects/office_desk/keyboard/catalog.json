@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "version": "office_desk.keyboard.v2",
+  "stage": "runtime",
+  "object_id": "keyboard",
+  "model_id": "13106",
+  "fields": [
+    "base_color",
+    "roughness",
+    "metallic"
+  ],
+  "schemes": {
+    "original": {
+      "restore": "captured_native"
+    },
+    "ochre_matte": {
+      "shell": {
+        "base_color": [
+          0.72,
+          0.34,
+          0.035,
+          1.0
+        ],
+        "roughness": 0.8,
+        "metallic": 0.0
+      }
+    },
+    "indigo_satin": {
+      "shell": {
+        "base_color": [
+          0.085,
+          0.075,
+          0.39,
+          1.0
+        ],
+        "roughness": 0.36,
+        "metallic": 0.0
+      }
+    }
+  },
+  "role_aliases": {
+    "shell_strip": "shell"
+  },
+  "role_fields": {
+    "shell": [
+      "base_color",
+      "roughness",
+      "metallic"
+    ],
+    "shell_strip": [
+      "base_color",
+      "roughness",
+      "metallic"
+    ]
+  }
+}

@@ -26,6 +26,8 @@ from tasks.robots.panda_wuji_hand_right_mobile_base import (
 )
 
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.office_desk.reset_scope import OfficeResetScopeMixin, is_full_reset, office_capacity_config
+from tasks.office_desk.devices_appearance import OfficeDevicesAppearance, appearance_enabled
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from mani_skill.utils.geometry.trimesh_utils import (
@@ -545,7 +547,7 @@ def _configure_task_articulation(articulation) -> None:
     reward_mode="sparse",
     render_mode="rgb_array",
 )
-class OfficeDeskOpenLaptopEnv(BaseEnv):
+class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
     """Open the laptop lid and keep it above the target angle for 0.2 s."""
 
     SUPPORTED_ROBOTS = [
@@ -580,9 +582,14 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
         collision_decomposition: str = "simplified",
         num_envs: int = 1,
         reconfiguration_freq=None,
+        office_devices_appearance: dict | None = None,
         **kwargs,
     ):
-        runtime_sim_config = kwargs.pop("sim_config", None)
+        self._office_devices_appearance = (
+            OfficeDevicesAppearance(office_devices_appearance, num_envs, "laptop", LAPTOP_ASSET_DIR)
+            if appearance_enabled(office_devices_appearance, num_envs) else None
+        )
+        runtime_sim_config = office_capacity_config(kwargs.pop("sim_config", None), kwargs)
         if runtime_sim_config not in (None, {"control_freq": CONTROL_FREQUENCY}):
             raise ValueError(
                 "OpenLaptop freezes the Plant configuration in "
@@ -746,9 +753,13 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
             builder.set_scene_idxs([env_id])
             builder.initial_pose = sapien.Pose()
 
+            if self._office_devices_appearance is not None:
+                self._office_devices_appearance.isolate_builder_materials(builder, env_id)
             laptop = builder.build(
                 name=f"laptop-{env_id}"
             )
+            if self._office_devices_appearance is not None:
+                self._office_devices_appearance.bind(laptop, env_id)
             self.remove_from_state_dict_registry(laptop)
             _configure_task_articulation(laptop)
             apply_laptop_masses(laptop)
@@ -880,20 +891,14 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
                 LAPTOP_SPAWN_CENTER,
                 device=self.device,
             ) + (
-                torch.rand(
-                    (batch_size, 2),
-                    device=self.device,
-                )
+                self._office_rand(env_idx, (2,))
                 * 2.0
                 - 1.0
             ) * self.laptop_xy_noise
             xyz[:, 2] = self.laptop_z[env_idx]
 
             yaw = (
-                torch.rand(
-                    (batch_size,),
-                    device=self.device,
-                )
+                self._office_rand(env_idx, ())
                 * 2.0
                 - 1.0
             ) * self.laptop_yaw_noise
@@ -930,9 +935,9 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
                 )
 
                 start_angle = np.deg2rad(
-                    self._episode_rng.uniform(
-                        cfg["start_angle_min_deg"],
-                        cfg["start_angle_max_deg"],
+                    (self._episode_rng if is_full_reset(env_idx, self.num_envs)
+                     else self._batched_episode_rng[env_id]).uniform(
+                        cfg["start_angle_min_deg"], cfg["start_angle_max_deg"],
                     )
                 )
                 start_qpos = (
@@ -972,15 +977,14 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
             arm_indices = [active_names.index(name) for name in arm_names]
             if self.robot_init_qpos_noise > 0 and arm_indices:
                 qpos[:, arm_indices] += common.to_tensor(
-                    self._episode_rng.normal(
-                        0.0,
-                        self.robot_init_qpos_noise,
-                        (batch_size, len(arm_indices)),
-                    ),
+                    self._office_normal(env_idx, self.robot_init_qpos_noise, len(arm_indices)),
                     device=self.device,
                 )
             self.agent.reset(qpos)
             self.agent.robot.set_root_pose(ROBOT_ROOT_POSE)
+
+        if self._office_devices_appearance is not None:
+            self._office_devices_appearance.finish_reset(env_idx, options)
 
     def _ensure_buffers(self):
         if hasattr(self, "reached_once"):
@@ -1119,14 +1123,15 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
         opening_angle = self._opening_angle()
 
         # One shared implementation with the long task's stage 0.
-        self.reached_once, self.hold_counter, reached_hold = lid_open_hold_update(
+        self.reached_once, self.hold_counter, reached_hold = self._office_scoped_results(
+            ("reached_once", "hold_counter"), lid_open_hold_update(
             opening_angle,
             self.reached_once,
             self.hold_counter,
             target_angle=self.target_angle,
             maintain_angle=self.maintain_angle,
             hold_steps=TARGET_HOLD_STEPS,
-        )
+        ))
         # Reported for observations / dense reward; the gate itself is the
         # helper's return value above.
         target_reached_now = opening_angle >= self.target_angle
@@ -1134,7 +1139,7 @@ class OfficeDeskOpenLaptopEnv(BaseEnv):
         hold_progress = torch.clamp(
             self.hold_counter.float() / TARGET_HOLD_STEPS, 0.0, 1.0
         )
-        self.success_latched |= reached_hold
+        self.success_latched |= self._reset_scoped_predicate(reached_hold)
         success = self.success_latched
 
         screen_edge = self._screen_edge_position()

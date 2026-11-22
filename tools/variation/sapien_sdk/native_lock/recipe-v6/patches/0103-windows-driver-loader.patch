@@ -1,0 +1,11 @@
+--- a/python/py_package/physx/__init__.py
++++ b/python/py_package/physx/__init__.py
+@@ -58,7 +58,7 @@
+     import ctypes
+ 
+     if platform.system() == "Windows":
+-        ctypes.CDLL("cuda.dll", ctypes.RTLD_GLOBAL)
++        ctypes.CDLL("nvcuda.dll", ctypes.RTLD_GLOBAL)
+         ctypes.CDLL(str(dll), ctypes.RTLD_LOCAL)
+     elif platform.system() == "Linux":
+         ctypes.CDLL("libcuda.so", ctypes.RTLD_GLOBAL)

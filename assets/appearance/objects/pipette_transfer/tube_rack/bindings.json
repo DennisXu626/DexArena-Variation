@@ -1,0 +1,50 @@
+{
+  "object_id": "tube_rack",
+  "representation": "kinematic_actor",
+  "source": "tasks/pipette_transfer/pipette_transfer_long.py",
+  "builder": "_build_test_tube_rack",
+  "expected_visual_count": 24,
+  "roles": {
+    "frame": {
+      "editable": true,
+      "visual_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    }
+  },
+  "preserve": [
+    "visual_geometry",
+    "collision_geometry",
+    "mass",
+    "joints",
+    "physical_materials",
+    "initial_pose",
+    "openings",
+    "original_uv_and_textures"
+  ],
+  "new_uv": false,
+  "new_textures": []
+}

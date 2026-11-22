@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "object_id": "laptop",
+  "model_id": "10211",
+  "scale": 0.3,
+  "source": {
+    "dataset": "SIPAIR/DexArena",
+    "revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+    "path": "assets/task_object_meshes/office/10211/mobility.urdf",
+    "local_path": "tasks/assets/task_object_meshes/office/10211/mobility.urdf"
+  },
+  "representations": [
+    {
+      "task_id": "OfficeDeskOpenLaptop-Sharpa-v1",
+      "handle": "_laptops[env_id]",
+      "num_envs": "per_environment"
+    },
+    {
+      "task_id": "OfficeDeskLong-Sharpa-v1",
+      "handle": "laptop",
+      "num_envs": 1
+    }
+  ],
+  "absent_from": [
+    "OfficeDeskTypeKeys-Sharpa-v1"
+  ],
+  "editable_role": "bezel",
+  "selector": {
+    "kind": "laptop_screen_frame"
+  },
+  "source_rule": "URDF visual name starts with screen_frame; source _display_plane_points distinguishes this from screen.",
+  "protected": [
+    "screen panel and original image",
+    "all non-frame visuals including base, keys, touchpad and shaft",
+    "all slots except explicitly listed opaque untextured native parts; original arrays, UV and textures"
+  ],
+  "new_textures": [],
+  "new_uv": false,
+  "asset_binding_status": "explicit_native_part_slots",
+  "asset_audit": {
+    "date": "2026-11-17",
+    "source_identity": "matches_pinned_revision",
+    "reference_integrity": "complete",
+    "installed_verified_files": 282,
+    "referenced_files": 166,
+    "urdf_sha256": "6fc4fda5594433446325a466a995d6efb4644bcf4eeef575578637c9337c0ad8",
+    "urdf_robot_name": "partnet_3b2db36aaa2546b99c7c402f274622c",
+    "links": 3,
+    "joints": {
+      "fixed": 1,
+      "revolute": 1
+    },
+    "visuals": 82,
+    "collisions": 82,
+    "editable_visuals": 1,
+    "visual_meshes_with_uv": 1,
+    "referenced_textures": [
+      "images/texture_2.png"
+    ],
+    "selected_visuals": [
+      {
+        "link": "link_1",
+        "index": 2,
+        "name": "screen_frame-16",
+        "mesh": "textured_objs/new-2.obj",
+        "mtl": "textured_objs/new-2.mtl",
+        "used_materials": [
+          "material-0",
+          "material-1",
+          "material-2",
+          "material-3",
+          "material-4",
+          "material-6"
+        ],
+        "uv_count": 0
+      }
+    ],
+    "native_render_binding": "pending_current_run",
+    "editable_parts": 1
+  },
+  "runtime_integration": "connected_short_task",
+  "part_bindings": [
+    {
+      "link": "link_1",
+      "index": 2,
+      "name": "screen_frame-16",
+      "mesh": "textured_objs/new-2.obj",
+      "native_part_count": 6,
+      "editable_slots": [
+        {
+          "material": "material-0",
+          "triangles": 2414,
+          "diffuse": [
+            0.8862745098039215,
+            0.8862745098039215,
+            0.8862745098039215
+          ],
+          "position_triangles_sha256": "fc969fe28eb5dceae674719e7194fa8466f4749d72f0be5349d237aa7cd4b139"
+        }
+      ]
+    }
+  ],
+  "runtime_source_sha256": {
+    "mobility.urdf": "6fc4fda5594433446325a466a995d6efb4644bcf4eeef575578637c9337c0ad8",
+    "textured_objs/new-2.mtl": "b2ea03e4c1074e842b7c76d1e435eeac91a04d3c291d64c861f07f943e9ce0a3",
+    "textured_objs/new-2.obj": "9674f4c7c5b95ad716346ecdb66659d8f387dddf1cb96bbf8e589fbe33922468"
+  }
+}

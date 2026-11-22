@@ -52,6 +52,7 @@ class NutBoltTurnNutEnv(NutBoltLongEnv):
             # Reconcile the kinematic hold with the lock masks this reset just
             # set (see NutBoltLongEnv._refresh_hold_state).
             self._refresh_hold_state()
+            self._finish_appearance_reset(env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):
@@ -76,7 +77,7 @@ class NutBoltTurnNutEnv(NutBoltLongEnv):
                 nut_turned & nut_threading_geometric & self._nut_engaged
             )
             turn_success = self._latch_success(success_condition)
-            self._stage_turned |= turn_success
+            self._stage_turned |= self._reset_scoped_predicate(turn_success)
             return dict(
                 nut_placed=nut_placed,
                 nut_geometric=nut_geometric,

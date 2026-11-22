@@ -1,0 +1,13 @@
+{
+  "task_id": "NutBoltSeatNut-Sharpa-v1",
+  "nut_bolt_appearance": {
+    "enabled": true,
+    "mode": "random_choice",
+    "seed": 71,
+    "scheme_ids": [
+      "original",
+      "variant_1",
+      "variant_2"
+    ]
+  }
+}

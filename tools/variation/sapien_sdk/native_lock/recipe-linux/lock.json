@@ -1,0 +1,30 @@
+{
+  "schema": "dexarena-nut-linux-recipe-lock-v1",
+  "version": "3.0.3+dexarena.gpu1.linuxnut1",
+  "sapien_commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+  "physx": {
+    "version": "105.1-physx-5.3.1.patch0",
+    "commit": "8026efddef81130fb97ec3b4a51da66fab39f09d",
+    "source_url": "https://codeload.github.com/sapien-sim/PhysX/tar.gz/8026efddef81130fb97ec3b4a51da66fab39f09d",
+    "source_sha256": "bd42ec4da28ebcf71681378bc7fb66687b7738f0b4092620003237b1971263b5",
+    "publisher_commit": "088814a38c9f1068b3a4e4a43ade1d4a17887864",
+    "host_reference_url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/linux-release.zip",
+    "host_reference_sha256": "3e9f0b74bb1319700fe0d0618e664bedef0db154a42b69baf129977d65b4b2c4",
+    "header_count": 365,
+    "generated_header_sha256": "5674fc3d737ff31fc7072f392759ee44331367a24a072b3c7aef3851b4df8342",
+    "gpu_url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/linux-so.zip",
+    "gpu_archive_sha256": "167a01aad7381afef963b89169968c289e7b653880a7a823c116d87ee5c00fc6",
+    "gpu_file": "libPhysXGpu_64.so",
+    "gpu_sha256": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706"
+  },
+  "physx_patch": "0001-physx531-native-lock-sync.patch",
+  "physx_patch_sha256": "548ee484358c85c3848dfd98903b7b396626a0e83c906c399cd925ab655378c5",
+  "sapien_patches": {
+    "0300-native-lock-sync.patch": "cf38bbf5d653711bc6d3d7dace011d22ae5535555f2acf5591cab88158fbf5c7",
+    "0310-batched-render-visibility.patch": "c2ba1228814bd4d28cc73f8b26cbeb80c30bc73dc24010ad11402898f8921382"
+  },
+  "gpu_probe_sources": {
+    "probes/check_runtime_lock.py": "ba61fb4c9fcfb1efd13833f55947ed1b2edc7dafa40c5e00b2d4215ed3c46d99",
+    "tools/probe_batched_visibility.py": "b16301ad610612a6c34354c229d55dc575f2363ffbf6dccb2b752baa5f3c087d"
+  }
+}

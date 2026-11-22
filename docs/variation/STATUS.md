@@ -2,7 +2,9 @@
 
 [Drawer / Socket 外观](DRAWER_SOCKET_APPEARANCE.md)已限定验收。抽屉 A 浅橡木与暖白、B 浅灰与石墨色通过 OpenDrawer／PickCharger 双环境验证及开闭审图。插座暖白／炭黑 PC 通过 InsertPlug 双环境验证。两者均覆盖原版恢复、随机复现和局部 reset 隔离。Long 单环境阶段验证只覆盖抽屉返工前版本。
 
-这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中14个对象为 `accepted_pilot`。各对象的任务覆盖和验证边界见对应条目。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
+[Drawer & Plug 十套家族外观](DRAWER_TEN_VARIANTS.md)已拍齐三个短任务的十套实景及固定方案恢复。OpenDrawer／PickCharger 的随机及 A5 沿用作业 128860。InsertPlug 随机复现、env0 恢复和双孔十一格补测通过，双向 A5 证据已齐。Dennis 已审图并验收三个短任务的十套外观。旧对象的限定验收保留。
+
+这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中14个对象为 `accepted_pilot`。这组数字沿用对象档案的状态标记，不按本页的 PR 或短任务条目数重算。各对象的任务覆盖和验证边界见对应条目。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
 
 **Cabinet & Pouring 单门柜。** `cabinet_appearance` 独立选择 `original`、`oak_warm_white` 或 `sage_walnut`。Dennis 已确认两套柜体外观。OpenCabinet 原生闭门和 PickBottle 原生 90° 开门各 2 环境通过原版恢复、局部 reset 隔离和柜外材质对照。PickBottle 使用原版瓶子。验收限于这两个入口。[用法](CABINET_SINGLE_DOOR.md) · [实景与工程证据](evidence/cabinet_single_door/runtime_001/README.md)
 
@@ -82,9 +84,37 @@
 | 未测范围 | 随机方案 GPU 渲染、更多环境、其它手型及 PartNet 午餐盒。放面包和舀番茄的历史回放未复现最终成功。长任务完成只用受控状态验证 |
 | 审阅与证据 | [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)、[PR8-R1 审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5918176986)、[证据与历史收据](evidence/meal_preparation/README.md)。限定技术验收通过，待整合/合并；[查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8) |
 
+## Server 3 已合入的四项短任务限定验收
+
+以下范围已由对应正式审阅批准并合入 main。按实际短任务列出覆盖，不调整 42 对象索引的统计，也不外推 Long、完整机器人任务成功、训练或全手型验收。
+
+### Furniture Assembly（PR #23）
+
+LayFlatPanel、InsertRail、FastenScrew 三个 Sharpa 短任务通过标准双环境、双向局部 reset 和原版恢复。原版及基础候选保留；新增 `variant_3` 至 `variant_10` 的三任务／两环境共 48 格已核对请求 ID、实际回合记录、部件材质与原图，其中 4 号为琥珀橙、8 号为鸢尾紫。24 组原版恢复相机对照按冻结标准逐值一致；[Issue #18](https://github.com/DennisXu626/DexArena-Variation/issues/18) 已关闭。
+
+[接口与方案](FURNITURE_APPEARANCE.md) · [Linux 运行与复现](FURNITURE_LINUX_RESET.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/23#pullrequestreview-6011107988) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/23)
+
+### Pipette Transfer（PR #14）
+
+AspirateLiquid、DispenseLiquid 两个 Sharpa 短任务通过标准双环境的双向局部 reset、原版恢复，以及任务内可见部件的 `original`／`jade`／`coral` 配色核对。结论限于这两个短任务及已验的可见部件。
+
+[接口与绑定](PIPETTE_APPEARANCE.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/14#pullrequestreview-6011113935) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/14)
+
+### Nut & Bolt（PR #15）
+
+Nut 专用 `linuxnut1` SDK 的 lock、raster 两项原生探针，以及 PickBolt、SeatNut、TurnNut 三个标准双环境 Sharpa 短任务通过限定验收。覆盖双向局部 reset、原版恢复、分部件配色和 SeatNut 游离／接合表示的阶段可见性；探针和阶段夹具不代表完整机器人任务成功。
+
+[接口、配色与验证边界](NUT_BOLT_APPEARANCE.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/15#pullrequestreview-6011115157) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/15)
+
+### Office Desk（PR #16）
+
+OpenLaptop 复用 PR16-R3，TypeKeys、ClickMouse 使用 PR16-R4 的 Server 3 标准双环境证据，三个 Sharpa 短任务的双向局部 reset、原版恢复和实际配色通过限定验收。TypeKeys 的 `variant_1` 为赭黄、`variant_2` 为靛蓝，R4 另核对实际键盘纹理与绿色目标提示；ClickMouse 使用正式 ID `ivory_matte`／`navy_satin`，对应象牙白／海军蓝，核对 CoACD 1.0.14 原生库及五份碰撞缓存。Mouse 101408 沿用上文 [PR #6 的 ClickMouse 限定范围](https://github.com/DennisXu626/DexArena-Variation/pull/6)，不扩为 Long 或其它 Mouse 入口。
+
+[设备接口与绑定](OFFICE_DEVICES_APPEARANCE.md) · [Mouse 101408 接口](MOUSE_101408.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/16#pullrequestreview-6011116262) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/16)
+
 ## 仍待实现／验证
 
-[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录42个逻辑对象状态。单门柜、瓶身／盖、抽屉／插座、Charger、限定ClickMouse及Meal五对象的验收范围分别以上述条目为准；Meal尚待PR8集成／合并，其余对象仍按待适配／无视觉／未加载状态保留。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析，其本身不提供新方案、GPU或A6结果。
+[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录42个逻辑对象状态。单门柜、瓶身／盖、抽屉／插座、Charger、限定ClickMouse、Meal，以及本页新增的 Furniture／Pipette／Nut & Bolt／Office 短任务，分别以上述条目的正式验收范围为准。Meal尚待PR8集成／合并；对象档案中的既有状态标记继续按42项索引保留；已验短任务按本页条目记录，家族内其余任务保留各自的验证边界。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析，其本身不提供新方案、GPU或A6结果。
 
 完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。Meal随机方案真实GPU、PartNet午餐盒和完整机器人长任务成功未测；默认程序盒、固定方案双环境局部reset及恢复original的限定结论不外推。历史报告保留当时结论。
 

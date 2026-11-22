@@ -1,0 +1,611 @@
+--- a/3rd_party/sapien-vulkan-2/CMakeLists.txt
++++ b/3rd_party/sapien-vulkan-2/CMakeLists.txt
+@@ -44,6 +44,9 @@
+ 
+ target_compile_definitions(imgui PRIVATE VK_NO_PROTOTYPES)
+ target_compile_definitions(svulkan2 PUBLIC VK_NO_PROTOTYPES)
++if (WIN32)
++    target_compile_definitions(svulkan2 PUBLIC VK_USE_PLATFORM_WIN32_KHR NOMINMAX)
++endif()
+ 
+ if (${SAPIEN_MACOS})
+     target_compile_definitions(svulkan2 PUBLIC SAPIEN_MACOS)
+--- a/3rd_party/sapien-vulkan-2/src/core/device.cpp
++++ b/3rd_party/sapien-vulkan-2/src/core/device.cpp
+@@ -133,7 +133,10 @@
+ #ifdef SVULKAN2_CUDA_INTEROP
+     deviceExtensions.push_back(VK_KHR_EXTERNAL_MEMORY_EXTENSION_NAME);
+     deviceExtensions.push_back(VK_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME);
+-#ifndef _WIN64
++#ifdef _WIN32
++    deviceExtensions.push_back(VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME);
++    deviceExtensions.push_back(VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME);
++#else
+     deviceExtensions.push_back(VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME);
+     deviceExtensions.push_back(VK_KHR_EXTERNAL_SEMAPHORE_FD_EXTENSION_NAME);
+ #endif
+--- a/3rd_party/sapien-vulkan-2/src/core/allocator.cpp
++++ b/3rd_party/sapien-vulkan-2/src/core/allocator.cpp
+@@ -19,6 +19,11 @@
+ #include "svulkan2/core/instance.h"
+ #include "svulkan2/core/physical_device.h"
+ #include <bit>
++#include <cstdio>
++#include <cstdlib>
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++#include <cuda_runtime.h>
++#endif
+ 
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wparentheses"
+@@ -33,8 +38,129 @@
+ namespace svulkan2 {
+ namespace core {
+ 
++
++
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++namespace {
++void logCudaCleanupError(cudaError_t result, char const *operation) noexcept {
++  if (result != cudaSuccess) {
++    fprintf(stderr, "CUDA block cleanup %s: %s\n", operation, cudaGetErrorString(result));
++  }
++}
++}
++
++CudaExternalMemory::~CudaExternalMemory() noexcept {
++  if (!pointer && !memory) {
++    return;
++  }
++  int previousDevice = -1;
++  logCudaCleanupError(cudaGetDevice(&previousDevice), "cudaGetDevice");
++  auto result = cudaSetDevice(cudaDeviceId);
++  if (result != cudaSuccess) {
++    logCudaCleanupError(result, "cudaSetDevice; owner cleanup skipped");
++    if (previousDevice >= 0) {
++      logCudaCleanupError(cudaSetDevice(previousDevice), "restore cudaSetDevice");
++    }
++    return;
++  }
++  logCudaCleanupError(cudaDeviceSynchronize(), "cudaDeviceSynchronize");
++  if (pointer) {
++    logCudaCleanupError(cudaFree(pointer), "cudaFree");
++    pointer = nullptr;
++  }
++  if (memory) {
++    logCudaCleanupError(cudaDestroyExternalMemory(memory), "cudaDestroyExternalMemory");
++    memory = nullptr;
++  }
++  if (previousDevice >= 0 && previousDevice != cudaDeviceId) {
++    logCudaCleanupError(cudaSetDevice(previousDevice), "restore cudaSetDevice");
++  }
++}
++
++std::shared_ptr<CudaExternalMemory> Allocator::getCudaExternalMemory(
++    vk::Device device, VkDeviceMemory memory, int cudaDeviceId) {
++  std::lock_guard<std::mutex> lock(mDeviceMemorySizesMutex);
++  auto key = std::make_pair(memory, cudaDeviceId);
++  auto cached = mCudaMemoryBlocks.find(key);
++  if (cached != mCudaMemoryBlocks.end()) {
++    if (std::getenv("SAPIEN_CUDA_INTEROP_TRACE")) {
++      fprintf(stderr, "CUDA interop block cache hit memory_object=%llu cuda_device=%d\n",
++              static_cast<unsigned long long>(cached->second->size), cudaDeviceId);
++    }
++    return cached->second;
++  }
++  auto allocation = mDeviceMemorySizes.find(memory);
++  if (allocation == mDeviceMemorySizes.end()) {
++    throw std::runtime_error("Vulkan device memory allocation size is unavailable");
++  }
++  auto owner = std::make_shared<CudaExternalMemory>();
++  owner->size = allocation->second;
++  owner->cudaDeviceId = cudaDeviceId;
++  cudaExternalMemoryHandleDesc desc{};
++  desc.type = cudaExternalMemoryHandleTypeOpaqueWin32;
++  desc.size = owner->size;
++  auto handle = device.getMemoryWin32HandleKHR(
++      {memory, vk::ExternalMemoryHandleTypeFlagBits::eOpaqueWin32});
++  desc.handle.win32.handle = handle;
++  auto result = cudaImportExternalMemory(&owner->memory, &desc);
++  CloseHandle(handle);
++  if (result != cudaSuccess) {
++    throw std::runtime_error("CUDA block import failed: " + std::string(cudaGetErrorString(result)) +
++                             " (memory_object=" + std::to_string(desc.size) + ")");
++  }
++  cudaExternalMemoryBufferDesc mapping{};
++  mapping.size = owner->size;
++  result = cudaExternalMemoryGetMappedBuffer(&owner->pointer, owner->memory, &mapping);
++  if (result != cudaSuccess) {
++    throw std::runtime_error("CUDA block mapping failed: " + std::string(cudaGetErrorString(result)) +
++                             " (memory_object=" + std::to_string(desc.size) + ")");
++  }
++  mCudaMemoryBlocks.emplace(key, owner);
++  if (std::getenv("SAPIEN_CUDA_INTEROP_TRACE")) {
++    fprintf(stderr, "CUDA interop block import and map memory_object=%llu cuda_device=%d\n",
++            static_cast<unsigned long long>(owner->size), cudaDeviceId);
++  }
++  return owner;
++}
++#endif
++
++void VKAPI_CALL Allocator::memoryAllocated(VmaAllocator, uint32_t, VkDeviceMemory memory,
++                                          VkDeviceSize size, void *userData) {
++  auto &allocator = *static_cast<Allocator *>(userData);
++  std::lock_guard<std::mutex> lock(allocator.mDeviceMemorySizesMutex);
++  allocator.mDeviceMemorySizes.emplace(memory, size);
++}
++
++void VKAPI_CALL Allocator::memoryFreed(VmaAllocator, uint32_t, VkDeviceMemory memory,
++                                      VkDeviceSize, void *userData) {
++  auto &allocator = *static_cast<Allocator *>(userData);
++  std::lock_guard<std::mutex> lock(allocator.mDeviceMemorySizesMutex);
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++  for (auto entry = allocator.mCudaMemoryBlocks.begin();
++       entry != allocator.mCudaMemoryBlocks.end();) {
++    if (entry->first.first == memory) {
++      entry = allocator.mCudaMemoryBlocks.erase(entry);
++    } else {
++      ++entry;
++    }
++  }
++#endif
++  allocator.mDeviceMemorySizes.erase(memory);
++}
++
++VkDeviceSize Allocator::getDeviceMemoryAllocationSize(VkDeviceMemory memory) const {
++  std::lock_guard<std::mutex> lock(mDeviceMemorySizesMutex);
++  auto entry = mDeviceMemorySizes.find(memory);
++  if (entry == mDeviceMemorySizes.end()) {
++    throw std::runtime_error("Vulkan device memory allocation size is unavailable");
++  }
++  return entry->second;
++}
++
+ Allocator::Allocator(Device &device) {
+   VmaAllocatorCreateInfo allocatorInfo = {};
++  mDeviceMemoryCallbacks = {memoryAllocated, memoryFreed, this};
++  allocatorInfo.pDeviceMemoryCallbacks = &mDeviceMemoryCallbacks;
+ 
+   auto physicalDevice = device.getPhysicalDevice();
+   auto instance = physicalDevice->getInstance();
+@@ -99,7 +225,11 @@
+                                       vk::BufferUsageFlagBits::eTransferDst);
+ #if !defined(VK_USE_PLATFORM_MACOS_MVK)
+   vk::ExternalMemoryBufferCreateInfo externalMemoryBufferInfo(
++#ifdef _WIN32
++      vk::ExternalMemoryHandleTypeFlagBits::eOpaqueWin32);
++#else
+       vk::ExternalMemoryHandleTypeFlagBits::eOpaqueFd);
++#endif
+   bufferInfo.setPNext(&externalMemoryBufferInfo);
+ #endif
+ 
+@@ -129,8 +259,12 @@
+     //     std::max(limits.minStorageBufferOffsetAlignment, limits.minTexelBufferOffsetAlignment),
+     //     limits.minUniformBufferOffsetAlignment);
+ #if !defined(VK_USE_PLATFORM_MACOS_MVK)
+-    mExternalAllocInfo =
+-        vk::ExportMemoryAllocateInfo(vk::ExternalMemoryHandleTypeFlagBits::eOpaqueFd);
++    mExternalAllocInfo = vk::ExportMemoryAllocateInfo(
++#ifdef _WIN32
++        vk::ExternalMemoryHandleTypeFlagBits::eOpaqueWin32);
++#else
++        vk::ExternalMemoryHandleTypeFlagBits::eOpaqueFd);
++#endif
+     poolInfo.pMemoryAllocateNext = &mExternalAllocInfo;
+ #endif
+     vmaCreatePool(mMemoryAllocator, &poolInfo, &mExternalMemoryPool);
+--- a/3rd_party/sapien-vulkan-2/src/core/buffer.cpp
++++ b/3rd_party/sapien-vulkan-2/src/core/buffer.cpp
+@@ -21,6 +21,7 @@
+ #include "svulkan2/core/device.h"
+ #include "svulkan2/core/physical_device.h"
+ #include "svulkan2/common/profiler.h"
++#include <cstdlib>
+ 
+ #ifdef SVULKAN2_CUDA_INTEROP
+ #include "../common/cuda_helper.h"
+@@ -83,7 +84,11 @@
+   vk::BufferCreateInfo bufferInfo({}, size, usageFlags);
+ #if !defined(VK_USE_PLATFORM_MACOS_MVK)
+   vk::ExternalMemoryBufferCreateInfo externalMemoryBufferInfo(
++#ifdef _WIN32
++      vk::ExternalMemoryHandleTypeFlagBits::eOpaqueWin32);
++#else
+       vk::ExternalMemoryHandleTypeFlagBits::eOpaqueFd);
++#endif
+ #endif
+ 
+   VmaAllocationCreateInfo memoryInfo{};
+@@ -118,10 +123,26 @@
+ 
+ Buffer::~Buffer() {
+ #ifdef SVULKAN2_CUDA_INTEROP
++#ifdef _WIN32
++  mCudaPtr = nullptr;
++  mCudaMemoryOwner.reset();
++#else
+   if (mCudaPtr) {
+-    checkCudaErrors(cudaFree(mCudaPtr));
+-    checkCudaErrors(cudaDestroyExternalMemory(mCudaMem));
+-  }
++    auto result = cudaFree(mCudaPtr);
++    if (result != cudaSuccess) {
++      fprintf(stderr, "Buffer cleanup cudaFree: %s\n", cudaGetErrorString(result));
++    }
++    mCudaPtr = nullptr;
++  }
++  if (mCudaMem) {
++    auto result = cudaDestroyExternalMemory(mCudaMem);
++    if (result != cudaSuccess) {
++      fprintf(stderr, "Buffer cleanup cudaDestroyExternalMemory: %s\n",
++              cudaGetErrorString(result));
++    }
++    mCudaMem = nullptr;
++  }
++#endif
+ #endif
+   vmaDestroyBuffer(mDevice->getAllocator().getVmaAllocator(), mBuffer, mAllocation);
+ }
+@@ -215,13 +236,10 @@
+ 
+ #ifdef SVULKAN2_CUDA_INTEROP
+ void *Buffer::getCudaPtr() {
+-  // FIXME: technically we need to transfer ownership to VK_QUEUE_FAMILY_EXTERNAL
+-  // Current design is undefined behavior, but all NVIDIA's sample code do this
+   if (!mExternal) {
+     throw std::runtime_error("failed to get cuda pointer, \"external\" must be "
+                              "passed at buffer creation");
+   }
+-
+   if (mCudaPtr) {
+     return mCudaPtr;
+   }
+@@ -233,29 +251,61 @@
+         "CUDA_VISIBLE_DEVICES until you find a working one.");
+   }
+   checkCudaErrors(cudaSetDevice(mCudaDeviceId));
+-  cudaExternalMemoryHandleDesc externalMemoryHandleDesc = {};
++#ifdef _WIN32
++  auto owner = mDevice->getAllocator().getCudaExternalMemory(
++      mDevice->getInternal(), mAllocationInfo.deviceMemory, mCudaDeviceId);
++  if (mAllocationInfo.offset > owner->size ||
++      mAllocationInfo.size > owner->size - mAllocationInfo.offset) {
++    throw std::runtime_error("CUDA buffer suballocation exceeds its Vulkan memory object");
++  }
++  mCudaPtr = static_cast<char *>(owner->pointer) + mAllocationInfo.offset;
++  mCudaMemoryOwner = std::move(owner);
++  if (std::getenv("SAPIEN_CUDA_INTEROP_TRACE")) {
++    fprintf(stderr, "CUDA interop buffer=%llu offset=%llu suballocation=%llu memory_object=%llu "
++                    "memory_type=%u\n",
++            static_cast<unsigned long long>(mSize),
++            static_cast<unsigned long long>(mAllocationInfo.offset),
++            static_cast<unsigned long long>(mAllocationInfo.size),
++            static_cast<unsigned long long>(mCudaMemoryOwner->size), mAllocationInfo.memoryType);
++  }
++#else
++  if (mCudaMem) {
++    auto result = cudaDestroyExternalMemory(mCudaMem);
++    if (result != cudaSuccess) {
++      throw std::runtime_error("CUDA external memory cleanup failed: " +
++                               std::string(cudaGetErrorString(result)));
++    }
++    mCudaMem = nullptr;
++  }
++  cudaExternalMemoryHandleDesc externalMemoryHandleDesc{};
+   externalMemoryHandleDesc.type = cudaExternalMemoryHandleTypeOpaqueFd;
+-  externalMemoryHandleDesc.size = mAllocationInfo.offset + mAllocationInfo.size; // TODO check
+-
+-  vk::MemoryGetFdInfoKHR vkMemoryGetFdInfoKHR;
+-  vkMemoryGetFdInfoKHR.setPNext(nullptr);
+-  vkMemoryGetFdInfoKHR.setMemory(mAllocationInfo.deviceMemory);
+-  vkMemoryGetFdInfoKHR.setHandleType(vk::ExternalMemoryHandleTypeFlagBits::eOpaqueFd);
+-
+-  // According to https://docs.nvidia.com/pdf/CUDA_Runtime_API.pdf
+-  // Performing any operations on the file descriptor after it is imported
+-  // results in undefined behavior
+-  auto cudaFd = mDevice->getInternal().getMemoryFdKHR(vkMemoryGetFdInfoKHR);
+-  externalMemoryHandleDesc.handle.fd = cudaFd;
+-
+-  checkCudaErrors(cudaImportExternalMemory(&mCudaMem, &externalMemoryHandleDesc));
+-
+-  cudaExternalMemoryBufferDesc externalMemBufferDesc = {};
+-  externalMemBufferDesc.offset = mAllocationInfo.offset;
+-  externalMemBufferDesc.size = mAllocationInfo.size;
+-  externalMemBufferDesc.flags = 0;
+-
+-  checkCudaErrors(cudaExternalMemoryGetMappedBuffer(&mCudaPtr, mCudaMem, &externalMemBufferDesc));
++  externalMemoryHandleDesc.size = mAllocationInfo.offset + mAllocationInfo.size;
++  vk::MemoryGetFdInfoKHR info;
++  info.setMemory(mAllocationInfo.deviceMemory);
++  info.setHandleType(vk::ExternalMemoryHandleTypeFlagBits::eOpaqueFd);
++  externalMemoryHandleDesc.handle.fd = mDevice->getInternal().getMemoryFdKHR(info);
++  auto result = cudaImportExternalMemory(&mCudaMem, &externalMemoryHandleDesc);
++  if (result != cudaSuccess) {
++    throw std::runtime_error("CUDA external memory import failed: " +
++                             std::string(cudaGetErrorString(result)));
++  }
++  cudaExternalMemoryBufferDesc mapping{};
++  mapping.offset = mAllocationInfo.offset;
++  mapping.size = mAllocationInfo.size;
++  result = cudaExternalMemoryGetMappedBuffer(&mCudaPtr, mCudaMem, &mapping);
++  if (result != cudaSuccess) {
++    mCudaPtr = nullptr;
++    auto cleanupResult = cudaDestroyExternalMemory(mCudaMem);
++    if (cleanupResult == cudaSuccess) {
++      mCudaMem = nullptr;
++    } else {
++      fprintf(stderr, "Buffer mapping cleanup cudaDestroyExternalMemory: %s\n",
++              cudaGetErrorString(cleanupResult));
++    }
++    throw std::runtime_error("CUDA external memory mapping failed: " +
++                             std::string(cudaGetErrorString(result)));
++  }
++#endif
+   return mCudaPtr;
+ }
+ 
+--- a/src/sapien_renderer/batched_render_system.cpp
++++ b/src/sapien_renderer/batched_render_system.cpp
+@@ -20,6 +20,8 @@
+ #include "sapien/sapien_renderer/render_body_component.h"
+ #include <svulkan2/renderer/renderer.h>
+ #include <svulkan2/renderer/renderer_base.h>
++#include <cstdio>
++#include <exception>
+ 
+ #ifdef SAPIEN_CUDA
+ #include "sapien/utils/cuda.h"
+@@ -28,6 +30,47 @@
+ 
+ namespace sapien {
+ namespace sapien_renderer {
++
++#ifdef SAPIEN_CUDA
++namespace {
++cudaExternalSemaphore_t importCudaTimelineSemaphore(vk::Device device, vk::Semaphore semaphore) {
++  cudaExternalSemaphoreHandleDesc desc{};
++#ifdef _WIN32
++  auto handle = device.getSemaphoreWin32HandleKHR(
++      {semaphore, vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueWin32});
++  desc.handle.win32.handle = handle;
++  desc.type = cudaExternalSemaphoreHandleTypeTimelineSemaphoreWin32;
++#else
++  desc.handle.fd = device.getSemaphoreFdKHR(
++      {semaphore, vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueFd});
++  desc.type = cudaExternalSemaphoreHandleTypeTimelineSemaphoreFd;
++#endif
++  cudaExternalSemaphore_t result{};
++  auto importResult = cudaImportExternalSemaphore(&result, &desc);
++#ifdef _WIN32
++  CloseHandle(handle);
++#endif
++  checkCudaErrors(importResult);
++  return result;
++}
++
++void destroyCudaSemaphoreNoThrow(cudaExternalSemaphore_t &semaphore, cudaStream_t stream) noexcept {
++  if (!semaphore) {
++    return;
++  }
++  auto result = cudaStreamSynchronize(stream);
++  if (result != cudaSuccess) {
++    fprintf(stderr, "Semaphore cleanup cudaStreamSynchronize: %s\n", cudaGetErrorString(result));
++  }
++  result = cudaDestroyExternalSemaphore(semaphore);
++  if (result != cudaSuccess) {
++    fprintf(stderr, "Semaphore cleanup cudaDestroyExternalSemaphore: %s\n",
++            cudaGetErrorString(result));
++  }
++  semaphore = nullptr;
++}
++}
++#endif
+ 
+ BatchedCamera::BatchedCamera(std::vector<std::shared_ptr<SapienRenderCameraComponent>> cameras,
+                              std::vector<std::string> renderTargets)
+@@ -106,20 +149,18 @@
+   vk::SemaphoreTypeCreateInfo timelineCreateInfo(vk::SemaphoreType::eTimeline, 0);
+   vk::SemaphoreCreateInfo createInfo{};
+   vk::ExportSemaphoreCreateInfo exportCreateInfo(
++#ifdef _WIN32
++      vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueWin32);
++#else
+       vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueFd);
++#endif
+   createInfo.setPNext(&exportCreateInfo);
+   exportCreateInfo.setPNext(&timelineCreateInfo);
+   auto device = context->getDevice();
+   mSemaphore = device.createSemaphoreUnique(createInfo);
+ 
+-  int fd = device.getSemaphoreFdKHR(
+-      {mSemaphore.get(), vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueFd});
+-#ifdef SAPIEN_CUDA
+-  cudaExternalSemaphoreHandleDesc desc = {};
+-  desc.flags = 0;
+-  desc.handle.fd = fd;
+-  desc.type = cudaExternalSemaphoreHandleTypeTimelineSemaphoreFd;
+-  checkCudaErrors(cudaImportExternalSemaphore(&mCudaSem, &desc));
++#ifdef SAPIEN_CUDA
++  mCudaSem = importCudaTimelineSemaphore(device, mSemaphore.get());
+ #endif
+   // TODO clean up cudaSem
+ }
+@@ -144,7 +185,7 @@
+ #ifdef SAPIEN_CUDA
+   cudaExternalSemaphoreWaitParams waitParams{};
+   waitParams.params.fence.value = mFrameCounter;
+-  cudaWaitExternalSemaphoresAsync(&mCudaSem, &waitParams, 1, mCudaStream);
++  checkCudaErrors(cudaWaitExternalSemaphoresAsync(&mCudaSem, &waitParams, 1, mCudaStream));
+ #endif
+ }
+ 
+@@ -157,9 +198,15 @@
+ }
+ 
+ BatchedCamera::~BatchedCamera() {
+-  SapienRenderEngine::Get()->getContext()->getDevice().waitIdle();
+-#ifdef SAPIEN_CUDA
+-  cudaDestroyExternalSemaphore(mCudaSem);
++  try {
++    SapienRenderEngine::Get()->getContext()->getDevice().waitIdle();
++  } catch (std::exception const &error) {
++    fprintf(stderr, "Vulkan cleanup waitIdle: %s\n", error.what());
++  } catch (...) {
++    fprintf(stderr, "Vulkan cleanup waitIdle failed\n");
++  }
++#ifdef SAPIEN_CUDA
++  destroyCudaSemaphoreNoThrow(mCudaSem, mCudaStream);
+ #endif
+ }
+ 
+@@ -240,19 +287,17 @@
+     vk::SemaphoreTypeCreateInfo timelineCreateInfo(vk::SemaphoreType::eTimeline, 0);
+     vk::SemaphoreCreateInfo createInfo{};
+     vk::ExportSemaphoreCreateInfo exportCreateInfo(
++#ifdef _WIN32
++        vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueWin32);
++#else
+         vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueFd);
++#endif
+     createInfo.setPNext(&exportCreateInfo);
+     exportCreateInfo.setPNext(&timelineCreateInfo);
+     mSem = context->getDevice().createSemaphoreUnique(createInfo);
+ 
+-    int fd = context->getDevice().getSemaphoreFdKHR(
+-        {mSem.get(), vk::ExternalSemaphoreHandleTypeFlagBits::eOpaqueFd});
+-#ifdef SAPIEN_CUDA
+-    cudaExternalSemaphoreHandleDesc desc = {};
+-    desc.flags = 0;
+-    desc.handle.fd = fd;
+-    desc.type = cudaExternalSemaphoreHandleTypeTimelineSemaphoreFd;
+-    checkCudaErrors(cudaImportExternalSemaphore(&mCudaSem, &desc));
++#ifdef SAPIEN_CUDA
++    mCudaSem = importCudaTimelineSemaphore(context->getDevice(), mSem.get());
+ #endif
+   }
+ }
+@@ -344,7 +389,8 @@
+   cudaExternalSemaphoreSignalParams sigParams{};
+   sigParams.flags = 0;
+   sigParams.params.fence.value = ++mSemValue;
+-  cudaSignalExternalSemaphoresAsync(&mCudaSem, &sigParams, 1, (cudaStream_t)mCudaStream);
++  checkCudaErrors(
++      cudaSignalExternalSemaphoresAsync(&mCudaSem, &sigParams, 1, (cudaStream_t)mCudaStream));
+ #endif
+   vk::PipelineStageFlags stage = vk::PipelineStageFlagBits::eAllCommands;
+   SapienRenderEngine::Get()->getContext()->getQueue().submit({}, mSem.get(), stage, mSemValue, {},
+@@ -359,9 +405,15 @@
+ }
+ 
+ BatchedRenderSystem ::~BatchedRenderSystem() {
+-  SapienRenderEngine::Get()->getContext()->getDevice().waitIdle();
+-#ifdef SAPIEN_CUDA
+-  cudaDestroyExternalSemaphore(mCudaSem);
++  try {
++    SapienRenderEngine::Get()->getContext()->getDevice().waitIdle();
++  } catch (std::exception const &error) {
++    fprintf(stderr, "Vulkan cleanup waitIdle: %s\n", error.what());
++  } catch (...) {
++    fprintf(stderr, "Vulkan cleanup waitIdle failed\n");
++  }
++#ifdef SAPIEN_CUDA
++  destroyCudaSemaphoreNoThrow(mCudaSem, mCudaStream);
+ #endif
+ }
+ 
+--- a/3rd_party/sapien-vulkan-2/include/svulkan2/common/glm.h
++++ b/3rd_party/sapien-vulkan-2/include/svulkan2/common/glm.h
+@@ -26,6 +26,10 @@
+ #include <glm/gtx/matrix_decompose.hpp>
+ #include <glm/gtx/quaternion.hpp>
+ #include <stdexcept>
++
++#ifdef _WIN32
++#include <windows.h>
++#endif
+ 
+ #ifdef near
+ #undef near
+--- a/3rd_party/sapien-vulkan-2/include/svulkan2/core/allocator.h
++++ b/3rd_party/sapien-vulkan-2/include/svulkan2/core/allocator.h
+@@ -17,9 +17,30 @@
+ #pragma once
+ #include "svulkan2/common/vk.h"
+ #include <memory>
++#include <mutex>
++#include <map>
++#include <unordered_map>
++
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++struct CUexternalMemory_st;
++#endif
+ 
+ namespace svulkan2 {
+ namespace core {
++
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++struct CudaExternalMemory {
++  CudaExternalMemory() = default;
++  CudaExternalMemory(CudaExternalMemory const &) = delete;
++  CudaExternalMemory &operator=(CudaExternalMemory const &) = delete;
++  void *pointer{};
++  ::CUexternalMemory_st *memory{};
++  VkDeviceSize size{};
++  int cudaDeviceId{-1};
++  ~CudaExternalMemory() noexcept;
++};
++#endif
++
+ 
+ class Device;
+ 
+@@ -33,6 +54,11 @@
+ 
+   VmaAllocator getVmaAllocator() const { return mMemoryAllocator; }
+   VmaPool getExternalPool() const { return mExternalMemoryPool; };
++  VkDeviceSize getDeviceMemoryAllocationSize(VkDeviceMemory memory) const;
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++  std::shared_ptr<CudaExternalMemory> getCudaExternalMemory(
++      vk::Device device, VkDeviceMemory memory, int cudaDeviceId);
++#endif
+   VmaPool getRTPool() const {
+     if (mRTPool) {
+       return mRTPool;
+@@ -43,6 +69,16 @@
+   ~Allocator();
+ 
+ private:
++  static void VKAPI_CALL memoryAllocated(VmaAllocator allocator, uint32_t memoryType,
++                                         VkDeviceMemory memory, VkDeviceSize size, void *userData);
++  static void VKAPI_CALL memoryFreed(VmaAllocator allocator, uint32_t memoryType,
++                                     VkDeviceMemory memory, VkDeviceSize size, void *userData);
++  mutable std::mutex mDeviceMemorySizesMutex;
++  std::unordered_map<VkDeviceMemory, VkDeviceSize> mDeviceMemorySizes;
++#if defined(_WIN32) && defined(SVULKAN2_CUDA_INTEROP)
++  std::map<std::pair<VkDeviceMemory, int>, std::shared_ptr<CudaExternalMemory>> mCudaMemoryBlocks;
++#endif
++  VmaDeviceMemoryCallbacks mDeviceMemoryCallbacks{};
+   VmaAllocator mMemoryAllocator;
+   VmaPool mExternalMemoryPool{};
+   vk::ExportMemoryAllocateInfo mExternalAllocInfo;
+--- a/3rd_party/sapien-vulkan-2/include/svulkan2/core/buffer.h
++++ b/3rd_party/sapien-vulkan-2/include/svulkan2/core/buffer.h
+@@ -24,6 +24,7 @@
+ namespace core {
+ 
+ class Device;
++struct CudaExternalMemory;
+ 
+ class Buffer {
+ public:
+@@ -94,6 +95,9 @@
+ private:
+   void *mCudaPtr{};
+   cudaExternalMemory_t mCudaMem{};
++#ifdef _WIN32
++  std::shared_ptr<CudaExternalMemory> mCudaMemoryOwner;
++#endif
+   int mCudaDeviceId{-1};
+ 
+ public:
