@@ -9,6 +9,7 @@ import argparse
 import ast
 import hashlib
 import json
+from itertools import combinations
 import math
 from pathlib import Path
 from types import SimpleNamespace
@@ -21,6 +22,7 @@ SOURCE = ROOT / "tasks/nut_bolt/nut_bolt_long.py"
 OUTPUT_ROOTS = (ROOT / "outputs/variation/nut_bolt", ROOT / ".local/nut_bolt")
 ROLES = {"bolt": {"shaft", "head"}, "nut": {"body", "reference_face"}}
 PRESERVED = {"bolt": ["tip", "thread"], "nut": []}
+SCHEMES = ('original', *(f'variant_{index}' for index in range(1, 11)))
 
 
 def sha256(path: Path) -> str:
@@ -78,16 +80,16 @@ def material_valid(material: dict) -> bool:
 def inspect_catalog(obj: str, check, source_audit: dict) -> dict:
     path = FAMILY / obj / "variants/v1/catalog.json"
     data = json.loads(path.read_text(encoding="utf-8"))
-    check(f"{obj}.catalog_version", data.get("version") == f"nut-bolt-{obj}-appearance-v1")
+    check(f"{obj}.catalog_version", data.get("version") == f"nut-bolt-{obj}-appearance-v2")
     check(f"{obj}.object_id", data.get("object_id") == f"nut_bolt.{obj}")
     check(f"{obj}.preserve_roles", data.get("preserve_roles") == PRESERVED[obj])
     check(f"{obj}.preview_scope", data.get("scope") == "material_appearance")
     check(f"{obj}.no_new_uv_or_textures", data.get("new_uv") is False and data.get("new_textures") == [])
     check(f"{obj}.material_fields", data.get("fields") == ["base_color", "roughness", "metallic"])
     schemes = data.get("schemes", {})
-    check(f"{obj}.scheme_ids", set(schemes) == {"original", "variant_1", "variant_2"})
+    check(f"{obj}.scheme_ids", tuple(schemes) == SCHEMES)
     check(f"{obj}.original_restores_native", schemes.get("original") == {"mode": "restore_native"})
-    for scheme_id in ("variant_1", "variant_2"):
+    for scheme_id in SCHEMES[1:]:
         scheme = schemes.get(scheme_id, {})
         roles = scheme.get("roles", {})
         check(f"{obj}.{scheme_id}.mode", scheme.get("mode") == "material_override")
@@ -98,13 +100,14 @@ def inspect_catalog(obj: str, check, source_audit: dict) -> dict:
             check(f"{obj}.{scheme_id}.rotation_reference_contrast",
                   max(abs(a-b) for a, b in zip(roles["body"]["base_color"][:3],
                                                roles["reference_face"]["base_color"][:3])) >= 0.25)
-    first = schemes.get("variant_1", {}).get("roles", {})
-    second = schemes.get("variant_2", {}).get("roles", {})
-    check(f"{obj}.candidate_color_difference", any(
-        role in first and role in second and material_valid(first[role]) and material_valid(second[role])
-        and max(abs(a-b) for a, b in zip(first[role]["base_color"][:3],
-                                       second[role]["base_color"][:3])) >= 0.25
-        for role in ROLES[obj]))
+    for a, b in combinations(SCHEMES[1:], 2):
+        first = schemes.get(a, {}).get("roles", {})
+        second = schemes.get(b, {}).get("roles", {})
+        check(f"{obj}.{a}.{b}.candidate_color_difference", any(
+            role in first and role in second and material_valid(first[role]) and material_valid(second[role])
+            and max(abs(x-y) for x, y in zip(first[role]["base_color"][:3],
+                                            second[role]["base_color"][:3])) >= 0.25
+            for role in ROLES[obj]))
     bindings_path = FAMILY / obj / "bindings.json"
     bindings = json.loads(bindings_path.read_text(encoding="utf-8"))
     reference = bindings.get("catalog", "")
@@ -450,9 +453,9 @@ def output_path(raw: str) -> Path:
 def inspect_runtime_index(check):
     path = ROOT / 'tasks/assets/variation/nut_bolt/v1/catalog.json'
     data = json.loads(path.read_text(encoding='utf-8'))
-    check('runtime.catalog_version', data.get('version') == 'nut-bolt-appearance-v1')
+    check('runtime.catalog_version', data.get('version') == 'nut-bolt-appearance-v2')
     check('runtime.material_scope', data.get('scope') == 'material_appearance')
-    check('runtime.scheme_ids', data.get('schemes') == ['original', 'variant_1', 'variant_2'])
+    check('runtime.scheme_ids', tuple(data.get('schemes', ())) == SCHEMES)
     check('runtime.objects', set(data.get('objects', {})) == {'bolt', 'nut'})
     check('runtime.short_tasks', data.get('tasks') == {
         'PickBolt': ['bolt'], 'SeatNut': ['bolt', 'nut'], 'TurnNut': ['bolt', 'nut']})
@@ -461,7 +464,7 @@ def inspect_runtime_index(check):
               (ROOT / entry.get('catalog', '')).resolve() ==
               (FAMILY / object_id / 'variants/v1/catalog.json').resolve())
         check(f'runtime.{object_id}.scheme_map', entry.get('scheme_map') == {
-            name: name for name in ('original', 'variant_1', 'variant_2')})
+            name: name for name in SCHEMES})
     for name in ('default', 'fixed', 'random'):
         example = json.loads((ROOT / f'examples/variation/nut_bolt/{name}.json').read_text())
         check(f'example.{name}.task', example.get('task_id') in {

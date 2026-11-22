@@ -41,17 +41,20 @@ def sha(path):
 def palette(path):
     """Flat parameter swatches only, deliberately separate from task imagery."""
     definition = catalogs()
-    content = ['<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="420" viewBox="0 0 1050 420">',
-               '<rect width="1050" height="420" fill="#f6f5f1"/>',
+    rows = (len(SCHEMES) - 1 + 1) // 2
+    height = 120 + 2 * (rows * 118 + 40)
+    content = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="{height}" viewBox="0 0 1050 {height}">',
+               f'<rect width="1050" height="{height}" fill="#f6f5f1"/>',
                '<g font-family="sans-serif" fill="#20272c">',
                '<text x="30" y="36" font-size="22">Nut &amp; Bolt / material parameters</text>',
                '<text x="30" y="62" font-size="14">CPU flat swatches. No object, lighting, physics or task-render validation.</text>']
     for j, obj in enumerate(('bolt', 'nut')):
-        y = 105 + 150 * j
-        content.append(f'<text x="30" y="{y}" font-size="20">{obj}</text>')
-        content.append(f'<text x="30" y="{y+28}" font-size="13">original: restore native</text>')
+        top = 105 + (rows * 118 + 40) * j
+        content.append(f'<text x="30" y="{top}" font-size="20">{obj}</text>')
+        content.append(f'<text x="30" y="{top+28}" font-size="13">original: restore native</text>')
         for k, scheme in enumerate(SCHEMES[1:]):
-            x = 270 + 380 * k
+            x = 270 + 380 * (k % 2)
+            y = top + 118 * (k // 2)
             candidate = definition[obj]['schemes'][scheme]
             content.append(f'<text x="{x}" y="{y}" font-size="16">{scheme}: {html.escape(candidate["label"])}</text>')
             for i, (role, params) in enumerate(candidate['roles'].items()):
@@ -60,7 +63,7 @@ def palette(path):
                 content.append(f'<rect x="{x}" y="{ry}" width="72" height="36" rx="4" fill="{color}"/>')
                 label = f'{role}  r={params["roughness"]} m={params["metallic"]}'
                 content.append(f'<text x="{x+84}" y="{ry+23}" font-size="13">{html.escape(label)}</text>')
-    content += ['<text x="30" y="402" font-size="13">Bolt tip/thread stay native. Nut reference_face is existing segment 0 in both twins.</text>', '</g></svg>']
+    content += [f'<text x="30" y="{height - 18}" font-size="13">Bolt tip/thread stay native. Nut reference_face is existing segment 0 in both twins.</text>', '</g></svg>']
     if path.exists():
         raise FileExistsError(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -184,12 +187,14 @@ def export(env, task, seed, output):
             restored[view] = dict(identical=bool(np.array_equal(before, after)),
                                   max_abs_diff=int(np.abs(before.astype(int)-after.astype(int)).max()))
             width, height = frames[view][0].size
-            sheet = Image.new('RGB', (width * 3, height + 32), (30, 30, 30))
-            draw = ImageDraw.Draw(sheet)
-            for i, (scheme, frame) in enumerate(zip(SCHEMES, frames[view])):
-                draw.text((i * width + 12, 9), scheme, fill=(245, 245, 245))
-                sheet.paste(frame, (i * width, 32))
-            sheet.save(output / f'comparison_{view}.png')
+            for start in range(1, len(SCHEMES), 2):
+                indices = (0, *range(start, min(start + 2, len(SCHEMES))))
+                sheet = Image.new('RGB', (width * len(indices), height + 32), (30, 30, 30))
+                draw = ImageDraw.Draw(sheet)
+                for column, index in enumerate(indices):
+                    draw.text((column * width + 12, 9), SCHEMES[index], fill=(245, 245, 245))
+                    sheet.paste(frames[view][index], (column * width, 32))
+                sheet.save(output / f'comparison_{view}_{(start + 1) // 2:02d}.png')
         report['checks'] = dict(material_readback=True, recorded_scene_geometry_physics_uv_pose_visibility_unchanged=True,
                                 original_materials_restored=True, original_pixels=restored)
         if not all(result['identical'] for result in restored.values()):

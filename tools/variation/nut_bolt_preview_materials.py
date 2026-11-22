@@ -13,7 +13,8 @@ MATERIAL_FIELDS = FIELDS + (
     'normal_texture', 'emission_texture', 'transmission_texture',
 )
 TASKS = {name: f'NutBolt{name}-Sharpa-v1' for name in ('PickBolt', 'SeatNut', 'TurnNut')}
-SCHEMES = ('original', 'variant_1', 'variant_2')
+SCHEMES = tuple(json.loads((ROOT / 'tasks/assets/variation/nut_bolt/v1/catalog.json')
+                           .read_text(encoding='utf-8'))['schemes'])
 
 
 def catalogs():

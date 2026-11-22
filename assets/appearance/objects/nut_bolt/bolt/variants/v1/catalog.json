@@ -1,5 +1,5 @@
 {
-  "version": "nut-bolt-bolt-appearance-v1",
+  "version": "nut-bolt-bolt-appearance-v2",
   "object_id": "nut_bolt.bolt",
   "scope": "material_appearance",
   "fields": [
@@ -66,6 +66,214 @@
           ],
           "roughness": 0.34,
           "metallic": 0.75
+        }
+      }
+    },
+    "variant_3": {
+      "mode": "material_override",
+      "label": "Amber enamel",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.88,
+            0.55,
+            0.03,
+            1
+          ],
+          "roughness": 0.42,
+          "metallic": 0.19
+        },
+        "head": {
+          "base_color": [
+            0.95,
+            0.7,
+            0.04,
+            1
+          ],
+          "roughness": 0.32,
+          "metallic": 0.23
+        }
+      }
+    },
+    "variant_4": {
+      "mode": "material_override",
+      "label": "Crimson oxide",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.68,
+            0.022,
+            0.028,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0.22
+        },
+        "head": {
+          "base_color": [
+            0.86,
+            0.03,
+            0.05,
+            1
+          ],
+          "roughness": 0.62,
+          "metallic": 0.19
+        }
+      }
+    },
+    "variant_5": {
+      "mode": "material_override",
+      "label": "Lime ceramic",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.32,
+            0.62,
+            0.02,
+            1
+          ],
+          "roughness": 0.58,
+          "metallic": 0.14
+        },
+        "head": {
+          "base_color": [
+            0.42,
+            0.95,
+            0.055,
+            1
+          ],
+          "roughness": 0.43,
+          "metallic": 0.17
+        }
+      }
+    },
+    "variant_6": {
+      "mode": "material_override",
+      "label": "Aqua anodized",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.012,
+            0.59,
+            0.72,
+            1
+          ],
+          "roughness": 0.37,
+          "metallic": 0.46
+        },
+        "head": {
+          "base_color": [
+            0.025,
+            0.86,
+            0.9,
+            1
+          ],
+          "roughness": 0.29,
+          "metallic": 0.41
+        }
+      }
+    },
+    "variant_7": {
+      "mode": "material_override",
+      "label": "Violet satin",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.29,
+            0.047,
+            0.74,
+            1
+          ],
+          "roughness": 0.55,
+          "metallic": 0.24
+        },
+        "head": {
+          "base_color": [
+            0.39,
+            0.07,
+            0.91,
+            1
+          ],
+          "roughness": 0.44,
+          "metallic": 0.29
+        }
+      }
+    },
+    "variant_8": {
+      "mode": "material_override",
+      "label": "Graphite bead blast",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.12,
+            0.14,
+            0.19,
+            1
+          ],
+          "roughness": 0.78,
+          "metallic": 0.34
+        },
+        "head": {
+          "base_color": [
+            0.06,
+            0.065,
+            0.075,
+            1
+          ],
+          "roughness": 0.66,
+          "metallic": 0.38
+        }
+      }
+    },
+    "variant_9": {
+      "mode": "material_override",
+      "label": "Frost silver",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.55,
+            0.69,
+            0.84,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.35
+        },
+        "head": {
+          "base_color": [
+            0.75,
+            0.92,
+            0.98,
+            1
+          ],
+          "roughness": 0.35,
+          "metallic": 0.31
+        }
+      }
+    },
+    "variant_10": {
+      "mode": "material_override",
+      "label": "Magenta lacquer",
+      "roles": {
+        "shaft": {
+          "base_color": [
+            0.82,
+            0.04,
+            0.41,
+            1
+          ],
+          "roughness": 0.41,
+          "metallic": 0.18
+        },
+        "head": {
+          "base_color": [
+            0.98,
+            0.12,
+            0.53,
+            1
+          ],
+          "roughness": 0.31,
+          "metallic": 0.2
         }
       }
     }

@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 TASKS = ('PickBolt', 'SeatNut', 'TurnNut')
-SCHEMES = ('native_off', 'native_repeat', 'original', 'variant_1', 'variant_2')
+from tools.variation.nut_bolt_preview_materials import SCHEMES as APPEARANCE_SCHEMES
+
+SCHEMES = ('native_off', 'native_repeat', *APPEARANCE_SCHEMES)
 BOOKKEEPING = ('_success_hold_count', '_success_last_eval_step', '_bolt_place_hold_count',
     '_bolt_place_last_eval_step', '_stage_bolt_placed', '_stage_nut_placed', '_stage_turned',
     '_nut_engaged', '_nut_engage_hold_count', '_nut_engage_last_eval_step', '_task_phase',
