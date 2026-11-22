@@ -18,6 +18,31 @@ Windows v7 [成功路径运行档案](../../assets/appearance/objects/nut_bolt/p
 
 [归档索引](../../assets/appearance/objects/nut_bolt/previews/runtime_expansion_v2/summary.json) 提供每任务 11 套见证图、逐对数据、双向局部 reset 与 SeatNut 阶段切换图，共 50 张原始 PNG。固定图为原版在左、所示方案在右。归档另含同一 SDK 的 160 步原生探针，六轴锁定和解锁、索引恢复及真实接触均通过。
 
+扩容代码的 [Windows 复验](evidence/nut_bolt/windows_expansion_review.json) 重新执行三个任务的 `physx_cpu` 动态与标准双环境 CUDA。CPU 无图像采集，逐状态复算通过。CUDA 复算原图、材质、局部 reset 和原版恢复。新回执保留本次运行的真实源码、SDK 和原始文件摘要。
+
+## Linux CUDA 复验
+
+Server 3（`lyg0295`）作业 `123850` 使用双环境标准 ManiSkill CUDA RGB 和私有 SAPIEN `3.0.3+dexarena.gpu1.linuxnut1`。三任务共 168 次选中状态读回、6 控制步、120 物理子步和 330 组候选对照。四路原相机参加双向局部 reset、原版恢复与未选环境精确隔离。SeatNut 验证了原生阶段切换，独立探针验证了双场景光栅和 160 步六轴锁定及接触。
+
+[Linux 复算摘要](../../assets/appearance/objects/nut_bolt/previews/runtime_expansion_linux/summary.json) 保留实际采集提交和 SDK 身份。[源码比对](../../assets/appearance/objects/nut_bolt/previews/runtime_expansion_linux/source_equivalence.json) 核对采集用 206 个文件的 SHA-256。[原相机画面与图像清单](../../assets/appearance/objects/nut_bolt/previews/runtime_expansion_linux/figures.json) 包含三个任务的候选图和 PickBolt 的两种隔离方向。
+
+在获准的单卡窗口使用 [Nut 私有 Linux SDK](../../tools/variation/sapien_sdk/native_lock/recipe-linux/README.md) 与项目依赖的 CPython 3.10 环境。先按配方串行执行 lock 和 raster，再从仓库根运行如下任务。将 `sdk_root` 和 `run` 设为私有 SDK 与本次的新输出根，`artifact_sha256` 设为审核过的 SHA-256。
+
+```bash
+repo=$(pwd)
+common="$repo/tools/variation/sapien_sdk"
+artifact="$sdk_root/artifact.json"
+wheel=$(python3.10 -c 'import json,sys; print(json.load(open(sys.argv[1]))["wheel"])' "$artifact")
+test "$(sha256sum "$artifact" | cut -d ' ' -f 1)" = "$artifact_sha256" || exit $?
+mkdir -- "$run" || exit $?
+
+for task in PickBolt SeatNut TurnNut; do
+  python3.10 -B "$common/run_linux_check.py" --checker nut --repo-root "$repo" \
+    --artifact "$artifact" --wheel "$sdk_root/$wheel" --physx-gpu-dir "$sdk_root/physx-runtime" \
+    --approved-runtime --two-env-memory --task "$task" --output "$run/$task" || exit $?
+done
+```
+
 ## 验证命令
 
 从仓库根运行静态检查与公开 reset 契约。
@@ -26,7 +51,7 @@ Windows v7 [成功路径运行档案](../../assets/appearance/objects/nut_bolt/p
 python -B tools/variation/check_static.py
 python -B tools/variation/check_appearance_archive.py
 python -B tools/variation/check_nut_bolt_appearance.py --static
-python -B -m unittest discover -s tests -p 'test_nut_bolt*.py'
+python -B -m unittest discover -s tests -p 'test_nut*.py'
 ```
 
 从当前仓库根目录使用锁定 CPython 和 [Windows v7 SDK](../../tools/variation/sapien_sdk/native_lock/README.md)。示例中 `$run` 是新目录，GPU 检查串行执行。本地协调工作区用可选共享锁包装同一命令，独立复现直接运行仓库内的 monitor 和 launcher。
@@ -95,4 +120,4 @@ if ($LASTEXITCODE) { throw 'SDK probe export failed' }
 & $py -B tools/variation/compact_nut_expansion.py --run $run --sdk-root $sdk --output "$run/review-export"
 ```
 
-范围为三个 Windows 短任务。完整机器人策略成功、Long 任务及 Linux 部署另行验收。
+验收范围为 PickBolt、SeatNut 和 TurnNut 的 Windows／Linux 短任务。Long 和完整机器人策略成功留待验证。

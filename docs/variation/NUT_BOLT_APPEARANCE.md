@@ -73,4 +73,4 @@ SeatNut 与 TurnNut 的任务视角会被机械臂遮挡。先用关闭外观的
 
 ## 验收边界
 
-本轮验证覆盖三个 Windows 短任务。Long、Linux 和完整机器人任务成功不在验收范围。CUDA 需要原生 `native_gpu_lock_sync_patch_version()==1` 和 `indexed_gpu_apply_patch_version()==1`。锁状态翻转时只发布选中环境的姿态和速度；状态恢复保留原有速度，稳态不重复写入。
+首批和扩容共覆盖 PickBolt、SeatNut 和 TurnNut 的 Windows／Linux 短任务。Long 和完整机器人任务成功留待验证。CUDA 需要原生 `native_gpu_lock_sync_patch_version()==1` 和 `indexed_gpu_apply_patch_version()==1`。锁状态翻转时只发布选中环境的姿态和速度；状态恢复保留原有速度，稳态不重复写入。
