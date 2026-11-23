@@ -148,6 +148,34 @@ def control_targets(t):
              "drive_targets": positions[i], "drive_velocities": velocities[i]} for i in range(2)]
 
 
+def prime_package_control_targets(env):
+    """Issue distinct legal commands without stepping or moving the scene."""
+    t = env.unwrapped
+    controller = t.agent.controller
+    actions = {}
+    arms = []
+    for name, child in controller.controllers.items():
+        assert not child.config.normalize_action and not getattr(child.config, "use_delta", False), name
+        action = child.qpos.clone()
+        low = torch.as_tensor(child.single_action_space.low, device=t.device, dtype=action.dtype)
+        high = torch.as_tensor(child.single_action_space.high, device=t.device, dtype=action.dtype)
+        action[:, 0] += torch.tensor([.125, -.125], device=t.device)
+        action = torch.maximum(low, torch.minimum(high, action))
+        assert torch.all(action >= low) and torch.all(action <= high), name
+        if isinstance(child, FrankaJointImpedanceController):
+            assert torch.all((action[:, 0] - child.qpos[:, 0]).abs() > .01), name
+            assert abs(float(action[0, 0] - action[1, 0])) > .01, name
+            arms.append(child)
+        actions[name] = action
+    assert arms, "Package A5 needs arm impedance controllers"
+    command = controller.from_action_dict(actions)
+    t.agent.set_action(command)
+    for arm in arms:
+        assert torch.all((arm._target_qpos[:, 0] - arm.qpos[:, 0]).abs() > .01)
+        assert abs(float(arm._target_qpos[0, 0] - arm._target_qpos[1, 0])) > .01
+    return plain(command)
+
+
 def compare_control_targets(before, after, idx, label):
     return numeric_equal(before["control_targets"][idx], after["control_targets"][idx], label)
 
@@ -324,12 +352,17 @@ def run():
                 peer=IDS[1+(n+1)%10]
                 for selected in (1,0):
                     cfg={"per_env":{"0":{"scheme_id":scheme},"1":{"scheme_id":peer}}}
-                    _,ninfo=control.reset(seed=7);native_before=capture(control,ninfo)
-                    _,info=env.reset(seed=7,options={KEY:cfg});before=capture(env,info);other=1-selected
+                    _,ninfo=control.reset(seed=7)
+                    commands=prime_package_control_targets(control) if FAMILY=="package" else None
+                    native_before=capture(control,ninfo)
+                    _,info=env.reset(seed=7,options={KEY:cfg})
+                    if FAMILY=="package":
+                        numeric_equal(commands,prime_package_control_targets(env),"A5 matched commands")
+                    before=capture(env,info);other=1-selected
                     _,ninfo=control.reset(options={"env_idx":torch.tensor([selected],device=t.device)});native_after=capture(control,ninfo)
                     _,info=env.reset(options={"env_idx":torch.tensor([selected],device=t.device),KEY:{"per_env":{str(selected):{"scheme_id":"original"}}}})
                     after=capture(env,info)
-                    report["pending_case"]={"scheme":scheme,"selected":selected,"before":sig(before),"after":sig(after),
+                    report["pending_case"]={"scheme":scheme,"selected":selected,"commands":commands,"before":sig(before),"after":sig(after),
                         "before_images":save_images(before,f"a5_{scheme}_selected{selected}_before"),"after_images":save_images(after,f"a5_{scheme}_selected{selected}_after")}
                     dump(OUT/"report.json",report);dump(OUT/"signatures.json",SIGNATURES)
                     if FAMILY=="package":
@@ -345,7 +378,7 @@ def run():
                         compare_control_targets(native,after,selected,"A5 selected control targets vs native")
                     numeric_equal(native["materials"][selected],after["materials"][selected],"A5 selected slots")
                     numeric_equal(native["state"][selected],after["state"][selected],"A5 selected state")
-                    case={"request_pair":[scheme,peer],"selected":selected,"before":sig(before),"after":sig(after),
+                    case={"request_pair":[scheme,peer],"selected":selected,"commands":commands,"before":sig(before),"after":sig(after),
                         "unselected_rgb":image_diff(before["images"],after["images"],other,unselected=True),
                         "matched_native_before":sig(native_before),"matched_native_after":sig(native_after),
                         "matched_native_images":save_images(native_after,f"a5_{scheme}_selected{selected}_native"),

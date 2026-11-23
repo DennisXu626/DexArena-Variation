@@ -1,0 +1,68 @@
+[
+  {
+    "source": "envs/sapien_env.py",
+    "class": "BaseEnv",
+    "method": "reset",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/base_agent.py",
+    "class": "BaseAgent",
+    "method": "set_action",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/base_agent.py",
+    "class": "BaseAgent",
+    "method": "reset",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/base_controller.py",
+    "class": "BaseController",
+    "method": "reset",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/base_controller.py",
+    "class": "BaseController",
+    "method": "_preprocess_action",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/base_controller.py",
+    "class": "DictController",
+    "method": "reset",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/base_controller.py",
+    "class": "CombinedController",
+    "method": "set_action",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/base_controller.py",
+    "class": "CombinedController",
+    "method": "from_action_dict",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/pd_joint_pos.py",
+    "class": "PDJointPosController",
+    "method": "reset",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/pd_joint_pos.py",
+    "class": "PDJointPosController",
+    "method": "set_drive_targets",
+    "AST_matches": true
+  },
+  {
+    "source": "agents/controllers/pd_joint_pos.py",
+    "class": "PDJointPosController",
+    "method": "set_action",
+    "AST_matches": true
+  }
+]
