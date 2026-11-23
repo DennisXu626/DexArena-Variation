@@ -41,7 +41,18 @@ def check_materials(native, actual, scheme, original_rgba):
     pan, = [k for k, m in native.items() if k.startswith("pan/")
             and m["color"][2] > .8 and m["color"][0] < .1]
     frame, = [k for k, m in native.items() if k.startswith("bin/") and m["base_color_texture"] is None]
-    debris = [k for k in native if k.startswith("debris_")]
+    debris = []
+    original = np.ascontiguousarray(original_rgba)
+    original_id = [list(original.shape), str(original.dtype), hashlib.sha256(original.tobytes()).hexdigest()]
+    actors = {k.split("/")[0] for k in native if k.startswith("debris_")}
+    assert len(actors) == 3, ("expected three sugar actors", actors)
+    for actor in sorted(actors):
+        slots = [k for k, material in native.items()
+                 if k.startswith(actor + "/") and material["base_color_texture"] is not None]
+        assert len(slots) == 1, ("expected one sugar texture slot", actor, slots)
+        slot, = slots
+        assert native[slot]["base_color_texture"][1] == original_id, ("native sugar texture mismatch", slot)
+        debris.append(slot)
     pixels = expected_pixels(original_rgba, scheme)
     texture_id = [list(pixels.shape), str(pixels.dtype), hashlib.sha256(pixels.tobytes()).hexdigest()]
     if scheme != "original":
