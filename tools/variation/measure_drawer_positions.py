@@ -10,7 +10,8 @@ import xml.etree.ElementTree as ET
 
 import numpy as np
 from scipy.spatial.transform import Rotation
-from shapely.geometry import MultiPoint, Point, Polygon, box
+from shapely.affinity import rotate
+from shapely.geometry import MultiPoint, box
 from shapely.ops import nearest_points, unary_union
 
 from plot_cabinet_positions import ring, rotation, square
@@ -81,8 +82,9 @@ def drawer_meshes(directory, manifest, scale):
     return parts, files
 
 
-def minimum_pair(charger_xy, socket_xy, parts, socket_half, charger_r, socket_r):
+def minimum_pair(charger_xy, socket_xy, parts, socket_half, charger_r, socket_r, yaw=90):
     shell = box(*(socket_xy - socket_half), *(socket_xy + socket_half))
+    shell = rotate(shell, yaw, origin=socket_xy.tolist())
     pieces = [xy(vertices + charger_xy) for vertices in parts]
     a, b = min((nearest_points(piece, shell) for piece in pieces),
                key=lambda pair: pair[0].distance(pair[1]))
@@ -92,7 +94,7 @@ def minimum_pair(charger_xy, socket_xy, parts, socket_half, charger_r, socket_r)
     toward = (b-a)/distance
     return {"charger_xy": charger_xy + charger_r*toward, "socket_xy": socket_xy - socket_r*toward,
             "witness": [a + charger_r*toward, b - socket_r*toward],
-            "gap_cm": distance - charger_r - socket_r}
+            "gap_cm": distance - charger_r - socket_r, "socket_yaw_deg": yaw}
 
 
 def measure(args):
@@ -137,7 +139,9 @@ def measure(args):
     table_shape = box(*table_bounds[0],*table_bounds[1])
     support_limit_x = table_bounds[0,0] - min(p[:,0].min() for p in charger)
     shell_half = 50*attr("socket_side")
-    nearest = minimum_pair(handoff, socket, charger, shell_half, sample_r, 2)
+    nearest_by_yaw = [minimum_pair(handoff, socket, charger, shell_half, sample_r, 2, yaw)
+                      for yaw in (85, 90, 95)]
+    nearest = next(case for case in nearest_by_yaw if case["socket_yaw_deg"] == 90)
     socket_nominal = minimum_pair(handoff, socket, charger, shell_half, sample_r, 0)
     open_geometry = unary_union([xy(v[:,:2]+cabinet+shift) for v in door.values()])
     c_and_drawer = min((nearest_points(xy(p+handoff), open_geometry) for p in charger),
@@ -187,7 +191,7 @@ def measure(args):
            "upright_half_xy":body_half[:2], "blade_half_xy":blade_half[:2],
            "socket_half":shell_half,"slot_half_xy":100*np.asarray(attr("socket_slot_half")),
            "slot_offset":slot_offset,"slot_depth_cm":100*(attr("socket_thickness")-attr("socket_floor_thickness")),
-           "nearest_socket_new":nearest,"nearest_socket_nominal":socket_nominal,
+           "nearest_socket_new":nearest,"nearest_socket_by_yaw":nearest_by_yaw,"nearest_socket_nominal":socket_nominal,
            "handoff_drawer_limit":{"charger_xy":handoff+radius*vector_to_drawer,
                  "gap_cm":np.linalg.norm(b-a)-radius,"witness":[a+radius*vector_to_drawer,b],
                  "open_mid_min_z_cm":min(v[:,2].min() for v in door.values())+z_lift,
@@ -251,6 +255,14 @@ def points(g):
     add("PickCharger","R","deep",{"charger_drawer_local_xy_m":meters(inside+[1.1,0])},"expected_reject")
     add("InsertPlug","R","xy",{"socket_xy_m":[-.125,-.359]},"expected_reject")
     add("InsertPlug","R","yaw",{"socket_yaw_deg":96},"expected_reject")
+    for candidate in g["nearest_socket_by_yaw"]:
+        angle = candidate["socket_yaw_deg"]
+        if angle != 90:
+            add("InsertPlug","C",f"near-{angle}",{"socket_xy_m":meters(candidate["socket_xy"]),
+                "charger_table_xy_m":meters(candidate["charger_xy"]),"socket_yaw_deg":angle},"combination")
+    # Make the rotated in-drawer case explicit in addition to the two named deep points.
+    add("PickCharger","C","rotated-deep",{"drawer_xy_m":[.23,.23],"drawer_yaw_deg":-5,
+        "charger_drawer_local_xy_m":meters(inside+[1,2])},"combination")
     return result
 
 
