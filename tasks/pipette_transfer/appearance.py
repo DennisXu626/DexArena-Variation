@@ -275,8 +275,11 @@ class PipetteAppearance:
         for i, name, parameters in selections:
             for object_id, role, part, material, native in self.bindings[i]:
                 values = self.resolved_parameters(native, parameters[name][object_id].get(role, {}))
-                if name != 'original' and object_id == 'pipette_stand' and role == 'base_plate':
-                    values['base_color_texture'] = self._plate_label
+                if object_id == 'pipette_stand' and role == 'base_plate':
+                    native_texture = values.pop('base_color_texture')
+                    # SAPIEN 3.0.3 uploads the changed texture mask on the next
+                    # uniform write. Set the texture before writing base_color.
+                    material.base_color_texture = native_texture if name == 'original' else self._plate_label
                 for key, value in values.items():
                     setattr(material, key, value)
             self.schemes[i] = name

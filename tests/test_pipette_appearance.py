@@ -433,8 +433,15 @@ class PipetteAppearanceTests(unittest.TestCase):
 
     def test_native_binding_shape_and_parent_mapping(self):
         value = MODULE.PipetteAppearance({'enabled': True}, 2, rendering_enabled=True)
+        writes = []
+
+        class RecordingMaterial(IdentityNamespace):
+            def __setattr__(self, name, field):
+                writes.append((self, name))
+                super().__setattr__(name, field)
+
         def shape():
-            return SimpleNamespace(parts=[SimpleNamespace(material=IdentityNamespace(
+            return SimpleNamespace(parts=[SimpleNamespace(material=RecordingMaterial(
                 base_color=[.1, .2, .3, 1.], roughness=.5, metallic=0., base_color_texture=None))])
         def entity(count):
             body = SimpleNamespace(render_shapes=[shape() for _ in range(count)])
@@ -463,7 +470,11 @@ class PipetteAppearanceTests(unittest.TestCase):
             self.assertEqual(counts, {role: 1 for role in counts})
             reset(value)
             render.RenderTexture2D.assert_not_called()
+            writes.clear()
             reset(value, [1], {'scheme_id': 'jade'})
+            plate = value.bindings[1][0][3]
+            plate_writes = [name for material, name in writes if material is plate]
+            self.assertLess(plate_writes.index('base_color_texture'), plate_writes.index('base_color'))
             for i, rows in enumerate(value.bindings):
                 textured = [(oid, role) for oid, role, _, mat, _ in rows
                             if mat.base_color_texture is texture]
@@ -471,7 +482,10 @@ class PipetteAppearanceTests(unittest.TestCase):
             reset(value, [0], {'scheme_id': 'coral'})
             render.RenderTexture2D.assert_called_once_with(
                 str(value._plate_label_path), mipmap_levels=value._plate_label_levels)
+            writes.clear()
             reset(value, [1])
+            plate_writes = [name for material, name in writes if material is plate]
+            self.assertLess(plate_writes.index('base_color_texture'), plate_writes.index('base_color'))
             self.assertIs(value.bindings[0][0][3].base_color_texture, texture)
             self.assertIsNone(value.bindings[1][0][3].base_color_texture)
             # A shared environment material is rejected before storing bindings.

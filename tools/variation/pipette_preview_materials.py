@@ -197,15 +197,16 @@ def apply_records(records, object_id, scheme, catalog, *, load_texture=None):
                    if label and load_texture else label and label['path'])
         for index in indices:
             material = records[index].material
-            apply_material(material, params)
             if label:
                 material.base_color_texture = texture
+            apply_material(material, params)
 
 
 def snapshot_records(records):
+    # Restore the texture before the uniform update that uploads its mask.
     return [(record.material, {key: (getattr(record.material, key) if key == 'base_color_texture'
                                     else copy.deepcopy(getattr(record.material, key)))
-                              for key in ('base_color', 'roughness', 'metallic', 'base_color_texture')})
+                              for key in ('base_color_texture', 'base_color', 'roughness', 'metallic')})
             for record in records]
 
 
