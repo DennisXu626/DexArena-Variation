@@ -53,11 +53,13 @@ class CabinetPouringOpenCabinetEnv(CabinetPouringLongEnv):
     lock_bottle_during_cap_stages = False
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
+        from .position_layout import requested_layout
+        layout = requested_layout(options, env_idx, "OpenCabinet")
         with torch.device(self.device):
             b = len(env_idx)
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
-            self._initialize_cabinet(env_idx, b, door_open=False)
+            self._initialize_cabinet(env_idx, b, door_open=False, layout=layout)
             if self._family_appearance is not None:
                 self._finish_family_appearance(env_idx, options)
             elif self._cabinet_appearance is not None:

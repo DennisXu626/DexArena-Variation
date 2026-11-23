@@ -2062,7 +2062,7 @@ class CabinetPouringLongEnv(BaseEnv):
             self.agent.robot.set_root_pose(self._robot_base_pose)
 
     def _initialize_cabinet(
-        self, env_idx: torch.Tensor, b: int, door_open: bool = False
+        self, env_idx: torch.Tensor, b: int, door_open: bool = False, layout=None
     ) -> torch.Tensor:
         """Randomise the cabinet pose; returns the sampled xy offset, shape (b, 2).
 
@@ -2083,14 +2083,27 @@ class CabinetPouringLongEnv(BaseEnv):
                 [np.cos(self.cabinet_yaw / 2), 0.0, 0.0, np.sin(self.cabinet_yaw / 2)],
                 dtype=torch.float32,
             ).expand(b, -1)
+            if layout is not None:
+                cabinet_p[:, :2] = cabinet_p.new_tensor(layout[:, :2])
+                self._cabinet_episode_xy[env_idx] = cabinet_p[:, :2]
+                cabinet_xy_offset = cabinet_p[:, :2] - cabinet_p.new_tensor(self.cabinet_xy)
+                half = torch.deg2rad(cabinet_p.new_tensor(layout[:, 2])) / 2
+                cabinet_q = torch.zeros((b, 4), device=self.device)
+                cabinet_q[:, 0], cabinet_q[:, 3] = half.cos(), half.sin()
             self.cabinet.set_pose(Pose.create_from_pq(p=cabinet_p, q=cabinet_q))
 
             if self.num_envs == 1:
                 offset = cabinet_xy_offset[0].cpu().numpy()
                 handle = self._door_handle_xyz_nominal.copy()
+                hinge = self._door_hinge_xy_nominal
+                if layout is not None:
+                    angle = np.deg2rad(layout[0, 2]) - self.cabinet_yaw
+                    rotate = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+                    handle[:2] = rotate @ (handle[:2] - self.cabinet_xy) + self.cabinet_xy
+                    hinge = rotate @ (hinge - self.cabinet_xy) + self.cabinet_xy
                 handle[:2] += offset
                 self.door_handle_xyz = tuple(handle)
-                self.door_hinge_xy = tuple(self._door_hinge_xy_nominal + offset)
+                self.door_hinge_xy = tuple(hinge + offset)
             door_qpos = self.cabinet.get_qlimits()[env_idx, :, 0].clone()
             if door_open:
                 door_qpos[:, 0] = self.cabinet.get_qlimits()[env_idx, 0, 1]
@@ -2098,7 +2111,7 @@ class CabinetPouringLongEnv(BaseEnv):
             self.cabinet.set_qvel(torch.zeros_like(door_qpos))
             return cabinet_xy_offset
 
-    def _shelf_bottle_xyz(self, b: int, cabinet_xy_offset: torch.Tensor) -> torch.Tensor:
+    def _shelf_bottle_xyz(self, b: int, cabinet_xy_offset: torch.Tensor, layout=None) -> torch.Tensor:
         """Bottle spawn inside the cabinet, standing on the upper shelf."""
         with torch.device(self.device):
             source_xyz = torch.zeros((b, 3))
@@ -2107,6 +2120,12 @@ class CabinetPouringLongEnv(BaseEnv):
                 + torch.tensor(self.source_start_xy, dtype=torch.float32)
                 + cabinet_xy_offset
             )
+            if layout is not None:
+                values = source_xyz.new_tensor(layout)
+                yaw = torch.deg2rad(values[:, 2])
+                x, y = values[:, 3], values[:, 4]
+                source_xyz[:, :2] = values[:, :2] + torch.stack(
+                    (yaw.cos()*x - yaw.sin()*y, yaw.sin()*x + yaw.cos()*y), dim=1)
             # The bottle stands on the upper shelf (top of the upper panel).
             source_xyz[:, 2] = self.shelf_ceiling_z - self.source_z_lo + 1e-3
             return source_xyz
@@ -2793,7 +2812,7 @@ class CabinetPouringLongEnv(BaseEnv):
                 twist=twist, detached=detached, free=False,
             )
 
-    def _place_target(self, b: int):
+    def _place_target(self, b: int, layout=None):
         """Randomise the bowl's spot on the table."""
         with torch.device(self.device):
             target_xyz = torch.zeros((b, 3))
@@ -2801,6 +2820,8 @@ class CabinetPouringLongEnv(BaseEnv):
                 (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
                 + torch.tensor(self.target_center_xy, dtype=torch.float32)
             )
+            if layout is not None:
+                target_xyz[:, :2] = target_xyz.new_tensor(layout)
             target_xyz[:, 2] = -self.target_z_lo + 1e-3
             self.target.set_pose(
                 Pose.create_from_pq(p=target_xyz, q=torch.tensor([1.0, 0.0, 0.0, 0.0]).expand(b, -1))
