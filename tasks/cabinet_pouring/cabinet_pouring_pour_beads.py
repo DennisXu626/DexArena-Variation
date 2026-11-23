@@ -64,6 +64,8 @@ class CabinetPouringPourBeadsEnv(CabinetPouringLongEnv):
             self._pouring_appearance.bind(self.target, self.particles)
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
+        from .position_layout import requested_layout
+        layout = requested_layout(options, env_idx, "PourBeads")
         with torch.device(self.device):
             b = len(env_idx)
             self._reset_episode_buffers(env_idx)
@@ -71,7 +73,7 @@ class CabinetPouringPourBeadsEnv(CabinetPouringLongEnv):
 
             source_xyz = self._placed_bottle_xyz(b)
             source_q = self._place_bottle(b, source_xyz)
-            self._place_target(b)
+            self._place_target(b, layout)
             self._place_particles(b, source_xyz, source_q)
 
             # The stages this one starts from are already done.

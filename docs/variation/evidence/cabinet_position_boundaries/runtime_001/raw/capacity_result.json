@@ -1,0 +1,23 @@
+{
+  "samples": 98,
+  "peak_bytes": 51368735,
+  "min_mount_free_bytes": 820007403520,
+  "threshold_bytes": 536870912,
+  "initial": {
+    "directory_bytes": {},
+    "total_bytes": 51209025,
+    "mount_root_available_bytes": 820238090240,
+    "nominal_quota_bytes": null,
+    "estimated_quota_headroom_bytes": null,
+    "quota_is_absolute_hard_limit": false
+  },
+  "absolute_cap": false,
+  "final": {
+    "directory_bytes": {},
+    "total_bytes": 51376187,
+    "mount_root_available_bytes": 820040957952,
+    "nominal_quota_bytes": null,
+    "estimated_quota_headroom_bytes": null,
+    "quota_is_absolute_hard_limit": false
+  }
+}

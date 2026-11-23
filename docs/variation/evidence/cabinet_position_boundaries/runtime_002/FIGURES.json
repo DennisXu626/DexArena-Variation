@@ -1,0 +1,35 @@
+{
+  "source": "Archived M3 PickBottle runtime collision meshes, current bowl collision OBJ set, PR 32 request coordinates",
+  "units": "cm",
+  "jobs": [
+    134751,
+    134787
+  ],
+  "images": {
+    "01_cabinet_xy.png": {
+      "width": 2277,
+      "height": 1254,
+      "sha256": "7f59ef315df9a23a257e2a9ce89124098da4dd8c6b70f41e8cecfa3eb307785e"
+    },
+    "02_cabinet_yaw.png": {
+      "width": 2277,
+      "height": 1254,
+      "sha256": "78e53eacbcde3bf8514c4037f5859d7b4b8c475dd05d36f40647f3ad90756b2e"
+    },
+    "03_shelf_bottle.png": {
+      "width": 2277,
+      "height": 1254,
+      "sha256": "a2b45f860170f71fc7c40c1c399c3fbea77998e534fcf0cdc50234e18171d4a7"
+    },
+    "04_table_handoff.png": {
+      "width": 2277,
+      "height": 1254,
+      "sha256": "829c4ae8d2e850fb4bb8659ae925cc4c977b2d9d69752d844f50ba7381f68407"
+    },
+    "05_bowl_xy.png": {
+      "width": 2277,
+      "height": 1254,
+      "sha256": "bb26033cb63545a235eebe385ee3ce69470e4c37bc2f25836ce0615c18544594"
+    }
+  }
+}
