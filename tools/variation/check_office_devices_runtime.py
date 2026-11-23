@@ -225,20 +225,17 @@ def material_values(material,owner=None,texture_cache=None,partition=None):
             import mani_skill
             package=Path(mani_skill.__file__).resolve().parent
             if partition is not None and field == 'base_color_texture':
-                private, pixel_cache = partition
+                private, pixel_cache, texture_kind = partition
                 pixels = texture_pixels(texture, pixel_cache)
                 result[field].update(data_dtype=str(pixels.dtype), data_shape=list(pixels.shape),
                                      data_sha256=pixel_digest(pixels))
-                if private == 'native_keycap_atlas':
-                    result[field]['source_kind'] = 'office_keycap_atlas_native'
-                elif private is not None:
+                if texture_kind is not None:
+                    result[field]['source_kind'] = texture_kind
+                if private is not None:
                     assert texture == private.texture and not texture.filename and texture != private.source
                     source = Path(private.source.filename).resolve(strict=True)
                     assert source.is_relative_to(MODEL_ASSET_ROOT)
-                    kind = ('office_keycap_atlas_private' if isinstance(private, P.OfficeKeycapTexture)
-                            else 'office_keyboard_private_strip')
                     result[field].update(asset_ref=source.relative_to(ROOT).as_posix(),
-                        source_kind=kind,
                         source_asset_sha256=hashlib.sha256(source.read_bytes()).hexdigest())
                     continue
             if not texture.filename:
@@ -266,7 +263,7 @@ def texture_context(base, env_id, row, pixel_cache):
     if group in ('safe', 'protected'):
         appearance = adapter(base)
         texture = (appearance.prepared[env_id].strip_texture if appearance is not None and group == 'safe' else None)
-        return texture, pixel_cache
+        return texture, pixel_cache, 'office_keyboard_private_strip' if texture is not None else None
     if not getattr(base, '_office_checker_keycap_atlas', False):
         return None
     texture = row['part'].material.base_color_texture
@@ -276,10 +273,10 @@ def texture_context(base, env_id, row, pixel_cache):
     if keys is not None:
         for private in keys.prepared[env_id].keycap_textures.values():
             if texture == private.texture:
-                return private, pixel_cache
+                return private, pixel_cache, 'office_keycap_atlas_private'
     if (texture.filename
             and Path(texture.filename).resolve() == MODEL_ASSET_ROOT / '13106/images/texture_0.jpg'):
-        return 'native_keycap_atlas', pixel_cache
+        return None, pixel_cache, 'office_keycap_atlas_native'
     return None
 
 
@@ -527,7 +524,8 @@ def verify(base, ids, native, *, keycap_ids=None):
             observed = logical_material(observed)
             for field in C.FIELDS:
                 np.testing.assert_allclose(observed[field],target[field],rtol=0,atol=1e-7)
-            assert {k:v for k,v in observed.items() if k not in C.FIELDS}=={k:v for k,v in target.items() if k not in C.FIELDS}
+            assert {k:v for k,v in observed.items() if k not in C.FIELDS} == {
+                k:v for k,v in target.items() if k not in C.FIELDS}, (observed, target)
     return actual
 
 
