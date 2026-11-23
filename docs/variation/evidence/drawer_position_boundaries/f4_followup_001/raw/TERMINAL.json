@@ -1,0 +1,45 @@
+{
+  "scontrol": {
+    "status": 0,
+    "stdout": "JobId=135690 JobName=drawer_f4_short UserId=xkl(1039) GroupId=xkl(1039) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=normal JobState=FAILED Reason=NonZeroExitCode Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0 RunTime=00:00:03 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-11-23T09:38:32 EligibleTime=2026-11-23T09:38:32 AccrueTime=2026-11-23T09:38:32 StartTime=2026-11-23T09:38:32 EndTime=2026-11-23T09:38:35 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-23T09:38:32 Scheduler=Main Partition=a800 AllocNode:Sid=lyg0295:2284341 ReqNodeList=lyg0295 ExcNodeList=(null) NodeList=lyg0295 BatchHost=lyg0295 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:* ReqTRES=cpu=2,mem=16G,node=1,billing=2,gres/shard=1 AllocTRES=cpu=2,node=1,billing=2,gres/shard=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=2 MinMemoryNode=16G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null) Command=/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/job.sh WorkDir=/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source StdErr=/dev/null StdIn=/dev/null StdOut=/dev/null TresPerNode=gres/shard:idx2:1 \n",
+    "stderr": ""
+  },
+  "squeue": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "sacct": {
+    "status": 1,
+    "stdout": "",
+    "stderr": "sacct: error: _open_persist_conn: failed to open persistent connection to host:localhost:6819: Connection refused\nsacct: error: Sending PersistInit msg: Connection refused\nsacct: error: Problem talking to the database: Connection refused\n"
+  },
+  "watcher": {
+    "status": 1,
+    "stdout": "    PID    PPID    PGID STAT COMMAND\n",
+    "stderr": ""
+  },
+  "accounting_fallback": "scontrol terminal JobState and RunTime; sacct unavailable",
+  "owned_process_group": [],
+  "visible_job_cgroup_members": [],
+  "collected_utc_epoch": 1795426815.2587514,
+  "post_run_hashes": {
+    "production": {
+      "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py": "3c7180a54381468972c02ebdb226b3c523f3ac17471fd5015897d4b8ad1016d7",
+      "tasks/drawer_plug/drawer_plug_long.py": "1bc2a8d2168c6a3511885301fa5621e328ed4fe71c82fa0cbbb5f3d114b1a714",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py": "db30616e232ae6e5794c22804bbaf4591cec6d9998817f2c671f1eaf790e7385",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py": "6cd5795479cc5dd00add7b0b1c1ce79055b8f6d20a9ae3016c4927c6dbfa7ce3",
+      "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+      "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
+      "tasks/drawer_plug/position_layout.py": "25f70f0bb2671712de3099658c932f92a89b40e437cbd8087ced6b109b1d2802",
+      "tools/variation/check_cabinet_positions.py": "003fcab10cf753b42038b0ab66dcca39272884c9833cf6008239b00b8e743041",
+      "tools/variation/check_drawer_positions.py": "cbf68a6ae524c176209779556722dad5edcbf0b4fe7266f5227b38baa7c1a768"
+    },
+    "production_matches": true,
+    "checker": "496d22c22cba4d121a2e57342f138788b3774c36d9ffffa99de1ad2b0ad339f3",
+    "checker_matches": true
+  },
+  "root_final_bytes": 52271663
+}

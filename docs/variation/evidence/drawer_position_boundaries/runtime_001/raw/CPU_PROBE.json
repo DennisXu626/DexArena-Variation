@@ -1,0 +1,30 @@
+{
+  "CPU_probe": {
+    "packages": {
+      "torch": "2.6.0",
+      "sapien": "3.0.3",
+      "mani_skill": "3.0.0b22",
+      "gymnasium": "0.29.1",
+      "numpy": "2.2.6",
+      "Pillow": "12.3.0",
+      "coacd": "1.0.11"
+    },
+    "cwd": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source",
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "read_only_probe": true,
+    "tasks_source": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tasks/__init__.py",
+    "GPU_seconds": 0
+  },
+  "initial": {
+    "directory_bytes": {},
+    "total_bytes": 50856537,
+    "mount_root_available_bytes": 692894826496,
+    "nominal_quota_bytes": null,
+    "estimated_quota_headroom_bytes": null,
+    "quota_is_absolute_hard_limit": false
+  },
+  "stop_bytes": 536870912,
+  "assets": 96,
+  "binding": "private output; shared URDF/coacd/PhysX and source read-only",
+  "collision": "URDF loader default convex mesh path, no CoACD writes expected (as in Drawer job 128908)"
+}

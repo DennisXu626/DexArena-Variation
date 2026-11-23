@@ -1,0 +1,658 @@
+{
+  "job": "135695",
+  "backend": "physx_cuda",
+  "tasks": {
+    "PickCharger": {
+      "task_id": "DrawerPlugPickCharger-Sharpa-v1",
+      "make_kwargs": {
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "state",
+        "reconfiguration_freq": 0
+      },
+      "points": [
+        {
+          "id": "F4-0",
+          "figure": "F4",
+          "kind": "native_predicate_center",
+          "env_idx": 1,
+          "seed": 843,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.29,
+              -0.61
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              1
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": true,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 1.1920928955078125e-07,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.28999999165534973,
+            -0.6100001335144043,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": true
+        },
+        {
+          "id": "F4-1",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 0,
+          "seed": 844,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.15,
+              -0.61
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              0
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": true,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.1399998962879181,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.15000009536743164,
+            -0.6100001335144043,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": true,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.151,
+              -0.61
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.13899996876716614,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.1510000228881836,
+              -0.6100001335144043,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-2",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 1,
+          "seed": 845,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.1910050506,
+              -0.5110050506
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              1
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": false,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.1400000900030136,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.19100505113601685,
+            -0.5110049247741699,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": false,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.19171215738118655,
+              -0.5117121573811866
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.1390000581741333,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.1917121559381485,
+              -0.5117120742797852,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-3",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 0,
+          "seed": 846,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.29,
+              -0.47
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              0
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": true,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.13999998569488525,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.28999996185302734,
+            -0.4700000286102295,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": true,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.29,
+              -0.471
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.1390000581741333,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.28999996185302734,
+              -0.47099995613098145,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-4",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 1,
+          "seed": 847,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.3889949494,
+              -0.5110050506
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              1
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": false,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.140000119805336,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.388994961977005,
+            -0.5110049247741699,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": false,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.38828784261881344,
+              -0.5117121573811866
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.1390000730752945,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.38828784227371216,
+              -0.5117120742797852,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-5",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 0,
+          "seed": 848,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.43,
+              -0.61
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              0
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": false,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.14000007510185242,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.43000006675720215,
+            -0.6100001335144043,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": false,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.429,
+              -0.61
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.13899990916252136,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.4289999008178711,
+              -0.6100001335144043,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-6",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 1,
+          "seed": 849,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.3889949494,
+              -0.7089949494
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              1
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": true,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.13999994099140167,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.388994961977005,
+            -0.7089948654174805,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": true,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.38828784261881344,
+              -0.7082878426188134
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.13899990916252136,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.38828784227371216,
+              -0.7082877159118652,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-7",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 0,
+          "seed": 850,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.29,
+              -0.75
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              0
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": true,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.13999998569488525,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.28999996185302734,
+            -0.75,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": true,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.29,
+              -0.749
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.1390000581741333,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.28999996185302734,
+              -0.749000072479248,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        },
+        {
+          "id": "F4-8",
+          "figure": "F4",
+          "kind": "native_predicate_boundary",
+          "env_idx": 1,
+          "seed": 851,
+          "request": {
+            "diagnostic_place_center_xy_m": [
+              -0.1910050506,
+              -0.7089949494
+            ]
+          },
+          "reset_options": {
+            "env_idx": [
+              1
+            ]
+          },
+          "status": "placement_predicate_measured",
+          "passive_unchanged": true,
+          "placed": true,
+          "charger_out": true,
+          "settled": true,
+          "radial_distance_m": 0.13999992609024048,
+          "bottom_z_m": 0.0,
+          "radius_limit_m": 0.14000000059604645,
+          "on_table": true,
+          "charger_pose": [
+            -0.19100505113601685,
+            -0.7089948654174805,
+            0.03500000014901161,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "probe_roundtrip_equal": [
+            true,
+            true
+          ],
+          "strict_radius_pass": true,
+          "inset_1mm_control": {
+            "requested_xy_m": [
+              -0.19171215738118655,
+              -0.7082878426188134
+            ],
+            "status": "placement_predicate_measured",
+            "placed": true,
+            "charger_out": true,
+            "settled": true,
+            "radial_distance_m": 0.13899989426136017,
+            "bottom_z_m": 0.0,
+            "radius_limit_m": 0.14000000059604645,
+            "on_table": true,
+            "charger_pose": [
+              -0.1917121559381485,
+              -0.7082877159118652,
+              0.03500000014901161,
+              0.5,
+              0.5,
+              -0.5,
+              -0.5
+            ],
+            "probe_roundtrip_equal": [
+              true,
+              true
+            ],
+            "strict_radius_pass": true
+          }
+        }
+      ],
+      "native_seed_7_pose": {
+        "drawer": [
+          [
+            0.17813920974731445,
+            0.18774700164794922,
+            0.2778495252132416,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.18859772384166718,
+            0.1817479133605957,
+            0.2778495252132416,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "charger": [
+          [
+            -0.1671276092529297,
+            0.18207645416259766,
+            0.27253007888793945,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          [
+            -0.14435939490795135,
+            0.17774248123168945,
+            0.27253007888793945,
+            0.5,
+            0.5,
+            -0.5,
+            -0.5
+          ]
+        ]
+      },
+      "native_drawer_travel": [
+        0.2199999988079071,
+        0.2199999988079071
+      ]
+    }
+  },
+  "status": "running",
+  "scope": "pick_charger_placement"
+}

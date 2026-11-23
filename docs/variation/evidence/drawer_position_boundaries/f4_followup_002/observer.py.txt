@@ -1,0 +1,73 @@
+"""Observe the frozen F4 script. The CPU run exits at the line before gym.make."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+
+
+def install():
+    root = Path(os.environ["F4_RECEIPT_ROOT"])
+    source = root.parent / "runtime_001/source"
+    entry = source / "tools/variation/check_drawer_positions.py"
+    if sys.argv[0] != str(entry):
+        return
+    cpu = os.environ["F4_MODE"] == "cpu"
+    mode = "CPU" if cpu else "GPU"
+    if cpu:
+        assert not os.environ.get("SLURM_JOB_ID")
+        os.environ["SLURM_JOB_ID"] = "CPU_PREFLIGHT_ONLY"
+    lines = entry.read_text().splitlines()
+    def number(fragment):
+        matches = [i for i,s in enumerate(lines, 1) if s.strip().startswith(fragment)]
+        assert len(matches) == 1, (fragment, matches)
+        return matches[0]
+    create = number("with gym.make(task_id,**make)")
+    reset = number('item["passive_unchanged"]=before==env_digest(reset_after')
+    placed = number("if placement_only and id==")
+    def trace_line(frame, event, arg):
+        if event != "line" or frame.f_lineno not in (create, reset, placed):
+            return trace_line
+        data = frame.f_locals
+        if frame.f_lineno == create:
+            expected = [str(entry), "--output", str(root/"output"), "--samples",
+                        str(root.parent/"runtime_001/SAMPLES.csv"), "--placement-only"]
+            helper = Path(sys.modules["check_cabinet_positions"].__file__).resolve()
+            batch = [(p["id"],int(p["seed"]),int(p["env_idx"])) for p in data["batch"]]
+            assert Path.cwd()==source and sys.argv==expected
+            assert helper==entry.with_name("check_cabinet_positions.py")
+            assert data["placement_only"] and batch==[(f"F4-{j}",843+j,1-j%2) for j in range(9)]
+            receipt = dict(cwd=str(Path.cwd()), argv=sys.argv, python_argv=sys.orig_argv,
+                           helper=str(helper), checker_sha256=hashlib.sha256(entry.read_bytes()).hexdigest(),
+                           samples_sha256=hashlib.sha256(data["matrix"].read_bytes()).hexdigest(),
+                           batch=batch, make=data["make"], task=data["task_id"], hook="immediately before gym.make")
+            with (root/(mode+"_LAUNCH.json")).open("x") as f:
+                json.dump(receipt,f,indent=2)
+            if cpu:
+                raise SystemExit(0)
+        elif not cpu and data["id"] in ("F4-0","F4-1"):
+            def pair(state):
+                return state["drawer_plug_task_state"][:,3].detach().cpu().tolist()
+            if frame.f_lineno == reset:
+                stages = dict(before=pair(data["reset_before"]), after=pair(data["reset_after"]))
+                name = "partial_reset"
+            else:
+                stages = dict(after=pair(data["e"].get_state_dict()))
+                name = "after_roundtrip"
+            with (root/"TRANSITION.jsonl").open("a") as f:
+                print(json.dumps(dict(point=data["id"],target=data["i"],phase=name,
+                                      field="stage_charger_placed",values_by_env=stages)),file=f)
+        return trace_line
+    def trace_call(frame,event,arg):
+        if frame.f_code.co_filename==str(entry) and frame.f_code.co_name=="run":
+            return trace_line
+        return None
+    sys.settrace(trace_call)
+
+
+if "F4_RECEIPT_ROOT" in os.environ:
+    try:
+        install()
+    except BaseException as error:
+        print(f"F4 receipt hook startup failed: {error!r}", file=sys.stderr, flush=True)
+        os._exit(79)

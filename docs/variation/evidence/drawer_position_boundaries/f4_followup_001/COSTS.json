@@ -1,0 +1,22 @@
+{
+  "job": "135690",
+  "card": 2,
+  "gpu_allocated_seconds": 3,
+  "gpu_limit_seconds": 120,
+  "application_seconds": 2.1403661016374826,
+  "application_limit_seconds": 90,
+  "queue_seconds": 0.0,
+  "job_status": "FAILED",
+  "exit_code": "1:0",
+  "submissions": 1,
+  "requeue": 0,
+  "terminal_time_utc": "2026-11-23T09:38:35",
+  "wall_start": "2026-11-23T17:35:19+08:00",
+  "wall_limit_minutes": 35,
+  "ceph_peak_bytes": 52269893,
+  "ceph_min_free_bytes": 654730854400,
+  "capacity_samples": 2,
+  "sample_stop_bytes": 536870912,
+  "cleanup_complete": true,
+  "wall_through_audit_seconds": 418
+}
