@@ -4,18 +4,18 @@
 
 ## 方案与部件
 
-唯一参数源：[catalog](variants/v1/catalog.json)；部件对应：[bindings](bindings.json)。original恢复当前实例捕获的原生材质；家族variant_1映射ivory_matte（浅象牙哑光），variant_2映射navy_satin（深蓝表面）。
+材质参数见 [catalog](variants/v1/catalog.json)，部件角色见 [bindings](bindings.json)。original 恢复本次建场捕获的原生材质。十套候选包含七类木纹和三类人工覆面。家族 variant_1 和 variant_2 沿用原有内部键名 ivory_matte、navy_satin。
 
 | 角色 | 部件 | shape数 | 处理 |
 |---|---|---|---|
-| face | 主板面、入口斜块 | 5 | 随方案变化 |
+| face | 主板面、入口斜块 | 5 | 主板面使用材质贴图，入口斜块沿用对应底色 |
 | cut | 导槽底、封闭止挡 | 2 | 随方案变化，保持槽底对比 |
 | edge | 四周封边 | 4 | 随方案变化 |
 | routed | 直槽及喇叭口沿边饰条 | 4 | 随方案变化 |
 | label | 纸标签 | 1 | 保留 |
 | ink | 六根条码条纹 | 6 | 保留 |
 
-visual_detail=true时合计22个shape，各1个part；保留标签、条码及其余材质字段。角色按部件来源识别。
+visual_detail=true时合计22个shape，各1个part；保留标签、条码、UV 和原生法线贴图。角色按部件来源识别。
 
 ## 任务表示与来源
 

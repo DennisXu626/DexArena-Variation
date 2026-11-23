@@ -53,6 +53,7 @@ class FurnitureAppearance:
         seed = int(config.get('seed', 0))
         self.rng = [np.random.default_rng(np.random.SeedSequence([seed, i])) for i in range(num_envs)]
         self.bindings = [None] * num_envs
+        self.panel_surfaces = [()] * num_envs
         self.schemes = ['original'] * num_envs
         self.episodes = [0] * num_envs
         self.records = []
@@ -85,6 +86,10 @@ class FurnitureAppearance:
             raise ValueError(f'Candidate edits protected roles: {object_id}')
         return {role: validate_parameters(value) for role, value in params.items()}
 
+    def panel_finish(self, scheme_id):
+        local_id = self.catalog['objects']['flat_panel']['scheme_map'][scheme_id]
+        return self.catalogs['flat_panel']['schemes'][local_id].get('surface')
+
     @staticmethod
     def isolate_builder_materials(builder):
         import sapien.render as sr
@@ -114,6 +119,11 @@ class FurnitureAppearance:
 
     def bind(self, base, env_id):
         import sapien.render as sr
+        from .finishes import PanelSurface, WOOD_FINISHES
+
+        known_finishes = {'plain', *WOOD_FINISHES}
+        if any(self.panel_finish(name) not in known_finishes for name in self.catalog['schemes'] if name != 'original'):
+            raise ValueError('Unknown panel finish in furniture catalog')
 
         task = TASKS[type(base).__name__]
         handles = {'flat_panel': base.panel}
@@ -122,6 +132,7 @@ class FurnitureAppearance:
         else:
             handles.update(rail=base.rail_body, screw=base.screw_head)
         bindings = []
+        face_boxes = []
         for object_id, handle in handles.items():
             if len(handle._objs) != len(self.bindings):
                 raise RuntimeError(f'Furniture environment count mismatch: {object_id}')
@@ -144,6 +155,8 @@ class FurnitureAppearance:
                     role = matches[0]
                     native = {key: copy.deepcopy(getattr(material, key)) for key in FIELDS}
                     bindings.append((object_id, role, part, material, native))
+                    if object_id == 'flat_panel' and role == 'face' and isinstance(shape, sr.RenderShapeBox):
+                        face_boxes.append((material, shape))
                     shape_roles.add(role)
                 counts.update(shape_roles)
             expected = self._expected_counts(object_id, task, base.visual_detail)
@@ -154,6 +167,10 @@ class FurnitureAppearance:
                 if any(material == other for _, _, _, material, _ in bindings
                        for _, _, _, other, _ in previous):
                     raise RuntimeError('Furniture material shared across environments')
+        if len(face_boxes) != 3:
+            raise RuntimeError('Expected three UV-mapped furniture panel face boxes')
+        self.panel_surfaces[env_id] = tuple(PanelSurface(material, shape, sr.RenderTexture2D)
+                                            for material, shape in face_boxes)
         self.bindings[env_id] = bindings
 
     @staticmethod
@@ -194,7 +211,14 @@ class FurnitureAppearance:
             requests.append((i, mode, choices, parameters))
         selections = [(i, str(self.rng[i].choice(choices)) if mode == 'random_choice' else choices[0], params)
                       for i, mode, choices, params in requests]
+        # Other families reuse scalar reset selection without panel bindings.
+        panel_surfaces = getattr(self, 'panel_surfaces', None)
         for i, name, parameters in selections:
+            if panel_surfaces is not None and panel_surfaces[i]:
+                face = parameters[name]['flat_panel'].get('face', {})
+                finish = self.panel_finish(name)
+                for surface in panel_surfaces[i]:
+                    surface.apply(name, finish, face.get('base_color'))
             for object_id, role, part, material, native in self.bindings[i]:
                 params = parameters[name][object_id].get(role, native)
                 for key in FIELDS:

@@ -125,7 +125,7 @@ def compare_pixels(original, restored):
 def load_set():
     """Validate the unique catalogs and family mapping without simulator imports."""
     index = json.loads(INDEX.read_text(encoding="utf-8"))
-    if (index["version"] != "furniture-appearance-v1"
+    if (index["version"] != "furniture-appearance-v2"
             or index["scope"] != "material_appearance"
             or not SCHEMES or SCHEMES[0] != "original" or len(set(SCHEMES)) != len(SCHEMES)
             or tuple(index["schemes"]) != SCHEMES or set(index["tasks"]) != set(TASK_IDS)
@@ -179,7 +179,8 @@ def make_task(task, seed):
     import tasks  # Register the actual repository task classes.
 
     kwargs = dict(num_envs=1, sim_backend="physx_cpu", obs_mode="state",
-                  control_mode="pd_joint_pos", render_mode="human", visual_detail=True)
+                  control_mode="pd_joint_pos", render_mode="human", visual_detail=True,
+                  furniture_appearance={"enabled": True, "scheme_id": "original"})
     if task != "FastenScrew":
         kwargs["panel_color_jitter"] = False
     env = gym.make(TASK_IDS[task], **kwargs)
@@ -241,9 +242,16 @@ def select_family(binding, index, catalogs, scheme_id):
                 target = expected.get(role, record["native"])
                 for field in FIELDS:
                     np.testing.assert_allclose(actual[field], target[field], rtol=0, atol=2e-6)
-                parts.append(dict(entity=record["semantic_entity"], shape_index=record["shape_index"],
-                                  part_index=record["part_index"], actual=actual,
-                                  expected={field: target[field] for field in FIELDS}))
+                part = dict(entity=record["semantic_entity"], shape_index=record["shape_index"],
+                            part_index=record["part_index"], actual=actual,
+                            expected={field: target[field] for field in FIELDS})
+                if 'surface' in record:
+                    surface = record['surface']
+                    pixels = surface.texture.download()
+                    np.testing.assert_array_equal(pixels, surface.pixels(local_id, candidate.get('surface'),
+                                                                         target['base_color']))
+                    part['albedo_data_sha256'] = hashlib.sha256(pixels.tobytes()).hexdigest()
+                parts.append(part)
             role_results[role] = {"parts_checked": len(parts), "parts": parts}
         observed[object_id] = {"object_scheme_id": local_id, "roles": role_results}
     return observed
@@ -271,6 +279,8 @@ def _baseline_path(output, task):
 def implementation_files(index):
     files = {
         "tools/variation/render_furniture_preview.py", "tools/variation/furniture_preview_materials.py",
+        "tasks/furniture_assembly/finishes.py",
+        "tasks/furniture_assembly/appearance.py",
         INDEX.relative_to(ROOT).as_posix(),
         "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py",
         "tasks/furniture_assembly/furniture_assembly_insert_rail.py",

@@ -1,6 +1,6 @@
 """Source definitions, measured bindings and invariant reads for furniture previews.
 
-Only material base_color/roughness/metallic may be written. The real task owns
+Only editable PBR fields and panel face albedo may be written. The real task owns
 all geometry, physics, poses and resets; this helper supports one environment
 of the three declared short tasks and adds no formal appearance interface.
 """
@@ -282,7 +282,9 @@ def inspect_furniture(env):
     base = env.unwrapped
     task_id = TASKS.get(type(base).__name__)
     declared_id = getattr(getattr(env, "spec", None), "id", None)
-    if (task_id is None or base.num_envs != 1 or not base.visual_detail
+    adapter = getattr(base, '_furniture_appearance', None)
+    if (task_id is None or base.num_envs != 1 or not base.visual_detail or adapter is None
+            or adapter.schemes != ['original']
             or (declared_id is not None and declared_id != task_id)):
         raise ValueError("Furniture preview requires one supported Sharpa task with visual_detail=True")
     if getattr(base, "panel_color_jitter", False):
@@ -349,6 +351,10 @@ def inspect_furniture(env):
                 for part in shape.parts:
                     if any(part.material == material for _, _, material in editable):
                         raise ValueError(f"Editable furniture material aliases non-target entity {entity.name}")
+    for surface in adapter.panel_surfaces[0]:
+        record, = [record for record in objects['flat_panel'].groups['face']
+                   if record['material'] == surface.material]
+        record['surface'] = surface
     return FamilyBinding(base, objects)
 
 
@@ -400,6 +406,8 @@ def _restore_object(obj):
             for record in records:
                 for field in FIELDS:
                     setattr(record["material"], field, record["native"][field])
+                if 'surface' in record:
+                    record['surface'].apply('original')
 
 
 def apply_object(obj, catalog, scheme_id):
@@ -445,6 +453,8 @@ def apply_object(obj, catalog, scheme_id):
         for record in obj.groups[role]:
             for field, value in params.items():
                 setattr(record["material"], field, value)
+            if 'surface' in record:
+                record['surface'].apply(scheme_id, scheme['surface'], params['base_color'])
 
 
 def restore_furniture(binding):
@@ -486,7 +496,7 @@ def snapshot_furniture(binding):
         for role, records in obj.groups.items():
             for record in records:
                 key = (record["entity"].per_scene_id, record["shape_index"], record["part_index"])
-                owned[key] = (oid, role, obj.definition["roles"][role]["editable"])
+                owned[key] = (oid, role, obj.definition["roles"][role]["editable"], 'surface' in record)
     entities, protected, non_furniture = [], [], []
     for entity in sorted(base.scene.sub_scenes[0].entities, key=lambda e: e.per_scene_id):
         row = dict(name=entity.name, id=entity.per_scene_id, pose=_pose(entity.pose), visual=[], physics=[])
@@ -502,9 +512,10 @@ def snapshot_furniture(binding):
                         if owner is None:
                             non_furniture.append({**record, "material": material})
                         else:
-                            oid, role, editable = owner
+                            oid, role, editable, has_surface = owner
                             if editable:
-                                material = {key: value for key, value in material.items() if key not in FIELDS}
+                                fields = FIELDS + ('base_color_texture',) if has_surface else FIELDS
+                                material = {key: value for key, value in material.items() if key not in fields}
                             protected.append({**record, "object_id": oid, "role": role, "material": material})
             elif isinstance(component, px.PhysxRigidBaseComponent):
                 physics = dict(type=type(component).__name__, collisions=[])

@@ -1,5 +1,5 @@
 {
-  "version": "furniture-appearance-v1",
+  "version": "furniture-appearance-v2",
   "scope": "material_appearance",
   "schemes": ["original", "variant_1", "variant_2", "variant_3", "variant_4", "variant_5", "variant_6", "variant_7", "variant_8", "variant_9", "variant_10"],
   "objects": {

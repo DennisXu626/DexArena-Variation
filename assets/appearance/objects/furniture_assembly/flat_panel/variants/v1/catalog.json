@@ -5,67 +5,87 @@
   "color_factors": {"face": 1.0, "cut": 0.76, "edge": 0.6, "routed": 0.88},
   "color_rule": "Multiply the scheme base_color RGB by the role factor; preserve the scheme alpha unchanged.",
   "preserve_roles": ["label", "ink"],
-  "preserve_properties": ["textures", "uv", "specular"],
+  "preserve_properties": ["normal_texture", "roughness_texture", "metallic_texture", "emission_texture", "transmission_texture", "uv", "specular"],
   "schemes": {
     "original": {"mode": "restore_native"},
     "ivory_matte": {
       "mode": "material_override",
-      "base_color": [0.88, 0.86, 0.8, 1.0],
-      "roughness": {"face": 0.78, "cut": 0.86, "edge": 0.7, "routed": 0.58},
+      "label": "White oak clear oil",
+      "surface": "white_oak",
+      "base_color": [0.69, 0.55, 0.34, 1.0],
+      "roughness": {"face": 0.67, "cut": 0.86, "edge": 0.64, "routed": 0.61},
       "metallic": 0.0
     },
     "navy_satin": {
       "mode": "material_override",
-      "base_color": [0.06, 0.18, 0.38, 1.0],
-      "roughness": {"face": 0.42, "cut": 0.74, "edge": 0.56, "routed": 0.28},
+      "label": "Slate-blue satin laminate",
+      "surface": "plain",
+      "base_color": [0.18, 0.24, 0.32, 1.0],
+      "roughness": {"face": 0.52, "cut": 0.73, "edge": 0.56, "routed": 0.48},
       "metallic": 0.0
     },
     "variant_3": {
       "mode": "material_override",
-      "base_color": [0.48, 0.025, 0.105, 1.0],
-      "roughness": {"face": 0.83, "cut": 0.89, "edge": 0.77, "routed": 0.7},
+      "label": "Black walnut hardwax oil",
+      "surface": "black_walnut",
+      "base_color": [0.31, 0.2, 0.132, 1.0],
+      "roughness": {"face": 0.63, "cut": 0.84, "edge": 0.66, "routed": 0.55},
       "metallic": 0.0
     },
     "variant_4": {
       "mode": "material_override",
-      "base_color": [0.94, 0.29, 0.022, 1.0],
-      "roughness": {"face": 0.52, "cut": 0.72, "edge": 0.57, "routed": 0.46},
+      "label": "Black cherry satin varnish",
+      "surface": "black_cherry",
+      "base_color": [0.63, 0.37, 0.249, 1.0],
+      "roughness": {"face": 0.49, "cut": 0.77, "edge": 0.55, "routed": 0.46},
       "metallic": 0.0
     },
     "variant_5": {
       "mode": "material_override",
-      "base_color": [0.69, 0.86, 0.05, 1.0],
-      "roughness": {"face": 0.67, "cut": 0.83, "edge": 0.64, "routed": 0.53},
+      "label": "Grey-washed ash",
+      "surface": "grey_ash",
+      "base_color": [0.55, 0.57, 0.515, 1.0],
+      "roughness": {"face": 0.73, "cut": 0.86, "edge": 0.71, "routed": 0.64},
       "metallic": 0.0
     },
     "variant_6": {
       "mode": "material_override",
-      "base_color": [0.035, 0.285, 0.08, 1.0],
-      "roughness": {"face": 0.73, "cut": 0.88, "edge": 0.7, "routed": 0.6},
+      "label": "Sage-grey lacquered MDF",
+      "surface": "plain",
+      "base_color": [0.22, 0.325, 0.25, 1.0],
+      "roughness": {"face": 0.59, "cut": 0.78, "edge": 0.61, "routed": 0.54},
       "metallic": 0.0
     },
     "variant_7": {
       "mode": "material_override",
-      "base_color": [0.025, 0.68, 0.83, 1.0],
-      "roughness": {"face": 0.3, "cut": 0.67, "edge": 0.42, "routed": 0.25},
+      "label": "Birch plywood waterborne finish",
+      "surface": "birch",
+      "base_color": [0.83, 0.73, 0.535, 1.0],
+      "roughness": {"face": 0.71, "cut": 0.85, "edge": 0.66, "routed": 0.59},
       "metallic": 0.0
     },
     "variant_8": {
       "mode": "material_override",
-      "base_color": [0.295, 0.065, 0.68, 1.0],
-      "roughness": {"face": 0.47, "cut": 0.73, "edge": 0.57, "routed": 0.4},
+      "label": "Sapele satin veneer",
+      "surface": "sapele",
+      "base_color": [0.43, 0.245, 0.19, 1.0],
+      "roughness": {"face": 0.54, "cut": 0.78, "edge": 0.61, "routed": 0.48},
       "metallic": 0.0
     },
     "variant_9": {
       "mode": "material_override",
-      "base_color": [0.96, 0.24, 0.52, 1.0],
-      "roughness": {"face": 0.35, "cut": 0.63, "edge": 0.46, "routed": 0.28},
+      "label": "Candlelight maple clear coat",
+      "surface": "maple",
+      "base_color": [0.74, 0.65, 0.54, 1.0],
+      "roughness": {"face": 0.58, "cut": 0.8, "edge": 0.61, "routed": 0.51},
       "metallic": 0.0
     },
     "variant_10": {
       "mode": "material_override",
-      "base_color": [0.105, 0.135, 0.165, 1.0],
-      "roughness": {"face": 0.6, "cut": 0.8, "edge": 0.65, "routed": 0.52},
+      "label": "Graphite phenolic laminate",
+      "surface": "plain",
+      "base_color": [0.105, 0.12, 0.13, 1.0],
+      "roughness": {"face": 0.7, "cut": 0.8, "edge": 0.71, "routed": 0.63},
       "metallic": 0.0
     }
   }

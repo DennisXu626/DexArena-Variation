@@ -319,7 +319,7 @@ def fixed_rgb_check(directory, fixed):
                         pair = np.array(stream)
                     require(np.array_equal(pair, np.concatenate((frame, frame), axis=1)),
                             f'{camera}/env{env}: original RGB differs from native repeat')
-                if scheme in SCHEMES[3:]:
+                if 'restoration_pixels' in fixed[scheme]:
                     with Image.open(directory / f'restored_{scheme}_{camera}_env{env}.png') as stream:
                         pair = np.array(stream)
                     with Image.open(directory / f'original_{camera}_env{env}.png') as stream:
@@ -352,6 +352,8 @@ def task_check(directory, task):
             and not task.get('close_error'), 'Task is not complete standard RGB acceptance')
     require(task['control_steps'] == 2 and task['physics_steps'] == 40, 'Unexpected step counts')
     checks = task['checks']
+    version = checks['original']['records'][0]['catalog_version']
+    restored_schemes = SCHEMES[1:] if version == 'furniture-appearance-v2' else SCHEMES[3:]
     require(checks['default_disabled'] == checks['explicit_disabled'] ==
             checks['selection_precedence'] == 'passed', 'Interface checks failed')
     selected = [selected_check(directory, row) for row in checks['selected_reset_state']]
@@ -366,7 +368,7 @@ def task_check(directory, task):
         fixed[scheme] = {'materials_sha256': canonical_sha(checks[scheme]['materials']),
             'records': checks[scheme]['records'],
             'pixels_vs_native': {i: pixel_metrics(v) for i, v in pixels.items()}}
-        if scheme in SCHEMES[3:]:
+        if scheme in restored_schemes:
             restored = checks[scheme]['original_restoration']
             require(restored['materials_match_native'] is True and restored['physical_state_match_native'] is True
                     and set(restored['pixel_changes']) == {'0', '1'} and all(zero_pixels(v) for v in restored['pixel_changes'].values()),
@@ -456,7 +458,7 @@ def cpu_interface_check(root, gpu_identity, sdk_record, expected_native):
             exact_state(baseline, torch.load(state_path, map_location='cpu', weights_only=True))
             require(checks[name]['status'] == 'passed' and checks[name]['records'][-1]['scheme_id'] == name,
                     f'{task}/{name}: CPU interface materials or episode record failed')
-            if name in SCHEMES[3:]:
+            if name in (SCHEMES[1:] if manifest['catalog_version'] == 'furniture-appearance-v2' else SCHEMES[3:]):
                 require(checks[name]['original_restoration'] == {'materials_match_native': True, 'physical_state_match_native': True},
                         f'{task}/{name}: CPU interface original restoration failed')
             states[name] = sha(state_path)

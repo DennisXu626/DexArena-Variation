@@ -28,18 +28,21 @@ class FurnitureLinuxEvidenceTests(unittest.TestCase):
             params = catalog.scheme_parameters(obj, scheme)
             for role, count in catalog._expected_counts(obj, task, detail=True).items():
                 rough, metal = module.ROLES[obj][role]
-                for _ in range(count):
+                for part in range(count):
                     shape = len(original)
                     material = {"base_color": [0.12, 0.24, 0.36, 1.0], "roughness": rough,
                                 "metallic": metal, "base_color_texture": None}
                     slot = {"entity": entity, "shape": shape, "part": 0, "material": material}
                     original.append(slot)
                     current.append({**slot, "material": {**material, **params.get(role, {})}})
+                    if obj == 'flat_panel' and role == 'face' and part < 3:
+                        current[-1]['material']['base_color_texture'] = {'name': '', 'width': 384, 'height': 288,
+                                                                        'data_sha256': 'a' * 64}
                     if role == "ink":
                         protected = shape
         checked = audit.material_readback(module, catalog, task, scheme, original, current)
         self.assertEqual(checked["flat_panel"]["editable_roles"]["face"]["actual"]["base_color"],
-                         [0.94, 0.29, 0.022, 1.0])
+                         catalog.scheme_parameters('flat_panel', scheme)['face']['base_color'])
         with self.assertRaisesRegex(ValueError, "wrong actual"):
             audit.material_readback(module, catalog, task, "variant_8", original, current)
         current[protected]["material"]["base_color"] = [1.0, 0.0, 0.0, 1.0]

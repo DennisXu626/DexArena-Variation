@@ -4,7 +4,7 @@
 
 ## 方案与部件
 
-唯一参数源：[catalog](variants/v1/catalog.json)；部件对应：[bindings](bindings.json)。original恢复当前实例捕获的原生材质；variant_1为深蓝钢架／深色底板，variant_2为浅灰白钢架／中灰底板。
+材质参数见 [catalog](variants/v1/catalog.json)，部件角色见 [bindings](bindings.json)。original 恢复本次建场捕获的原生材质。十套候选覆盖粉末涂层、搪瓷漆、镀锌和发黑钢件，主体与承力底板有各自饰面。
 
 | 角色 | 部件 | shape数 | 处理 |
 |---|---|---|---|

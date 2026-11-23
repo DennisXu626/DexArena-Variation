@@ -8,72 +8,82 @@
     "original": {"mode": "restore_native"},
     "variant_1": {
       "mode": "material_override",
+      "label": "Brushed clear anodized aluminum",
       "roles": {
-        "metal_body": {"base_color": [0.1, 0.28, 0.49, 1.0], "roughness": 0.26, "metallic": 0.9},
-        "channel_details": {"base_color": [0.035, 0.075, 0.12, 1.0], "roughness": 0.48, "metallic": 0.72}
+        "metal_body": {"base_color": [0.77, 0.785, 0.82, 1.0], "roughness": 0.34, "metallic": 0.96},
+        "channel_details": {"base_color": [0.44, 0.464, 0.503, 1.0], "roughness": 0.51, "metallic": 0.92}
       }
     },
     "variant_2": {
       "mode": "material_override",
+      "label": "Dark nickel electroplate",
       "roles": {
-        "metal_body": {"base_color": [0.72, 0.49, 0.25, 1.0], "roughness": 0.32, "metallic": 0.88},
-        "channel_details": {"base_color": [0.2, 0.115, 0.055, 1.0], "roughness": 0.5, "metallic": 0.78}
+        "metal_body": {"base_color": [0.235, 0.248, 0.265, 1.0], "roughness": 0.28, "metallic": 0.94},
+        "channel_details": {"base_color": [0.106, 0.116, 0.134, 1.0], "roughness": 0.51, "metallic": 0.88}
       }
     },
     "variant_3": {
       "mode": "material_override",
+      "label": "Pale champagne anodized aluminum",
       "roles": {
-        "metal_body": {"base_color": [0.48, 0.025, 0.105, 1.0], "roughness": 0.66, "metallic": 0.25},
-        "channel_details": {"base_color": [0.2016, 0.0105, 0.0441, 1.0], "roughness": 0.72, "metallic": 0.2}
+        "metal_body": {"base_color": [0.715, 0.628, 0.482, 1.0], "roughness": 0.38, "metallic": 0.93},
+        "channel_details": {"base_color": [0.355, 0.303, 0.234, 1.0], "roughness": 0.54, "metallic": 0.88}
       }
     },
     "variant_4": {
       "mode": "material_override",
+      "label": "Oil-rubbed bronze plating",
       "roles": {
-        "metal_body": {"base_color": [0.94, 0.29, 0.022, 1.0], "roughness": 0.36, "metallic": 0.72},
-        "channel_details": {"base_color": [0.3948, 0.1218, 0.0092, 1.0], "roughness": 0.49, "metallic": 0.6}
+        "metal_body": {"base_color": [0.286, 0.214, 0.164, 1.0], "roughness": 0.43, "metallic": 0.89},
+        "channel_details": {"base_color": [0.129, 0.096, 0.08, 1.0], "roughness": 0.55, "metallic": 0.83}
       }
     },
     "variant_5": {
       "mode": "material_override",
+      "label": "Cold zinc phosphate coating",
       "roles": {
-        "metal_body": {"base_color": [0.69, 0.86, 0.05, 1.0], "roughness": 0.58, "metallic": 0.35},
-        "channel_details": {"base_color": [0.2898, 0.3612, 0.021, 1.0], "roughness": 0.67, "metallic": 0.29}
+        "metal_body": {"base_color": [0.395, 0.446, 0.505, 1.0], "roughness": 0.62, "metallic": 0.76},
+        "channel_details": {"base_color": [0.226, 0.271, 0.327, 1.0], "roughness": 0.69, "metallic": 0.7}
       }
     },
     "variant_6": {
       "mode": "material_override",
+      "label": "Satin olive anodizing",
       "roles": {
-        "metal_body": {"base_color": [0.035, 0.285, 0.08, 1.0], "roughness": 0.48, "metallic": 0.64},
-        "channel_details": {"base_color": [0.0147, 0.1197, 0.0336, 1.0], "roughness": 0.62, "metallic": 0.58}
+        "metal_body": {"base_color": [0.362, 0.421, 0.342, 1.0], "roughness": 0.4, "metallic": 0.93},
+        "channel_details": {"base_color": [0.177, 0.231, 0.172, 1.0], "roughness": 0.55, "metallic": 0.88}
       }
     },
     "variant_7": {
       "mode": "material_override",
+      "label": "Pale ceramic-coated steel",
       "roles": {
-        "metal_body": {"base_color": [0.025, 0.68, 0.83, 1.0], "roughness": 0.22, "metallic": 0.76},
-        "channel_details": {"base_color": [0.0105, 0.2856, 0.3486, 1.0], "roughness": 0.35, "metallic": 0.65}
+        "metal_body": {"base_color": [0.72, 0.742, 0.698, 1.0], "roughness": 0.58, "metallic": 0},
+        "channel_details": {"base_color": [0.546, 0.584, 0.568, 1.0], "roughness": 0.73, "metallic": 0}
       }
     },
     "variant_8": {
       "mode": "material_override",
+      "label": "Smoked black oxide steel",
       "roles": {
-        "metal_body": {"base_color": [0.295, 0.065, 0.68, 1.0], "roughness": 0.32, "metallic": 0.78},
-        "channel_details": {"base_color": [0.1239, 0.0273, 0.2856, 1.0], "roughness": 0.47, "metallic": 0.66}
+        "metal_body": {"base_color": [0.105, 0.122, 0.144, 1.0], "roughness": 0.36, "metallic": 0.91},
+        "channel_details": {"base_color": [0.064, 0.078, 0.099, 1.0], "roughness": 0.54, "metallic": 0.87}
       }
     },
     "variant_9": {
       "mode": "material_override",
+      "label": "Pewter nickel plate with a bronzed channel",
       "roles": {
-        "metal_body": {"base_color": [0.96, 0.24, 0.52, 1.0], "roughness": 0.31, "metallic": 0.48},
-        "channel_details": {"base_color": [0.4032, 0.1008, 0.2184, 1.0], "roughness": 0.46, "metallic": 0.42}
+        "metal_body": {"base_color": [0.56, 0.519, 0.471, 1.0], "roughness": 0.31, "metallic": 0.95},
+        "channel_details": {"base_color": [0.306, 0.269, 0.231, 1.0], "roughness": 0.48, "metallic": 0.9}
       }
     },
     "variant_10": {
       "mode": "material_override",
+      "label": "Grey-blue machine enamel",
       "roles": {
-        "metal_body": {"base_color": [0.105, 0.135, 0.165, 1.0], "roughness": 0.34, "metallic": 0.96},
-        "channel_details": {"base_color": [0.0441, 0.0567, 0.0693, 1.0], "roughness": 0.51, "metallic": 0.87}
+        "metal_body": {"base_color": [0.275, 0.35, 0.426, 1.0], "roughness": 0.5, "metallic": 0},
+        "channel_details": {"base_color": [0.157, 0.221, 0.283, 1.0], "roughness": 0.65, "metallic": 0}
       }
     }
   }

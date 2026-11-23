@@ -4,7 +4,7 @@
 
 ## 方案与部件
 
-[运行 catalog](../../tasks/assets/variation/furniture_assembly/v1/catalog.json)版本为 `furniture-appearance-v1`，支持 `original` 和 `variant_1` 至 `variant_10`。各对象 catalog 是材质参数的唯一来源。
+[运行 catalog](../../tasks/assets/variation/furniture_assembly/v1/catalog.json)版本为 `furniture-appearance-v2`，支持 `original` 和 `variant_1` 至 `variant_10`。各对象 catalog 是材质参数的唯一来源。
 
 | 正式任务 ID | 外观对象 |
 |---|---|
@@ -12,27 +12,29 @@
 | FurnitureAssemblyInsertRail-Sharpa-v1 | 板件、导轨、十字槽螺钉 |
 | FurnitureAssemblyFastenScrew-Sharpa-v1 | 板件、导轨、翼形螺钉 |
 
-| 对象与数值源 | 原有两套候选 | 可变与保留部件 |
-|---|---|---|
-| [板件](../../assets/appearance/objects/furniture_assembly/flat_panel/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json) | 浅象牙 / 深蓝 | 改主面、槽底、封边、槽沿；保留标签与条码 |
-| [导向架](../../assets/appearance/objects/furniture_assembly/panel_rack/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json) | 深蓝 / 浅灰白 | 改主体与底板；保留垫片、螺栓、黄条 |
-| [导轨](../../assets/appearance/objects/furniture_assembly/rail/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json) | 深蓝 / 香槟铜 | 改主体与槽唇，仅绑定 rail_body |
-| [螺钉](../../assets/appearance/objects/furniture_assembly/screw/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json) | 深青 / 砖红 | 改头部握持面；保留十字槽几何、金色顶帽或黄铜杆与方向顶条 |
+| 对象与数值源 | 可变部件与保护范围 |
+|---|---|
+| [板件](../../assets/appearance/objects/furniture_assembly/flat_panel/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json) | 主面、槽底、封边和槽沿采用同套木饰面或覆面，保留纸标签和条码。 |
+| [导向架](../../assets/appearance/objects/furniture_assembly/panel_rack/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json) | 主体和底板使用粉末喷涂、搪瓷漆或镀层，保留垫片、螺栓和黄色警示条。 |
+| [导轨](../../assets/appearance/objects/furniture_assembly/rail/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json) | 滑轨和槽唇有各自的阳极氧化、镀镍、镀锌或喷涂效果。 |
+| [螺钉](../../assets/appearance/objects/furniture_assembly/screw/README.md) · [catalog](../../assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json) | 握持面使用工程塑料或镀层，保留十字槽几何、金色顶帽或黄铜杆与方向顶条。 |
 
-新方案在批准的部件上调整 RGB、粗糙度和金属度。各对象沿用同一色系，并按零件用途选取饰面。板件保持非金属，标签、条码、方向标记和其他保留部件沿用原版材质。
+| 方案 | 板件饰面 |
+|---|---|
+| variant_1 | 白橡木清油 |
+| variant_2 | 石板蓝缎面层压板 |
+| variant_3 | 黑胡桃木蜡油 |
+| variant_4 | 黑樱桃木缎光清漆 |
+| variant_5 | 灰洗白蜡木 |
+| variant_6 | 灰鼠尾草色喷漆纤维板 |
+| variant_7 | 桦木胶合板水性清漆 |
+| variant_8 | 沙比利木缎光薄木 |
+| variant_9 | 暖色枫木清漆 |
+| variant_10 | 石墨灰酚醛层压板 |
 
-| 方案 | 色系 | 饰面 |
-|---|---|---|
-| `variant_3` | 酒红 | 哑光木饰面、粉末涂层 |
-| `variant_4` | 琥珀橙 | 缎面木饰面、阳极金属质感 |
-| `variant_5` | 柠檬绿 | 低反射木饰面、哑光涂漆金属 |
-| `variant_6` | 松绿 | 细哑光木饰面、缎面导轨 |
-| `variant_7` | 湖青 | 亮面漆板、亮面金属 |
-| `variant_8` | 鸢尾紫 | 缎面漆板、亮缎面金属 |
-| `variant_9` | 玫瑰粉 | 亮漆木饰面、喷涂金属 |
-| `variant_10` | 石墨灰 | 缎面木饰面、高金属度饰面 |
+[木纹生成器](../../tasks/furniture_assembly/finishes.py)在相同的板件坐标系中按七种木材分别绘制生长轮、导管和木结。三种人工覆面不使用木纹。三块原生盒体主面沿用原生 UV，入口斜块沿用同套颜色与粗糙度。贴图由程序生成，不依赖外部图像。素材风格参考长纹白橡木、深胡桃木和分区涂层。 [Dennis #20](https://github.com/DennisXu626/DexArena-Variation/pull/20) · [RoboDojo 材质库](https://huggingface.co/datasets/RoboDojo-Benchmark/RoboDojo/tree/main/Assets/Material)
 
-[适配器](../../tasks/furniture_assembly/appearance.py)仅覆盖可变部件的 `base_color`、`roughness`、`metallic`。各对象 `bindings.json` 保存角色及任务表示。方案使用程序材质，无新增贴图、模型或字体；代码与原资产许可分别见 [LICENSE](../../LICENSE)和[资产说明](../../tasks/assets/README.md)。
+[适配器](../../tasks/furniture_assembly/appearance.py)在每个环境的可变部件上更新颜色、粗糙度和金属度，并向主面独立的 albedo 贴图写入外观。原版重放建场捕获的原生贴图像素。原生纯色以相同的浮点值填充贴图，回合间复用贴图句柄。
 
 ## 使用
 
@@ -72,24 +74,9 @@ env.close()
 
 ## 验证与复现
 
-[本轮结果](../../assets/appearance/furniture_assembly/previews/runtime_finishes/summary.json)记录三项短任务的输入哈希、实测结果和图片索引。[首批验收](../../assets/appearance/furniture_assembly/previews/runtime/summary.json)保留原有两套外观的历史结果。
+旧版外观的证据保留其输入提交、SDK 和原相机画面。 [十套旧版](../../assets/appearance/furniture_assembly/previews/runtime_finishes/summary.json) · [首批旧版](../../assets/appearance/furniture_assembly/previews/runtime/summary.json)
 
-| 检查 | 本轮结果 |
-|---|---|
-| CPU 接口 | 三任务均验证默认关闭、全部 11 个固定方案、随机选择、配置覆盖、低细节模式和原版恢复。 |
-| CPU 动态 | 每任务用相同种子和动作运行两次关闭外观的对照、原版及十候选，各 60 步。共 2,340 控制步、46,800 物理子步，逐步状态和奖励一致。 |
-| 标准 CUDA | 每任务两个环境，共 114 次选中读回、6 控制步、120 物理子步。双向局部 reset 时，未选环境的物理状态、控制器、随机流和画面保持一致。 |
-| 恢复原版 | 八套新外观逐套恢复原版，两个环境的原生相机均逐像素一致。 |
-
-在同一初态用任务原生 `base_camera` 比较外观。每个目录含 11 张方案原图和四张局部 reset 对照图。
-
-| 任务 | 图集 | 新外观示例 |
-|---|---|---|
-| LayFlatPanel | [板件与导向架](../../assets/appearance/furniture_assembly/previews/runtime_finishes/LayFlatPanel/) | [湖青](../../assets/appearance/furniture_assembly/previews/runtime_finishes/LayFlatPanel/variant_7_base_camera_env0.png) |
-| InsertRail | [板件、导轨与十字槽螺钉](../../assets/appearance/furniture_assembly/previews/runtime_finishes/InsertRail/) | [鸢尾紫](../../assets/appearance/furniture_assembly/previews/runtime_finishes/InsertRail/variant_8_base_camera_env0.png) |
-| FastenScrew | [板件、导轨与翼形螺钉](../../assets/appearance/furniture_assembly/previews/runtime_finishes/FastenScrew/) | [琥珀橙](../../assets/appearance/furniture_assembly/previews/runtime_finishes/FastenScrew/variant_4_base_camera_env0.png) |
-
-[env0 保持石墨灰](../../assets/appearance/furniture_assembly/previews/runtime_finishes/LayFlatPanel/local_0_base_camera_env0.png)，[env1 从酒红恢复原版](../../assets/appearance/furniture_assembly/previews/runtime_finishes/LayFlatPanel/local_0_base_camera_env1.png)。每张对照图左侧为 reset 前，右侧为 reset 后。下一轮交换选中和未选中的环境。
+新版检查覆盖三个短任务的全部固定方案、随机选择和原版恢复。Linux CUDA 使用两个环境和任务原生相机读回，逐套检查独立贴图及 RGB 的原版恢复，并交替对两个环境做局部 reset。正式任务与预览共用木纹生成器。
 
 从仓库根目录运行。每次选择新的输出目录。
 
@@ -99,6 +86,4 @@ python -B tools/variation/check_furniture_appearance.py --approved-runtime --sim
 python -B tools/variation/check_furniture_dynamics.py --steps 60 --seed 7 --output outputs/furniture_dynamics
 ```
 
-Windows CUDA 按 [SDK 验证入口](../../tools/variation/sapien_sdk/README.md)加载私有 v5 SDK。验证入口默认遍历三个短任务，也可用 `--task` 逐任务采集。预览工具支持 `--scheme variant_7`，窗口中 `N`、`B` 切换方案，`V` 切换固定视图。
-
-本轮验收范围为 Windows 上的三个短任务和上述动作序列。
+Linux CUDA 按 [Linux 验收入口](FURNITURE_LINUX_RESET.md)执行。Windows CUDA 按 [SDK 验证入口](../../tools/variation/sapien_sdk/README.md)加载私有 v5 SDK。验证入口默认遍历三个短任务，也可用 `--task` 逐任务采集。预览工具支持 `--scheme variant_7`，窗口中 `N`、`B` 切换方案，`V` 切换固定视图。
