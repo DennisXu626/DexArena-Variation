@@ -75,4 +75,16 @@ $batch = 'outputs/office_realistic'
 
 标准 CUDA 检查分别覆盖三个短任务的全部原版与候选、原生相机、逐套恢复、双向局部 reset 和原物理行为。键帽检查还覆盖两个配置键的单独与组合启用，并记录独立键盘字标以及笔记本正面近景。每任务每环境的全部两两检查使用相同相机与固定种子，复算时要求至少 0.1% 的像素有通道变化超过 8 色级。Linux 在标准 CUDA 作业内使用 SDK 的 `run_linux_check.py --checker office --two-env-memory --approved-runtime`，逐项指定 `--task OpenLaptop`、`--task TypeKeys`、`--task ClickMouse`。Long 与完整机器人策略成功另行验收。
 
+## 本次实测
+
+Windows 的三个短任务均通过标准双环境 CUDA 和 CPU 接口。固定方案逐套恢复原版为零像素差，局部 reset 的未选环境状态和相机保持不变。普通全部候选和独立键帽的无渲染 CPU 动态均逐张量等于各自的关闭外观基线。[任务复算摘要](evidence/office_desk_realistic_v1/summary.json) · [键帽 CPU 动态](evidence/office_desk_realistic_v1/windows-keycaps-cpu.json)
+
+| 实景比较 | 固定相机裁剪 |
+|---|---|
+| OpenLaptop | [屏框](evidence/office_desk_realistic_v1/OpenLaptop_case_comparison.png) · [内置键帽](evidence/office_desk_realistic_v1/OpenLaptop_keycap_comparison.png) |
+| TypeKeys | [壳体与装饰边](evidence/office_desk_realistic_v1/TypeKeys_case_comparison.png) · [可动键帽](evidence/office_desk_realistic_v1/TypeKeys_keycap_comparison.png) |
+| ClickMouse | [壳体、按钮与滚轮](evidence/office_desk_realistic_v1/ClickMouse_case_comparison.png) |
+
+两套键帽均通过从源模型只加载键帽的独立预览。任务与预览采集的唯一源码差异是可视化工具保留贴图元数据字典，任务代码和正式检查所用的运行模块字节一致。[独立预览回执](evidence/office_desk_realistic_v1/isolated-preview.json) · [任务与预览输入范围](evidence/office_desk_realistic_v1/source-scopes.json) · [内置键帽](evidence/office_desk_realistic_v1/isolated_keycaps/laptop_comparison.png) · [独立键帽](evidence/office_desk_realistic_v1/isolated_keycaps/keyboard_comparison.png)
+
 [上一版 #27 Windows 归档](evidence/office_desk_expansion_v2/summary.json) · [上一版 #27 Linux 作业](evidence/office_desk_expansion_v2/linux-review.json) · [#16 归档](../../assets/appearance/objects/office_desk/previews/runtime/)

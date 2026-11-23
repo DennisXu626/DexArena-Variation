@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "source_commit": "f90a619d8244eea4ee64ee5e3995b21766132bec",
+  "scope": "isolated source keycaps model only",
+  "models": {
+    "laptop": {
+      "process": {
+        "commit": "f90a619d8244eea4ee64ee5e3995b21766132bec",
+        "ended_utc": "2026-11-23T08:34:19.1248058Z",
+        "candidates_exit": 0,
+        "native_exit": 0,
+        "started_utc": "2026-11-23T08:34:01.0913949Z"
+      },
+      "native_manifest_sha256": "cd2c27c01afdf8adcb6e2a80a5441266de458eb0b3ce7f30825fff6cbbbe58e7",
+      "variant_manifest_sha256": "8929ee85f51d88cd29714835d9ae4564d952c8ac407af0356e102d85abe8cd95",
+      "native_results_sha256": "9de385a47148bf25729d712fb7ae7e933287f0cd07ab336d5b0f39e6c7cfee93",
+      "variant_results_sha256": "3e7562655548d7c91504c42a351b6cf4f8e490008ee7886574639c416d4174d9",
+      "minimum_fraction_over_8": 0.0182647705078125,
+      "rgb_pairs": 55,
+      "native_original_exact": true,
+      "original_restored_exact": true,
+      "physics_steps": 0,
+      "comparison_sha256": "17f6f4f97e093d72be1468015c469019931ce8f39480b28cf4908ee5fa92fbed"
+    },
+    "keyboard": {
+      "process": {
+        "commit": "f90a619d8244eea4ee64ee5e3995b21766132bec",
+        "ended_utc": "2026-11-23T08:34:01.0792502Z",
+        "candidates_exit": 0,
+        "native_exit": 0,
+        "started_utc": "2026-11-23T08:32:53.7405161Z"
+      },
+      "native_manifest_sha256": "ae3d4680aee2606b2211d4716d031f0ce841946cddb9c4bd02c0808e91c41b40",
+      "variant_manifest_sha256": "067d619e9231cd7fbe266a363addcd4fcfbf7d119f3801c1f3cb670ef8b2a67d",
+      "native_results_sha256": "9de385a47148bf25729d712fb7ae7e933287f0cd07ab336d5b0f39e6c7cfee93",
+      "variant_results_sha256": "aaea9b7425fac996102e15af9d5222fb88d8c50fba0aceeafb451e5875a1055e",
+      "minimum_fraction_over_8": 0.032094319661458336,
+      "rgb_pairs": 55,
+      "native_original_exact": true,
+      "original_restored_exact": true,
+      "physics_steps": 0,
+      "comparison_sha256": "9f8be25bf1b74ebfcdf12d17e19f49e053947ac682d0f262f3822e3fd96b28a7"
+    }
+  }
+}

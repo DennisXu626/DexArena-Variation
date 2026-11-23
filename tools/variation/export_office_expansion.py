@@ -1,4 +1,4 @@
-"""Recompute Office expansion evidence from the raw CPU and CUDA captures."""
+"""Recompute Office appearance evidence from the raw CPU and CUDA captures."""
 import argparse
 import hashlib
 from itertools import combinations
@@ -26,6 +26,8 @@ REVIEW_IMAGES = (
     'OpenLaptop/variant_10_human_env0.png',
     'TypeKeys/local_0_base_camera_env0.png',
     'TypeKeys/local_0_base_camera_env1.png',
+    'OpenLaptop/keycaps_variant_8_front_detail_env0.png',
+    'TypeKeys/keycaps_variant_4_human_env0.png',
 )
 
 
@@ -410,7 +412,8 @@ def main():
     for task in runtime.TASKS:
         tasks[task], captures[task] = check_task(args.batch, task, capture_commit, sources, args.artifact, expected, required, images)
     cpu = check_cpu(args.batch, capture_commit, sources, captures, args.artifact, expected, required)
-    assert len(images) == 45 and set(REVIEW_IMAGES) <= images.keys()
+    expected_images = 45 + len(runtime.DEVICE_SCHEMES) * 2
+    assert len(images) == expected_images and set(REVIEW_IMAGES) <= images.keys()
     args.output.mkdir(parents=True)
     for name, path in images.items():
         target = args.output / name
@@ -418,7 +421,7 @@ def main():
         shutil.copyfile(path, target)
         assert audit.track(path) == audit.H.sha(target)
     assert sources == runtime.source_hashes()
-    audit.H.write(args.output / 'summary.json', {'format': 'office-expansion-evidence-v1', 'status': 'passed',
+    audit.H.write(args.output / 'summary.json', {'format': 'office-realistic-evidence-v1', 'status': 'passed',
         'baseline': capture_commit, 'capture_tree': capture_tree, 'source_identity': audit.source_identity(sources, ROOT), 'sdk': sdk,
         'tasks': tasks, 'cpu': cpu, 'images': {name: audit.track(path) for name, path in images.items()},
         'review_images': list(REVIEW_IMAGES),
