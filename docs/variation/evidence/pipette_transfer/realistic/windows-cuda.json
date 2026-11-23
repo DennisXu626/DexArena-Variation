@@ -1,0 +1,767 @@
+{
+  "status": "passed",
+  "scope": "Two environments with native fixed and local-reset camera comparisons",
+  "git_commit": "5cf3c6e7683994ff0fa628aa320434ecb10ab2a5",
+  "sdk": {
+    "wheel_sha256": "c93e2165a3bf3057b3efa945552a4753827753af5ea1ef0c76ec080201613110",
+    "source_commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+    "native_files": {
+      "OpenImageDenoise.dll": "baa77825c5ae945c2e29f328c0addce4cb3d1c459c37894d66e52935235a8fcd",
+      "OpenImageDenoise_core.dll": "e98e8744ccd0818e00fb97b75f2d5b27d10540840a408c340dcd35739d3f4ebc",
+      "OpenImageDenoise_device_cuda.dll": "395b08d47395b7804d8932b8b4ca603a84a896ac52b3c5bb676cf3ed555f0094",
+      "pysapien.cp310-win_amd64.pyd": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9",
+      "sapien.dll": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4",
+      "simsense.dll": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd",
+      "svulkan2.dll": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e"
+    },
+    "artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+    "schema": "portable-sdk-build-receipt",
+    "version": "3.0.3+dexarena.gpu1.wininterop5",
+    "lock_sha256": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+    "patches": [
+      {
+        "file": "patches/0001-indexed-gpu-apply.patch",
+        "group": "common",
+        "sha256": "89013895a06bb1eec1fa06463e3a37c9430159e71ad75896f90ea01f33cc6faf"
+      },
+      {
+        "file": "patches/0002-indexed-capability.patch",
+        "group": "common",
+        "sha256": "4117827f52151de92fb3ae36b59c5a770214b3511c245dc68f1c2117ef51f253"
+      },
+      {
+        "file": "patches/0101-windows-vulkan-cuda.patch",
+        "group": "windows",
+        "sha256": "32b3abfd331830041f1928908bdcddb9766afbc68a511cbe9c73326bbecf546e"
+      },
+      {
+        "file": "patches/0102-windows-pybind-name.patch",
+        "group": "windows",
+        "sha256": "01758742cd72d4c6fa8271637114d28106b63720ba7e7c82e2150d4e3547c417"
+      },
+      {
+        "file": "patches/0103-windows-driver-loader.patch",
+        "group": "windows",
+        "sha256": "fa4c8cd69010b63ab9298789039ac7a5c9f9d9cb729dc9e81d9a58e17544be2a"
+      },
+      {
+        "file": "patches/0200-local-build-version.patch",
+        "group": "packaging",
+        "sha256": "787f1afc90e47f7da9a4a59d8e995405bf0db6d2e16558a637573b6cc1d98749"
+      }
+    ],
+    "reference_toolchain": {
+      "python": "3.10.22",
+      "cmake": "4.0.1",
+      "ninja": "1.11.1.git.kitware.jobserver-1",
+      "msvc": "19.43.34810",
+      "toolset": "14.43.34808",
+      "cuda_nvcc": "12.4.131",
+      "cuda_runtime_headers": "12.4.127",
+      "sapien_kernel_architectures": [
+        "60",
+        "61",
+        "70",
+        "75",
+        "80",
+        "86"
+      ],
+      "flags": [
+        "--use-local-env",
+        "-allow-unsupported-compiler"
+      ],
+      "max_compile_jobs": 4
+    },
+    "actual_toolchain": {
+      "started_utc": "2026-11-17T00:43:58.3065510Z",
+      "python": {
+        "python": "3.10.22",
+        "setuptools": "84.0.0",
+        "wheel": "0.48.0",
+        "pointer_bytes": 8
+      },
+      "cmake": "4.0.1",
+      "ninja": "1.11.1.git.kitware.jobserver-1",
+      "msvc_toolset": "14.43.34808",
+      "msvc_file_version": "19.43.34810.0",
+      "nvcc_raw": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Thu_Mar_28_02:30:10_Pacific_Daylight_Time_2024\nCuda compilation tools, release 12.4, V12.4.131\nBuild cuda_12.4.r12.4/compiler.34097967_0",
+      "cuda_flags": "--use-local-env -allow-unsupported-compiler",
+      "max_compile_jobs": 4,
+      "lock_sha256": "6d57592a027c8bfd5f0fd5960e77259338afcc656476b6bff6224635bf0b1e64",
+      "prepared_inputs_sha256": "4b2f2e4393e7934e7d4e057b0205ea6d48ac19a48de293594d6c6fd9166da1e4",
+      "recipe_sha256": {
+        "prepare.py": "401169eefc6441f7adf0ebf2a48377adeeda8ce921329627eee0ef762d415d14",
+        "build_windows.ps1": "7dddd07a6a4e58f30afdb58ec3603cb3bfae55d44e6e6546f8a9bc21fade51ae",
+        "unpack_wheel.py": "b1214b7caaedc5debb1b5e18c5f6ab73500279ac4e11e4ff140d11eaef3b4870",
+        "run_check.py": "c7b971cc631543416587715e9ede838910790f3c59a1b8ab780da657599b9474"
+      },
+      "completed_utc": "2026-11-17T00:50:13.4726034Z"
+    },
+    "actual_source": {
+      "record_canonical_sha256": "05ebb8b0f09137e9f605afd0742bf167216e55860da0c6a268e231dfd8c4528f",
+      "source": {
+        ".": {
+          "commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+          "tracked_files": 1554,
+          "tracked_files_map_sha256": "2e1d96d68ede351e5d942e7fa6772a2165403cc343f1f8912e59f5c3f7c9b999"
+        },
+        "3rd_party/sapien-vulkan-2": {
+          "commit": "2ad24e1e96d88d3dd00fb1a7821ffcef42ab1ed9",
+          "tracked_files": 358,
+          "tracked_files_map_sha256": "079dccd082698539d1003fc3c283bc8630f62df05aa7e3a6bc69059d77daee3c"
+        },
+        "3rd_party/sapien-vulkan-2/3rd_party/googletest": {
+          "commit": "71140c3ca7a87bb1b5b9c9f1500fea8858cce344",
+          "tracked_files": 244,
+          "tracked_files_map_sha256": "8d48e79ee39f20b45cf16a28f1b0b23e877dab892e8109e2ce280d5d905d2411"
+        },
+        "3rd_party/simsense": {
+          "commit": "9340b6069ce78ecf0432cd3336ac9b4d296e09e7",
+          "tracked_files": 22,
+          "tracked_files_map_sha256": "fa0ff963ccbe11b2ffc6d9bbe301bad4d9043451fd6071841964604762d85ba3"
+        }
+      },
+      "dependencies": {
+        "assimp": {
+          "commit": "0ea31aa6734336dc1e62c6d9bde3e49b6d71b811",
+          "tracked_tree_sha256": "8765b1170501d294c70ffc7cb1737f71e2c3342f9879ffad477207f9f36cbe4d"
+        },
+        "deflate": {
+          "commit": "495fee110ebb48a5eb63b75fd67e42b2955871e2",
+          "tracked_tree_sha256": "c41490c2ca632b38c2cb9766ff5cdc35bccc9e3da104e6e4db3adc31af90636e"
+        },
+        "eigen": {
+          "commit": "3147391d946bb4b6c68edd901f2add6ac1f31f8c",
+          "tracked_tree_sha256": "8677871702ba35373616522bb68e6daf37373b7083c7414c88fc07c08b36863a"
+        },
+        "glfw": {
+          "commit": "901d30b973c536f26b74bca1134c5892d54b251d",
+          "tracked_tree_sha256": "8656567c66e6d517e620ad3a219200d5c29d79f3d09d5ce4d2a04c2666ef5361"
+        },
+        "glm": {
+          "commit": "bf71a834948186f4097caa076cd2663c69a10e1e",
+          "tracked_tree_sha256": "2ba660fa7700fc5ca2526cb1fde6d0e2bd4cd601f51cb051e754b0f7b3651ba0"
+        },
+        "glslang": {
+          "commit": "77551c429f86c0e077f26552b7c1c0f12a9f235e",
+          "tracked_tree_sha256": "afcea2849672236b9379ded37765584f8bfd233e3b469debe9ca211e552d5d3b"
+        },
+        "imath": {
+          "commit": "d690a3fcff4e877ead5ae56c7e964595ade8a35e",
+          "tracked_tree_sha256": "4b1271bb98871aa84ab2765daabcc7a9763afbe1436b889260ca6474d65e65b5"
+        },
+        "imgui": {
+          "commit": "ef07ddf087c879baff8c0cac0ff1f40b7f0f060c",
+          "tracked_tree_sha256": "6f9b0b3430f36614ec084f92fb8bd0679445aeb833cf4b8e113be5148eddc02c"
+        },
+        "imguifiledialog": {
+          "commit": "cc6dd28874f359c1b51fa93a8907c8ee9d13843b",
+          "tracked_tree_sha256": "691553e930e4ba6de704b0835de61f191a45806642b9b43bceceb0169982f024"
+        },
+        "imguizmo": {
+          "commit": "664cf2d73864a36b2a8b5091d33fc4578c885eca",
+          "tracked_tree_sha256": "5d861ba74b0117f4dfb626ed9cf0834fa37f0935c6fbaf4ac6331760b376e43e"
+        },
+        "ktx": {
+          "commit": "91ace88675ac59a97e55d0378a6602a9ae6b98bd",
+          "tracked_tree_sha256": "0e72c8e7dc46b4701e79478caf1d9df41869ebbed72393d61818f224469ef849"
+        },
+        "openexr": {
+          "commit": "737b2707a001e67f3812d86a639c3d037efe2ea8",
+          "tracked_tree_sha256": "309f05156097c9cc1d8780dea94d16165faaaa2e02ffce43e522d827f60c56de"
+        },
+        "openvr": {
+          "commit": "455756f7c4646d9bcd636e67d2449da1f69002ae",
+          "tracked_tree_sha256": "3e945d1f7bd50cba740c6618e8c93800127fb8101973172132574b1453504788"
+        },
+        "pybind11": {
+          "commit": "06e8ee2e357fc2fd6e36de431fa0ca0049aafc7d",
+          "tracked_tree_sha256": "627e34ed37a60ad6620666cb3a4525477d8446a8e1bb770e0eada41012f2fb5e"
+        },
+        "spdlog": {
+          "commit": "de0dbfa3596a18cd70a4619b6a9766847a941276",
+          "tracked_tree_sha256": "b39340d8d2ea888dd950d469ece7c7983bfad2510d5ec6c5ea09e7888342baf3"
+        },
+        "spirv-cross": {
+          "commit": "d26c233e1c2629fec1ae1b6fdf538958e5d52bff",
+          "tracked_tree_sha256": "56c97e3a309137aa9d3822eaf98d2244210efca7770a106e4ddd6af2b9b4e189"
+        },
+        "vulkan": {
+          "commit": "b379292b2ab6df5771ba9870d53cf8b2c9295daf",
+          "tracked_tree_sha256": "22c035253e5650f62139332a0598f0975a0f4672097ac2dc79c2146bab7499ab"
+        },
+        "zlib": {
+          "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+          "tracked_tree_sha256": "b19995dd47c825ecbe4305614e0ec305784e533aaa55a962d5320f7b8f713d48"
+        }
+      },
+      "archive_trees": {
+        "deps/physx5-src": "aa89e2f29942f613823a84c900559f0cd20ebb6fe9eda9599f7ca32142a0bbf4",
+        "deps/oidn-src": "032fc739ef2390219d081d46e5b313ae7dbbdf4c4dc2d19ee3620a878b7ae7f3",
+        "cuda": "b4526679a75af36cfc488b5b1e3b8a34fc56843cb7c7444c1c030bca28521d2f",
+        "physx-runtime": "a0cb2521478f8ad9eddd965a53c6e3b13d9441900ec62dc7d89692397436b554"
+      },
+      "hash_semantics": "Complete prepared-source record and tracked-file maps are represented by canonical JSON SHA-256; no path or file-byte normalization."
+    },
+    "physx_gpu": {
+      "version": "105.1-physx-5.3.1.patch0",
+      "url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/windows-dll.zip",
+      "archive_sha256": "3951650caa3b77d2fe671ab1418db31f142c29daaa6e32e2520f90e8f7455baa",
+      "dll_sha256": {
+        "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+        "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+      },
+      "gpu_kernel_compiler": "NVIDIA precompiled; compiler version not published; identity pinned by archive and DLL SHA"
+    },
+    "build_acceptance": "Build identity only. Verify loaded native DLL paths/SHA, capability, actual CUDA physics/RGB, and formal multi-env reset separately."
+  },
+  "schemes": [
+    "original",
+    "jade",
+    "coral",
+    "variant_3",
+    "variant_4",
+    "variant_5",
+    "variant_6",
+    "variant_7",
+    "variant_8",
+    "variant_9",
+    "variant_10"
+  ],
+  "tasks": {
+    "AspirateLiquid": {
+      "source_records_sha256": {
+        "results.json": "50612c062a73924c40038cfda1ab676a9422cc7719fb05d0876b0788f2c19ddd",
+        "manifest.json": "6667d4a3e3015afa7a846355ff7598cf85de7b16af8dbe713b5e0dcd3af834a7",
+        "private_sdk.json": "08ba8769bf8fc8b187a90b547195dbd3b7f7d1336682e0560f6d82efe9e6b53d"
+      },
+      "control_steps": 10,
+      "physics_steps": 200,
+      "selected_state_checks": 65,
+      "fixed_scheme_restorations": 10,
+      "object_pair_comparisons": 440,
+      "minimum_object_separations": {
+        "pipette": {
+          "camera": "human_env0",
+          "visible_pixels": 693,
+          "pixels_delta_ge_8": 693,
+          "mean_max_channel_delta": 70.58730158730158,
+          "schemes": [
+            "original",
+            "jade"
+          ],
+          "env_idx": 0
+        },
+        "pipette_stand": {
+          "camera": "human_env0",
+          "visible_pixels": 1223,
+          "pixels_delta_ge_8": 978,
+          "mean_max_channel_delta": 28.223221586263286,
+          "schemes": [
+            "variant_6",
+            "variant_9"
+          ],
+          "env_idx": 0
+        },
+        "sample_cup": {
+          "camera": "human_env1",
+          "visible_pixels": 92,
+          "pixels_delta_ge_8": 71,
+          "mean_max_channel_delta": 12.869565217391305,
+          "schemes": [
+            "variant_6",
+            "variant_8"
+          ],
+          "env_idx": 1
+        },
+        "tip_cup": {
+          "camera": "human_env0",
+          "visible_pixels": 122,
+          "pixels_delta_ge_8": 122,
+          "mean_max_channel_delta": 32.959016393442624,
+          "schemes": [
+            "original",
+            "jade"
+          ],
+          "env_idx": 0
+        }
+      },
+      "frames_sha256": {
+        "original": {
+          "base_camera_env0": "e0f1ed1414427e1ec387ca1e697e035e6c9736a07d6bcfdb035a31be9a9f1fec",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "d9886e8f72a5b0f62f96d7c5ee6807a96f70698aca2bb48b6a72e954210a74be",
+          "base_camera_env1": "84e3e5535e263d6ed0fd9ad6c3e2ecfc160a17042ec275b9b42e3568f3b926ca",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "248841f2bdf189a8217e0e1acde52908727fe3a21ed6f979c3b52e5df7e397ce"
+        },
+        "jade": {
+          "base_camera_env0": "059cb9eca5a93265d38b546399f7af498566dbce3ff39568f3bcbdb961731800",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "8ad9d341d2c463fd89ab7439ed2d8ebd837c7b9eb8b7aaba32e4ca1a321a9192",
+          "base_camera_env1": "bb66b3646b6dd5507583dfc68035e800de7c7e5d65bf3f47577b491b06ede8aa",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "4b1de5a7c2195f4d3d742882c6524908bc5a116c873910e2fb86417761410e26"
+        },
+        "coral": {
+          "base_camera_env0": "3f185452371341121e00136db9b5de6e368c1c42116cd971ccb271472eda0051",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "209c9913e95a002b74d9dd41b3a0b0872898dbb9024f4d098058779eecc8d5b8",
+          "base_camera_env1": "d69fd0858b0e33498a9dbb8f7f9d63dd635634b8e5b5d54be8107bc6cdace8a4",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "1b4d0cbc065a294672119dd4b455d455e74a84b04ceb561aafc1f1a9e33b165d"
+        },
+        "variant_3": {
+          "base_camera_env0": "40d24c225c04f40e15efad22a749f053f7e3064c88efff431b75b9e70c6728eb",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "16669181e8498d24d4b0e4219eef1179f1b3d379922dd0823bcb15dc3e944522",
+          "base_camera_env1": "d10544279e4e258552f02e512bdc4bd535e2fe881b69bd193f541b6675f0bd71",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "78c7e7950623455eb35e8f456b615a5d10f33c0c85284433a6800c2119fd4927"
+        },
+        "variant_4": {
+          "base_camera_env0": "24b9c203e0eb2ba1b6fa5df3d6ef472a55cace7de02a251a94bd1dbdaf15ddd5",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "2bba15e874730815815c5146d7d558ba7514363734c3bdea41d857d046ce0a0a",
+          "base_camera_env1": "e8123a2df371ffe3af225717ccbeb70b92bde9033628c9cad509079f062fbb71",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "b25b5adb2cf3d87416f0bcc8dfbf1777c41ed55a6a3e40722c0e9ac3bdbdc7a6"
+        },
+        "variant_5": {
+          "base_camera_env0": "a7cdaad18d05a38ecff252dbd4d5546984cc6486cb950438cf552914e6bed5db",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "ae58851082ab04610debed4e83b7fd3c8e14e1bad95f7a5a2b71f7e069c6ed28",
+          "base_camera_env1": "4860534dee0e8d45c0581df7d9fe5842e8dd1908b45862278d4874f83b3d4c5c",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "9f5b64df7b9df911b450b96cc0d172af95c0f5edf9790981efad63fcb93c445a"
+        },
+        "variant_6": {
+          "base_camera_env0": "d80bd230e8487daf7e893f0d40238b9860ab40543bd50ef2898532d1cd1686a9",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "df7e2c8d571c787ef5a5121c18af82b9f0c61f9b256454668f13728e8b4ec431",
+          "base_camera_env1": "122d9d33aac2f22496b97877cd413fa162929551fc8a3b5a6ad69e86da6c6575",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "435583feca5f66651e17ef8354542592698f0c5422f3c977f185dddfa3d6bb6d"
+        },
+        "variant_7": {
+          "base_camera_env0": "664c6f40af9fd03ff949079daf60c0297d55070ea99511faed74367cfddf26e4",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "090222f22b8a245dfec5e3c5a2a84e1949cd2e31b2786f5a77ab4be49c090245",
+          "base_camera_env1": "5a7524de453cf6b3d25edb18d130f54d5e4934322fd06101954aa249acba1363",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "7000029093dbf5b108eacfab748105d061ed55e14624813652bfb6d9a86e3ddd"
+        },
+        "variant_8": {
+          "base_camera_env0": "584c21093ae54eb43df0b42f355dfcf98b888640e894f70cfb11e083c08052d1",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "a6fcd14d0da058df5af8ed16347bc30e657e03fa29cf68102ce6f1af4aaff4b7",
+          "base_camera_env1": "ef0445c257f9b3613049e5ac199a6d159b2f11dda5369e1b9ee0f7fe72536415",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "655b78c2b4c2de92a4d219469e54f739c92d979ab3ea780cb7d81b933dee60f0"
+        },
+        "variant_9": {
+          "base_camera_env0": "1adcdbd9055389784382810298a9107bdd1edc2cdfedd981636ae6986ab4a7ea",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "05b447543a470eac97fa883beeb6bf8359c30495e3715d3b5e6a8e88029107cf",
+          "base_camera_env1": "2f27bac5af6b0b1076e3d7c45f52a9edfb19fc81b452ab7a5547d127c6ef07bb",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "886183c739652556901400f580667fa6b8da87e244390c227e80ac161510b4d1"
+        },
+        "variant_10": {
+          "base_camera_env0": "87b955770946df574fe610d606db27003ab82810fdc0c1666989628c84aa7126",
+          "wrist_camera_env0": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243",
+          "human_env0": "09bb1f840e7daa5be63bf3875a11b4d1e5bf28c8f3bc1faac3730fb87a461b8d",
+          "base_camera_env1": "10005c52db5cf68eb843c95b08ed79fd2297b5ec958c77c652917f44a5ba570b",
+          "wrist_camera_env1": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3",
+          "human_env1": "1b70a0791f30eb21a9d9c2e07e792aae6e1ef4484c70db11847431d7451b2e50"
+        }
+      }
+    },
+    "DispenseLiquid": {
+      "source_records_sha256": {
+        "results.json": "89289bfd842ec8a914a92c57ea3f57d5d07868237681ff097364efee75c6477a",
+        "manifest.json": "28fb099fa202967607b1b9ce5e361b8891658848a90bb047380185a233236e34",
+        "private_sdk.json": "08ba8769bf8fc8b187a90b547195dbd3b7f7d1336682e0560f6d82efe9e6b53d"
+      },
+      "control_steps": 10,
+      "physics_steps": 200,
+      "selected_state_checks": 65,
+      "fixed_scheme_restorations": 10,
+      "object_pair_comparisons": 550,
+      "minimum_object_separations": {
+        "pipette": {
+          "camera": "wrist_camera_env1",
+          "visible_pixels": 2276,
+          "pixels_delta_ge_8": 2276,
+          "mean_max_channel_delta": 64.5188927943761,
+          "schemes": [
+            "original",
+            "jade"
+          ],
+          "env_idx": 1
+        },
+        "pipette_stand": {
+          "camera": "wrist_camera_env1",
+          "visible_pixels": 3566,
+          "pixels_delta_ge_8": 3566,
+          "mean_max_channel_delta": 30.750701065619744,
+          "schemes": [
+            "original",
+            "jade"
+          ],
+          "env_idx": 1
+        },
+        "test_tube": {
+          "camera": "human_env0",
+          "visible_pixels": 181,
+          "pixels_delta_ge_8": 173,
+          "mean_max_channel_delta": 22.12707182320442,
+          "schemes": [
+            "variant_6",
+            "variant_8"
+          ],
+          "env_idx": 0
+        },
+        "tip_cup": {
+          "camera": "human_env1",
+          "visible_pixels": 578,
+          "pixels_delta_ge_8": 578,
+          "mean_max_channel_delta": 32.970588235294116,
+          "schemes": [
+            "original",
+            "jade"
+          ],
+          "env_idx": 1
+        },
+        "tube_rack": {
+          "camera": "human_env0",
+          "visible_pixels": 1413,
+          "pixels_delta_ge_8": 1304,
+          "mean_max_channel_delta": 39.1790516631281,
+          "schemes": [
+            "variant_5",
+            "variant_8"
+          ],
+          "env_idx": 0
+        }
+      },
+      "frames_sha256": {
+        "original": {
+          "base_camera_env0": "e971b5f6f5e9a6a1feff5fbb4925ea340b34d5f373bf75d53db0837d69fc2438",
+          "wrist_camera_env0": "0c7a6f7b7626cf7b07d1a03783b322954d4d773399557d936e275f1589cc3658",
+          "human_env0": "6058742a4d4c7c4124d85aa0d41096685bf02f5f08681c62c1152793fe887ab1",
+          "base_camera_env1": "bc779713a7c36dbf8bf1f3738a3ca25ae8ada2f4eff985e14ad4a94909b057dc",
+          "wrist_camera_env1": "cccb0695b81bdffe599f0f19f4bf137ac31e62c7602e93ffe01deb3421f5bef3",
+          "human_env1": "e30bdd5de9879df2e2e97c56f2cdc519687af761b524a2514ceb5b2eff7fe19a"
+        },
+        "jade": {
+          "base_camera_env0": "6077ff07b71fb35b689dc5245789ecc3502a9de8c9921cb9e3fd5152a0c43159",
+          "wrist_camera_env0": "ca0a2da714edb150f0601237b5725f530ef8f455108de01e2eec4d64668abb56",
+          "human_env0": "beafab0e82ffe2f05327b5123af8e7d5c53520ba55dfbd8a9ad68cef185cf2a5",
+          "base_camera_env1": "d0eca1e1d64c5130065236e5ba0b011902441ce366f3d700239ce179117ba0d3",
+          "wrist_camera_env1": "4da8544c77bf56db96518394d1c7210bc515920e620e55ad033fdc18f24437e9",
+          "human_env1": "0dd938b4f4d0d31ec41a9179c61a1f11e573d8671adafb7e996ffe654d3478b8"
+        },
+        "coral": {
+          "base_camera_env0": "842b8251f49640bc0c4b977eac727d6298dc219802e82f01e3e27dc351cf9942",
+          "wrist_camera_env0": "35e3f04a62d041d3d56ac66d0860ba05a87c43e3c5a93dee1ace8409d2824cb8",
+          "human_env0": "4db90f21842f512848e8dd8abc568371816eb4910f8a68561c6ae51b12c2ab31",
+          "base_camera_env1": "130f049447097ee74a52efb65291b253b412281b0b76d267fae06ef4af0af5a1",
+          "wrist_camera_env1": "4e3f9aaef8cdf5654b26eddadc3a9b3d76ee5c5b9b025ca21cb74839aa3be00b",
+          "human_env1": "14a4096da57a5699d559995f98d755146316b2cb19e60fb5384a8ab71d92a312"
+        },
+        "variant_3": {
+          "base_camera_env0": "7b52378a772faafdbf3655e7f095aebd4e61e0fe52bc6ce146a2eb175b8d4181",
+          "wrist_camera_env0": "5222ac03981ca8fc06f8bd4ebd5be480585ae5ecd90a308995707d4544278231",
+          "human_env0": "e27b850db3ab1e6a1cfa155445e5513cbc303db7b71398dbe2bf8f5532ca442f",
+          "base_camera_env1": "46f7888b64fdb1b5b510d3602edf9ef9754b30002751711700f0bcfd17cc1864",
+          "wrist_camera_env1": "bb433a82f48d968d672aedda7af645d63229dd695eab13768d58249baa8a1def",
+          "human_env1": "a7e9db8663a40fab5c70ac4a864e03453fb0583651f9f2ec5e2b9df751fc74d4"
+        },
+        "variant_4": {
+          "base_camera_env0": "a80d0184292b136eeaf4a52675b03dc5c30f6b560b96d2dd86bf3919c6390b6e",
+          "wrist_camera_env0": "af926ff3f75364426e4109178c9f25fa2181d92fd5ee162a7b90bd0c8de412f8",
+          "human_env0": "69dc2250d71e9df8347f92c84b59024c671b0b19559a405a49d51a8009d8f895",
+          "base_camera_env1": "f6966ad52db33ae057cb9ceceec817ed5524350de17287943540833327ddd68d",
+          "wrist_camera_env1": "478c4b1e5689057b0613d27c0ad1f3dfb4922b077aa700d03a3504d2c17718f1",
+          "human_env1": "1cee663265ed4e1a62827eab9050fb9439497ce51a68cb7e3a1396df5124eb29"
+        },
+        "variant_5": {
+          "base_camera_env0": "bf608ac6f6d86824b61562982294ddff1f1508c5b8eca4e7b4eee2637a39ecae",
+          "wrist_camera_env0": "5023ace2dfc5d5cf00962fa56d969ef0b73f4e299269a52f80d447aaaef60483",
+          "human_env0": "f203e8f2002f9f18cd1f46aa09b907046950f040fd000be9b026b57407d64c30",
+          "base_camera_env1": "e2ee4366c585c9044d4c6dc79c592c06fba40d466cbb5f1451e5e6bc9ae2e464",
+          "wrist_camera_env1": "a88168dd53a261ae5ef97c70e209c8737af44f0c8651c7d68d661b49410ce90b",
+          "human_env1": "e5c61e2a9d232b89d39eabf85914ce9b976b626f37bb2830a53462497ad91d68"
+        },
+        "variant_6": {
+          "base_camera_env0": "08ce7c4ae22e841503eeb7dbdb4737acc7958ac4dbf24c1a79b43b2165bfc15a",
+          "wrist_camera_env0": "5aabbc0063f87c75fd4deb2df70c34389484e74a426be388f7011986ef979899",
+          "human_env0": "47f54d37a05aef418f829720a6be8c84df5b00c075cbf0dd817478206efd0a70",
+          "base_camera_env1": "0d351386324d7e8cc8ca2f38d64a07f7c7e3c3ba36a023eaac162f577ad1a767",
+          "wrist_camera_env1": "335c3aeafc78e2c7781ffadd6b2542d2427d260e35429daa420bbb47ea02ffa4",
+          "human_env1": "89fcb2f2e361ebb033ed39fbe99d7d7376b86b21cda8665d44386f197ecfd138"
+        },
+        "variant_7": {
+          "base_camera_env0": "061fcffdb846f3a2470407e0715ef5138045da3bb33d9604fbd7967f4a2825a9",
+          "wrist_camera_env0": "4a8945f0f7533f43224bef7723c216f3d545b3790f0c0586e81a955999c8bca9",
+          "human_env0": "d030c4d09d87629e658e1a793d4c0fe1deed473a9239356e5b1ba9523d398828",
+          "base_camera_env1": "5d9d71685a5e325defcda070578cbca7e63f5dcba2e928b416df3fa9b631b5d9",
+          "wrist_camera_env1": "6d7f290bd0daaef5054d1464eb967f6e6636f1f5db7922686d79587ee12b9177",
+          "human_env1": "8acc0a288ee883054abf3579ef106f1747ad1367af50e17b345321662d8573aa"
+        },
+        "variant_8": {
+          "base_camera_env0": "88cdf3546d869738db4e1292a1e9d291fd981e12c5e05129d1b850cadae3c836",
+          "wrist_camera_env0": "6911e87624d73a4e3661c87799f6c4ff9f1dc990de205d014a2df67dd820c065",
+          "human_env0": "9a5110b0c7cc2ee370cf84353a5d905c207a979ef6d76cf25ab8f4bcc92ad7fe",
+          "base_camera_env1": "95330457fee4e8ea8a6fe2f8b5c27d95076b1d70bf77ecb4bf317ae2c77693c9",
+          "wrist_camera_env1": "1ad0216a837c7cf97a4115781a6b225fe1ac11dbc70e511713ed0c993f7fe600",
+          "human_env1": "a21a75f52f068e078f7b004e8130c33802584f630d0f7d1d7437e713f7890b0c"
+        },
+        "variant_9": {
+          "base_camera_env0": "d8acb26e707de83258e0d1f0773213f5014076dfbee961a036003092cfeea64e",
+          "wrist_camera_env0": "0998de2f0a5e34eb8cd496765a3dddca8bd340484a90aee6313ff591ea642bd9",
+          "human_env0": "6c7ed317aef111cce9e1e8f640c87bb0eba9973660f3ed4d15a14473e92f65de",
+          "base_camera_env1": "47f4e156e896c3e571831c208d09b37d60032072a7ca6e18fb5d9cf8e1df2dca",
+          "wrist_camera_env1": "e81501165c3649510a703a97a64d8e15ffeb817ac64a5c8854bcd8d3a884924c",
+          "human_env1": "b2d05efa9a54b42650b2c4366ecbf6b8b1a6a450588fd474d525a0f4c12acd21"
+        },
+        "variant_10": {
+          "base_camera_env0": "e724dd67e3e3e058c779635b0dd6b702a193c3b2c0f6b13654f953fed1e4c968",
+          "wrist_camera_env0": "c5288a771728ed00d9a6c74a45a3ea0e8496c32fe1713dcf5f99dca8ac4adf09",
+          "human_env0": "e2eca5ccc1c270dd7aff7eb4c531407e069cd4cb66cce3a03addd737c936677a",
+          "base_camera_env1": "aba928c7c04a7094cd16f76cc615f1cc2de9ab52437881c6f750551a492eb94c",
+          "wrist_camera_env1": "63c077242490c4686e8be08bc3a93582e8bb083a63456e962b6706fc88e0c06f",
+          "human_env1": "7d4b5b90682e38afe816fdf1c11f6cd63b4c08d4681a757b259bf90cba653f5a"
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "assets/appearance/objects/pipette_transfer/catalog.json": "f2e78f79b427859ab7e097cc7a973d3e6be7de69935a177f84992372618058f1",
+    "assets/appearance/objects/pipette_transfer/pipette/bindings.json": "cbd9c5e75846eec7535167136fc70cb44915840d7b30e3cb6a7bdde87018ece4",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png": "cba75536907673751f51fda92cbec47f2a7a7048526cda5c8e2c4e432c5dd48d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json": "2af56e3f59142e04ee1f07e228b02aa2aed94aeaea3e7fc54851362002db8e5d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/coral.png": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/jade.png": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_10.png": "586ce033196da93843dca9a616c10439d2dd1988be16b6773d389ee995a0ad9d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_3.png": "ab74eb62690610167b1048aa0325810246ae88950bfe43aebf8a43fdbc49f589",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_4.png": "92a9c2181802714a8ea3956a00d3c15ac91272556b8708af59309eae01949894",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_5.png": "d2421fd368418fb29a4b51bcac27d34a153a535db785c4d1a35aac185fcb4c19",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_6.png": "4e04a3c83d4e10785499ff66fc41da6a09dd7cea713f3d3017bfa504b8f84893",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_7.png": "cbd804dda0e02de9382c301a14c767c355bceb7b6a7458aafeaa0fb46ddfd317",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_8.png": "8982e253586487a6d3b55c20d6a754039392a1835b82083a2fdaa1eaaec1b39a",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_9.png": "11f1745cd02657a60b0a4e1bb1c62a29b9b330062600a257c6eab654d68a6142",
+    "assets/appearance/objects/pipette_transfer/sample_cup/bindings.json": "ba999d5504cedfc9bf42492e22547e19c4b800ab7d2f293932f8957966e38c31",
+    "assets/appearance/objects/pipette_transfer/test_tube/bindings.json": "4285ee1ab06da4e7c4df742b69ac4ff8f2691993db27eaf39136583178cbfec8",
+    "assets/appearance/objects/pipette_transfer/tip_cup/bindings.json": "62c9a268576044d8a9542ce5fd3f3c06e354f5fb654c15f6f01e24d0eef75829",
+    "assets/appearance/objects/pipette_transfer/tube_rack/bindings.json": "e50b7e45c2c60b37bb073f8010f8807aed60801d458e572000735e827205e142",
+    "tasks/__init__.py": "c58e1c183543c3923c2b041044312f9e13d9512c630e8c08157c92093b4bce33",
+    "tasks/assets/task_object_meshes/pipette/mobility.urdf": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+    "tasks/assets/task_object_meshes/pipette/README.md": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+    "tasks/assets/variation/pipette_transfer/v1/catalog.json": "72d9bcaeb654a5af77ddc0f1a6a3f864db83ba3787966a27d64b508aff3103d5",
+    "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/cabinet_pouring/cabinet_appearance.py": "e8bde99e12292c33b230bcdc41ad869dd75b5ce5cd0ad709de3ddddc8f51411a",
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": "fa7fb33ad079dabb99a843071fb88b2acaa619f30a27da9a7de1bc5cf5da78f5",
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "643267bf432aa86b6fc3c1ae911c4ead47f38adadec693f86ad753c505178cdd",
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "5b7bfa2b45b18c73a87c72abbbbdf0f7b16920d85c515b500a412a50dc16d6a2",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "f095fc74386f26935bb2292bfc807617037f876afd1ae85f6f5514f8b8507124",
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "52997f72ee539167b2eace7457799f54921bfd7d7e1a145d3dc32e0dbb0034f9",
+    "tasks/cabinet_pouring/family_appearance.py": "0cd255da8a4cb8e509d729d8589db809fba929c319f7e562fcccc705f8a0ebb1",
+    "tasks/cabinet_pouring/position_layout.py": "7dbdf0ead02816126f4df4ac536199e3157a48a88ea3565f3413639c2208adfa",
+    "tasks/cabinet_pouring/pouring_appearance.py": "bee89ec84057f82957802462d544aa6924b5dd6c6462cd175709f39fd9ef91e9",
+    "tasks/cabinet_pouring/variation.py": "67b037ca29310f0cb4f039685612704a7152b886f5f1d6709cc409dc892f6e02",
+    "tasks/config/__init__.py": "c00706d46b5c4da7e791e890e01729177f641ffdf2b4602b411ebec888aab4a7",
+    "tasks/config/code_fingerprint.py": "4066b9b78e60d95707f9ff0544f34f3eb1c6dd053de5cb0aacb7e1ace37a4d70",
+    "tasks/config/collection_targets.py": "43cd589b2fbb1904bcebbf9ea9befbad54e2cb62419c25aeffa8ae5f903c6ebf",
+    "tasks/config/contact_materials.py": "7b164cd063ce4353532ac510805c11b08512d19859aad672a4efbb7e05b386fa",
+    "tasks/config/energy_fence.py": "fb9344827b372b491daf5fe32e27acd49a2f40393faef1e437f98c4a2b6b3099",
+    "tasks/config/fingerprint_lineage.py": "a6a6c0ef474afbb42c4cc270187acc1dee9497ecc67c963e161d71af3d63c122",
+    "tasks/config/guidance_markers.py": "299f963e4834986fcbcf2b07a7477e75ebab4ddbc5f18ccc11e99001e264b95a",
+    "tasks/config/hands.py": "28ee1c670a80bfb73eeead124e1f9ad4c65f501386048e64b8d4a911a9b1e97c",
+    "tasks/config/layout_randomization.py": "4fd1e3caed613ecd4b595ed630260db1af7954c70c1b92cd528b8a68fcb305db",
+    "tasks/config/mass_properties.py": "91e7db6c781a2fd9366e0e645128621b2eadeedd718e70c69df12024fcff777c",
+    "tasks/config/object_materials.py": "49a9b2050ec27aea1c2bf68966f8e5f58765708713787abe52a5e329315ab9c3",
+    "tasks/config/sim_profiles.py": "cc91fd1985f72574a159b3e79cad38a44ef59a1c4abdeba43a3d619da1546191",
+    "tasks/config/task_state.py": "54663ace9db8c13899ecec5bf46be5b28c2352dc10b053d7253e80eecff8e711",
+    "tasks/config/workspace_rig.py": "4ef72264517d9500b995dbebb52c5c07e8b18e238b3aaf36c67b6f50bc93977f",
+    "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/drawer_plug/charger_appearance.py": "adedb85ff7db9eff7b25d9ebdff570f99f472f37f1f925f267c22569df23e79a",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "da1dc1a96d173c1afd7fa0211b57c657dbd72e15038f0cda5c0fe4dcee6ac157",
+    "tasks/drawer_plug/drawer_plug_long.py": "313c67bc618c40259ac0e19fa8134112f595dd1da079a8d453a8ac45c2bfacef",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "dc7ae809ea11e12a35e6fed6ccad5dd7a12a6206c7b2b87bbf13b3f7a57d9068",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "3c474322e3e7b4c8dc2940b831a77d3b3efe72eace372f18a11fc35dacec3c56",
+    "tasks/drawer_plug/family_appearance.py": "67ce784004d613606d5f50442b6087621229b0c2ae3ef37693bca8169dd979d7",
+    "tasks/drawer_plug/fixture_appearance.py": "85a9d2db4c33c748c35597e51f90eda57a2856eb5820c6a5597bc7fe4f944b59",
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "60f0c9d06be1f15abe7672dd9542d130666a998b2e0db9fc42c321b757341c15",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "0126c8fb833e6766f1c9f5171d915cec73d87793f2f4f838f0830121241f181c",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "97637298917bb95e9f25e798e284d2b0ad630e16a95e94165145c46bbfe4d80d",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "adc34d944be3e0b1ddc00e756622bcd52d65e30367fe41478c25bfebb6b2c7ae",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "f5ded2f12d952c3809342c0e687ca72e398c7f6832a976c1b4803fc941d9e4a1",
+    "tasks/furniture_assembly/reset_scope.py": "5e045aac8d0e50d770baa0dfed283b31312430be4738831af15f3cfd7cc3db6e",
+    "tasks/juice_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/juice_preparation/juice_preparation_apple_to_blender.py": "fe60f0a4b33f20bca40a6142813e5597b4f9ee7b5793f21fbce4cd8f07e632ba",
+    "tasks/juice_preparation/juice_preparation_close_fridge.py": "f103ddab029a883eac0786eec0d2067ad0af6a37fb8f3fc838aafa3a85c24872",
+    "tasks/juice_preparation/juice_preparation_long.py": "50dc25d2adfa13def14b36231946818febed927d9e722a00ee711179f056944e",
+    "tasks/juice_preparation/juice_preparation_open_fridge.py": "ecdb1e3d5d3fbfd3dee93b186e2a8ca85da819cd37278f9e69b5df405097cfe6",
+    "tasks/juice_preparation/juice_preparation_place_lid.py": "0e72c8fd9c27c635bec121ac3ce2127616f94ac1cb5e8bb27e664db6b85d8575",
+    "tasks/juice_preparation/juice_preparation_press_button.py": "5ffbe3e93bd64a7c395eab5755f95814758634badab4ffaeb9ca1976c9c10828",
+    "tasks/meal_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/meal_preparation/appearance.py": "50161c719ee3058343fc709f33175d9498ea38faa2c4a3a162f7dc42ecb768e9",
+    "tasks/meal_preparation/appearance_textures.py": "b05324c44e68dffbeef4e806b9291b250f8cee1c30a80471d57837ae9bdc34f5",
+    "tasks/meal_preparation/meal_preparation_long.py": "98f71d059bf21c17e48b4747b62c8b6e751bc4e0b80079d27e8e6eec74d9b9c4",
+    "tasks/meal_preparation/meal_preparation_open_lunch_box.py": "8a298497da1c4001767b2f654a7e790a2ce2fcc0801d50864615caa7ddc67cb0",
+    "tasks/meal_preparation/meal_preparation_place_bread.py": "b71c20aa1f7e298afbc3bbd19d6a1faf7b7b3b7997bc15ef263b6f38fca389cc",
+    "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "d6c1d6218e37fce19e90610bed2bbf2e5354295725800f6955fbe5b195f3d8f8",
+    "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/nut_bolt/appearance.py": "a38bfb70eee156a7519a50e25816d2885c7f03505dd56721c33b34a01942a8e2",
+    "tasks/nut_bolt/gpu_hold.py": "6e9206ef7260c006ecdbd286052f26e00fb9a7ecb3e8722b7207084c6c1eeefb",
+    "tasks/nut_bolt/nut_bolt_long.py": "de558f8f259abf6abf962f97faf9d42d6942a94dc3f8b9c6cd08034be6b81116",
+    "tasks/nut_bolt/nut_bolt_pick_bolt.py": "09f75e9ec5c9cd7087f9fcc440c1f47daf1437874c6152f73e2006f3df2b1eab",
+    "tasks/nut_bolt/nut_bolt_seat_nut.py": "48f84f70f615b5050c36a325df383538bc74be50dcad0752d9b8ca74e887710c",
+    "tasks/nut_bolt/nut_bolt_turn_nut.py": "dbb34b1fc87a509a7cae8454e375646da9b4c1fbdc6b244857c892161c396df3",
+    "tasks/nut_bolt/reset_scope.py": "31c8ce2a0e953a16c571ff26d8a4bebb2b42879bd6eeb7aca37dba7f7f60c77f",
+    "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/office_desk/devices_appearance.py": "cd0328592fadff99ff033749b51ab8640b44881721f244355ec0fe48fd63aa02",
+    "tasks/office_desk/mouse_appearance.py": "da2b6cb549fe4e6cacbe2a6ddab8058cdc5fd3dc2066b9289e721caef7d5709c",
+    "tasks/office_desk/office_desk_click_mouse.py": "d1cdaec778d5b6fad6f82b52aba98865383c7c79ca2f398720cafa1e0aecee32",
+    "tasks/office_desk/office_desk_long.py": "42dbb44534dababa7ca4546728b4304b28be8e29908500887baf7ce8e1e45f97",
+    "tasks/office_desk/office_desk_open_laptop.py": "ce40e235b4db4f92c455220220950829561d5ee24887b1e50d5e15506d39dd21",
+    "tasks/office_desk/office_desk_type_keys.py": "288acab8ad4d0797260e56a4012167021f6c5acd78e86e0caee2b3da6833caf0",
+    "tasks/office_desk/reset_scope.py": "766a4463f3d7a0f54b77d7e8a6eef8ef770b97ba22db7f0f0da65b11ce68f9b0",
+    "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/package_opening/appearance.py": "8be86b06fbc66e7071642df134fa215fdcdfed80165b9ea5d9b269f86c9f36c7",
+    "tasks/package_opening/package_opening_extract_apple.py": "dc8d2577c3e693ac372ee4cc1590306619833b889a2003da93c49dbc105b97c1",
+    "tasks/package_opening/package_opening_long.py": "9f6b353a03df28f000ab8103b65868d143877b2555fc663e1507bd6c33a2887e",
+    "tasks/package_opening/package_opening_open_package.py": "316830470eed9eba9f87737660a2cb1f66a60ab4810f7a9656c0fbe0a460ba49",
+    "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/pipette_transfer/appearance.py": "e0c576ab19567a51aa1d2ecbc0f58a37f7d397842f24715e66e61fceb1a9c6fe",
+    "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "f8d53a4d410f1087ded229b1e58a11e3561cc084d59398cc34aec81ee2443624",
+    "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "5a287b2781c3fdb9816cdc197a56403476bcd92cb7192856aba58efcc4330d5b",
+    "tasks/pipette_transfer/pipette_transfer_long.py": "e2a052d36f40c541d70c913191c4e62d32390c256a4558f01e8e5cbc071284f6",
+    "tasks/pipette_transfer/rendering.py": "ad2b0518c6b6e29ca44857c5fd6b20f4b45f6d666c298159106e4bfd46591064",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "3e7c463f4423f17d8e1421e6282e058f8c04822dc717417ea89a8871a0ea4740",
+    "tasks/robots/dual_arm_impedance_mixin.py": "65c982b84f6b8ade0d88e553e1eb0e798a19cc973cc510195f28cc515d7d8faa",
+    "tasks/robots/franka_joint_impedance_controller.py": "d705c01ea58d7109b737bd2dee5689b164e16f5dfc88a5ac5251192248238e89",
+    "tasks/robots/hand_controller_gains.py": "0d0b0bba6d2e1cc2f809a370cfecb3ca0a6dee96aa354bce05c37fbc0d06f0e0",
+    "tasks/robots/panda_base.py": "9bde96f2badc3a66b3c735201041b5faa38bf1fbd0681761bf4aa9297d3bb657",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "91c34337e8760885392dcf4d0e9715d71509fe7500f2adc84f238fd70af6acf2",
+    "tasks/robots/panda_dual_sharpa_hand.py": "19fba9459affa6668954561f7071acc6ef7ff2b0ccf862e861dd7eb41483bc82",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "00bf92e1851e8d153096218afc8c02af2798049f29b2ee452f397161f36fbda3",
+    "tasks/robots/panda_dual_wuji_hand.py": "9dcacce39f71b1d92e14518424369c39e51d4db6edc9340cf1a8e97e6b9d0e0f",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "9ced25ed1ead4adcd518cce3b099415e588817d1d23dda74c07055af42af2e77",
+    "tasks/robots/panda_dual_xhand_hand.py": "9573f9ffbf8fe525ac809a22827bc3900e0ab005ebbe4285d65729903aed994c",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "14c062fee161493e4db75f766363d5c8f16033cbdc1f732753405e017592fae1",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "7ee19e81356442dfe6e86200628eea08d6a143085dbe96f67290b5574275d208",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "f070dce37009835a83d6ac9e0057f1d3ec757d22e8ef62b7dc5e9eeea9971722",
+    "tasks/robots/panda_impedance.py": "99c42520e9a3161d4984e4d7d87e4dd773d25fb883f408bec6be361addd200d8",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "3333aa65cd0b0c1bb0302acdc5146ac499d364d4099e689b493ba271bdd9f56a",
+    "tasks/robots/panda_sharpa_hand_right.py": "533b821942a7b834efcba3449f695b17494d73ee6b4e44393f72be4caf7d5801",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "d36a5b7fb10e5c6c13f5b369e704959a135d7e23539331e9a633979b76cd4592",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "c3253ec752e611a7e85ff1874438dfc33409b7b7ccf2192e1a5562a063c29b83",
+    "tasks/robots/panda_wuji_hand_right.py": "b779fa8c4361964f11608c3564d5e68d67d69fcfb7ed9f0634d8ea3c14057f5b",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "3e82f5e13233abc9ce5b9f4aaadf53b976a519174e2ddf3d06ab416ae0ea5755",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "cc0ec17c811e19b297556c3460c543ff11a1030e28e147d8bcf94748b738c9c6",
+    "tasks/robots/panda_xhand_hand_right.py": "6c8b2b11baaaec32a79abd1404ce5df304b2be50b7d122b4569b9e0c488672a0",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "b5186a6eb14a8b2ab00f796d14bf9bf0c2ed18d8764d48a1defb9c840828ed22",
+    "tasks/scene_builders/__init__.py": "b8e71f3d14af2695a1033a71090354dbcf4384c8c6cafa9d47a295c0ee1b10bd",
+    "tasks/scene_builders/anchor.py": "fb17cd604ed4c4168a21c5887d9b0ba41d4adfdfb858050236734efea164249d",
+    "tasks/scene_builders/backgrounds.py": "39bab06603de2696d8e941be2f4cac8d6b728746ee4ed41b1ef1d994ce480260",
+    "tasks/scene_builders/camera_dr.py": "318645eaa0f813680892399c6c287224cacaf4cc739293836bb3fc3f7b719333",
+    "tasks/scene_builders/convert_labutopia.py": "31de41aedd8070603af0bfd91f03cb23e30174e7df80227ac9677b0d1fa3f46a",
+    "tasks/scene_builders/fetch_labutopia_scene.py": "ab9bafb71effc72050ca26a7f04a7239335b1ea15aa8f3b13068b69ce4fc22a5",
+    "tasks/scene_builders/fetch_objaverse_scene.py": "cac47e5e3c96f19698f6e43a7f99e7e4a568ee86bf52e63d4592b4d82428aa5e",
+    "tasks/scene_builders/find_glb_surfaces.py": "5f09d645460fe053a6f92665a9f2a75d5ec253afe84dda97dc926483c2a46fa5",
+    "tasks/scene_builders/labutopia.py": "8ed1ca9e44c0e618f210438de2509feea411da33e7630e83144b30aed597ac6f",
+    "tasks/scene_builders/lighting.py": "6dd7fb0163c01f9105a8a6769f41e2773e934658c3dbf6b67d019aa14d082e06",
+    "tasks/scene_builders/randomized_table.py": "9cdc304b1c731f66e69985b25ba89bcad8a1698bfdad484afb9929d0ddc7b878",
+    "tasks/scene_builders/render_labutopia.py": "614fc2f322e53b71abca33fda034d5ede1f4e8f8cfbf225f00a32f45eb551e5c",
+    "tasks/scene_builders/scene_library.py": "aa69ce52bd569833aa49418e7c802edabceb01d2e44c12a003e822797ea6e89d",
+    "tasks/scene_builders/table.py": "780d5fb1670e024fc24001fdea199e87e991fcd95cbe7d97066d63f38fe4654b",
+    "tasks/scene_builders/textures.py": "65e657cd2d7e98bfec2d49107c1c3d44d47f518282a70d171743d2594a9b6532",
+    "tasks/table_cleaning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/table_cleaning/table_cleaning_dump_dustpan.py": "50201dafa54c852978d9a7d04a520b7d03c35eee435611d6f15f5870502ef0ea",
+    "tasks/table_cleaning/table_cleaning_long.py": "916f368c70dcf147363a8e69aa967145c57264dbc507bb9d78a0234188935e5c",
+    "tasks/table_cleaning/table_cleaning_pick_debris.py": "c2fe9a43bb0a685b6b7a904d987a69403f215b5a0f7c3a6c9ea4b4d8d241eabe",
+    "tools/variation/build_pipette_stand_textures.py": "f8428abfa57d4bfeb56b0e3e62bd0a54bf7871501d0626a70ba2402bdf6f55a1",
+    "tools/variation/check_furniture_appearance.py": "478eeeea4e3dc95707cdb018a22d8d095260d01ec04d44594068944251ffcf82",
+    "tools/variation/check_furniture_dynamics.py": "5ba5f4b132ff1299b48ddc0f2c8eeb8c12f6054d9c72ba1c7739296f6da666ed",
+    "tools/variation/check_pipette_dynamics.py": "61307cae66ce58610d91821259ed9b80cbb175f534134e5d3a06aaabb84d1fbc",
+    "tools/variation/check_pipette_runtime.py": "37fdedab654bf63bc33493c9b4760bca6de2c0021d540736adc4bf86f8099284",
+    "tools/variation/sapien_sdk/run_task_check.py": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb"
+  },
+  "contact_sheet_sha256": {
+    "AspirateLiquid.png": "218c33b3ed9f54b634e56bca1ee3d6a5831c0097eec285965749918119bfe872",
+    "DispenseLiquid.png": "1ad89b88bc1b2978000e3d85bfc75d8c53b9d6f9c3c0276254aabcd2f61a5b50",
+    "StandPlate.png": "a08d3381f8f900fd97772c66d82d2237074f4f4ecbac89fe290d8b1ad5d8877d"
+  },
+  "actual_stand_base_plate": {
+    "camera": "human_env0",
+    "visible_mask_pixels": 880,
+    "crop_xyxy": [
+      592,
+      408,
+      669,
+      459
+    ],
+    "scheme_mean_rgb": {
+      "original": [
+        93.367,
+        124.16,
+        144.74
+      ],
+      "jade": [
+        117.783,
+        138.749,
+        128.758
+      ],
+      "coral": [
+        150.693,
+        114.939,
+        108.72
+      ],
+      "variant_3": [
+        191.514,
+        185.865,
+        172.911
+      ],
+      "variant_4": [
+        103.356,
+        118.941,
+        147.827
+      ],
+      "variant_5": [
+        91.255,
+        93.774,
+        96.228
+      ],
+      "variant_6": [
+        168.095,
+        172.91,
+        181.359
+      ],
+      "variant_7": [
+        157.689,
+        149.419,
+        125.198
+      ],
+      "variant_8": [
+        113.699,
+        147.825,
+        153.903
+      ],
+      "variant_9": [
+        141.782,
+        128.758,
+        147.827
+      ],
+      "variant_10": [
+        175.839,
+        158.981,
+        147.827
+      ]
+    }
+  }
+}

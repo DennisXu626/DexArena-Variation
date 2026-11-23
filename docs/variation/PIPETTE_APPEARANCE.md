@@ -23,7 +23,7 @@ AspirateLiquid 与 DispenseLiquid 的六个可见对象支持 original 加十套
 | 试管架 | 原有上下格栅、立柱、脚垫独立配色 |
 | 支架／吸头杯 | 同一 Actor；底板、立柱、导环和 stand.visual[4] 吸头承托盘独立配色 |
 
-liquid_state 无视觉。所有方案保持机器人、位置规则、几何、碰撞、质量、关节、物理参数与成功判定。原资产、许可与文件身份见[资产审计](../../assets/appearance/objects/pipette_transfer/pipette/asset_audit.json)。支架底板将[原创灰阶标识](../../assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png)与各套底板色烘焙成 sRGB RGB 贴图，沿用原生盒体 UV。[烘焙工具](../../tools/variation/build_pipette_stand_textures.py)按 catalog 校验实际像素。移液器及其它圆柱保留原生材质绑定。
+liquid_state 无视觉。所有方案保持机器人、位置规则、几何、碰撞、质量、关节、物理参数与成功判定。原资产、许可与文件身份见[资产审计](../../assets/appearance/objects/pipette_transfer/pipette/asset_audit.json)。支架底板将[原创灰阶标识](../../assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png)与各套底板色烘焙成不透明 sRGB 贴图，沿用原生盒体 UV。[烘焙工具](../../tools/variation/build_pipette_stand_textures.py)按 catalog 校验实际像素。移液器及其它圆柱保留原生材质绑定。
 
 **配置与生命周期**
 
@@ -58,6 +58,10 @@ records = env.unwrapped._pipette_appearance.records
 任务与模型预览仅接受已核定的 SAPIEN 3.0.3 default shader 文件对。LF 和 CRLF 各有一组精确字节哈希。启用修复时，先核对整个文件对，再应用同一片元补丁。
 
 native_off、original 与候选的验收统一使用上述“修复 default shaders＋sample cup 固定透明 pass”配置。original 指该配置下的原生 PBR 及精确像素恢复；不声称与 stock default 或 minimal 的 RGB 相同。私有 shader 包按来源／补丁身份缓存，逐环境绑定实际 ID，不修改安装目录、顶点或世界位置。材质与深度参数读取唯一 catalog。
+
+**真实版验收**
+
+[真实版复验和原生任务图](evidence/pipette_transfer/realistic/README.md)记录当前采集提交、每套方案的遮罩对照、CPU 动态以及双环境局部重置。
 
 **Windows 历史扩容档案**
 
