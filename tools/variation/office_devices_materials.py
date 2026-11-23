@@ -14,6 +14,8 @@ MATERIAL_FIELDS = FIELDS + (
 def plain(value):
     if hasattr(value, "tolist"):
         return value.tolist()
+    if isinstance(value, dict):
+        return {key: plain(item) for key, item in value.items()}
     if isinstance(value, (tuple, list)):
         return [plain(x) for x in value]
     return value if value is None or isinstance(value, (str, int, float, bool)) else str(value)
