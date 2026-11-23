@@ -1,0 +1,50 @@
+{
+  "kind": "CPU tensors with simulator I/O stubbed",
+  "checker_sha256": "496d22c22cba4d121a2e57342f138788b3774c36d9ffffa99de1ad2b0ad339f3",
+  "original_matrix_sha256": "d0f38fcac65874b795232c9ba5fe3354a76d41070063b98d86b3978f84f6ef47",
+  "restore_cases": [
+    {
+      "env": 0,
+      "predicate_raises": false,
+      "both_envs_restored": true
+    },
+    {
+      "env": 0,
+      "predicate_raises": true,
+      "both_envs_restored": true
+    },
+    {
+      "env": 1,
+      "predicate_raises": false,
+      "both_envs_restored": true
+    },
+    {
+      "env": 1,
+      "predicate_raises": true,
+      "both_envs_restored": true
+    }
+  ],
+  "sequences": [
+    {
+      "injected_difference": false,
+      "exact_points": 9,
+      "inset_controls": 8,
+      "all_partial_resets_equal": true
+    },
+    {
+      "injected_difference": true,
+      "stopped": "F4-1",
+      "first_difference": {
+        "env_idx": 1,
+        "field": "stage_charger_placed",
+        "state_path": "drawer_plug_task_state",
+        "component": 3,
+        "before": 0.0,
+        "after": 1.0,
+        "before_hex": "00000000",
+        "after_hex": "0000803f"
+      }
+    }
+  ],
+  "gpu_seconds": 0
+}
