@@ -28,7 +28,7 @@
       "mode": "material_override",
       "label": "Black walnut hardwax oil",
       "surface": "black_walnut",
-      "base_color": [0.31, 0.2, 0.132, 1.0],
+      "base_color": [0.235, 0.171, 0.129, 1.0],
       "roughness": {"face": 0.63, "cut": 0.84, "edge": 0.66, "routed": 0.55},
       "metallic": 0.0
     },
@@ -60,7 +60,7 @@
       "mode": "material_override",
       "label": "Birch plywood waterborne finish",
       "surface": "birch",
-      "base_color": [0.83, 0.73, 0.535, 1.0],
+      "base_color": [0.875, 0.795, 0.595, 1.0],
       "roughness": {"face": 0.71, "cut": 0.85, "edge": 0.66, "routed": 0.59},
       "metallic": 0.0
     },
@@ -68,15 +68,15 @@
       "mode": "material_override",
       "label": "Sapele satin veneer",
       "surface": "sapele",
-      "base_color": [0.43, 0.245, 0.19, 1.0],
+      "base_color": [0.47, 0.249, 0.195, 1.0],
       "roughness": {"face": 0.54, "cut": 0.78, "edge": 0.61, "routed": 0.48},
       "metallic": 0.0
     },
     "variant_9": {
       "mode": "material_override",
-      "label": "Candlelight maple clear coat",
+      "label": "Tobacco bird's-eye maple clear coat",
       "surface": "maple",
-      "base_color": [0.74, 0.65, 0.54, 1.0],
+      "base_color": [0.43, 0.31, 0.145, 1.0],
       "roughness": {"face": 0.58, "cut": 0.8, "edge": 0.61, "routed": 0.51},
       "metallic": 0.0
     },

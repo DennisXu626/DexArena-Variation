@@ -56,10 +56,10 @@
     },
     "variant_7": {
       "mode": "material_override",
-      "label": "Pale ceramic-coated steel",
+      "label": "Warm limestone ceramic-coated steel",
       "roles": {
-        "metal_body": {"base_color": [0.72, 0.742, 0.698, 1.0], "roughness": 0.58, "metallic": 0},
-        "channel_details": {"base_color": [0.546, 0.584, 0.568, 1.0], "roughness": 0.73, "metallic": 0}
+        "metal_body": {"base_color": [0.613, 0.629, 0.491, 1.0], "roughness": 0.61, "metallic": 0},
+        "channel_details": {"base_color": [0.45, 0.468, 0.345, 1.0], "roughness": 0.73, "metallic": 0}
       }
     },
     "variant_8": {
@@ -74,16 +74,16 @@
       "mode": "material_override",
       "label": "Pewter nickel plate with a bronzed channel",
       "roles": {
-        "metal_body": {"base_color": [0.56, 0.519, 0.471, 1.0], "roughness": 0.31, "metallic": 0.95},
-        "channel_details": {"base_color": [0.306, 0.269, 0.231, 1.0], "roughness": 0.48, "metallic": 0.9}
+        "metal_body": {"base_color": [0.46, 0.47, 0.48, 1.0], "roughness": 0.31, "metallic": 0.95},
+        "channel_details": {"base_color": [0.275, 0.225, 0.184, 1.0], "roughness": 0.48, "metallic": 0.9}
       }
     },
     "variant_10": {
       "mode": "material_override",
       "label": "Grey-blue machine enamel",
       "roles": {
-        "metal_body": {"base_color": [0.275, 0.35, 0.426, 1.0], "roughness": 0.5, "metallic": 0},
-        "channel_details": {"base_color": [0.157, 0.221, 0.283, 1.0], "roughness": 0.65, "metallic": 0}
+        "metal_body": {"base_color": [0.128, 0.233, 0.356, 1.0], "roughness": 0.5, "metallic": 0},
+        "channel_details": {"base_color": [0.091, 0.16, 0.244, 1.0], "roughness": 0.65, "metallic": 0}
       }
     }
   }

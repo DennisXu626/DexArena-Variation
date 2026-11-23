@@ -14,28 +14,28 @@
       "mode": "material_override",
       "label": "Iron-grey glass-filled nylon",
       "roles": {
-        "grip": {"base_color": [0.137, 0.159, 0.173, 1.0], "roughness": 0.69, "metallic": 0}
+        "grip": {"base_color": [0.16, 0.204, 0.219, 1.0], "roughness": 0.69, "metallic": 0}
       }
     },
     "variant_2": {
       "mode": "material_override",
-      "label": "Warm white acetal",
+      "label": "Ivory acetal",
       "roles": {
-        "grip": {"base_color": [0.72, 0.702, 0.634, 1.0], "roughness": 0.56, "metallic": 0}
+        "grip": {"base_color": [0.79, 0.74, 0.59, 1.0], "roughness": 0.56, "metallic": 0}
       }
     },
     "variant_3": {
       "mode": "material_override",
       "label": "Dark nickel grip",
       "roles": {
-        "grip": {"base_color": [0.299, 0.289, 0.278, 1.0], "roughness": 0.4, "metallic": 0.89}
+        "grip": {"base_color": [0.28, 0.3, 0.324, 1.0], "roughness": 0.4, "metallic": 0.89}
       }
     },
     "variant_4": {
       "mode": "material_override",
       "label": "Taupe molded polyamide",
       "roles": {
-        "grip": {"base_color": [0.409, 0.339, 0.279, 1.0], "roughness": 0.66, "metallic": 0}
+        "grip": {"base_color": [0.48, 0.407, 0.318, 1.0], "roughness": 0.66, "metallic": 0}
       }
     },
     "variant_5": {
@@ -63,14 +63,14 @@
       "mode": "material_override",
       "label": "Dark graphite acetal",
       "roles": {
-        "grip": {"base_color": [0.092, 0.104, 0.114, 1.0], "roughness": 0.48, "metallic": 0}
+        "grip": {"base_color": [0.045, 0.05, 0.056, 1.0], "roughness": 0.48, "metallic": 0}
       }
     },
     "variant_9": {
       "mode": "material_override",
       "label": "Warm oxidized bronze grip",
       "roles": {
-        "grip": {"base_color": [0.51, 0.402, 0.301, 1.0], "roughness": 0.42, "metallic": 0.9}
+        "grip": {"base_color": [0.4, 0.25, 0.146, 1.0], "roughness": 0.42, "metallic": 0.9}
       }
     },
     "variant_10": {

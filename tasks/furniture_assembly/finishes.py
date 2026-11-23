@@ -5,15 +5,15 @@ from functools import lru_cache
 import numpy as np
 
 
-# Annual-ring frequency, drift, latewood contrast, pores, and knot (x, y, spread).
+# Annual-ring frequency, drift, latewood contrast, pores, figure phase, and knot.
 WOOD_FINISHES = {
-    'white_oak': (21, .078, .37, .062, None),
-    'black_walnut': (12, .118, .38, .030, (.69, .69, .075)),
-    'black_cherry': (17, .053, .28, .014, (.33, .31, .041)),
-    'grey_ash': (26, .092, .37, .074, None),
-    'birch': (35, .025, .23, .012, (.79, .41, .035)),
-    'sapele': (44, .038, .37, .014, None),
-    'maple': (24, .031, .24, .019, (.54, .61, .034)),
+    'white_oak': (19, .066, .35, .095, 0., None),
+    'black_walnut': (10, .142, .41, .030, 1.2, (.66, .63, .104)),
+    'black_cherry': (15, .068, .25, .012, 2.4, (.33, .31, .055)),
+    'grey_ash': (30, .025, .40, .125, 3.7, None),
+    'birch': (27, .035, .17, .010, 4.7, None),
+    'sapele': (40, .027, .25, .014, 5.4, None),
+    'maple': (20, .021, .22, .014, 6.3, None),
 }
 
 # SAPIEN's native cube uses a 4 by 3 UV cross. Each entry gives the tile
@@ -31,21 +31,33 @@ _FACE_TILES = (
 
 def grain_tone(finish, x, y):
     """Sample longitudinal growth rings and continuous pores in panel space."""
-    rings, drift, contrast, pores, knot = WOOD_FINISHES[finish]
-    flow = y + drift * (np.sin(4.7 * x + 2.1 * y) + .42 * np.sin(10.2 * x - 3.4 * y))
+    rings, drift, contrast, pores, phase, knot = WOOD_FINISHES[finish]
+    flow = y + drift * (np.sin(4.7 * x + 2.1 * y + phase)
+                       + .42 * np.sin(10.2 * x - 3.4 * y + .7 * phase))
+    flow += .018 * np.sin(22 * y + 5.3 * x - 2.1 * phase)
     if finish == 'sapele':
         # Ribbon figure from alternating rows of interlocked grain.
-        figure = .11 * (.5 + .5 * np.sin(46 * y + 1.8 * np.sin(4 * x)))
+        ribbons = .5 + .5 * np.sin(27 * y + .64 * np.sin(7 * x + 11 * y))
+        figure = .24 * ribbons ** 2
+    elif finish == 'birch':
+        figure = .10 * np.sin(13 * x - 19 * y + 1.8 * np.sin(4 * x)) ** 2
+    elif finish == 'maple':
+        # Bird's-eye figuring is sparse and independent of the growth bands.
+        figure = np.zeros(np.broadcast_shapes(x.shape, y.shape))
+        for cx, cy in np.random.default_rng(143).uniform(.06, .94, size=(14, 2)):
+            eye = ((x - cx) / .042) ** 2 + ((y - cy) / .022) ** 2
+            figure += .32 * np.exp(-2.0 * eye) + .13 * np.exp(-8 * (eye - .86) ** 2)
     else:
         figure = .054 * np.sin(22 * flow + .8 * np.sin(9.1 * x)) ** 2
     if knot is not None:
         cx, cy, spread = knot
         radius = np.hypot((x - cx) * .35, y - cy)
         flow += .7 * (y - cy) * np.exp(-radius ** 2 / spread ** 2)
-        figure += .22 * np.exp(-radius ** 2 / (.29 * spread) ** 2)
-    phase = 2 * np.pi * rings * flow + .67 * np.sin(15 * y + 5 * x)
-    latewood = (.5 + .5 * np.sin(phase)) ** 3
-    vessels = (.5 + .5 * np.sin(2.37 * phase + 2.1 * np.sin(17.6 * x))) ** 5
+        figure += .27 * np.exp(-radius ** 2 / (.34 * spread) ** 2)
+    growth = 2 * np.pi * rings * flow + .67 * np.sin(15 * y + 5 * x + phase)
+    latewood = (.5 + .5 * np.sin(growth)) ** 3
+    vessels = ((.5 + .5 * np.sin(2.37 * growth + 2.1 * np.sin(17.6 * x))) ** 4
+               * (.5 + .5 * np.sin(92 * x + 19 * y + phase)))
     return np.clip(1 - contrast * latewood - pores * vessels - figure, .57, 1)
 
 

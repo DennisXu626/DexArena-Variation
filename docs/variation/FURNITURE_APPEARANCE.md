@@ -29,7 +29,7 @@
 | variant_6 | 灰鼠尾草色喷漆纤维板 |
 | variant_7 | 桦木胶合板水性清漆 |
 | variant_8 | 沙比利木缎光薄木 |
-| variant_9 | 暖色枫木清漆 |
+| variant_9 | 烟草色鸟眼枫木清漆 |
 | variant_10 | 石墨灰酚醛层压板 |
 
 [木纹生成器](../../tasks/furniture_assembly/finishes.py)在相同的板件坐标系中按七种木材分别绘制生长轮、导管和木结。三种人工覆面不使用木纹。三块原生盒体主面沿用原生 UV，入口斜块沿用同套颜色与粗糙度。贴图由程序生成，不依赖外部图像。素材风格参考长纹白橡木、深胡桃木和分区涂层。 [Dennis #20](https://github.com/DennisXu626/DexArena-Variation/pull/20) · [RoboDojo 材质库](https://huggingface.co/datasets/RoboDojo-Benchmark/RoboDojo/tree/main/Assets/Material)

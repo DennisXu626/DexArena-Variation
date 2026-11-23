@@ -18,8 +18,8 @@
       "mode": "material_override",
       "label": "Warm white and pebble powder coat",
       "roles": {
-        "body": {"base_color": [0.69, 0.715, 0.664, 1.0], "roughness": 0.64, "metallic": 0},
-        "plate": {"base_color": [0.48, 0.494, 0.447, 1.0], "roughness": 0.73, "metallic": 0}
+        "body": {"base_color": [0.78, 0.755, 0.675, 1.0], "roughness": 0.64, "metallic": 0},
+        "plate": {"base_color": [0.53, 0.515, 0.447, 1.0], "roughness": 0.73, "metallic": 0}
       }
     },
     "variant_3": {
@@ -42,8 +42,8 @@
       "mode": "material_override",
       "label": "Galvanized grey zinc",
       "roles": {
-        "body": {"base_color": [0.6, 0.615, 0.635, 1.0], "roughness": 0.47, "metallic": 0.92},
-        "plate": {"base_color": [0.39, 0.413, 0.435, 1.0], "roughness": 0.59, "metallic": 0.87}
+        "body": {"base_color": [0.44, 0.49, 0.55, 1.0], "roughness": 0.47, "metallic": 0.92},
+        "plate": {"base_color": [0.294, 0.343, 0.408, 1.0], "roughness": 0.59, "metallic": 0.87}
       }
     },
     "variant_6": {
