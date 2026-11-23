@@ -1228,6 +1228,11 @@ class TableCleanBase(BaseEnv):
                 env_idx, dtype=torch.long, device=self.device
             ).flatten()
             super().set_state_dict(state, restore_idx)
+        # Restoring poses may keep elapsed_steps unchanged (including demo-state
+        # reset, which bypasses _initialize_episode). Recompute motion for these
+        # rows against their previous positions; retain neighbours' same-step cache.
+        if hasattr(self, "_debris_motion_step"):
+            self._debris_motion_step[restore_idx] = -1
         # Fixed-base set_root_pose/get_state drifts root z by -2^-26 per
         # restore; re-pin the build pose so set->get stays idempotent.
         self.agent.robot.set_root_pose(ROBOT_ROOT)
