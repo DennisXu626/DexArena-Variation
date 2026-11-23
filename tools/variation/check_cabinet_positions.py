@@ -146,9 +146,16 @@ def run(root):
     region='cabinet_pouring.bottle_table.xy_v2'
     result=dict(job=os.environ['SLURM_JOB_ID'],tasks={},status='running')
     root.mkdir(exist_ok=False)
+    previous = None
     def flush():
-        tmp=root/'results.tmp'
-        tmp.write_text(json.dumps(result,indent=2,allow_nan=False));tmp.replace(root/'results.json')
+        # Stable names let the capacity monitor stat every path it enumerated.
+        # The prior complete checkpoint survives an interrupted primary write.
+        nonlocal previous
+        current = json.dumps(result, indent=2, allow_nan=False)
+        if previous is not None:
+            (root/'results.previous.json').write_text(previous)
+        (root/'results.json').write_text(current)
+        previous = current
     for task in ('PickBottle','OpenCabinet','UnscrewCap','PourBeads'):
         task_id='CabinetPouring'+task+'-Sharpa-v1'
         config=dict(variation={'initial_pose':dict(enabled=True,mode='native',region_id=region)}) if task in ('PickBottle','UnscrewCap') else {}
