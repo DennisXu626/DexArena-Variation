@@ -62,12 +62,13 @@ _SPEC.loader.exec_module(_RUNTIME)
 class OfficeDevicesPreviewMaterials(_RUNTIME.OfficePartMaterials):
     """Use the same explicit per-part preparation as the formal short tasks."""
 
-    def __init__(self, inventory, catalog):
+    def __init__(self, inventory, catalog, definition=None):
         if inventory["missing"] or inventory["errors"] or not inventory["editable_count"]:
             raise ValueError("Complete, unambiguous authorized assets are required")
-        definition_path = Path(__file__).resolve().parents[2] / "assets/appearance/objects/office_desk" / inventory["object_id"] / "bindings.json"
-        import json
-        definition = json.loads(definition_path.read_text(encoding="utf-8"))
+        if definition is None:
+            definition_path = Path(__file__).resolve().parents[2] / "assets/appearance/objects/office_desk" / inventory["object_id"] / "bindings.json"
+            import json
+            definition = json.loads(definition_path.read_text(encoding="utf-8"))
         super().__init__(definition, inventory["asset_dir"])
         self.catalog = catalog
 

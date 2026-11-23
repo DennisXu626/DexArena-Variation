@@ -298,7 +298,15 @@ class OfficePartMaterials:
                                 groups = [(True, np.asarray(part.triangles)[mask]),
                                           (False, np.asarray(part.triangles)[~mask])]
                             else:
-                                if not opaque_untextured(material):
+                                atlas = self.definition.get('base_color_texture')
+                                if atlas is not None:
+                                    texture = material.base_color_texture
+                                    if (texture is None or Path(texture.filename).resolve() != self.asset_dir / atlas
+                                            or np.asarray(material.base_color)[3] != 1 or material.transmission != 0
+                                            or any(getattr(material, key, None) is not None for key in MATERIAL_FIELDS
+                                                   if key.endswith('_texture') and key != 'base_color_texture')):
+                                        raise RuntimeError('Unexpected Office keycap texture or transparency')
+                                elif not opaque_untextured(material):
                                     raise RuntimeError('Office editable part is textured or transparent')
                                 groups = [(True, np.asarray(part.triangles))]
                             matched.append(slot['material'])
@@ -316,7 +324,7 @@ class OfficePartMaterials:
                                     if hasattr(material, key):
                                         setattr(target, key, getattr(material, key))
                                 if target.base_color_texture != material.base_color_texture:
-                                    raise RuntimeError('Office partition replaced the source texture handle')
+                                    raise RuntimeError('Office private material replaced the source texture handle')
                                 if role == STRIP_ROLE:
                                     if self.strip_texture is not None:
                                         raise RuntimeError('Expected one private strip texture per environment')
@@ -410,14 +418,21 @@ class OfficePartMaterials:
 
 
 class OfficeDevicesAppearance:
-    def __init__(self, config, num_envs, object_id, asset_root):
+    def __init__(self, config, num_envs, object_id, asset_root, *, keycaps=False):
         validate_appearance_config(config, num_envs)
         self.config = copy.deepcopy(config)
         self.object_id = object_id
+        self.option_key = 'office_keyboard_appearance' if keycaps else 'office_devices_appearance'
         self.catalog = json.loads(CATALOG.read_text(encoding='utf-8'))
         entry = self.catalog['objects'][object_id]
+        if keycaps:
+            entry = entry['keycaps']
+        self.scheme_map = entry['scheme_map']
         self.object_catalog = json.loads((ROOT / entry['catalog']).read_text(encoding='utf-8'))
-        self.definition = json.loads((OBJECTS / object_id / 'bindings.json').read_text(encoding='utf-8'))
+        binding_file = 'keycaps_bindings.json' if keycaps else 'bindings.json'
+        self.definition = json.loads((OBJECTS / object_id / binding_file).read_text(encoding='utf-8'))
+        self.roles = {slot.get('role', self.definition['editable_role'])
+                      for row in self.definition['part_bindings'] for slot in row['editable_slots']}
         self.asset_dir = Path(asset_root) / self.definition['model_id']
         self.bindings = [None] * num_envs
         self.prepared = [None] * num_envs
@@ -428,20 +443,15 @@ class OfficeDevicesAppearance:
             self.scheme_parameters(name)
 
     def scheme_parameters(self, scheme_id):
-        mapped = self.catalog['objects'][self.object_id]['scheme_map'][scheme_id]
+        mapped = self.scheme_map[scheme_id]
         scheme = self.object_catalog['schemes'][mapped]
         if scheme_id == 'original':
             if scheme != {'restore': 'captured_native'}:
                 raise ValueError('Office original must restore captured native PBR')
             return {}
-        if set(scheme) != {self.definition['editable_role']}:
+        if set(scheme) != self.roles:
             raise ValueError('Office candidate edits an unknown role')
-        result = {role: validate_parameters(params) for role, params in scheme.items()}
-        for role, source in self.object_catalog.get('role_aliases', {}).items():
-            if role != STRIP_ROLE or source != 'shell' or self.object_id != 'keyboard':
-                raise ValueError('Unknown Office role alias')
-            result[role] = result[source]
-        return result
+        return {role: validate_parameters(params) for role, params in scheme.items()}
 
     def isolate_builder_materials(self, builder, env_id):
         materials = OfficePartMaterials(self.definition, self.asset_dir)
@@ -471,7 +481,7 @@ class OfficeDevicesAppearance:
 
     def finish_reset(self, env_idx, options):
         indices = validate_reset_indices(env_idx, len(self.bindings))
-        override = options.get('office_devices_appearance', {})
+        override = options.get(self.option_key, {})
         validate_reset_override(override, len(self.bindings))
         requests = []
         for i, mode, choices in resolve_reset_requests(

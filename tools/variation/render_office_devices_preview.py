@@ -27,13 +27,15 @@ def main():
     parser.add_argument("--approved-render", action="store_true", help="Use only in coordinator-assigned GPU window")
     parser.add_argument('--native-off', action='store_true', help='Capture the untouched source model baseline only')
     parser.add_argument('--native-reference', type=Path, help='Fresh native-off output for exact original model/RGB comparison')
+    parser.add_argument('--keycaps-only', action='store_true',
+                        help='Load only visual records for the original keycaps and apply their independent catalog')
     args = parser.parse_args()
     if not args.approved_render:
         parser.error("Rendering requires a coordinator-assigned GPU window and --approved-render")
     if args.native_off and args.native_reference:
         parser.error('native-off baseline does not consume another reference')
-    if args.object == 'keyboard' and not args.native_off and args.native_reference is None:
-        parser.error('keyboard partition preview requires a fresh --native-reference baseline')
+    if (args.object == 'keyboard' or args.keycaps_only) and not args.native_off and args.native_reference is None:
+        parser.error('keyboard partition or isolated keycap preview requires a matching --native-reference baseline')
     inventory = inspect_assets(args.object, args.asset_root)
     if inventory["missing"] or inventory["errors"] or not inventory["editable_count"]:
         print(json.dumps(inventory, ensure_ascii=False, indent=2))
@@ -45,20 +47,24 @@ def main():
     from mani_skill.utils.sapien_utils import look_at
 
     source_dir = ROOT / "assets/appearance/objects/office_desk" / args.object
-    definition = json.loads((source_dir / "bindings.json").read_text(encoding="utf-8"))
-    catalog = json.loads((source_dir / "catalog.json").read_text(encoding="utf-8"))
+    chassis_path = source_dir / 'bindings.json'
+    chassis = json.loads(chassis_path.read_text(encoding='utf-8'))
+    binding_path = source_dir / 'keycaps_bindings.json' if args.keycaps_only else chassis_path
+    catalog_path = source_dir / ('keycaps_catalog.json' if args.keycaps_only else 'catalog.json')
+    definition = json.loads(binding_path.read_text(encoding='utf-8')) if args.keycaps_only else chassis
+    catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
     args.output.mkdir(parents=True, exist_ok=False)
     manifest = {"scope": "standalone source-model preview; NOT a task or A4/A5 result",
                 "timestamp_utc": datetime.now(timezone.utc).isoformat(), "command": sys.argv,
                 "physics_steps": 0, "object_id": args.object, "catalog_version": catalog["version"],
-                "asset_inventory": inventory,
+                "asset_inventory": inventory, "keycaps_only": args.keycaps_only,
                 "versions": {p: metadata.version(p) for p in ("sapien", "mani_skill", "numpy", "pillow")},
                 "source_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                                   for p in (Path(__file__), Path(__file__).with_name("office_devices_assets.py"),
                                             Path(__file__).with_name("office_devices_materials.py"),
                                             Path(__file__).with_name("office_devices_uv_proof.py"),
                                             Path(__file__).with_name("audit_office_devices_uv.py"),
-                                            source_dir / "catalog.json", source_dir / "bindings.json",
+                                            *{catalog_path, binding_path, chassis_path},
                                             ROOT / "tasks/office_desk/devices_appearance.py",
                                             ROOT / "tasks/office_desk/office_desk_open_laptop.py",
                                             ROOT / "tasks/office_desk/office_desk_type_keys.py")},
@@ -76,14 +82,32 @@ def main():
         scene.add_directional_light([1, 1, -1], [2, 2, 2], shadow=False)
         loader = scene.create_urdf_loader()
         loader.fix_root_link = True
-        loader.scale = definition["scale"]
+        loader.scale = chassis["scale"]
         loader.load_multiple_collisions_from_file = False
         # Model-only inspection; no decomposition, physical rollout or task claim.
         # Native SAPIEN returns a tuple; formal ManiSkill task builders are untouched.
         builders, actors, cameras = loader.parse(str(Path(inventory["asset_dir"]) / "mobility.urdf"))
         if len(builders) != 1 or actors or cameras:
             raise RuntimeError("Expected one source articulation and no extra actors/cameras")
-        materials = None if args.native_off else OfficeDevicesPreviewMaterials(inventory, catalog)
+        if args.keycaps_only:
+            selected = {(row['link'], row['index']): row for row in definition['part_bindings']}
+            retained = set()
+            for link_builder in builders[0].link_builders:
+                records = []
+                for index, record in enumerate(link_builder.visual_records):
+                    key = (link_builder.name, index)
+                    row = selected.get(key)
+                    if row is None:
+                        continue
+                    if (index != len(records) or record.name != row['name']
+                            or Path(record.filename).resolve() != Path(inventory['asset_dir']) / row['mesh']):
+                        raise RuntimeError(f'Isolated keycap source does not match {key}')
+                    records.append(record)
+                    retained.add(key)
+                link_builder.visual_records = records
+            if retained != set(selected):
+                raise RuntimeError('Missing source visual in isolated keycap load')
+        materials = None if args.native_off else OfficeDevicesPreviewMaterials(inventory, catalog, definition)
         if materials is not None:
             materials.install(builders[0])
         model = builders[0].build()

@@ -457,38 +457,49 @@ def require_cuda_runtime(args):
     return windows_handles
 
 
-def verify(base, ids, native):
-    a=adapter(base);assert a.schemes==ids
+def verify(base, ids, native, *, keycap_ids=None):
+    channels = []
+    if ids is not None:
+        channels.append((adapter(base), ids))
+    if keycap_ids is not None:
+        channels.append((base._office_keyboard_appearance, keycap_ids))
+    for appearance, selections in channels:
+        assert appearance.schemes == selections
+        assert len(appearance.records) == sum(appearance.episodes)
+        assert all(row['catalog_version'] == appearance.catalog['version'] for row in appearance.records)
     actual=C.materials(base);slots=logical_slots(base)
-    for i,name in enumerate(ids):
-        assert a.bindings[i]
+    for i in range(base.num_envs):
         native_slots={(row['entity'],row['source_visual'],row['source_native_part'],row['logical_group']):logical_material(row) for row in native[i]}
         assert len(native_slots)==len(native[i]), 'Native Office slot identity is ambiguous'
         expected=[copy.deepcopy(native_slots[(row['entity'],row['source_visual'],row['source_native_part'],row['logical_group'])]) for row in actual[i]]
-        for role,part,material,captured in a.bindings[i]:
-            assert part.material==material
-            matches=[index for index,row in enumerate(slots[i]) if row['part']==part]
-            assert len(matches)==1
-            index,=matches
-            params=captured if name=='original' else (a.catalog['schemes'][name][role] if hasattr(base,'_mouse_appearance') else a.scheme_parameters(name)[role])
-            for field in C.FIELDS:
-                np.testing.assert_allclose(captured[field],expected[index][field],rtol=0,atol=1e-7)
-                expected[index][field]=params[field]
-            if role == P.STRIP_ROLE:
-                strip = a.prepared[i].strip_texture
-                assert material.base_color_texture == strip.texture and strip.texture != strip.source
-                pixels = strip.pixels_for(None if name == 'original' else params['base_color'])
-                expected[index]['base_color_texture']['data_sha256'] = pixel_digest(pixels)
+        changed = set()
+        for a, selections in channels:
+            name = selections[i]
+            assert a.bindings[i]
+            candidate = {} if name == 'original' else (
+                a.catalog['schemes'][name] if hasattr(base, '_mouse_appearance') else a.scheme_parameters(name))
+            for role, part, material, captured in a.bindings[i]:
+                assert part.material == material
+                index, = [j for j, row in enumerate(slots[i]) if row['part'] == part]
+                assert index not in changed, 'Office appearance channels share a material part'
+                changed.add(index)
+                params = candidate.get(role, captured)
+                for field in C.FIELDS:
+                    np.testing.assert_allclose(captured[field], expected[index][field], rtol=0, atol=1e-7)
+                    expected[index][field] = params[field]
+                if role == P.STRIP_ROLE:
+                    strip = a.prepared[i].strip_texture
+                    assert material.base_color_texture == strip.texture and strip.texture != strip.source
+                    pixels = strip.pixels_for(None if name == 'original' else params['base_color'])
+                    expected[index]['base_color_texture']['data_sha256'] = pixel_digest(pixels)
+            records = [row for row in a.records if row['env_idx'] == i]
+            assert [row['episode_index'] for row in records] == list(range(1, a.episodes[i]+1))
+            assert records[-1]['scheme_id'] == name
         for observed,target in zip(actual[i],expected):
             observed = logical_material(observed)
             for field in C.FIELDS:
                 np.testing.assert_allclose(observed[field],target[field],rtol=0,atol=1e-7)
             assert {k:v for k,v in observed.items() if k not in C.FIELDS}=={k:v for k,v in target.items() if k not in C.FIELDS}
-        records=[row for row in a.records if row['env_idx']==i]
-        assert [row['episode_index'] for row in records]==list(range(1,a.episodes[i]+1))
-        assert records[-1]['scheme_id']==name
-    assert len(a.records)==sum(a.episodes)
-    assert all(row['catalog_version']==a.catalog['version'] for row in a.records)
     return actual
 
 
@@ -573,7 +584,7 @@ def reset_images(env, observation):
     return C.validate_images(frames, env.unwrapped.num_envs)
 
 
-def compare_fixed_schemes(frames, output):
+def compare_fixed_schemes(frames, output, *, filename='fixed_scheme_pairwise.json', camera='human'):
     """Use the PR16 native human camera in both environments for all pairs."""
     pairs = {}
     for (left, before), (right, after) in combinations(frames.items(), 2):
@@ -584,11 +595,11 @@ def compare_fixed_schemes(frames, output):
             rows.append({'pixels_over_8': pixels, 'fraction_over_8': pixels / delta[..., 0].size,
                          'mean_absolute_difference': float(delta.mean())})
         pairs[f'{left}/{right}'] = rows
-    path = output / 'fixed_scheme_pairwise.json'
-    dump(path, {'camera': 'human', 'schemes': list(frames), 'minimum_fraction_over_8': .001, 'pairs': pairs})
+    path = output / filename
+    dump(path, {'camera': camera, 'schemes': list(frames), 'minimum_fraction_over_8': .001, 'pairs': pairs})
     failures = [name for name, rows in pairs.items() if any(row['fraction_over_8'] < .001 for row in rows)]
     assert not failures, f'Insufficient fixed camera RGB separation: {failures}'
-    return {'file': path.name, 'camera': 'human', 'pairs': len(pairs), 'minimum_observed_fraction':
+    return {'file': path.name, 'camera': camera, 'pairs': len(pairs), 'minimum_observed_fraction':
             min(row['fraction_over_8'] for rows in pairs.values() for row in rows)}
 
 
@@ -663,26 +674,37 @@ def run_task(task,args,output,result):
     def capture_strip(stage, scheme='original'):
         if task == 'TypeKeys':
             record_strip_stage(env.unwrapped, stage, scheme, strip_arrays, strip_stages)
-    def make(config=None):
+    def make(config=None, *, keycaps=None, detail=False):
         options={}
         if gpu and args.gpu_memory_profile=='two_env':
             options['sim_config']={'gpu_memory_config':{'max_rigid_contact_count':2**17,
                 'max_rigid_patch_count':2**16,'found_lost_pairs_capacity':2**20}}
+        if config is not None:
+            options[key] = config
+        if keycaps is not None:
+            options['office_keyboard_appearance'] = keycaps
+        if detail and gpu and task == 'OpenLaptop':
+            from mani_skill.utils import sapien_utils
+            from tasks.office_desk.office_desk_open_laptop import LAPTOP_SPAWN_CENTER
+            x = float(LAPTOP_SPAWN_CENTER[0])
+            pose = sapien_utils.look_at(eye=[x - .31, -.06, .48], target=[x, 0., .18])
+            options['human_render_camera_configs'] = {'pose': pose, 'fov': .78}
         return gym.make('OfficeDesk'+task+'-Sharpa-v1',num_envs=n,sim_backend=args.sim_backend,
             reconfiguration_freq=0,obs_mode='rgb' if gpu else 'state',render_mode='rgb_array',
             control_mode='pd_joint_pos',reward_mode='sparse',
-            **options,**({} if config is None else {key:config}))
-    def checked_reset(seed=None,options=None):
+            **options)
+    def checked_reset(seed=None, options=None, *, keycap_evidence=False):
         nonlocal reset_index,last_selected
         if not gpu:return env.reset(seed=seed,options=options)
+        group = 'keycap_selected_reset_state' if keycap_evidence else 'selected_reset_state'
         row={};prefix=f'selected_reset_{reset_index:02d}';reset_index+=1;last_selected=prefix+'.json'
         try:return C.selected_reset_check(env,seed,options,output,prefix,row)
-        finally:result['checks'].setdefault('selected_reset_state',[]).append({'evidence':last_selected,**row})
-    def fresh(config=None, camera_first=False):
+        finally:result['checks'].setdefault(group,[]).append({'evidence':last_selected,**row})
+    def fresh(config=None, camera_first=False, *, keycaps=None, detail=False):
         nonlocal env,constructor_records,first_frames
-        env=make(config);base=env.unwrapped;a=adapter(base)
+        env=make(config, keycaps=keycaps, detail=detail);base=env.unwrapped;a=adapter(base)
         constructor_records=copy.deepcopy(a.records) if a is not None else []
-        observation,info=checked_reset(seed=7)
+        observation,info=checked_reset(seed=7, keycap_evidence=detail)
         first_frames=reset_images(env,observation) if gpu and camera_first else None
         assert base.num_envs==n and base.backend.sim_backend==args.sim_backend
         assert base.device.type==('cuda' if gpu else 'cpu')
@@ -784,6 +806,127 @@ def run_task(task,args,output,result):
             torch.save({'before':before,'after':after},output/(prefix+'.pt'))
             C.save_image_pairs(before_images,after_images,output,prefix);dump(output/(prefix+'.json'),row);rows.append(row)
         return rows,info
+
+    def keycaps_acceptance():
+        from PIL import Image
+
+        keycaps_key = 'office_keyboard_appearance'
+        keys = list(json.loads(P.CATALOG.read_text(encoding='utf-8'))['schemes'])
+        report = {'fixed': {}, 'local_resets': [], 'camera': (
+            'front_detail' if task == 'OpenLaptop' else 'human')}
+        result['checks']['independent_keycaps'] = report
+        result['stage'] = 'original keycap detail'
+        native_base, _ = fresh(camera_first=True, detail=True)
+        detail_native = C.materials(native_base)
+        detail_physical = physical(native_base)
+        detail_state = C.snapshot(native_base)
+        detail_frames = first_frames
+        if gpu:
+            for i, frame in enumerate(detail_frames['human']):
+                Image.fromarray(frame).save(output / f'keycaps_native_{report["camera"]}_env{i}.png')
+        close()
+
+        result['stage'] = 'keycaps with device appearance disabled'
+        base, _ = fresh({'enabled': False}, keycaps={'enabled': True}, detail=True)
+        assert adapter(base) is None
+        caps = base._office_keyboard_appearance
+        expected_parts = 153 if task == 'OpenLaptop' else 77
+        assert all(len(bindings) == expected_parts for bindings in caps.bindings)
+        for env_id, prepared in enumerate(caps.prepared):
+            if task == 'TypeKeys':
+                assert all(row['texture']['same_handle'] and not row['texture']['private_strip_clone']
+                           for row in prepared.audit if row['editable'])
+            assert caps.episodes[env_id] > 0
+        report['editable_native_parts_per_env'] = expected_parts
+        report['keycaps_only_slot_evidence'] = 'keycaps_only_actual_slots.json'
+        dump(output / report['keycaps_only_slot_evidence'],
+             actual_slot_audit(base, output / 'keycaps_only_actual_geometry.pt'))
+        fixed_frames = {}
+        for name in keys:
+            result['stage'] = f'keycaps only {name}'
+            observation, info = checked_reset(
+                seed=7, options={keycaps_key: {'scheme_id': name}}, keycap_evidence=True)
+            verify(base, None, detail_native, keycap_ids=[name] * n)
+            assert physical(base) == detail_physical and not C.state_changes(detail_state, C.snapshot(base))
+            row = {'status': 'passed'}
+            if gpu:
+                frames = reset_images(env, observation)
+                fixed_frames[name] = frames['human']
+                for i, frame in enumerate(frames['human']):
+                    Image.fromarray(frame).save(output / f'keycaps_{name}_{report["camera"]}_env{i}.png')
+                changed = [int(np.count_nonzero(np.any(a != b, axis=-1)))
+                           for a, b in zip(detail_frames['human'], frames['human'], strict=True)]
+                assert all(changed) if name != 'original' else not any(changed)
+                row['detail_changed_pixels'] = changed
+            if name != 'original':
+                observation, info = checked_reset(
+                    seed=7, options={keycaps_key: {'scheme_id': 'original'}}, keycap_evidence=True)
+                restored = verify(base, None, detail_native, keycap_ids=['original'] * n)
+                for actual, native_slots in zip(restored, detail_native, strict=True):
+                    verify_restored_materials(actual, native_slots)
+                assert not C.state_changes(detail_state, C.snapshot(base))
+                if gpu:
+                    frames = reset_images(env, observation)
+                    assert all(np.array_equal(detail_frames[camera], frames[camera]) for camera in frames)
+                    for i, frame in enumerate(frames['human']):
+                        Image.fromarray(frame).save(output / f'keycaps_restored_from_{name}_{report["camera"]}_env{i}.png')
+                row['exact_original_restoration'] = True
+            report['fixed'][name] = row
+        if gpu:
+            report['pairwise_rgb'] = compare_fixed_schemes(
+                fixed_frames, output, filename='keycaps_fixed_scheme_pairwise.json', camera=report['camera'])
+        close()
+
+        result['stage'] = 'keycaps and device appearance simultaneously'
+        device_scheme, caps_scheme = schemes[2], keys[8]
+        base, info = fresh({'enabled': True, 'scheme_id': device_scheme},
+                           keycaps={'enabled': True, 'scheme_id': caps_scheme}, detail=True)
+        caps = base._office_keyboard_appearance
+        verify(base, [device_scheme] * n, detail_native, keycap_ids=[caps_scheme] * n)
+        assert physical(base) == detail_physical
+        model = adapter(base)
+        before = (C.materials(base), C.snapshot(base), copy.deepcopy(model.records), copy.deepcopy(caps.records),
+                  copy.deepcopy([r.bit_generator.state for appearance in (model, caps) for r in appearance.rng]))
+        try:
+            env.reset(options={key: {'scheme_id': 'original'}, keycaps_key: {
+                'per_env': {str(n - 1): {'scheme_id': 'missing'}}}})
+        except ValueError as error:
+            assert 'Unknown Office appearance scheme' in str(error)
+        else:
+            raise AssertionError('Invalid keycap override accepted after valid device override')
+        assert (C.materials(base) == before[0] and not C.state_changes(before[1], C.snapshot(base))
+                and model.records == before[2] and caps.records == before[3]
+                and [r.bit_generator.state for appearance in (model, caps) for r in appearance.rng] == before[4])
+        report['combined_preflight_atomicity'] = 'passed'
+        if gpu:
+            for selected in (1, 0):
+                other = 1 - selected
+                before_state = C.snapshot(base)
+                before_materials = C.materials(base)
+                before_records = [copy.deepcopy(a.records) for a in (model, caps)]
+                before_rng = [copy.deepcopy(a.rng[other].bit_generator.state) for a in (model, caps)]
+                before_images = C.capture(env, info)
+                request = {'env_idx': torch.tensor([selected], device=base.device), keycaps_key: {
+                    'scheme_id': 'original'}}
+                _, info = checked_reset(options=request, keycap_evidence=True)
+                after_images = C.capture(env, info)
+                after = verify(base, [device_scheme] * n, detail_native, keycap_ids=list(caps.schemes))
+                assert caps.schemes[selected] == 'original'
+                assert not C.state_changes(before_state, C.snapshot(base), [other])
+                assert after[other] == before_materials[other]
+                for channel, records, rng in zip((model, caps), before_records, before_rng, strict=True):
+                    assert channel.records[:-1] == records and channel.records[-1]['env_idx'] == selected
+                    assert channel.rng[other].bit_generator.state == rng
+                prefix = f'keycaps_reset_{selected}'
+                pixels = C.image_changes(before_images, after_images, output, prefix, other)
+                assert not any(row['changed_values'] for row in pixels.values())
+                C.save_image_pairs(before_images, after_images, output, prefix)
+                report['local_resets'].append({'selected': selected, 'unselected': other,
+                    'keycap_schemes': list(caps.schemes), 'device_schemes': list(model.schemes),
+                    'unselected_pixel_changes': pixels, 'state_evidence': last_selected})
+        close()
+        report['status'] = 'passed'
+
     try:
         result['stage'] = 'model asset identity'
         result['object_asset_root'] = require_model_asset_root(task)
@@ -822,10 +965,17 @@ def run_task(task,args,output,result):
         interface['explicit_disabled']={'config':{'enabled':False},'adapter_present':adapter(base) is not None,
             'materials':C.materials(base),'physical':physical(base),'state_evidence':'explicit_disabled_state.pt'}
         result['checks']['explicit_disabled']='passed';close()
+        if task != 'ClickMouse':
+            keycaps_acceptance()
         fixed_frames = {}
         restorations = {}
         for scheme in schemes:
-            result['stage']='fixed '+scheme;base,info=fresh({'enabled':True,'scheme_id':scheme},camera_first=True)
+            result['stage']='fixed '+scheme
+            keycaps_off = {'enabled': False} if task != 'ClickMouse' else None
+            base,info=fresh({'enabled':True,'scheme_id':scheme},camera_first=True,keycaps=keycaps_off)
+            if keycaps_off is not None:
+                assert base._office_keyboard_appearance is None
+                result['checks']['independent_keycaps']['device_only_keycaps_native'] = 'passed'
             if gpu:first_repeat(first_frames,info,'fixed_'+scheme+'_first_repeat')
             measured=verify(base,[scheme]*n,native)
             capture_strip(scheme, scheme)

@@ -16,11 +16,12 @@ if str(_ROOT) not in sys.path:
 from tools.variation.office_devices_assets import ROOT, DEFAULT_ASSET_ROOT, OBJECT_IDS, inspect_assets, load_definition
 
 BASELINE = '56a4aec4740b7139307e01048fa0e8e6ed430f14'
-EXPANSION_BASELINE = '66c7a1569d92487ab918df31014e0d86a70f29c2'
+REALISTIC_BASELINE = '8b840fbb3298fc3de55ab2912ee3e1da816080ec'
 DEVICE_CATALOG = 'tasks/assets/variation/office_desk/devices/v1/catalog.json'
 MOUSE_CATALOG = 'tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json'
 TASKS = ('open_laptop', 'type_keys', 'click_mouse')
 FIELDS = ('base_color', 'roughness', 'metallic')
+DEVICE_CHANNELS = ('office_devices_appearance', 'office_keyboard_appearance')
 
 
 def git(*arguments):
@@ -114,20 +115,27 @@ def source_check(baseline=BASELINE):
                 if task == 'type_keys' and same(node, keyboard_gpu_marker):
                     counts['keyboard_gpu_marker_scope'] = counts.get('keyboard_gpu_marker_scope', 0) + 1
                     return None
-                if ast.unparse(node.test) == 'self._office_devices_appearance is not None':
-                    counts['appearance_hooks'] = counts.get('appearance_hooks', 0) + 1
-                    return None
+                for channel in DEVICE_CHANNELS:
+                    marker = f'self._{channel}'
+                    if ast.unparse(node.test) == f'{marker} is not None':
+                        assert not node.orelse and len(node.body) == 1
+                        call = node.body[0].value
+                        assert ast.unparse(call.func.value) == marker
+                        names = counts.setdefault(channel, [])
+                        names.append(call.func.attr)
+                        return None
                 return self.generic_visit(node)
 
             def visit_Assign(self, node):
-                if any(ast.unparse(target) == 'self._office_devices_appearance' for target in node.targets):
+                if any(ast.unparse(target) in {f'self._{name}' for name in DEVICE_CHANNELS}
+                       for target in node.targets):
                     return None
                 return self.generic_visit(node)
 
             def visit_FunctionDef(self, node):
                 if node.name == '__init__':
                     for index in reversed(range(len(node.args.kwonlyargs))):
-                        if node.args.kwonlyargs[index].arg == 'office_devices_appearance':
+                        if node.args.kwonlyargs[index].arg in DEVICE_CHANNELS:
                             del node.args.kwonlyargs[index]
                             del node.args.kw_defaults[index]
                 return self.generic_visit(node)
@@ -167,7 +175,8 @@ def source_check(baseline=BASELINE):
         normalized = Normalize().visit(current)
         assert ast.dump(normalized, include_attributes=False) == ast.dump(original, include_attributes=False), task + ': source changed outside authorized appearance/reset scope'
         if task != 'click_mouse':
-            assert counts.get('appearance_hooks') == 3, counts
+            for channel in DEVICE_CHANNELS:
+                assert counts[channel] == ['isolate_builder_materials', 'bind', 'finish_reset'], counts
         else:
             assert counts.get('constructor_config_validation') == 1, counts
         assert counts.get('_office_scoped_results', 0) == (0 if task == 'type_keys' else 1), counts
@@ -203,74 +212,143 @@ def catalog_check():
     def read_catalog(path):
         return json.loads((ROOT / path).read_text(encoding='utf-8'))
 
-    def verify_extension(path, current, old_key):
-        previous = json.loads(git('show', EXPANSION_BASELINE + ':' + path))
-        old_schemes = previous[old_key]
-        new_schemes = current[old_key]
-        assert list(new_schemes)[:len(old_schemes)] == list(old_schemes)
-        if isinstance(old_schemes, dict):
-            assert all(new_schemes[name] == values for name, values in old_schemes.items())
-        assert current['version'] != previous['version']
-        return previous
+    def previous_catalog(path):
+        return json.loads(git('show', REALISTIC_BASELINE + ':' + path))
 
-    def validate_material(params):
-        assert set(params) == set(FIELDS)
-        color = params['base_color']
-        assert len(color) == 4 and color[3] == 1
-        assert all(math.isfinite(value) and 0 <= value <= 1 for value in [*color, params['roughness'], params['metallic']])
-        return color[:3]
+    def check_finishes(catalog, roles, primary, minimum_distance=16):
+        candidates = {key: value for key, value in catalog['schemes'].items() if key != 'original'}
+        assert set(candidates) == set(catalog['finish_names'])
+        assert len(set(catalog['finish_names'].values())) == len(candidates) == 10
+        colors, accents = [], []
+        for material_roles in candidates.values():
+            assert set(material_roles) == roles
+            for role, params in material_roles.items():
+                assert set(params) == set(FIELDS)
+                color = params['base_color']
+                assert len(color) == 4 and color[3] == 1
+                assert all(math.isfinite(n) and 0 <= n <= 1
+                           for n in [*color, params['roughness'], params['metallic']])
+                srgb = [255 * (12.92 * n if n <= .0031308 else 1.055 * n ** (1 / 2.4) - .055)
+                        for n in color[:3]]
+                assert 25 < min(srgb) <= max(srgb) < 240
+                assert max(srgb) - min(srgb) < 65, (role, srgb)
+                if role == primary:
+                    colors.append(srgb)
+                if role == 'keycap_accent':
+                    accents.append(srgb)
+        assert all(math.dist(a, b) >= minimum_distance for a, b in combinations(colors, 2))
+        if accents:
+            contrasts = list(zip(colors, accents, strict=True))
+            assert all(math.dist(main, accent) >= 18 for main, accent in contrasts)
+            assert all(math.dist([*a, *b], [*c, *d]) >= 25
+                       for (a, b), (c, d) in combinations(contrasts, 2))
 
     family = read_catalog(DEVICE_CATALOG)
-    previous_family = verify_extension(DEVICE_CATALOG, family, 'schemes')
-    added = [f'variant_{i}' for i in range(3, 11)]
-    assert family['schemes'] == previous_family['schemes'] + added
-    assert family['tasks'] == previous_family['tasks']
+    previous = previous_catalog(DEVICE_CATALOG)
+    assert family['version'] != previous['version']
+    assert family['schemes'] == previous['schemes'] == ['original'] + [f'variant_{i}' for i in range(1, 11)]
+    assert family['tasks'] == previous['tasks']
     for object_id in OBJECT_IDS:
-        definition = load_definition(object_id)
         entry = family['objects'][object_id]
-        old_entry = previous_family['objects'][object_id]
-        assert entry['catalog'] == old_entry['catalog']
-        assert entry['scheme_map'] == {**old_entry['scheme_map'], **{name: name for name in added}}
+        assert {key: entry[key] for key in ('catalog', 'scheme_map')} == previous['objects'][object_id]
+        definition = load_definition(object_id)
         catalog = read_catalog(entry['catalog'])
-        previous = verify_extension(entry['catalog'], catalog, 'schemes')
-        assert {k:v for k,v in catalog.items() if k not in ('version','schemes')} == {
-            k:v for k,v in previous.items() if k not in ('version','schemes')}
+        old = previous_catalog(entry['catalog'])
+        assert list(catalog['schemes']) == list(old['schemes']) == list(entry['scheme_map'].values())
+        assert catalog['version'] != old['version']
+        assert catalog['schemes']['original'] == old['schemes']['original'] == {'restore': 'captured_native'}
+        assert all(catalog['schemes'][key] != old['schemes'][key] for key in list(old['schemes'])[1:])
+        assert catalog['fields'] == list(FIELDS)
         assert catalog['stage'] == 'runtime' and definition['runtime_integration'] == 'connected_short_task'
         assert definition['new_uv'] is False and definition['new_textures'] == []
-        assert catalog['fields'] == list(FIELDS)
-        if object_id == 'keyboard':
-            assert catalog['role_aliases'] == {'shell_strip':'shell'}
-            assert catalog['role_fields'] == {'shell':list(FIELDS), 'shell_strip':list(FIELDS)}
-            partitions=[slot for row in definition['part_bindings'] for slot in row['editable_slots'] if 'partition' in slot]
-            assert len(partitions)==1 and partitions[0]['role']=='shell_strip'
-            assert definition['role_contracts']['shell_strip']['mutable_fields']==list(FIELDS)
-            assert definition['role_contracts']['shell_strip']['texture_policy']=='private_in_place_rgba8_upload'
-        else:
-            assert not catalog.get('role_aliases')
-        assert catalog['schemes']['original'] == {'restore': 'captured_native'}
-        assert list(entry['scheme_map'].values()) == list(catalog['schemes'])
-        colors = []
-        for name, roles in catalog['schemes'].items():
-            if name == 'original':
-                continue
-            assert set(roles) == {definition['editable_role']}
-            colors.append(validate_material(roles[definition['editable_role']]))
-        assert all(math.dist(a,b) > .3 for a,b in combinations(colors,2))
         assert len(definition['part_bindings']) == (1 if object_id == 'laptop' else 3)
+        roles = {definition['editable_role']}
+        if object_id == 'keyboard':
+            roles.add('shell_strip')
+            assert catalog['role_fields'] == {'shell': list(FIELDS), 'shell_strip': list(FIELDS)}
+            partitions = [slot for row in definition['part_bindings']
+                          for slot in row['editable_slots'] if 'partition' in slot]
+            assert len(partitions) == 1 and partitions[0]['role'] == 'shell_strip'
+            assert definition['role_contracts']['shell_strip']['mutable_fields'] == list(FIELDS)
+            assert definition['role_contracts']['shell_strip']['texture_policy'] == 'private_in_place_rgba8_upload'
+        check_finishes(catalog, roles, definition['editable_role'])
+
+        keys = entry['keycaps']
+        key_catalog = read_catalog(keys['catalog'])
+        assert keys['scheme_map'] == dict(zip(family['schemes'], family['schemes']))
+        assert key_catalog['model_id'] == catalog['model_id']
+        assert list(key_catalog['schemes']) == family['schemes']
+        assert key_catalog['schemes']['original'] == {'restore': 'captured_native'}
+        key_roles = {'keycap', 'keycap_accent'}
+        if object_id == 'laptop':
+            key_roles.update(('keycap_reverse', 'keycap_accent_reverse'))
+        check_finishes(key_catalog, key_roles, 'keycap')
+        for key in family['schemes'][1:]:
+            materials = key_catalog['schemes'][key]
+            assert all(p['metallic'] == 0 for p in materials.values())
+            if object_id == 'keyboard':
+                assert min(materials['keycap']['base_color'][:3]) >= .39, (key, 'Legend contrast')
+                assert min(materials['keycap_accent']['base_color'][:3]) >= .28, (key, 'Accent legend contrast')
+
     mouse = read_catalog(MOUSE_CATALOG)
-    previous = verify_extension(MOUSE_CATALOG, mouse, 'schemes')
-    assert list(mouse['schemes']) == list(previous['schemes']) + added
-    assert {k:v for k,v in mouse.items() if k not in ('version','schemes')} == {
-        k:v for k,v in previous.items() if k not in ('version','schemes')}
-    colors = []
-    for name, roles in mouse['schemes'].items():
-        if name == 'original':
-            continue
-        assert set(roles) == set(mouse['binding'].values())
-        validated = {role: validate_material(params) for role, params in roles.items()}
-        colors.append(validated['shell'])
-    assert all(math.dist(a,b) > .3 for a,b in combinations(colors,2))
+    old_mouse = previous_catalog(MOUSE_CATALOG)
+    assert list(mouse['schemes']) == list(old_mouse['schemes'])
+    assert mouse['version'] != old_mouse['version']
+    assert mouse['binding'] == old_mouse['binding']
+    assert mouse['schemes']['original'] == old_mouse['schemes']['original'] == {'restore_native': True}
+    check_finishes(mouse, set(mouse['binding'].values()), 'shell')
     return 'passed'
+
+
+def keycaps_proof_check(object_id, inventory):
+    path = ROOT / 'assets' / 'appearance' / 'objects' / 'office_desk' / object_id / 'keycaps_bindings.json'
+    proof = json.loads(path.read_text(encoding='utf-8'))
+    is_laptop = object_id == 'laptop'
+    atlas = None if is_laptop else 'images/texture_0.jpg'
+    assert proof['object_id'] == object_id and proof['model_id'] == inventory['model_id']
+    assert proof.get('base_color_texture') == atlas
+    expected = {}
+    closure = {inventory['urdf']}
+    if atlas:
+        closure.add(atlas)
+    for row in inventory['visuals']:
+        if is_laptop:
+            is_key = row['link'] == 'link_0' and row['name'] == 'keyboard-7'
+        else:
+            is_key = (row['protection_reason'] or '').startswith('moving_key_or_descendant')
+        if is_key:
+            expected[(row['link'], row['index'])] = row
+            closure.update([row['mesh'], *row['mtllib']])
+    assert len(expected) == len(proof['part_bindings']) == 77
+    chassis = load_definition(object_id)
+    assert not set(expected).intersection((r['link'], r['index']) for r in chassis['part_bindings'])
+    assert proof['runtime_source_sha256'] == {name: inventory['files'][name] for name in closure}
+    reverse = accents = 0
+    for row in proof['part_bindings']:
+        native = expected.pop((row['link'], row['index']))
+        assert row['name'] == native['name'] and row['mesh'] == native['mesh']
+        assert not native['issues'] and not native['unassigned_faces']
+        slots = row['editable_slots']
+        assert len(slots) == row['native_part_count'] == len(native['used_materials'])
+        assert [slot['material'] for slot in slots] == native['used_materials']
+        is_accent = slots[0].get('role') == 'keycap_accent'
+        accents += is_accent
+        for slot in slots:
+            name = slot['material']
+            material = native['materials'][name]
+            assert material['opacity'] == 1 and not material['transmission']
+            assert material['textures'] == ([atlas] if atlas else [])
+            assert slot['diffuse'] == material['diffuse']
+            assert slot['triangles'] == native['material_triangles'][name]
+            assert slot['position_triangles_sha256'] == native['material_geometry_sha256'][name]
+            if name == 'material_1_0':
+                reverse += 1
+                assert is_laptop and slot['role'] == ('keycap_accent_reverse' if is_accent else 'keycap_reverse')
+                assert slot['position_triangles_sha256'] == slots[0]['position_triangles_sha256']
+    assert reverse == (76 if is_laptop else 0)
+    assert accents == (19 if is_laptop else 17)
+    return {'visuals': 77, 'accent_caps': accents, 'reverse_face_parts': reverse,
+            'unchanged_atlas': atlas, 'source_files': len(closure)}
 
 
 def uv_proof_check(asset_dir):
@@ -312,7 +390,9 @@ def main():
         definition = load_definition(object_id)
         for name, expected in definition['runtime_source_sha256'].items():
             assert inventory['files'].get(name) == expected, (object_id, name)
-    result = {'status': 'passed', 'catalogs': catalogs, 'task_source_scope': scope, 'keyboard_uv_proof': uv_proof,
+    keycaps = {key: keycaps_proof_check(key, row) for key, row in assets.items()} if ready else {'status': 'NOT TESTED'}
+    result = {'status': 'passed', 'catalogs': catalogs, 'task_source_scope': scope,
+              'keycaps_proof': keycaps, 'keyboard_uv_proof': uv_proof,
               'assets': assets, 'asset_status': 'explicit_parts_ready' if ready else 'blocked_or_unresolved',
               'editable_parts': {key: row['editable_count'] for key, row in assets.items()},
               'scope': 'CPU static only; no simulator, model/task rendering or dynamics claim',

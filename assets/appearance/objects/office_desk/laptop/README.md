@@ -1,7 +1,7 @@
 # 笔记本 10211
 
-`original` 保留本次原生材质，`terracotta_matte / petrol_satin` 的唯一参数见 [catalog](catalog.json)。[绑定](bindings.json) 明确保护屏幕原图、底座、集成键盘、触控板、转轴和细节。
+[屏框饰面](catalog.json) 与 [内置键帽饰面](keycaps_catalog.json) 各有原版与十套候选。屏框保留原 `office_devices_appearance` 接口。键帽由 `office_keyboard_appearance` 独立加载，`original` 恢复原生材质。
 
-OpenLaptop 每环境 `_laptops[env_id]`，scale=.3；只改 `link_1.visual[2] / screen_frame-16 / new-2.obj` 的 `material-0`。按原生part私有复制，其他5个材质槽保护；无新增UV/纹理，不整OBJ覆盖。源材质组三角位置指纹、Kd和2414三角形共同核定身份，不依赖part顺序。
+[屏框绑定](bindings.json) 对应 `link_1.visual[2]` 的 `new-2.obj/material-0`。内置键帽的 [绑定](keycaps_bindings.json) 对应 `link_0` 的 77 条原生视觉记录，其中 76 条有反向绕序面。外圈键与主键区有独立饰面。原生键帽几何没有字标 UV。屏幕、底座、触控板和转轴沿用原素材。
 
-原资产 revision `b197a198fe50f41d70f563cfa7c88d3cc9f528b6`，282安装文件已核官方身份；URDF引用闭包166文件完整。模型不入Git。TypeKeys不加载laptop；Long未接入。[运行与验收边界](../../../../../docs/variation/OFFICE_DEVICES_APPEARANCE.md)。
+原资产来自 SIPAIR/DexArena。正常任务配置、只加载键帽的预览命令及复验方法见 [Office Desk 外观](../../../../../docs/variation/OFFICE_DEVICES_APPEARANCE.md)。
