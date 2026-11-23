@@ -1,0 +1,26 @@
+{
+  "open": {
+    "job": "123844",
+    "status": "passed",
+    "A4": 11,
+    "A5": 20,
+    "random": true,
+    "first_failure": []
+  },
+  "extract": {
+    "job": "123846",
+    "status": "passed",
+    "A4": 11,
+    "A5": 20,
+    "random": true,
+    "first_failure": []
+  },
+  "long": {
+    "job": "123846",
+    "status": "passed",
+    "A4": 11,
+    "A5": 20,
+    "random": true,
+    "first_failure": []
+  }
+}

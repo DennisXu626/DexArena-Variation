@@ -1,0 +1,70 @@
+{
+  "open": {
+    "history_original": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0
+      }
+    },
+    "history_variant_then_original": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0
+      }
+    }
+  },
+  "long": {
+    "history_original": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0
+      }
+    },
+    "history_variant_then_original": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0
+      }
+    }
+  }
+}

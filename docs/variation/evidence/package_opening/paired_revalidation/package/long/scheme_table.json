@@ -1,0 +1,266 @@
+[
+  {
+    "request": "original",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "original",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 2
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "original",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 2
+      }
+    ],
+    "expected": {
+      "box": "original",
+      "apple": "original",
+      "plate": "original"
+    },
+    "frame": "original_human_env0.png",
+    "sha256": "cfe9fe94563d5e9fad10f8041f8d035463f02e143d3fdeb47f0e528a0d6eebb2"
+  },
+  {
+    "request": "variant_1",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_1",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 3
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_1",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 3
+      }
+    ],
+    "expected": {
+      "box": "kraft",
+      "apple": "golden",
+      "plate": "teal_glaze"
+    },
+    "frame": "variant_1_human_env0.png",
+    "sha256": "4275a4898e6f452f9358afb0ee4d6396c5bbbd2d84ee8e0fb3fd41dbdd2454bc"
+  },
+  {
+    "request": "variant_2",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_2",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 5
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_2",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 5
+      }
+    ],
+    "expected": {
+      "box": "blue_gray",
+      "apple": "green",
+      "plate": "ivory_satin"
+    },
+    "frame": "variant_2_human_env0.png",
+    "sha256": "f2b47a31fddb6f9897fd9ed006949f318d70dcd0b7a6a314927bf9c4bf84f3e4"
+  },
+  {
+    "request": "variant_3",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_3",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 7
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_3",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 7
+      }
+    ],
+    "expected": {
+      "box": "variant_3",
+      "apple": "variant_3",
+      "plate": "variant_3"
+    },
+    "frame": "variant_3_human_env0.png",
+    "sha256": "7942fb55ef750028a948d7add1c65f8f0ff72c08672254417712742a896122a4"
+  },
+  {
+    "request": "variant_4",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_4",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 9
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_4",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 9
+      }
+    ],
+    "expected": {
+      "box": "variant_4",
+      "apple": "variant_4",
+      "plate": "variant_4"
+    },
+    "frame": "variant_4_human_env0.png",
+    "sha256": "82890c15cbf6d0de77fe71301e18e675387e086b813a6a28fb6310d79aac6987"
+  },
+  {
+    "request": "variant_5",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_5",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 11
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_5",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 11
+      }
+    ],
+    "expected": {
+      "box": "variant_5",
+      "apple": "variant_5",
+      "plate": "variant_5"
+    },
+    "frame": "variant_5_human_env0.png",
+    "sha256": "8ff8400ae5219ca7e8dcd83f792b3a6820369cfe3c3fcaac6da625b4b5050ec1"
+  },
+  {
+    "request": "variant_6",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_6",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 13
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_6",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 13
+      }
+    ],
+    "expected": {
+      "box": "variant_6",
+      "apple": "variant_6",
+      "plate": "variant_6"
+    },
+    "frame": "variant_6_human_env0.png",
+    "sha256": "0f3c3fff3ac0a94c05c6f7775833e640df86ac6674cc9891ecd460bcb2c1def7"
+  },
+  {
+    "request": "variant_7",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_7",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 15
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_7",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 15
+      }
+    ],
+    "expected": {
+      "box": "variant_7",
+      "apple": "variant_7",
+      "plate": "variant_7"
+    },
+    "frame": "variant_7_human_env0.png",
+    "sha256": "ea3b6ef1be041a510ca51acbe91c14d70be9905a35101df1dd5ef697804efba1"
+  },
+  {
+    "request": "variant_8",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_8",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 17
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_8",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 17
+      }
+    ],
+    "expected": {
+      "box": "variant_8",
+      "apple": "variant_8",
+      "plate": "variant_8"
+    },
+    "frame": "variant_8_human_env0.png",
+    "sha256": "6cb486ad659b83c3bb8d2fe9229f0d3c5ce51dc21687a3a4faddc44b8d47e573"
+  },
+  {
+    "request": "variant_9",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_9",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 19
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_9",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 19
+      }
+    ],
+    "expected": {
+      "box": "variant_9",
+      "apple": "variant_9",
+      "plate": "variant_9"
+    },
+    "frame": "variant_9_human_env0.png",
+    "sha256": "351a38bdc14d0672c4a6a56dc334fa1522caddfcca1d234950e8e9fed95e9917"
+  },
+  {
+    "request": "variant_10",
+    "actual": [
+      {
+        "env_idx": 0,
+        "scheme_id": "variant_10",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 21
+      },
+      {
+        "env_idx": 1,
+        "scheme_id": "variant_10",
+        "catalog_version": "package-opening-preview-v3",
+        "episode_index": 21
+      }
+    ],
+    "expected": {
+      "box": "variant_10",
+      "apple": "variant_10",
+      "plate": "variant_10"
+    },
+    "frame": "variant_10_human_env0.png",
+    "sha256": "4f8aa39f58cdc41d48d3f2af7e6ec9a5b6354cd22c3e226a494d93b59f42aee9"
+  }
+]

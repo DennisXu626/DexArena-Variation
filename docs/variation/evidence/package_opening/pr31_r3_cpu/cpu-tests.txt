@@ -1,0 +1,15 @@
+test_each_unselected_target_mutation_is_detected (test_package_control_targets.ControlTargetCoverageTests.test_each_unselected_target_mutation_is_detected) ... ok
+test_missing_and_invalid_targets_fail_closed (test_package_control_targets.ControlTargetCoverageTests.test_missing_and_invalid_targets_fail_closed) ... ok
+test_signature_includes_control_targets (test_package_control_targets.ControlTargetCoverageTests.test_signature_includes_control_targets) ... ok
+test_unchanged_targets_pass (test_package_control_targets.ControlTargetCoverageTests.test_unchanged_targets_pass) ... ok
+test_command_precondition_rejects_noop_action_dispatch (test_package_partial_reset.PublicPartialResetTests.test_command_precondition_rejects_noop_action_dispatch) ... C:\pengbo\PAIR\DexArena_Variation\DexArena-Variation-package\tests\fixtures\package_b22_reset.py:121: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  if np.isnan(action).any():
+ok
+test_exception_restores_targets_and_clears_guard (test_package_partial_reset.PublicPartialResetTests.test_exception_restores_targets_and_clears_guard) ... ok
+test_full_reset_preserves_original_behavior (test_package_partial_reset.PublicPartialResetTests.test_full_reset_preserves_original_behavior) ... ok
+test_old_implementation_fails_new_precondition_and_fixed_passes (test_package_partial_reset.PublicPartialResetTests.test_old_implementation_fails_new_precondition_and_fixed_passes) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.492s
+
+OK
