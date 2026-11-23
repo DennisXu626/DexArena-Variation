@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_drawer_positions.py", line 558, in <module>
+    run(args.output,args.samples,placement_only=args.placement_only)
+  File "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_drawer_positions.py", line 454, in run
+    with gym.make(task_id,**make) as env:
+  File "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_drawer_positions.py", line 454, in run
+    with gym.make(task_id,**make) as env:
+  File "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_002/hooks/sitecustomize.py", line 44, in trace_line
+    with (root/(mode+"_LAUNCH.json")).open("x") as f:
+  File "/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileExistsError: [Errno 17] File exists: '/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_002/GPU_LAUNCH.json'

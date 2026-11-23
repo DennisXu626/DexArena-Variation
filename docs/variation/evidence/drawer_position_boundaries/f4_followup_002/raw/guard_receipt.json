@@ -1,0 +1,21 @@
+{
+  "returncode": 1,
+  "stop_reason": null,
+  "elapsed_seconds": 10.281323729082942,
+  "retained_log_bytes": 3837,
+  "cleanup": {
+    "pgid": 2403587,
+    "errors": [],
+    "TERM_sent": false,
+    "KILL_sent": false,
+    "live_remaining": [],
+    "zombie_remaining": [],
+    "complete": true
+  },
+  "exceptions": [],
+  "drain_deadline_hit": false,
+  "drain_limit_seconds": 0.5,
+  "attempts": 1,
+  "job_id": "135695",
+  "physical_gpus": "2"
+}
