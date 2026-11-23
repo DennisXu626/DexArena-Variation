@@ -73,6 +73,15 @@ class PipetteAppearance:
         self.parameters = read(ROOT / self.catalog['parameters'])
         self.definitions = {name: read(ROOT / path)
                             for name, path in self.catalog['bindings'].items()}
+        plate_label = self.definitions['pipette_stand']['roles']['base_plate']['candidate_color_texture']
+        self._plate_label_path = (ROOT / plate_label['path']).resolve()
+        self._plate_label_levels = plate_label['mipmap_levels']
+        self._plate_label = None
+        if (self.parameters['new_textures'] != [plate_label['path']]
+                or not self._plate_label_path.is_relative_to((ROOT / 'assets/appearance').resolve())
+                or not self._plate_label_path.is_file()
+                or type(self._plate_label_levels) is not int or self._plate_label_levels < 1):
+            raise ValueError('Invalid Pipette stand base-plate label asset')
         seed = int(config.get('seed', 0))
         self.rng = [np.random.default_rng(np.random.SeedSequence([seed, i]))
                     for i in range(num_envs)]
@@ -251,12 +260,23 @@ class PipetteAppearance:
                                 for oid in {row[0] for row in self.bindings[i]}}
                           for name in choices}
             requests.append((i, mode, choices, parameters))
+        # A single immutable texture can be shared. Load it before RNG or
+        # material writes, and only if a requested candidate uses the plate.
+        if self._plate_label is None and any(
+            any(name != 'original' and 'pipette_stand' in parameters[name] for name in choices)
+            for _, _, choices, parameters in requests
+        ):
+            from sapien.render import RenderTexture2D
+            self._plate_label = RenderTexture2D(
+                str(self._plate_label_path), mipmap_levels=self._plate_label_levels)
         # Validate every selected environment before any sampling or material mutation.
         selections = [(i, str(self.rng[i].choice(choices)) if mode == 'random_choice' else choices[0], params)
                       for i, mode, choices, params in requests]
         for i, name, parameters in selections:
             for object_id, role, part, material, native in self.bindings[i]:
                 values = self.resolved_parameters(native, parameters[name][object_id].get(role, {}))
+                if name != 'original' and object_id == 'pipette_stand' and role == 'base_plate':
+                    values['base_color_texture'] = self._plate_label
                 for key, value in values.items():
                     setattr(material, key, value)
             self.schemes[i] = name

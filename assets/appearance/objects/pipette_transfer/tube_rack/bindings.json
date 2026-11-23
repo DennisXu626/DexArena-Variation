@@ -5,7 +5,7 @@
   "builder": "_build_test_tube_rack",
   "expected_visual_count": 24,
   "roles": {
-    "frame": {
+    "lower_grid": {
       "editable": true,
       "visual_indices": [
         0,
@@ -15,7 +15,12 @@
         4,
         5,
         6,
-        7,
+        7
+      ]
+    },
+    "upper_grid": {
+      "editable": true,
+      "visual_indices": [
         8,
         9,
         10,
@@ -23,14 +28,24 @@
         12,
         13,
         14,
-        15,
+        15
+      ]
+    },
+    "posts": {
+      "editable": true,
+      "visual_indices": [
         16,
-        17,
         18,
-        19,
         20,
+        22
+      ]
+    },
+    "feet": {
+      "editable": true,
+      "visual_indices": [
+        17,
+        19,
         21,
-        22,
         23
       ]
     }

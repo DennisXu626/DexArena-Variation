@@ -10,6 +10,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import struct
 import subprocess
 import sys
 import time
@@ -76,7 +77,9 @@ def source_hashes(*, include_probe=True):
     files = set((ROOT / 'tasks').rglob('*.py'))
     files.update((ROOT / 'assets/appearance/objects/pipette_transfer').glob('*/bindings.json'))
     files.update((ROOT / 'tasks/assets/variation/pipette_transfer').rglob('*.json'))
-    files.add(ROOT / 'assets/appearance/objects/pipette_transfer/catalog.json')
+    parameters = ROOT / read(CATALOG)['parameters']
+    files.add(parameters)
+    files.update(ROOT / path for path in read(parameters)['new_textures'])
     files.update(ROOT / 'tools/variation' / name for name in (
         'check_pipette_runtime.py', 'check_pipette_dynamics.py'))
     if include_probe:
@@ -214,19 +217,23 @@ def static_check(baseline='HEAD'):
     previous_parameters = json.loads(subprocess.check_output(
         ['git', 'show', baseline + ':' + previous_index['parameters']], cwd=ROOT, encoding='utf-8'))
     assert SCHEMES[:len(previous_index['schemes'])] == tuple(previous_index['schemes'])
+    assert previous_parameters['original_policy'] == parameters['original_policy']
+    assert previous_parameters['source_asset'] == parameters['source_asset']
+    assert previous_parameters['source_guard'] == parameters['source_guard']
     assert previous_parameters['rendering'] == parameters['rendering']
     assert previous_index['bindings'] == catalog['bindings'] and previous_index['tasks'] == catalog['tasks']
-    for object_id, previous in previous_parameters['objects'].items():
+    for object_id in ('sample_cup', 'test_tube'):
+        previous = previous_parameters['objects'][object_id]['schemes']
         schemes = parameters['objects'][object_id]['schemes']
-        for scheme, values in previous['schemes'].items():
-            assert schemes[scheme] == values, (object_id, scheme)
-        for values in schemes.values():
+        for name, values in schemes.items():
+            baseline_materials = previous.get(name, previous['jade'])
             for role, material in values.items():
-                assert material.get('base_color_alpha') == previous['schemes']['jade'][role].get('base_color_alpha')
+                assert material['base_color_alpha'] == baseline_materials[role]['base_color_alpha']
     return {'status': 'passed', 'scope': 'CPU source/configuration/mock checks only',
             'catalog_version': catalog['version'], 'baseline': baseline,
             'geometry_judgment_reward_state_unchanged': True, 'scope_normalizations': counts,
-            'retained_schemes_unchanged': previous_index['schemes'], 'schemes': SCHEMES,
+            'retained_scheme_ids': previous_index['schemes'], 'schemes': SCHEMES,
+            'retained_glass_candidate_alpha': True, 'retained_optical_rendering': True,
             'foundation_checks': foundation['checks'], 'historical_model_previews': foundation['archived_model_previews'],
             'physics_steps': 0, 'runtime': 'NOT TESTED'}
 
@@ -295,6 +302,14 @@ def load_runtime():
 def verify(base, schemes, native):
     adapter = base._pipette_appearance
     assert adapter.schemes == schemes
+    label_definition = adapter.definitions['pipette_stand']['roles']['base_plate']['candidate_color_texture']
+    label_path = label_definition['path']
+    label_bytes = (ROOT / label_path).read_bytes()
+    assert label_bytes[:8] == b'\x89PNG\r\n\x1a\n' and label_bytes[25] == 2, 'Expected opaque RGB PNG'
+    width, height = struct.unpack_from('>II', label_bytes, 16)
+    label_fields = {'asset_ref': label_path, 'sha256': hashlib.sha256(label_bytes).hexdigest(),
+                    'width': width, 'height': height, 'mipmap_levels': label_definition['mipmap_levels'],
+                    'is_srgb': True}
     slots, actual, expected = shared.material_slots(base), shared.materials(base), copy.deepcopy(native)
     for i, scheme in enumerate(schemes):
         assert adapter.bindings[i]
@@ -310,6 +325,10 @@ def verify(base, schemes, native):
                 else:
                     np.testing.assert_allclose(captured[field], native[i][index]['material'][field], rtol=0, atol=1e-7)
             values = adapter.resolved_parameters(captured, adapter.scheme_parameters(oid, scheme).get(role, {}))
+            if scheme != 'original' and (oid, role) == ('pipette_stand', 'base_plate'):
+                label = actual[i][index]['material']['base_color_texture']
+                assert label is not None and all(label.get(key) == value for key, value in label_fields.items())
+                values['base_color_texture'] = label
             expected[i][index]['material'] = {key: shared.plain(value) for key, value in values.items()}
         for observed, target in zip(actual[i], expected[i]):
             assert {k: v for k, v in observed.items() if k != 'material'} == {

@@ -104,6 +104,13 @@ def render_object(key, output, catalog, urdf, size, verify_visuals=False):
     if tip_id is not None:
         camera.set_property('pipetteTipRenderId', int(tip_id))
         camera.set_property('pipetteDepthBias', float(bias))
+    textures = {}
+
+    def label_texture(path, levels):
+        if path not in textures:
+            textures[path] = sapien.render.RenderTexture2D(str(path), mipmap_levels=levels)
+        return textures[path]
+
     frames = []
     for scheme in ('original', *catalog['candidate_ids'], 'original_restored'):
         restore_records(native)
@@ -111,7 +118,7 @@ def render_object(key, output, catalog, urdf, size, verify_visuals=False):
             if key == 'pipette':
                 apply_material(records[0].material, catalog['objects'][key]['schemes'][scheme]['body'])
             else:
-                apply_records(records, parent, scheme, catalog)
+                apply_records(records, parent, scheme, catalog, load_texture=label_texture)
         rgb = capture_rgb(scene, camera, size)
         if pipette_bundle:
             if pipette_native_state(pipette_bundle, sapien) != pipette_state:

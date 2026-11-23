@@ -6,7 +6,7 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 import sys
 
 import numpy as np
@@ -282,7 +282,7 @@ class PipetteAppearanceTests(unittest.TestCase):
         reset(value)
         reset(value, [1], {'scheme_id': 'coral'})
         self.assertEqual(value.records[-1], {'env_idx': 1, 'episode_index': 2,
-            'scheme_id': 'coral', 'catalog_version': 'pipette-appearance-v2'})
+            'scheme_id': 'coral', 'catalog_version': 'pipette-appearance-v3'})
 
     def test_candidate_requires_compatible_rendering(self):
         value = adapter({'scheme_id': 'jade'})
@@ -432,10 +432,10 @@ class PipetteAppearanceTests(unittest.TestCase):
                 draw.assert_not_called()
 
     def test_native_binding_shape_and_parent_mapping(self):
-        value = MODULE.PipetteAppearance({'enabled': True}, 2)
+        value = MODULE.PipetteAppearance({'enabled': True}, 2, rendering_enabled=True)
         def shape():
             return SimpleNamespace(parts=[SimpleNamespace(material=IdentityNamespace(
-                base_color=[.1, .2, .3, 1.], roughness=.5, metallic=0.))])
+                base_color=[.1, .2, .3, 1.], roughness=.5, metallic=0., base_color_texture=None))])
         def entity(count):
             body = SimpleNamespace(render_shapes=[shape() for _ in range(count)])
             return SimpleNamespace(find_component_by_type=lambda cls: body)
@@ -449,7 +449,8 @@ class PipetteAppearanceTests(unittest.TestCase):
             pipette_stand=SimpleNamespace(_objs=stands), pipette=SimpleNamespace(_objs=articulations))
         base.scene = SimpleNamespace(sub_scenes=[SimpleNamespace(render_system=SimpleNamespace(
             _internal_scene=SimpleNamespace(force_rebuild=lambda: None))) for _ in range(2)])
-        render = SimpleNamespace(RenderBodyComponent=object)
+        texture = object()
+        render = SimpleNamespace(RenderBodyComponent=object, RenderTexture2D=Mock(return_value=texture))
         with patch.dict(sys.modules, {'sapien': SimpleNamespace(render=render), 'sapien.render': render}):
             value.bind(base, 0)
             value.bind(base, 1)
@@ -460,6 +461,19 @@ class PipetteAppearanceTests(unittest.TestCase):
             counts = {role: sum(row[:2] == ('pipette', role) for row in value.bindings[0])
                       for role in value.definitions['pipette']['roles']}
             self.assertEqual(counts, {role: 1 for role in counts})
+            reset(value)
+            render.RenderTexture2D.assert_not_called()
+            reset(value, [1], {'scheme_id': 'jade'})
+            for i, rows in enumerate(value.bindings):
+                textured = [(oid, role) for oid, role, _, mat, _ in rows
+                            if mat.base_color_texture is texture]
+                self.assertEqual(textured, [('pipette_stand', 'base_plate')] if i == 1 else [])
+            reset(value, [0], {'scheme_id': 'coral'})
+            render.RenderTexture2D.assert_called_once_with(
+                str(value._plate_label_path), mipmap_levels=value._plate_label_levels)
+            reset(value, [1])
+            self.assertIs(value.bindings[0][0][3].base_color_texture, texture)
+            self.assertIsNone(value.bindings[1][0][3].base_color_texture)
             # A shared environment material is rejected before storing bindings.
             stands[1].find_component_by_type(object).render_shapes[0].parts[0].material = value.bindings[0][0][3]
             with self.assertRaises(RuntimeError):
