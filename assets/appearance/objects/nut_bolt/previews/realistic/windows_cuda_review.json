@@ -1,0 +1,165 @@
+{
+  "platform": "Windows",
+  "capture_commit": "55d01179c9e1c56285f6e45af780793709e0042d",
+  "status": "passed",
+  "sdk": {
+    "version": "3.0.3+dexarena.gpu1.wininterop7",
+    "artifact_sha256": "d6dc0cebfb1a2f7adef54909de8cd37c054281a94d09902092d225c89be083d0",
+    "wheel_sha256": null
+  },
+  "tasks": {
+    "PickBolt": {
+      "candidate_pairs": 110,
+      "minimum_pixels_at_rgb_delta_8": 29,
+      "nearest_pairs": [
+        {
+          "schemes": [
+            "original",
+            "variant_10"
+          ],
+          "env_idx": 1,
+          "camera": "base_camera",
+          "pixels_at_min_delta": 29,
+          "max_absolute_error": 29
+        },
+        {
+          "schemes": [
+            "original",
+            "variant_10"
+          ],
+          "env_idx": 0,
+          "camera": "base_camera",
+          "pixels_at_min_delta": 30,
+          "max_absolute_error": 31
+        },
+        {
+          "schemes": [
+            "variant_1",
+            "variant_10"
+          ],
+          "env_idx": 1,
+          "camera": "base_camera",
+          "pixels_at_min_delta": 35,
+          "max_absolute_error": 60
+        }
+      ],
+      "local_reset_directions": 2,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "png_files_verified": 232,
+      "manifest_sha256": "eaa9ae540981004950e4f001ba3b8d14cb7969cafbfa66d04e36bbe7a09f6d75",
+      "results_sha256": "50e21545d405fd0bb75d9dd7cf792cd153d9303b14ad6febb595acb66b65b1ec",
+      "native_loader_receipt_sha256": "1a3bc9a67f51f5b16c8a7549722668e9cad2a2b638873f48281a74426fdb5a4d",
+      "preview_camera": "base_camera",
+      "preview_environment": 1,
+      "preview_crop_scene_xyxy": [
+        124,
+        147,
+        147,
+        173
+      ]
+    },
+    "SeatNut": {
+      "candidate_pairs": 110,
+      "minimum_pixels_at_rgb_delta_8": 48,
+      "nearest_pairs": [
+        {
+          "schemes": [
+            "variant_1",
+            "variant_4"
+          ],
+          "env_idx": 1,
+          "camera": "wrist_camera",
+          "pixels_at_min_delta": 48,
+          "max_absolute_error": 97
+        },
+        {
+          "schemes": [
+            "variant_3",
+            "variant_6"
+          ],
+          "env_idx": 1,
+          "camera": "wrist_camera",
+          "pixels_at_min_delta": 48,
+          "max_absolute_error": 57
+        },
+        {
+          "schemes": [
+            "variant_1",
+            "variant_5"
+          ],
+          "env_idx": 1,
+          "camera": "wrist_camera",
+          "pixels_at_min_delta": 67,
+          "max_absolute_error": 39
+        }
+      ],
+      "local_reset_directions": 2,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "png_files_verified": 272,
+      "manifest_sha256": "d7d18d0878dec1eefb065bcbec7d54fe68300bff5ed5bb0e371df53290ffca3e",
+      "results_sha256": "d131d7c0b899772f414911fef5e583cad036dac8f81a65512b8d43186f67c640",
+      "native_loader_receipt_sha256": "1a3bc9a67f51f5b16c8a7549722668e9cad2a2b638873f48281a74426fdb5a4d",
+      "preview_camera": "human",
+      "preview_environment": 0,
+      "preview_crop_scene_xyxy": [
+        611,
+        392,
+        711,
+        456
+      ]
+    },
+    "TurnNut": {
+      "candidate_pairs": 110,
+      "minimum_pixels_at_rgb_delta_8": 390,
+      "nearest_pairs": [
+        {
+          "schemes": [
+            "original",
+            "variant_1"
+          ],
+          "env_idx": 1,
+          "camera": "human",
+          "pixels_at_min_delta": 390,
+          "max_absolute_error": 108
+        },
+        {
+          "schemes": [
+            "variant_1",
+            "variant_10"
+          ],
+          "env_idx": 1,
+          "camera": "human",
+          "pixels_at_min_delta": 401,
+          "max_absolute_error": 62
+        },
+        {
+          "schemes": [
+            "original",
+            "variant_1"
+          ],
+          "env_idx": 0,
+          "camera": "human",
+          "pixels_at_min_delta": 438,
+          "max_absolute_error": 108
+        }
+      ],
+      "local_reset_directions": 2,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "png_files_verified": 232,
+      "manifest_sha256": "035293a884ab37572c9a352e7d8ca2dc8326fe1141d80c1b682493d4da1f1cbc",
+      "results_sha256": "94ba897ca8c3c02077db1b24109992a4a97eaf6af1b22237af9d41ae139736f6",
+      "native_loader_receipt_sha256": "1a3bc9a67f51f5b16c8a7549722668e9cad2a2b638873f48281a74426fdb5a4d",
+      "preview_camera": "human",
+      "preview_environment": 1,
+      "preview_crop_scene_xyxy": [
+        612,
+        366,
+        649,
+        418
+      ]
+    }
+  }
+}

@@ -1,5 +1,7 @@
 # Nut & Bolt 外观扩容
 
+本页记录 v2 扩容与当时的验收。当前外观见 [Nut & Bolt 真实版](NUT_BOLT_REALISTIC.md)。
+
 bolt 和 nut 各追加 `variant_3`–`variant_10`。每个对象共有原版加十套候选。螺栓改 shaft 和 head，保留 tip 和 thread。螺母 free／threaded 共用同一个方案，保留原生切换和参照面绑定。三个任务的几何、碰撞、物理和相机采用原任务定义。
 
 饰面以琥珀、朱红、青柠、水蓝、紫、石墨、冰银和品红为主。完整名称和数值分别见 [bolt catalog](../../assets/appearance/objects/nut_bolt/bolt/variants/v1/catalog.json) 与 [nut catalog](../../assets/appearance/objects/nut_bolt/nut/variants/v1/catalog.json)。[运行索引](../../tasks/assets/variation/nut_bolt/v1/catalog.json) 枚举方案，[双环境配置示例](../../examples/variation/nut_bolt/expansion.json) 演示按环境覆盖。
