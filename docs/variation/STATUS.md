@@ -121,6 +121,10 @@ OpenLaptop 复用 PR16-R3，TypeKeys、ClickMouse 使用 PR16-R4 的 Server 3 �
 Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合记录](evidence/meal_preparation/PR8-R3.md)分别记录当时状态与本轮收尾。86264旧基线＋独立预览／回放仅作历史参考，不替代当前接入验收。执行层未批准、未合并。
 
 
-## 7. Package Opening（PR9待最终合并）
+## 7. Package Opening
 
-三对象original＋variant_1／variant_2、OpenPackage／ExtractApple／Long三个Sharpa入口已实现，87021三任务各2env的限定运行证据已查收。当前implemented_pending_review，不增加accepted计数。配置／恢复原版／局部reset等证据与边界见[用法](PACKAGE_OPENING_APPEARANCE.md)及[PR9-R2索引](evidence/package_opening/PR9-R2.md)。CPU只补非连续／乱序环境索引、候选和绑定顺序身份检查；不代表GPU随机路径、完整机器人或压力测试。
+[#9](https://github.com/DennisXu626/DexArena-Variation/pull/9) 的 original＋`variant_1`／`variant_2` 已合入 main（`793c747`）。[#31](https://github.com/DennisXu626/DexArena-Variation/pull/31) 新增 `variant_3` 至 `variant_10`，现覆盖原版和十套候选，适用于 OpenPackage、ExtractApple、Long 三个 Sharpa 入口。
+
+三个入口已通过双环境双向局部 reset、未选行活动控制目标隔离和选中行 original 恢复。3–10 号在三个入口的两个环境共 48 格可见配色已验收。OpenPackage 未加载苹果，ExtractApple 和 Long 的苹果在本轮采集机位中被遮挡，保留贴图记录，苹果实景未测。历史 33 对四步轨迹按原范围复用，完整机器人任务成功率未测。对象档案沿用现有状态标记与 42 项统计口径。
+
+[配置用法](PACKAGE_OPENING_APPEARANCE.md) · [十套方案](PACKAGE_EXPAND_TO_10.md) · [PR9-R2 历史证据](evidence/package_opening/PR9-R2.md) · [#31 正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/31#pullrequestreview-6024095724)
