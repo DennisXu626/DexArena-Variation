@@ -1,6 +1,7 @@
 """Recheck and archive the Pipette expansion from the recorded PT, PNG and SDK inputs."""
 import argparse
 from collections import Counter
+from contextlib import contextmanager
 import copy
 from itertools import combinations
 from pathlib import Path
@@ -8,6 +9,7 @@ import re
 import shutil
 
 import numpy as np
+from PIL import Image
 
 import check_pipette_runtime as runtime
 import compact_task_runtime as raw
@@ -77,7 +79,65 @@ def use_material_inputs(manifest, assets):
         raw.CAPTURE_FILES.update(inputs)
 
 
+def validate_plate_texture(native, actual, scheme, bindings):
+    definition = raw.read(ROOT / 'assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json')
+    label = definition['roles']['base_plate']['candidate_color_texture']
+    path = ROOT / label['path']
+    with Image.open(path) as image:
+        require(image.mode == 'RGB', 'Stand label must be opaque RGB')
+        width, height = image.size
+    expected = {'asset_ref': label['path'], 'sha256': raw.track(path), 'name': path.name,
+                'width': width, 'height': height, 'mipmap_levels': label['mipmap_levels'],
+                'is_srgb': True}
+    # Verify the complete native texture descriptor as well as the declared file.
+    raw.material_rows(actual)
+    normal = copy.deepcopy(actual)
+    changes = []
+    plates = set()
+    for key, role in bindings.items():
+        if (role['object_id'], role['role']) != ('pipette_stand', 'base_plate'):
+            continue
+        env, slot = map(int, key.split('/')[1:3])
+        plates.add(env)
+        baseline = native[env][slot]['material']['base_color_texture']
+        measured = actual[env][slot]['material']['base_color_texture']
+        current = scheme[env] if isinstance(scheme, list) else scheme
+        require(baseline is None, 'Native stand already has a base-plate texture')
+        if current == 'original':
+            require(measured is None, 'Stand texture was retained after native restore')
+        else:
+            require(measured is not None and all(measured.get(k) == v for k, v in expected.items()),
+                    'Stand label does not match the captured catalog asset')
+            normal[env][slot]['material']['base_color_texture'] = baseline
+            changes.append(key + '/base_color_texture')
+    require(plates == set(range(len(actual))), 'Stand base plate binding coverage differs')
+    return normal, changes
+
+
+@contextmanager
+def pipette_material_check():
+    original = raw.material_check
+
+    def check(native, actual, scheme, bindings, parameters, roles, counts):
+        normalized, changes = validate_plate_texture(native, actual, scheme, bindings)
+        result = original(native, normalized, scheme, bindings, parameters, roles, counts)
+        result['canonical_sha256'] = raw.H.canonical_sha(actual)
+        result['changed_fields'].extend(changes)
+        return result
+
+    raw.material_check = check
+    try:
+        yield
+    finally:
+        raw.material_check = original
+
+
 def gpu_task(capture, console, name, build, images):
+    with pipette_material_check():
+        return checked_gpu_task(capture, console, name, build, images)
+
+
+def checked_gpu_task(capture, console, name, build, images):
     manifest, result, identity, binding = capture_receipt(capture, PROFILE['checker'], build, gpu=True)
     require(len(result['tasks']) == 1 and result['tasks'][0]['task'] == name, 'GPU task scope differs')
     row, directory = result['tasks'][0], capture / name
@@ -136,9 +196,9 @@ def gpu_task(capture, console, name, build, images):
                     task_pixels.append(np.any(frame != frames['original', key]))
                 if i == 0 and camera == 'human':
                     images[f'{name}/{scheme}_human_env0.png'] = path
-                    if scheme in SCHEMES[:3]:
+                    if scheme == 'original':
                         previous = ARCHIVE / name / f'{scheme}_human_env0.png'
-                        require(np.array_equal(frame, raw.png(previous)), 'Retained appearance differs from PR #14')
+                        require(np.array_equal(frame, raw.png(previous)), 'Native appearance differs from PR #14')
                         retained_images[scheme] = raw.track(previous)
             require(scheme == 'original' or any(task_pixels), 'No native task camera RGB change')
         if scheme == 'original':
@@ -327,7 +387,8 @@ def cpu_interface(directory, console, identity, build):
                     'CPU interface fixed scheme failed')
             actual = row['materials']
             require(len(native) == len(actual) == 1, 'Expected one CPU interface environment')
-            original_slots, measured = map(raw.material_rows, (native, actual))
+            normalized, _ = validate_plate_texture(native, actual, scheme, bindings)
+            original_slots, measured = map(raw.material_rows, (native, normalized))
             require(original_slots.keys() == measured.keys() and set(bindings) <= original_slots.keys(),
                     'CPU material slots differ')
             for slot, original in original_slots.items():
