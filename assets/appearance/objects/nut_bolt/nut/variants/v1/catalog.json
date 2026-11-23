@@ -1,5 +1,5 @@
 {
-  "version": "nut-bolt-nut-appearance-v2",
+  "version": "nut-bolt-nut-appearance-v3",
   "object_id": "nut_bolt.nut",
   "scope": "material_appearance",
   "fields": [
@@ -16,261 +16,261 @@
     },
     "variant_1": {
       "mode": "material_override",
-      "label": "Teal and ivory",
+      "label": "Blue zinc with cream inspection coating",
       "roles": {
         "body": {
           "base_color": [
-            0.025,
-            0.34,
-            0.29,
+            0.43,
+            0.5,
+            0.57,
             1.0
           ],
-          "roughness": 0.48,
-          "metallic": 0.5
+          "roughness": 0.43,
+          "metallic": 0.79
         },
         "reference_face": {
           "base_color": [
-            0.93,
-            0.86,
-            0.62,
+            0.78,
+            0.74,
+            0.66,
             1.0
           ],
-          "roughness": 0.46,
-          "metallic": 0.35
+          "roughness": 0.57,
+          "metallic": 0.04
         }
       }
     },
     "variant_2": {
       "mode": "material_override",
-      "label": "Ivory and burgundy",
+      "label": "Black oxide with a polished witness face",
       "roles": {
         "body": {
           "base_color": [
-            0.82,
-            0.79,
-            0.68,
+            0.1,
+            0.11,
+            0.12,
             1.0
           ],
-          "roughness": 0.62,
-          "metallic": 0.25
+          "roughness": 0.4,
+          "metallic": 0.74
         },
         "reference_face": {
           "base_color": [
-            0.36,
-            0.025,
-            0.07,
+            0.6,
+            0.64,
+            0.68,
             1.0
           ],
-          "roughness": 0.48,
-          "metallic": 0.4
+          "roughness": 0.31,
+          "metallic": 0.88
         }
       }
     },
     "variant_3": {
       "mode": "material_override",
-      "label": "Amber and indigo",
+      "label": "Yellow zinc with slate inspection coating",
       "roles": {
         "body": {
           "base_color": [
-            0.86,
-            0.52,
-            0.02,
-            1
+            0.57,
+            0.47,
+            0.34,
+            1.0
           ],
-          "roughness": 0.48,
-          "metallic": 0.15
+          "roughness": 0.35,
+          "metallic": 0.81
         },
         "reference_face": {
           "base_color": [
-            0.13,
-            0.04,
-            0.35,
-            1
+            0.2,
+            0.235,
+            0.28,
+            1.0
           ],
-          "roughness": 0.51,
-          "metallic": 0.22
+          "roughness": 0.65,
+          "metallic": 0.05
         }
       }
     },
     "variant_4": {
       "mode": "material_override",
-      "label": "Crimson and gold",
+      "label": "Brushed stainless with charcoal witness",
       "roles": {
         "body": {
           "base_color": [
-            0.75,
-            0.035,
-            0.045,
-            1
+            0.63,
+            0.67,
+            0.71,
+            1.0
           ],
-          "roughness": 0.71,
-          "metallic": 0.21
+          "roughness": 0.32,
+          "metallic": 0.94
         },
         "reference_face": {
           "base_color": [
-            0.9,
-            0.7,
-            0.07,
-            1
+            0.14,
+            0.155,
+            0.17,
+            1.0
           ],
-          "roughness": 0.46,
-          "metallic": 0.29
+          "roughness": 0.56,
+          "metallic": 0.2
         }
       }
     },
     "variant_5": {
       "mode": "material_override",
-      "label": "Lime and indigo",
+      "label": "Manganese phosphate with chalk inspection coating",
       "roles": {
         "body": {
           "base_color": [
-            0.34,
-            0.69,
-            0.04,
-            1
+            0.25,
+            0.232,
+            0.209,
+            1.0
           ],
-          "roughness": 0.61,
-          "metallic": 0.13
+          "roughness": 0.75,
+          "metallic": 0.45
         },
         "reference_face": {
           "base_color": [
-            0.09,
-            0.03,
-            0.29,
-            1
+            0.74,
+            0.71,
+            0.65,
+            1.0
           ],
-          "roughness": 0.47,
-          "metallic": 0.2
+          "roughness": 0.71,
+          "metallic": 0.03
         }
       }
     },
     "variant_6": {
       "mode": "material_override",
-      "label": "Aqua and rose",
+      "label": "Aged copper flash with pale inspection coating",
       "roles": {
         "body": {
           "base_color": [
-            0.018,
-            0.69,
-            0.88,
-            1
+            0.51,
+            0.35,
+            0.29,
+            1.0
           ],
-          "roughness": 0.4,
-          "metallic": 0.34
+          "roughness": 0.56,
+          "metallic": 0.76
         },
         "reference_face": {
           "base_color": [
-            0.81,
-            0.09,
-            0.38,
-            1
+            0.77,
+            0.73,
+            0.67,
+            1.0
           ],
-          "roughness": 0.45,
-          "metallic": 0.22
+          "roughness": 0.58,
+          "metallic": 0.04
         }
       }
     },
     "variant_7": {
       "mode": "material_override",
-      "label": "Violet and lime",
+      "label": "Olive passivate with light witness face",
       "roles": {
         "body": {
           "base_color": [
-            0.43,
-            0.055,
-            0.81,
-            1
+            0.24,
+            0.32,
+            0.236,
+            1.0
           ],
-          "roughness": 0.56,
-          "metallic": 0.24
+          "roughness": 0.54,
+          "metallic": 0.71
         },
         "reference_face": {
           "base_color": [
-            0.65,
-            0.92,
-            0.08,
-            1
+            0.61,
+            0.63,
+            0.575,
+            1.0
           ],
-          "roughness": 0.52,
-          "metallic": 0.18
+          "roughness": 0.43,
+          "metallic": 0.69
         }
       }
     },
     "variant_8": {
       "mode": "material_override",
-      "label": "Graphite and orange",
+      "label": "Warm grey dry-film coating with oxide witness",
       "roles": {
         "body": {
           "base_color": [
-            0.055,
-            0.065,
-            0.085,
-            1
+            0.62,
+            0.61,
+            0.57,
+            1.0
           ],
-          "roughness": 0.77,
-          "metallic": 0.34
+          "roughness": 0.68,
+          "metallic": 0.06
         },
         "reference_face": {
           "base_color": [
-            0.94,
-            0.24,
-            0.025,
-            1
+            0.305,
+            0.267,
+            0.231,
+            1.0
           ],
-          "roughness": 0.41,
-          "metallic": 0.24
+          "roughness": 0.59,
+          "metallic": 0.46
         }
       }
     },
     "variant_9": {
       "mode": "material_override",
-      "label": "Frost and deep blue",
+      "label": "Tumbled bronze with a cool witness face",
       "roles": {
         "body": {
           "base_color": [
-            0.57,
-            0.76,
-            0.91,
-            1
+            0.385,
+            0.27,
+            0.172,
+            1.0
           ],
-          "roughness": 0.46,
-          "metallic": 0.28
+          "roughness": 0.7,
+          "metallic": 0.84
         },
         "reference_face": {
           "base_color": [
-            0.04,
-            0.27,
-            0.52,
-            1
+            0.62,
+            0.665,
+            0.69,
+            1.0
           ],
-          "roughness": 0.62,
-          "metallic": 0.32
+          "roughness": 0.52,
+          "metallic": 0.67
         }
       }
     },
     "variant_10": {
       "mode": "material_override",
-      "label": "Magenta and olive",
+      "label": "Graphite hardware with oxidized red torque mark",
       "roles": {
         "body": {
           "base_color": [
-            0.94,
-            0.085,
-            0.5,
-            1
+            0.171,
+            0.194,
+            0.222,
+            1.0
           ],
-          "roughness": 0.39,
-          "metallic": 0.19
+          "roughness": 0.64,
+          "metallic": 0.21
         },
         "reference_face": {
           "base_color": [
-            0.18,
-            0.43,
-            0.035,
-            1
+            0.55,
+            0.359,
+            0.331,
+            1.0
           ],
-          "roughness": 0.53,
-          "metallic": 0.23
+          "roughness": 0.52,
+          "metallic": 0.04
         }
       }
     }
