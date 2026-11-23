@@ -928,20 +928,56 @@ class TableCleanBase(BaseEnv):
         selected = (options or {}).get("env_idx")
         if selected is None or self.num_envs == 1 or len(selected) == self.num_envs:
             return super().reset(seed=seed, options=options)
+        if seed is not None:
+            raise ValueError("Table Cleaning partial reset does not support seed; "
+                             "use a full reset to reseed all environments.")
         keep = torch.ones(self.num_envs, dtype=torch.bool, device=self.device)
         keep[selected] = False
         fields = ("stage", "hold", "success_latched", *self.FLAG_NAMES)
         saved = {key: getattr(self, key)[keep].clone() for key in fields}
         previous = getattr(self, "_debris_local_prev", None)
         old_local = [value[keep].clone() for value in previous] if previous else None
-        try:
-            return super().reset(seed=seed, options=options)
-        finally:
+        # Controller get_state() need not expose impedance targets. Preserve the
+        # per-environment tensor buffers of the active controller and its children,
+        # including PD interpolation buffers as well as arm impedance targets.
+        controller_buffers = []
+        def save_controller(controller):
+            for key, value in vars(controller).items():
+                if torch.is_tensor(value) and value.ndim and value.shape[0] == self.num_envs:
+                    controller_buffers.append((controller, key, value[keep].clone()))
+            for child in getattr(controller, "controllers", {}).values():
+                save_controller(child)
+        if hasattr(self, "agent"):
+            save_controller(self.agent.controller)
+
+        def restore():
             for key, value in saved.items():
                 getattr(self, key)[keep] = value
             if old_local is not None:
                 for value, old in zip(self._debris_local_prev, old_local):
                     value[keep] = old
+            for controller, key, value in controller_buffers:
+                getattr(controller, key)[keep] = value
+
+        self._partial_reset_restore = restore
+        try:
+            return super().reset(seed=seed, options=options)
+        finally:
+            restore()
+            del self._partial_reset_restore
+
+    def get_info(self):
+        # BaseEnv evaluates the whole batch during reset. Restore before that
+        # evaluation and again before get_obs reads stage/history. Restoring only
+        # after BaseEnv.reset returns leaves stale values in the policy input.
+        restore = getattr(self, "_partial_reset_restore", None)
+        if restore is not None:
+            restore()
+        try:
+            return super().get_info()
+        finally:
+            if restore is not None:
+                restore()
 
     # -------------------------------------------------------- predicates
     _FINGER_KEYS = (("thumb", "finger1"), ("index", "finger2"), ("middle", "mid_", "finger3"),
