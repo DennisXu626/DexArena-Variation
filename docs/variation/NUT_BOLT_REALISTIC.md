@@ -22,6 +22,8 @@ Windows 双环境 CUDA 从提交 `55d01179c9e1c56285f6e45af780793709e0042d` 捕�
 
 Windows 原生 PhysX CPU 也通过三个短任务的接口与 39 组动态回归。对照包括关闭外观、原版及十套候选。逐值复算 2,379 份状态快照，共覆盖 2,340 个控制步和 46,800 个物理子步。[CPU 复算记录](../../assets/appearance/objects/nut_bolt/previews/realistic/windows_cpu_review.json)
 
+Server 3 的 Slurm 作业 `135567` 使用私有 SDK `3.0.3+dexarena.gpu1.linuxnut1`。同一运行提交的三个短任务通过标准双环境 CUDA。独立复算 330 组对照、736 张原始图和实际加载的原生 SDK 回执，各任务最少差异像素与上表相同。六轴锁定与接触探针及双环境光栅探针通过。[Linux 复算记录](../../assets/appearance/objects/nut_bolt/previews/realistic/linux_cuda_review.json)
+
 ## 复现
 
 从仓库根运行 `python -B tools/variation/check_nut_bolt_appearance.py --static` 和 `python -B -m unittest discover -s tests -p 'test_nut*.py'`。原生环境按 [Nut 私有 SDK 与三短任务命令](NUT_BOLT_EXPANSION.md#验证命令)加载。双环境用 PickBolt seed 7、SeatNut seed 1 及 TurnNut seed 26。各次验收使用新输出目录。

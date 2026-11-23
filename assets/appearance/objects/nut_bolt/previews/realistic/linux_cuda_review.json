@@ -1,0 +1,170 @@
+{
+  "platform": "Linux",
+  "capture_commit": "55d01179c9e1c56285f6e45af780793709e0042d",
+  "status": "passed",
+  "sdk": {
+    "version": "3.0.3+dexarena.gpu1.linuxnut1",
+    "artifact_sha256": "25c0b48f4d4cf54b614f9f3d0884c38e6c57585ce9e0cc9afe9865d3769a97fb",
+    "wheel_sha256": "2ad5aff8c23859a2c270c8b296a797aba0dc76df592cf3b0c3f45b2f06e11590"
+  },
+  "tasks": {
+    "PickBolt": {
+      "candidate_pairs": 110,
+      "minimum_pixels_at_rgb_delta_8": 29,
+      "nearest_pairs": [
+        {
+          "schemes": [
+            "original",
+            "variant_10"
+          ],
+          "env_idx": 1,
+          "camera": "base_camera",
+          "pixels_at_min_delta": 29,
+          "max_absolute_error": 29
+        },
+        {
+          "schemes": [
+            "original",
+            "variant_10"
+          ],
+          "env_idx": 0,
+          "camera": "base_camera",
+          "pixels_at_min_delta": 30,
+          "max_absolute_error": 31
+        },
+        {
+          "schemes": [
+            "variant_1",
+            "variant_10"
+          ],
+          "env_idx": 1,
+          "camera": "base_camera",
+          "pixels_at_min_delta": 35,
+          "max_absolute_error": 60
+        }
+      ],
+      "local_reset_directions": 2,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "png_files_verified": 232,
+      "manifest_sha256": "777f3c5ef4a6e64c199cf9ef94577dff0235e9baec5c12f05849389841df95c6",
+      "results_sha256": "dfb409b66a76eb05e864563e159a25762f719ead0c17063de60693428dab5b8e",
+      "native_loader_receipt_sha256": "1cd67d485ffc0a5436280afdc18fb991097e9e0a8725cc9f54c18160944beece",
+      "preview_camera": "base_camera",
+      "preview_environment": 1,
+      "preview_crop_scene_xyxy": [
+        124,
+        147,
+        147,
+        173
+      ]
+    },
+    "SeatNut": {
+      "candidate_pairs": 110,
+      "minimum_pixels_at_rgb_delta_8": 48,
+      "nearest_pairs": [
+        {
+          "schemes": [
+            "variant_1",
+            "variant_4"
+          ],
+          "env_idx": 1,
+          "camera": "wrist_camera",
+          "pixels_at_min_delta": 48,
+          "max_absolute_error": 97
+        },
+        {
+          "schemes": [
+            "variant_3",
+            "variant_6"
+          ],
+          "env_idx": 1,
+          "camera": "wrist_camera",
+          "pixels_at_min_delta": 48,
+          "max_absolute_error": 57
+        },
+        {
+          "schemes": [
+            "variant_1",
+            "variant_5"
+          ],
+          "env_idx": 1,
+          "camera": "wrist_camera",
+          "pixels_at_min_delta": 67,
+          "max_absolute_error": 39
+        }
+      ],
+      "local_reset_directions": 2,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "png_files_verified": 272,
+      "manifest_sha256": "d504e233b8e3d2d6d279fcce1abdfd6b763913e21a822d56c76c15360ec8673a",
+      "results_sha256": "3f4299c12887c7d8ffeaadd71e6d076905f21d8bb21d81c06a8dbcc4f27c7415",
+      "native_loader_receipt_sha256": "b46ac4f0e6825db657146991bd8bcb557d02e803bc6a65e66b3dedf497b24717",
+      "preview_camera": "human",
+      "preview_environment": 0,
+      "preview_crop_scene_xyxy": [
+        611,
+        392,
+        711,
+        456
+      ]
+    },
+    "TurnNut": {
+      "candidate_pairs": 110,
+      "minimum_pixels_at_rgb_delta_8": 390,
+      "nearest_pairs": [
+        {
+          "schemes": [
+            "original",
+            "variant_1"
+          ],
+          "env_idx": 1,
+          "camera": "human",
+          "pixels_at_min_delta": 390,
+          "max_absolute_error": 108
+        },
+        {
+          "schemes": [
+            "variant_1",
+            "variant_10"
+          ],
+          "env_idx": 1,
+          "camera": "human",
+          "pixels_at_min_delta": 401,
+          "max_absolute_error": 62
+        },
+        {
+          "schemes": [
+            "original",
+            "variant_1"
+          ],
+          "env_idx": 0,
+          "camera": "human",
+          "pixels_at_min_delta": 438,
+          "max_absolute_error": 108
+        }
+      ],
+      "local_reset_directions": 2,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "png_files_verified": 232,
+      "manifest_sha256": "858ff5fa6ef0cf06548a2704a010ac6e71a83901d1a2f4dbe61c95879b58a19c",
+      "results_sha256": "1f21eaef98311222515b471b3f46146426d48c13a1165be240656635e20afdcf",
+      "native_loader_receipt_sha256": "e980a2d6c051370c74b24d96a967b14ea5e5d6d701f4cdc0bfb79cf38699fbae",
+      "preview_camera": "human",
+      "preview_environment": 1,
+      "preview_crop_scene_xyxy": [
+        612,
+        366,
+        649,
+        418
+      ]
+    }
+  },
+  "slurm_job": 135567,
+  "native_probe_receipt_sha256": {
+    "lock": "61398f86fc14d183dacfcf3f6dbedd335e4c47e344133eb0c2ce30f51eb3c6d6",
+    "raster": "a8df23454b5459c446f4c5d6e0bfb678abf11d1d180351dee75bd5266f7438e3"
+  }
+}
