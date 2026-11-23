@@ -155,7 +155,7 @@ def physical_attempt(env, e, kind, i, ik):
                 # Track an opposed qualification on the same step, separately from any contact.
                 thumb_forces = [value(e.scene.get_pairwise_contact_forces(target,f)[i]) for f in thumb]
                 finger_forces = [value(e.scene.get_pairwise_contact_forces(target,f)[i])
-                                 for f in fingers if f not in thumb]
+                                 for f in fingers if "thumb" not in f.name.lower()]
                 grasp = any(np.linalg.norm(a)>.05 and np.linalg.norm(b)>.05 and
                             np.dot(a,b)<-.25*np.linalg.norm(a)*np.linalg.norm(b)
                             for a in thumb_forces for b in finger_forces)
@@ -325,10 +325,16 @@ def run(out, matrix):
             previous.write_bytes(current.read_bytes())
         current.write_text(encoded)
     make=dict(num_envs=2,sim_backend="physx_cuda",obs_mode="state",reconfiguration_freq=0)
-    for kind in ("InsertPlug","OpenDrawer","PickCharger"):
+    kinds = ("InsertPlug", "OpenDrawer", "PickCharger")
+    phases = [(kind, priority) for priority in (True, False) for kind in kinds]
+    for kind,priority in phases:
         task_id="DrawerPlug"+kind+"-Sharpa-v1"
-        batch=order([p for p in rows if p["task"]==task_id],kind)
-        task=result["tasks"][kind]=dict(task_id=task_id,make_kwargs=make,points=[])
+        def urgent(row):
+            return (row["id"]=="F1-0" or row["id"].startswith("C-") or
+                    row["kind"]=="expected_reject" or
+                    (kind=="InsertPlug" and row["id"] in ("F5-0","F4-5")))
+        batch=order([p for p in rows if p["task"]==task_id and urgent(p)==priority],kind)
+        task=result["tasks"].setdefault(kind,dict(task_id=task_id,make_kwargs=make,points=[]))
         flush()
         with gym.make(task_id,**make) as env:
             e=env.unwrapped
@@ -337,8 +343,8 @@ def run(out, matrix):
             for name in ("drawer","charger","socket"):
                 if getattr(e,"has_"+name):
                     native[name]=value(getattr(e,name).pose.raw_pose).tolist()
-            task["native_seed_7_pose"]=native
-            task["native_drawer_travel"]=value(e.drawer_travel).tolist() if e.has_drawer else None
+            task.setdefault("native_seed_7_pose",native)
+            task.setdefault("native_drawer_travel",value(e.drawer_travel).tolist() if e.has_drawer else None)
             flush()
             for row in batch:
                 i=int(row["env_idx"])
