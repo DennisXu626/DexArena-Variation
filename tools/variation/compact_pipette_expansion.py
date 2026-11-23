@@ -82,13 +82,6 @@ def use_material_inputs(manifest, assets):
 def validate_plate_texture(native, actual, scheme, bindings):
     definition = raw.read(ROOT / 'assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json')
     label = definition['roles']['base_plate']['candidate_color_texture']
-    path = ROOT / label['path']
-    with Image.open(path) as image:
-        require(image.mode == 'RGB', 'Stand label must be opaque RGB')
-        width, height = image.size
-    expected = {'asset_ref': label['path'], 'sha256': raw.track(path), 'name': path.name,
-                'width': width, 'height': height, 'mipmap_levels': label['mipmap_levels'],
-                'is_srgb': True}
     # Verify the complete native texture descriptor as well as the declared file.
     raw.material_rows(actual)
     normal = copy.deepcopy(actual)
@@ -106,6 +99,14 @@ def validate_plate_texture(native, actual, scheme, bindings):
         if current == 'original':
             require(measured is None, 'Stand texture was retained after native restore')
         else:
+            asset = Path(label['directory']) / f'{current}.png'
+            path = ROOT / asset
+            with Image.open(path) as image:
+                require(image.mode == 'RGB', 'Stand label must be opaque RGB')
+                width, height = image.size
+            expected = {'asset_ref': asset.as_posix(), 'sha256': raw.track(path), 'name': path.name,
+                        'width': width, 'height': height, 'mipmap_levels': label['mipmap_levels'],
+                        'is_srgb': True}
             require(measured is not None and all(measured.get(k) == v for k, v in expected.items()),
                     'Stand label does not match the captured catalog asset')
             normal[env][slot]['material']['base_color_texture'] = baseline

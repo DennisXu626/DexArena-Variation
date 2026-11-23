@@ -6,7 +6,7 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
-from unittest.mock import Mock, patch
+from unittest.mock import Mock, call, patch
 import sys
 
 import numpy as np
@@ -456,8 +456,9 @@ class PipetteAppearanceTests(unittest.TestCase):
             pipette_stand=SimpleNamespace(_objs=stands), pipette=SimpleNamespace(_objs=articulations))
         base.scene = SimpleNamespace(sub_scenes=[SimpleNamespace(render_system=SimpleNamespace(
             _internal_scene=SimpleNamespace(force_rebuild=lambda: None))) for _ in range(2)])
-        texture = object()
-        render = SimpleNamespace(RenderBodyComponent=object, RenderTexture2D=Mock(return_value=texture))
+        textures = {'jade': object(), 'coral': object()}
+        render = SimpleNamespace(RenderBodyComponent=object, RenderTexture2D=Mock(
+            side_effect=lambda path, **kwargs: textures[Path(path).stem]))
         with patch.dict(sys.modules, {'sapien': SimpleNamespace(render=render), 'sapien.render': render}):
             value.bind(base, 0)
             value.bind(base, 1)
@@ -477,16 +478,19 @@ class PipetteAppearanceTests(unittest.TestCase):
             self.assertLess(plate_writes.index('base_color_texture'), plate_writes.index('base_color'))
             for i, rows in enumerate(value.bindings):
                 textured = [(oid, role) for oid, role, _, mat, _ in rows
-                            if mat.base_color_texture is texture]
+                            if mat.base_color_texture is textures['jade']]
                 self.assertEqual(textured, [('pipette_stand', 'base_plate')] if i == 1 else [])
             reset(value, [0], {'scheme_id': 'coral'})
-            render.RenderTexture2D.assert_called_once_with(
-                str(value._plate_label_path), mipmap_levels=value._plate_label_levels)
+            self.assertIs(value.bindings[0][0][3].base_color_texture, textures['coral'])
+            reset(value, [0], {'scheme_id': 'jade'})
+            self.assertEqual(render.RenderTexture2D.call_args_list, [
+                call(str(value._plate_label_paths[name]), mipmap_levels=value._plate_label_levels)
+                for name in ('jade', 'coral')])
             writes.clear()
             reset(value, [1])
             plate_writes = [name for material, name in writes if material is plate]
             self.assertLess(plate_writes.index('base_color_texture'), plate_writes.index('base_color'))
-            self.assertIs(value.bindings[0][0][3].base_color_texture, texture)
+            self.assertIs(value.bindings[0][0][3].base_color_texture, textures['jade'])
             self.assertIsNone(value.bindings[1][0][3].base_color_texture)
             # A shared environment material is rejected before storing bindings.
             stands[1].find_component_by_type(object).render_shapes[0].parts[0].material = value.bindings[0][0][3]

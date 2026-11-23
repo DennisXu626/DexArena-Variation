@@ -867,7 +867,18 @@
   },
   "no_visual_objects": ["liquid_state"],
   "new_uv": false,
-  "new_textures": ["assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png"],
+  "new_textures": [
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/jade.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/coral.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_3.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_4.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_5.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_6.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_7.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_8.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_9.png",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_10.png"
+  ],
   "rendering": {
     "shader_pack": "default",
     "tip_depth_bias_ndc": 2e-06

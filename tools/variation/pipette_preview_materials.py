@@ -39,9 +39,12 @@ def input_file_sha256():
     tasks = ROOT/'tasks/pipette_transfer'
     files = [tools/name for name in ('render_pipette_preview.py', 'pipette_preview_materials.py',
                                      'check_pipette_appearance.py', 'pipette_render_fixes.py',
+                                     'build_pipette_stand_textures.py',
                                      'sapien_sdk/run_task_check.py')]
     files += [CATALOG]
     files += [ROOT / path for path in read_json(CATALOG)['new_textures']]
+    label = bindings('pipette_stand')['roles']['base_plate']['candidate_color_texture']
+    files += [ROOT / label['source_mask']]
     files += [ARCHIVE/key/'bindings.json' for key in
               ('pipette', 'sample_cup', 'test_tube', 'tube_rack', 'pipette_stand', 'tip_cup')]
     files += [tasks/name for name in ('pipette_transfer_long.py', 'pipette_transfer_aspirate_liquid.py',
@@ -193,8 +196,9 @@ def apply_records(records, object_id, scheme, catalog, *, load_texture=None):
     for role, indices in role_indices(binding):
         params = parameters(catalog, object_id, role, scheme)
         label = binding['roles'][role].get('candidate_color_texture') if params else None
-        texture = (load_texture(ROOT / label['path'], label['mipmap_levels'])
-                   if label and load_texture else label and label['path'])
+        if label:
+            path = Path(label['directory']) / f'{scheme}.png'
+            texture = load_texture(ROOT / path, label['mipmap_levels']) if load_texture else path.as_posix()
         for index in indices:
             material = records[index].material
             if label:
@@ -335,13 +339,15 @@ def validate_catalog(catalog):
         for role, entry in definition['roles'].items():
             texture = entry.get('candidate_color_texture')
             if texture:
-                path = (ROOT / texture['path']).resolve()
+                directory = Path(texture['directory'])
+                mask = (ROOT / texture['source_mask']).resolve()
                 if ((key, role) != ('pipette_stand', 'base_plate') or entry['visual_indices'] != [0]
-                        or role not in editable or not path.is_relative_to(ARCHIVE.resolve())
-                        or not path.is_file() or type(texture['mipmap_levels']) is not int
+                        or role not in editable or not (ROOT / directory).resolve().is_relative_to(ARCHIVE.resolve())
+                        or not mask.is_relative_to(ARCHIVE.resolve()) or not mask.is_file()
+                        or type(texture['mipmap_levels']) is not int
                         or texture['mipmap_levels'] < 1):
-                    raise ValueError('Expected a single stand base-plate texture on its native box UVs')
-                textures.append(texture['path'])
+                    raise ValueError('Expected stand base-plate textures on the native box UVs')
+                textures.extend((directory / f'{name}.png').as_posix() for name in candidates)
         for scheme in candidates:
             if set(obj['schemes'][scheme]) != editable:
                 raise ValueError(f'{key}/{scheme}: incomplete role parameters')
@@ -370,8 +376,10 @@ def validate_catalog(catalog):
             # per object, then use actual camera pixels for formal acceptance.
             if difference < (.16 if key in ('sample_cup', 'test_tube') else .075):
                 raise ValueError(f'{key}: palette separation too small for {left} and {right}')
-    if len(textures) != 1 or catalog['new_textures'] != textures or catalog['new_uv']:
+    if len(textures) != len(candidates) or catalog['new_textures'] != textures or catalog['new_uv']:
         raise ValueError('Unexpected texture inventory or UV change')
+    from build_pipette_stand_textures import check_stand_textures
+    check_stand_textures(catalog)
     return catalog
 
 

@@ -77,11 +77,14 @@ def source_hashes(*, include_probe=True):
     files = set((ROOT / 'tasks').rglob('*.py'))
     files.update((ROOT / 'assets/appearance/objects/pipette_transfer').glob('*/bindings.json'))
     files.update((ROOT / 'tasks/assets/variation/pipette_transfer').rglob('*.json'))
-    parameters = ROOT / read(CATALOG)['parameters']
+    index = read(CATALOG)
+    parameters = ROOT / index['parameters']
     files.add(parameters)
     files.update(ROOT / path for path in read(parameters)['new_textures'])
+    stand_binding = read(ROOT / index['bindings']['pipette_stand'])
+    files.add(ROOT / stand_binding['roles']['base_plate']['candidate_color_texture']['source_mask'])
     files.update(ROOT / 'tools/variation' / name for name in (
-        'check_pipette_runtime.py', 'check_pipette_dynamics.py'))
+        'check_pipette_runtime.py', 'check_pipette_dynamics.py', 'build_pipette_stand_textures.py'))
     if include_probe:
         files.add(ROOT / 'tools/variation/check_pipette_rendering.py')
     files.update(ROOT / 'tools/variation' / name for name in (
@@ -303,13 +306,15 @@ def verify(base, schemes, native):
     adapter = base._pipette_appearance
     assert adapter.schemes == schemes
     label_definition = adapter.definitions['pipette_stand']['roles']['base_plate']['candidate_color_texture']
-    label_path = label_definition['path']
-    label_bytes = (ROOT / label_path).read_bytes()
-    assert label_bytes[:8] == b'\x89PNG\r\n\x1a\n' and label_bytes[25] == 2, 'Expected opaque RGB PNG'
-    width, height = struct.unpack_from('>II', label_bytes, 16)
-    label_fields = {'asset_ref': label_path, 'sha256': hashlib.sha256(label_bytes).hexdigest(),
-                    'width': width, 'height': height, 'mipmap_levels': label_definition['mipmap_levels'],
-                    'is_srgb': True}
+    label_fields = {}
+    for name in set(schemes) - {'original'}:
+        path = Path(label_definition['directory']) / f'{name}.png'
+        label_bytes = (ROOT / path).read_bytes()
+        assert label_bytes[:8] == b'\x89PNG\r\n\x1a\n' and label_bytes[25] == 2, 'Expected opaque RGB PNG'
+        width, height = struct.unpack_from('>II', label_bytes, 16)
+        label_fields[name] = {'asset_ref': path.as_posix(), 'sha256': hashlib.sha256(label_bytes).hexdigest(),
+                              'width': width, 'height': height,
+                              'mipmap_levels': label_definition['mipmap_levels'], 'is_srgb': True}
     slots, actual, expected = shared.material_slots(base), shared.materials(base), copy.deepcopy(native)
     for i, scheme in enumerate(schemes):
         assert adapter.bindings[i]
@@ -327,7 +332,8 @@ def verify(base, schemes, native):
             values = adapter.resolved_parameters(captured, adapter.scheme_parameters(oid, scheme).get(role, {}))
             if scheme != 'original' and (oid, role) == ('pipette_stand', 'base_plate'):
                 label = actual[i][index]['material']['base_color_texture']
-                assert label is not None and all(label.get(key) == value for key, value in label_fields.items())
+                assert label is not None and all(label.get(key) == value
+                                                 for key, value in label_fields[scheme].items())
                 values['base_color_texture'] = label
             expected[i][index]['material'] = {key: shared.plain(value) for key, value in values.items()}
         for observed, target in zip(actual[i], expected[i]):

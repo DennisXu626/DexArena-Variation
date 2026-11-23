@@ -23,7 +23,7 @@ AspirateLiquid 与 DispenseLiquid 的六个可见对象支持 original 加十套
 | 试管架 | 原有上下格栅、立柱、脚垫独立配色 |
 | 支架／吸头杯 | 同一 Actor；底板、立柱、导环和 stand.visual[4] 吸头承托盘独立配色 |
 
-liquid_state 无视觉。所有方案保持机器人、位置规则、几何、碰撞、质量、关节、物理参数与成功判定。原资产、许可与文件身份见[资产审计](../../assets/appearance/objects/pipette_transfer/pipette/asset_audit.json)。支架底板候选使用[原创标识贴图](../../assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png)，沿用原生盒体 UV。移液器及其它圆柱保留原生材质绑定。
+liquid_state 无视觉。所有方案保持机器人、位置规则、几何、碰撞、质量、关节、物理参数与成功判定。原资产、许可与文件身份见[资产审计](../../assets/appearance/objects/pipette_transfer/pipette/asset_audit.json)。支架底板将[原创灰阶标识](../../assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png)与各套底板色烘焙成 sRGB RGB 贴图，沿用原生盒体 UV。[烘焙工具](../../tools/variation/build_pipette_stand_textures.py)按 catalog 校验实际像素。移液器及其它圆柱保留原生材质绑定。
 
 **配置与生命周期**
 

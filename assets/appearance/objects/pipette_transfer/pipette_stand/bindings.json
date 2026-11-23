@@ -11,7 +11,8 @@
         0
       ],
       "candidate_color_texture": {
-        "path": "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png",
+        "directory": "assets/appearance/objects/pipette_transfer/pipette_stand/plates",
+        "source_mask": "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png",
         "mipmap_levels": 4
       }
     },
@@ -89,8 +90,5 @@
     "original_uv_and_textures"
   ],
   "new_uv": false,
-  "new_textures": [
-    "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png"
-  ],
   "shared_component": "tip_cup"
 }
