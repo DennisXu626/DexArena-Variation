@@ -1,0 +1,160 @@
+{
+  "hull_cm": [
+    [
+      -9.0,
+      0.00023904
+    ],
+    [
+      -8.99987238,
+      -0.00063774
+    ],
+    [
+      -8.57065176,
+      -2.70757818
+    ],
+    [
+      -8.5590936,
+      -2.78042166
+    ],
+    [
+      -7.4314485,
+      -4.99505742
+    ],
+    [
+      -7.2801837,
+      -5.29051842
+    ],
+    [
+      -5.28990786,
+      -7.28054424
+    ],
+    [
+      -2.78163504,
+      -8.55934146
+    ],
+    [
+      -2.4625683,
+      -8.60994144
+    ],
+    [
+      0.0010566,
+      -9.0
+    ],
+    [
+      2.78089974,
+      -8.55936234
+    ],
+    [
+      5.29142814,
+      -7.28093196
+    ],
+    [
+      7.27983666,
+      -5.29102422
+    ],
+    [
+      7.70142132,
+      -4.46485986
+    ],
+    [
+      8.55939186,
+      -2.78163018
+    ],
+    [
+      8.5862547,
+      -2.61313254
+    ],
+    [
+      8.9998245,
+      -0.00083538
+    ],
+    [
+      8.68332708,
+      1.99956438
+    ],
+    [
+      8.55917244,
+      2.78161542
+    ],
+    [
+      7.3786176,
+      5.0985279
+    ],
+    [
+      7.28080974,
+      5.28992028
+    ],
+    [
+      5.29036056,
+      7.28093412
+    ],
+    [
+      4.99621464,
+      7.43085846
+    ],
+    [
+      2.98507302,
+      8.4553614
+    ],
+    [
+      2.7806031,
+      8.55922032
+    ],
+    [
+      0.00238932,
+      8.99942058
+    ],
+    [
+      -1.296e-05,
+      8.99975106
+    ],
+    [
+      -2.78055162,
+      8.55915804
+    ],
+    [
+      -4.0877451,
+      7.8937443
+    ],
+    [
+      -5.29042986,
+      7.28018856
+    ],
+    [
+      -7.28065422,
+      5.29057566
+    ],
+    [
+      -7.61969772,
+      4.62609018
+    ],
+    [
+      -8.4555486,
+      2.9852964
+    ],
+    [
+      -8.55901314,
+      2.78113536
+    ]
+  ],
+  "radius_cm": 9.000621198946954,
+  "files": {
+    "collision_mesh_collision_0.obj": "08a8fc160209551fc42ca2a5fedf89b6c1db2cb5b34c410cd91770a22569bd7b",
+    "collision_mesh_collision_1.obj": "a17cbb5b37965140efb13e39e122ab73ff669528feeccea4897b80c6dccfaae3",
+    "collision_mesh_collision_10.obj": "f295aa38cbc6a7978c01f39b8872055b4d5ff7b14a6f9db31306fdc63b83288c",
+    "collision_mesh_collision_11.obj": "e8cc709f2b39211776cd293cac9aff71b631306166db3be495b2143bfc784658",
+    "collision_mesh_collision_12.obj": "c98a7283723802c1d6f5390bd11061b3e207f019be11ea8f3079116186d032d4",
+    "collision_mesh_collision_13.obj": "9bffe9b49f756994ada34009a33658d448d0deaae50e7e8ffa11b7363bd5307f",
+    "collision_mesh_collision_14.obj": "e7bb3e5d151b83ff1cdce2a383688d3b4e00d0b3c6128febf8c5c5696c7f5f56",
+    "collision_mesh_collision_15.obj": "5e621b5ee9895aeef7440ab51cf59d78a3ddf46e11dc8cf515b442ebfe36cad8",
+    "collision_mesh_collision_2.obj": "3c4e01e6180b629991bb9694152fc1fdcdf0464f06e44ef2ea9419fed54e5c36",
+    "collision_mesh_collision_3.obj": "98ce9735e6bf3bd9b0acc346a2d54ea18d02b97d030b00546db35a6caa75b53d",
+    "collision_mesh_collision_4.obj": "160ca367e486f7b84d590ced3afbba664786d59f75e9d97c252d575474d1362f",
+    "collision_mesh_collision_5.obj": "23b641f183f2ff4282511027423e6839d167b004931679be01202bdaa5e2d536",
+    "collision_mesh_collision_6.obj": "05658416999ebcfb17aa29d213c3f96c2a3ffd5a19e3f25afb175a321f6c0abf",
+    "collision_mesh_collision_7.obj": "79bec8bdc9edfb70ca276669821519fff17f18f18a81c950f4da65a3db2c57bc",
+    "collision_mesh_collision_8.obj": "2fa485e261a27dfc4e359d0f4ef41b715de5e67e17469ec9248520986abf171d",
+    "collision_mesh_collision_9.obj": "a739c7d6d00d246b990be15994617a0bed68186d200cb6fc81b109ee8e80c6e6"
+  },
+  "source_scale": 0.18
+}

@@ -1,0 +1,20 @@
+{
+  "epoch": 1795414552.2840252,
+  "cmd": [
+    "/opt/slurm/bin/sbatch",
+    "--parsable",
+    "--gres=gpu:2",
+    "--no-requeue",
+    "--time=00:10:00",
+    "--chdir",
+    "/mnt/ceph2/xkl/DexArena/cabinet_position_boundaries_20261123/runtime_002/source",
+    "/mnt/ceph2/xkl/DexArena/cabinet_position_boundaries_20261123/runtime_002/job.sh"
+  ],
+  "card": 2,
+  "exit": 0,
+  "stdout": "134787\n",
+  "stderr": "sbatch.slurm: GPU Index 2 (1 Shard each). If pending, those Indexes have 0 Shards — scancel and change --gres=\n",
+  "job_id": "134787",
+  "queue_before": "",
+  "watcher_pid": 1082593
+}

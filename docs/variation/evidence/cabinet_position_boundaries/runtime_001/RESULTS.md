@@ -11,7 +11,7 @@
 
 五张图保留原坐标轴和点位。灰空心点表示本轮未测；图中红圈表示实物理短动作失败。图 1、2、4 的左右半点分别属于图下注明的任务。完整维度、阶段与请求逐行记录在 [79 行逐点表](POINTS.csv) 和 [原始记录](raw/output/results.json)。
 
-[① 柜体平移](../01_cabinet_xy.png) · [② 柜体朝向](../02_cabinet_yaw.png) · [③ 层板瓶位](../03_shelf_bottle.png) · [④ 桌面交接](../04_table_handoff.png) · [⑤ 碗位](../05_bowl_xy.png)
+[① 柜体平移](01_cabinet_xy.png) · [② 柜体朝向](02_cabinet_yaw.png) · [③ 层板瓶位](03_shelf_bottle.png) · [④ 桌面交接](04_table_handoff.png) · [⑤ 碗位](05_bowl_xy.png)
 
 ## 最不利点与组合
 
