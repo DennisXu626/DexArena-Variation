@@ -132,7 +132,8 @@ class OfficeSelections(unittest.TestCase):
             material=Material((1.,1.,1.,1.));material.base_color_texture=strips[i].texture
             captured={field:copy.deepcopy(getattr(material,field)) for field in M.FIELDS}
             a.bindings[i].append((M.STRIP_ROLE,Part(material),material,captured))
-            a.prepared[i]=SimpleNamespace(strip_texture=strips[i])
+            a.prepared[i]=M.OfficePartMaterials({'runtime_source_sha256': {}}, Path('.'))
+            a.prepared[i].strip_texture=strips[i]
         self.assertIsNot(strips[0].texture,strips[1].texture)
         reset(a,[1])
         np.testing.assert_array_equal(strips[0].texture.download(),original)
@@ -195,14 +196,16 @@ class OfficeSelections(unittest.TestCase):
 
 
 class OfficePartPreparation(unittest.TestCase):
-    def test_keycap_material_keeps_original_atlas_pixels_and_handle(self):
+    def test_keycap_material_keeps_atlas_sampler_uv_and_restores_original_pixels(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             mesh = root / 'key.obj'
             mesh.write_bytes(b'original key')
             atlas = root / 'atlas.jpg'
             atlas.write_bytes(b'original key atlas')
-            texture = Texture(np.arange(16, dtype=np.uint8).reshape(2, 2, 4))
+            pixels = np.array([[[235, 235, 235, 255], [150, 150, 150, 255]],
+                               [[18, 18, 18, 255], [220, 220, 220, 255]]], dtype=np.uint8)
+            texture = Texture(pixels)
             texture.filename = str(atlas)
             pixels = texture.download()
             material = Material((1., 1., 1., 1.))
@@ -219,7 +222,8 @@ class OfficePartPreparation(unittest.TestCase):
                                              'editable_slots': [{'material': 'cap', 'triangles': 1,
                                                                  'diffuse': [1., 1., 1.],
                                                                  'position_triangles_sha256': digest}]}]}
-            render = SimpleNamespace(RenderBodyComponent=Body, RenderMaterial=Material, RenderShapeTriangleMesh=Shape)
+            render = SimpleNamespace(RenderBodyComponent=Body, RenderMaterial=Material, RenderShapeTriangleMesh=Shape,
+                                     RenderTexture2D=Texture)
             record = SimpleNamespace(type='file', name='key', filename=str(mesh), material=None)
             link = SimpleNamespace(name='link_1', visual_records=[record], build_render_component=lambda: native_body)
             with patch.dict(sys.modules, {'sapien': SimpleNamespace(render=render), 'sapien.render': render}):
@@ -227,11 +231,22 @@ class OfficePartPreparation(unittest.TestCase):
                 prepared.install(SimpleNamespace(link_builders=[link]))
                 link.build_render_component()
             _, rebuilt, mutable, _ = prepared.bindings[0]
-            mutable.base_color = [.63, .58, .55, 1.]
+            chromatic = [.63, .58, .55, 1.]
+            private = prepared.keycap_textures['keycap']
+            prepared.apply_texture('keycap', mutable, chromatic)
             self.assertIsNot(mutable, material)
-            self.assertIs(mutable.base_color_texture, texture)
+            self.assertIs(mutable.base_color_texture, private.texture)
+            self.assertIsNot(mutable.base_color_texture, texture)
+            self.assertEqual(M.texture_descriptor(private.texture), M.texture_descriptor(texture))
             self.assertIsNone(prepared.strip_texture)
+            changed = private.texture.download()
+            self.assertFalse(np.array_equal(changed, pixels))
+            np.testing.assert_array_equal(changed[..., 3], pixels[..., 3])
+            self.assertEqual(int(changed[0, 0, 0]) - int(changed[0, 1, 0]), 85)
+            np.testing.assert_array_equal(changed[1, 0], pixels[1, 0])
             np.testing.assert_array_equal(texture.download(), pixels)
+            prepared.apply_texture('keycap', mutable, None)
+            np.testing.assert_array_equal(private.texture.download(), pixels)
             np.testing.assert_array_equal(rebuilt.get_vertex_uv(), part.get_vertex_uv())
             self.assertEqual(material.base_color, [1., 1., 1., 1.])
 

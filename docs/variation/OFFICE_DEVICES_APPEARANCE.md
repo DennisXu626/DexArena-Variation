@@ -47,7 +47,7 @@ env.reset(options={
 
 ## 模型绑定与独立预览
 
-[笔记本绑定](../../assets/appearance/objects/office_desk/laptop/) 分开使用屏框和键帽的原生视觉记录。内置键帽的正面和反向绕序面同时保留，屏幕图像、触控板、底座和转轴沿用源资产。[独立键盘绑定](../../assets/appearance/objects/office_desk/keyboard/) 保留每个可动键的原生字标贴图、采样与 UV、关节与目标键提示。装饰边复用 [原 UV 安全分区](../../assets/appearance/objects/office_desk/keyboard/key_uv_protection.json)，每个环境预先持有独立材质和可恢复的私有纹理。正式任务沿用既定碰撞、质量、关节和成功条件。
+[笔记本绑定](../../assets/appearance/objects/office_desk/laptop/) 分开使用屏框和键帽的原生视觉记录。内置键帽的正面和反向绕序面同时保留，屏幕图像、触控板、底座和转轴沿用源资产。[独立键盘绑定](../../assets/appearance/objects/office_desk/keyboard/) 保留每个可动键的字标轮廓、采样、UV、关节与目标键提示。主键区和功能键区分别使用当前环境的私有贴图，沿用原生字标图像及其明暗关系。`original` 还原逐字节原生像素。装饰边复用 [原 UV 安全分区](../../assets/appearance/objects/office_desk/keyboard/key_uv_protection.json)。正式任务沿用既定碰撞、质量、关节和成功条件。
 
 下列预览只加载键帽的原生视觉记录，可以独立查看键帽排列和材质。将 `--object laptop` 替换为 `--object keyboard` 可以检查独立键盘。两步输出分别使用新目录。
 

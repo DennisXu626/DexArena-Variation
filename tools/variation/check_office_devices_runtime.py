@@ -225,16 +225,20 @@ def material_values(material,owner=None,texture_cache=None,partition=None):
             import mani_skill
             package=Path(mani_skill.__file__).resolve().parent
             if partition is not None and field == 'base_color_texture':
-                strip, pixel_cache = partition
+                private, pixel_cache = partition
                 pixels = texture_pixels(texture, pixel_cache)
                 result[field].update(data_dtype=str(pixels.dtype), data_shape=list(pixels.shape),
                                      data_sha256=pixel_digest(pixels))
-                if strip is not None:
-                    assert texture == strip.texture and not texture.filename and texture != strip.source
-                    source = Path(strip.source.filename).resolve(strict=True)
+                if private == 'native_keycap_atlas':
+                    result[field]['source_kind'] = 'office_keycap_atlas_native'
+                elif private is not None:
+                    assert texture == private.texture and not texture.filename and texture != private.source
+                    source = Path(private.source.filename).resolve(strict=True)
                     assert source.is_relative_to(MODEL_ASSET_ROOT)
+                    kind = ('office_keycap_atlas_private' if isinstance(private, P.OfficeKeycapTexture)
+                            else 'office_keyboard_private_strip')
                     result[field].update(asset_ref=source.relative_to(ROOT).as_posix(),
-                        source_kind='office_keyboard_private_strip',
+                        source_kind=kind,
                         source_asset_sha256=hashlib.sha256(source.read_bytes()).hexdigest())
                     continue
             if not texture.filename:
@@ -256,18 +260,33 @@ def material_values(material,owner=None,texture_cache=None,partition=None):
     return result
 
 
-def strip_context(base, env_id, metadata, pixel_cache):
+def texture_context(base, env_id, row, pixel_cache):
+    metadata = row['metadata']
     group = metadata['logical_group']
-    if group not in ('safe', 'protected'):
+    if group in ('safe', 'protected'):
+        appearance = adapter(base)
+        texture = (appearance.prepared[env_id].strip_texture if appearance is not None and group == 'safe' else None)
+        return texture, pixel_cache
+    if not getattr(base, '_office_checker_keycap_atlas', False):
         return None
-    appearance = adapter(base)
-    texture = (appearance.prepared[env_id].strip_texture if appearance is not None and group == 'safe' else None)
-    return texture, pixel_cache
+    texture = row['part'].material.base_color_texture
+    if texture is None:
+        return None
+    keys = base._office_keyboard_appearance
+    if keys is not None:
+        for private in keys.prepared[env_id].keycap_textures.values():
+            if texture == private.texture:
+                return private, pixel_cache
+    if (texture.filename
+            and Path(texture.filename).resolve() == MODEL_ASSET_ROOT / '13106/images/texture_0.jpg'):
+        return 'native_keycap_atlas', pixel_cache
+    return None
 
 
 def logical_material(row):
     material = row['material']
-    if row['logical_group'] != 'safe':
+    texture = material.get('base_color_texture') or {}
+    if row['logical_group'] != 'safe' and not texture.get('source_kind', '').startswith('office_keycap_atlas_'):
         return material
     storage = ('name', 'sha256', 'source_kind', 'source_asset_sha256')
     return {**material, 'base_color_texture': {key: value for key, value in material['base_color_texture'].items()
@@ -369,7 +388,7 @@ def materials(base):
     if not hasattr(base,'_office_texture_proof_cache'):base._office_texture_proof_cache=[]
     pixel_cache = []
     return [[{**row['metadata'], 'material':material_values(row['part'].material,row['metadata']['entity'],
-              base._office_texture_proof_cache, strip_context(base, env_id, row['metadata'], pixel_cache))} for row in rows]
+              base._office_texture_proof_cache, texture_context(base, env_id, row, pixel_cache))} for row in rows]
             for env_id, rows in enumerate(logical_slots(base))]
 
 
@@ -402,7 +421,7 @@ def actual_slot_audit(base, geometry_output):
                     'source_visual':metadata['source_visual'],'source_native_part':metadata['source_native_part'],
                     'triangles':len(part.triangles),'vertices':len(part.vertices),
                     'geometry_tensor_key':tensor_key,'material':material_values(part.material,
-                        partition=strip_context(base, env_id, metadata, pixel_cache)),
+                        partition=texture_context(base, env_id, row, pixel_cache)),
                     'per_triangle_position_normal_uv_winding_sha256':row['triangle_attribute_sha256']}
             mapping.append({'logical_key':{key:metadata[key] for key in ('entity','source_visual','source_native_part','logical_group')},
                 'actual_visual':row['actual_visual'],'actual_part':row['actual_part'],'actual_triangle_indices':row['indices'],
@@ -478,6 +497,10 @@ def verify(base, ids, native, *, keycap_ids=None):
             assert a.bindings[i]
             candidate = {} if name == 'original' else (
                 a.catalog['schemes'][name] if hasattr(base, '_mouse_appearance') else a.scheme_parameters(name))
+            key_textures = getattr(a.prepared[i], 'keycap_textures', {}) if hasattr(a, 'prepared') else {}
+            key_texture_sha = {role: pixel_digest(texture.pixels_for(
+                None if name == 'original' else candidate[role]['base_color']))
+                for role, texture in key_textures.items()}
             for role, part, material, captured in a.bindings[i]:
                 assert part.material == material
                 index, = [j for j, row in enumerate(slots[i]) if row['part'] == part]
@@ -492,6 +515,11 @@ def verify(base, ids, native, *, keycap_ids=None):
                     assert material.base_color_texture == strip.texture and strip.texture != strip.source
                     pixels = strip.pixels_for(None if name == 'original' else params['base_color'])
                     expected[index]['base_color_texture']['data_sha256'] = pixel_digest(pixels)
+                elif role in key_textures:
+                    atlas = key_textures[role]
+                    assert material.base_color_texture == atlas.texture and atlas.texture != atlas.source
+                    expected[index]['base_color'] = captured['base_color']
+                    expected[index]['base_color_texture']['data_sha256'] = key_texture_sha[role]
             records = [row for row in a.records if row['env_idx'] == i]
             assert [row['episode_index'] for row in records] == list(range(1, a.episodes[i]+1))
             assert records[-1]['scheme_id'] == name
@@ -703,6 +731,7 @@ def run_task(task,args,output,result):
     def fresh(config=None, camera_first=False, *, keycaps=None, detail=False):
         nonlocal env,constructor_records,first_frames
         env=make(config, keycaps=keycaps, detail=detail);base=env.unwrapped;a=adapter(base)
+        base._office_checker_keycap_atlas = detail and task == 'TypeKeys'
         constructor_records=copy.deepcopy(a.records) if a is not None else []
         observation,info=checked_reset(seed=7, keycap_evidence=detail)
         first_frames=reset_images(env,observation) if gpu and camera_first else None
@@ -834,7 +863,10 @@ def run_task(task,args,output,result):
         assert all(len(bindings) == expected_parts for bindings in caps.bindings)
         for env_id, prepared in enumerate(caps.prepared):
             if task == 'TypeKeys':
-                assert all(row['texture']['same_handle'] and not row['texture']['private_strip_clone']
+                assert set(prepared.keycap_textures) == {'keycap', 'keycap_accent'}
+                face, edge = prepared.keycap_textures.values()
+                assert face.texture != edge.texture
+                assert all(row['texture']['private_keycap_clone'] and not row['texture']['same_handle']
                            for row in prepared.audit if row['editable'])
             assert caps.episodes[env_id] > 0
         report['editable_native_parts_per_env'] = expected_parts

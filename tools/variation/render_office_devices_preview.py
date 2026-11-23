@@ -125,13 +125,13 @@ def main():
         manifest["native_part_bindings"] = materials.audit if materials else []
         manifest['native_off'] = args.native_off
         original = snapshot_model(model)
-        canonical = canonical_model(original)
+        canonical = canonical_model(original, keycaps_only=args.keycaps_only)
         if args.native_reference:
             native = json.loads((args.native_reference / 'original_canonical.json').read_text(encoding='utf-8'))
             if canonical != native:
                 raise RuntimeError('Enabled original model differs from native-off triangle attributes, transforms or complete PBR')
             result['native_off_model_equivalence'] = 'passed'
-        protected = without_editable_fields(original, inventory)
+        protected = without_editable_fields(original, inventory, keycaps_only=args.keycaps_only)
         # Bounds follow original meshes, with one camera/light configuration for all schemes.
         points = []
         for link in model.links:
@@ -169,7 +169,7 @@ def main():
             if materials is not None:
                 materials.apply(scheme_id)
             current = snapshot_model(model)
-            if without_editable_fields(current, inventory) != protected:
+            if without_editable_fields(current, inventory, keycaps_only=args.keycaps_only) != protected:
                 raise RuntimeError("Protected geometry, UV, material or model state changed")
             pixels = capture_pixels()
             frame = Image.fromarray(pixels)

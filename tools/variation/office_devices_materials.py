@@ -77,9 +77,9 @@ class OfficeDevicesPreviewMaterials(_RUNTIME.OfficePartMaterials):
         for role, part, material, original in self.bindings:
             source_role = self.catalog.get('role_aliases', {}).get(role, role)
             parameters = original if scheme_id == "original" else {**scheme[source_role]}
-            if role == _RUNTIME.STRIP_ROLE:
-                assert material.base_color_texture == self.strip_texture.texture
-                self.strip_texture.apply(None if scheme_id == 'original' else parameters['base_color'])
+            self.apply_texture(role, material, None if scheme_id == 'original' else parameters['base_color'])
+            if role in self.keycap_textures:
+                parameters = {**parameters, 'base_color': original['base_color']}
             for field in FIELDS:
                 setattr(material, field, parameters[field])
 
@@ -111,7 +111,7 @@ def snapshot_model(articulation):
     return result
 
 
-def canonical_model(snapshot):
+def canonical_model(snapshot, *, keycaps_only=False):
     """Exact triangle attributes and native source-slot PBR across partitions."""
     from types import SimpleNamespace
     result = copy.deepcopy(snapshot)
@@ -126,6 +126,8 @@ def canonical_model(snapshot):
                     assert key not in strip_materials
                     strip_materials[key] = part['material']
                     continue
+                if keycaps_only and part['material']['base_color_texture'] is not None:
+                    part['material']['base_color_texture'].pop('filename', None)
                 if key in materials and materials[key] != part['material']:
                     raise RuntimeError('Partition original does not preserve its source-slot PBR')
                 materials[key] = part['material']
@@ -140,7 +142,7 @@ def canonical_model(snapshot):
     return result
 
 
-def without_editable_fields(snapshot, inventory):
+def without_editable_fields(snapshot, inventory, *, keycaps_only=False):
     result = copy.deepcopy(snapshot)
     for link in result["links"]:
         for index, shape in enumerate(link["shapes"]):
@@ -150,4 +152,6 @@ def without_editable_fields(snapshot, inventory):
                         part["material"].pop(field, None)
                     if '::office_role:shell_strip' in shape['name']:
                         part['material'].pop('base_color_texture', None)
+                    if keycaps_only and part['material'].get('base_color_texture') is not None:
+                        part['material']['base_color_texture'].pop('data_sha256', None)
     return result

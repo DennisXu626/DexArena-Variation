@@ -4,4 +4,4 @@
 
 [壳体绑定](bindings.json) 使用三个无纹理槽和 76 个无字装饰边三角面。装饰边沿用 [原 UV 安全分区](key_uv_protection.json)，各环境使用私有贴图。`original` 恢复捕获的 PBR 和逐字节原生像素。其余 426 面保护。
 
-[键帽绑定](keycaps_bindings.json) 保留原字标贴图句柄、采样器、UV、几何和绕序，每个键帽的 PBR 在各环境独立应用。目标键 P、A、I、R、Enter 的映射及绿色指示标记沿用原任务。见 [Office Desk 外观](../../../../../docs/variation/OFFICE_DEVICES_APPEARANCE.md)。
+[键帽绑定](keycaps_bindings.json) 保留原字标轮廓、采样器、UV、几何和绕序。启用时，每个环境持有主键与功能键的两份私有贴图，切换时在同一句柄更新像素，`original` 逐字节恢复原贴图。目标键 P、A、I、R、Enter 的映射及绿色指示标记沿用原任务。见 [Office Desk 外观](../../../../../docs/variation/OFFICE_DEVICES_APPEARANCE.md)。
