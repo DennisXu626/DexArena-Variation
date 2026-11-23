@@ -17,6 +17,8 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[2]
 BOB_HEAD = '5185f1dd61f2de88ab7d4ada7a2ef77f01e6b207'
+# PR #2's squash commit has the same tree and is available in main's history.
+BOB_MAIN_COMMIT = '0c744fa2aea2ab9c722f2e9f52acffedd562761c'
 FILES = ['tasks/drawer_plug/' + n for n in ['drawer_plug_long.py', 'drawer_plug_pick_charger.py',
                                          'drawer_plug_insert_plug.py', 'charger_appearance.py']]
 CATALOG = ROOT / 'tasks/assets/variation/drawer_plug/v1/catalog.json'
@@ -31,15 +33,21 @@ def dump(path, value):
 
 
 if args.static:
+    from check_drawer_ten_variants import static as check_family, old as family_base
+    check_family()
     for file in FILES:
         ast.parse((ROOT / file).read_text(encoding='utf-8'))
     # Verify all existing methods except the three documented hook locations.
     # This includes every success predicate, robot reset and physics builder.
     for file in FILES[:3]:
         original = subprocess.check_output(['git', '-c', 'safe.directory=' + ROOT.as_posix(),
-                                           '-C', str(ROOT), 'show', BOB_HEAD + ':' + file], text=True, encoding='utf-8')
+                                           '-C', str(ROOT), 'show', BOB_MAIN_COMMIT + ':' + file], text=True, encoding='utf-8')
         old = ast.parse(original)
-        new = ast.parse((ROOT / file).read_text(encoding='utf-8'))
+        new = ast.parse(family_base(ROOT / file))
+        # Normalize only the enumerated Drawer/socket visual hooks. The new
+        # checker also compares the full normalized task AST to main's baseline.
+        from check_drawer_socket import strip_fixture_hooks
+        new = strip_fixture_hooks(new, file.endswith('drawer_plug_long.py'))
         methods = lambda tree: {n.name: ast.dump(n, include_attributes=False)
                                 for cls in tree.body if isinstance(cls, ast.ClassDef)
                                 for n in cls.body if isinstance(n, ast.FunctionDef)}
@@ -48,7 +56,7 @@ if args.static:
         assert set(before) == set(after)
         assert all(before[k] == after[k] for k in before if k not in allowed), file
     catalog = json.loads(CATALOG.read_text(encoding='utf-8'))
-    assert set(catalog['schemes']) == {'original', 'ivory_matte', 'navy_satin', 'copper_metal'}
+    assert {'original', 'ivory_matte', 'navy_satin', 'copper_metal'} <= set(catalog['schemes'])
     for file in (ROOT / 'examples/variation/drawer_plug').glob('*.json'):
         json.loads(file.read_text(encoding='utf-8'))
     print(json.dumps({'status': 'passed', 'scope': 'AST/JSON only; A4/A5 runtime not tested',

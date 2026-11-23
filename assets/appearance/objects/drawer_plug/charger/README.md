@@ -25,3 +25,7 @@ A5：只reset env1并由navy_satin切copper_metal，env0材料／记录／完整
 实际生产测试提交38b8474，ManiSkill3.0.0b22／SAPIEN3.0.3／Torch2.6.0；历史A4／A5单卡分配29秒。仓库整合仅CPU检查，不重跑GPU。没有真实机器人完整成功、长期压力或A6结论。
 
 [总索引](../../../README.md)与[对象清单](../../../objects.csv)、[运行映射](../../../runtime_mapping.json)同步记录本对象状态；瓶身／瓶盖和其它对象状态保持。
+
+## 十套家族外观
+
+[十行映射、部件材料和实物参考](../../../../../docs/variation/DRAWER_TEN_VARIANTS.md)。新增选型已接入短任务并完成 CPU 核对，实际渲染和运行验收待补。既有已验收方案继续引用原 catalog。

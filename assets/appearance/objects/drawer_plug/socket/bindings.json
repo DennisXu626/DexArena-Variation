@@ -1,0 +1,16 @@
+{
+  "logical_object": "drawer_plug.socket",
+  "catalog": "../../../../../tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json",
+  "builder": "tasks/drawer_plug/drawer_plug_long.py::_load_socket",
+  "render_shapes": {
+    "0": "floor plate / shell",
+    "1,2": "front/back strips / shell",
+    "3,4": "outer bars / shell",
+    "5": "bridge / shell",
+    "6,7": "dark visual liners / protected hole"
+  },
+  "collision": "six native slabs; visual-only liners remain non-colliding",
+  "materials": "shell native metallic silver; liners native almost-black; no UV, imported texture or normal map",
+  "sharing": "native explicit material shared across builds; enabled path reuses Charger per-env builder material copying",
+  "runtime_validation": "InsertPlug: two environments, native restoration and local reset isolation verified in runtime_002"
+}

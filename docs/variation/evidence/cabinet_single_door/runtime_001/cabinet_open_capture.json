@@ -1,0 +1,49 @@
+{
+  "task": "CabinetPouringPickBottle-Sharpa-v1",
+  "env_idx": 0,
+  "seed": 7,
+  "door_qpos": 1.5707963705062866,
+  "camera": {
+    "eye": [
+      -1.06,
+      -0.54,
+      1.02
+    ],
+    "target": [
+      -0.06,
+      0.16,
+      0.35
+    ],
+    "fov": 0.83,
+    "crop": [
+      260,
+      65,
+      1010,
+      910
+    ]
+  },
+  "resolution": [
+    1280,
+    960
+  ],
+  "frames": [
+    {
+      "file": "original_frames/PickBottle_original_env0.png",
+      "scheme_id": "original",
+      "sha256": "762e6ffce4d3e0e0d69857a199ef93fb53617736742830eda359c0954e9e8da7"
+    },
+    {
+      "file": "original_frames/PickBottle_oak_warm_white_env0.png",
+      "scheme_id": "oak_warm_white",
+      "sha256": "c0b09d7d9bff4312199315b7273d120074e8a90fa76c6c89880796ddca2b4e77"
+    },
+    {
+      "file": "original_frames/PickBottle_sage_walnut_env0.png",
+      "scheme_id": "sage_walnut",
+      "sha256": "3f2dafa813cb260f5b638dd420dd265ed30e08c00110998cf6ab84aa8bebaf0e"
+    }
+  ],
+  "bottle": "native",
+  "comparison": "cabinet_open_comparison.png",
+  "comparison_sha256": "c333faf27565f6b7e3db24078a3177d0d363c8f3d82e05d46fdfcdd7872738e4"
+}

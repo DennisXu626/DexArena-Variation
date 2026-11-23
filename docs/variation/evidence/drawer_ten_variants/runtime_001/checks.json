@@ -1,0 +1,3235 @@
+{
+  "family": "drawer_plug",
+  "job": "128860",
+  "tested_head": "f244804b92bb0ae43984ebce2876051c33d3f50b",
+  "seed": 7,
+  "status": "failed",
+  "failed_task": "InsertPlug",
+  "tasks": {
+    "OpenDrawer": {
+      "loaded": {
+        "drawer": "fixture"
+      },
+      "camera": [
+        [
+          -1.03,
+          -0.67,
+          0.79
+        ],
+        [
+          0.14,
+          0.18,
+          0.29
+        ],
+        0.78
+      ],
+      "crops": {
+        "drawer": [
+          223,
+          156,
+          740,
+          646
+        ]
+      },
+      "captures": {
+        "original": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_original_base_camera_env0.png",
+              "sha256": "bb28028549ddf3e9863ea28cd04c3b9941945059593ef3d5304d04a296e75397",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_original_human_env0.png",
+              "sha256": "bb28028549ddf3e9863ea28cd04c3b9941945059593ef3d5304d04a296e75397",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "original"
+              }
+            }
+          ]
+        },
+        "variant_1": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_1_base_camera_env0.png",
+              "sha256": "c0d18afa922634430a3213d2d47c293c772195d652b07b0d1a28c24f815bec69",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_1_human_env0.png",
+              "sha256": "c0d18afa922634430a3213d2d47c293c772195d652b07b0d1a28c24f815bec69",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "warm_white"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "warm_white"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_2": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_2_base_camera_env0.png",
+              "sha256": "df67f1adb5c0ecd6196e2386aa4c5266319292c354f3fe6bdffe3224e59cd218",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_2_human_env0.png",
+              "sha256": "df67f1adb5c0ecd6196e2386aa4c5266319292c354f3fe6bdffe3224e59cd218",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "neutral_grey"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "neutral_grey"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_3": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_3_base_camera_env0.png",
+              "sha256": "9d8de28deefda769f6d18d5810cba3b0d7ef7e22bce85f95e72ae44ef3550755",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_3_human_env0.png",
+              "sha256": "9d8de28deefda769f6d18d5810cba3b0d7ef7e22bce85f95e72ae44ef3550755",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "ash_greige"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "ash_greige"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_4": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_4_base_camera_env0.png",
+              "sha256": "ca65b10810fcd38039c51f6d545881ab8f036863c6d54782f8966e3be215eb4e",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_4_human_env0.png",
+              "sha256": "ca65b10810fcd38039c51f6d545881ab8f036863c6d54782f8966e3be215eb4e",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "walnut_birch"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "walnut_birch"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_5": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_5_base_camera_env0.png",
+              "sha256": "c723c6f56a827086aaf3ff15488e7968ba42d660aa11409b6b42df05d8b36e31",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_5_human_env0.png",
+              "sha256": "c723c6f56a827086aaf3ff15488e7968ba42d660aa11409b6b42df05d8b36e31",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "mist_blue"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "mist_blue"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_6": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_6_base_camera_env0.png",
+              "sha256": "219705e2770a003765ffade49227e1d8aafbf60cf49fc9051ed9f5c818c8fb87",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_6_human_env0.png",
+              "sha256": "219705e2770a003765ffade49227e1d8aafbf60cf49fc9051ed9f5c818c8fb87",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "olive_smoke"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "olive_smoke"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_7": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_7_base_camera_env0.png",
+              "sha256": "0c6359a5e5732287dbd8e2ffc9f7e6d13ce3c8cfaae610252fd740d743feaf57",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_7_human_env0.png",
+              "sha256": "0c6359a5e5732287dbd8e2ffc9f7e6d13ce3c8cfaae610252fd740d743feaf57",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "cream_copper"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "cream_copper"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_8": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_8_base_camera_env0.png",
+              "sha256": "2784453e81ab301b82929ecf720080c3c25e28a0d8b20f0cd79a04a7479d2def",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_8_human_env0.png",
+              "sha256": "2784453e81ab301b82929ecf720080c3c25e28a0d8b20f0cd79a04a7479d2def",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "terracotta_oak"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "terracotta_oak"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_9": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_9_base_camera_env0.png",
+              "sha256": "be76395fabf4991540a3c3a12951adffe623cac1f3c71ee4e8130d7acc46446b",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_9_human_env0.png",
+              "sha256": "be76395fabf4991540a3c3a12951adffe623cac1f3c71ee4e8130d7acc46446b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "midnight_linen"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "midnight_linen"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_10": {
+          "files": {
+            "base_camera": {
+              "file": "OpenDrawer_variant_10_base_camera_env0.png",
+              "sha256": "42a6094e7f0ebae2cddf13c1e67b3a807a90e727fed9314b6bd35c64afcef169",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "OpenDrawer_variant_10_human_env0.png",
+              "sha256": "42a6094e7f0ebae2cddf13c1e67b3a807a90e727fed9314b6bd35c64afcef169",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "birch_plum"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "birch_plum"
+              }
+            }
+          ],
+          "restored": true
+        }
+      },
+      "selected_slot_counts": {
+        "original": null,
+        "variant_1": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_2": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_3": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_4": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_5": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_6": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_7": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_8": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_9": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ],
+        "variant_10": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2
+          }
+        ]
+      },
+      "legacy": {
+        "variant_1": {
+          "surfaces": [
+            "drawer"
+          ],
+          "target_pixels": {
+            "drawer": {
+              "base_camera": {
+                "visible": 163221,
+                "changed": 0,
+                "before_rgb_median": [
+                  165.0,
+                  151.0,
+                  128.0
+                ],
+                "after_rgb_median": [
+                  165.0,
+                  151.0,
+                  128.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 26568,
+                "changed": 0,
+                "before_rgb_median": [
+                  162.0,
+                  147.0,
+                  125.0
+                ],
+                "after_rgb_median": [
+                  162.0,
+                  147.0,
+                  125.0
+                ]
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_2": {
+          "surfaces": [
+            "drawer"
+          ],
+          "target_pixels": {
+            "drawer": {
+              "base_camera": {
+                "visible": 163221,
+                "changed": 0,
+                "before_rgb_median": [
+                  140.0,
+                  137.0,
+                  135.0
+                ],
+                "after_rgb_median": [
+                  140.0,
+                  137.0,
+                  135.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 26568,
+                "changed": 0,
+                "before_rgb_median": [
+                  140.0,
+                  137.0,
+                  135.0
+                ],
+                "after_rgb_median": [
+                  140.0,
+                  137.0,
+                  135.0
+                ]
+              }
+            }
+          },
+          "material_equivalent": true
+        }
+      },
+      "random_reproducibility": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "original"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "original"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "family_id": "variant_6",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "olive_smoke"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "family_id": "variant_1",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "warm_white"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "family_id": "variant_2",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "neutral_grey"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 3,
+          "family_id": "variant_6",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "olive_smoke"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "family_id": "variant_8",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "terracotta_oak"
+          }
+        }
+      ],
+      "isolation": [
+        {
+          "selected": 1,
+          "passed": true,
+          "mask_counts": {
+            "drawer": {
+              "base_camera": {
+                "visible": 156974,
+                "changed": 156974,
+                "before_rgb_median": [
+                  98.0,
+                  73.0,
+                  86.0
+                ],
+                "after_rgb_median": [
+                  180.0,
+                  140.0,
+                  91.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 23308,
+                "changed": 23308,
+                "before_rgb_median": [
+                  98.0,
+                  74.0,
+                  87.0
+                ],
+                "after_rgb_median": [
+                  180.0,
+                  140.0,
+                  90.0
+                ]
+              }
+            }
+          }
+        },
+        {
+          "selected": 0,
+          "passed": true,
+          "mask_counts": {
+            "drawer": {
+              "base_camera": {
+                "visible": 162278,
+                "changed": 162278,
+                "before_rgb_median": [
+                  88.0,
+                  58.0,
+                  42.0
+                ],
+                "after_rgb_median": [
+                  180.0,
+                  140.0,
+                  91.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 24930,
+                "changed": 24930,
+                "before_rgb_median": [
+                  84.0,
+                  55.0,
+                  41.0
+                ],
+                "after_rgb_median": [
+                  179.0,
+                  140.0,
+                  90.0
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "PickCharger": {
+      "loaded": {
+        "drawer": "fixture",
+        "charger": "charger"
+      },
+      "camera": [
+        [
+          -0.95,
+          0.69,
+          1.16
+        ],
+        [
+          -0.04,
+          0.18,
+          0.3
+        ],
+        0.73
+      ],
+      "crops": {
+        "drawer": [
+          122,
+          13,
+          801,
+          664
+        ],
+        "charger": [
+          476,
+          375,
+          574,
+          481
+        ]
+      },
+      "captures": {
+        "original": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_original_base_camera_env0.png",
+              "sha256": "e966b988bbb6330e5ed14d3e29effef1c82a2803af3abaddd38f0613dc179662",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_original_human_env0.png",
+              "sha256": "e966b988bbb6330e5ed14d3e29effef1c82a2803af3abaddd38f0613dc179662",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "original",
+                "charger": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "original",
+                "charger": "original"
+              }
+            }
+          ]
+        },
+        "variant_1": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_1_base_camera_env0.png",
+              "sha256": "4e8b234fb21c38403db2ea321330f4fdc825ed90a1861e88c5a3a5e0954fa6da",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_1_human_env0.png",
+              "sha256": "4e8b234fb21c38403db2ea321330f4fdc825ed90a1861e88c5a3a5e0954fa6da",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "warm_white",
+                "charger": "ivory_matte"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "warm_white",
+                "charger": "ivory_matte"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_2": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_2_base_camera_env0.png",
+              "sha256": "8141b0bbe7df4cc643124f9b7e58c4fdcbcd5f9843fdd34ced1282eb1db5be17",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_2_human_env0.png",
+              "sha256": "8141b0bbe7df4cc643124f9b7e58c4fdcbcd5f9843fdd34ced1282eb1db5be17",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_3": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_3_base_camera_env0.png",
+              "sha256": "048960350cd4919a7b1de878f5dd6a6427bdf1b8cc8d42bb51af71f32fd0f3ed",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_3_human_env0.png",
+              "sha256": "048960350cd4919a7b1de878f5dd6a6427bdf1b8cc8d42bb51af71f32fd0f3ed",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "ash_greige",
+                "charger": "copper_metal"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "ash_greige",
+                "charger": "copper_metal"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_4": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_4_base_camera_env0.png",
+              "sha256": "a73736a370a13c8856fae11656a0b2f6439d21693acead63551a31c4f36ffbbe",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_4_human_env0.png",
+              "sha256": "a73736a370a13c8856fae11656a0b2f6439d21693acead63551a31c4f36ffbbe",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "walnut_birch",
+                "charger": "pebble_pc"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "walnut_birch",
+                "charger": "pebble_pc"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_5": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_5_base_camera_env0.png",
+              "sha256": "22f72b3c7f60a6030af619ae711d1f14709702b65954aba1201fd482df9e6e21",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_5_human_env0.png",
+              "sha256": "22f72b3c7f60a6030af619ae711d1f14709702b65954aba1201fd482df9e6e21",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "mist_blue",
+                "charger": "slate_shell"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "mist_blue",
+                "charger": "slate_shell"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_6": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_6_base_camera_env0.png",
+              "sha256": "64da04c7e62b67d99e679bd7b73f5f1b5eeaeb88514580f7c9a85bda1c378520",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_6_human_env0.png",
+              "sha256": "64da04c7e62b67d99e679bd7b73f5f1b5eeaeb88514580f7c9a85bda1c378520",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_7": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_7_base_camera_env0.png",
+              "sha256": "3d9994cb1eb4eefaf7c9cbd556feac0fad7abe5a2b39702e51c57c49436e9717",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_7_human_env0.png",
+              "sha256": "3d9994cb1eb4eefaf7c9cbd556feac0fad7abe5a2b39702e51c57c49436e9717",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "cream_copper",
+                "charger": "sand_satin"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "cream_copper",
+                "charger": "sand_satin"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_8": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_8_base_camera_env0.png",
+              "sha256": "e72258fa4e828d2541d3bdc4a4b132f1ba14bc2612d4c5de0b0c9c34ddc66174",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_8_human_env0.png",
+              "sha256": "e72258fa4e828d2541d3bdc4a4b132f1ba14bc2612d4c5de0b0c9c34ddc66174",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_9": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_9_base_camera_env0.png",
+              "sha256": "f05f7992f8efd94825b6768692e80d6f4eafd5428b8f3eaf326b4b41672ea4c8",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_9_human_env0.png",
+              "sha256": "f05f7992f8efd94825b6768692e80d6f4eafd5428b8f3eaf326b4b41672ea4c8",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "midnight_linen",
+                "charger": "graphite_fine"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "midnight_linen",
+                "charger": "graphite_fine"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_10": {
+          "files": {
+            "base_camera": {
+              "file": "PickCharger_variant_10_base_camera_env0.png",
+              "sha256": "5a108ee7aacccf4186f8169df7c59d347665d87f155a6a0c72e933f765121e7d",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "PickCharger_variant_10_human_env0.png",
+              "sha256": "5a108ee7aacccf4186f8169df7c59d347665d87f155a6a0c72e933f765121e7d",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "birch_plum",
+                "charger": "lilac_eggshell"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "drawer": "birch_plum",
+                "charger": "lilac_eggshell"
+              }
+            }
+          ],
+          "restored": true
+        }
+      },
+      "selected_slot_counts": {
+        "original": null,
+        "variant_1": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_2": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_3": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_4": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_5": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_6": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_7": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_8": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_9": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_10": [
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "drawer/cabinet_side": 8,
+            "drawer/cabinet_frame": 6,
+            "drawer/top": 1,
+            "drawer/inner_front_liner": 3,
+            "drawer/front": 6,
+            "drawer/inner_side": 6,
+            "drawer/inner_back": 3,
+            "drawer/inner_bottom": 6,
+            "drawer/handle": 9,
+            "drawer/slider": 6,
+            "drawer/top_front_trim": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ]
+      },
+      "legacy": {
+        "variant_1": {
+          "surfaces": [
+            "drawer",
+            "charger"
+          ],
+          "target_pixels": {
+            "drawer": {
+              "base_camera": {
+                "visible": 255315,
+                "changed": 0,
+                "before_rgb_median": [
+                  172.0,
+                  168.0,
+                  154.0
+                ],
+                "after_rgb_median": [
+                  172.0,
+                  168.0,
+                  154.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 3565,
+                "changed": 0,
+                "before_rgb_median": [
+                  168.0,
+                  164.0,
+                  157.0
+                ],
+                "after_rgb_median": [
+                  168.0,
+                  164.0,
+                  157.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 4356,
+                "changed": 0,
+                "before_rgb_median": [
+                  175.0,
+                  171.0,
+                  162.0
+                ],
+                "after_rgb_median": [
+                  175.0,
+                  171.0,
+                  162.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_2": {
+          "surfaces": [
+            "drawer",
+            "charger"
+          ],
+          "target_pixels": {
+            "drawer": {
+              "base_camera": {
+                "visible": 255315,
+                "changed": 0,
+                "before_rgb_median": [
+                  140.0,
+                  137.0,
+                  135.0
+                ],
+                "after_rgb_median": [
+                  140.0,
+                  137.0,
+                  135.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 3565,
+                "changed": 0,
+                "before_rgb_median": [
+                  99.0,
+                  102.0,
+                  105.0
+                ],
+                "after_rgb_median": [
+                  99.0,
+                  102.0,
+                  105.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 4356,
+                "changed": 0,
+                "before_rgb_median": [
+                  51.0,
+                  84.0,
+                  118.0
+                ],
+                "after_rgb_median": [
+                  51.0,
+                  84.0,
+                  118.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_3": {
+          "surfaces": [
+            "charger"
+          ],
+          "target_pixels": {
+            "charger": {
+              "base_camera": {
+                "visible": 4356,
+                "changed": 0,
+                "before_rgb_median": [
+                  135.0,
+                  103.0,
+                  79.0
+                ],
+                "after_rgb_median": [
+                  135.0,
+                  103.0,
+                  79.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        }
+      },
+      "random_reproducibility": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "original",
+            "charger": "original"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "family_id": "original",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "original",
+            "charger": "original"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "family_id": "variant_6",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "olive_smoke",
+            "charger": "olive_polymer"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "family_id": "variant_1",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "warm_white",
+            "charger": "ivory_matte"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "family_id": "variant_2",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "neutral_grey",
+            "charger": "navy_satin"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 3,
+          "family_id": "variant_6",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "olive_smoke",
+            "charger": "olive_polymer"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "family_id": "variant_8",
+          "catalog_version": "drawer-ten-v1",
+          "objects": {
+            "drawer": "terracotta_oak",
+            "charger": "clay_pc"
+          }
+        }
+      ],
+      "isolation": [
+        {
+          "selected": 1,
+          "passed": true,
+          "mask_counts": {
+            "drawer": {
+              "base_camera": {
+                "visible": 249913,
+                "changed": 248751,
+                "before_rgb_median": [
+                  129.0,
+                  116.0,
+                  110.0
+                ],
+                "after_rgb_median": [
+                  208.0,
+                  174.0,
+                  147.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 2623,
+                "changed": 2623,
+                "before_rgb_median": [
+                  161.0,
+                  144.0,
+                  120.0
+                ],
+                "after_rgb_median": [
+                  179.0,
+                  141.0,
+                  91.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 3287,
+                "changed": 3287,
+                "before_rgb_median": [
+                  115.0,
+                  104.0,
+                  123.0
+                ],
+                "after_rgb_median": [
+                  127.0,
+                  129.0,
+                  133.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        {
+          "selected": 0,
+          "passed": true,
+          "mask_counts": {
+            "drawer": {
+              "base_camera": {
+                "visible": 253655,
+                "changed": 253161,
+                "before_rgb_median": [
+                  91.0,
+                  69.0,
+                  61.0
+                ],
+                "after_rgb_median": [
+                  207.0,
+                  174.0,
+                  147.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 3366,
+                "changed": 3366,
+                "before_rgb_median": [
+                  95.0,
+                  76.0,
+                  64.0
+                ],
+                "after_rgb_median": [
+                  179.0,
+                  140.0,
+                  91.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 4134,
+                "changed": 4134,
+                "before_rgb_median": [
+                  141.0,
+                  138.0,
+                  127.0
+                ],
+                "after_rgb_median": [
+                  127.0,
+                  129.0,
+                  133.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "InsertPlug": {
+      "loaded": {
+        "socket": "fixture",
+        "charger": "charger"
+      },
+      "camera": [
+        [
+          -0.62,
+          -0.94,
+          0.7
+        ],
+        [
+          -0.17,
+          -0.38,
+          0.08
+        ],
+        0.75
+      ],
+      "crops": {
+        "socket": [
+          416,
+          309,
+          609,
+          471
+        ],
+        "charger": [
+          525,
+          472,
+          666,
+          633
+        ]
+      },
+      "captures": {
+        "original": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_original_base_camera_env0.png",
+              "sha256": "d3218897bceb3baeea35f8e7ecf4ff7772109b518bf56396c634d23219c911ba",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_original_human_env0.png",
+              "sha256": "d3218897bceb3baeea35f8e7ecf4ff7772109b518bf56396c634d23219c911ba",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 2,
+              "family_id": "original",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "original",
+                "charger": "original"
+              }
+            }
+          ]
+        },
+        "variant_1": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_1_base_camera_env0.png",
+              "sha256": "604ce98ec84977de0e2349eb083341a438a3913e126cf8367633dc814ce006ca",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_1_human_env0.png",
+              "sha256": "604ce98ec84977de0e2349eb083341a438a3913e126cf8367633dc814ce006ca",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "warm_white",
+                "charger": "ivory_matte"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 3,
+              "family_id": "variant_1",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "warm_white",
+                "charger": "ivory_matte"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_2": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_2_base_camera_env0.png",
+              "sha256": "9e85e8ccc67bbf1bbc4a4a0d393c6c618c4ea26157cf6f026e645ac85c6035c3",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_2_human_env0.png",
+              "sha256": "9e85e8ccc67bbf1bbc4a4a0d393c6c618c4ea26157cf6f026e645ac85c6035c3",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 5,
+              "family_id": "variant_2",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "neutral_grey",
+                "charger": "navy_satin"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_3": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_3_base_camera_env0.png",
+              "sha256": "e9ac515db6e7ecb864c7a79a49cdd2128a154fdabd445e52980c8c6299c367c2",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_3_human_env0.png",
+              "sha256": "e9ac515db6e7ecb864c7a79a49cdd2128a154fdabd445e52980c8c6299c367c2",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "ash_greige",
+                "charger": "copper_metal"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 7,
+              "family_id": "variant_3",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "ash_greige",
+                "charger": "copper_metal"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_4": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_4_base_camera_env0.png",
+              "sha256": "50f12766edc00e31a8897d507a1590dd64ab6408d47c2d22d1d3551061d2052e",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_4_human_env0.png",
+              "sha256": "50f12766edc00e31a8897d507a1590dd64ab6408d47c2d22d1d3551061d2052e",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "walnut_birch",
+                "charger": "pebble_pc"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 9,
+              "family_id": "variant_4",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "walnut_birch",
+                "charger": "pebble_pc"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_5": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_5_base_camera_env0.png",
+              "sha256": "02dfc5d91e0462e2c7bbce2681b2083b600b2e782780e907d9146de7e68edce1",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_5_human_env0.png",
+              "sha256": "02dfc5d91e0462e2c7bbce2681b2083b600b2e782780e907d9146de7e68edce1",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "mist_blue",
+                "charger": "slate_shell"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 11,
+              "family_id": "variant_5",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "mist_blue",
+                "charger": "slate_shell"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_6": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_6_base_camera_env0.png",
+              "sha256": "13034a6b40cfe33801b072c7061008d9f92b30065dd7e6073dcbd6a92079c1ee",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_6_human_env0.png",
+              "sha256": "13034a6b40cfe33801b072c7061008d9f92b30065dd7e6073dcbd6a92079c1ee",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 13,
+              "family_id": "variant_6",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "olive_smoke",
+                "charger": "olive_polymer"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_7": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_7_base_camera_env0.png",
+              "sha256": "2c4a0609c1e4d6f5b5bc9fa00cc719b7b4dae3259c32fa88a5d8577036757f5b",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_7_human_env0.png",
+              "sha256": "2c4a0609c1e4d6f5b5bc9fa00cc719b7b4dae3259c32fa88a5d8577036757f5b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "cream_copper",
+                "charger": "sand_satin"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 15,
+              "family_id": "variant_7",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "cream_copper",
+                "charger": "sand_satin"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_8": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_8_base_camera_env0.png",
+              "sha256": "a8f2a76b319286b31b3e06811836a9dc6362b7af2b9652fc9f812c6803cb28a6",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_8_human_env0.png",
+              "sha256": "a8f2a76b319286b31b3e06811836a9dc6362b7af2b9652fc9f812c6803cb28a6",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 17,
+              "family_id": "variant_8",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "terracotta_oak",
+                "charger": "clay_pc"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_9": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_9_base_camera_env0.png",
+              "sha256": "c2bcacd5f7fbba7d077306858d43b0482caf21ee12aca9a4bf21c1928eb0050d",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_9_human_env0.png",
+              "sha256": "c2bcacd5f7fbba7d077306858d43b0482caf21ee12aca9a4bf21c1928eb0050d",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "midnight_linen",
+                "charger": "graphite_fine"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 19,
+              "family_id": "variant_9",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "midnight_linen",
+                "charger": "graphite_fine"
+              }
+            }
+          ],
+          "restored": true
+        },
+        "variant_10": {
+          "files": {
+            "base_camera": {
+              "file": "InsertPlug_variant_10_base_camera_env0.png",
+              "sha256": "5b1b54bebf68ec64adc9f7bd442a4edd7efab322032487ae9d2250360313bf33",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "human": {
+              "file": "InsertPlug_variant_10_human_env0.png",
+              "sha256": "5b1b54bebf68ec64adc9f7bd442a4edd7efab322032487ae9d2250360313bf33",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "record": [
+            {
+              "env_idx": 0,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "birch_plum",
+                "charger": "lilac_eggshell"
+              }
+            },
+            {
+              "env_idx": 1,
+              "episode_index": 21,
+              "family_id": "variant_10",
+              "catalog_version": "drawer-ten-v1",
+              "objects": {
+                "socket": "birch_plum",
+                "charger": "lilac_eggshell"
+              }
+            }
+          ],
+          "restored": true
+        }
+      },
+      "selected_slot_counts": {
+        "original": null,
+        "variant_1": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_2": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_3": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_4": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_5": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_6": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_7": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_8": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_9": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ],
+        "variant_10": [
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          },
+          {
+            "socket/shell": 6,
+            "socket/hole": 2,
+            "charger/body": 1,
+            "charger/prongs": 2
+          }
+        ]
+      },
+      "legacy": {
+        "variant_1": {
+          "surfaces": [
+            "socket",
+            "charger"
+          ],
+          "target_pixels": {
+            "socket": {
+              "base_camera": {
+                "visible": 9395,
+                "changed": 0,
+                "before_rgb_median": [
+                  217.0,
+                  213.0,
+                  205.0
+                ],
+                "after_rgb_median": [
+                  217.0,
+                  213.0,
+                  205.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 3771,
+                "changed": 0,
+                "before_rgb_median": [
+                  217.0,
+                  213.0,
+                  205.0
+                ],
+                "after_rgb_median": [
+                  217.0,
+                  213.0,
+                  205.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 10106,
+                "changed": 0,
+                "before_rgb_median": [
+                  175.0,
+                  171.0,
+                  162.0
+                ],
+                "after_rgb_median": [
+                  175.0,
+                  171.0,
+                  162.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_2": {
+          "surfaces": [
+            "socket",
+            "charger"
+          ],
+          "target_pixels": {
+            "socket": {
+              "base_camera": {
+                "visible": 9395,
+                "changed": 0,
+                "before_rgb_median": [
+                  62.0,
+                  64.0,
+                  66.0
+                ],
+                "after_rgb_median": [
+                  62.0,
+                  64.0,
+                  66.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 3771,
+                "changed": 0,
+                "before_rgb_median": [
+                  62.0,
+                  64.0,
+                  66.0
+                ],
+                "after_rgb_median": [
+                  62.0,
+                  64.0,
+                  66.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 10106,
+                "changed": 0,
+                "before_rgb_median": [
+                  51.0,
+                  84.0,
+                  118.0
+                ],
+                "after_rgb_median": [
+                  51.0,
+                  84.0,
+                  118.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        },
+        "variant_3": {
+          "surfaces": [
+            "charger"
+          ],
+          "target_pixels": {
+            "charger": {
+              "base_camera": {
+                "visible": 10106,
+                "changed": 0,
+                "before_rgb_median": [
+                  135.0,
+                  103.0,
+                  79.0
+                ],
+                "after_rgb_median": [
+                  135.0,
+                  103.0,
+                  79.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          },
+          "material_equivalent": true
+        }
+      },
+      "random_reproducibility": null,
+      "isolation": [
+        {
+          "selected": 1,
+          "passed": true,
+          "mask_counts": {
+            "socket": {
+              "base_camera": {
+                "visible": 8067,
+                "changed": 7973,
+                "before_rgb_median": [
+                  148.0,
+                  138.0,
+                  152.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  122.0,
+                  127.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 1055,
+                "changed": 1055,
+                "before_rgb_median": [
+                  148.0,
+                  138.0,
+                  152.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  122.0,
+                  127.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 1734,
+                "changed": 1734,
+                "before_rgb_median": [
+                  115.0,
+                  104.0,
+                  123.0
+                ],
+                "after_rgb_median": [
+                  127.0,
+                  129.0,
+                  133.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        },
+        {
+          "selected": 0,
+          "passed": false,
+          "mask_counts": {
+            "socket": {
+              "base_camera": {
+                "visible": 9024,
+                "changed": 9024,
+                "before_rgb_median": [
+                  156.0,
+                  159.0,
+                  153.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  122.0,
+                  127.0
+                ]
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 31,
+                "changed": 31,
+                "before_rgb_median": [
+                  156.0,
+                  159.0,
+                  153.0
+                ],
+                "after_rgb_median": [
+                  119.0,
+                  122.0,
+                  127.0
+                ]
+              }
+            },
+            "charger": {
+              "base_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "task_wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              },
+              "wrist_camera": {
+                "visible": 0,
+                "changed": 0,
+                "before_rgb_median": null,
+                "after_rgb_median": null
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "manifest_file_hashes": {
+    "tasks/assets/variation/drawer_plug/family_variants.json": "42b20ab6ff27209d5e0e3ce3191d04fa6f5165c63199b7bc1862d6a680e30284",
+    "tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json": "494ed9a832eefa2901194e0b45dcd4ae4a467b722dcfc80e279f0cb29ffe5275",
+    "tasks/assets/variation/drawer_plug/v1/catalog.json": "3239c3b72aa530b13e283d4a5651b210de76f8077c4b9941d640d7ec42380315",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "b41754e4c8069dfff3aa7a082dd0501ec282ec2922cd73ef7e01d8e2d3aa9f44",
+    "tasks/drawer_plug/drawer_plug_long.py": "5b460d56c1f4c94879f24f6359fc17c66545292a35efb15eeaa84718abff9681",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "b63005b7afd18e4a2cad528fc97858ccf7884936ede9a1dd4363afb606748198",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "8724c11f6c614bbe1072c7cdecb0e48ebdcc79f994cb49675dd28141e01681f4",
+    "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+    "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
+    "tools/variation/check_drawer_ten_variants.py": "4cf2e32476d71be24169484dbe56904644022a3fe1c188665535a7583f85ed08"
+  },
+  "allocation": {
+    "seconds": 71,
+    "approved": 420,
+    "state": "FAILED",
+    "exit": "1:0",
+    "no_requeue": true,
+    "accounting": "scontrol terminal JobState and RunTime; sacct unavailable",
+    "guard_seconds": 68.43376119062304,
+    "cleanup_complete": true,
+    "owned_processes": [],
+    "job_cgroup_members": [],
+    "capacity_peak_bytes": 204648944
+  },
+  "exception": "Traceback (most recent call last):\n  File \"/mnt/ceph2/xkl/DexArena/drawer_ten_20261122/runtime_001/source/tools/variation/check_drawer_ten_variants.py\", line 397, in run\n    assert all(any(x['changed'] for x in cams.values()) for r,cams in phase['targets'].items() if r!='beads')\nAssertionError\n"
+}

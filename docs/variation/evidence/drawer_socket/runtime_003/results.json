@@ -1,0 +1,32 @@
+{
+  "tasks": {
+    "OpenDrawer": {
+      "status": "engineering_passed_pending_visual_review",
+      "num_envs": 2,
+      "checks": {
+        "native_baseline_replay": "passed",
+        "fixed_capture": "saved",
+        "fixed_native_physical": "passed",
+        "both_candidates_restore": "passed",
+        "restore_and_isolation": "passed",
+        "random_reproducibility": "passed"
+      },
+      "seconds": 24.362429156899452
+    },
+    "PickCharger": {
+      "status": "engineering_passed_pending_visual_review",
+      "num_envs": 2,
+      "checks": {
+        "fixed_capture": "saved",
+        "fixed_native_physical": "passed",
+        "both_candidates_restore": "passed",
+        "restore_and_isolation": "passed",
+        "random_reproducibility": "passed"
+      },
+      "seconds": 19.46608172170818
+    }
+  },
+  "realism": "pending human image review",
+  "status": "engineering_passed_pending_visual_review",
+  "builds_started": 17
+}

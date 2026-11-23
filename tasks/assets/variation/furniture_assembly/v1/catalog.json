@@ -1,0 +1,32 @@
+{
+  "version": "furniture-appearance-v1",
+  "scope": "material_appearance",
+  "schemes": ["original", "variant_1", "variant_2", "variant_3", "variant_4", "variant_5", "variant_6", "variant_7", "variant_8", "variant_9", "variant_10"],
+  "objects": {
+    "flat_panel": {
+      "catalog": "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json",
+      "scheme_map": {"original": "original", "variant_1": "ivory_matte", "variant_2": "navy_satin",
+        "variant_3": "variant_3", "variant_4": "variant_4", "variant_5": "variant_5", "variant_6": "variant_6", "variant_7": "variant_7", "variant_8": "variant_8", "variant_9": "variant_9", "variant_10": "variant_10"}
+    },
+    "panel_rack": {
+      "catalog": "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json",
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2",
+        "variant_3": "variant_3", "variant_4": "variant_4", "variant_5": "variant_5", "variant_6": "variant_6", "variant_7": "variant_7", "variant_8": "variant_8", "variant_9": "variant_9", "variant_10": "variant_10"}
+    },
+    "rail": {
+      "catalog": "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json",
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2",
+        "variant_3": "variant_3", "variant_4": "variant_4", "variant_5": "variant_5", "variant_6": "variant_6", "variant_7": "variant_7", "variant_8": "variant_8", "variant_9": "variant_9", "variant_10": "variant_10"}
+    },
+    "screw": {
+      "catalog": "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json",
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2",
+        "variant_3": "variant_3", "variant_4": "variant_4", "variant_5": "variant_5", "variant_6": "variant_6", "variant_7": "variant_7", "variant_8": "variant_8", "variant_9": "variant_9", "variant_10": "variant_10"}
+    }
+  },
+  "tasks": {
+    "LayFlatPanel": ["flat_panel", "panel_rack"],
+    "InsertRail": ["flat_panel", "rail", "screw"],
+    "FastenScrew": ["flat_panel", "rail", "screw"]
+  }
+}

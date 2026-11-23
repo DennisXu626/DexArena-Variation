@@ -85,6 +85,8 @@ from tasks.furniture_assembly.furniture_assembly_insert_rail import (
 )
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
+from tasks.furniture_assembly.appearance import FurnitureAppearance
+from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin
 from tasks.config.layout_randomization import layout_rng, uniform_offset
 from tasks.config.object_materials import object_material
 from tasks.scene_builders import TableSceneBuilder
@@ -201,6 +203,8 @@ def build_wing_screw_rail(
     scene: ManiSkillScene,
     name: str = "slider_rail",
     kinematic: bool = False,
+    appearance=None,
+    defer_drive_target: bool = False,
 ):
     """The furniture rail carrying the wing screw (stage 3 of the family).
 
@@ -216,8 +220,10 @@ def build_wing_screw_rail(
     builder.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.5])
     _add_wing_screw_head_link(art, builder, phys)
     art.initial_pose = sapien.Pose(p=[0.0, 0.0, 0.5])
+    if appearance is not None:
+        appearance.isolate_builder_materials(art)
     built = art.build(name=name, fix_root_link=bool(kinematic))
-    apply_screw_thread_resistance(built)
+    apply_screw_thread_resistance(built, initialize_target=not defer_drive_target)
     return built
 
 
@@ -229,7 +235,7 @@ def build_wing_screw_rail(
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyFastenScrewEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -269,6 +275,7 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
         panel_random_y: float = 0.025,
         panel_random_yaw_deg: float = 9.0,
         visual_detail: bool = True,
+        furniture_appearance: dict | None = None,
         terminate_on_success: bool = False,
         render_camera_eye=(0.75, -1.65, 0.92),
         render_camera_target=(-0.38, 0.02, 0.32),
@@ -279,6 +286,10 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
         reconfiguration_freq=None,
         **kwargs,
     ):
+        self._furniture_appearance = (
+            FurnitureAppearance(furniture_appearance, num_envs)
+            if furniture_appearance and furniture_appearance.get("enabled", False) else None
+        )
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.panel_random_x = float(panel_random_x)
         self.panel_random_y = float(panel_random_y)
@@ -336,10 +347,13 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
         base_color = (0.725, 0.541, 0.369, 1.0)
         self.panel = build_drawer_panel(
             self.scene, base_color=base_color, visual_detail=self.visual_detail,
-            kinematic=True,
+            kinematic=True, appearance=self._furniture_appearance,
         )
         self.place_marker = build_place_marker(self.scene, PLACE_REGION_HALF_SIZE)   # same zone marker as the long task
-        self.rail = build_wing_screw_rail(self.scene, kinematic=True)
+        self.rail = build_wing_screw_rail(
+            self.scene, kinematic=True, appearance=self._furniture_appearance,
+            defer_drive_target=self.gpu_sim_enabled,
+        )
         # The screw is the rail's own revolute child (fixed rail root here).
         self.screw = self.rail
         self.rail_body = self.rail.links_map["rail_body"]
@@ -353,6 +367,9 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
         self.touched_once = torch.zeros(
             (self.num_envs,), dtype=torch.bool, device=self.device
         )
+        if self._furniture_appearance is not None:
+            for env_id in range(self.num_envs):
+                self._furniture_appearance.bind(self, env_id)
 
     def _contact_count(self, actor) -> torch.Tensor:
         """Distinct fingers in force contact with `actor` (collision-bearing links)."""
@@ -361,12 +378,17 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
     def _screw_touched(self) -> torch.Tensor:
         return self._contact_count(self.screw_head) >= 1.0
 
+    def _after_reconfigure(self, options: dict):
+        super()._after_reconfigure(options)
+        if self.gpu_sim_enabled:
+            self.screw_joint.set_drive_velocity_target(0.0)
+
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
             b = len(env_idx)
             self.table_scene.initialize(env_idx)
             set_work_table_pose(self)
-            self._reset_agent(b)
+            self._reset_agent(b, env_idx)
 
             # Per-episode layout from the EPISODE RNG (reproducible from the
             # recorded seed under the teleop reset): the panel, with the rail
@@ -399,6 +421,9 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
             self.success_counter[env_idx] = 0
             self.touched_once[env_idx] = False
 
+        if self._furniture_appearance is not None:
+            self._furniture_appearance.finish_reset(env_idx, options)
+
     def _before_control_step(self):
         # The screw angle is whatever the fingers have physically turned it to;
         # this hook only keeps the process latch.
@@ -409,8 +434,9 @@ class FurnitureAssemblyFastenScrewEnv(DeclarativeTaskStateMixin, BaseEnv):
         touched = self._screw_touched()
         angle = self.rail.get_qpos()[:, 0]
         reached_angle = angle >= self.TARGET_ROTATION - self.TARGET_TOLERANCE
-        self.success_counter = torch.where(
-            reached_angle, self.success_counter + 1, torch.zeros_like(self.success_counter)
+        self.success_counter = self._reset_scoped_value(
+            self.success_counter,
+            torch.where(reached_angle, self.success_counter + 1, torch.zeros_like(self.success_counter)),
         )
         # Shared with the long task's stage 3 (SUCCESS_HOLD_STEPS is 1, so the
         # counter above is bookkeeping only).

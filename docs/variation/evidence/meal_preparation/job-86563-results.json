@@ -1,0 +1,482 @@
+{
+  "job": 86563,
+  "num_envs": 2,
+  "isolation": {
+    "open": {
+      "control": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/spoon",
+            "max_abs_delta": 1.1920928955078125e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "wrist_camera": 2,
+          "human": 3
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 1
+        },
+        "selected_pixels": {
+          "base_camera": 1163,
+          "wrist_camera": 86853,
+          "human": 46270
+        }
+      },
+      "variation": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/spoon",
+            "max_abs_delta": 1.1920928955078125e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 1
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 1
+        },
+        "selected_pixels": {
+          "base_camera": 1800,
+          "wrist_camera": 116363,
+          "human": 58581
+        },
+        "records_before": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "variant_2",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "records_after": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "original",
+            "episode_index": 3,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "checked_material_roles": [
+          "box/box_base",
+          "box/box_lid",
+          "box/inner_floor",
+          "spoon/grip",
+          "spoon/wire_140088225"
+        ]
+      }
+    },
+    "bread": {
+      "control": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/spoon",
+            "max_abs_delta": 1.1920928955078125e-07
+          },
+          {
+            "field": "/actors/bread",
+            "max_abs_delta": 2.384185791015625e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 3
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 1
+        },
+        "selected_pixels": {
+          "base_camera": 1202,
+          "wrist_camera": 182004,
+          "human": 89339
+        }
+      },
+      "variation": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/spoon",
+            "max_abs_delta": 1.1920928955078125e-07
+          },
+          {
+            "field": "/actors/bread",
+            "max_abs_delta": 2.384185791015625e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 1
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "wrist_camera": 1,
+          "human": 1
+        },
+        "selected_pixels": {
+          "base_camera": 2306,
+          "wrist_camera": 182152,
+          "human": 113550
+        },
+        "records_before": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "variant_2",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "records_after": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "original",
+            "episode_index": 3,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "checked_material_roles": [
+          "box/box_base",
+          "box/box_lid",
+          "box/inner_floor",
+          "bread/Material.052",
+          "pizza_plate/plate_bottom",
+          "pizza_plate/plate_top",
+          "round_ball_food/default.012",
+          "spoon/grip",
+          "spoon/wire_140088225"
+        ]
+      }
+    },
+    "tomato": {
+      "control": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/bread",
+            "max_abs_delta": 2.384185791015625e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "wrist_camera": 0,
+          "human": 0
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "wrist_camera": 0,
+          "human": 0
+        },
+        "selected_pixels": {
+          "base_camera": 1102,
+          "wrist_camera": 132992,
+          "human": 72746
+        }
+      },
+      "variation": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/bread",
+            "max_abs_delta": 2.384185791015625e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 1,
+          "wrist_camera": 0,
+          "human": 0
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 1,
+          "wrist_camera": 0,
+          "human": 0
+        },
+        "selected_pixels": {
+          "base_camera": 2125,
+          "wrist_camera": 133216,
+          "human": 93420
+        },
+        "records_before": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "variant_2",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "records_after": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "original",
+            "episode_index": 3,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "checked_material_roles": [
+          "box/box_base",
+          "box/box_lid",
+          "box/inner_floor",
+          "bread/Material.052",
+          "pizza_plate/plate_bottom",
+          "pizza_plate/plate_top",
+          "round_ball_food/default.012",
+          "spoon/grip",
+          "spoon/wire_140088225"
+        ]
+      }
+    },
+    "long": {
+      "control": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/bread",
+            "max_abs_delta": 2.384185791015625e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "left_wrist_camera": 0,
+          "right_wrist_camera": 0,
+          "human": 0
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "left_wrist_camera": 0,
+          "right_wrist_camera": 0,
+          "human": 0
+        },
+        "selected_pixels": {
+          "base_camera": 1199,
+          "left_wrist_camera": 155927,
+          "right_wrist_camera": 140824,
+          "human": 93157
+        }
+      },
+      "variation": {
+        "unselected_rng_unchanged": true,
+        "unselected_state_changes": [
+          {
+            "field": "/actors/bread",
+            "max_abs_delta": 2.384185791015625e-07
+          },
+          {
+            "field": "/articulations/procedural_box_0",
+            "max_abs_delta": 7.450580596923828e-09
+          }
+        ],
+        "unselected_pixels": {
+          "base_camera": 0,
+          "left_wrist_camera": 0,
+          "right_wrist_camera": 0,
+          "human": 0
+        },
+        "unselected_max_channel_delta": {
+          "base_camera": 0,
+          "left_wrist_camera": 0,
+          "right_wrist_camera": 0,
+          "human": 0
+        },
+        "selected_pixels": {
+          "base_camera": 2381,
+          "left_wrist_camera": 185375,
+          "right_wrist_camera": 141233,
+          "human": 116662
+        },
+        "selected_plate_rim_refresh": {
+          "warm_orange_grip_pixels": 120,
+          "cobalt_glaze_pixels": 4517,
+          "former_green_rim_pixels": 405,
+          "changed_by_over_10_rgb_levels": 405
+        },
+        "records_before": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "variant_2",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "records_after": [
+          {
+            "env_idx": 0,
+            "scheme_id": "variant_1",
+            "episode_index": 2,
+            "catalog_version": "meal-preparation-v1"
+          },
+          {
+            "env_idx": 1,
+            "scheme_id": "original",
+            "episode_index": 3,
+            "catalog_version": "meal-preparation-v1"
+          }
+        ],
+        "checked_material_roles": [
+          "box/box_base",
+          "box/box_lid",
+          "box/inner_floor",
+          "bread/Material.052",
+          "pizza_plate/plate_bottom",
+          "pizza_plate/plate_top",
+          "round_ball_food/default.012",
+          "spoon/grip",
+          "spoon/wire_140088225"
+        ]
+      }
+    }
+  },
+  "baseline": {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "enabled": false,
+    "num_envs": 2,
+    "construct_ms": {
+      "samples": 1,
+      "median_ms": 4576.678313314915,
+      "min_ms": 4576.678313314915,
+      "max_ms": 4576.678313314915
+    },
+    "partial_reset_rgb_ms": {
+      "samples": 20,
+      "median_ms": 44.434367679059505,
+      "min_ms": 43.92242804169655,
+      "max_ms": 45.92551104724407
+    },
+    "step_rgb_ms": {
+      "samples": 30,
+      "median_ms": 653.8646416738629,
+      "min_ms": 648.9886175841093,
+      "max_ms": 656.7166522145271
+    },
+    "human_render_ms": {
+      "samples": 20,
+      "median_ms": 1.7157113179564476,
+      "min_ms": 1.713283360004425,
+      "max_ms": 1.7400942742824554
+    },
+    "torch_cuda_peak_bytes": 9339904,
+    "pid_gpu_mib_by_phase": {
+      "construction": 2011,
+      "reset": 2011,
+      "warm": 2047,
+      "end": 2047
+    }
+  },
+  "enabled": {
+    "task": "MealPreparationLong-Sharpa-v1",
+    "enabled": true,
+    "num_envs": 2,
+    "construct_ms": {
+      "samples": 1,
+      "median_ms": 6315.577294677496,
+      "min_ms": 6315.577294677496,
+      "max_ms": 6315.577294677496
+    },
+    "partial_reset_rgb_ms": {
+      "samples": 20,
+      "median_ms": 53.792474791407585,
+      "min_ms": 53.31365577876568,
+      "max_ms": 103.08746807277203
+    },
+    "step_rgb_ms": {
+      "samples": 30,
+      "median_ms": 655.9160863980651,
+      "min_ms": 651.9114132970572,
+      "max_ms": 658.6617305874825
+    },
+    "human_render_ms": {
+      "samples": 20,
+      "median_ms": 1.7157159745693207,
+      "min_ms": 1.7114318907260895,
+      "max_ms": 1.7378740012645721
+    },
+    "torch_cuda_peak_bytes": 9339904,
+    "pid_gpu_mib_by_phase": {
+      "construction": 2011,
+      "reset": 2011,
+      "warm": 2047,
+      "end": 2047
+    }
+  }
+}

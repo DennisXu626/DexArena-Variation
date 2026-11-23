@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-17",
+  "scope": "Read-only original asset audit, not runtime original parameters",
+  "provenance": {
+    "dataset_repository": "SIPAIR/DexArena",
+    "revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+    "dataset_path": "assets/task_object_meshes/pipette/mobility.urdf",
+    "git_blob_sha1": "ac6fef0b1e2c86d65b039eef48e9cdcdf07fccca",
+    "urdf_sha256": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+    "readme_sha256": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+    "verified_by_coordinator": true,
+    "readme_upstream": {
+      "repository": "https://github.com/Jianshu-Hu/RoboDex",
+      "branch": "dxy/process-simulation-env",
+      "commit": "a2fbf4ef4f32014967597dc167fd2765bf315d97",
+      "path": "task/assets/pipette/mobility.urdf",
+      "blob": "46f861041c53f1303173c96fddd71e323c30bf1c",
+      "adaptation": "The acquired asset already uses plunger axis 0 0 -1; not changed here"
+    },
+    "redistribution": "Original files stay Git-ignored; README states provenance, no license grant inferred"
+  },
+  "links": [
+    {
+      "name": "base",
+      "visuals": [
+        {
+          "index": 0,
+          "primitive": "cylinder",
+          "material": "body",
+          "declared_rgba_inspection_only": [
+            0.92,
+            0.94,
+            0.96,
+            1.0
+          ]
+        },
+        {
+          "index": 1,
+          "primitive": "cylinder",
+          "material": "rear_grip",
+          "declared_rgba_inspection_only": [
+            0.78,
+            0.82,
+            0.86,
+            1.0
+          ]
+        },
+        {
+          "index": 2,
+          "primitive": "cylinder",
+          "material": "shoulder",
+          "declared_rgba_inspection_only": [
+            0.28,
+            0.36,
+            0.42,
+            1.0
+          ]
+        },
+        {
+          "index": 3,
+          "primitive": "cylinder",
+          "material": "nozzle",
+          "declared_rgba_inspection_only": [
+            0.72,
+            0.78,
+            0.82,
+            1.0
+          ]
+        }
+      ],
+      "collisions": 4,
+      "declared_mass_kg": 0.08
+    },
+    {
+      "name": "tip",
+      "visuals": [
+        {
+          "index": 0,
+          "primitive": "cylinder",
+          "material": "tipmat",
+          "declared_rgba_inspection_only": [
+            0.72,
+            0.88,
+            0.98,
+            1.0
+          ]
+        }
+      ],
+      "collisions": 1,
+      "declared_mass_kg": 0.01
+    },
+    {
+      "name": "plunger",
+      "visuals": [
+        {
+          "index": 0,
+          "primitive": "cylinder",
+          "material": "plungermat",
+          "declared_rgba_inspection_only": [
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "collisions": 1,
+      "declared_mass_kg": 0.01
+    }
+  ],
+  "joints": [
+    {
+      "name": "tip_fixed",
+      "type": "fixed",
+      "parent": "base",
+      "child": "tip",
+      "axis": null,
+      "limit": null
+    },
+    {
+      "name": "plunger_joint",
+      "type": "prismatic",
+      "parent": "base",
+      "child": "plunger",
+      "axis": "0 0 -1",
+      "limit": {
+        "lower": "0",
+        "upper": "0.015",
+        "effort": "20",
+        "velocity": "1"
+      }
+    }
+  ],
+  "external_meshes_or_textures": 0,
+  "uv_files": [],
+  "labels_or_graduations_defined": false,
+  "all_declared_alpha": 1,
+  "original_pbr_policy": "Capture actual native loader values; do not guess unspecified PBR",
+  "task_grip_extension": {
+    "source": "tasks/pipette_transfer/pipette_transfer_long.py::_lengthen_pipette_grip",
+    "calls_per_fresh_builder": 1,
+    "main_length_m": 0.16,
+    "main_center_z_m": 0.02,
+    "rear_center_z_m": 0.1,
+    "plunger_parent_z_m": 0.075
+  }
+}

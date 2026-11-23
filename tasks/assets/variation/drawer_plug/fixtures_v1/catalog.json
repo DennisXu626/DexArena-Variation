@@ -1,0 +1,1423 @@
+{
+  "version": "drawer-socket-appearance-v1",
+  "colour_space": "linear RGB for base_color; source texture upload follows its sRGB flag",
+  "schemes": {
+    "original": {},
+    "warm_white": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.86,
+            0.82,
+            0.75,
+            1
+          ],
+          "roughness": 0.62,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.86,
+            0.82,
+            0.75,
+            1
+          ],
+          "roughness": 0.62,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.82,
+            0.78,
+            0.71,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.82,
+            0.78,
+            0.71,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.765,
+            0.622,
+            0.428,
+            1
+          ],
+          "roughness": 0.52,
+          "metallic": 0,
+          "texture_mode": "oak_tone",
+          "source_saturation": 0.7,
+          "source_gain": [
+            0.9,
+            1.1,
+            1.32
+          ]
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.58,
+            0.59,
+            0.59,
+            1
+          ],
+          "roughness": 0.67,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.027,
+            0.027,
+            0.029,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.87,
+            0.84,
+            0.77,
+            1
+          ],
+          "roughness": 0.4,
+          "metallic": 0
+        }
+      }
+    },
+    "neutral_grey": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.088,
+            0.093,
+            0.102,
+            1
+          ],
+          "roughness": 0.55,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.088,
+            0.093,
+            0.102,
+            1
+          ],
+          "roughness": 0.55,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.26,
+            0.275,
+            0.29,
+            1
+          ],
+          "roughness": 0.64,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.26,
+            0.275,
+            0.29,
+            1
+          ],
+          "roughness": 0.64,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.55,
+            0.53,
+            0.5,
+            1
+          ],
+          "roughness": 0.66,
+          "metallic": 0
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.81,
+            0.78,
+            0.7,
+            1
+          ],
+          "roughness": 0.68,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.7,
+            0.53,
+            0.36,
+            1
+          ],
+          "roughness": 0.47,
+          "metallic": 0.8
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.055,
+            0.06,
+            0.064,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        }
+      }
+    },
+    "ash_greige": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.4019777798321958,
+            0.35153259950043936,
+            0.30946892281750854,
+            1
+          ],
+          "roughness": 0.63,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.4019777798321958,
+            0.35153259950043936,
+            0.30946892281750854,
+            1
+          ],
+          "roughness": 0.63,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.5711248294648731,
+            0.4910208498478356,
+            0.41254261348390375,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.5711248294648731,
+            0.4910208498478356,
+            0.41254261348390375,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.5520114015120001,
+            0.3419144249086609,
+            0.1714411007328226,
+            1
+          ],
+          "roughness": 0.63,
+          "metallic": 0,
+          "texture_mode": "grain_ash"
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.7454042095403874,
+            0.6307571363461468,
+            0.45078578283822346,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.7454042095403874,
+            0.6307571363461468,
+            0.45078578283822346,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.7454042095403874,
+            0.6307571363461468,
+            0.45078578283822346,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.7454042095403874,
+            0.6307571363461468,
+            0.45078578283822346,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.20155625379439707,
+            0.184474994500441,
+            0.1651321945016676,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.6938717612919899,
+            0.6444796819705821,
+            0.5647115057049292,
+            1
+          ],
+          "roughness": 0.63,
+          "metallic": 0
+        }
+      }
+    },
+    "walnut_birch": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.12743768043564743,
+            0.06847816984440017,
+            0.05126945837404324,
+            1
+          ],
+          "roughness": 0.44,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.12743768043564743,
+            0.06847816984440017,
+            0.05126945837404324,
+            1
+          ],
+          "roughness": 0.44,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.23455058216100522,
+            0.14126329114027164,
+            0.0953074666309647,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.23455058216100522,
+            0.14126329114027164,
+            0.0953074666309647,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.17464740365558504,
+            0.06847816984440017,
+            0.03433980680868217,
+            1
+          ],
+          "roughness": 0.44,
+          "metallic": 0,
+          "texture_mode": "grain_walnut"
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.7605245046752924,
+            0.6514056374198242,
+            0.4396571738409188,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.7605245046752924,
+            0.6514056374198242,
+            0.4396571738409188,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.7605245046752924,
+            0.6514056374198242,
+            0.4396571738409188,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.7605245046752924,
+            0.6514056374198242,
+            0.4396571738409188,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.0382043715953465,
+            0.027320891639074894,
+            0.02217388479338738,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.77
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.4232676699860717,
+            0.4396571738409188,
+            0.4072402119017367,
+            1
+          ],
+          "roughness": 0.44,
+          "metallic": 0
+        }
+      }
+    },
+    "mist_blue": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.06124605423161761,
+            0.10461648409110419,
+            0.14995978981060856,
+            1
+          ],
+          "roughness": 0.5,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.06124605423161761,
+            0.10461648409110419,
+            0.14995978981060856,
+            1
+          ],
+          "roughness": 0.5,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.45641102318040466,
+            0.5271151257058131,
+            0.5647115057049292,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.45641102318040466,
+            0.5271151257058131,
+            0.5647115057049292,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.1651321945016676,
+            0.24228112246555486,
+            0.31398871337571754,
+            1
+          ],
+          "roughness": 0.5,
+          "metallic": 0
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.5711248294648731,
+            0.6375968739940326,
+            0.6375968739940326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.5711248294648731,
+            0.6375968739940326,
+            0.6375968739940326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.5711248294648731,
+            0.6375968739940326,
+            0.6375968739940326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.5711248294648731,
+            0.6375968739940326,
+            0.6375968739940326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.5394794890121072,
+            0.5583403896342679,
+            0.5775804404296506,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.82
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.12743768043564743,
+            0.17464740365558504,
+            0.24620132670783548,
+            1
+          ],
+          "roughness": 0.5,
+          "metallic": 0
+        }
+      }
+    },
+    "olive_smoke": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.03433980680868217,
+            0.04817182422688942,
+            0.03433980680868217,
+            1
+          ],
+          "roughness": 0.65,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.03433980680868217,
+            0.04817182422688942,
+            0.03433980680868217,
+            1
+          ],
+          "roughness": 0.65,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.18116424424986022,
+            0.19120168274079138,
+            0.10946171077829933,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.18116424424986022,
+            0.19120168274079138,
+            0.10946171077829933,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.27467731206038465,
+            0.17788841598362912,
+            0.11443537382697373,
+            1
+          ],
+          "roughness": 0.65,
+          "metallic": 0,
+          "texture_mode": "grain_walnut"
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.5271151257058131,
+            0.5209955732043543,
+            0.39157247774972326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.5271151257058131,
+            0.5209955732043543,
+            0.39157247774972326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.5271151257058131,
+            0.5209955732043543,
+            0.39157247774972326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.5271151257058131,
+            0.5209955732043543,
+            0.39157247774972326,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.027320891639074894,
+            0.03189603307301153,
+            0.026241221894849898,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.35
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.24228112246555486,
+            0.2874408377269175,
+            0.20155625379439707,
+            1
+          ],
+          "roughness": 0.65,
+          "metallic": 0
+        }
+      }
+    },
+    "cream_copper": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.8148465722161012,
+            0.6583748172794485,
+            0.5028864580325687,
+            1
+          ],
+          "roughness": 0.34,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.8148465722161012,
+            0.6583748172794485,
+            0.5028864580325687,
+            1
+          ],
+          "roughness": 0.34,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.6583748172794485,
+            0.4851499400560704,
+            0.3712376804741491,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.6583748172794485,
+            0.4851499400560704,
+            0.3712376804741491,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.846873231509858,
+            0.7083757798916868,
+            0.5520114015120001,
+            1
+          ],
+          "roughness": 0.34,
+          "metallic": 0
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.4286904966139066,
+            0.35153259950043936,
+            0.31398871337571754,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.4286904966139066,
+            0.35153259950043936,
+            0.31398871337571754,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.4286904966139066,
+            0.35153259950043936,
+            0.31398871337571754,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.4286904966139066,
+            0.35153259950043936,
+            0.31398871337571754,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.3762621229909065,
+            0.14412847085805777,
+            0.0822827071298148,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.76
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.7083757798916868,
+            0.5906188409193369,
+            0.4793201831008268,
+            1
+          ],
+          "roughness": 0.34,
+          "metallic": 0
+        }
+      }
+    },
+    "terracotta_oak": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.3762621229909065,
+            0.12477181756095049,
+            0.06847816984440017,
+            1
+          ],
+          "roughness": 0.58,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.3762621229909065,
+            0.12477181756095049,
+            0.06847816984440017,
+            1
+          ],
+          "roughness": 0.58,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.6795424696330938,
+            0.4910208498478356,
+            0.3277780980565422,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.6795424696330938,
+            0.4910208498478356,
+            0.3277780980565422,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.5775804404296506,
+            0.3613067797835095,
+            0.1714411007328226,
+            1
+          ],
+          "roughness": 0.58,
+          "metallic": 0,
+          "texture_mode": "grain_oak"
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.7083757798916868,
+            0.6514056374198242,
+            0.4910208498478356,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.7083757798916868,
+            0.6514056374198242,
+            0.4910208498478356,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.7083757798916868,
+            0.6514056374198242,
+            0.4910208498478356,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.7083757798916868,
+            0.6514056374198242,
+            0.4910208498478356,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.030713443732993635,
+            0.02217388479338738,
+            0.01599629336550963,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.43
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.23074004852434915,
+            0.11443537382697373,
+            0.09305896284668745,
+            1
+          ],
+          "roughness": 0.58,
+          "metallic": 0
+        }
+      }
+    },
+    "midnight_linen": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.02217388479338738,
+            0.027320891639074894,
+            0.0382043715953465,
+            1
+          ],
+          "roughness": 0.33,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.02217388479338738,
+            0.027320891639074894,
+            0.0382043715953465,
+            1
+          ],
+          "roughness": 0.33,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.06124605423161761,
+            0.07818742180518633,
+            0.1119324278369056,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.06124605423161761,
+            0.07818742180518633,
+            0.1119324278369056,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.030713443732993635,
+            0.04817182422688942,
+            0.08437621154414882,
+            1
+          ],
+          "roughness": 0.33,
+          "metallic": 0
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.6514056374198242,
+            0.6239603916750761,
+            0.5209955732043543,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.6514056374198242,
+            0.6239603916750761,
+            0.5209955732043543,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.6514056374198242,
+            0.6239603916750761,
+            0.5209955732043543,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.6514056374198242,
+            0.6239603916750761,
+            0.5209955732043543,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.6172065624196511,
+            0.5457244613701866,
+            0.41254261348390375,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.66
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.0295568344378088,
+            0.042311410620809675,
+            0.07618538148130785,
+            1
+          ],
+          "roughness": 0.33,
+          "metallic": 0
+        }
+      }
+    },
+    "birch_plum": {
+      "drawer": {
+        "top": {
+          "base_color": [
+            0.6514056374198242,
+            0.5088813208549338,
+            0.31854677812509186,
+            1
+          ],
+          "roughness": 0.72,
+          "metallic": 0
+        },
+        "top_front_trim": {
+          "base_color": [
+            0.6514056374198242,
+            0.5088813208549338,
+            0.31854677812509186,
+            1
+          ],
+          "roughness": 0.72,
+          "metallic": 0
+        },
+        "cabinet_side": {
+          "base_color": [
+            0.7454042095403874,
+            0.5840784178911641,
+            0.39157247774972326,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "cabinet_frame": {
+          "base_color": [
+            0.7454042095403874,
+            0.5840784178911641,
+            0.39157247774972326,
+            1
+          ],
+          "roughness": 0.6,
+          "metallic": 0
+        },
+        "front": {
+          "base_color": [
+            0.24620132670783548,
+            0.1301364766903643,
+            0.18782077230067787,
+            1
+          ],
+          "roughness": 0.72,
+          "metallic": 0
+        },
+        "inner_front_liner": {
+          "base_color": [
+            0.7230551289219693,
+            0.5840784178911641,
+            0.4620769996544071,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_side": {
+          "base_color": [
+            0.7230551289219693,
+            0.5840784178911641,
+            0.4620769996544071,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_back": {
+          "base_color": [
+            0.7230551289219693,
+            0.5840784178911641,
+            0.4620769996544071,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "inner_bottom": {
+          "base_color": [
+            0.7230551289219693,
+            0.5840784178911641,
+            0.4620769996544071,
+            1
+          ],
+          "roughness": 0.73,
+          "metallic": 0
+        },
+        "handle": {
+          "base_color": [
+            0.21586050011389926,
+            0.11953842798834562,
+            0.08650046203654976,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.54
+        }
+      },
+      "socket": {
+        "shell": {
+          "base_color": [
+            0.3762621229909065,
+            0.32314320911295075,
+            0.39675523072562685,
+            1
+          ],
+          "roughness": 0.72,
+          "metallic": 0
+        }
+      }
+    }
+  },
+  "drawer_mesh_roles": {
+    "original-7.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-6"
+    },
+    "original-6.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-6"
+    },
+    "original-4.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-7"
+    },
+    "original-3.obj": {
+      "link": "link_0",
+      "role": "cabinet_side",
+      "semantic": "vertical_side_panel-7"
+    },
+    "original-15.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "back_panel-8"
+    },
+    "original-10.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "bottom_panel-9"
+    },
+    "original-9.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "bottom_panel-9"
+    },
+    "original-13.obj": {
+      "link": "link_0",
+      "role": "top",
+      "semantic": "top_panel-10"
+    },
+    "original-16.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "frame_horizontal_bar-11"
+    },
+    "original-14.obj": {
+      "link": "link_0",
+      "role": "cabinet_frame",
+      "semantic": "frame_horizontal_bar-12"
+    },
+    "original-25.obj": {
+      "link": "link_1",
+      "role": "inner_front_liner",
+      "semantic": "drawer_front-38"
+    },
+    "original-18.obj": {
+      "link": "link_1",
+      "role": "front",
+      "semantic": "drawer_front-38"
+    },
+    "original-23.obj": {
+      "link": "link_1",
+      "role": "inner_side",
+      "semantic": "drawer_side-39"
+    },
+    "original-24.obj": {
+      "link": "link_1",
+      "role": "inner_side",
+      "semantic": "drawer_side-40"
+    },
+    "original-26.obj": {
+      "link": "link_1",
+      "role": "inner_back",
+      "semantic": "drawer_back-41"
+    },
+    "original-21.obj": {
+      "link": "link_1",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-42"
+    },
+    "original-22.obj": {
+      "link": "link_1",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-42"
+    },
+    "original-30.obj": {
+      "link": "link_1",
+      "role": "handle",
+      "semantic": "handle-35"
+    },
+    "original-31.obj": {
+      "link": "link_1",
+      "role": "handle",
+      "semantic": "handle-35"
+    },
+    "original-32.obj": {
+      "link": "link_1",
+      "role": "handle",
+      "semantic": "handle-35"
+    },
+    "original-27.obj": {
+      "link": "link_1",
+      "role": "slider",
+      "semantic": "drawer_slider-36"
+    },
+    "original-28.obj": {
+      "link": "link_1",
+      "role": "slider",
+      "semantic": "drawer_slider-37"
+    },
+    "original-41.obj": {
+      "link": "link_2",
+      "role": "inner_front_liner",
+      "semantic": "drawer_front-29"
+    },
+    "original-34.obj": {
+      "link": "link_2",
+      "role": "front",
+      "semantic": "drawer_front-29"
+    },
+    "original-40.obj": {
+      "link": "link_2",
+      "role": "inner_side",
+      "semantic": "drawer_side-30"
+    },
+    "original-39.obj": {
+      "link": "link_2",
+      "role": "inner_side",
+      "semantic": "drawer_side-31"
+    },
+    "original-42.obj": {
+      "link": "link_2",
+      "role": "inner_back",
+      "semantic": "drawer_back-32"
+    },
+    "original-37.obj": {
+      "link": "link_2",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-33"
+    },
+    "original-38.obj": {
+      "link": "link_2",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-33"
+    },
+    "original-47.obj": {
+      "link": "link_2",
+      "role": "handle",
+      "semantic": "handle-26"
+    },
+    "original-46.obj": {
+      "link": "link_2",
+      "role": "handle",
+      "semantic": "handle-26"
+    },
+    "original-48.obj": {
+      "link": "link_2",
+      "role": "handle",
+      "semantic": "handle-26"
+    },
+    "original-44.obj": {
+      "link": "link_2",
+      "role": "slider",
+      "semantic": "drawer_slider-27"
+    },
+    "original-43.obj": {
+      "link": "link_2",
+      "role": "slider",
+      "semantic": "drawer_slider-28"
+    },
+    "original-57.obj": {
+      "link": "link_3",
+      "role": "inner_front_liner",
+      "semantic": "drawer_front-20"
+    },
+    "original-12.obj": {
+      "link": "link_3",
+      "role": "top_front_trim",
+      "semantic": "drawer_front-20"
+    },
+    "original-50.obj": {
+      "link": "link_3",
+      "role": "front",
+      "semantic": "drawer_front-20"
+    },
+    "original-55.obj": {
+      "link": "link_3",
+      "role": "inner_side",
+      "semantic": "drawer_side-21"
+    },
+    "original-56.obj": {
+      "link": "link_3",
+      "role": "inner_side",
+      "semantic": "drawer_side-22"
+    },
+    "original-58.obj": {
+      "link": "link_3",
+      "role": "inner_back",
+      "semantic": "drawer_back-23"
+    },
+    "original-53.obj": {
+      "link": "link_3",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-24"
+    },
+    "original-54.obj": {
+      "link": "link_3",
+      "role": "inner_bottom",
+      "semantic": "drawer_bottom-24"
+    },
+    "original-62.obj": {
+      "link": "link_3",
+      "role": "handle",
+      "semantic": "handle-17"
+    },
+    "original-63.obj": {
+      "link": "link_3",
+      "role": "handle",
+      "semantic": "handle-17"
+    },
+    "original-64.obj": {
+      "link": "link_3",
+      "role": "handle",
+      "semantic": "handle-17"
+    },
+    "original-60.obj": {
+      "link": "link_3",
+      "role": "slider",
+      "semantic": "drawer_slider-18"
+    },
+    "original-59.obj": {
+      "link": "link_3",
+      "role": "slider",
+      "semantic": "drawer_slider-19"
+    }
+  },
+  "protected_roles": [
+    "drawer.hardware",
+    "socket.hole"
+  ],
+  "source_urdf_sha256": "8f8f5f4995caf167d3d19d74e6458d842bb1918f20186b1a4ad86c4eeede63c0",
+  "references": "assets/appearance/objects/drawer_plug/drawer/REFERENCES.md",
+  "status": "CPU prepared; parameter estimates, no runtime or visual acceptance",
+  "drawer_revision": "component-materials-v2"
+}

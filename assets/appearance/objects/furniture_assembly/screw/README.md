@@ -1,21 +1,25 @@
-# 螺钉（程序／资产细节待核对）（furniture_assembly.screw）
+# 螺钉（furniture_assembly.screw）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+方案选择、正式接口、复现与验收范围见[家族说明](../../../../../docs/variation/FURNITURE_APPEARANCE.md)。
 
-原始角色：可抓取／可旋拧紧固件。V1资源说明：`固定源码 furniture_assembly_fasten_screw.py 的 _add_wing_screw_head_link：翼形旋钮/杆/套筒程序视觉部件`。
+## 方案与部件
 
-V2 rail_screw中的螺钉子部件；具体长／短任务构造和材质尚待外观适配时核定，不因同名推断所有模型相同。
+唯一参数源：[catalog](variants/v1/catalog.json)；部件对应：[bindings](bindings.json)。original恢复当前任务实例捕获的原生材质；variant_1为深青头部，variant_2为砖红头部。
 
-## 资料与加载边界
+仅绑定screw_head link，导轨rail_body独立处理。grip随方案变化，reference完整保留。
 
-V1对象键：`furniture_assembly/screw`；V2对应键：`rail_screw`。代码调查基准e7d5c49d079153e77da1ce2bfde16edf67ee7fa8；V1视觉资料HF revision b197a198fe50f41d70f563cfa7c88d3cc9f528b6，此revision只说明调查素材，不保证所有后续运行资产等同。
+| 正式短任务 | grip | reference | 合计 |
+|---|---|---|---|
+| InsertRail-Sharpa | 原暗色头部：槽底、侧壁、倒角，17个shape | 4个金色顶帽，4个shape | 21 shape／21 part |
+| FastenScrew-Sharpa | 轮毂、翼形握条，2个shape | 黄铜杆、原有黄铜方向顶条，2个shape | 4 shape／4 part |
 
-- visual/collision rail with articulated revolute screw
+InsertRail的槽内表面随grip变色，保留十字槽视觉／碰撞几何与金色顶帽。FastenScrew的黄铜杆与方向顶条共享原生PBR，合为reference；均保留关节及其余材质字段。
 
-正式任务入口（保留家族区分，不凭同名合并）：FurnitureAssemblyFastenScrew-Sharpa-v1。
+## 任务表示与来源
 
-## 原始来源
+| 正式短任务 | 原生表示 | 来源 |
+|---|---|---|
+| InsertRail-Sharpa | 可搬运导轨上的十字凹槽头 | [_add_screw_head_link](../../../../../tasks/furniture_assembly/furniture_assembly_insert_rail.py) |
+| FastenScrew-Sharpa | 固定导轨上的翼形头 | [_add_wing_screw_head_link](../../../../../tasks/furniture_assembly/furniture_assembly_fasten_screw.py) |
 
-- [tasks/furniture_assembly/furniture_assembly_fasten_screw.py](../../../../../tasks/furniture_assembly/furniture_assembly_fasten_screw.py)
-
-原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+两种表示均为独立转动子link，按当前任务部件分别绑定与恢复。

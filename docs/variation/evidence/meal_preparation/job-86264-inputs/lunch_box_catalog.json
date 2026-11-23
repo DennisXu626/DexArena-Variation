@@ -1,0 +1,24 @@
+{
+  "version": "lunch-box-v2",
+  "schemes": {
+    "original": {
+      "label": "Original"
+    },
+    "mist_blue_matte": {
+      "label": "Mist Blue Matte",
+      "box_base": "#57768A",
+      "box_lid": "#9AB7C6",
+      "inner_floor": "#E8EFF2",
+      "roughness": 0.72,
+      "metallic": 0
+    },
+    "brick_red_satin": {
+      "label": "Brick Red Satin",
+      "box_base": "#A84C3C",
+      "box_lid": "#C48679",
+      "inner_floor": "#D8CDC0",
+      "roughness": 0.38,
+      "metallic": 0
+    }
+  }
+}

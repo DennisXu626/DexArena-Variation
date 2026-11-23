@@ -860,6 +860,8 @@ class TableCleanBase(BaseEnv):
     FLAG_NAMES = ("f_picked", "f_grasp_pan", "f_poured", "f_stow_pan")
 
     def _reset_buffers(self, env_idx):
+        if hasattr(self, "_debris_motion_step"):
+            self._debris_motion_step[env_idx] = -1
         self.stage[env_idx] = 0
         self.hold[env_idx] = 0
         for f in self.FLAG_NAMES + ("success_latched",):
@@ -1070,6 +1072,12 @@ class TableCleanBase(BaseEnv):
         prev = getattr(self, "_debris_local_prev", None)
         if prev is None or len(prev) != len(self.debris):
             prev = [None] * len(self.debris)
+        steps = self._elapsed_steps
+        if not hasattr(self, "_debris_motion_step"):
+            self._debris_motion_step = torch.full_like(steps, -1)
+            self._debris_still = [torch.zeros(self.num_envs, dtype=torch.bool,
+                                             device=self.device) for _ in self.debris]
+        fresh = self._debris_motion_step != steps
         for k, d in enumerate(self.debris):
             rel = (d.pose.p - pose.p).unsqueeze(-1)
             local = torch.matmul(R.transpose(-1, -2), rel).squeeze(-1)
@@ -1077,13 +1085,16 @@ class TableCleanBase(BaseEnv):
                       (local[:, 1] > lo[1]) & (local[:, 1] < hi[1]) &
                       (local[:, 2] > lo[2] - 0.005) &
                       (local[:, 2] < lo[2] + self.PAN_FLOOR_BAND))
+            still = (torch.linalg.norm(local - prev[k], dim=1) < self.PAN_STATIC_STEP
+                     if prev[k] is not None else torch.zeros_like(inside))
+            self._debris_still[k] = torch.where(fresh, still, self._debris_still[k])
             if resting:
-                still = (torch.linalg.norm(local - prev[k], dim=1) < self.PAN_STATIC_STEP
-                         if prev[k] is not None else torch.zeros_like(inside))
-                inside = inside & still
-            prev[k] = local.detach().clone()
+                inside = inside & self._debris_still[k]
+            prev[k] = (local.detach().clone() if prev[k] is None else
+                       torch.where(fresh[:, None], local.detach(), prev[k]))
             n = n + inside.float()
         self._debris_local_prev = prev
+        self._debris_motion_step = steps.clone()
         return n
 
     def _debris_in_bin(self):

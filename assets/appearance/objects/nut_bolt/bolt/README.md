@@ -1,21 +1,9 @@
-# 螺栓（程序生成主体／导入头部）（nut_bolt.bolt）
+# Nut & Bolt / bolt
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+shaft与head可改；tip与thread材质保留。214个视觉记录按原顺序绑定，导入头部必须为单part。
 
-原始角色：可抓取／螺纹装配件。V1资源说明：`screwing/bolt_hex_head.obj 用作头部；shaft、tip、helix 由代码创建`。
+- [唯一材质catalog](variants/v1/catalog.json)：original与两候选，无新增UV或贴图。
+- [绑定与保护规则](bindings.json)：原资产身份、实际表示和角色对应。
+- [正式接口与验收](../../../../../docs/variation/NUT_BOLT_APPEARANCE.md)：默认关闭，三短任务范围。
 
-尚无已验收新外观；原UV、材质槽及阶段绑定须在后续适配时针对实际资产核定，不能将静态图册视为加载证明。
-
-## 资料与加载边界
-
-V1对象键：`nut_bolt/bolt`；V2对应键：`nut_bolt`。代码调查基准e7d5c49d079153e77da1ce2bfde16edf67ee7fa8；V1视觉资料HF revision b197a198fe50f41d70f563cfa7c88d3cc9f528b6，此revision只说明调查素材，不保证所有后续运行资产等同。
-
-- OBJ hex head视觉+convex collision；程序杆体/螺纹；bolt始终是同一dynamic actor，无threaded bolt twin
-
-正式任务入口（保留家族区分，不凭同名合并）：NutBoltPickBolt-Sharpa-v1 ; NutBoltSeatNut-Sharpa-v1 ; NutBoltTurnNut-Sharpa-v1。
-
-## 原始来源
-
-- [tasks/nut_bolt/nut_bolt_long.py](../../../../../tasks/nut_bolt/nut_bolt_long.py)
-
-原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+original恢复本次实际加载材质。三个短任务的正式接入已实现。当前输入的CPU契约检查通过，正式CPU／标准CUDA隔离与真实任务图按新版本重新验收；历史色样或stub不作为运行证据。

@@ -1,0 +1,64 @@
+{
+  "baseline": "00a3695193680e0bfc0d37b8c77986b2fbfb8357",
+  "checks": [
+    {
+      "name": "mouse_static",
+      "command": "python -B tools/variation/check_mouse_101408.py --static",
+      "result": {
+        "status": "passed",
+        "baseline": "00a3695193680e0bfc0d37b8c77986b2fbfb8357",
+        "task_after_removing_appearance_hooks": "AST identical",
+        "Long": "unchanged",
+        "examples": 3,
+        "GPU_seconds": 0,
+        "runtime": "NOT TESTED"
+      }
+    },
+    {
+      "name": "repository_static",
+      "command": "python -B tools/variation/check_static.py",
+      "result": {
+        "status": "passed",
+        "python_syntax_files": 10,
+        "json_configs": 10,
+        "relative_links": 128,
+        "scope": "CPU static only; no environment import or physical verification"
+      }
+    },
+    {
+      "name": "archive",
+      "command": "python -B tools/variation/check_appearance_archive.py",
+      "result": {
+        "status": "passed",
+        "objects": 42,
+        "families": 10,
+        "status_counts": {
+          "accepted_pilot": 3,
+          "pending_adaptation": 35,
+          "no_visual": 3,
+          "not_loaded": 1,
+          "external_pending": 0
+        },
+        "decoded_pngs": 13,
+        "archive_runtime_png_matches": 3,
+        "paired_schemes": 3,
+        "relative_links": 319,
+        "scope": "CPU archive only; no runtime capability or simulation claim"
+      }
+    },
+    {
+      "name": "charger_regression_static",
+      "command": "python -B tools/variation/check_charger_a4_a5.py --static",
+      "result": {
+        "status": "passed",
+        "scope": "AST/JSON only; A4/A5 runtime not tested",
+        "bob_head": "5185f1dd61f2de88ab7d4ada7a2ef77f01e6b207",
+        "success_and_other_existing_methods": "unchanged"
+      }
+    }
+  ],
+  "GPU_seconds": 0,
+  "runtime_checks": "not_started",
+  "asset_binding": "static URDF/OBJ/MTL only; actual SAPIEN binding pending",
+  "scope": "OfficeDeskClickMouse-Sharpa-v1 only"
+}

@@ -19,6 +19,7 @@ cabinet; success additionally requires the pour itself to hold for ten
 consecutive control steps, as in `pour.py` and `ball_grasping.py`.
 """
 
+import copy
 import argparse
 import json
 import sys
@@ -500,16 +501,51 @@ class CabinetPouringLongEnv(BaseEnv):
         num_envs=1,
         reconfiguration_freq=None,
         variation=None,
+        cabinet_appearance=None,
+        family_appearance=None,
         **kwargs,
     ):
         self._bottle_render_membership_dirty = False
+        self._family_appearance = None
+        self._family_liquid = None
+        if family_appearance and family_appearance.get("enabled", False):
+            if type(self).__name__ not in {
+                    "CabinetPouringOpenCabinetEnv", "CabinetPouringPickBottleEnv",
+                    "CabinetPouringUnscrewCapEnv", "CabinetPouringPourBeadsEnv"}:
+                raise ValueError("Family appearance supports the four Cabinet & Pouring short tasks")
+            if ((cabinet_appearance or {}).get("enabled", False)
+                    or (variation or {}).get("appearance", {}).get("enabled", False)
+                    or any("appearance" in cfg for cfg in (variation or {}).get("per_env", {}).values())
+                    or getattr(self, "_pouring_appearance", None) is not None):
+                raise ValueError("Choose family appearance or the independent appearance settings")
+            from tasks.cabinet_pouring.family_appearance import FamilyAppearance
+            loaded = {}
+            if self.has_cabinet:
+                loaded["cabinet"] = "cabinet"
+                cabinet_appearance = {"enabled": True}
+            if self.has_bottle:
+                loaded.update(bottle="bottle", beads="pouring")
+                from tasks.cabinet_pouring.pouring_appearance import PouringAppearance
+                self._family_liquid = PouringAppearance({})
+                variation = {**(variation or {}), "appearance": {"enabled": True}}
+            if self.has_cap:
+                loaded["cap"] = "bottle"
+            if self.has_target:
+                loaded["bowl"] = "pouring"
+            self._family_appearance = FamilyAppearance(family_appearance, num_envs, loaded)
+        self._cabinet_appearance = None
+        if cabinet_appearance and cabinet_appearance.get("enabled", False):
+            if type(self).__name__ not in {"CabinetPouringOpenCabinetEnv", "CabinetPouringPickBottleEnv"}:
+                raise ValueError("Cabinet appearance is supported by OpenCabinet and PickBottle")
+            from tasks.cabinet_pouring.cabinet_appearance import CabinetAppearance
+            self._cabinet_appearance = CabinetAppearance(cabinet_appearance, num_envs)
         self._variation = None
         if variation and any(
             variation.get(feature, {}).get("enabled", False)
             for feature in ("appearance", "initial_pose")
         ):
             from tasks.cabinet_pouring.variation import PilotVariation
-            self._variation = PilotVariation(self, variation, num_envs)
+            self._variation = PilotVariation(self, variation, num_envs, family=self._family_appearance is not None)
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.cabinet_init_xy_noise = float(cabinet_init_xy_noise)
@@ -714,6 +750,37 @@ class CabinetPouringLongEnv(BaseEnv):
             self._load_target()
         if self.has_bottle:
             self._load_particles()
+        if self._family_liquid is not None:
+            self._family_liquid.bind(self.target if self.has_target else None, self.particles)
+        if self._family_appearance is not None and self._variation is not None:
+            self._variation._collect_bindings()
+
+    @property
+    def family_appearance_records(self):
+        """Snapshot of the family choice made for each reset environment."""
+        return copy.deepcopy(self._family_appearance.records) if self._family_appearance else []
+
+    def _finish_family_appearance(self, env_idx, options):
+        if (any(k in options for k in ("cabinet_appearance", "pouring_appearance"))
+                or "appearance" in options.get("variation", {})
+                or any("appearance" in x for x in options.get("variation", {}).get("per_env", {}).values())):
+            raise ValueError("Per-object reset overrides are not allowed in family appearance mode")
+        family = self._family_appearance
+        for i, sid, schemes in family.select(env_idx, options):
+            selected = torch.tensor([i], device=env_idx.device)
+            if self._cabinet_appearance is not None:
+                self._cabinet_appearance.finish_reset(selected,
+                    {"cabinet_appearance": {"scheme_id": schemes["cabinet"]}})
+            if self._family_liquid is not None:
+                self._family_liquid.finish_reset(selected,
+                    {"pouring_appearance": {"scheme_id": schemes["pouring"]}})
+                old = options.get("variation", {})
+                resolved = {**options, "variation": {**old, "appearance": {"scheme_id": schemes["bottle"]}}}
+                if self.has_cap:
+                    self._variation.finish_reset(selected, resolved)
+                else:
+                    self._variation.apply_appearance(selected, resolved)
+            family.record(i, sid, schemes)
 
     def _load_table(self):
         self.table_scene = TableSceneBuilder(
@@ -878,6 +945,8 @@ class CabinetPouringLongEnv(BaseEnv):
         self.cabinet = Articulation.merge(self._cabinets, name="cabinet", merge_links=True)
         self.add_to_state_dict_registry(self.cabinet)
         self.door_link = self.cabinet.links_map["link_0"]
+        if self._cabinet_appearance is not None:
+            self._cabinet_appearance.bind(self._cabinets, CABINET_URDF_PATH)
 
     @staticmethod
     def _set_task_object_motion_limits(obj, max_linear_velocity: float):

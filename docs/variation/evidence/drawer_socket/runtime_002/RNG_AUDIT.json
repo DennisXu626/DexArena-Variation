@@ -1,0 +1,491 @@
+{
+  "stages": [
+    "before_build",
+    "after_build",
+    "after_seeded_reset",
+    "after_unseeded_local_reset_1",
+    "after_unseeded_local_reset_2"
+  ],
+  "first_divergence": null,
+  "all_controlled_sequences_match": true,
+  "tasks": {
+    "OpenDrawer": {
+      "native": {
+        "before_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_seeded_reset": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_unseeded_local_reset_1": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "b69b12f368ce5edee254df2d865b4527b8cc5a1b977fb7574e50bc74ccb55b1c"
+        },
+        "after_unseeded_local_reset_2": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+        }
+      },
+      "branches": {
+        "disabled": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "b69b12f368ce5edee254df2d865b4527b8cc5a1b977fb7574e50bc74ccb55b1c"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          }
+        },
+        "original": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "b69b12f368ce5edee254df2d865b4527b8cc5a1b977fb7574e50bc74ccb55b1c"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          }
+        },
+        "warm_white": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "b69b12f368ce5edee254df2d865b4527b8cc5a1b977fb7574e50bc74ccb55b1c"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          }
+        },
+        "neutral_grey": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "b69b12f368ce5edee254df2d865b4527b8cc5a1b977fb7574e50bc74ccb55b1c"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          }
+        },
+        "native_replay": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "b69b12f368ce5edee254df2d865b4527b8cc5a1b977fb7574e50bc74ccb55b1c"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          }
+        }
+      }
+    },
+    "InsertPlug": {
+      "native": {
+        "before_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_seeded_reset": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_unseeded_local_reset_1": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+        },
+        "after_unseeded_local_reset_2": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+        }
+      },
+      "branches": {
+        "disabled": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        },
+        "original": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        },
+        "warm_white": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        },
+        "neutral_grey": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        }
+      }
+    },
+    "PickCharger": {
+      "native": {
+        "before_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_seeded_reset": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_unseeded_local_reset_1": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "16de521e25deace511b4cb5a1bf58cd0ea98168327444e1059d6213267f5befc"
+        },
+        "after_unseeded_local_reset_2": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "9082d46fdbde66df797a59f23532ca6e74802de25d53ae5dc7bfa928e63b11a1"
+        }
+      },
+      "branches": {
+        "disabled": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "16de521e25deace511b4cb5a1bf58cd0ea98168327444e1059d6213267f5befc"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "9082d46fdbde66df797a59f23532ca6e74802de25d53ae5dc7bfa928e63b11a1"
+          }
+        },
+        "original": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "16de521e25deace511b4cb5a1bf58cd0ea98168327444e1059d6213267f5befc"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "9082d46fdbde66df797a59f23532ca6e74802de25d53ae5dc7bfa928e63b11a1"
+          }
+        },
+        "warm_white": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "16de521e25deace511b4cb5a1bf58cd0ea98168327444e1059d6213267f5befc"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "9082d46fdbde66df797a59f23532ca6e74802de25d53ae5dc7bfa928e63b11a1"
+          }
+        },
+        "neutral_grey": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "16de521e25deace511b4cb5a1bf58cd0ea98168327444e1059d6213267f5befc"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "9082d46fdbde66df797a59f23532ca6e74802de25d53ae5dc7bfa928e63b11a1"
+          }
+        }
+      }
+    },
+    "Long": {
+      "native": {
+        "before_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_build": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_seeded_reset": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+        },
+        "after_unseeded_local_reset_1": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+        },
+        "after_unseeded_local_reset_2": {
+          "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+          "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+        }
+      },
+      "branches": {
+        "disabled": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        },
+        "original": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        },
+        "warm_white": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        },
+        "neutral_grey": {
+          "before_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_build": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_seeded_reset": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "5bcf167f494a957e6f8e74951489e6491a5c5873f314a243672af71d570290c7"
+          },
+          "after_unseeded_local_reset_1": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "159d822e74c4d6c68a29e57209dd2d4fca352bc0713d8d0c99250c63b6f46bcd"
+          },
+          "after_unseeded_local_reset_2": {
+            "cpu": "bc15daf30b44a52a63b27dc8454ac21903d6b61d37272e20b5ff5809784f5dc0",
+            "cuda": "0ab9f6b113d0c11136e95cf9e604bca9fb80d68031035b9512dbdb8846bb1803"
+          }
+        }
+      }
+    }
+  }
+}

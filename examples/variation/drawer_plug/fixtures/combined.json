@@ -1,0 +1,11 @@
+{
+  "drawer_plug_appearance": {
+    "enabled": true,
+    "scheme_id": "neutral_grey"
+  },
+  "charger_appearance": {
+    "enabled": true,
+    "scheme_id": "ivory_matte",
+    "seed": 71
+  }
+}

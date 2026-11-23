@@ -1,0 +1,147 @@
+{
+  "source": "Scoped transcription of the three authenticated Monica job detail receipts",
+  "time_zone": "UTC+08:00 (UI timeline; job log timestamps are UTC)",
+  "allocation_metric": "One named GPU index (G0), one shared shard. Allocated GPU-index seconds = elapsed seconds × named GPU index count. Accelerator-active time is unavailable.",
+  "command_redaction": "Personal job roots and the shared interpreter's absolute path were replaced by placeholders. Slurm node pin is as shown by the receipt's internal sbatch.slurm command.",
+  "jobs": {
+    "86264": {
+      "job_name": "meal-appearance-regression",
+      "final_state": "COMPLETED",
+      "exit_code": "0:0",
+      "submitted_at": "2026-11-16T15:15:01+08:00",
+      "started_at": "2026-11-16T15:15:01+08:00",
+      "ended_at": "2026-11-16T15:16:49+08:00",
+      "elapsed_seconds": 108,
+      "gpu_node": "lyg0295",
+      "gpu_index": 0,
+      "named_gpu_index_count": 1,
+      "shards": 1,
+      "allocated_gpu_index_seconds": 108,
+      "allocated_tres": "billing=2,cpu=2,gres/shard=1,node=1",
+      "in_flight_evidence": {
+        "pending_seconds_at_receipt_resolution": 0,
+        "running_evidence": "Submit/start/end timeline and task log markers",
+        "transition_history": "无法追溯"
+      },
+      "workdir": "${BASE_RUN}",
+      "receipt_command": "/opt/slurm/bin/sbatch.slurm --nodelist=lyg0295 -N1 --parsable --gres=gpu:0 --export=NONE --time=00:12:00 --job-name=meal-appearance-regression -o ${MEAL_REGRESSION}/slurm-%j.out --wrap=/usr/bin/env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 ROBOCASA_ASSET_DIR=${ROBOCASA_ASSET_DIR} ${PYTHON} -B ${MEAL_REGRESSION}/check_meal.py",
+      "retained": [
+        "job log",
+        "report.json",
+        "script and both catalogs",
+        "task PNG frames",
+        "generated preview textures"
+      ],
+      "historical_cleanup_record": "无法追溯",
+      "log_sha256": "622b76c2b4fb53f6fdf956ca1b68db2c3eb5adc0c18e7150cb9cd47eae52eb7f",
+      "verbatim_log_result_lines": [
+        "PASS open 0 replay (94, True, True)",
+        "PASS open 1 replay (94, True, True)",
+        "PASS open 2 replay (94, True, True)",
+        "PASS bread 0 replay (148, False, False)",
+        "PASS bread 1 replay (148, False, False)",
+        "PASS bread 2 replay (148, False, False)",
+        "PASS tomato 0 replay (430, False, False)",
+        "PASS tomato 1 replay (430, False, False)",
+        "PASS tomato 2 replay (430, False, False)",
+        "PASS long 0 replay None",
+        "PASS long 1 replay None",
+        "PASS long 2 replay None",
+        "ALL STAGES PASSED"
+      ],
+      "log_asset_selection_lines": [
+        "[MealPreparation] Using RoboCasa bread asset: ROBOCASA_ASSET_DIR/objaverse/bagel/bagel_5",
+        "[MealPreparation] Using RoboCasa plate asset: ROBOCASA_ASSET_DIR/objaverse/plate/plate_0",
+        "[MealPreparation] Using RoboCasa round food asset for ball_food: ROBOCASA_ASSET_DIR/objaverse/tomato/tomato_2",
+        "[MealPreparation] Using RoboCasa spoon asset: ROBOCASA_ASSET_DIR/objaverse/spoon/spoon_16",
+        "[MealPreparation] Using procedural hollow hinged box. Set MEAL_PREP_BOX_ASSET_DIR or PARTNET_MOBILITY_ASSET_DIR to use a local PartNet/SAPIEN box."
+      ]
+    },
+    "86563": {
+      "job_name": "meal-parallel-a5",
+      "final_state": "COMPLETED",
+      "exit_code": "0:0",
+      "submitted_at": "2026-11-16T16:17:43+08:00",
+      "started_at": "2026-11-16T16:17:43+08:00",
+      "ended_at": "2026-11-16T16:19:41+08:00",
+      "elapsed_seconds": 118,
+      "gpu_node": "lyg0295",
+      "gpu_index": 0,
+      "named_gpu_index_count": 1,
+      "shards": 1,
+      "allocated_gpu_index_seconds": 118,
+      "allocated_tres": "billing=2,cpu=2,gres/shard=1,node=1",
+      "in_flight_evidence": {
+        "pending_seconds_at_receipt_resolution": 0,
+        "running_evidence": "Submit/start/end timeline and task log markers",
+        "transition_history": "无法追溯"
+      },
+      "workdir": "${MEAL_PARALLEL}/run",
+      "receipt_command": "/opt/slurm/bin/sbatch.slurm --nodelist=lyg0295 -N1 --parsable --gres=gpu:0 --export=NONE --time=00:10:00 --job-name=meal-parallel-a5 -o ${MEAL_PARALLEL}/job-%j.log --wrap=/usr/bin/bash ${MEAL_PARALLEL}/upload/job.sh",
+      "retained": [
+        "job log",
+        "isolation, baseline and enabled JSON",
+        "comparison PNG frames",
+        "shared staged run tree and upload/job.sh"
+      ],
+      "historical_cleanup_record": "无法追溯",
+      "log_sha256": "83f293cfc97f0dd8f1309a5e312a067014433753fbb28e92d9231f9c8b37bb40",
+      "verbatim_log_result_lines": [
+        "PASS open",
+        "PASS bread",
+        "PASS tomato",
+        "PASS long"
+      ],
+      "log_asset_selection_lines": [
+        "[MealPreparation] Using RoboCasa bread asset: ROBOCASA_ASSET_DIR/objaverse/bagel/bagel_5",
+        "[MealPreparation] Using RoboCasa plate asset: ROBOCASA_ASSET_DIR/objaverse/plate/plate_0",
+        "[MealPreparation] Using RoboCasa round food asset for ball_food: ROBOCASA_ASSET_DIR/objaverse/tomato/tomato_2",
+        "[MealPreparation] Using RoboCasa spoon asset: ROBOCASA_ASSET_DIR/objaverse/spoon/spoon_16",
+        "[MealPreparation] Using procedural hollow hinged box. Set MEAL_PREP_BOX_ASSET_DIR or PARTNET_MOBILITY_ASSET_DIR to use a local PartNet/SAPIEN box."
+      ]
+    },
+    "86898": {
+      "job_name": "meal-original-restore",
+      "final_state": "COMPLETED",
+      "exit_code": "0:0",
+      "submitted_at": "2026-11-16T17:22:19+08:00",
+      "started_at": "2026-11-16T17:22:19+08:00",
+      "ended_at": "2026-11-16T17:23:11+08:00",
+      "elapsed_seconds": 52,
+      "gpu_node": "lyg0295",
+      "gpu_index": 0,
+      "named_gpu_index_count": 1,
+      "shards": 1,
+      "allocated_gpu_index_seconds": 52,
+      "allocated_tres": "billing=2,cpu=2,gres/shard=1,node=1",
+      "in_flight_evidence": {
+        "pending_seconds_at_receipt_resolution": 0,
+        "running_evidence": "Submit/start/end timeline and task log markers",
+        "transition_history": "无法追溯"
+      },
+      "workdir": "${MEAL_PARALLEL}/run",
+      "receipt_command": "/opt/slurm/bin/sbatch.slurm --nodelist=lyg0295 -N1 --parsable --gres=gpu:0 --export=NONE --time=00:06:00 --job-name=meal-original-restore -o ${MEAL_PARALLEL}/restore-%j.out --wrap=/usr/bin/env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 ROBOCASA_ASSET_DIR=${ROBOCASA_ASSET_DIR} ${PYTHON} -B ${MEAL_PARALLEL}/upload/check_meal_restore_original.py --output ${MEAL_PARALLEL}/restore-v1",
+      "retained": [
+        "job log",
+        "restore-v1 per-stage JSON and summary",
+        "native, variant and restored PNG frames",
+        "restore check script"
+      ],
+      "historical_cleanup_record": "无法追溯",
+      "log_sha256": "a88462745c8124d2c9b856557d5a774cbe381eddc3180765e67ef9aa10e10de6",
+      "verbatim_log_result_lines": [
+        "PASS open {'slots': 12, 'variant_slots_changed': 11, 'native_vs_restored_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'human': {'changed_channels': 0, 'max_abs_channel_delta': 0}}, 'env0_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'wrist_camera': {'changed_channels': 1, 'max_abs_channel_delta': 1}, 'human': {'changed_channels': 1, 'max_abs_channel_delta': 1}}}",
+        "PASS bread {'slots': 22, 'variant_slots_changed': 15, 'native_vs_restored_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'human': {'changed_channels': 0, 'max_abs_channel_delta': 0}}, 'env0_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'wrist_camera': {'changed_channels': 1, 'max_abs_channel_delta': 1}, 'human': {'changed_channels': 1, 'max_abs_channel_delta': 1}}}",
+        "PASS tomato {'slots': 22, 'variant_slots_changed': 15, 'native_vs_restored_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'human': {'changed_channels': 0, 'max_abs_channel_delta': 0}}, 'env0_rgb': {'base_camera': {'changed_channels': 1, 'max_abs_channel_delta': 1}, 'wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'human': {'changed_channels': 0, 'max_abs_channel_delta': 0}}}",
+        "PASS long {'slots': 22, 'variant_slots_changed': 15, 'native_vs_restored_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'left_wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'right_wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'human': {'changed_channels': 0, 'max_abs_channel_delta': 0}}, 'env0_rgb': {'base_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'left_wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'right_wrist_camera': {'changed_channels': 0, 'max_abs_channel_delta': 0}, 'human': {'changed_channels': 0, 'max_abs_channel_delta': 0}}}"
+      ],
+      "log_asset_selection_lines": [
+        "[MealPreparation] Using RoboCasa bread asset: ROBOCASA_ASSET_DIR/objaverse/bagel/bagel_5",
+        "[MealPreparation] Using RoboCasa plate asset: ROBOCASA_ASSET_DIR/objaverse/plate/plate_0",
+        "[MealPreparation] Using RoboCasa round food asset for ball_food: ROBOCASA_ASSET_DIR/objaverse/tomato/tomato_2",
+        "[MealPreparation] Using RoboCasa spoon asset: ROBOCASA_ASSET_DIR/objaverse/spoon/spoon_16",
+        "[MealPreparation] Using procedural hollow hinged box. Set MEAL_PREP_BOX_ASSET_DIR or PARTNET_MOBILITY_ASSET_DIR to use a local PartNet/SAPIEN box."
+      ]
+    }
+  }
+}

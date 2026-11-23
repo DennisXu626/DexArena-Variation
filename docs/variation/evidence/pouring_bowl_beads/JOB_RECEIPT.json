@@ -1,0 +1,19 @@
+{
+  "job_id": "123817",
+  "tested_head": "59496b28d849df6c6e6a0d74c0a08accbf42f47b",
+  "node": "lyg0295",
+  "physical_gpu": 7,
+  "slurm_state": "COMPLETED",
+  "exit_code": "0:0",
+  "allocated_gpu_seconds": 21,
+  "application_seconds": 18.930712597444654,
+  "max_gpu_seconds": 240,
+  "application_limit_seconds": 205,
+  "attempts": 1,
+  "requeue": 0,
+  "restarts": 0,
+  "sampled_peak_bytes": 102020364,
+  "sampled_stop_bytes": 536870912,
+  "residual_owned_processes": 0,
+  "residual_visible_job_cgroup_members": 0
+}

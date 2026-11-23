@@ -98,6 +98,7 @@ class Environment(Pick):
         self._pan_lo, self._pan_hi = [-.1, -.1, 0], [.1, .1, .05]
         self._debris_local_prev = [torch.tensor([[.01, 0, .01]] * 2) for _ in range(3)]
         arm = Arm()
+        arm.scene = self.scene
         arm.qpos = torch.zeros(2, 7)
         arm.device = 'cpu'
         arm.config = SimpleNamespace(stiffness=[1.] * 7, force_limit=[1.] * 7)
@@ -154,6 +155,8 @@ class IsolationTests(unittest.TestCase):
                         rng = copy.deepcopy(env._batched_episode_rng[other]).randint(2**31)
                         main_rng = copy.deepcopy(env._batched_main_rng[other]).randint(2**31)
                         obs, info = env.reset(options={'env_idx': torch.tensor([selected])})
+                        self.assertEqual(info['n_in_pan'][other].item(), 0)
+                        self.assertEqual(obs['extra']['n_in_pan'][other].item(), 0)
                         arm = env.agent.controller.controllers['arm']
                         records.append(dict(kind='unseeded_partial', appearance=appearance, selected=selected,
                             enhanced_determinism=deterministic, unselected_target=arm._target_qpos[other, 0].item(),
@@ -171,6 +174,7 @@ class IsolationTests(unittest.TestCase):
                         self.assertEqual(copy.deepcopy(env._batched_episode_rng[other]).randint(2**31), rng)
                         self.assertEqual(copy.deepcopy(env._batched_main_rng[other]).randint(2**31), main_rng)
                         self.assertFalse(hasattr(env, '_partial_reset_restore'))
+                        self.assertEqual(env.get_info()['n_in_pan'][other].item(), 0)
                         env._elapsed_steps += 1  # next simulated time boundary
                         env.get_info()
                         self.assertEqual(env.stage[other].item(), 1)

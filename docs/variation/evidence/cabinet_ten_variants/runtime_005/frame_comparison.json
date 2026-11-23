@@ -1,0 +1,32 @@
+{
+  "job": "128997",
+  "stage": "free",
+  "camera_intrinsics_extrinsics_check_passed_before_mask": true,
+  "attached_frame_sha256_matches_128943": true,
+  "changed_full_frame_pixels": 669177,
+  "full_frame_pixels": 691200,
+  "changed_pixels_in_attached_label_region": 1487,
+  "attached_label_pixels": 1487,
+  "free_source_fixed_entity_pixels": 0,
+  "free_projected_label_pixels": 2669,
+  "free_label_entity_overlap_pixels": 0,
+  "free_cap_twin_reached": false,
+  "raw_frames": {
+    "attached": {
+      "file": "UnscrewCap_engineered_attached.png",
+      "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+      "size_wh": [
+        960,
+        720
+      ]
+    },
+    "free": {
+      "file": "UnscrewCap_engineered_free.png",
+      "sha256": "7ba69fbf055d803cb77652c976d1d1246f1e39d0527c5416cf22c576778878d3",
+      "size_wh": [
+        960,
+        720
+      ]
+    }
+  }
+}

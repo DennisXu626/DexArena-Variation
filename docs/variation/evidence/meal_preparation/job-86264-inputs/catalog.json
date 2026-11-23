@@ -1,0 +1,117 @@
+{
+  "plate": {
+    "original": {
+      "label": "Original"
+    },
+    "cobalt_glaze": {
+      "label": "Cobalt Blue Glaze",
+      "materials": {
+        "plate_top": {
+          "color": "#274A88",
+          "roughness": 0.28,
+          "metallic": 0
+        },
+        "plate_bottom": {
+          "color": "#A5B4C4",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      }
+    },
+    "green_rim": {
+      "label": "Warm White / Green Rim",
+      "materials": {
+        "plate_top": {
+          "color": "#FFFFFF",
+          "roughness": 0.48,
+          "metallic": 0,
+          "texture": "plate_green_rim.png"
+        },
+        "plate_bottom": {
+          "color": "#F3EAD6",
+          "roughness": 0.48,
+          "metallic": 0
+        }
+      }
+    }
+  },
+  "spoon": {
+    "original": {
+      "label": "Original"
+    },
+    "silver_navy": {
+      "label": "Polished Silver / Navy Grip",
+      "grip": "#294875",
+      "materials": {
+        "wire_140088225": {
+          "color": "#CBD0D6",
+          "roughness": 0.24,
+          "metallic": 0.83
+        }
+      }
+    },
+    "graphite_orange": {
+      "label": "Graphite / Orange Grip",
+      "grip": "#D38A5C",
+      "materials": {
+        "wire_140088225": {
+          "color": "#56606B",
+          "roughness": 0.48,
+          "metallic": 0.72
+        }
+      }
+    }
+  },
+  "bagel": {
+    "original": {
+      "label": "Original"
+    },
+    "light_toast": {
+      "label": "Light Golden Toast",
+      "materials": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_light_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      }
+    },
+    "dark_toast": {
+      "label": "Dark Chestnut Toast",
+      "materials": {
+        "Material.052": {
+          "color": "#FFFFFF",
+          "texture": "bagel_dark_generated.png",
+          "roughness": 0.76,
+          "metallic": 0
+        }
+      }
+    }
+  },
+  "tomato": {
+    "original": {
+      "label": "Original"
+    },
+    "golden": {
+      "label": "Golden Tomato",
+      "materials": {
+        "default.012": {
+          "color": "#EDAE36",
+          "roughness": 0.42,
+          "metallic": 0
+        }
+      }
+    },
+    "purple_red": {
+      "label": "Purple-Red Tomato",
+      "materials": {
+        "default.012": {
+          "color": "#88284C",
+          "roughness": 0.56,
+          "metallic": 0
+        }
+      }
+    }
+  }
+}

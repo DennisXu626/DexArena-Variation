@@ -1,0 +1,14 @@
+[
+  {
+    "script": "check_static.py",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 60, \"json_configs\": 10, \"relative_links\": 327, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+    "stderr": ""
+  },
+  {
+    "script": "check_appearance_archive.py",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 14, \"pending_adaptation\": 21, \"no_visual\": 3, \"not_loaded\": 1, \"implemented_pending_review\": 3, \"external_pending\": 0}, \"decoded_pngs\": 137, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 385, \"pending_appearance_packages\": 6, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n",
+    "stderr": ""
+  }
+]

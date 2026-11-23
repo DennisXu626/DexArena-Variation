@@ -1,0 +1,440 @@
+{
+  "schema": "dexarena-sapien-build-lock-v1",
+  "status": "Build inputs; acceptance is recorded separately",
+  "upstream": {
+    "url": "https://github.com/haosulab/SAPIEN.git",
+    "tag": "3.0.3",
+    "commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+    "submodules": {
+      "3rd_party/sapien-vulkan-2": "2ad24e1e96d88d3dd00fb1a7821ffcef42ab1ed9",
+      "3rd_party/sapien-vulkan-2/3rd_party/googletest": "71140c3ca7a87bb1b5b9c9f1500fea8858cce344",
+      "3rd_party/simsense": "9340b6069ce78ecf0432cd3336ac9b4d296e09e7"
+    },
+    "submodule_urls": {
+      "3rd_party/sapien-vulkan-2": "https://github.com/haosulab/sapien-vulkan-2.git",
+      "3rd_party/sapien-vulkan-2/3rd_party/googletest": "https://github.com/google/googletest.git",
+      "3rd_party/simsense": "https://github.com/haosulab/simsense.git"
+    }
+  },
+  "local_version": "3.0.3+dexarena.gpu1.wininterop5",
+  "patches": [
+    {
+      "file": "patches/0001-indexed-gpu-apply.patch",
+      "group": "common",
+      "sha256": "89013895a06bb1eec1fa06463e3a37c9430159e71ad75896f90ea01f33cc6faf"
+    },
+    {
+      "file": "patches/0002-indexed-capability.patch",
+      "group": "common",
+      "sha256": "4117827f52151de92fb3ae36b59c5a770214b3511c245dc68f1c2117ef51f253"
+    },
+    {
+      "file": "patches/0101-windows-vulkan-cuda.patch",
+      "group": "windows",
+      "sha256": "32b3abfd331830041f1928908bdcddb9766afbc68a511cbe9c73326bbecf546e"
+    },
+    {
+      "file": "patches/0102-windows-pybind-name.patch",
+      "group": "windows",
+      "sha256": "01758742cd72d4c6fa8271637114d28106b63720ba7e7c82e2150d4e3547c417"
+    },
+    {
+      "file": "patches/0103-windows-driver-loader.patch",
+      "group": "windows",
+      "sha256": "fa4c8cd69010b63ab9298789039ac7a5c9f9d9cb729dc9e81d9a58e17544be2a"
+    },
+    {
+      "file": "patches/0200-local-build-version.patch",
+      "group": "packaging",
+      "sha256": "787f1afc90e47f7da9a4a59d8e995405bf0db6d2e16558a637573b6cc1d98749"
+    }
+  ],
+  "cuda_components": [
+    {
+      "component": "cuda_nvcc",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvcc/windows-x86_64/cuda_nvcc-windows-x86_64-12.4.131-archive.zip",
+      "sha256": "3b14cf8dd9dda4a3b1a9682270d46eef775f018e17650187a8a448a06111f2b8",
+      "size": 63662970
+    },
+    {
+      "component": "cuda_cudart",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/windows-x86_64/cuda_cudart-windows-x86_64-12.4.127-archive.zip",
+      "sha256": "6a1c32e68ee1a95ca17334691ff9ad1ffe7f352c24a083d55e4c96b8063b2bcb",
+      "size": 2474721
+    },
+    {
+      "component": "cuda_cccl",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_cccl/windows-x86_64/cuda_cccl-windows-x86_64-12.4.127-archive.zip",
+      "sha256": "908742d8f3c6fdd6d1d6316a7b919b5c506474f9551f491aa7335cb4f50bffbd",
+      "size": 3171223
+    },
+    {
+      "component": "libcurand",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/libcurand/windows-x86_64/libcurand-windows-x86_64-10.3.5.147-archive.zip",
+      "sha256": "24c3b0fb7063e49ccc0ac1bff387c5f4fd9617b72aab3fa3b642f08607770ad3",
+      "size": 55087990
+    },
+    {
+      "component": "cuda_nvtx",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/cuda_nvtx/windows-x86_64/cuda_nvtx-windows-x86_64-12.4.127-archive.zip",
+      "sha256": "95b7f96bdb2701d764d969cdadfbc439b4ab995d0a3695682da5284e14f66d21",
+      "size": 65879
+    }
+  ],
+  "git_dependencies": [
+    {
+      "name": "assimp",
+      "url": "https://github.com/fbxiang/assimp.git",
+      "commit": "0ea31aa6734336dc1e62c6d9bde3e49b6d71b811",
+      "tag": null
+    },
+    {
+      "name": "deflate",
+      "url": "https://github.com/ebiggers/libdeflate.git",
+      "commit": "495fee110ebb48a5eb63b75fd67e42b2955871e2",
+      "tag": "v1.18"
+    },
+    {
+      "name": "eigen",
+      "url": "https://gitlab.com/libeigen/eigen.git",
+      "commit": "3147391d946bb4b6c68edd901f2add6ac1f31f8c",
+      "tag": "3.4.0"
+    },
+    {
+      "name": "glfw",
+      "url": "https://github.com/glfw/glfw.git",
+      "commit": "901d30b973c536f26b74bca1134c5892d54b251d",
+      "tag": "3.3.3"
+    },
+    {
+      "name": "glm",
+      "url": "https://github.com/g-truc/glm.git",
+      "commit": "bf71a834948186f4097caa076cd2663c69a10e1e",
+      "tag": "0.9.9.8"
+    },
+    {
+      "name": "glslang",
+      "url": "https://github.com/KhronosGroup/glslang.git",
+      "commit": "77551c429f86c0e077f26552b7c1c0f12a9f235e",
+      "tag": "11.13.0"
+    },
+    {
+      "name": "imath",
+      "url": "https://github.com/AcademySoftwareFoundation/Imath.git",
+      "commit": "d690a3fcff4e877ead5ae56c7e964595ade8a35e",
+      "tag": "v3.1.9"
+    },
+    {
+      "name": "imgui",
+      "url": "https://github.com/ocornut/imgui.git",
+      "commit": "ef07ddf087c879baff8c0cac0ff1f40b7f0f060c",
+      "tag": null
+    },
+    {
+      "name": "imguifiledialog",
+      "url": "https://github.com/aiekick/ImGuiFileDialog.git",
+      "commit": "cc6dd28874f359c1b51fa93a8907c8ee9d13843b",
+      "tag": "v0.6.5"
+    },
+    {
+      "name": "imguizmo",
+      "url": "https://github.com/CedricGuillemet/ImGuizmo.git",
+      "commit": "664cf2d73864a36b2a8b5091d33fc4578c885eca",
+      "tag": "1.83"
+    },
+    {
+      "name": "ktx",
+      "url": "https://github.com/KhronosGroup/KTX-Software.git",
+      "commit": "91ace88675ac59a97e55d0378a6602a9ae6b98bd",
+      "tag": "v4.3.2"
+    },
+    {
+      "name": "openexr",
+      "url": "https://github.com/AcademySoftwareFoundation/openexr.git",
+      "commit": "737b2707a001e67f3812d86a639c3d037efe2ea8",
+      "tag": "v3.2.1"
+    },
+    {
+      "name": "openvr",
+      "url": "https://github.com/comoco-xiao/openvr.git",
+      "commit": "455756f7c4646d9bcd636e67d2449da1f69002ae",
+      "tag": "v0.0.1"
+    },
+    {
+      "name": "pybind11",
+      "url": "https://github.com/pybind/pybind11.git",
+      "commit": "06e8ee2e357fc2fd6e36de431fa0ca0049aafc7d",
+      "tag": null
+    },
+    {
+      "name": "spdlog",
+      "url": "https://github.com/gabime/spdlog.git",
+      "commit": "de0dbfa3596a18cd70a4619b6a9766847a941276",
+      "tag": "v1.8.2"
+    },
+    {
+      "name": "spirv-cross",
+      "url": "https://github.com/KhronosGroup/SPIRV-Cross.git",
+      "commit": "d26c233e1c2629fec1ae1b6fdf538958e5d52bff",
+      "tag": "sdk-1.3.243.0"
+    },
+    {
+      "name": "vulkan",
+      "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
+      "commit": "b379292b2ab6df5771ba9870d53cf8b2c9295daf",
+      "tag": "v1.3.290"
+    },
+    {
+      "name": "zlib",
+      "url": "https://github.com/madler/zlib.git",
+      "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+      "tag": "v1.2.11"
+    }
+  ],
+  "archives": [
+    {
+      "name": "physx5",
+      "url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/windows-release.zip",
+      "sha256": "fe377ffe14de3a328e14a04df892414722b7e6072dd255279954e68f6453601d",
+      "strip": 0
+    },
+    {
+      "name": "oidn",
+      "url": "https://github.com/OpenImageDenoise/oidn/releases/download/v2.0.1/oidn-2.0.1.src.tar.gz",
+      "sha256": "328eeb9809d18e835dca7203224af3748578794784c026940c02eea09c695b90",
+      "strip": 1
+    }
+  ],
+  "runtime_physx": {
+    "version": "105.1-physx-5.3.1.patch0",
+    "url": "https://github.com/sapien-sim/physx-precompiled/releases/download/105.1-physx-5.3.1.patch0/windows-dll.zip",
+    "archive_sha256": "3951650caa3b77d2fe671ab1418db31f142c29daaa6e32e2520f90e8f7455baa",
+    "dll_sha256": {
+      "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+      "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1"
+    },
+    "gpu_kernel_compiler": "NVIDIA precompiled; compiler version not published; identity pinned by archive and DLL SHA"
+  },
+  "tested_toolchain": {
+    "python": "3.10.22",
+    "cmake": "4.0.1",
+    "ninja": "1.11.1.git.kitware.jobserver-1",
+    "msvc": "19.43.34810",
+    "toolset": "14.43.34808",
+    "cuda_nvcc": "12.4.131",
+    "cuda_runtime_headers": "12.4.127",
+    "sapien_kernel_architectures": [
+      "60",
+      "61",
+      "70",
+      "75",
+      "80",
+      "86"
+    ],
+    "flags": [
+      "--use-local-env",
+      "-allow-unsupported-compiler"
+    ],
+    "max_compile_jobs": 4
+  },
+  "reference_packages": {
+    "torch": "2.6.0+cu124",
+    "mani_skill": "3.0.0b22",
+    "numpy": "2.2.6",
+    "gymnasium": "0.29.1",
+    "setuptools": "84.0.0",
+    "wheel": "0.48.0"
+  },
+  "upstream_license_sources": [
+    {
+      "url": "https://github.com/fbxiang/assimp.git",
+      "commit": "0ea31aa6734336dc1e62c6d9bde3e49b6d71b811",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/ebiggers/libdeflate.git",
+      "commit": "495fee110ebb48a5eb63b75fd67e42b2955871e2",
+      "files": [
+        "COPYING"
+      ]
+    },
+    {
+      "url": "https://gitlab.com/libeigen/eigen.git",
+      "commit": "3147391d946bb4b6c68edd901f2add6ac1f31f8c",
+      "files": [
+        "COPYING.APACHE",
+        "COPYING.BSD",
+        "COPYING.GPL",
+        "COPYING.LGPL",
+        "COPYING.MINPACK",
+        "COPYING.MPL2",
+        "COPYING.README"
+      ]
+    },
+    {
+      "url": "https://github.com/glfw/glfw.git",
+      "commit": "901d30b973c536f26b74bca1134c5892d54b251d",
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "url": "https://github.com/g-truc/glm.git",
+      "commit": "bf71a834948186f4097caa076cd2663c69a10e1e",
+      "files": [
+        "copying.txt"
+      ]
+    },
+    {
+      "url": "https://github.com/KhronosGroup/glslang.git",
+      "commit": "77551c429f86c0e077f26552b7c1c0f12a9f235e",
+      "files": [
+        "LICENSE.txt",
+        "license-checker.cfg"
+      ]
+    },
+    {
+      "url": "https://github.com/AcademySoftwareFoundation/Imath.git",
+      "commit": "d690a3fcff4e877ead5ae56c7e964595ade8a35e",
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "url": "https://github.com/ocornut/imgui.git",
+      "commit": "ef07ddf087c879baff8c0cac0ff1f40b7f0f060c",
+      "files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "url": "https://github.com/aiekick/ImGuiFileDialog.git",
+      "commit": "cc6dd28874f359c1b51fa93a8907c8ee9d13843b",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/CedricGuillemet/ImGuizmo.git",
+      "commit": "664cf2d73864a36b2a8b5091d33fc4578c885eca",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/KhronosGroup/KTX-Software.git",
+      "commit": "91ace88675ac59a97e55d0378a6602a9ae6b98bd",
+      "files": [
+        "LICENSE.md",
+        "NOTICE.md"
+      ]
+    },
+    {
+      "url": "https://github.com/AcademySoftwareFoundation/openexr.git",
+      "commit": "737b2707a001e67f3812d86a639c3d037efe2ea8",
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "url": "https://github.com/comoco-xiao/openvr.git",
+      "commit": "455756f7c4646d9bcd636e67d2449da1f69002ae",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/pybind/pybind11.git",
+      "commit": "06e8ee2e357fc2fd6e36de431fa0ca0049aafc7d",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/gabime/spdlog.git",
+      "commit": "de0dbfa3596a18cd70a4619b6a9766847a941276",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/KhronosGroup/SPIRV-Cross.git",
+      "commit": "d26c233e1c2629fec1ae1b6fdf538958e5d52bff",
+      "files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "url": "https://github.com/KhronosGroup/Vulkan-Headers.git",
+      "commit": "b379292b2ab6df5771ba9870d53cf8b2c9295daf",
+      "files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "url": "https://github.com/madler/zlib.git",
+      "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f",
+      "files": [
+        "README",
+        "zlib.h"
+      ]
+    },
+    {
+      "name": "sapien",
+      "url": "https://github.com/haosulab/SAPIEN.git",
+      "commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+      "files": [
+        "LICENSE"
+      ],
+      "notice": "Preserve upstream license/copyright headers and any distributed NOTICE files."
+    },
+    {
+      "name": "svulkan2",
+      "url": "https://github.com/haosulab/sapien-vulkan-2.git",
+      "commit": "2ad24e1e96d88d3dd00fb1a7821ffcef42ab1ed9",
+      "files": [
+        "include/svulkan2/core/allocator.h",
+        "src/core/allocator.cpp"
+      ],
+      "notice": "Preserve upstream license/copyright headers and any distributed NOTICE files."
+    },
+    {
+      "name": "simsense",
+      "url": "https://github.com/haosulab/simsense.git",
+      "commit": "9340b6069ce78ecf0432cd3336ac9b4d296e09e7",
+      "files": [
+        "LICENSE"
+      ],
+      "notice": "Preserve upstream license/copyright headers and any distributed NOTICE files."
+    },
+    {
+      "name": "physx5 archive",
+      "url": "https://github.com/sapien-sim/physx-precompiled/releases/tag/105.1-physx-5.3.1.patch0",
+      "files": [
+        "include/PxPhysicsAPI.h"
+      ],
+      "notice": "Retain NVIDIA/AGEIA/NovodeX copyright and redistribution conditions in the included headers."
+    },
+    {
+      "name": "oidn archive",
+      "url": "https://github.com/RenderKit/oidn/releases/tag/v2.0.1",
+      "files": [
+        "LICENSE.txt",
+        "third-party-programs.txt",
+        "third-party-programs-DPCPP.txt",
+        "third-party-programs-oneDNN.txt",
+        "third-party-programs-oneTBB.txt"
+      ]
+    },
+    {
+      "name": "cuda redistributions",
+      "url": "https://developer.download.nvidia.com/compute/cuda/redist/redistrib_12.4.1.json",
+      "files": [
+        "LICENSE"
+      ],
+      "notice": "Keep each component archive license and comply with its upstream terms; archives/binaries are not included in this patch bundle."
+    }
+  ]
+}

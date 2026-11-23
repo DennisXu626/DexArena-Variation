@@ -1,0 +1,60 @@
+# Base: SAPIEN 3.0.3 731622eac5b140b320076c8a1b6eb4b553c3ccd4
+diff --git a/src/physx/physx_system.cpp b/src/physx/physx_system.cpp
+--- a/src/physx/physx_system.cpp
++++ b/src/physx/physx_system.cpp
+@@ -863,7 +863,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQposHandle.ptr, mCudaArticulationIndexBuffer.ptr,
++  mPxScene->applyArticulationData(mCudaQposHandle.ptr, indices.ptr,
+                                   PxArticulationGpuDataType::eJOINT_POSITION, indices.shape.at(0),
+                                   mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+@@ -886,7 +886,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQvelHandle.ptr, mCudaArticulationIndexBuffer.ptr,
++  mPxScene->applyArticulationData(mCudaQvelHandle.ptr, indices.ptr,
+                                   PxArticulationGpuDataType::eJOINT_VELOCITY, indices.shape.at(0),
+                                   mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+@@ -909,7 +909,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQfHandle.ptr, mCudaArticulationIndexBuffer.ptr,
++  mPxScene->applyArticulationData(mCudaQfHandle.ptr, indices.ptr,
+                                   PxArticulationGpuDataType::eJOINT_FORCE, indices.shape.at(0),
+                                   mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+@@ -932,7 +932,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQTargetPosHandle.ptr, mCudaArticulationIndexBuffer.ptr,
++  mPxScene->applyArticulationData(mCudaQTargetPosHandle.ptr, indices.ptr,
+                                   PxArticulationGpuDataType::eJOINT_TARGET_POSITION,
+                                   indices.shape.at(0), mCudaEventRecord.event,
+                                   mCudaEventWait.event);
+@@ -956,7 +956,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQTargetVelHandle.ptr, mCudaArticulationIndexBuffer.ptr,
++  mPxScene->applyArticulationData(mCudaQTargetVelHandle.ptr, indices.ptr,
+                                   PxArticulationGpuDataType::eJOINT_TARGET_VELOCITY,
+                                   indices.shape.at(0), mCudaEventRecord.event,
+                                   mCudaEventWait.event);
+diff --git a/src/physx/physx_system.cu b/src/physx/physx_system.cu
+--- a/src/physx/physx_system.cu
++++ b/src/physx/physx_system.cu
+@@ -80,6 +80,7 @@
+ 
+   physx_data[g] = pd;
+   physx_index[g] = sapien_index[i];
++  physx_index[g].x = g; // PxGpuActorPair::srcIndex addresses the packed scratch row.
+ }
+ 
+ __global__ void link_pose_physx_to_sapien_kernel(SapienBodyData *__restrict__ sapien_data,

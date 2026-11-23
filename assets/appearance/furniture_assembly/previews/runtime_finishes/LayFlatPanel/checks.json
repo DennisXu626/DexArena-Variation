@@ -1,0 +1,4754 @@
+{
+  "task_id": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+  "status": "passed",
+  "control_steps": 2,
+  "physics_steps": 40,
+  "native_physical": {
+    "file_sha256": "5987bc0e7428d206c5be937b4dcbf8676ceda2359cedb8e23ef9c925b53d0a60",
+    "canonical_sha256": "2c53259fb7a5e4950aea54e45b3701ed617692d35596e9960c333cc91a4c7178",
+    "entities_per_env": [
+      64,
+      64
+    ]
+  },
+  "fixed": {
+    "original": {
+      "materials_sha256": "00d25772b891e200f4cfdfaa58856b23ee7a5ee3d9cacebba5efddc7661d5456",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "original",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "original",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "original",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "original",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_1": {
+      "materials_sha256": "6ad19feab2cc8dfe5004a28df4053cda1447abeba527ea8619e1db3725fff23f",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26313,
+            "changed_pixels": 8771,
+            "max_absolute_error": 83
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 82
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 81
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 82
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26085,
+            "changed_pixels": 8695,
+            "max_absolute_error": 82
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 81
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 79
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 81
+          }
+        }
+      }
+    },
+    "variant_2": {
+      "materials_sha256": "0b36f048b430fc91a949c836d2d1c77a2aadb2119d1a9e6ab9bce976753b47f9",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26312,
+            "changed_pixels": 8771,
+            "max_absolute_error": 153
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 162
+          },
+          "wrist_camera": {
+            "changed_values": 22538,
+            "changed_pixels": 7516,
+            "max_absolute_error": 160
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 163
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26083,
+            "changed_pixels": 8695,
+            "max_absolute_error": 154
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 161
+          },
+          "wrist_camera": {
+            "changed_values": 12271,
+            "changed_pixels": 4091,
+            "max_absolute_error": 159
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 162
+          }
+        }
+      }
+    },
+    "variant_3": {
+      "materials_sha256": "81e001e1d3084aed8c036c3d4a1d462c9f25b96af77f2da9347a5d6f2c23958e",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_3",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_3",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_3",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_3",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26313,
+            "changed_pixels": 8771,
+            "max_absolute_error": 152
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 150
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 151
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 152
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26085,
+            "changed_pixels": 8695,
+            "max_absolute_error": 150
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 150
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 149
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 150
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_4": {
+      "materials_sha256": "531ae0cf3ff9cd515ae9f9ba559fccb9c950becf0498e56056bae553b108937f",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_4",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_4",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_4",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_4",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26266,
+            "changed_pixels": 8771,
+            "max_absolute_error": 116
+          },
+          "external_camera": {
+            "changed_values": 3502,
+            "changed_pixels": 1168,
+            "max_absolute_error": 124
+          },
+          "wrist_camera": {
+            "changed_values": 22516,
+            "changed_pixels": 7516,
+            "max_absolute_error": 117
+          },
+          "human": {
+            "changed_values": 23486,
+            "changed_pixels": 7830,
+            "max_absolute_error": 125
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26051,
+            "changed_pixels": 8695,
+            "max_absolute_error": 117
+          },
+          "external_camera": {
+            "changed_values": 3482,
+            "changed_pixels": 1161,
+            "max_absolute_error": 123
+          },
+          "wrist_camera": {
+            "changed_values": 12271,
+            "changed_pixels": 4091,
+            "max_absolute_error": 117
+          },
+          "human": {
+            "changed_values": 23350,
+            "changed_pixels": 7784,
+            "max_absolute_error": 124
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_5": {
+      "materials_sha256": "82f0d26e5162ea84b8a72388234fdae6d6fab4a812bb286b7fd163c4a3f65232",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_5",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_5",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_5",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_5",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26313,
+            "changed_pixels": 8771,
+            "max_absolute_error": 100
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 104
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 99
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 104
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26085,
+            "changed_pixels": 8695,
+            "max_absolute_error": 99
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 102
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 99
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 103
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_6": {
+      "materials_sha256": "87b9668dd4d2b42f50aaf8cbbb1f61ab10d4a660097f20c7aea8d93170938c37",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_6",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_6",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_6",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_6",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26239,
+            "changed_pixels": 8771,
+            "max_absolute_error": 176
+          },
+          "external_camera": {
+            "changed_values": 3461,
+            "changed_pixels": 1168,
+            "max_absolute_error": 175
+          },
+          "wrist_camera": {
+            "changed_values": 22423,
+            "changed_pixels": 7516,
+            "max_absolute_error": 175
+          },
+          "human": {
+            "changed_values": 23277,
+            "changed_pixels": 7830,
+            "max_absolute_error": 177
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26008,
+            "changed_pixels": 8695,
+            "max_absolute_error": 174
+          },
+          "external_camera": {
+            "changed_values": 3437,
+            "changed_pixels": 1161,
+            "max_absolute_error": 174
+          },
+          "wrist_camera": {
+            "changed_values": 12165,
+            "changed_pixels": 4091,
+            "max_absolute_error": 172
+          },
+          "human": {
+            "changed_values": 23173,
+            "changed_pixels": 7784,
+            "max_absolute_error": 175
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_7": {
+      "materials_sha256": "844f847338acab4f5bd7cd0613aa4ca46e143cccd6b2938e9a94582e0e50c339",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_7",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_7",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_7",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_7",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26313,
+            "changed_pixels": 8771,
+            "max_absolute_error": 177
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 187
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 187
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 189
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26085,
+            "changed_pixels": 8695,
+            "max_absolute_error": 179
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 186
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 186
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 187
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_8": {
+      "materials_sha256": "5ea2037ddc1d0150ae1c1bbc18ee4b8e5e59e26350d7992765168910c3d75c04",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_8",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_8",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_8",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_8",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26305,
+            "changed_pixels": 8771,
+            "max_absolute_error": 121
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 127
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 125
+          },
+          "human": {
+            "changed_values": 23489,
+            "changed_pixels": 7830,
+            "max_absolute_error": 129
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26075,
+            "changed_pixels": 8695,
+            "max_absolute_error": 121
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 128
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 124
+          },
+          "human": {
+            "changed_values": 23350,
+            "changed_pixels": 7784,
+            "max_absolute_error": 128
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_9": {
+      "materials_sha256": "f5d248c13e803e54a65b22aca73bdb7a1bd5bda4a5199eec97e701a34e2210f8",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26313,
+            "changed_pixels": 8771,
+            "max_absolute_error": 103
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 112
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 104
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 112
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26083,
+            "changed_pixels": 8695,
+            "max_absolute_error": 105
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 108
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 106
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 114
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    "variant_10": {
+      "materials_sha256": "fb80bcc86d83ac3e9563aeeac975fc2aa83cb79e28b50a43e13cd434e892d538",
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ],
+      "pixels_vs_native": {
+        "0": {
+          "base_camera": {
+            "changed_values": 26313,
+            "changed_pixels": 8771,
+            "max_absolute_error": 138
+          },
+          "external_camera": {
+            "changed_values": 3504,
+            "changed_pixels": 1168,
+            "max_absolute_error": 139
+          },
+          "wrist_camera": {
+            "changed_values": 22548,
+            "changed_pixels": 7516,
+            "max_absolute_error": 138
+          },
+          "human": {
+            "changed_values": 23490,
+            "changed_pixels": 7830,
+            "max_absolute_error": 140
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 26085,
+            "changed_pixels": 8695,
+            "max_absolute_error": 136
+          },
+          "external_camera": {
+            "changed_values": 3483,
+            "changed_pixels": 1161,
+            "max_absolute_error": 138
+          },
+          "wrist_camera": {
+            "changed_values": 12273,
+            "changed_pixels": 4091,
+            "max_absolute_error": 136
+          },
+          "human": {
+            "changed_values": 23352,
+            "changed_pixels": 7784,
+            "max_absolute_error": 139
+          }
+        }
+      },
+      "restoration_pixels": {
+        "0": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        },
+        "1": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    }
+  },
+  "distinct_fixed_task_camera_schemes": {
+    "0": 11,
+    "1": 11
+  },
+  "selected_reset_checks": [
+    {
+      "capture_id": "selected_reset_00",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "b9092d4a8b72bf0b7b930e534b1083d116749ec1067c123a665ef66c16a8f14a"
+    },
+    {
+      "capture_id": "selected_reset_01",
+      "selected": [
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.05235239863395691
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.07346337661147118
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 1,
+          "max_absolute_error": 5.587935447692871e-08
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        }
+      },
+      "raw_json_sha256": "679d49630f52b60b3a5b22e216882d7c78076a69df1357217750d63238ccd077",
+      "raw_state_sha256": "a62cfd70b62577b25018a4ce76ec4c46c2e1ba501fe28fbb402b2ac1055135c7"
+    },
+    {
+      "capture_id": "selected_reset_02",
+      "selected": [
+        0
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 13,
+          "max_absolute_error": 0.20790137350559235
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.031162139028310776
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 2,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 59,
+          "max_absolute_error": 10.027349472045898
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 29,
+          "max_absolute_error": 0.5198098421096802
+        },
+        "/joint_targets/robot/qvel": {
+          "changed_values": 29,
+          "max_absolute_error": 10.027349472045898
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 2.9802322387695312e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 10,
+          "max_absolute_error": 1.9371509552001953e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 2.9802322387695312e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 10,
+          "max_absolute_error": 1.9371509552001953e-07
+        }
+      },
+      "raw_json_sha256": "ae9bafbd6af7fa1d3f9db1461b2eed5267f09fea2b8954a552508fb286dd1a6c",
+      "raw_state_sha256": "33aafeeb703056dd37d29286a78259853c2be7e8028f75dd4e75883e7e78755a"
+    },
+    {
+      "capture_id": "selected_reset_03",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "d6df0ddae87e91f27cad92b49fa399afcb83f6bc0f3e6587b1303c27f9c6c3d3"
+    },
+    {
+      "capture_id": "selected_reset_04",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "009ca0c6fe0b03239938447e8beb75cccdef48320e309504f03c434ef2a0be0b"
+    },
+    {
+      "capture_id": "selected_reset_05",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "33eb6583d0e93ba00ae7cff061a91081d72d83281a2e12775528c326a988d01c"
+    },
+    {
+      "capture_id": "selected_reset_06",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "21b6963c0d99e4a98294db7c33f4f7f66bda325fe3882bee4c77ed65df57f39d"
+    },
+    {
+      "capture_id": "selected_reset_07",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "1c05e1b75436e23c8ecb9dc24e696230e8de6ef506882ee7bb6031831c5937c3"
+    },
+    {
+      "capture_id": "selected_reset_08",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "a5dc6c33c6a9bf60442bd87d05c1ccca3c1495cb1f0041c47fb2a80e5551e4f6"
+    },
+    {
+      "capture_id": "selected_reset_09",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "374a9b32c97969dab941367d4b18b0d2d794c42b12f196b6440141cdd9348a17"
+    },
+    {
+      "capture_id": "selected_reset_10",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "b1d3f489481a4697220b2295432772696d7a5009d79deb11b1870425184ea526"
+    },
+    {
+      "capture_id": "selected_reset_11",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "d701667d479b79e17bc7e400eaf5e82071c17d96f6b4c1b05dfccfbedd388181"
+    },
+    {
+      "capture_id": "selected_reset_12",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "09450bc22a8126c98a630c0a03764286e032c89fb243cb07df4a78b303f8b409"
+    },
+    {
+      "capture_id": "selected_reset_13",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "21b8bf533e71b234d597be09405a519aba25296d94c0d17cb418d49a874dea3d"
+    },
+    {
+      "capture_id": "selected_reset_14",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "9339a38f2da51686d10d781ad4279c25e02356f8342074c4bebde43bf2c94df7"
+    },
+    {
+      "capture_id": "selected_reset_15",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "5460f31fb54e7a8e6eb1fd2aa5dca06709046fade45968836b59d7bdf3607dbc"
+    },
+    {
+      "capture_id": "selected_reset_16",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "e0c1ca0d0ee528992f064cdf4c8f57b9f9f0cb5d3a9467f71588913716f2a5c1"
+    },
+    {
+      "capture_id": "selected_reset_17",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "ad844953df5c08fe5e02b9afff6777c9d9fbdb84db3d848b4a450fe6f3c9102e"
+    },
+    {
+      "capture_id": "selected_reset_18",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "195952774b227bd0f9cab0c720b28948b077d6985b47e67db3390cbbeadee4b4"
+    },
+    {
+      "capture_id": "selected_reset_19",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "95bbd652d3714c866caa0e0157fb66e60c41f1eb30411619e0e9ab5f7ade65f6"
+    },
+    {
+      "capture_id": "selected_reset_20",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "6c3420ec0264aca2d8b4a7f5bb285c9c1bbc023dc863e42ff46352fbfc43378a"
+    },
+    {
+      "capture_id": "selected_reset_21",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "ea074462fed5d582e565911153c204930c38cbb2c9058c80cf4262e6fff29d1b"
+    },
+    {
+      "capture_id": "selected_reset_22",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "cc44bf8cbae93cefa89b442fa3c14217fbe506c830601231962b7e96645498cc"
+    },
+    {
+      "capture_id": "selected_reset_23",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "7988007b2e2aac67c799f3ab5b3c68dbfba5985ec88c4c80b19c020c1ecead10"
+    },
+    {
+      "capture_id": "selected_reset_24",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 4,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 3,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 1,
+          "max_absolute_error": 1.1920928955078125e-07
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "806a6179c31715397fa5abd9a9c009457ec5cce0e839e6e632a80875fbcbd023",
+      "raw_state_sha256": "3048e8aac548bb7c7df1a76594201ce24a75306fe1a393684e0860de05bbe3dc"
+    },
+    {
+      "capture_id": "selected_reset_25",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "1b107fccfe0e9a5c081b973ab155f461738c7b984c026e65c0726c67f5f3bdda"
+    },
+    {
+      "capture_id": "selected_reset_26",
+      "selected": [
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.05235239863395691
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.07346337661147118
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 1,
+          "max_absolute_error": 5.587935447692871e-08
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        }
+      },
+      "raw_json_sha256": "679d49630f52b60b3a5b22e216882d7c78076a69df1357217750d63238ccd077",
+      "raw_state_sha256": "b3849b3d6da874ac217e270af0b5029b35f3c3d4e9107edb64f64593c6ab4144"
+    },
+    {
+      "capture_id": "selected_reset_27",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.09480316564440727
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.13361748680472374
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.03790832310914993
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.03790832310914993
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.0116567611694336e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 14,
+          "max_absolute_error": 2.0116567611694336e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.0116567611694336e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 14,
+          "max_absolute_error": 2.0116567611694336e-07
+        }
+      },
+      "raw_json_sha256": "8e48252e7df116d356577f3ae7ed9ca4d47c7586d19c6204ee1613c5dd4e7447",
+      "raw_state_sha256": "1d74d1870617b23868adda338048c3e92fa37a8e1fa228b9464e74cd4fa327b1"
+    },
+    {
+      "capture_id": "selected_reset_28",
+      "selected": [
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.05188237875699997
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.04778088256716728
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 1,
+          "max_absolute_error": 5.587935447692871e-08
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 7,
+          "max_absolute_error": 0.036499977111816406
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.036499977111816406
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.4901161193847656e-08,
+            "/state/actors/panel_rack": 2.2351741790771484e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 4,
+          "max_absolute_error": 2.2351741790771484e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.4901161193847656e-08,
+            "/state/actors/panel_rack": 2.2351741790771484e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 4,
+          "max_absolute_error": 2.2351741790771484e-07
+        }
+      },
+      "raw_json_sha256": "a30a8a692f420745b40a221bf4fafb07c2b55ae2ff8f47c78e16c89b041056d1",
+      "raw_state_sha256": "3a2dc4c1b4aeccd46bb236092ab13a44b5bc706d85b5cca05b21a28d13aa49f0"
+    },
+    {
+      "capture_id": "selected_reset_29",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "cd5264561504120cb2b78f3c843d3e3a05893264d5c4b4704babb74231f192c5"
+    },
+    {
+      "capture_id": "selected_reset_30",
+      "selected": [
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.05235239863395691
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.07346337661147118
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 1,
+          "max_absolute_error": 5.587935447692871e-08
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        }
+      },
+      "raw_json_sha256": "679d49630f52b60b3a5b22e216882d7c78076a69df1357217750d63238ccd077",
+      "raw_state_sha256": "bb3dcfd4f12231dd4db8fd4286e0d8bda7d16b29ba13b8afdb07d02c8b0fdccb"
+    },
+    {
+      "capture_id": "selected_reset_31",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.0953914076089859
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.1348186917603016
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.03790832310914993
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.03790832310914993
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 2.384185791015625e-07,
+            "/state/actors/panel_rack": 8.940696716308594e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 14,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 2.384185791015625e-07,
+            "/state/actors/panel_rack": 8.940696716308594e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 14,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "117737a36630644b9e91ad75d81f3ba7e1c3d7a64489b6196eef5c6313d09265",
+      "raw_state_sha256": "3e2c0f654bd51ed4bad7a77c46a897277714a1d6cd8570db080caea904273a61"
+    },
+    {
+      "capture_id": "selected_reset_32",
+      "selected": [
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.0618474381044507
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.08720105234533548
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 1,
+          "max_absolute_error": 5.587935447692871e-08
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 7,
+          "max_absolute_error": 0.036499977111816406
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.036499977111816406
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.4901161193847656e-08,
+            "/state/actors/panel_rack": 2.2351741790771484e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 4,
+          "max_absolute_error": 2.2351741790771484e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.4901161193847656e-08,
+            "/state/actors/panel_rack": 2.2351741790771484e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 4,
+          "max_absolute_error": 2.2351741790771484e-07
+        }
+      },
+      "raw_json_sha256": "97ac1f1bc6338275122e41dcd70d104f4ef70364546e2cd370a8d49368f98f84",
+      "raw_state_sha256": "79e1909a9d21773fd78c3a3932b38380c8098dbc70e67ce3af7c3dc57b02a575"
+    },
+    {
+      "capture_id": "selected_reset_33",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "8e60de5221a685eb593f1965765a7e3de6ee51b610456d7454cd477835461ac1"
+    },
+    {
+      "capture_id": "selected_reset_34",
+      "selected": [
+        0
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.022184357047080994
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.031162139028310776
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 2,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 8,
+          "max_absolute_error": 0.01933276653289795
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.01933276653289795
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 2.9802322387695312e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 10,
+          "max_absolute_error": 1.9371509552001953e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 2.9802322387695312e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 10,
+          "max_absolute_error": 1.9371509552001953e-07
+        }
+      },
+      "raw_json_sha256": "b61420d05452d047963dac353705785e6074229f6a2b5839d63b38009db1b64b",
+      "raw_state_sha256": "c2d1b56a984852576f184640ea9c5ada323644f3c91b669874f68f6e68ed2f62"
+    },
+    {
+      "capture_id": "selected_reset_35",
+      "selected": [
+        0,
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 12,
+          "max_absolute_error": 0.054718017578125
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 8,
+          "max_absolute_error": 0.05150070786476135
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 3,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 15,
+          "max_absolute_error": 0.02295023202896118
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 14,
+          "max_absolute_error": 0.02295023202896118
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 550,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.1920928955078125e-07,
+            "/state/actors/panel_rack": 2.384185791015625e-07,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 362,
+          "changed_values_within_tolerance": 12,
+          "max_absolute_error": 2.384185791015625e-07
+        }
+      },
+      "raw_json_sha256": "b8b05fcd74fbf6f410f5a6eb68f03b072dda61aceaf8025fcd3f9c1892a919b7",
+      "raw_state_sha256": "139f199bbcc8150c1e64134a9a0b17430bc90248677f84ab18cdfe1ee677eeae"
+    },
+    {
+      "capture_id": "selected_reset_36",
+      "selected": [
+        1
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/drawer_panel": {
+          "changed_values": 6,
+          "max_absolute_error": 0.05235239863395691
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.07346337661147118
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 1,
+          "max_absolute_error": 5.587935447692871e-08
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 7,
+          "max_absolute_error": 0.023622584994882345
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 0.0,
+            "/state/actors/drawer_panel": 1.7881393432617188e-07,
+            "/state/actors/panel_rack": 2.086162567138672e-07,
+            "/state/actors/place_zone": 5.587935447692871e-08,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 5,
+          "max_absolute_error": 2.086162567138672e-07
+        }
+      },
+      "raw_json_sha256": "679d49630f52b60b3a5b22e216882d7c78076a69df1357217750d63238ccd077",
+      "raw_state_sha256": "a19c6a7dfa6d9221b56bb15b0ef263c7865b662395304aee8175fd39418825bd"
+    },
+    {
+      "capture_id": "selected_reset_37",
+      "selected": [
+        0
+      ],
+      "physics_steps": 0,
+      "capture_order": [
+        "after native _initialize_episode",
+        "first following PhysX _gpu_fetch_all, before controller reset"
+      ],
+      "float_atol": 2e-06,
+      "float_rtol": 0,
+      "intent_changes": {
+        "/state/actors/table-workspace": {
+          "changed_values": 1,
+          "max_absolute_error": 1.7881393432617188e-07
+        },
+        "/state/actors/drawer_panel": {
+          "changed_values": 13,
+          "max_absolute_error": 0.20790137350559235
+        },
+        "/state/actors/panel_rack": {
+          "changed_values": 4,
+          "max_absolute_error": 0.031162139028310776
+        },
+        "/state/actors/place_zone": {
+          "changed_values": 2,
+          "max_absolute_error": 1.1920928955078125e-07
+        },
+        "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": {
+          "changed_values": 59,
+          "max_absolute_error": 10.027349472045898
+        },
+        "/joint_targets/robot/qpos": {
+          "changed_values": 29,
+          "max_absolute_error": 0.5198098421096802
+        },
+        "/joint_targets/robot/qvel": {
+          "changed_values": 29,
+          "max_absolute_error": 10.027349472045898
+        }
+      },
+      "buffer_only_fields": [
+        "/joint_targets/robot/qf"
+      ],
+      "measurements": {
+        "fetched": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 2.9802322387695312e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/state/furniture_panel_task_state": 0.0,
+            "/elapsed_steps": 0.0,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0,
+            "/joint_targets/robot/qf": 0.0,
+            "/joint_targets/robot/position_target": 0.0,
+            "/joint_targets/robot/velocity_target": 0.0
+          },
+          "values_checked": 275,
+          "changed_values_within_tolerance": 10,
+          "max_absolute_error": 1.9371509552001953e-07
+        },
+        "final": {
+          "fields": {
+            "/state/actors/table-workspace": 1.7881393432617188e-07,
+            "/state/actors/drawer_panel": 1.9371509552001953e-07,
+            "/state/actors/panel_rack": 2.9802322387695312e-08,
+            "/state/actors/place_zone": 1.1920928955078125e-07,
+            "/state/articulations/panda_sharpa_hand_left_angled_mobile_base": 1.1920928955078125e-07,
+            "/joint_targets/robot/qpos": 0.0,
+            "/joint_targets/robot/qvel": 0.0
+          },
+          "values_checked": 181,
+          "changed_values_within_tolerance": 10,
+          "max_absolute_error": 1.9371509552001953e-07
+        }
+      },
+      "raw_json_sha256": "ae9bafbd6af7fa1d3f9db1461b2eed5267f09fea2b8954a552508fb286dd1a6c",
+      "raw_state_sha256": "fc177d3d8185279be9b2adea274c1429fbd7ce6e55707f0cbb658bd4f54427ba"
+    }
+  ],
+  "native_capture_state_sha256": "80e5a489234630d51f7e9679af7696e15a43c1813c5077778af39e367fef2654",
+  "gpu_step_maximum_joint_displacement_by_env": {
+    "native_off": [
+      0.5198098421096802,
+      0.5200605988502502
+    ],
+    "appearance": [
+      0.5198098421096802,
+      0.5200605988502502
+    ]
+  },
+  "original_rgb_restoration": {
+    "0": {
+      "base_camera": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      },
+      "external_camera": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      },
+      "wrist_camera": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      },
+      "human": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      }
+    },
+    "1": {
+      "base_camera": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      },
+      "external_camera": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      },
+      "wrist_camera": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      },
+      "human": {
+        "changed_values": 0,
+        "changed_pixels": 0,
+        "max_absolute_error": 0
+      }
+    }
+  },
+  "random_reproducibility": [
+    {
+      "schemes": [
+        "variant_2",
+        "variant_10"
+      ],
+      "episodes": [
+        2,
+        2
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ]
+    },
+    {
+      "schemes": [
+        "variant_2",
+        "variant_1"
+      ],
+      "episodes": [
+        2,
+        3
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ]
+    },
+    {
+      "schemes": [
+        "variant_5",
+        "variant_3"
+      ],
+      "episodes": [
+        3,
+        4
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 3,
+          "scheme_id": "variant_5",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "scheme_id": "variant_3",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ]
+    },
+    {
+      "schemes": [
+        "variant_5",
+        "variant_10"
+      ],
+      "episodes": [
+        3,
+        5
+      ],
+      "records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "scheme_id": "variant_9",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "scheme_id": "variant_2",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 3,
+          "scheme_id": "variant_1",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 3,
+          "scheme_id": "variant_5",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 4,
+          "scheme_id": "variant_3",
+          "catalog_version": "furniture-appearance-v1"
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 5,
+          "scheme_id": "variant_10",
+          "catalog_version": "furniture-appearance-v1"
+        }
+      ]
+    }
+  ],
+  "selection_precedence": "passed",
+  "native_local_reset": [
+    {
+      "selected": [
+        1
+      ],
+      "unselected_env_idx": 0,
+      "raw_state_sha256": "cc37032a294c17b1027d70c7634a6387b81d3d658f92342462a905f4f12f0023",
+      "raw_json_sha256": "b586f62b395c2f542f5b07fa86cee7411c8a1db4461e76ba22bb3c9a276223cb",
+      "precondition_control_steps": 0,
+      "precondition_physics_steps": 0,
+      "controller_precondition": {
+        "controller/arm": true,
+        "controller/hand": true
+      },
+      "precondition_action_sha256": "8458a040abda7b1b6a7337daaa1345980099a8e2c92f7d1e3dbb23e479ef8d7f",
+      "precondition_max_abs_force": 87.0,
+      "shared_controller_counters": {
+        "before": {
+          "controller/hand": {
+            "value": 0,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        },
+        "after": {
+          "controller/hand": {
+            "value": 0,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        }
+      },
+      "unselected": {
+        "state_changed_fields": 0,
+        "controller_changed": false,
+        "materials_changed": false,
+        "task_rng_changed": false,
+        "controller_sha256": "1f07ad3ffb70741df5e84b1e0888012a85af241e09bdbc9586115938c70b46a3",
+        "materials_sha256": "473cd4d6d3e0bdff9c8dd05b9c348d741095db197f2db593552ce4afd321716a",
+        "task_rng_sha256": "b490a2a1c93562ed976a760ec77d5cad43b854baa13082a01d7ca90b0324439b",
+        "pixel_changes": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    },
+    {
+      "selected": [
+        0
+      ],
+      "unselected_env_idx": 1,
+      "raw_state_sha256": "1a491430643b8dca2b03ca5691b47ed8602f53a48e2952f5ebf015d2042e95fa",
+      "raw_json_sha256": "ae83d3d4dc44c9a470a753252bf5f6edc80b7ca638b22dd0244a90a36087ab62",
+      "precondition_control_steps": 1,
+      "precondition_physics_steps": 20,
+      "controller_precondition": {
+        "controller/arm": true,
+        "controller/hand": true
+      },
+      "precondition_action_sha256": "cee6cab957341b9ef5214c67050e96c0c406469c3641ee1f422006c5e979e231",
+      "precondition_max_abs_force": 87.0,
+      "shared_controller_counters": {
+        "before": {
+          "controller/hand": {
+            "value": 20,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        },
+        "after": {
+          "controller/hand": {
+            "value": 0,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        }
+      },
+      "unselected": {
+        "state_changed_fields": 0,
+        "controller_changed": false,
+        "materials_changed": false,
+        "task_rng_changed": false,
+        "controller_sha256": "1f07ad3ffb70741df5e84b1e0888012a85af241e09bdbc9586115938c70b46a3",
+        "materials_sha256": "f297951b49f9ad87632ab2dc0bd8521c924ff4b2df8aab4c26fda909ffdb46e4",
+        "task_rng_sha256": "e0b524133037356333dee557ed7fd19f092c7a31c7deb571f952df12fc97becd",
+        "pixel_changes": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      }
+    }
+  ],
+  "appearance_local_reset": [
+    {
+      "selected": [
+        1
+      ],
+      "unselected_env_idx": 0,
+      "raw_state_sha256": "2145e385d4efc7b625920c347b7dec57520745dbaffc2b5ab56294bf289b0ad9",
+      "raw_json_sha256": "42d43b6e560209e1964080a880ba9f5b44c83a0779255a35ce956666394a4cba",
+      "precondition_control_steps": 0,
+      "precondition_physics_steps": 0,
+      "controller_precondition": {
+        "controller/arm": true,
+        "controller/hand": true
+      },
+      "precondition_action_sha256": "8458a040abda7b1b6a7337daaa1345980099a8e2c92f7d1e3dbb23e479ef8d7f",
+      "precondition_max_abs_force": 87.0,
+      "shared_controller_counters": {
+        "before": {
+          "controller/hand": {
+            "value": 0,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        },
+        "after": {
+          "controller/hand": {
+            "value": 0,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        }
+      },
+      "unselected": {
+        "state_changed_fields": 0,
+        "controller_changed": false,
+        "materials_changed": false,
+        "task_rng_changed": false,
+        "controller_sha256": "1f07ad3ffb70741df5e84b1e0888012a85af241e09bdbc9586115938c70b46a3",
+        "materials_sha256": "99986760be610f538ac26c66c9a9668387980e871a3028d74df14d558f9134ff",
+        "task_rng_sha256": "b490a2a1c93562ed976a760ec77d5cad43b854baa13082a01d7ca90b0324439b",
+        "pixel_changes": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      },
+      "scheme_id": "original",
+      "appearance_rng_changed": false,
+      "unselected_episode_records_changed": false,
+      "appearance_rng_sha256": "a78e041703e449d431f046ec34026d547900f02e5ffcae3bef259ed50d3c8789",
+      "selected_pixel_changes": {
+        "base_camera": {
+          "changed_values": 53391,
+          "changed_pixels": 19243,
+          "max_absolute_error": 239
+        },
+        "external_camera": {
+          "changed_values": 7500,
+          "changed_pixels": 2701,
+          "max_absolute_error": 201
+        },
+        "wrist_camera": {
+          "changed_values": 145460,
+          "changed_pixels": 54823,
+          "max_absolute_error": 230
+        },
+        "human": {
+          "changed_values": 51580,
+          "changed_pixels": 18640,
+          "max_absolute_error": 209
+        }
+      }
+    },
+    {
+      "selected": [
+        0
+      ],
+      "unselected_env_idx": 1,
+      "raw_state_sha256": "3df8526477d43c883b63c0f4f124f6e6bf110e423354bebc4db7aaccc3883e93",
+      "raw_json_sha256": "88b5ee3aeb83b156a7611a5be6e61de4d68d419902443638f0ebc5562d989c62",
+      "precondition_control_steps": 1,
+      "precondition_physics_steps": 20,
+      "controller_precondition": {
+        "controller/arm": true,
+        "controller/hand": true
+      },
+      "precondition_action_sha256": "cee6cab957341b9ef5214c67050e96c0c406469c3641ee1f422006c5e979e231",
+      "precondition_max_abs_force": 87.0,
+      "shared_controller_counters": {
+        "before": {
+          "controller/hand": {
+            "value": 20,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        },
+        "after": {
+          "controller/hand": {
+            "value": 0,
+            "scope": "shared",
+            "interpolation_enabled": false
+          }
+        }
+      },
+      "unselected": {
+        "state_changed_fields": 0,
+        "controller_changed": false,
+        "materials_changed": false,
+        "task_rng_changed": false,
+        "controller_sha256": "1f07ad3ffb70741df5e84b1e0888012a85af241e09bdbc9586115938c70b46a3",
+        "materials_sha256": "f297951b49f9ad87632ab2dc0bd8521c924ff4b2df8aab4c26fda909ffdb46e4",
+        "task_rng_sha256": "e0b524133037356333dee557ed7fd19f092c7a31c7deb571f952df12fc97becd",
+        "pixel_changes": {
+          "base_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "external_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "wrist_camera": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          },
+          "human": {
+            "changed_values": 0,
+            "changed_pixels": 0,
+            "max_absolute_error": 0
+          }
+        }
+      },
+      "scheme_id": "original",
+      "appearance_rng_changed": false,
+      "unselected_episode_records_changed": false,
+      "appearance_rng_sha256": "6e9100807f99f74be9dab2576b88d3fb5fd4fff3f05a4e20016111a8ca1af7e1",
+      "selected_pixel_changes": {
+        "base_camera": {
+          "changed_values": 67005,
+          "changed_pixels": 22876,
+          "max_absolute_error": 243
+        },
+        "external_camera": {
+          "changed_values": 8917,
+          "changed_pixels": 3097,
+          "max_absolute_error": 191
+        },
+        "wrist_camera": {
+          "changed_values": 153956,
+          "changed_pixels": 57675,
+          "max_absolute_error": 245
+        },
+        "human": {
+          "changed_values": 60472,
+          "changed_pixels": 21034,
+          "max_absolute_error": 209
+        }
+      }
+    }
+  ]
+}

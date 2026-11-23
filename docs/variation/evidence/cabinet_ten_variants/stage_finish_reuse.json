@@ -1,0 +1,348 @@
+{
+  "128861": {
+    "job_id": "128861",
+    "head": "5eea5a740969cdceb57914cf0327be2984e89efb",
+    "source_dir": "runtime_001",
+    "manifest_sha256": "985dd3d7727c4a9f34524a4e67b8272beae5e4b5a6dd39e53b4110f053e8f7a8",
+    "results_sha256": "4a3c18e2a3071b8b590bcdbf4c4f4004c2bcc08865ec9c9785e4ebb3107dbd0a",
+    "production_files": {
+      "tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json": {
+        "frozen_sha256": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042",
+        "actual_sha256": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042"
+      },
+      "tasks/assets/variation/cabinet_pouring/family_variants.json": {
+        "frozen_sha256": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083",
+        "actual_sha256": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083"
+      },
+      "tasks/assets/variation/cabinet_pouring/pouring_finishes.json": {
+        "frozen_sha256": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1",
+        "actual_sha256": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/berry_soda.png": {
+        "frozen_sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8",
+        "actual_sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/black_tea.png": {
+        "frozen_sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7",
+        "actual_sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/catalog.json": {
+        "frozen_sha256": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca",
+        "actual_sha256": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/coffee_milk.png": {
+        "frozen_sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81",
+        "actual_sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/green_tea.png": {
+        "frozen_sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff",
+        "actual_sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/mineral_silver.png": {
+        "frozen_sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a",
+        "actual_sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/peach_juice.png": {
+        "frozen_sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208",
+        "actual_sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/spring_water.png": {
+        "frozen_sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4",
+        "actual_sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": {
+        "frozen_sha256": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6",
+        "actual_sha256": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": {
+        "frozen_sha256": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6",
+        "actual_sha256": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": {
+        "frozen_sha256": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6",
+        "actual_sha256": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": {
+        "frozen_sha256": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8",
+        "actual_sha256": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": {
+        "frozen_sha256": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888",
+        "actual_sha256": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888"
+      },
+      "tasks/cabinet_pouring/family_appearance.py": {
+        "frozen_sha256": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7",
+        "actual_sha256": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7"
+      },
+      "tasks/cabinet_pouring/pouring_appearance.py": {
+        "frozen_sha256": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0",
+        "actual_sha256": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0"
+      },
+      "tasks/cabinet_pouring/variation.py": {
+        "frozen_sha256": "db9b41344a3e3fdd6b3a674653f232e1d4957235cfb92fbbe69a8e045cb2a8ed",
+        "actual_sha256": "3b27d2106d27da43cadf8a8ac440853a05166ed583b8ac3fd302d82dcdd243a8"
+      }
+    },
+    "known_production_differences": [
+      "tasks/cabinet_pouring/variation.py"
+    ],
+    "additional_asset_file_count": 549,
+    "asset_identity_equal_all_three": true,
+    "verified": true,
+    "verified_scope": {
+      "OpenCabinet": {
+        "schemes": 11,
+        "both_local_resets_verified": true
+      },
+      "PickBottle": {
+        "schemes": 11,
+        "both_local_resets_verified": true
+      }
+    },
+    "reuse_scope": "Cabinet doors only; bottle label binding superseded by job 128933"
+  },
+  "128933": {
+    "job_id": "128933",
+    "head": "87afa53d5262b6667a6f0e8dac0ecee538781318",
+    "source_dir": "runtime_003",
+    "manifest_sha256": "18fc984e6be76312413c0616defd6a50aa029cb8fa1bbc7d00dffc3e30ebb7e4",
+    "results_sha256": "626310c05e6b7cae9258936d61cb915673bcae133bf31c3905a266b3f7ab043b",
+    "production_files": {
+      "tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json": {
+        "frozen_sha256": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042",
+        "actual_sha256": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042"
+      },
+      "tasks/assets/variation/cabinet_pouring/family_variants.json": {
+        "frozen_sha256": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083",
+        "actual_sha256": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083"
+      },
+      "tasks/assets/variation/cabinet_pouring/pouring_finishes.json": {
+        "frozen_sha256": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1",
+        "actual_sha256": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/berry_soda.png": {
+        "frozen_sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8",
+        "actual_sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/black_tea.png": {
+        "frozen_sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7",
+        "actual_sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/catalog.json": {
+        "frozen_sha256": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca",
+        "actual_sha256": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/coffee_milk.png": {
+        "frozen_sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81",
+        "actual_sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/green_tea.png": {
+        "frozen_sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff",
+        "actual_sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/mineral_silver.png": {
+        "frozen_sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a",
+        "actual_sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/peach_juice.png": {
+        "frozen_sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208",
+        "actual_sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/spring_water.png": {
+        "frozen_sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4",
+        "actual_sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": {
+        "frozen_sha256": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6",
+        "actual_sha256": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": {
+        "frozen_sha256": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6",
+        "actual_sha256": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": {
+        "frozen_sha256": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6",
+        "actual_sha256": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": {
+        "frozen_sha256": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8",
+        "actual_sha256": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": {
+        "frozen_sha256": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888",
+        "actual_sha256": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888"
+      },
+      "tasks/cabinet_pouring/family_appearance.py": {
+        "frozen_sha256": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7",
+        "actual_sha256": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7"
+      },
+      "tasks/cabinet_pouring/pouring_appearance.py": {
+        "frozen_sha256": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0",
+        "actual_sha256": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0"
+      },
+      "tasks/cabinet_pouring/variation.py": {
+        "frozen_sha256": "3b27d2106d27da43cadf8a8ac440853a05166ed583b8ac3fd302d82dcdd243a8",
+        "actual_sha256": "3b27d2106d27da43cadf8a8ac440853a05166ed583b8ac3fd302d82dcdd243a8"
+      }
+    },
+    "known_production_differences": [],
+    "additional_asset_file_count": 549,
+    "asset_identity_equal_all_three": true,
+    "verified": true,
+    "verified_scope": {
+      "PickBottle": {
+        "schemes": 11,
+        "both_local_resets_verified": true
+      }
+    }
+  },
+  "128943": {
+    "job_id": "128943",
+    "head": "0ed5ce09da945eeb0609f7a32fcb082cf50185cb",
+    "source_dir": "runtime_004",
+    "manifest_sha256": "ce59210bd1d89a84f61f3f9259a192f5cede5601fadb360ba2532aa2f83b0291",
+    "results_sha256": "925529825320c4280c547289190cfb38464c75b069cce27fa039ee3d566c6b1a",
+    "production_files": {
+      "tasks/assets/variation/cabinet_pouring/cabinet_v1/catalog.json": {
+        "frozen_sha256": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042",
+        "actual_sha256": "d8a4893b86126a8595f4a720698a6012182af9c5d983f4fbc3d0cf5c7e596042"
+      },
+      "tasks/assets/variation/cabinet_pouring/family_variants.json": {
+        "frozen_sha256": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083",
+        "actual_sha256": "250634034e54bc8b3ea6d8e8048559a7aec77b57342b969ee55c8056bdeb7083"
+      },
+      "tasks/assets/variation/cabinet_pouring/pouring_finishes.json": {
+        "frozen_sha256": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1",
+        "actual_sha256": "6be35eeadb874955a5c3addd4b6e06c6b1ba2471b3f8d8e5ffa5fa14beb032d1"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/berry_soda.png": {
+        "frozen_sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8",
+        "actual_sha256": "1da0e282ab90ad249640c0ebda9373cbfc2c4bc33178049a3e5426fead474ab8"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/black_tea.png": {
+        "frozen_sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7",
+        "actual_sha256": "932e36a08fa36b5258ed8c3b7a05551370d0a07ce1587ae0498110f9137a60b7"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/catalog.json": {
+        "frozen_sha256": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca",
+        "actual_sha256": "7c6614eab4bf04222d387100e89806ed14ddebc2ce87a699752f8abea07693ca"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/coffee_milk.png": {
+        "frozen_sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81",
+        "actual_sha256": "169b96cfacb0b2fddc799f3f5d23fff7f295275a0abce73361a5d6c2c53d0a81"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/green_tea.png": {
+        "frozen_sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff",
+        "actual_sha256": "dc09791b1455004fe5941395dcc9175ea75b0b1666d4abc4dc62fc0103007fff"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/mineral_silver.png": {
+        "frozen_sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a",
+        "actual_sha256": "dfaed966ac96c576d7be4b8ee57aaada2610f5c1e4759daa9d9be96ab2b9094a"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/peach_juice.png": {
+        "frozen_sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208",
+        "actual_sha256": "b86e83543b6a7042eecdca89a66d3045e89e0c2daa6b98e9ced892ba0ecbb208"
+      },
+      "tasks/assets/variation/cabinet_pouring/v1/spring_water.png": {
+        "frozen_sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4",
+        "actual_sha256": "1e7ca4e4d80f6be90349ae633358b9abae4bf28f09725ea1f40f8d6c82e083a4"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": {
+        "frozen_sha256": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6",
+        "actual_sha256": "46df1f044cf754067579c10650a4871c148a4fa067c7367fa5db639a416ad9d6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": {
+        "frozen_sha256": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6",
+        "actual_sha256": "942fed022376ba03067f825267d0840b62c8752f6ca9a7ef2819700fe14651f6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": {
+        "frozen_sha256": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6",
+        "actual_sha256": "e1735d18441bd12dcf0f12b2375514f4d5e113bad9b85e1931e9dcbd2c4047e6"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": {
+        "frozen_sha256": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8",
+        "actual_sha256": "4543af2b67269259bf8741eb2db30dde35f0ba5547b6dda8629adc506e3965b8"
+      },
+      "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": {
+        "frozen_sha256": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888",
+        "actual_sha256": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888"
+      },
+      "tasks/cabinet_pouring/family_appearance.py": {
+        "frozen_sha256": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7",
+        "actual_sha256": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7"
+      },
+      "tasks/cabinet_pouring/pouring_appearance.py": {
+        "frozen_sha256": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0",
+        "actual_sha256": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0"
+      },
+      "tasks/cabinet_pouring/variation.py": {
+        "frozen_sha256": "3b27d2106d27da43cadf8a8ac440853a05166ed583b8ac3fd302d82dcdd243a8",
+        "actual_sha256": "3b27d2106d27da43cadf8a8ac440853a05166ed583b8ac3fd302d82dcdd243a8"
+      }
+    },
+    "known_production_differences": [],
+    "additional_asset_file_count": 549,
+    "asset_identity_equal_all_three": true,
+    "verified": true,
+    "verified_scope": {
+      "UnscrewCap": {
+        "schemes": 11,
+        "both_local_resets_verified": true
+      }
+    },
+    "camera": {
+      "view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "intrinsic": [
+        [
+          817.0885620117188,
+          0.0,
+          480.0
+        ],
+        [
+          0.0,
+          817.0885620117188,
+          360.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "extrinsic": [
+        [
+          -0.2893894612789154,
+          0.9572112560272217,
+          2.2351738238057806e-08,
+          0.12035433202981949
+        ],
+        [
+          0.5776746273040771,
+          0.17464579641819,
+          -0.7973649501800537,
+          0.21364516019821167
+        ],
+        [
+          -0.7632467746734619,
+          -0.2307489961385727,
+          -0.6034973859786987,
+          0.38066983222961426
+        ]
+      ]
+    },
+    "flip_v": false,
+    "reuse_scope": "Fixed attached-cap schemes, restoration, bidirectional local reset"
+  }
+}
