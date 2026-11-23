@@ -1,0 +1,25 @@
+/mnt/ceph2/wj/miniconda/envs/ms3/lib/python3.10/site-packages/sapien/_vulkan_tricks.py:78: UserWarning: Failed to find Vulkan ICD file. This is probably due to an incorrect or partial installation of the NVIDIA driver. SAPIEN will attempt to provide an ICD file anyway but it may not work.
+  warn(
+[33;1m2026-11-23 07:17:02,157 - mani_skill  - WARNING - Overriding registered agent panda[0m
+[33;1m2026-11-23 07:17:02,157 - mani_skill  - WARNING - Overriding registered agent panda_wristcam[0m
+A4 PASS long original
+A4 PASS long variant_1
+A4 PASS long variant_2
+A4 PASS long variant_3
+A4 PASS long variant_4
+A4 PASS long variant_5
+A4 PASS long variant_6
+A4 PASS long variant_7
+A4 PASS long variant_8
+A4 PASS long variant_9
+A4 PASS long variant_10
+A5 PASS long variant_1
+A5 PASS long variant_2
+A5 PASS long variant_3
+A5 PASS long variant_4
+A5 PASS long variant_5
+A5 PASS long variant_6
+A5 PASS long variant_7
+A5 PASS long variant_8
+A5 PASS long variant_9
+A5 PASS long variant_10
