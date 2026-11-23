@@ -10,7 +10,7 @@ from pathlib import Path
 import gymnasium as gym
 import numpy as np
 from scipy.spatial.transform import Rotation
-from shapely.geometry import MultiPoint
+from scipy.spatial import ConvexHull
 import torch
 
 from check_cabinet_positions import env_digest, rotation, setup_motion, solve_arm, value
@@ -42,10 +42,29 @@ def charger_parts(e, pose):
     ]
 
 
+def convex_gap(a, b):
+    """Exact unsigned Euclidean gap of two convex XY silhouettes."""
+    def hull(points):
+        points = np.unique(points, axis=0)
+        return points[ConvexHull(points).vertices]
+    a,b = hull(a),hull(b)
+    ea,eb = np.roll(a,-1,axis=0)-a,np.roll(b,-1,axis=0)-b
+    edges = np.concatenate([ea,eb])
+    axes = np.column_stack([-edges[:,1],edges[:,0]])
+    one,two = a@axes.T,b@axes.T
+    separated = np.any((one.max(0)<two.min(0)) | (two.max(0)<one.min(0)))
+    if not separated:
+        return 0.
+    def point_to_edges(points, vertices, edges):
+        delta=points[:,None,:]-vertices[None,:,:]
+        along=np.clip((delta*edges).sum(-1)/(edges*edges).sum(-1),0,1)
+        return np.linalg.norm(delta-along[...,None]*edges,axis=-1).min()
+    return float(min(point_to_edges(a,b,eb),point_to_edges(b,a,ea)))
+
+
 def outline_gap(e, charger, socket):
     shell = vertices([e.socket_side / 2] * 2 + [e.socket_thickness / 2], [0,0,0], socket)
-    footprint = MultiPoint(shell[:, :2]).convex_hull
-    return min(footprint.distance(MultiPoint(p[:, :2]).convex_hull) for p in charger_parts(e, charger))
+    return min(convex_gap(shell[:, :2], part[:, :2]) for part in charger_parts(e, charger))
 
 
 def full_action(e, env):
