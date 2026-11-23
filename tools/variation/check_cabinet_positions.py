@@ -95,7 +95,7 @@ def motion_targets(e, task, i, yaw, data):
     return best
 
 
-def physical_attempt(env,e,task,i,ik):
+def physical_attempt(env,e,task,i,ik,nominal_probe=False):
     ctrl=e.agent.controller
     parts=ctrl.controllers
     action=torch.empty((2,env.action_space.shape[-1]),device=e.device)
@@ -113,20 +113,34 @@ def physical_attempt(env,e,task,i,ik):
     contacts=[];distances=[];grasp=False
     target = e.door_link if task=='OpenCabinet' else (
         e.cap_fixed if task=='UnscrewCap' else e.source)
+    links=[e.agent.robot.links_map[n] for n in e.agent.grip_link_names]
+    start_bottle = value(e._source_pose().p[i]).tolist() if task=='PickBottle' else None
+    contact_trace=[]
     for phase,q in enumerate(ik['arm_targets']):
         start=action[i,arm_lo:arm_hi].clone()
-        for k in range(12):
-            f=min((k+1)/8,1.)
+        steps = (50,40,48)[phase] if nominal_probe else 12
+        ramp = steps-12 if nominal_probe else 8
+        for k in range(steps):
+            f=min((k+1)/ramp,1.)
             action[i,arm_lo:arm_hi]=torch.lerp(start,start.new_tensor(q),f)
             if phase==1:action[i,hand_lo:hand_hi]=torch.lerp(hand0,close,f)
             env.step(action)
+            if nominal_probe:
+                forces=[float(e.scene.get_pairwise_contact_forces(target,l)[i].norm()) for l in links]
+                grasp_now=bool(e._is_grasping(e.source)[i])
+                grasp |= grasp_now
+                contact_trace.append(dict(phase=phase,step=k+1,peak_N=max(forces),
+                    native_grasp=grasp_now,bottle_xyz=value(e._source_pose().p[i]).tolist(),
+                    tracking_error_rad=float((e.agent.robot.qpos[i,parts['arm'].active_joint_indices]-action[i,arm_lo:arm_hi]).abs().max())))
         tip=np.mean([value(t.pose.p[i]) for t in e.agent.tip_links[:2]],axis=0)
         distances.append(float(np.linalg.norm(tip-ik['target_xyz'])))
-        links=[e.agent.robot.links_map[n] for n in e.agent.grip_link_names]
         contacts.append(max(float(torch.linalg.norm(e.scene.get_pairwise_contact_forces(target,l)[i])) for l in links))
         if task in ('PickBottle','PourBeads'):grasp |= bool(e._is_grasping(e.source)[i].item())
     contact=max(contacts)>1e-4
     result=dict(contact_N=contacts,tip_midpoint_distance_m=distances,native_grasp_seen=grasp)
+    if nominal_probe:
+        result.update(contact_trace=contact_trace,peak_contact_N=max(x['peak_N'] for x in contact_trace),
+                      bottle_start_xyz=start_bottle,bottle_end_xyz=value(e._source_pose().p[i]).tolist())
     if task=='OpenCabinet':
         angle=float(e.cabinet.qpos[i,0]);result.update(angle_rad=angle,passed=angle>=math.radians(3) and contact)
     elif task=='UnscrewCap': result.update(passed=contact and min(distances)<.045)
@@ -140,9 +154,10 @@ def physical_attempt(env,e,task,i,ik):
     return result
 
 
-def run(root):
+def run(root, followup=False):
     source=Path(__file__).resolve().parents[2]
-    table=list(csv.DictReader((source/'tools/variation/cabinet_position_points.csv').open()))
+    matrix = 'cabinet_position_followup.csv' if followup else 'cabinet_position_points.csv'
+    table = list(csv.DictReader((source/'tools/variation'/matrix).open()))
     region='cabinet_pouring.bottle_table.xy_v2'
     result=dict(job=os.environ['SLURM_JOB_ID'],tasks={},status='running')
     root.mkdir(exist_ok=False)
@@ -156,15 +171,17 @@ def run(root):
             (root/'results.previous.json').write_text(previous)
         (root/'results.json').write_text(current)
         previous = current
-    for task in ('PickBottle','OpenCabinet','UnscrewCap','PourBeads'):
+    batches = dict.fromkeys((row['phase'], row['tasks']) for row in table) if followup else [
+        ('all', task) for task in ('PickBottle','OpenCabinet','UnscrewCap','PourBeads')]
+    for phase, task in batches:
         task_id='CabinetPouring'+task+'-Sharpa-v1'
         config=dict(variation={'initial_pose':dict(enabled=True,mode='native',region_id=region)}) if task in ('PickBottle','UnscrewCap') else {}
-        record=result['tasks'][task]=dict(task_id=task_id,kwargs=config,points=[])
+        record=result['tasks'].setdefault(task,dict(task_id=task_id,kwargs=config,points=[]))
         flush()
         with __import__('contextlib').closing(gym.make(task_id,num_envs=2,sim_backend='physx_cuda',obs_mode='state',reconfiguration_freq=0,**config)) as env:
             e=env.unwrapped
             env.reset(seed=7)
-            rows=[p for p in table if p['tasks']==task]
+            rows=[p for p in table if p['tasks']==task and p.get('phase','all')==phase]
             for p in rows:
                 i=int(p['env']); other=1-i
                 req=json.loads(p['options'])
@@ -221,6 +238,17 @@ def run(root):
                     body = e.source_fixed if task == 'UnscrewCap' else e.source
                     item['initial_linear_m_s'] = value(body.linear_velocity[i]).tolist()
                     item['initial_angular_rad_s'] = value(body.angular_velocity[i]).tolist()
+                if task=='PickBottle' and p['figure']=='4':
+                    # Query the native placement predicate without moving the shelf bottle.
+                    from mani_skill.utils.structs.pose import Pose
+                    raw = e._source_pose().raw_pose.clone()
+                    raw[i, :2] = raw.new_tensor(req['variation']['initial_pose']['xy_m'])
+                    raw[i, 2] = -e.source_z_lo
+                    raw[i, 3:] = raw.new_tensor([1.,0.,0.,0.])
+                    flags = torch.ones(e.num_envs, device=e.device, dtype=torch.bool)
+                    test_pose = Pose.create(raw)
+                    item['hypothetical_upright_setdown'] = bool(e._bottle_placed(test_pose,flags,flags)[i])
+                    item['setdown_test_pose'] = value(raw[i]).tolist()
                 item['checks']={k:bool(v) for k,v in checks.items()}
                 item['status']='init_pass' if all(checks.values()) else 'init_fail'
                 flush()
@@ -247,11 +275,13 @@ def run(root):
                 ik=motion_targets(e,task,i,yaw,item)
                 item['ik']=ik;flush()
                 if ik['ik_pass'] and p['dynamic']=='yes':
-                    item['motion']=physical_attempt(env,e,task,i,ik)
+                    item['motion']=physical_attempt(env,e,task,i,ik,nominal_probe=followup and task=='PickBottle' and p['id']=='F1-0')
                 flush()
     result['status']='completed';flush()
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
-    run(parser.parse_args().output)
+    parser.add_argument('--followup',action='store_true')
+    args=parser.parse_args()
+    run(args.output,args.followup)
