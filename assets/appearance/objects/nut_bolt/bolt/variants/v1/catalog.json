@@ -253,13 +253,13 @@
     },
     "variant_10": {
       "mode": "material_override",
-      "label": "Graphite dry film with oxide-red coated head",
+      "label": "Slate dry film with oxide-red coated head",
       "roles": {
         "shaft": {
           "base_color": [
-            0.188,
-            0.181,
-            0.174,
+            0.34,
+            0.372,
+            0.405,
             1.0
           ],
           "roughness": 0.64,
