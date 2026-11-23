@@ -97,27 +97,27 @@
     },
     "variant_4": {
       "mode": "material_override",
-      "label": "Brushed stainless and satin head",
+      "label": "Brushed stainless with a bright forged head",
       "roles": {
         "shaft": {
           "base_color": [
-            0.67,
-            0.71,
-            0.75,
+            0.38,
+            0.43,
+            0.51,
             1.0
           ],
-          "roughness": 0.3,
-          "metallic": 0.95
+          "roughness": 0.40,
+          "metallic": 0.87
         },
         "head": {
           "base_color": [
-            0.53,
-            0.56,
-            0.6,
+            0.79,
+            0.84,
+            0.88,
             1.0
           ],
-          "roughness": 0.45,
-          "metallic": 0.92
+          "roughness": 0.27,
+          "metallic": 0.85
         }
       }
     },
