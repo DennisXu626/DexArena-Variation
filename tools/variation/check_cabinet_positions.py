@@ -171,7 +171,10 @@ def run(root):
                     item.update(status='rejected',reason=str(error),passive_unchanged=state==env_digest(e.get_state_dict(),other))
                     flush();assert item['passive_unchanged'];continue
                 assert p['kind']!='reject'
-                item['passive_unchanged']=state==env_digest(e.get_state_dict(),other)
+                after = env_digest(e.get_state_dict(), other)
+                item['passive_unchanged'] = state == after
+                if state != after:
+                    item.update(status='isolation_fail', passive_before=state, passive_after=after)
                 flush();assert item['passive_unchanged'],item['id']
                 layout=req.get('position_layout',{}).get(str(i),{})
                 yaw=layout.get('yaw_deg',15); checks={}
@@ -207,6 +210,10 @@ def run(root):
                     gap=float(np.linalg.norm(bowl[:2]-pos[:2])-.09-.030278)
                     checks.update(bowl_xy=np.allclose(bowl[:2],layout['bowl_xy_m'],atol=1e-6),bowl_z=abs(bowl[2]+e.target_z_lo-.001)<1e-5,xy_gap=gap>=0)
                     item['bowl_bottle_gap_m']=gap
+                if e.has_bottle:
+                    body = e.source_fixed if task == 'UnscrewCap' else e.source
+                    item['initial_linear_m_s'] = value(body.linear_velocity[i]).tolist()
+                    item['initial_angular_rad_s'] = value(body.angular_velocity[i]).tolist()
                 item['checks']={k:bool(v) for k,v in checks.items()}
                 item['status']='init_pass' if all(checks.values()) else 'init_fail'
                 flush()
