@@ -1,18 +1,26 @@
 # Office Desk 外观
 
-OpenLaptop 和 TypeKeys 各新增两套外观。ClickMouse 沿用现有两套方案，并与前两项一起检查局部 reset 的任务随机流、控制器和计数。三项默认关闭外观。
+OpenLaptop、TypeKeys 和 ClickMouse 各支持 original 加十套候选，默认关闭外观。原有两套候选保留，三项共同追加 `variant_3` 至 `variant_10`。
 
 ## 选择与记录
 
-设备参数唯一来源为 [laptop catalog](../../assets/appearance/objects/office_desk/laptop/catalog.json) 和 [keyboard catalog](../../assets/appearance/objects/office_desk/keyboard/catalog.json)。[运行索引](../../tasks/assets/variation/office_desk/devices/v1/catalog.json) 只映射方案，不复制参数。
+各对象 catalog 保存材质参数，设备运行索引保存公开 ID 到材质方案的映射。下表每列标出实际配置键和材质角色，每格依次给出公开 `scheme_id`、材质方案和原生展示相机实景链接。 [笔记本 catalog](../../assets/appearance/objects/office_desk/laptop/catalog.json) · [键盘 catalog](../../assets/appearance/objects/office_desk/keyboard/catalog.json) · [鼠标 catalog](../../tasks/assets/variation/office_desk/mouse_101408/v1/catalog.json) · [设备运行索引](../../tasks/assets/variation/office_desk/devices/v1/catalog.json)
 
-| 任务 | original | variant_1 | variant_2 |
+| 饰面 | OpenLaptop · `office_devices_appearance` · `bezel` | TypeKeys · `office_devices_appearance` · `shell` 与 `shell_strip` | ClickMouse · `mouse_appearance` · `shell`、`buttons`、`wheel` |
 |---|---|---|---|
-| OpenLaptop | 捕获原版 | terracotta_matte | petrol_satin |
-| TypeKeys | 捕获原版 | ochre_matte | indigo_satin |
-| ClickMouse | 捕获原版 | ivory_matte | navy_satin |
+| 原版 | `original` → [原生材质](evidence/office_desk_expansion_v2/OpenLaptop/original_human_env0.png) | `original` → [原生材质](evidence/office_desk_expansion_v2/TypeKeys/original_human_env0.png) | `original` → [原生材质](evidence/office_desk_expansion_v2/ClickMouse/original_human_env0.png) |
+| 候选 1 | `variant_1` → [`terracotta_matte`](evidence/office_desk_expansion_v2/OpenLaptop/variant_1_human_env0.png) | `variant_1` → [`ochre_matte`](evidence/office_desk_expansion_v2/TypeKeys/variant_1_human_env0.png) | `ivory_matte` → [`ivory_matte`](evidence/office_desk_expansion_v2/ClickMouse/ivory_matte_human_env0.png) |
+| 候选 2 | `variant_2` → [`petrol_satin`](evidence/office_desk_expansion_v2/OpenLaptop/variant_2_human_env0.png) | `variant_2` → [`indigo_satin`](evidence/office_desk_expansion_v2/TypeKeys/variant_2_human_env0.png) | `navy_satin` → [`navy_satin`](evidence/office_desk_expansion_v2/ClickMouse/navy_satin_human_env0.png) |
+| 朱红 | `variant_3` → [`variant_3`](evidence/office_desk_expansion_v2/OpenLaptop/variant_3_human_env0.png) | `variant_3` → [`variant_3`](evidence/office_desk_expansion_v2/TypeKeys/variant_3_human_env0.png) | `variant_3` → [`variant_3`](evidence/office_desk_expansion_v2/ClickMouse/variant_3_human_env0.png) |
+| 柠檬黄 | `variant_4` → [`variant_4`](evidence/office_desk_expansion_v2/OpenLaptop/variant_4_human_env0.png) | `variant_4` → [`variant_4`](evidence/office_desk_expansion_v2/TypeKeys/variant_4_human_env0.png) | `variant_4` → [`variant_4`](evidence/office_desk_expansion_v2/ClickMouse/variant_4_human_env0.png) |
+| 薄荷绿 | `variant_5` → [`variant_5`](evidence/office_desk_expansion_v2/OpenLaptop/variant_5_human_env0.png) | `variant_5` → [`variant_5`](evidence/office_desk_expansion_v2/TypeKeys/variant_5_human_env0.png) | `variant_5` → [`variant_5`](evidence/office_desk_expansion_v2/ClickMouse/variant_5_human_env0.png) |
+| 松绿 | `variant_6` → [`variant_6`](evidence/office_desk_expansion_v2/OpenLaptop/variant_6_human_env0.png) | `variant_6` → [`variant_6`](evidence/office_desk_expansion_v2/TypeKeys/variant_6_human_env0.png) | `variant_6` → [`variant_6`](evidence/office_desk_expansion_v2/ClickMouse/variant_6_human_env0.png) |
+| 钴蓝 | `variant_7` → [`variant_7`](evidence/office_desk_expansion_v2/OpenLaptop/variant_7_human_env0.png) | `variant_7` → [`variant_7`](evidence/office_desk_expansion_v2/TypeKeys/variant_7_human_env0.png) | `variant_7` → [`variant_7`](evidence/office_desk_expansion_v2/ClickMouse/variant_7_human_env0.png) |
+| 紫罗兰 | `variant_8` → [`variant_8`](evidence/office_desk_expansion_v2/OpenLaptop/variant_8_human_env0.png) | `variant_8` → [`variant_8`](evidence/office_desk_expansion_v2/TypeKeys/variant_8_human_env0.png) | `variant_8` → [`variant_8`](evidence/office_desk_expansion_v2/ClickMouse/variant_8_human_env0.png) |
+| 玫瑰粉 | `variant_9` → [`variant_9`](evidence/office_desk_expansion_v2/OpenLaptop/variant_9_human_env0.png) | `variant_9` → [`variant_9`](evidence/office_desk_expansion_v2/TypeKeys/variant_9_human_env0.png) | `variant_9` → [`variant_9`](evidence/office_desk_expansion_v2/ClickMouse/variant_9_human_env0.png) |
+| 石墨灰（笔记本）／瓷白（键盘、鼠标） | `variant_10` → [`variant_10`](evidence/office_desk_expansion_v2/OpenLaptop/variant_10_human_env0.png) | `variant_10` → [`variant_10`](evidence/office_desk_expansion_v2/TypeKeys/variant_10_human_env0.png) | `variant_10` → [`variant_10`](evidence/office_desk_expansion_v2/ClickMouse/variant_10_human_env0.png) |
 
-前两项使用 `office_devices_appearance` 和表中列头的方案 ID；ClickMouse 使用 `mouse_appearance` 和表中对应的方案名。见 [设备示例](../../examples/variation/office_desk/devices/) 和 [鼠标示例](../../examples/variation/office_desk/mouse_101408/)。
+[设备示例](../../examples/variation/office_desk/devices/) · [鼠标示例](../../examples/variation/office_desk/mouse_101408/)
 
 ```python
 import gymnasium as gym
@@ -21,8 +29,8 @@ import torch
 
 env = gym.make("OfficeDeskOpenLaptop-Sharpa-v1", num_envs=2,
     sim_backend="physx_cuda", obs_mode="rgb", render_mode="rgb_array",
-    office_devices_appearance={"enabled": True, "scheme_id": "variant_1",
-        "per_env": {"1": {"scheme_id": "variant_2"}}})
+    office_devices_appearance={"enabled": True, "scheme_id": "variant_3",
+        "per_env": {"1": {"scheme_id": "variant_8"}}})
 env.reset(seed=7)
 env.reset(options={"env_idx": torch.tensor([1], device=env.unwrapped.device),
     "office_devices_appearance": {"scheme_id": "original"}})
@@ -42,34 +50,30 @@ env.reset(options={"env_idx": torch.tensor([1], device=env.unwrapped.device),
 
 ## 复现与验收边界
 
-先准备 SIPAIR/DexArena 原模型 revision `b197a198fe50f41d70f563cfa7c88d3cc9f528b6` 与工具要求的 [私有 SDK](../../tools/variation/sapien_sdk/README.md)。ClickMouse 另需 `coacd==1.0.14`、`trimesh` 和原模型随附的五份碰撞缓存。复核证据哈希时使用 LF 工作树（Windows 可用 `git -c core.autocrlf=false clone`）。
+准备 SIPAIR/DexArena 原模型 revision `b197a198fe50f41d70f563cfa7c88d3cc9f528b6` 和对应平台的 [SAPIEN SDK](../../tools/variation/sapien_sdk/README.md)。ClickMouse 使用 `coacd==1.0.14`、`trimesh` 和原模型随附的五份碰撞缓存。复核源文件指纹使用 LF 工作树（Windows 可用 `git -c core.autocrlf=false clone`）。
 
 ```powershell
 python -B tools/variation/check_office_devices.py --require-assets
-python -B -m unittest discover -s tests -p test_office_devices_appearance.py
+python -B -m unittest discover -s tests -p 'test_office*.py'
 python -B tools/variation/check_static.py
 python -B tools/variation/check_appearance_archive.py
-python -B tools/variation/check_office_devices_dynamics.py --steps 60 --seed 7 `
-  --sapien-root $sdk --artifact $receipt --physx-gpu-dir $physx --output outputs/office_cpu
-python -B tools/variation/sapien_sdk/run_task_check.py --repo-root . `
-  --checker tools/variation/check_office_devices_runtime.py `
-  --sapien-root $sdk --artifact $receipt --physx-gpu-dir $physx --output outputs/office_cuda `
-  --approved-runtime --sim-backend physx_cuda --experimental-windows-cuda --gpu-memory-profile two_env
+$captureCommit = git rev-parse HEAD
+$batch = 'outputs/office_expansion_new'
+& ./tools/variation/run_office_expansion.ps1 -Batch $batch -Python $python `
+    -SapienRoot $sdk -Artifact $receipt -PhysxGpuDir $physx
+& $python -B tools/variation/export_office_expansion.py --batch $batch `
+    --artifact $receipt --capture-commit $captureCommit --output outputs/office_expansion_review
 ```
 
-输出目录须为新目录。CPU 接口检查使用同一启动器，指定 `--sim-backend physx_cpu` 并省略 CUDA 专用参数。`two_env` 只调整 GPU 接触缓冲容量；实际 SimConfig 完整写入报告。选中状态读回容差为 `atol=2e-6, rtol=0`，RGB 比较逐值精确。
+脚本逐项串行执行，`-GpuLock $gpuLock` 复用协调者提供的共享 GPU 锁。使用新的输出目录。正式导出从原始 PNG、PT 和纹理数组复算，记录捕获提交及源码和图片哈希。Linux 在标准 CUDA 作业内用公共 SDK 的 `run_linux_check.py`，选择 `--checker office --two-env-memory --approved-runtime`，逐次指定 `--task OpenLaptop`、`--task TypeKeys`、`--task ClickMouse`。依赖与启动参数见 [SDK 说明](../../tools/variation/sapien_sdk/README.md)。
 
-| 验收项 | 结果 |
+| 验收项 | 实测结果 |
 |---|---|
-| 当前源码的公开 reset | CPU 替身覆盖三项真实入口。合法方案按覆盖顺序转发，末项无效方案和混入坏值的随机候选在原生调用前被拒绝 |
-| 当前源码的静态检查 | 源资产、完整任务 AST、76 面 UV 证明及仓库静态、档案检查通过 |
-| 历史 CPU 接口与动态 | 三项真实接口有原版和候选记录。关闭外观、重复基线、启用原版和两候选，每任务每设置 60 步，共 900 控制步、18,000 物理子步。逐步状态、控制目标、奖励与判定差均为 0 |
-| 历史 Windows 私有 SAPIEN v5 双环境 CUDA | 三项共 78 次选中状态读回、6 控制步、120 物理子步。双向状态、控制器、随机流、记录及 RGB 隔离通过，原版恢复 RGB 差 0 |
+| CPU 合同与静态 | 23 项合约、源资产与任务 AST、76 面 UV、运行静态、仓库和档案检查通过 |
+| Windows CPU | 三个短任务的原生接口通过。39 组动态，共 2,340 控制步、46,800 物理子步，逐步张量与原任务一致 |
+| Windows 标准 CUDA | 实际加载 `3.0.3+dexarena.gpu1.wininterop5`。双环境完成 126 次状态读回、6 控制步和 120 物理子步。双向局部 reset 的未选状态与图像不变，逐套恢复 original 的原生相机 RGB 差为 0 |
+| Linux 标准 CUDA | 作业 `123860` 从冻结石墨灰版运行三项短任务。126 次选中状态读回、330 组候选对照、200 组原版恢复与 40 组局部相机对照通过 |
 
-运行摘要记录历史采集的原始源码、资产和 SDK 身份。其 CPU、CUDA 和图像记录用于成功路径验收。完整实景对照含原版、两候选与双向局部 reset 前后图。 [运行摘要](../../assets/appearance/objects/office_desk/previews/runtime/summary.json) · [实景对照](../../assets/appearance/objects/office_desk/previews/runtime/)
+固定外观均用种子 7 和原生相机。每任务对每环境的展示相机比较全部 55 对方案，要求至少 0.1% 像素有通道变化超过 8 色级。TypeKeys 额外核对每环境私有纹理句柄、128 份原生纹理数组和两种局部 reset 方向的实际绿色目标提示。ClickMouse 逐份核对 CoACD 加载及缓存。验收覆盖三个短任务。Long、分割图和完整机器人策略成功未验收。
 
-| OpenLaptop · petrol_satin | TypeKeys · indigo_satin | ClickMouse · navy_satin |
-|---|---|---|
-| ![笔记本背壳](../../assets/appearance/objects/office_desk/previews/runtime/OpenLaptop/variant_2_human_env0.png) | ![键盘外沿](../../assets/appearance/objects/office_desk/previews/runtime/TypeKeys/variant_2_human_env0.png) | ![鼠标](../../assets/appearance/objects/office_desk/previews/runtime/ClickMouse/navy_satin_human_env0.png) |
-
-Long 未接入；Linux、segmentation 与完整机器人任务成功未验收。
+[本地 Windows 复算摘要](evidence/office_desk_expansion_v2/summary.json) · [本地 Windows 正式实景](evidence/office_desk_expansion_v2/) · [Linux 作业与输入身份](evidence/office_desk_expansion_v2/linux-review.json) · [#16 原始归档](../../assets/appearance/objects/office_desk/previews/runtime/)
