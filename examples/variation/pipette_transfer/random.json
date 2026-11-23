@@ -1,0 +1,16 @@
+{
+  "task_id": "PipetteTransferDispenseLiquid-Sharpa-v1",
+  "pipette_appearance": {
+    "enabled": true,
+    "mode": "random_choice",
+    "scheme_ids": [
+      "original",
+      "jade",
+      "coral"
+    ],
+    "seed": 71
+  },
+  "pipette_rendering": {
+    "enabled": true
+  }
+}

@@ -17,6 +17,7 @@ order, and success additionally requires the final inserted state to hold for
 five consecutive control steps, as in every other task in the repo.
 """
 
+import copy
 import argparse
 import sys
 from pathlib import Path
@@ -387,6 +388,7 @@ class DrawerPlugLongEnv(BaseEnv):
         reconfiguration_freq=None,
         charger_appearance=None,
         drawer_plug_appearance=None,
+        family_appearance=None,
         **kwargs,
     ):
         if "sim_config" in kwargs and kwargs["sim_config"] is not None:
@@ -398,6 +400,21 @@ class DrawerPlugLongEnv(BaseEnv):
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.drawer_init_xy_noise = float(drawer_init_xy_noise)
         self.object_init_xy_noise = float(object_init_xy_noise)
+        self._family_appearance = None
+        if family_appearance and family_appearance.get("enabled", False):
+            if type(self).__name__ not in {
+                    "DrawerPlugOpenDrawerEnv", "DrawerPlugPickChargerEnv", "DrawerPlugInsertPlugEnv"}:
+                raise ValueError("Family appearance supports OpenDrawer, PickCharger and InsertPlug")
+            if any((cfg or {}).get("enabled", False) for cfg in (drawer_plug_appearance, charger_appearance)):
+                raise ValueError("Choose family appearance or the independent appearance settings")
+            from tasks.drawer_plug.family_appearance import FamilyAppearance
+            loaded = {k: "fixture" for k in ("drawer", "socket") if getattr(self, f"has_{k}")}
+            if self.has_charger:
+                loaded["charger"] = "charger"
+            self._family_appearance = FamilyAppearance(family_appearance, num_envs, loaded)
+            drawer_plug_appearance = {"enabled": True}
+            if self.has_charger:
+                charger_appearance = {"enabled": True}
         self._charger_appearance = None
         if charger_appearance and charger_appearance.get("enabled", False):
             if type(self).__name__ not in {"DrawerPlugPickChargerEnv", "DrawerPlugInsertPlugEnv", "DrawerPlugLongEnv"}:
@@ -566,6 +583,24 @@ class DrawerPlugLongEnv(BaseEnv):
         self.drawer = Articulation.merge(self._drawers, name="drawer", merge_links=True)
         self.add_to_state_dict_registry(self.drawer)
         self.drawer_link = self.drawer.links_map[DRAWER_LINK_NAME]
+
+    @property
+    def family_appearance_records(self):
+        """Snapshot of the family choice made for each reset environment."""
+        return copy.deepcopy(self._family_appearance.records) if self._family_appearance else []
+
+    def _finish_family_appearance(self, env_idx, options):
+        if any(k in options for k in ("drawer_plug_appearance", "charger_appearance")):
+            raise ValueError("Per-object reset overrides are not allowed in family appearance mode")
+        family = self._family_appearance
+        for i, sid, schemes in family.select(env_idx, options):
+            selected = torch.tensor([i], device=env_idx.device)
+            self._fixture_appearance.finish_reset(self, selected,
+                {"drawer_plug_appearance": {"scheme_id": schemes["fixture"]}})
+            if self._charger_appearance is not None:
+                self._charger_appearance.finish_reset(self, selected,
+                    {"charger_appearance": {"scheme_id": schemes["charger"]}})
+            family.record(i, sid, schemes)
 
     def _create_drawer_builder(self):
         loader = self.scene.create_urdf_loader()

@@ -1,0 +1,13 @@
+{
+  "task_id": "OfficeDeskTypeKeys-Sharpa-v1",
+  "office_devices_appearance": {
+    "enabled": true,
+    "mode": "random_choice",
+    "scheme_ids": [
+      "original",
+      "variant_1",
+      "variant_2"
+    ],
+    "seed": 71
+  }
+}

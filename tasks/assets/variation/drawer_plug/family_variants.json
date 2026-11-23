@@ -1,0 +1,49 @@
+{
+  "version": "drawer-ten-v1",
+  "schemes": {
+    "original": {
+      "fixture": "original",
+      "charger": "original"
+    },
+    "variant_1": {
+      "fixture": "warm_white",
+      "charger": "ivory_matte"
+    },
+    "variant_2": {
+      "fixture": "neutral_grey",
+      "charger": "navy_satin"
+    },
+    "variant_3": {
+      "fixture": "ash_greige",
+      "charger": "copper_metal"
+    },
+    "variant_4": {
+      "fixture": "walnut_birch",
+      "charger": "pebble_pc"
+    },
+    "variant_5": {
+      "fixture": "mist_blue",
+      "charger": "slate_shell"
+    },
+    "variant_6": {
+      "fixture": "olive_smoke",
+      "charger": "olive_polymer"
+    },
+    "variant_7": {
+      "fixture": "cream_copper",
+      "charger": "sand_satin"
+    },
+    "variant_8": {
+      "fixture": "terracotta_oak",
+      "charger": "clay_pc"
+    },
+    "variant_9": {
+      "fixture": "midnight_linen",
+      "charger": "graphite_fine"
+    },
+    "variant_10": {
+      "fixture": "birch_plum",
+      "charger": "lilac_eggshell"
+    }
+  }
+}

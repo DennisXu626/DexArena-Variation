@@ -1,0 +1,434 @@
+[
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/appearance_off/attached_base_camera_env0_rgb.png",
+    "sha256": "032d3ebb61bb5bf5c89e93d33782e3ac5ad99c0115ebb481c521563b418ac578"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/attached_base_camera_env0_entity_ids.png",
+    "sha256": "05c9e07982a9feae91cce1c5402a65ec80ca7251ea1549ac54ff82e8d2e92d0b"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/appearance_off/attached_base_camera_env1_rgb.png",
+    "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/attached_base_camera_env1_entity_ids.png",
+    "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/appearance_off/attached_task_wrist_camera_env0_rgb.png",
+    "sha256": "708e827c7a9f7d1e6b1f2c38ba8869f35c929c4710a961792f73c0caa2d4707b"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/attached_task_wrist_camera_env0_entity_ids.png",
+    "sha256": "cef2b372c75775c5dbc4e214ab06fc4314aab52afb1ea736b57a45ae75e778da"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/appearance_off/attached_task_wrist_camera_env1_rgb.png",
+    "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/attached_task_wrist_camera_env1_entity_ids.png",
+    "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/appearance_off/attached_render_camera_env0_rgb.png",
+    "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/attached_render_camera_env0_entity_ids.png",
+    "sha256": "418d2315d08c5a1d7be61eb9a60d44c242e6243e8c1426d5f95634f8d672708a"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/appearance_off/attached_render_camera_env1_rgb.png",
+    "sha256": "2de4e6094221dd81f9b4507de7e7707638b3e43c4264915350644fed241f3ed0"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/attached_render_camera_env1_entity_ids.png",
+    "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/appearance_off/free_base_camera_env0_rgb.png",
+    "sha256": "5ad37ed7014c2dfc7b76adc7b7ae3bd106360b3360b6d188bd826f2aae9e0afe"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/free_base_camera_env0_entity_ids.png",
+    "sha256": "7d1c6261a4982f8ecafd48a251079fd67b88fc3e6d6f1b2403507ee07d23b57d"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/appearance_off/free_base_camera_env1_rgb.png",
+    "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/free_base_camera_env1_entity_ids.png",
+    "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/appearance_off/free_task_wrist_camera_env0_rgb.png",
+    "sha256": "25ba7039e28471de2dc7c6f094da1fbcb048fb54c79a9144f709ba69a761dde7"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/free_task_wrist_camera_env0_entity_ids.png",
+    "sha256": "2c03d3ddc8a63a48afcc5c952372eb1a8964fec05078aabd7ee6ccaa87111186"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/appearance_off/free_task_wrist_camera_env1_rgb.png",
+    "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/free_task_wrist_camera_env1_entity_ids.png",
+    "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/appearance_off/free_render_camera_env0_rgb.png",
+    "sha256": "c36220ca2889a44cc4d6b4d9db24afa53e116495e626d5b24058e7dbba53dd83"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/free_render_camera_env0_entity_ids.png",
+    "sha256": "3e6d33b00ab7335b8e4bc77c0e0788592489cf81c393eec9388c791e0dc942d8"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/appearance_off/free_render_camera_env1_rgb.png",
+    "sha256": "2de4e6094221dd81f9b4507de7e7707638b3e43c4264915350644fed241f3ed0"
+  },
+  {
+    "group": "appearance_off",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/appearance_off/free_render_camera_env1_entity_ids.png",
+    "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/variant_9/attached_base_camera_env0_rgb.png",
+    "sha256": "032d3ebb61bb5bf5c89e93d33782e3ac5ad99c0115ebb481c521563b418ac578"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/attached_base_camera_env0_entity_ids.png",
+    "sha256": "05c9e07982a9feae91cce1c5402a65ec80ca7251ea1549ac54ff82e8d2e92d0b"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/variant_9/attached_base_camera_env1_rgb.png",
+    "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/attached_base_camera_env1_entity_ids.png",
+    "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/variant_9/attached_task_wrist_camera_env0_rgb.png",
+    "sha256": "708e827c7a9f7d1e6b1f2c38ba8869f35c929c4710a961792f73c0caa2d4707b"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/attached_task_wrist_camera_env0_entity_ids.png",
+    "sha256": "cef2b372c75775c5dbc4e214ab06fc4314aab52afb1ea736b57a45ae75e778da"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/variant_9/attached_task_wrist_camera_env1_rgb.png",
+    "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/attached_task_wrist_camera_env1_entity_ids.png",
+    "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/variant_9/attached_render_camera_env0_rgb.png",
+    "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/attached_render_camera_env0_entity_ids.png",
+    "sha256": "418d2315d08c5a1d7be61eb9a60d44c242e6243e8c1426d5f95634f8d672708a"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/variant_9/attached_render_camera_env1_rgb.png",
+    "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a"
+  },
+  {
+    "group": "variant_9",
+    "stage": "attached",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/attached_render_camera_env1_entity_ids.png",
+    "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/variant_9/free_base_camera_env0_rgb.png",
+    "sha256": "20e0f2f4e7d5fa67c6c77d4ef7f0f27bc8068af7cacd3e6ec1e59d18c0c094f0"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/free_base_camera_env0_entity_ids.png",
+    "sha256": "7d1c6261a4982f8ecafd48a251079fd67b88fc3e6d6f1b2403507ee07d23b57d"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/variant_9/free_base_camera_env1_rgb.png",
+    "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "base_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/free_base_camera_env1_entity_ids.png",
+    "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/variant_9/free_task_wrist_camera_env0_rgb.png",
+    "sha256": "25ba7039e28471de2dc7c6f094da1fbcb048fb54c79a9144f709ba69a761dde7"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/free_task_wrist_camera_env0_entity_ids.png",
+    "sha256": "2c03d3ddc8a63a48afcc5c952372eb1a8964fec05078aabd7ee6ccaa87111186"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/variant_9/free_task_wrist_camera_env1_rgb.png",
+    "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "task_wrist_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/free_task_wrist_camera_env1_entity_ids.png",
+    "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "rgb",
+    "path": "frames/variant_9/free_render_camera_env0_rgb.png",
+    "sha256": "ef2b8c8eae09486cd28e08b56ebbc94c1230b071a59f3e0e87358ecc38e2bdce"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 0,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/free_render_camera_env0_entity_ids.png",
+    "sha256": "3e6d33b00ab7335b8e4bc77c0e0788592489cf81c393eec9388c791e0dc942d8"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "rgb",
+    "path": "frames/variant_9/free_render_camera_env1_rgb.png",
+    "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a"
+  },
+  {
+    "group": "variant_9",
+    "stage": "free",
+    "camera": "render_camera",
+    "env": 1,
+    "kind": "entity_ids",
+    "path": "frames/variant_9/free_render_camera_env1_entity_ids.png",
+    "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+  }
+]

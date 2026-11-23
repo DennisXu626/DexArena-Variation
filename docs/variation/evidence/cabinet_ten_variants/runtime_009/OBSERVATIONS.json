@@ -1,0 +1,5888 @@
+{
+  "status": "completed",
+  "task": "CabinetPouringUnscrewCap-Sharpa-v1",
+  "seed": 7,
+  "job": "129064",
+  "production_head": "952af8c36ab1ae8392c7e6b8cfc28b19b4a212f9",
+  "checker_head": "226bb7d623018355e36c46f80baa3c64e4e833d3",
+  "full_entity_ids": "RGBA packed little-endian uint32",
+  "groups": {
+    "appearance_off": {
+      "status": "captured_and_compared",
+      "appearance_kwargs": {},
+      "formal_camera_source": "task defaults; sensor_configs omitted",
+      "config": {
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "rgb+segmentation",
+        "render_mode": "rgb_array",
+        "reconfiguration_freq": 0
+      },
+      "supplemental_view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "stages": {
+        "attached": {
+          "calls": [
+            "task.get_obs(info=existing_info, unflattened=True)",
+            "scene.update_render(sensors=False, human=True); render_camera.capture()"
+          ],
+          "cameras": {
+            "base_camera": [
+              {
+                "rgb": {
+                  "file": "attached_base_camera_env0_rgb.png",
+                  "sha256": "032d3ebb61bb5bf5c89e93d33782e3ac5ad99c0115ebb481c521563b418ac578"
+                },
+                "entity_ids": {
+                  "file": "attached_base_camera_env0_entity_ids.png",
+                  "sha256": "05c9e07982a9feae91cce1c5402a65ec80ca7251ea1549ac54ff82e8d2e92d0b"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 17886
+                  },
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 15956
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 14324
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 7875
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 4551
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 3097
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 790
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 296
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 202
+                  },
+                  {
+                    "entity_id": 49,
+                    "name": "right_pinky_PP",
+                    "pixels": 70
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 55
+                  },
+                  {
+                    "entity_id": 42,
+                    "name": "right_ring_PP",
+                    "pixels": 50
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 7875,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "attached_base_camera_env1_rgb.png",
+                  "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+                },
+                "entity_ids": {
+                  "file": "attached_base_camera_env1_entity_ids.png",
+                  "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 17955
+                  },
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 15571
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 14305
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 7875
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 4493
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 3279
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 809
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 378
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 232
+                  },
+                  {
+                    "entity_id": 49,
+                    "name": "right_pinky_PP",
+                    "pixels": 80
+                  },
+                  {
+                    "entity_id": 42,
+                    "name": "right_ring_PP",
+                    "pixels": 56
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 55
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 7875,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "task_wrist_camera": [
+              {
+                "rgb": {
+                  "file": "attached_task_wrist_camera_env0_rgb.png",
+                  "sha256": "708e827c7a9f7d1e6b1f2c38ba8869f35c929c4710a961792f73c0caa2d4707b"
+                },
+                "entity_ids": {
+                  "file": "attached_task_wrist_camera_env0_entity_ids.png",
+                  "sha256": "cef2b372c75775c5dbc4e214ab06fc4314aab52afb1ea736b57a45ae75e778da"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.296099454164505,
+                      0.41679060459136963,
+                      0.8594247102737427,
+                      0.07914222031831741
+                    ],
+                    [
+                      -0.8436889052391052,
+                      0.5359503626823425,
+                      0.030761003494262695,
+                      -0.14121989905834198
+                    ],
+                    [
+                      -0.4477881193161011,
+                      -0.7341954112052917,
+                      0.51033616065979,
+                      -0.6267482042312622
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.29609936475753784,
+                      0.8436889052391052,
+                      0.44778814911842346,
+                      -0.42323005199432373
+                    ],
+                    [
+                      0.41679054498672485,
+                      -0.5359505414962769,
+                      0.7341954112052917,
+                      -0.4174546003341675
+                    ],
+                    [
+                      0.8594247698783875,
+                      -0.030760981142520905,
+                      -0.5103362798690796,
+                      0.2561796009540558
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 18130
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 12240
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 10562
+                  },
+                  {
+                    "entity_id": 19,
+                    "name": "angle_bracket",
+                    "pixels": 6971
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 6522
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 5596
+                  },
+                  {
+                    "entity_id": 22,
+                    "name": "right_thumb_CMC_VL",
+                    "pixels": 3229
+                  },
+                  {
+                    "entity_id": 23,
+                    "name": "right_thumb_MC",
+                    "pixels": 1740
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 311
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 235
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "attached_task_wrist_camera_env1_rgb.png",
+                  "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+                },
+                "entity_ids": {
+                  "file": "attached_task_wrist_camera_env1_entity_ids.png",
+                  "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.2948855459690094,
+                      0.39184796810150146,
+                      0.8714916706085205,
+                      0.06363370269536972
+                    ],
+                    [
+                      -0.800649106502533,
+                      0.5991315245628357,
+                      0.0015277862548828125,
+                      -0.08149346709251404
+                    ],
+                    [
+                      -0.5215394496917725,
+                      -0.6982095837593079,
+                      0.49040794372558594,
+                      -0.6482099294662476
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.2948855757713318,
+                      0.800649106502533,
+                      0.5215395092964172,
+                      -0.4220793545246124
+                    ],
+                    [
+                      0.3918478488922119,
+                      -0.5991315841674805,
+                      0.6982095837593079,
+                      -0.42869576811790466
+                    ],
+                    [
+                      0.8714916706085205,
+                      -0.0015278158243745565,
+                      -0.4904080629348755,
+                      0.2625555098056793
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 18130
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 13283
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 9519
+                  },
+                  {
+                    "entity_id": 19,
+                    "name": "angle_bracket",
+                    "pixels": 6971
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 6522
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 5596
+                  },
+                  {
+                    "entity_id": 22,
+                    "name": "right_thumb_CMC_VL",
+                    "pixels": 3229
+                  },
+                  {
+                    "entity_id": 23,
+                    "name": "right_thumb_MC",
+                    "pixels": 1740
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 311
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 235
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "render_camera": [
+              {
+                "rgb": {
+                  "file": "attached_render_camera_env0_rgb.png",
+                  "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b"
+                },
+                "entity_ids": {
+                  "file": "attached_render_camera_env0_entity_ids.png",
+                  "sha256": "418d2315d08c5a1d7be61eb9a60d44c242e6243e8c1426d5f95634f8d672708a"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 417333
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 135853
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 108202
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 10447
+                  },
+                  {
+                    "entity_id": 63,
+                    "name": "source_cap",
+                    "pixels": 4810
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  },
+                  {
+                    "entity_id": 27,
+                    "name": "right_thumb_elastomer",
+                    "pixels": 37
+                  },
+                  {
+                    "entity_id": 26,
+                    "name": "right_thumb_DP",
+                    "pixels": 2
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 10447,
+                  "cap_fixed": 4810,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 108202,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "attached_render_camera_env1_rgb.png",
+                  "sha256": "2de4e6094221dd81f9b4507de7e7707638b3e43c4264915350644fed241f3ed0"
+                },
+                "entity_ids": {
+                  "file": "attached_render_camera_env1_entity_ids.png",
+                  "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 413195
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 137229
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 109048
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 11569
+                  },
+                  {
+                    "entity_id": 63,
+                    "name": "source_cap",
+                    "pixels": 5643
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 11569,
+                  "cap_fixed": 5643,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 109048,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ]
+          },
+          "environments": [
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-0_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.869999885559082,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-0_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2200000286102295,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-0_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.09999990463256836,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-0_table-workspace",
+                "55": "scene-0_ground",
+                "56": "scene-0_particle_table_support",
+                "57": "scene-0_bottle_placement_region",
+                "58": "scene-0_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-0_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-0_source_container_open",
+                "65": "scene-0_particle_0",
+                "66": "scene-0_particle_1",
+                "67": "scene-0_particle_2",
+                "68": "scene-0_particle_3",
+                "69": "scene-0_particle_4",
+                "70": "scene-0_particle_5",
+                "71": "scene-0_particle_6",
+                "72": "scene-0_particle_7",
+                "73": "scene-0_particle_8",
+                "74": "scene-0_particle_9",
+                "75": "scene-0_particle_10",
+                "76": "scene-0_particle_11",
+                "77": "scene-0_particle_12",
+                "78": "scene-0_particle_13",
+                "79": "scene-0_particle_14",
+                "80": "scene-0_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-0_base_camera",
+                "84": "scene-0_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            },
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-1_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.8700000047683716,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-1_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2199999988079071,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-1_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.10000000149011612,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-1_table-workspace",
+                "55": "scene-1_ground",
+                "56": "scene-1_particle_table_support",
+                "57": "scene-1_bottle_placement_region",
+                "58": "scene-1_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-1_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-1_source_container_open",
+                "65": "scene-1_particle_0",
+                "66": "scene-1_particle_1",
+                "67": "scene-1_particle_2",
+                "68": "scene-1_particle_3",
+                "69": "scene-1_particle_4",
+                "70": "scene-1_particle_5",
+                "71": "scene-1_particle_6",
+                "72": "scene-1_particle_7",
+                "73": "scene-1_particle_8",
+                "74": "scene-1_particle_9",
+                "75": "scene-1_particle_10",
+                "76": "scene-1_particle_11",
+                "77": "scene-1_particle_12",
+                "78": "scene-1_particle_13",
+                "79": "scene-1_particle_14",
+                "80": "scene-1_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-1_base_camera",
+                "84": "scene-1_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            }
+          ],
+          "renderer_transform_readback_after_both_captures": [
+            {
+              "env_idx": 0,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "attached_env0_renderer_transforms.npy",
+              "sha256": "1677d69991aa38e0fc1622691d1c0e04173976aea0917994294fa267186ceaf9",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            },
+            {
+              "env_idx": 1,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "attached_env1_renderer_transforms.npy",
+              "sha256": "0085b054bcc8d645daf74b2e628c1d926b2063f0ab3d5eda08952f582f7cf800",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            }
+          ]
+        },
+        "free": {
+          "calls": [
+            "task.get_obs(info=existing_info, unflattened=True)",
+            "scene.update_render(sensors=False, human=True); render_camera.capture()"
+          ],
+          "cameras": {
+            "base_camera": [
+              {
+                "rgb": {
+                  "file": "free_base_camera_env0_rgb.png",
+                  "sha256": "5ad37ed7014c2dfc7b76adc7b7ae3bd106360b3360b6d188bd826f2aae9e0afe"
+                },
+                "entity_ids": {
+                  "file": "free_base_camera_env0_entity_ids.png",
+                  "sha256": "7d1c6261a4982f8ecafd48a251079fd67b88fc3e6d6f1b2403507ee07d23b57d"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 25467
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 19233
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 14382
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 5383
+                  },
+                  {
+                    "entity_id": 57,
+                    "name": "scene-0_bottle_placement_region",
+                    "pixels": 442
+                  },
+                  {
+                    "entity_id": 9,
+                    "name": "mobile_base_link_5",
+                    "pixels": 230
+                  },
+                  {
+                    "entity_id": 4,
+                    "name": "mobile_base_link_0",
+                    "pixels": 136
+                  },
+                  {
+                    "entity_id": 7,
+                    "name": "mobile_base_link_3",
+                    "pixels": 110
+                  },
+                  {
+                    "entity_id": 58,
+                    "name": "scene-0_cap_placement_region",
+                    "pixels": 58
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 56
+                  },
+                  {
+                    "entity_id": 14,
+                    "name": "panda_link4",
+                    "pixels": 25
+                  },
+                  {
+                    "entity_id": 6,
+                    "name": "mobile_base_link_2",
+                    "pixels": 3
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 5383,
+                  "bottle_placement_region": 442,
+                  "cap_placement_region": 58
+                }
+              },
+              {
+                "rgb": {
+                  "file": "free_base_camera_env1_rgb.png",
+                  "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+                },
+                "entity_ids": {
+                  "file": "free_base_camera_env1_entity_ids.png",
+                  "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 17955
+                  },
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 15571
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 14305
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 7875
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 4493
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 3279
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 809
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 378
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 232
+                  },
+                  {
+                    "entity_id": 49,
+                    "name": "right_pinky_PP",
+                    "pixels": 80
+                  },
+                  {
+                    "entity_id": 42,
+                    "name": "right_ring_PP",
+                    "pixels": 56
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 55
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 7875,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "task_wrist_camera": [
+              {
+                "rgb": {
+                  "file": "free_task_wrist_camera_env0_rgb.png",
+                  "sha256": "25ba7039e28471de2dc7c6f094da1fbcb048fb54c79a9144f709ba69a761dde7"
+                },
+                "entity_ids": {
+                  "file": "free_task_wrist_camera_env0_entity_ids.png",
+                  "sha256": "2c03d3ddc8a63a48afcc5c952372eb1a8964fec05078aabd7ee6ccaa87111186"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.296099454164505,
+                      0.41679060459136963,
+                      0.8594247102737427,
+                      0.07914222031831741
+                    ],
+                    [
+                      -0.8436889052391052,
+                      0.5359503626823425,
+                      0.030761003494262695,
+                      -0.14121989905834198
+                    ],
+                    [
+                      -0.4477881193161011,
+                      -0.7341954112052917,
+                      0.51033616065979,
+                      -0.6267482042312622
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.29609936475753784,
+                      0.8436889052391052,
+                      0.44778814911842346,
+                      -0.42323005199432373
+                    ],
+                    [
+                      0.41679054498672485,
+                      -0.5359505414962769,
+                      0.7341954112052917,
+                      -0.4174546003341675
+                    ],
+                    [
+                      0.8594247698783875,
+                      -0.030760981142520905,
+                      -0.5103362798690796,
+                      0.2561796009540558
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 44783
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 9234
+                  },
+                  {
+                    "entity_id": 13,
+                    "name": "panda_link3",
+                    "pixels": 5921
+                  },
+                  {
+                    "entity_id": 5,
+                    "name": "mobile_base_link_1",
+                    "pixels": 2554
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 2081
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 797
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 156
+                  },
+                  {
+                    "entity_id": 12,
+                    "name": "panda_link2",
+                    "pixels": 10
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "free_task_wrist_camera_env1_rgb.png",
+                  "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+                },
+                "entity_ids": {
+                  "file": "free_task_wrist_camera_env1_entity_ids.png",
+                  "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.2948855459690094,
+                      0.39184796810150146,
+                      0.8714916706085205,
+                      0.06363370269536972
+                    ],
+                    [
+                      -0.800649106502533,
+                      0.5991315245628357,
+                      0.0015277862548828125,
+                      -0.08149346709251404
+                    ],
+                    [
+                      -0.5215394496917725,
+                      -0.6982095837593079,
+                      0.49040794372558594,
+                      -0.6482099294662476
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.2948855757713318,
+                      0.800649106502533,
+                      0.5215395092964172,
+                      -0.4220793545246124
+                    ],
+                    [
+                      0.3918478488922119,
+                      -0.5991315841674805,
+                      0.6982095837593079,
+                      -0.42869576811790466
+                    ],
+                    [
+                      0.8714916706085205,
+                      -0.0015278158243745565,
+                      -0.4904080629348755,
+                      0.2625555098056793
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 18130
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 13283
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 9519
+                  },
+                  {
+                    "entity_id": 19,
+                    "name": "angle_bracket",
+                    "pixels": 6971
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 6522
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 5596
+                  },
+                  {
+                    "entity_id": 22,
+                    "name": "right_thumb_CMC_VL",
+                    "pixels": 3229
+                  },
+                  {
+                    "entity_id": 23,
+                    "name": "right_thumb_MC",
+                    "pixels": 1740
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 311
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 235
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "render_camera": [
+              {
+                "rgb": {
+                  "file": "free_render_camera_env0_rgb.png",
+                  "sha256": "c36220ca2889a44cc4d6b4d9db24afa53e116495e626d5b24058e7dbba53dd83"
+                },
+                "entity_ids": {
+                  "file": "free_render_camera_env0_entity_ids.png",
+                  "sha256": "3e6d33b00ab7335b8e4bc77c0e0788592489cf81c393eec9388c791e0dc942d8"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 348928
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 135658
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 108118
+                  },
+                  {
+                    "entity_id": 58,
+                    "name": "scene-0_cap_placement_region",
+                    "pixels": 68405
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 10664
+                  },
+                  {
+                    "entity_id": 61,
+                    "name": "scene-0_source_cap_twin",
+                    "pixels": 4872
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  },
+                  {
+                    "entity_id": 27,
+                    "name": "right_thumb_elastomer",
+                    "pixels": 37
+                  },
+                  {
+                    "entity_id": 26,
+                    "name": "right_thumb_DP",
+                    "pixels": 2
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 10664,
+                  "cap_fixed": 0,
+                  "cap_twin": 4872,
+                  "mobile_base_link_6": 108118,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 68405
+                }
+              },
+              {
+                "rgb": {
+                  "file": "free_render_camera_env1_rgb.png",
+                  "sha256": "2de4e6094221dd81f9b4507de7e7707638b3e43c4264915350644fed241f3ed0"
+                },
+                "entity_ids": {
+                  "file": "free_render_camera_env1_entity_ids.png",
+                  "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 413195
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 137229
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 109048
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 11569
+                  },
+                  {
+                    "entity_id": 63,
+                    "name": "source_cap",
+                    "pixels": 5643
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 11569,
+                  "cap_fixed": 5643,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 109048,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ]
+          },
+          "environments": [
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-0_source_cap_twin",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.13358628749847412,
+                    4.371138828673793e-08,
+                    0.0,
+                    0.0,
+                    -1.0
+                  ],
+                  "visibility": 1.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.869999885559082,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-0_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2200000286102295,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-0_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.09999990463256836,
+                    -0.20000004768371582,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-0_table-workspace",
+                "55": "scene-0_ground",
+                "56": "scene-0_particle_table_support",
+                "57": "scene-0_bottle_placement_region",
+                "58": "scene-0_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-0_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-0_source_container_open",
+                "65": "scene-0_particle_0",
+                "66": "scene-0_particle_1",
+                "67": "scene-0_particle_2",
+                "68": "scene-0_particle_3",
+                "69": "scene-0_particle_4",
+                "70": "scene-0_particle_5",
+                "71": "scene-0_particle_6",
+                "72": "scene-0_particle_7",
+                "73": "scene-0_particle_8",
+                "74": "scene-0_particle_9",
+                "75": "scene-0_particle_10",
+                "76": "scene-0_particle_11",
+                "77": "scene-0_particle_12",
+                "78": "scene-0_particle_13",
+                "79": "scene-0_particle_14",
+                "80": "scene-0_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-0_base_camera",
+                "84": "scene-0_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": true,
+                "cap_free": true,
+                "stage_cap_turned": true,
+                "stage_cap_placed": false
+              }
+            },
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-1_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.8700000047683716,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-1_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2199999988079071,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-1_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.10000000149011612,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-1_table-workspace",
+                "55": "scene-1_ground",
+                "56": "scene-1_particle_table_support",
+                "57": "scene-1_bottle_placement_region",
+                "58": "scene-1_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-1_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-1_source_container_open",
+                "65": "scene-1_particle_0",
+                "66": "scene-1_particle_1",
+                "67": "scene-1_particle_2",
+                "68": "scene-1_particle_3",
+                "69": "scene-1_particle_4",
+                "70": "scene-1_particle_5",
+                "71": "scene-1_particle_6",
+                "72": "scene-1_particle_7",
+                "73": "scene-1_particle_8",
+                "74": "scene-1_particle_9",
+                "75": "scene-1_particle_10",
+                "76": "scene-1_particle_11",
+                "77": "scene-1_particle_12",
+                "78": "scene-1_particle_13",
+                "79": "scene-1_particle_14",
+                "80": "scene-1_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-1_base_camera",
+                "84": "scene-1_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            }
+          ],
+          "renderer_transform_readback_after_both_captures": [
+            {
+              "env_idx": 0,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "free_env0_renderer_transforms.npy",
+              "sha256": "cf798f76b5ab66d1f97c50bc174ad5b2ac4a580236e8cbc80c642e1835aff7f5",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            },
+            {
+              "env_idx": 1,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "free_env1_renderer_transforms.npy",
+              "sha256": "0085b054bcc8d645daf74b2e628c1d926b2063f0ab3d5eda08952f582f7cf800",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            }
+          ]
+        }
+      },
+      "actual_appearance_records": [],
+      "actual_formal_cameras": {
+        "base_camera": {
+          "width": 256,
+          "height": 256,
+          "fov": 1.5707963267948966,
+          "near": 0.01,
+          "far": 100,
+          "mounted": false,
+          "mount_name": null,
+          "local_poses": [
+            {
+              "p": [
+                -0.75,
+                -0.6000000238418579,
+                0.6000000238418579
+              ],
+              "q": [
+                0.9240822196006775,
+                -0.06850463896989822,
+                0.19806867837905884,
+                0.31960591673851013
+              ]
+            },
+            {
+              "p": [
+                -0.75,
+                -0.6000000238418579,
+                0.6000000238418579
+              ],
+              "q": [
+                0.9240822196006775,
+                -0.06850463896989822,
+                0.19806867837905884,
+                0.31960591673851013
+              ]
+            }
+          ]
+        },
+        "task_wrist_camera": {
+          "width": 256,
+          "height": 256,
+          "fov": 1.5707963267948966,
+          "near": 0.01,
+          "far": 100,
+          "mounted": true,
+          "mount_name": "right_hand_C_MC",
+          "local_poses": [
+            {
+              "p": [
+                0.029999999329447746,
+                0.05000000074505806,
+                0.0
+              ],
+              "q": [
+                0.4926988482475281,
+                -0.0,
+                -0.0,
+                -0.870199978351593
+              ]
+            },
+            {
+              "p": [
+                0.029999999329447746,
+                0.05000000074505806,
+                0.0
+              ],
+              "q": [
+                0.4926988482475281,
+                -0.0,
+                -0.0,
+                -0.870199978351593
+              ]
+            }
+          ]
+        }
+      },
+      "reset_state": {
+        "actors": {
+          "table-workspace": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "a5510991169becece277ba492f59f313a68c0579d605a17d10ceb218a6cab011"
+          },
+          "source_cap_twin": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "10ebb3d9cdfca6a4f99fe061a01a0b21ea617c38a5a52a730f29867378d94e42"
+          },
+          "source_container_open": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "0de15b58ffc8c64940435a52f1fca9ca3a29d48a5e4ce264fa8356f59f54fd70"
+          },
+          "particle_0": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "f37ae2032c899cdcf27883c639b5493f73c348884b3dad2818e2c12ea5a80df4"
+          },
+          "particle_1": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b406427c00712981de4b720ccac2aeb5088253ab126d291c21e2f945d2e72911"
+          },
+          "particle_2": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "ca368998593b54ae1308f30c0f2062c66b332523e8b8f2215ce54e0ab13f3d91"
+          },
+          "particle_3": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "5fd7dacb5e2331fd8e15d4506cf3e9f40f62a82d211ab370a19e18931079c7cc"
+          },
+          "particle_4": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b0f4487e377499a395800022f8e725612fccb00199b577b98c0efbf4549a057d"
+          },
+          "particle_5": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "8b296f79e9b3f453e19d7334099b50a9d4454b5e90602bdb47d46e854b6394dc"
+          },
+          "particle_6": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b7cc54e99031cc7e90fab1eb39e7850bf093252f367c9572e1505be389356d34"
+          },
+          "particle_7": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "5a5446ec8aa5e60cf7ec136341ad788d5f990eb7764bacb2a5cca658312c7ef4"
+          },
+          "particle_8": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b0ee2c0483dea6dc66d559dacdb858e182f119ec40eb9412bcca7311ec2fe70f"
+          },
+          "particle_9": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "99b7806be292912e7bc5e5e23e4333997097d56a63cfa6cb29cfd7e6d8c98efa"
+          },
+          "particle_10": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "f3f23d123d3058e9309a0738af0cdfcd37d522e0df60e4aa576990e2d309daba"
+          },
+          "particle_11": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "0dcd27b1bd71fd9ce267b6261befce3eab2b629522048e277b2a1a3f59a917dc"
+          },
+          "particle_12": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "450b67da20f37951548033edfdb6577ffa13b2d41d4795fba276b1c95688b720"
+          },
+          "particle_13": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "3cff39fe2a72d8d97c718346a3a11192426378daf5db6282bc87cdfbb74d3ea7"
+          },
+          "particle_14": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b54dd09d13add7e011e6c7f23dfafbf6cbf6ce836fa2dc6222c80d9e4d1bb2c3"
+          },
+          "particle_15": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "4075421c9c5441ecd750e164dcd068f37d7bf1c56ba9fd27a8e166beb1814bf9"
+          }
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": {
+            "shape": [
+              2,
+              71
+            ],
+            "dtype": "float32",
+            "sha256": "00464c1286bbf18502ade370895f1a8c834934ba6a364210099161aaab68dddf"
+          },
+          "bottle_screw": {
+            "shape": [
+              2,
+              15
+            ],
+            "dtype": "float32",
+            "sha256": "2a59a30dd454427ff9a980617412521dcc9e87023925e0d1692be4ed483f8327"
+          },
+          "bottle_screw_fixed": {
+            "shape": [
+              2,
+              15
+            ],
+            "dtype": "float32",
+            "sha256": "513b9a0bd0970cbd6c159d4052e6fdd8a75c3f165488bcdc8ffe1763ffefb253"
+          }
+        },
+        "cabinet_pour_task_state": {
+          "shape": [
+            2,
+            29
+          ],
+          "dtype": "float32",
+          "sha256": "067e0911668b4ede3f16075504d942554d6f70e72f493c43a777d9aba2423c47"
+        },
+        "cap_screw": {
+          "shape": [
+            2,
+            5
+          ],
+          "dtype": "float32",
+          "sha256": "2c34ce1df23b838c5abf2a7f6437cca3d3067ed509ff25f11df6b11b582b51eb"
+        }
+      },
+      "before_flags": {
+        "active_bottle_rep": [
+          1,
+          1
+        ],
+        "cap_detached": [
+          false,
+          false
+        ],
+        "cap_free": [
+          false,
+          false
+        ],
+        "stage_cap_turned": [
+          false,
+          false
+        ],
+        "stage_cap_placed": [
+          false,
+          false
+        ]
+      },
+      "trigger": {
+        "call": "UnscrewCap.evaluate()",
+        "env_idx": 0,
+        "twist": 3.141592653589793,
+        "hold_count": 2,
+        "physics_steps": 0
+      },
+      "after_flags": {
+        "active_bottle_rep": [
+          1,
+          1
+        ],
+        "cap_detached": [
+          true,
+          false
+        ],
+        "cap_free": [
+          true,
+          false
+        ],
+        "stage_cap_turned": [
+          true,
+          false
+        ],
+        "stage_cap_placed": [
+          false,
+          false
+        ]
+      },
+      "comparison": {
+        "base_camera": {
+          "status": "不可判定",
+          "reasons": [
+            "附着帧未同时看见固定瓶和附着盖"
+          ],
+          "source_fixed_pixels": [
+            0,
+            0
+          ],
+          "cap_pixels": [
+            0,
+            0
+          ],
+          "before_cap": "cap_fixed",
+          "after_cap": "cap_twin",
+          "old_bottle_region_after": [],
+          "other_foreground_pixels": 0,
+          "camera_unchanged": true,
+          "bottle_pose_unchanged": true,
+          "env1_control": {
+            "rgb_equal": true,
+            "entity_ids_equal": true,
+            "camera_unchanged": true
+          }
+        },
+        "task_wrist_camera": {
+          "status": "不可判定",
+          "reasons": [
+            "附着帧未同时看见固定瓶和附着盖"
+          ],
+          "source_fixed_pixels": [
+            0,
+            0
+          ],
+          "cap_pixels": [
+            0,
+            0
+          ],
+          "before_cap": "cap_fixed",
+          "after_cap": "cap_twin",
+          "old_bottle_region_after": [],
+          "other_foreground_pixels": 0,
+          "camera_unchanged": true,
+          "bottle_pose_unchanged": true,
+          "env1_control": {
+            "rgb_equal": true,
+            "entity_ids_equal": true,
+            "camera_unchanged": true
+          }
+        },
+        "render_camera": {
+          "status": "未复现",
+          "reasons": [
+            "固定瓶和自由盖仍可见，原固定瓶区域未被其他前景占据过半"
+          ],
+          "source_fixed_pixels": [
+            10447,
+            10664
+          ],
+          "cap_pixels": [
+            4810,
+            4872
+          ],
+          "before_cap": "cap_fixed",
+          "after_cap": "cap_twin",
+          "old_bottle_region_after": [
+            {
+              "entity_id": 62,
+              "name": "source_container",
+              "pixels": 10447
+            }
+          ],
+          "other_foreground_pixels": 0,
+          "camera_unchanged": true,
+          "bottle_pose_unchanged": true,
+          "env1_control": {
+            "rgb_equal": true,
+            "entity_ids_equal": true,
+            "camera_unchanged": true
+          }
+        }
+      }
+    },
+    "variant_9": {
+      "status": "captured_and_compared",
+      "appearance_kwargs": {
+        "family_appearance": {
+          "enabled": true,
+          "mode": "explicit",
+          "scheme_id": "variant_9",
+          "seed": 109
+        }
+      },
+      "formal_camera_source": "task defaults; sensor_configs omitted",
+      "config": {
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "rgb+segmentation",
+        "render_mode": "rgb_array",
+        "reconfiguration_freq": 0
+      },
+      "supplemental_view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "stages": {
+        "attached": {
+          "calls": [
+            "task.get_obs(info=existing_info, unflattened=True)",
+            "scene.update_render(sensors=False, human=True); render_camera.capture()"
+          ],
+          "cameras": {
+            "base_camera": [
+              {
+                "rgb": {
+                  "file": "attached_base_camera_env0_rgb.png",
+                  "sha256": "032d3ebb61bb5bf5c89e93d33782e3ac5ad99c0115ebb481c521563b418ac578"
+                },
+                "entity_ids": {
+                  "file": "attached_base_camera_env0_entity_ids.png",
+                  "sha256": "05c9e07982a9feae91cce1c5402a65ec80ca7251ea1549ac54ff82e8d2e92d0b"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 17886
+                  },
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 15956
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 14324
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 7875
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 4551
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 3097
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 790
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 296
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 202
+                  },
+                  {
+                    "entity_id": 49,
+                    "name": "right_pinky_PP",
+                    "pixels": 70
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 55
+                  },
+                  {
+                    "entity_id": 42,
+                    "name": "right_ring_PP",
+                    "pixels": 50
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 7875,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "attached_base_camera_env1_rgb.png",
+                  "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+                },
+                "entity_ids": {
+                  "file": "attached_base_camera_env1_entity_ids.png",
+                  "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 17955
+                  },
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 15571
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 14305
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 7875
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 4493
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 3279
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 809
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 378
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 232
+                  },
+                  {
+                    "entity_id": 49,
+                    "name": "right_pinky_PP",
+                    "pixels": 80
+                  },
+                  {
+                    "entity_id": 42,
+                    "name": "right_ring_PP",
+                    "pixels": 56
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 55
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 7875,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "task_wrist_camera": [
+              {
+                "rgb": {
+                  "file": "attached_task_wrist_camera_env0_rgb.png",
+                  "sha256": "708e827c7a9f7d1e6b1f2c38ba8869f35c929c4710a961792f73c0caa2d4707b"
+                },
+                "entity_ids": {
+                  "file": "attached_task_wrist_camera_env0_entity_ids.png",
+                  "sha256": "cef2b372c75775c5dbc4e214ab06fc4314aab52afb1ea736b57a45ae75e778da"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.296099454164505,
+                      0.41679060459136963,
+                      0.8594247102737427,
+                      0.07914222031831741
+                    ],
+                    [
+                      -0.8436889052391052,
+                      0.5359503626823425,
+                      0.030761003494262695,
+                      -0.14121989905834198
+                    ],
+                    [
+                      -0.4477881193161011,
+                      -0.7341954112052917,
+                      0.51033616065979,
+                      -0.6267482042312622
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.29609936475753784,
+                      0.8436889052391052,
+                      0.44778814911842346,
+                      -0.42323005199432373
+                    ],
+                    [
+                      0.41679054498672485,
+                      -0.5359505414962769,
+                      0.7341954112052917,
+                      -0.4174546003341675
+                    ],
+                    [
+                      0.8594247698783875,
+                      -0.030760981142520905,
+                      -0.5103362798690796,
+                      0.2561796009540558
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 18130
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 12240
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 10562
+                  },
+                  {
+                    "entity_id": 19,
+                    "name": "angle_bracket",
+                    "pixels": 6971
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 6522
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 5596
+                  },
+                  {
+                    "entity_id": 22,
+                    "name": "right_thumb_CMC_VL",
+                    "pixels": 3229
+                  },
+                  {
+                    "entity_id": 23,
+                    "name": "right_thumb_MC",
+                    "pixels": 1740
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 311
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 235
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "attached_task_wrist_camera_env1_rgb.png",
+                  "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+                },
+                "entity_ids": {
+                  "file": "attached_task_wrist_camera_env1_entity_ids.png",
+                  "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.2948855459690094,
+                      0.39184796810150146,
+                      0.8714916706085205,
+                      0.06363370269536972
+                    ],
+                    [
+                      -0.800649106502533,
+                      0.5991315245628357,
+                      0.0015277862548828125,
+                      -0.08149346709251404
+                    ],
+                    [
+                      -0.5215394496917725,
+                      -0.6982095837593079,
+                      0.49040794372558594,
+                      -0.6482099294662476
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.2948855757713318,
+                      0.800649106502533,
+                      0.5215395092964172,
+                      -0.4220793545246124
+                    ],
+                    [
+                      0.3918478488922119,
+                      -0.5991315841674805,
+                      0.6982095837593079,
+                      -0.42869576811790466
+                    ],
+                    [
+                      0.8714916706085205,
+                      -0.0015278158243745565,
+                      -0.4904080629348755,
+                      0.2625555098056793
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 18130
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 13283
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 9519
+                  },
+                  {
+                    "entity_id": 19,
+                    "name": "angle_bracket",
+                    "pixels": 6971
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 6522
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 5596
+                  },
+                  {
+                    "entity_id": 22,
+                    "name": "right_thumb_CMC_VL",
+                    "pixels": 3229
+                  },
+                  {
+                    "entity_id": 23,
+                    "name": "right_thumb_MC",
+                    "pixels": 1740
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 311
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 235
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "render_camera": [
+              {
+                "rgb": {
+                  "file": "attached_render_camera_env0_rgb.png",
+                  "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7"
+                },
+                "entity_ids": {
+                  "file": "attached_render_camera_env0_entity_ids.png",
+                  "sha256": "418d2315d08c5a1d7be61eb9a60d44c242e6243e8c1426d5f95634f8d672708a"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 417333
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 135853
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 108202
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 10447
+                  },
+                  {
+                    "entity_id": 63,
+                    "name": "source_cap",
+                    "pixels": 4810
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  },
+                  {
+                    "entity_id": 27,
+                    "name": "right_thumb_elastomer",
+                    "pixels": 37
+                  },
+                  {
+                    "entity_id": 26,
+                    "name": "right_thumb_DP",
+                    "pixels": 2
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 10447,
+                  "cap_fixed": 4810,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 108202,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "attached_render_camera_env1_rgb.png",
+                  "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a"
+                },
+                "entity_ids": {
+                  "file": "attached_render_camera_env1_entity_ids.png",
+                  "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 413195
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 137229
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 109048
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 11569
+                  },
+                  {
+                    "entity_id": 63,
+                    "name": "source_cap",
+                    "pixels": 5643
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 11569,
+                  "cap_fixed": 5643,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 109048,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ]
+          },
+          "environments": [
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-0_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.869999885559082,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-0_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2200000286102295,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-0_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.09999990463256836,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-0_table-workspace",
+                "55": "scene-0_ground",
+                "56": "scene-0_particle_table_support",
+                "57": "scene-0_bottle_placement_region",
+                "58": "scene-0_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-0_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-0_source_container_open",
+                "65": "scene-0_particle_0",
+                "66": "scene-0_particle_1",
+                "67": "scene-0_particle_2",
+                "68": "scene-0_particle_3",
+                "69": "scene-0_particle_4",
+                "70": "scene-0_particle_5",
+                "71": "scene-0_particle_6",
+                "72": "scene-0_particle_7",
+                "73": "scene-0_particle_8",
+                "74": "scene-0_particle_9",
+                "75": "scene-0_particle_10",
+                "76": "scene-0_particle_11",
+                "77": "scene-0_particle_12",
+                "78": "scene-0_particle_13",
+                "79": "scene-0_particle_14",
+                "80": "scene-0_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-0_base_camera",
+                "84": "scene-0_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            },
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-1_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.8700000047683716,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-1_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2199999988079071,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-1_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.10000000149011612,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-1_table-workspace",
+                "55": "scene-1_ground",
+                "56": "scene-1_particle_table_support",
+                "57": "scene-1_bottle_placement_region",
+                "58": "scene-1_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-1_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-1_source_container_open",
+                "65": "scene-1_particle_0",
+                "66": "scene-1_particle_1",
+                "67": "scene-1_particle_2",
+                "68": "scene-1_particle_3",
+                "69": "scene-1_particle_4",
+                "70": "scene-1_particle_5",
+                "71": "scene-1_particle_6",
+                "72": "scene-1_particle_7",
+                "73": "scene-1_particle_8",
+                "74": "scene-1_particle_9",
+                "75": "scene-1_particle_10",
+                "76": "scene-1_particle_11",
+                "77": "scene-1_particle_12",
+                "78": "scene-1_particle_13",
+                "79": "scene-1_particle_14",
+                "80": "scene-1_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-1_base_camera",
+                "84": "scene-1_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            }
+          ],
+          "renderer_transform_readback_after_both_captures": [
+            {
+              "env_idx": 0,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "attached_env0_renderer_transforms.npy",
+              "sha256": "1677d69991aa38e0fc1622691d1c0e04173976aea0917994294fa267186ceaf9",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            },
+            {
+              "env_idx": 1,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "attached_env1_renderer_transforms.npy",
+              "sha256": "0085b054bcc8d645daf74b2e628c1d926b2063f0ab3d5eda08952f582f7cf800",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            }
+          ]
+        },
+        "free": {
+          "calls": [
+            "task.get_obs(info=existing_info, unflattened=True)",
+            "scene.update_render(sensors=False, human=True); render_camera.capture()"
+          ],
+          "cameras": {
+            "base_camera": [
+              {
+                "rgb": {
+                  "file": "free_base_camera_env0_rgb.png",
+                  "sha256": "20e0f2f4e7d5fa67c6c77d4ef7f0f27bc8068af7cacd3e6ec1e59d18c0c094f0"
+                },
+                "entity_ids": {
+                  "file": "free_base_camera_env0_entity_ids.png",
+                  "sha256": "7d1c6261a4982f8ecafd48a251079fd67b88fc3e6d6f1b2403507ee07d23b57d"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 25467
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 19233
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 14382
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 5383
+                  },
+                  {
+                    "entity_id": 57,
+                    "name": "scene-0_bottle_placement_region",
+                    "pixels": 442
+                  },
+                  {
+                    "entity_id": 9,
+                    "name": "mobile_base_link_5",
+                    "pixels": 230
+                  },
+                  {
+                    "entity_id": 4,
+                    "name": "mobile_base_link_0",
+                    "pixels": 136
+                  },
+                  {
+                    "entity_id": 7,
+                    "name": "mobile_base_link_3",
+                    "pixels": 110
+                  },
+                  {
+                    "entity_id": 58,
+                    "name": "scene-0_cap_placement_region",
+                    "pixels": 58
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 56
+                  },
+                  {
+                    "entity_id": 14,
+                    "name": "panda_link4",
+                    "pixels": 25
+                  },
+                  {
+                    "entity_id": 6,
+                    "name": "mobile_base_link_2",
+                    "pixels": 3
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 5383,
+                  "bottle_placement_region": 442,
+                  "cap_placement_region": 58
+                }
+              },
+              {
+                "rgb": {
+                  "file": "free_base_camera_env1_rgb.png",
+                  "sha256": "0cec51d6bd3e5d86ba8fe433f4889862c47234fc8d194877eb5dcf5ba6c2685f"
+                },
+                "entity_ids": {
+                  "file": "free_base_camera_env1_entity_ids.png",
+                  "sha256": "160548f654e0283f3b71ab7a004b55d06a9ce7fb3152f41b57f6e5b4fe5d87ea"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.6178215146064758,
+                      -0.7863183617591858,
+                      -1.4901161193847656e-08,
+                      -0.00842486321926117
+                    ],
+                    [
+                      -0.32227450609207153,
+                      -0.2532156705856323,
+                      -0.9121518135070801,
+                      0.15365585684776306
+                    ],
+                    [
+                      0.7172417044639587,
+                      0.5635470747947693,
+                      -0.40985244512557983,
+                      1.1219708919525146
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.617821455001831,
+                      0.3222745656967163,
+                      -0.7172417044639587,
+                      -0.75
+                    ],
+                    [
+                      -0.7863184213638306,
+                      0.25321561098098755,
+                      -0.5635470747947693,
+                      -0.6000000238418579
+                    ],
+                    [
+                      -2.980232594040899e-08,
+                      0.9121519327163696,
+                      0.40985244512557983,
+                      0.6000000238418579
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 17955
+                  },
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 15571
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 14305
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 7875
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 4493
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 3279
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 809
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 378
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 232
+                  },
+                  {
+                    "entity_id": 49,
+                    "name": "right_pinky_PP",
+                    "pixels": 80
+                  },
+                  {
+                    "entity_id": 42,
+                    "name": "right_ring_PP",
+                    "pixels": 56
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 55
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 7875,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "task_wrist_camera": [
+              {
+                "rgb": {
+                  "file": "free_task_wrist_camera_env0_rgb.png",
+                  "sha256": "25ba7039e28471de2dc7c6f094da1fbcb048fb54c79a9144f709ba69a761dde7"
+                },
+                "entity_ids": {
+                  "file": "free_task_wrist_camera_env0_entity_ids.png",
+                  "sha256": "2c03d3ddc8a63a48afcc5c952372eb1a8964fec05078aabd7ee6ccaa87111186"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.296099454164505,
+                      0.41679060459136963,
+                      0.8594247102737427,
+                      0.07914222031831741
+                    ],
+                    [
+                      -0.8436889052391052,
+                      0.5359503626823425,
+                      0.030761003494262695,
+                      -0.14121989905834198
+                    ],
+                    [
+                      -0.4477881193161011,
+                      -0.7341954112052917,
+                      0.51033616065979,
+                      -0.6267482042312622
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.29609936475753784,
+                      0.8436889052391052,
+                      0.44778814911842346,
+                      -0.42323005199432373
+                    ],
+                    [
+                      0.41679054498672485,
+                      -0.5359505414962769,
+                      0.7341954112052917,
+                      -0.4174546003341675
+                    ],
+                    [
+                      0.8594247698783875,
+                      -0.030760981142520905,
+                      -0.5103362798690796,
+                      0.2561796009540558
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 44783
+                  },
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 9234
+                  },
+                  {
+                    "entity_id": 13,
+                    "name": "panda_link3",
+                    "pixels": 5921
+                  },
+                  {
+                    "entity_id": 5,
+                    "name": "mobile_base_link_1",
+                    "pixels": 2554
+                  },
+                  {
+                    "entity_id": 15,
+                    "name": "panda_link5",
+                    "pixels": 2081
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 797
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 156
+                  },
+                  {
+                    "entity_id": 12,
+                    "name": "panda_link2",
+                    "pixels": 10
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              },
+              {
+                "rgb": {
+                  "file": "free_task_wrist_camera_env1_rgb.png",
+                  "sha256": "8617c74b7b88a0eb0b2a470caadf7e6af9e195a7a29f9b88dc82e9de21f8729f"
+                },
+                "entity_ids": {
+                  "file": "free_task_wrist_camera_env1_entity_ids.png",
+                  "sha256": "a60c663d593afeceedcaafc6ed6efc55ff87f37e8446fe9b5f24f7736a748d68"
+                },
+                "resolution": [
+                  256,
+                  256
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      0.2948855459690094,
+                      0.39184796810150146,
+                      0.8714916706085205,
+                      0.06363370269536972
+                    ],
+                    [
+                      -0.800649106502533,
+                      0.5991315245628357,
+                      0.0015277862548828125,
+                      -0.08149346709251404
+                    ],
+                    [
+                      -0.5215394496917725,
+                      -0.6982095837593079,
+                      0.49040794372558594,
+                      -0.6482099294662476
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      0.2948855757713318,
+                      0.800649106502533,
+                      0.5215395092964172,
+                      -0.4220793545246124
+                    ],
+                    [
+                      0.3918478488922119,
+                      -0.5991315841674805,
+                      0.6982095837593079,
+                      -0.42869576811790466
+                    ],
+                    [
+                      0.8714916706085205,
+                      -0.0015278158243745565,
+                      -0.4904080629348755,
+                      0.2625555098056793
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      128.0,
+                      0.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      128.0,
+                      128.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 21,
+                    "name": "right_hand_C_MC",
+                    "pixels": 18130
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 13283
+                  },
+                  {
+                    "entity_id": 0,
+                    "name": "background",
+                    "pixels": 9519
+                  },
+                  {
+                    "entity_id": 19,
+                    "name": "angle_bracket",
+                    "pixels": 6971
+                  },
+                  {
+                    "entity_id": 20,
+                    "name": "right_hand_wrist",
+                    "pixels": 6522
+                  },
+                  {
+                    "entity_id": 17,
+                    "name": "panda_link7",
+                    "pixels": 5596
+                  },
+                  {
+                    "entity_id": 22,
+                    "name": "right_thumb_CMC_VL",
+                    "pixels": 3229
+                  },
+                  {
+                    "entity_id": 23,
+                    "name": "right_thumb_MC",
+                    "pixels": 1740
+                  },
+                  {
+                    "entity_id": 47,
+                    "name": "right_pinky_MC",
+                    "pixels": 311
+                  },
+                  {
+                    "entity_id": 16,
+                    "name": "panda_link6",
+                    "pixels": 235
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 0,
+                  "cap_fixed": 0,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 0,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ],
+            "render_camera": [
+              {
+                "rgb": {
+                  "file": "free_render_camera_env0_rgb.png",
+                  "sha256": "ef2b8c8eae09486cd28e08b56ebbc94c1230b071a59f3e0e87358ecc38e2bdce"
+                },
+                "entity_ids": {
+                  "file": "free_render_camera_env0_entity_ids.png",
+                  "sha256": "3e6d33b00ab7335b8e4bc77c0e0788592489cf81c393eec9388c791e0dc942d8"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-0_table-workspace",
+                    "pixels": 348928
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-0_ground",
+                    "pixels": 135658
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 108118
+                  },
+                  {
+                    "entity_id": 58,
+                    "name": "scene-0_cap_placement_region",
+                    "pixels": 68405
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 10664
+                  },
+                  {
+                    "entity_id": 61,
+                    "name": "scene-0_source_cap_twin",
+                    "pixels": 4872
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  },
+                  {
+                    "entity_id": 27,
+                    "name": "right_thumb_elastomer",
+                    "pixels": 37
+                  },
+                  {
+                    "entity_id": 26,
+                    "name": "right_thumb_DP",
+                    "pixels": 2
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 10664,
+                  "cap_fixed": 0,
+                  "cap_twin": 4872,
+                  "mobile_base_link_6": 108118,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 68405
+                }
+              },
+              {
+                "rgb": {
+                  "file": "free_render_camera_env1_rgb.png",
+                  "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a"
+                },
+                "entity_ids": {
+                  "file": "free_render_camera_env1_entity_ids.png",
+                  "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0"
+                },
+                "resolution": [
+                  960,
+                  720
+                ],
+                "camera": {
+                  "extrinsic_cv": [
+                    [
+                      -0.2893894612789154,
+                      0.9572112560272217,
+                      2.2351738238057806e-08,
+                      0.12035433202981949
+                    ],
+                    [
+                      0.5776746273040771,
+                      0.17464579641819,
+                      -0.7973649501800537,
+                      0.21364516019821167
+                    ],
+                    [
+                      -0.7632467746734619,
+                      -0.2307489961385727,
+                      -0.6034973859786987,
+                      0.38066983222961426
+                    ]
+                  ],
+                  "cam2world_gl": [
+                    [
+                      -0.28938937187194824,
+                      -0.5776746273040771,
+                      0.7632468938827515,
+                      0.20195692777633667
+                    ],
+                    [
+                      0.9572114944458008,
+                      -0.1746457815170288,
+                      0.2307489812374115,
+                      -0.06467758864164352
+                    ],
+                    [
+                      0.0,
+                      0.7973649501800537,
+                      0.6034973859786987,
+                      0.4000864028930664
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ],
+                  "intrinsic_cv": [
+                    [
+                      817.0885620117188,
+                      0.0,
+                      480.0
+                    ],
+                    [
+                      0.0,
+                      817.0885620117188,
+                      360.0
+                    ],
+                    [
+                      0.0,
+                      0.0,
+                      1.0
+                    ]
+                  ]
+                },
+                "foreground": [
+                  {
+                    "entity_id": 54,
+                    "name": "scene-1_table-workspace",
+                    "pixels": 413195
+                  },
+                  {
+                    "entity_id": 55,
+                    "name": "scene-1_ground",
+                    "pixels": 137229
+                  },
+                  {
+                    "entity_id": 3,
+                    "name": "mobile_base_link_6",
+                    "pixels": 109048
+                  },
+                  {
+                    "entity_id": 10,
+                    "name": "panda_link0",
+                    "pixels": 13285
+                  },
+                  {
+                    "entity_id": 62,
+                    "name": "source_container",
+                    "pixels": 11569
+                  },
+                  {
+                    "entity_id": 63,
+                    "name": "source_cap",
+                    "pixels": 5643
+                  },
+                  {
+                    "entity_id": 11,
+                    "name": "panda_link1",
+                    "pixels": 1231
+                  }
+                ],
+                "visible_pixels": {
+                  "source_fixed": 11569,
+                  "cap_fixed": 5643,
+                  "cap_twin": 0,
+                  "mobile_base_link_6": 109048,
+                  "bottle_placement_region": 0,
+                  "cap_placement_region": 0
+                }
+              }
+            ]
+          },
+          "environments": [
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-0_source_cap_twin",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.13358628749847412,
+                    4.371138828673793e-08,
+                    0.0,
+                    0.0,
+                    -1.0
+                  ],
+                  "visibility": 1.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.869999885559082,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-0_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2200000286102295,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-0_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.09999990463256836,
+                    -0.20000004768371582,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-0_table-workspace",
+                "55": "scene-0_ground",
+                "56": "scene-0_particle_table_support",
+                "57": "scene-0_bottle_placement_region",
+                "58": "scene-0_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-0_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-0_source_container_open",
+                "65": "scene-0_particle_0",
+                "66": "scene-0_particle_1",
+                "67": "scene-0_particle_2",
+                "68": "scene-0_particle_3",
+                "69": "scene-0_particle_4",
+                "70": "scene-0_particle_5",
+                "71": "scene-0_particle_6",
+                "72": "scene-0_particle_7",
+                "73": "scene-0_particle_8",
+                "74": "scene-0_particle_9",
+                "75": "scene-0_particle_10",
+                "76": "scene-0_particle_11",
+                "77": "scene-0_particle_12",
+                "78": "scene-0_particle_13",
+                "79": "scene-0_particle_14",
+                "80": "scene-0_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-0_base_camera",
+                "84": "scene-0_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": true,
+                "cap_free": true,
+                "stage_cap_turned": true,
+                "stage_cap_placed": false
+              }
+            },
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-1_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.8700000047683716,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-1_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2199999988079071,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-1_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.10000000149011612,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-1_table-workspace",
+                "55": "scene-1_ground",
+                "56": "scene-1_particle_table_support",
+                "57": "scene-1_bottle_placement_region",
+                "58": "scene-1_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-1_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-1_source_container_open",
+                "65": "scene-1_particle_0",
+                "66": "scene-1_particle_1",
+                "67": "scene-1_particle_2",
+                "68": "scene-1_particle_3",
+                "69": "scene-1_particle_4",
+                "70": "scene-1_particle_5",
+                "71": "scene-1_particle_6",
+                "72": "scene-1_particle_7",
+                "73": "scene-1_particle_8",
+                "74": "scene-1_particle_9",
+                "75": "scene-1_particle_10",
+                "76": "scene-1_particle_11",
+                "77": "scene-1_particle_12",
+                "78": "scene-1_particle_13",
+                "79": "scene-1_particle_14",
+                "80": "scene-1_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-1_base_camera",
+                "84": "scene-1_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            }
+          ],
+          "renderer_transform_readback_after_both_captures": [
+            {
+              "env_idx": 0,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "free_env0_renderer_transforms.npy",
+              "sha256": "cf798f76b5ab66d1f97c50bc174ad5b2ac4a580236e8cbc80c642e1835aff7f5",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            },
+            {
+              "env_idx": 1,
+              "source": "RenderSystem.cuda_object_transforms",
+              "mapping": "Raw renderer order; no public per-shape transform row index in SAPIEN 3.0.3",
+              "file": "free_env1_renderer_transforms.npy",
+              "sha256": "0085b054bcc8d645daf74b2e628c1d926b2063f0ab3d5eda08952f582f7cf800",
+              "shape": [
+                84,
+                4,
+                4
+              ],
+              "dtype": "float32"
+            }
+          ]
+        }
+      },
+      "actual_appearance_records": [
+        {
+          "env_idx": 0,
+          "episode_index": 1,
+          "family_id": "variant_9",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "bottle": "berry_soda",
+            "beads": "berry_soda",
+            "cap": "berry_soda"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 1,
+          "family_id": "variant_9",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "bottle": "berry_soda",
+            "beads": "berry_soda",
+            "cap": "berry_soda"
+          }
+        },
+        {
+          "env_idx": 0,
+          "episode_index": 2,
+          "family_id": "variant_9",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "bottle": "berry_soda",
+            "beads": "berry_soda",
+            "cap": "berry_soda"
+          }
+        },
+        {
+          "env_idx": 1,
+          "episode_index": 2,
+          "family_id": "variant_9",
+          "catalog_version": "cabinet-ten-v1",
+          "objects": {
+            "bottle": "berry_soda",
+            "beads": "berry_soda",
+            "cap": "berry_soda"
+          }
+        }
+      ],
+      "actual_formal_cameras": {
+        "base_camera": {
+          "width": 256,
+          "height": 256,
+          "fov": 1.5707963267948966,
+          "near": 0.01,
+          "far": 100,
+          "mounted": false,
+          "mount_name": null,
+          "local_poses": [
+            {
+              "p": [
+                -0.75,
+                -0.6000000238418579,
+                0.6000000238418579
+              ],
+              "q": [
+                0.9240822196006775,
+                -0.06850463896989822,
+                0.19806867837905884,
+                0.31960591673851013
+              ]
+            },
+            {
+              "p": [
+                -0.75,
+                -0.6000000238418579,
+                0.6000000238418579
+              ],
+              "q": [
+                0.9240822196006775,
+                -0.06850463896989822,
+                0.19806867837905884,
+                0.31960591673851013
+              ]
+            }
+          ]
+        },
+        "task_wrist_camera": {
+          "width": 256,
+          "height": 256,
+          "fov": 1.5707963267948966,
+          "near": 0.01,
+          "far": 100,
+          "mounted": true,
+          "mount_name": "right_hand_C_MC",
+          "local_poses": [
+            {
+              "p": [
+                0.029999999329447746,
+                0.05000000074505806,
+                0.0
+              ],
+              "q": [
+                0.4926988482475281,
+                -0.0,
+                -0.0,
+                -0.870199978351593
+              ]
+            },
+            {
+              "p": [
+                0.029999999329447746,
+                0.05000000074505806,
+                0.0
+              ],
+              "q": [
+                0.4926988482475281,
+                -0.0,
+                -0.0,
+                -0.870199978351593
+              ]
+            }
+          ]
+        }
+      },
+      "reset_state": {
+        "actors": {
+          "table-workspace": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "a5510991169becece277ba492f59f313a68c0579d605a17d10ceb218a6cab011"
+          },
+          "source_cap_twin": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "10ebb3d9cdfca6a4f99fe061a01a0b21ea617c38a5a52a730f29867378d94e42"
+          },
+          "source_container_open": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "0de15b58ffc8c64940435a52f1fca9ca3a29d48a5e4ce264fa8356f59f54fd70"
+          },
+          "particle_0": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "f37ae2032c899cdcf27883c639b5493f73c348884b3dad2818e2c12ea5a80df4"
+          },
+          "particle_1": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b406427c00712981de4b720ccac2aeb5088253ab126d291c21e2f945d2e72911"
+          },
+          "particle_2": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "ca368998593b54ae1308f30c0f2062c66b332523e8b8f2215ce54e0ab13f3d91"
+          },
+          "particle_3": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "5fd7dacb5e2331fd8e15d4506cf3e9f40f62a82d211ab370a19e18931079c7cc"
+          },
+          "particle_4": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b0f4487e377499a395800022f8e725612fccb00199b577b98c0efbf4549a057d"
+          },
+          "particle_5": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "8b296f79e9b3f453e19d7334099b50a9d4454b5e90602bdb47d46e854b6394dc"
+          },
+          "particle_6": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b7cc54e99031cc7e90fab1eb39e7850bf093252f367c9572e1505be389356d34"
+          },
+          "particle_7": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "5a5446ec8aa5e60cf7ec136341ad788d5f990eb7764bacb2a5cca658312c7ef4"
+          },
+          "particle_8": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b0ee2c0483dea6dc66d559dacdb858e182f119ec40eb9412bcca7311ec2fe70f"
+          },
+          "particle_9": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "99b7806be292912e7bc5e5e23e4333997097d56a63cfa6cb29cfd7e6d8c98efa"
+          },
+          "particle_10": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "f3f23d123d3058e9309a0738af0cdfcd37d522e0df60e4aa576990e2d309daba"
+          },
+          "particle_11": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "0dcd27b1bd71fd9ce267b6261befce3eab2b629522048e277b2a1a3f59a917dc"
+          },
+          "particle_12": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "450b67da20f37951548033edfdb6577ffa13b2d41d4795fba276b1c95688b720"
+          },
+          "particle_13": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "3cff39fe2a72d8d97c718346a3a11192426378daf5db6282bc87cdfbb74d3ea7"
+          },
+          "particle_14": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b54dd09d13add7e011e6c7f23dfafbf6cbf6ce836fa2dc6222c80d9e4d1bb2c3"
+          },
+          "particle_15": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "4075421c9c5441ecd750e164dcd068f37d7bf1c56ba9fd27a8e166beb1814bf9"
+          }
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": {
+            "shape": [
+              2,
+              71
+            ],
+            "dtype": "float32",
+            "sha256": "00464c1286bbf18502ade370895f1a8c834934ba6a364210099161aaab68dddf"
+          },
+          "bottle_screw": {
+            "shape": [
+              2,
+              15
+            ],
+            "dtype": "float32",
+            "sha256": "2a59a30dd454427ff9a980617412521dcc9e87023925e0d1692be4ed483f8327"
+          },
+          "bottle_screw_fixed": {
+            "shape": [
+              2,
+              15
+            ],
+            "dtype": "float32",
+            "sha256": "513b9a0bd0970cbd6c159d4052e6fdd8a75c3f165488bcdc8ffe1763ffefb253"
+          }
+        },
+        "cabinet_pour_task_state": {
+          "shape": [
+            2,
+            29
+          ],
+          "dtype": "float32",
+          "sha256": "067e0911668b4ede3f16075504d942554d6f70e72f493c43a777d9aba2423c47"
+        },
+        "cap_screw": {
+          "shape": [
+            2,
+            5
+          ],
+          "dtype": "float32",
+          "sha256": "2c34ce1df23b838c5abf2a7f6437cca3d3067ed509ff25f11df6b11b582b51eb"
+        }
+      },
+      "matched_native_reset_state": true,
+      "matched_native_camera_setup": true,
+      "before_flags": {
+        "active_bottle_rep": [
+          1,
+          1
+        ],
+        "cap_detached": [
+          false,
+          false
+        ],
+        "cap_free": [
+          false,
+          false
+        ],
+        "stage_cap_turned": [
+          false,
+          false
+        ],
+        "stage_cap_placed": [
+          false,
+          false
+        ]
+      },
+      "matched_native_attached_camera_parameters": true,
+      "trigger": {
+        "call": "UnscrewCap.evaluate()",
+        "env_idx": 0,
+        "twist": 3.141592653589793,
+        "hold_count": 2,
+        "physics_steps": 0
+      },
+      "after_flags": {
+        "active_bottle_rep": [
+          1,
+          1
+        ],
+        "cap_detached": [
+          true,
+          false
+        ],
+        "cap_free": [
+          true,
+          false
+        ],
+        "stage_cap_turned": [
+          true,
+          false
+        ],
+        "stage_cap_placed": [
+          false,
+          false
+        ]
+      },
+      "comparison": {
+        "base_camera": {
+          "status": "不可判定",
+          "reasons": [
+            "附着帧未同时看见固定瓶和附着盖"
+          ],
+          "source_fixed_pixels": [
+            0,
+            0
+          ],
+          "cap_pixels": [
+            0,
+            0
+          ],
+          "before_cap": "cap_fixed",
+          "after_cap": "cap_twin",
+          "old_bottle_region_after": [],
+          "other_foreground_pixels": 0,
+          "camera_unchanged": true,
+          "bottle_pose_unchanged": true,
+          "env1_control": {
+            "rgb_equal": true,
+            "entity_ids_equal": true,
+            "camera_unchanged": true
+          }
+        },
+        "task_wrist_camera": {
+          "status": "不可判定",
+          "reasons": [
+            "附着帧未同时看见固定瓶和附着盖"
+          ],
+          "source_fixed_pixels": [
+            0,
+            0
+          ],
+          "cap_pixels": [
+            0,
+            0
+          ],
+          "before_cap": "cap_fixed",
+          "after_cap": "cap_twin",
+          "old_bottle_region_after": [],
+          "other_foreground_pixels": 0,
+          "camera_unchanged": true,
+          "bottle_pose_unchanged": true,
+          "env1_control": {
+            "rgb_equal": true,
+            "entity_ids_equal": true,
+            "camera_unchanged": true
+          }
+        },
+        "render_camera": {
+          "status": "未复现",
+          "reasons": [
+            "固定瓶和自由盖仍可见，原固定瓶区域未被其他前景占据过半"
+          ],
+          "source_fixed_pixels": [
+            10447,
+            10664
+          ],
+          "cap_pixels": [
+            4810,
+            4872
+          ],
+          "before_cap": "cap_fixed",
+          "after_cap": "cap_twin",
+          "old_bottle_region_after": [
+            {
+              "entity_id": 62,
+              "name": "source_container",
+              "pixels": 10447
+            }
+          ],
+          "other_foreground_pixels": 0,
+          "camera_unchanged": true,
+          "bottle_pose_unchanged": true,
+          "env1_control": {
+            "rgb_equal": true,
+            "entity_ids_equal": true,
+            "camera_unchanged": true
+          }
+        }
+      }
+    }
+  }
+}

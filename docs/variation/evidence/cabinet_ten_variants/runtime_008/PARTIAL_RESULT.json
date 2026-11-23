@@ -1,0 +1,707 @@
+{
+  "status": "stopped",
+  "task": "CabinetPouringUnscrewCap-Sharpa-v1",
+  "seed": 7,
+  "job": "129061",
+  "production_head": "952af8c36ab1ae8392c7e6b8cfc28b19b4a212f9",
+  "checker_head": "748a681cb0abd0f92f23443a56913a0d63c3e6a3",
+  "full_entity_ids": "RGBA packed little-endian uint32",
+  "groups": {
+    "appearance_off": {
+      "status": "running",
+      "appearance_kwargs": {},
+      "formal_camera_source": "task defaults; sensor_configs omitted",
+      "config": {
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "rgb+segmentation",
+        "render_mode": "rgb_array",
+        "reconfiguration_freq": 0
+      },
+      "supplemental_view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "stages": {
+        "attached": {
+          "calls": [
+            "task.get_obs(info=existing_info, unflattened=True)"
+          ],
+          "cameras": {},
+          "environments": [
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.2280430793762207,
+                    -0.19467759132385254,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-0_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.869999885559082,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-0_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2200000286102295,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-0_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.09999990463256836,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-0_table-workspace",
+                "55": "scene-0_ground",
+                "56": "scene-0_particle_table_support",
+                "57": "scene-0_bottle_placement_region",
+                "58": "scene-0_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-0_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-0_source_container_open",
+                "65": "scene-0_particle_0",
+                "66": "scene-0_particle_1",
+                "67": "scene-0_particle_2",
+                "68": "scene-0_particle_3",
+                "69": "scene-0_particle_4",
+                "70": "scene-0_particle_5",
+                "71": "scene-0_particle_6",
+                "72": "scene-0_particle_7",
+                "73": "scene-0_particle_8",
+                "74": "scene-0_particle_9",
+                "75": "scene-0_particle_10",
+                "76": "scene-0_particle_11",
+                "77": "scene-0_particle_12",
+                "78": "scene-0_particle_13",
+                "79": "scene-0_particle_14",
+                "80": "scene-0_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-0_base_camera",
+                "84": "scene-0_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            },
+            {
+              "actors": {
+                "source_fixed": {
+                  "id": 62,
+                  "name": "source_container",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.07130279392004013,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_fixed": {
+                  "id": 63,
+                  "name": "source_cap",
+                  "pose_m_wxyz": [
+                    -0.16940245032310486,
+                    -0.24329876899719238,
+                    0.1315862536430359,
+                    0.9999999403953552,
+                    0.0,
+                    7.574781690777854e-09,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_twin": {
+                  "id": 61,
+                  "name": "scene-1_source_cap_twin",
+                  "pose_m_wxyz": [
+                    0.0,
+                    0.0,
+                    5.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 0.0
+                },
+                "mobile_base_link_6": {
+                  "id": 3,
+                  "name": "mobile_base_link_6",
+                  "pose_m_wxyz": [
+                    -0.8700000047683716,
+                    0.0,
+                    -0.3442201018333435,
+                    -0.5000000596046448,
+                    -0.5000000596046448,
+                    0.5000000596046448,
+                    0.5
+                  ],
+                  "visibility": 1.0
+                },
+                "bottle_placement_region": {
+                  "id": 57,
+                  "name": "scene-1_bottle_placement_region",
+                  "pose_m_wxyz": [
+                    -0.2199999988079071,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                },
+                "cap_placement_region": {
+                  "id": 58,
+                  "name": "scene-1_cap_placement_region",
+                  "pose_m_wxyz": [
+                    -0.10000000149011612,
+                    -0.20000004768371582,
+                    -10.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "visibility": 1.0
+                }
+              },
+              "names": {
+                "1": "mobile_base",
+                "2": "mobile_base_model",
+                "3": "mobile_base_link_6",
+                "4": "mobile_base_link_0",
+                "5": "mobile_base_link_1",
+                "6": "mobile_base_link_2",
+                "7": "mobile_base_link_3",
+                "8": "mobile_base_link_4",
+                "9": "mobile_base_link_5",
+                "10": "panda_link0",
+                "11": "panda_link1",
+                "12": "panda_link2",
+                "13": "panda_link3",
+                "14": "panda_link4",
+                "15": "panda_link5",
+                "16": "panda_link6",
+                "17": "panda_link7",
+                "18": "panda_link8",
+                "19": "angle_bracket",
+                "20": "right_hand_wrist",
+                "21": "right_hand_C_MC",
+                "22": "right_thumb_CMC_VL",
+                "23": "right_thumb_MC",
+                "24": "right_thumb_MCP_VL",
+                "25": "right_thumb_PP",
+                "26": "right_thumb_DP",
+                "27": "right_thumb_elastomer",
+                "28": "right_thumb_fingertip",
+                "29": "right_index_MCP_VL",
+                "30": "right_index_PP",
+                "31": "right_index_MP",
+                "32": "right_index_DP",
+                "33": "right_index_elastomer",
+                "34": "right_index_fingertip",
+                "35": "right_middle_MCP_VL",
+                "36": "right_middle_PP",
+                "37": "right_middle_MP",
+                "38": "right_middle_DP",
+                "39": "right_middle_elastomer",
+                "40": "right_middle_fingertip",
+                "41": "right_ring_MCP_VL",
+                "42": "right_ring_PP",
+                "43": "right_ring_MP",
+                "44": "right_ring_DP",
+                "45": "right_ring_elastomer",
+                "46": "right_ring_fingertip",
+                "47": "right_pinky_MC",
+                "48": "right_pinky_MCP_VL",
+                "49": "right_pinky_PP",
+                "50": "right_pinky_MP",
+                "51": "right_pinky_DP",
+                "52": "right_pinky_elastomer",
+                "53": "right_pinky_fingertip",
+                "54": "scene-1_table-workspace",
+                "55": "scene-1_ground",
+                "56": "scene-1_particle_table_support",
+                "57": "scene-1_bottle_placement_region",
+                "58": "scene-1_cap_placement_region",
+                "59": "source_container",
+                "60": "source_cap",
+                "61": "scene-1_source_cap_twin",
+                "62": "source_container",
+                "63": "source_cap",
+                "64": "scene-1_source_container_open",
+                "65": "scene-1_particle_0",
+                "66": "scene-1_particle_1",
+                "67": "scene-1_particle_2",
+                "68": "scene-1_particle_3",
+                "69": "scene-1_particle_4",
+                "70": "scene-1_particle_5",
+                "71": "scene-1_particle_6",
+                "72": "scene-1_particle_7",
+                "73": "scene-1_particle_8",
+                "74": "scene-1_particle_9",
+                "75": "scene-1_particle_10",
+                "76": "scene-1_particle_11",
+                "77": "scene-1_particle_12",
+                "78": "scene-1_particle_13",
+                "79": "scene-1_particle_14",
+                "80": "scene-1_particle_15",
+                "81": "directional_light",
+                "82": "directional_light",
+                "83": "scene-1_base_camera",
+                "84": "scene-1_render_camera"
+              },
+              "flags": {
+                "active_bottle_rep": 1,
+                "cap_detached": false,
+                "cap_free": false,
+                "stage_cap_turned": false,
+                "stage_cap_placed": false
+              }
+            }
+          ]
+        }
+      },
+      "actual_appearance_records": [],
+      "actual_formal_cameras": {
+        "base_camera": {
+          "width": 256,
+          "height": 256,
+          "fov": 1.5707963267948966,
+          "near": 0.01,
+          "far": 100,
+          "mounted": false,
+          "mount_name": null,
+          "local_poses": [
+            {
+              "p": [
+                -0.75,
+                -0.6000000238418579,
+                0.6000000238418579
+              ],
+              "q": [
+                0.9240822196006775,
+                -0.06850463896989822,
+                0.19806867837905884,
+                0.31960591673851013
+              ]
+            },
+            {
+              "p": [
+                -0.75,
+                -0.6000000238418579,
+                0.6000000238418579
+              ],
+              "q": [
+                0.9240822196006775,
+                -0.06850463896989822,
+                0.19806867837905884,
+                0.31960591673851013
+              ]
+            }
+          ]
+        },
+        "task_wrist_camera": {
+          "width": 256,
+          "height": 256,
+          "fov": 1.5707963267948966,
+          "near": 0.01,
+          "far": 100,
+          "mounted": true,
+          "mount_name": "right_hand_C_MC",
+          "local_poses": [
+            {
+              "p": [
+                0.029999999329447746,
+                0.05000000074505806,
+                0.0
+              ],
+              "q": [
+                0.4926988482475281,
+                -0.0,
+                -0.0,
+                -0.870199978351593
+              ]
+            },
+            {
+              "p": [
+                0.029999999329447746,
+                0.05000000074505806,
+                0.0
+              ],
+              "q": [
+                0.4926988482475281,
+                -0.0,
+                -0.0,
+                -0.870199978351593
+              ]
+            }
+          ]
+        }
+      },
+      "reset_state": {
+        "actors": {
+          "table-workspace": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "a5510991169becece277ba492f59f313a68c0579d605a17d10ceb218a6cab011"
+          },
+          "source_cap_twin": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "10ebb3d9cdfca6a4f99fe061a01a0b21ea617c38a5a52a730f29867378d94e42"
+          },
+          "source_container_open": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "0de15b58ffc8c64940435a52f1fca9ca3a29d48a5e4ce264fa8356f59f54fd70"
+          },
+          "particle_0": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "f37ae2032c899cdcf27883c639b5493f73c348884b3dad2818e2c12ea5a80df4"
+          },
+          "particle_1": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b406427c00712981de4b720ccac2aeb5088253ab126d291c21e2f945d2e72911"
+          },
+          "particle_2": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "ca368998593b54ae1308f30c0f2062c66b332523e8b8f2215ce54e0ab13f3d91"
+          },
+          "particle_3": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "5fd7dacb5e2331fd8e15d4506cf3e9f40f62a82d211ab370a19e18931079c7cc"
+          },
+          "particle_4": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b0f4487e377499a395800022f8e725612fccb00199b577b98c0efbf4549a057d"
+          },
+          "particle_5": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "8b296f79e9b3f453e19d7334099b50a9d4454b5e90602bdb47d46e854b6394dc"
+          },
+          "particle_6": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b7cc54e99031cc7e90fab1eb39e7850bf093252f367c9572e1505be389356d34"
+          },
+          "particle_7": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "5a5446ec8aa5e60cf7ec136341ad788d5f990eb7764bacb2a5cca658312c7ef4"
+          },
+          "particle_8": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b0ee2c0483dea6dc66d559dacdb858e182f119ec40eb9412bcca7311ec2fe70f"
+          },
+          "particle_9": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "99b7806be292912e7bc5e5e23e4333997097d56a63cfa6cb29cfd7e6d8c98efa"
+          },
+          "particle_10": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "f3f23d123d3058e9309a0738af0cdfcd37d522e0df60e4aa576990e2d309daba"
+          },
+          "particle_11": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "0dcd27b1bd71fd9ce267b6261befce3eab2b629522048e277b2a1a3f59a917dc"
+          },
+          "particle_12": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "450b67da20f37951548033edfdb6577ffa13b2d41d4795fba276b1c95688b720"
+          },
+          "particle_13": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "3cff39fe2a72d8d97c718346a3a11192426378daf5db6282bc87cdfbb74d3ea7"
+          },
+          "particle_14": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "b54dd09d13add7e011e6c7f23dfafbf6cbf6ce836fa2dc6222c80d9e4d1bb2c3"
+          },
+          "particle_15": {
+            "shape": [
+              2,
+              13
+            ],
+            "dtype": "float32",
+            "sha256": "4075421c9c5441ecd750e164dcd068f37d7bf1c56ba9fd27a8e166beb1814bf9"
+          }
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": {
+            "shape": [
+              2,
+              71
+            ],
+            "dtype": "float32",
+            "sha256": "00464c1286bbf18502ade370895f1a8c834934ba6a364210099161aaab68dddf"
+          },
+          "bottle_screw": {
+            "shape": [
+              2,
+              15
+            ],
+            "dtype": "float32",
+            "sha256": "2a59a30dd454427ff9a980617412521dcc9e87023925e0d1692be4ed483f8327"
+          },
+          "bottle_screw_fixed": {
+            "shape": [
+              2,
+              15
+            ],
+            "dtype": "float32",
+            "sha256": "513b9a0bd0970cbd6c159d4052e6fdd8a75c3f165488bcdc8ffe1763ffefb253"
+          }
+        },
+        "cabinet_pour_task_state": {
+          "shape": [
+            2,
+            29
+          ],
+          "dtype": "float32",
+          "sha256": "067e0911668b4ede3f16075504d942554d6f70e72f493c43a777d9aba2423c47"
+        },
+        "cap_screw": {
+          "shape": [
+            2,
+            5
+          ],
+          "dtype": "float32",
+          "sha256": "2c34ce1df23b838c5abf2a7f6437cca3d3067ed509ff25f11df6b11b582b51eb"
+        }
+      },
+      "before_flags": {
+        "active_bottle_rep": [
+          1,
+          1
+        ],
+        "cap_detached": [
+          false,
+          false
+        ],
+        "cap_free": [
+          false,
+          false
+        ],
+        "stage_cap_turned": [
+          false,
+          false
+        ],
+        "stage_cap_placed": [
+          false,
+          false
+        ]
+      }
+    }
+  },
+  "failed_group": "appearance_off",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_008/check_cabinet_free_camera_ab.py\", line 307, in run\n    before = stage_frames(task, info, folder, 'attached', attached, flush, RenderBodyComponent, pack_entity_ids)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_008/check_cabinet_free_camera_ab.py\", line 187, in stage_frames\n    formal = capture_formal(task, info, mark_call)\n  File \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_008/check_cabinet_free_camera_ab.py\", line 115, in capture_formal\n    assert set(observation) == set(FORMAL_CAMERAS), sorted(observation)\nAssertionError: ['base_camera', 'task_wrist_camera', 'wrist_camera']\n"
+}

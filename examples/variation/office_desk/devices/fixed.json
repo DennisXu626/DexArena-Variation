@@ -1,0 +1,12 @@
+{
+  "task_id": "OfficeDeskOpenLaptop-Sharpa-v1",
+  "office_devices_appearance": {
+    "enabled": true,
+    "scheme_id": "variant_1",
+    "per_env": {
+      "1": {
+        "scheme_id": "variant_2"
+      }
+    }
+  }
+}

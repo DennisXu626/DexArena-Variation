@@ -1,0 +1,1274 @@
+{
+  "job": "129056",
+  "head": "952af8c36ab1ae8392c7e6b8cfc28b19b4a212f9",
+  "verified_indexed_png_files": 92,
+  "checks": {
+    "unscrew-random": {
+      "status": "passed",
+      "manifest_sha256": "144dd1379e45d827d5d84237ccd72317511101462f88a90f2109586d545d4b34",
+      "results_sha256": "a0c23531172c3fbab1a5f023aa8014697a51b6436142812d91d249b2ffa84923",
+      "tasks": {
+        "UnscrewCap": {
+          "status": "passed",
+          "frames": {}
+        }
+      }
+    },
+    "pour-task": {
+      "status": "passed",
+      "manifest_sha256": "144dd1379e45d827d5d84237ccd72317511101462f88a90f2109586d545d4b34",
+      "results_sha256": "e21cdc775ca23b5fff60e68174a6ff97a8b02a9536408da1ffd39d2e5930458a",
+      "tasks": {
+        "PourBeads": {
+          "status": "passed",
+          "camera": {
+            "view": [
+              [
+                -0.43,
+                -0.84,
+                0.37
+              ],
+              [
+                -0.2,
+                -0.5,
+                0.045
+              ],
+              0.7
+            ],
+            "intrinsic": [
+              [
+                986.224365234375,
+                0.0,
+                480.0
+              ],
+              [
+                0.0,
+                986.224365234375,
+                360.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "extrinsic": [
+              [
+                0.828283429145813,
+                -0.5603092908859253,
+                -2.980232594040899e-08,
+                -0.11449789255857468
+              ],
+              [
+                -0.34780585765838623,
+                -0.5141478180885315,
+                -0.7840172648429871,
+                -0.2913542687892914
+              ],
+              [
+                0.43929219245910645,
+                0.6493884921073914,
+                -0.6207390427589417,
+                0.9640552997589111
+              ]
+            ]
+          },
+          "same_coordinate_crops": {
+            "bowl": [
+              290,
+              209,
+              674,
+              490
+            ]
+          },
+          "frames": {
+            "captures": {
+              "original": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_original_review.png",
+                    "sha256": "1af59cdbf1251ca7ab923fb35be63ce698a64ed245467cda303cca8ad22af474",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_original_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_original_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_original_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_original_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_original_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_original_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_original_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_1": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_1_review.png",
+                    "sha256": "c3c2981febaa586c30db83cb1bbb470e588de5440fc3f11de0672d9ea5ee507f",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_1_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_1_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_1_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_1_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_1_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_1_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_1_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_2": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_2_review.png",
+                    "sha256": "c3667680881a19d2d1eaf0fd6ab2f6d9a6debc38e59b3e32e3e94b99c9a8826e",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_2_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_2_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_2_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_2_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_2_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_2_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_2_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_3": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_3_review.png",
+                    "sha256": "30522ddab110f718a013233dd642835137e2846869b3f13574f2250ebce747fe",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_3_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_3_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_3_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_3_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_3_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_3_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_3_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_4": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_4_review.png",
+                    "sha256": "4563b22b6d79beb55cd6c78a4c99f1f8c3805c04a96b8d2ce9a2ced004270f55",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_4_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_4_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_4_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_4_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_4_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_4_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_4_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_5": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_5_review.png",
+                    "sha256": "b9941ee31d697a8076dd14889c324b025459223e2c7fe5ee205236bd1e1c3427",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_5_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_5_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_5_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_5_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_5_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_5_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_5_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_6": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_6_review.png",
+                    "sha256": "5709733709f7e9e82a48abd9afe0332b9ff2c944bfc1a40f948c37bcdac42b45",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_6_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_6_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_6_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_6_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_6_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_6_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_6_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_7": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_7_review.png",
+                    "sha256": "2254f628d1987df0cc4dcecba844f3c21cd90d724e9bb9f5da6b848b0245ab00",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_7_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_7_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_7_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_7_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_7_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_7_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_7_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_8": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_8_review.png",
+                    "sha256": "497d842e29d2820ca6c0a6769246dbb51beea17c0ed4f53fbd21b5ca8db09621",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_8_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_8_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_8_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_8_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_8_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_8_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_8_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_9": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_9_review.png",
+                    "sha256": "eae69ceab7d0c0a635b4edb4b15834d2ce9605b388ad8177ad50053e5b6693b4",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_9_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_9_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_9_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_9_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_9_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_9_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_9_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              },
+              "variant_10": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_variant_10_review.png",
+                    "sha256": "998ecfd3bc15b2a362bfd9af2512f2c50b71aa81dbcd02653bc5d737fc4c2008",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_10_review.png"
+                  }
+                },
+                "object_mask": {
+                  "file": "PourBeads_variant_10_review_mask.png",
+                  "sha256": "27906f72fa21f585604d724116139b2b4deb4469364284d688ddc75c784c5834",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-task/PourBeads_variant_10_review_mask.png"
+                },
+                "surface": {
+                  "mask": {
+                    "file": "PourBeads_variant_10_review_surface_mask.png",
+                    "sha256": "fb7dd7a077da7857174f734be06d6b71b473283be9baaea922bca41be8119f14",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_10_review_surface_mask.png"
+                  }
+                },
+                "inner_silhouette_band": {
+                  "mask": {
+                    "file": "PourBeads_variant_10_review_inner_silhouette_band_mask.png",
+                    "sha256": "36c86cfc411485b9c88366fba628c0f68eff93fdcefacf32b29a9fe8b0db55bf",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_variant_10_review_inner_silhouette_band_mask.png"
+                  }
+                }
+              }
+            },
+            "native_view_trials": {
+              "0": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_native_view0.png",
+                    "sha256": "1af59cdbf1251ca7ab923fb35be63ce698a64ed245467cda303cca8ad22af474",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-task/PourBeads_native_view0.png"
+                  }
+                }
+              }
+            },
+            "isolation": {
+              "0": {
+                "before": {
+                  "files": {
+                    "review": {
+                      "file": "PourBeads_reset1_before.png",
+                      "sha256": "a52ccb66d32b34e8297170cf3d17e87ca150cc97e24d22235da8a842042e91c0",
+                      "size_wh": [
+                        960,
+                        720
+                      ],
+                      "path": "pour-task/PourBeads_reset1_before.png"
+                    }
+                  }
+                },
+                "after": {
+                  "files": {
+                    "review": {
+                      "file": "PourBeads_reset1_after.png",
+                      "sha256": "abbe77d2ffa83ac69800c00c338ed41c90613faaef35dada1979a2cd7475ba5a",
+                      "size_wh": [
+                        960,
+                        720
+                      ],
+                      "path": "pour-task/PourBeads_reset1_after.png"
+                    }
+                  }
+                }
+              },
+              "1": {
+                "before": {
+                  "files": {
+                    "review": {
+                      "file": "PourBeads_reset0_before.png",
+                      "sha256": "4563b22b6d79beb55cd6c78a4c99f1f8c3805c04a96b8d2ce9a2ced004270f55",
+                      "size_wh": [
+                        960,
+                        720
+                      ],
+                      "path": "pour-task/PourBeads_reset0_before.png"
+                    }
+                  }
+                },
+                "after": {
+                  "files": {
+                    "review": {
+                      "file": "PourBeads_reset0_after.png",
+                      "sha256": "9a179c4305da81ae1b84c69be1518fc0030aac0d426b69e8d7b32a82ae9396f6",
+                      "size_wh": [
+                        960,
+                        720
+                      ],
+                      "path": "pour-task/PourBeads_reset0_after.png"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pour-droplets": {
+      "status": "passed",
+      "manifest_sha256": "144dd1379e45d827d5d84237ccd72317511101462f88a90f2109586d545d4b34",
+      "results_sha256": "a40b2a8b48cd420b9938dc48ce4e2ce89ac27b2ca01357a72523418aa4952474",
+      "tasks": {
+        "PourBeads_diagnostic": {
+          "status": "passed",
+          "camera": {
+            "view": [
+              [
+                1.0,
+                0.9,
+                0.6
+              ],
+              [
+                1.0,
+                1.0,
+                0.5
+              ],
+              0.65
+            ],
+            "intrinsic": [
+              [
+                1068.4149169921875,
+                0.0,
+                480.0
+              ],
+              [
+                0.0,
+                1068.4149169921875,
+                360.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "extrinsic": [
+              [
+                1.0,
+                0.0,
+                5.960465188081798e-08,
+                -0.9999999403953552
+              ],
+              [
+                -5.960465188081798e-08,
+                -0.7071067690849304,
+                -0.7071068286895752,
+                1.0606601238250732
+              ],
+              [
+                0.0,
+                0.7071068286895752,
+                -0.7071067690849304,
+                -0.21213212609291077
+              ]
+            ]
+          },
+          "view": [
+            [
+              1.0,
+              0.9,
+              0.6
+            ],
+            [
+              1.0,
+              1.0,
+              0.5
+            ],
+            0.65
+          ],
+          "same_coordinate_crops": {
+            "beads": [
+              194,
+              192,
+              766,
+              576
+            ]
+          },
+          "frames": {
+            "captures": {
+              "original": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_original.png",
+                    "sha256": "1c8b49f07667b914b205656fb9ecca02106e6c39117731258b8ee32af0e5e7d7",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_original.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_original_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_original_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_original_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_original_mask.png"
+                }
+              },
+              "variant_1": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_1.png",
+                    "sha256": "5678e22996cfe5bbdea035004b73a4304e1a7a5723bcf9f602dcc7649bf2b8da",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_1.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_1_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_1_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_1_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_1_mask.png"
+                }
+              },
+              "variant_2": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_2.png",
+                    "sha256": "0fd9111e95486456720b8041ff02f9f7a4808228a4fa4f05efaa6daa3e7a7732",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_2.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_2_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_2_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_2_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_2_mask.png"
+                }
+              },
+              "variant_3": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_3.png",
+                    "sha256": "ab9e2b5dffaae09a94b43c65ff17974aac358617fdb4f2cb86667f52cd4a2b8c",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_3.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_3_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_3_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_3_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_3_mask.png"
+                }
+              },
+              "variant_4": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_4.png",
+                    "sha256": "0935e3162910763f6ebfaa9b9269d156fde5f3a0e6832863fe3b49cb304cc749",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_4.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_4_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_4_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_4_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_4_mask.png"
+                }
+              },
+              "variant_5": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_5.png",
+                    "sha256": "333d86b55a5175caf67efb249d7a10d176d80b92827b3e0b6582d707983aa941",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_5.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_5_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_5_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_5_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_5_mask.png"
+                }
+              },
+              "variant_6": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_6.png",
+                    "sha256": "864fd5093681a0bcabb5a13117742170b8475d78c4a8d518faf7feb918891ec3",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_6.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_6_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_6_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_6_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_6_mask.png"
+                }
+              },
+              "variant_7": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_7.png",
+                    "sha256": "243d2ac87ae44b9c0febb2ddd0215e67481eb27d11423d3a474be5ec50fb87fb",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_7.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_7_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_7_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_7_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_7_mask.png"
+                }
+              },
+              "variant_8": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_8.png",
+                    "sha256": "189623bb07f9e730c8a0b30cb4da14c2958cfe000eb6c5546d4b6717fa817ce0",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_8.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_8_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_8_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_8_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_8_mask.png"
+                }
+              },
+              "variant_9": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_9.png",
+                    "sha256": "a0ce1e963c04b9b65011a0a2aa08e66966c710ec7daeeaf0fed5b2fe7b83bc25",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_9.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_9_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_9_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_9_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_9_mask.png"
+                }
+              },
+              "variant_10": {
+                "files": {
+                  "review": {
+                    "file": "PourBeads_diagnostic_variant_10.png",
+                    "sha256": "6bc259498cbbba9d7cec3e10aa7365478066b134c2c2808ed1fbafe1bfa1e135",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "pour-droplets/PourBeads_diagnostic_variant_10.png"
+                  }
+                },
+                "sphere_id_mask": {
+                  "file": "PourBeads_diagnostic_variant_10_sphere_ids.png",
+                  "sha256": "8ff57998cef73293af9080d62908664927e84c68ef5b33b55a4623e39a5a476b",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_10_sphere_ids.png"
+                },
+                "object_mask": {
+                  "file": "PourBeads_diagnostic_variant_10_mask.png",
+                  "sha256": "0e3c5d9198ec905890c1151cfede61de015a10363c752f5171cdc80894dd1a5a",
+                  "size_wh": [
+                    960,
+                    720
+                  ],
+                  "path": "pour-droplets/PourBeads_diagnostic_variant_10_mask.png"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cap-diagnostic": {
+      "status": "assertion_failed",
+      "manifest_sha256": "144dd1379e45d827d5d84237ccd72317511101462f88a90f2109586d545d4b34",
+      "results_sha256": "0eb4fcc70497edf57ecee3e4fb0e8256e9874148cc8af6faf75f9cc105314179",
+      "tasks": {
+        "UnscrewCap": {
+          "status": "running",
+          "camera": {
+            "view": [
+              [
+                0.2019569206237793,
+                -0.06467759132385253,
+                0.40008639186620715
+              ],
+              [
+                -0.2280430793762207,
+                -0.19467759132385254,
+                0.06008639186620712
+              ],
+              0.83
+            ],
+            "intrinsic": [
+              [
+                817.0885620117188,
+                0.0,
+                480.0
+              ],
+              [
+                0.0,
+                817.0885620117188,
+                360.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "extrinsic": [
+              [
+                -0.2893894612789154,
+                0.9572112560272217,
+                2.2351738238057806e-08,
+                0.12035433202981949
+              ],
+              [
+                0.5776746273040771,
+                0.17464579641819,
+                -0.7973649501800537,
+                0.21364516019821167
+              ],
+              [
+                -0.7632467746734619,
+                -0.2307489961385727,
+                -0.6034973859786987,
+                0.38066983222961426
+              ]
+            ]
+          },
+          "frames": {
+            "engineered_stage_switch": {
+              "frames": {
+                "attached": {
+                  "files": {
+                    "review": {
+                      "file": "UnscrewCap_engineered_attached.png",
+                      "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+                      "size_wh": [
+                        960,
+                        720
+                      ],
+                      "path": "cap-diagnostic/UnscrewCap_engineered_attached.png"
+                    }
+                  },
+                  "environments": {
+                    "0": {
+                      "rgb": {
+                        "file": "UnscrewCap_engineered_attached.png",
+                        "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_attached.png"
+                      },
+                      "entity_segmentation": {
+                        "file": "UnscrewCap_engineered_attached_env0_entity_ids.png",
+                        "sha256": "418d2315d08c5a1d7be61eb9a60d44c242e6243e8c1426d5f95634f8d672708a",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_attached_env0_entity_ids.png"
+                      }
+                    },
+                    "1": {
+                      "rgb": {
+                        "file": "UnscrewCap_engineered_attached_env1.png",
+                        "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_attached_env1.png"
+                      },
+                      "entity_segmentation": {
+                        "file": "UnscrewCap_engineered_attached_env1_entity_ids.png",
+                        "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_attached_env1_entity_ids.png"
+                      }
+                    }
+                  },
+                  "mask": {
+                    "file": "UnscrewCap_engineered_attached_label_mask.png",
+                    "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "cap-diagnostic/UnscrewCap_engineered_attached_label_mask.png"
+                  },
+                  "marker_mask": {
+                    "file": "UnscrewCap_engineered_attached_marker.png",
+                    "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+                    "size_wh": [
+                      960,
+                      720
+                    ],
+                    "path": "cap-diagnostic/UnscrewCap_engineered_attached_marker.png"
+                  }
+                },
+                "free": {
+                  "files": {
+                    "review": {
+                      "file": "UnscrewCap_engineered_free.png",
+                      "sha256": "7ba69fbf055d803cb77652c976d1d1246f1e39d0527c5416cf22c576778878d3",
+                      "size_wh": [
+                        960,
+                        720
+                      ],
+                      "path": "cap-diagnostic/UnscrewCap_engineered_free.png"
+                    }
+                  },
+                  "environments": {
+                    "0": {
+                      "rgb": {
+                        "file": "UnscrewCap_engineered_free.png",
+                        "sha256": "7ba69fbf055d803cb77652c976d1d1246f1e39d0527c5416cf22c576778878d3",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_free.png"
+                      },
+                      "entity_segmentation": {
+                        "file": "UnscrewCap_engineered_free_env0_entity_ids.png",
+                        "sha256": "fab2bf859a482dbdd3b5a79dee10a0325934b1755f327d30772c55260c3acc0b",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_free_env0_entity_ids.png"
+                      }
+                    },
+                    "1": {
+                      "rgb": {
+                        "file": "UnscrewCap_engineered_free_env1.png",
+                        "sha256": "21e02d5529f506edbb82d19b3a9b6ff702278a12e64b26ebb75cfd979c73d28a",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_free_env1.png"
+                      },
+                      "entity_segmentation": {
+                        "file": "UnscrewCap_engineered_free_env1_entity_ids.png",
+                        "sha256": "669ad9b26411d5a7516d6cd0f577662bd0edc4697a42e075a60eb835810bf5b0",
+                        "size_wh": [
+                          960,
+                          720
+                        ],
+                        "path": "cap-diagnostic/UnscrewCap_engineered_free_env1_entity_ids.png"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "unindexed_png_sha256": {}
+}

@@ -1,0 +1,37 @@
+{
+  "root": "/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_008",
+  "outer": "/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_008/source",
+  "outer_empty": true,
+  "exit": 0,
+  "stderr": "",
+  "child_output": "{\"cwd\": \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_006/source\", \"production_module\": \"/mnt/ceph2/xkl/DexArena/cabinet_ten_20261122/runtime_006/source/tasks/__init__.py\", \"checker_sha256\": \"6e6d7003f64daad724f7f3d8178e345a59bb25cd9f03348ed56f2f332a46b85d\", \"python\": \"/data/home/xkl/AutoDemo/envs/DexGenTransfer/bin/python\", \"pid\": 1254129, \"pgid\": 1254128}\n",
+  "guard": {
+    "returncode": 0,
+    "stop_reason": null,
+    "elapsed_seconds": 0.4816766306757927,
+    "retained_log_bytes": 368,
+    "cleanup": {
+      "pgid": 1254128,
+      "errors": [],
+      "TERM_sent": false,
+      "KILL_sent": false,
+      "live_remaining": [],
+      "zombie_remaining": [],
+      "complete": true
+    },
+    "exceptions": [],
+    "drain_deadline_hit": false,
+    "drain_limit_seconds": 0.5,
+    "attempts": 1,
+    "job_id": null,
+    "physical_gpus": null
+  },
+  "root_bytes": 705013395,
+  "run_bytes": 493626,
+  "free": 263536508928,
+  "attempt_reserved": false,
+  "submission_reserved": false,
+  "local_logs": "D:/Logs/DexArena/cabinet_ten_variants/runtime_008",
+  "D_free_bytes": 126364073984,
+  "local_log_bytes": 4973
+}

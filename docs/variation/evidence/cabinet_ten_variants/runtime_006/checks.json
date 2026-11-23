@@ -1,0 +1,40 @@
+{
+  "job": "129056",
+  "started_utc": "2026-11-22T07:57:26+00:00",
+  "status": "incomplete",
+  "checks": {
+    "unscrew-random": {
+      "status": "passed",
+      "started_utc": "2026-11-22T07:57:26+00:00",
+      "exit_code": 0,
+      "checker_status": "passed",
+      "ended_utc": "2026-11-22T07:57:43+00:00",
+      "evidence": "unscrew-random/results.json"
+    },
+    "pour-task": {
+      "status": "passed",
+      "started_utc": "2026-11-22T07:57:43+00:00",
+      "exit_code": 0,
+      "checker_status": "engineering_passed_pending_visual_review",
+      "ended_utc": "2026-11-22T07:58:23+00:00",
+      "evidence": "pour-task/results.json"
+    },
+    "pour-droplets": {
+      "status": "passed",
+      "started_utc": "2026-11-22T07:58:23+00:00",
+      "exit_code": 0,
+      "checker_status": "engineering_passed_pending_visual_review",
+      "ended_utc": "2026-11-22T07:58:43+00:00",
+      "evidence": "pour-droplets/results.json"
+    },
+    "cap-diagnostic": {
+      "status": "assertion_failed",
+      "started_utc": "2026-11-22T07:58:43+00:00",
+      "exit_code": 1,
+      "checker_status": "failed",
+      "ended_utc": "2026-11-22T07:59:00+00:00",
+      "evidence": "cap-diagnostic/results.json"
+    }
+  },
+  "ended_utc": "2026-11-22T07:59:00+00:00"
+}

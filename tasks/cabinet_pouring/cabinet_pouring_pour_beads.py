@@ -51,6 +51,18 @@ class CabinetPouringPourBeadsEnv(CabinetPouringLongEnv):
     placement_region = None
     lock_bottle_during_cap_stages = False
 
+    def __init__(self, *args, pouring_appearance=None, **kwargs):
+        self._pouring_appearance = None
+        if pouring_appearance and pouring_appearance.get("enabled", False):
+            from tasks.cabinet_pouring.pouring_appearance import PouringAppearance
+            self._pouring_appearance = PouringAppearance(pouring_appearance)
+        super().__init__(*args, **kwargs)
+
+    def _load_scene(self, options):
+        super()._load_scene(options)
+        if self._pouring_appearance is not None:
+            self._pouring_appearance.bind(self.target, self.particles)
+
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
             b = len(env_idx)
@@ -68,6 +80,10 @@ class CabinetPouringPourBeadsEnv(CabinetPouringLongEnv):
             self._stage_bottle_placed[env_idx] = True
             self._stage_cap_turned[env_idx] = True
             self._stage_cap_placed[env_idx] = True
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            elif self._pouring_appearance is not None:
+                self._pouring_appearance.finish_reset(env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):

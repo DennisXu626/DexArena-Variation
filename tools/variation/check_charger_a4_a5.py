@@ -33,6 +33,8 @@ def dump(path, value):
 
 
 if args.static:
+    from check_drawer_ten_variants import static as check_family, old as family_base
+    check_family()
     for file in FILES:
         ast.parse((ROOT / file).read_text(encoding='utf-8'))
     # Verify all existing methods except the three documented hook locations.
@@ -41,7 +43,7 @@ if args.static:
         original = subprocess.check_output(['git', '-c', 'safe.directory=' + ROOT.as_posix(),
                                            '-C', str(ROOT), 'show', BOB_MAIN_COMMIT + ':' + file], text=True, encoding='utf-8')
         old = ast.parse(original)
-        new = ast.parse((ROOT / file).read_text(encoding='utf-8'))
+        new = ast.parse(family_base(ROOT / file))
         # Normalize only the enumerated Drawer/socket visual hooks. The new
         # checker also compares the full normalized task AST to main's baseline.
         from check_drawer_socket import strip_fixture_hooks
@@ -54,7 +56,7 @@ if args.static:
         assert set(before) == set(after)
         assert all(before[k] == after[k] for k in before if k not in allowed), file
     catalog = json.loads(CATALOG.read_text(encoding='utf-8'))
-    assert set(catalog['schemes']) == {'original', 'ivory_matte', 'navy_satin', 'copper_metal'}
+    assert {'original', 'ivory_matte', 'navy_satin', 'copper_metal'} <= set(catalog['schemes'])
     for file in (ROOT / 'examples/variation/drawer_plug').glob('*.json'):
         json.loads(file.read_text(encoding='utf-8'))
     print(json.dumps({'status': 'passed', 'scope': 'AST/JSON only; A4/A5 runtime not tested',

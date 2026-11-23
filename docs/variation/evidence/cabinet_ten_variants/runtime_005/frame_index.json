@@ -1,0 +1,110 @@
+{
+  "head": "8fc1db86be19520d9212d7b4b06203cb75a6f39c",
+  "seed": 7,
+  "job": "128997",
+  "phase": "finish",
+  "status": "failed",
+  "UnscrewCap": {
+    "status": "running",
+    "camera": {
+      "view": [
+        [
+          0.2019569206237793,
+          -0.06467759132385253,
+          0.40008639186620715
+        ],
+        [
+          -0.2280430793762207,
+          -0.19467759132385254,
+          0.06008639186620712
+        ],
+        0.83
+      ],
+      "intrinsic": [
+        [
+          817.0885620117188,
+          0.0,
+          480.0
+        ],
+        [
+          0.0,
+          817.0885620117188,
+          360.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "extrinsic": [
+        [
+          -0.2893894612789154,
+          0.9572112560272217,
+          2.2351738238057806e-08,
+          0.12035433202981949
+        ],
+        [
+          0.5776746273040771,
+          0.17464579641819,
+          -0.7973649501800537,
+          0.21364516019821167
+        ],
+        [
+          -0.7632467746734619,
+          -0.2307489961385727,
+          -0.6034973859786987,
+          0.38066983222961426
+        ]
+      ]
+    },
+    "frames": {
+      "engineered_stage_switch": {
+        "frames": {
+          "attached": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_engineered_attached.png",
+                "sha256": "e958efbfdb25bb1505ccd13cc308a5dfd556ea3db941f05c7138713c76d4e9c7",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            },
+            "mask": {
+              "file": "UnscrewCap_engineered_attached_label_mask.png",
+              "sha256": "9a737bfc3d11576486603e3fe96b637e5adff2390fabae1fb61ef9d6177aed2f",
+              "size_wh": [
+                960,
+                720
+              ]
+            },
+            "marker_mask": {
+              "file": "UnscrewCap_engineered_attached_marker.png",
+              "sha256": "1ca3b13b21e081fca23001c0c76444bc4e730bd08ec41563473ce233f261e9a0",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "free": {
+            "files": {
+              "review": {
+                "file": "UnscrewCap_engineered_free.png",
+                "sha256": "7ba69fbf055d803cb77652c976d1d1246f1e39d0527c5416cf22c576778878d3",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "unindexed_frames": [],
+  "verified_indexed_png_files": 4
+}

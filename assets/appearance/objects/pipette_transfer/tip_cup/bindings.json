@@ -1,0 +1,30 @@
+{
+  "object_id": "tip_cup",
+  "representation": "parent_visual_reference",
+  "source": "tasks/pipette_transfer/pipette_transfer_long.py",
+  "builder": "_build_pipette_stand",
+  "expected_visual_count": 1,
+  "roles": {
+    "tip_cup": {
+      "editable": true,
+      "visual_indices": [
+        4
+      ]
+    }
+  },
+  "preserve": [
+    "visual_geometry",
+    "collision_geometry",
+    "mass",
+    "joints",
+    "physical_materials",
+    "initial_pose",
+    "openings",
+    "original_uv_and_textures"
+  ],
+  "new_uv": false,
+  "new_textures": [],
+  "parent_object": "pipette_stand",
+  "expected_parent_visual_count": 47,
+  "scope": "Bottom support disk, not an independent actor or liquid container"
+}

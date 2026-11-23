@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "returned": [
+        "base_camera",
+        "task_wrist_camera"
+      ],
+      "missing": null,
+      "error": null,
+      "get_obs_calls": 1,
+      "passed": true
+    },
+    {
+      "returned": [
+        "task_wrist_camera",
+        "wrist_camera",
+        "base_camera"
+      ],
+      "missing": null,
+      "error": null,
+      "get_obs_calls": 1,
+      "passed": true
+    },
+    {
+      "returned": [
+        "wrist_camera",
+        "task_wrist_camera"
+      ],
+      "missing": "base_camera",
+      "error": "Missing formal cameras: base_camera",
+      "get_obs_calls": 1,
+      "passed": true
+    },
+    {
+      "returned": [
+        "base_camera",
+        "wrist_camera"
+      ],
+      "missing": "task_wrist_camera",
+      "error": "Missing formal cameras: task_wrist_camera",
+      "get_obs_calls": 1,
+      "passed": true
+    }
+  ],
+  "checker_sha256": "db1fb8d2588bd3afb590aaffb362c05c8726b71cfe72ef034232efefc417441d",
+  "gpu_seconds": 0
+}

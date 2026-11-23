@@ -1,0 +1,403 @@
+{
+  "head": "87afa53d5262b6667a6f0e8dac0ecee538781318",
+  "seed": 7,
+  "job": "128933",
+  "phase": "targeted",
+  "status": "failed",
+  "PickBottle": {
+    "status": "passed",
+    "camera": {
+      "view": [
+        [
+          -0.4332896327972412,
+          0.009357995986938476,
+          0.5423625540733338
+        ],
+        [
+          -0.07328963279724121,
+          0.06435799598693848,
+          0.49736255407333374
+        ],
+        0.53
+      ],
+      "intrinsic": [
+        [
+          1326.540771484375,
+          0.0,
+          480.0
+        ],
+        [
+          0.0,
+          1326.540771484375,
+          360.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "extrinsic": [
+        [
+          0.1510254144668579,
+          -0.9885298609733582,
+          0.0,
+          0.0746883898973465
+        ],
+        [
+          -0.12122698873281479,
+          -0.018520789220929146,
+          -0.9924520254135132,
+          0.4859156906604767
+        ],
+        [
+          0.98106849193573,
+          0.14988547563552856,
+          -0.12263361364603043,
+          0.4901960492134094
+        ]
+      ]
+    },
+    "same_coordinate_crops": {
+      "label": [
+        377,
+        155,
+        585,
+        395
+      ]
+    },
+    "frames": {
+      "captures": {
+        "original": {
+          "files": {
+            "review": {
+              "file": "PickBottle_original_review.png",
+              "sha256": "400662c6e532651f8c47c71940bb3386df6187ef5ba4d428c2726da1cb1ca52c",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_original_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_1": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_1_review.png",
+              "sha256": "4c4fb39c3f71749ddec221b53e1f9c45a04d4a2231d773de8ab59857a86fc784",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_1_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_2": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_2_review.png",
+              "sha256": "d61114a7cde4ce41bba4eafddc67761f42e772421dedc5bf5ffbce2de88a24e4",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_2_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_3": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_3_review.png",
+              "sha256": "e73197c1b7716f0a34e7d7023b94feb689daed6ced8571a7d832683ec6115da2",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_3_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_4": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_4_review.png",
+              "sha256": "a89f4128cf27271525a3968d75b48d4c4b689a9dcc5b8a8508bd9465b89168c4",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_4_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_5": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_5_review.png",
+              "sha256": "888ddd8febc6bcfae490abd5f030a59646ae2bdd81bfd84e9639652f3a2d800d",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_5_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_6": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_6_review.png",
+              "sha256": "385fabce92287471698676081d0a8fae18854409412be0f7163ec36c7de9f164",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_6_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_7": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_7_review.png",
+              "sha256": "1b23545f6c0643f9c739718f1f78a52d03776fdcd15e28d57b707a08097f5b07",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_7_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_8": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_8_review.png",
+              "sha256": "e4e929a9e0f334e64e7d099a0ecfc3f6a8697aa7a0bed56c87f7885832e6bc46",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_8_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_9": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_9_review.png",
+              "sha256": "28775d51efe8e916262625aee379c7bec58a0d43ef2e293c4ebab689dded748a",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_9_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        },
+        "variant_10": {
+          "files": {
+            "review": {
+              "file": "PickBottle_variant_10_review.png",
+              "sha256": "4ee14bf9c2302dc5300cf45c4e6dbbf9c572314805b9d9dd97aa3cbfc513a711",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          },
+          "mask": {
+            "file": "PickBottle_variant_10_review_label_mask.png",
+            "sha256": "c273bf8828d4f2861fea23572609f6a5d0fc586afacd5c3e957dec3786f22d41",
+            "size_wh": [
+              960,
+              720
+            ]
+          }
+        }
+      },
+      "native_view_trials": {
+        "0": {
+          "files": {
+            "review": {
+              "file": "PickBottle_native_view0.png",
+              "sha256": "400662c6e532651f8c47c71940bb3386df6187ef5ba4d428c2726da1cb1ca52c",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        }
+      },
+      "isolation": {
+        "0": {
+          "before": {
+            "files": {
+              "review": {
+                "file": "PickBottle_reset1_before.png",
+                "sha256": "bb1676453b720e682321aeb7fa93a89376ba5e590aee318eb598e33554af6fca",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "PickBottle_reset1_after.png",
+                "sha256": "54a8265b42579a989be6c0151e5096b61011f5c364ddc7054b4389c5826c3dcf",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          }
+        },
+        "1": {
+          "before": {
+            "files": {
+              "review": {
+                "file": "PickBottle_reset0_before.png",
+                "sha256": "a89f4128cf27271525a3968d75b48d4c4b689a9dcc5b8a8508bd9465b89168c4",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          },
+          "after": {
+            "files": {
+              "review": {
+                "file": "PickBottle_reset0_after.png",
+                "sha256": "3a25f7eba19bb9e3c393ae971b8f7c95e5ea7064e531b7b6beeff5e0db2eb851",
+                "size_wh": [
+                  960,
+                  720
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "UnscrewCap": {
+    "status": "running",
+    "same_coordinate_crops": {
+      "label": [
+        423,
+        288,
+        539,
+        403
+      ]
+    },
+    "frames": {
+      "native_view_trials": {
+        "0": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_native_view0.png",
+              "sha256": "aaf4617b72fac26b5f171f195d90b1691010b98bf0c497399e7e24cde391f12b",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        },
+        "1": {
+          "files": {
+            "review": {
+              "file": "UnscrewCap_native_view1.png",
+              "sha256": "88fd95d9776f66aa6b5b7ea15933922392bf3702e92a0504965d348cacf9af99",
+              "size_wh": [
+                960,
+                720
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "unindexed_frames": [],
+  "verified_indexed_png_files": 29
+}

@@ -1,0 +1,277 @@
+{
+  "version": "pipette_transfer.foundation.v3",
+  "stage": "foundation_only",
+  "candidate_ids": [
+    "jade",
+    "coral"
+  ],
+  "original_policy": "capture_and_restore_native_materials",
+  "source_guard": {
+    "geometry_ast_sha256": "4eadff5e88b2b31122cac98f9abf14a5f3194e78220e684221d7c027c878e2a0",
+    "source": "tasks/pipette_transfer/pipette_transfer_long.py"
+  },
+  "source_asset": {
+    "repository": "SIPAIR/DexArena",
+    "kind": "dataset",
+    "revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+    "path": "assets/task_object_meshes/pipette/mobility.urdf",
+    "audit_status": "acquired_and_verified",
+    "license_status": "Authorized acquisition; original files not redistributed",
+    "asset_sha256": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+    "readme_sha256": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+    "git_blob_sha1": "ac6fef0b1e2c86d65b039eef48e9cdcdf07fccca"
+  },
+  "task_objects": {
+    "PipetteTransferAspirateLiquid-Sharpa-v1": [
+      "pipette",
+      "sample_cup",
+      "pipette_stand"
+    ],
+    "PipetteTransferDispenseLiquid-Sharpa-v1": [
+      "pipette",
+      "test_tube",
+      "tube_rack",
+      "pipette_stand"
+    ],
+    "PipetteTransferLong-Sharpa-v1": [
+      "pipette",
+      "sample_cup",
+      "test_tube",
+      "tube_rack",
+      "pipette_stand"
+    ]
+  },
+  "objects": {
+    "pipette": {
+      "schemes": {
+        "original": {},
+        "jade": {
+          "body": {
+            "base_color_rgb": [
+              0.03,
+              0.52,
+              0.42
+            ],
+            "roughness": 0.42,
+            "metallic": 0.0
+          }
+        },
+        "coral": {
+          "body": {
+            "base_color_rgb": [
+              0.93,
+              0.22,
+              0.09
+            ],
+            "roughness": 0.68,
+            "metallic": 0.0
+          }
+        }
+      }
+    },
+    "sample_cup": {
+      "schemes": {
+        "original": {},
+        "jade": {
+          "wall": {
+            "base_color_rgb": [
+              0.3,
+              0.94,
+              0.55
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.3,
+              0.94,
+              0.55
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.3,
+              0.94,
+              0.55
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "coral": {
+          "wall": {
+            "base_color_rgb": [
+              0.94,
+              0.4,
+              0.8
+            ],
+            "base_color_alpha": 0.22
+          },
+          "floor": {
+            "base_color_rgb": [
+              0.94,
+              0.4,
+              0.8
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.94,
+              0.4,
+              0.8
+            ],
+            "base_color_alpha": 0.35
+          }
+        }
+      }
+    },
+    "test_tube": {
+      "schemes": {
+        "original": {},
+        "jade": {
+          "wall": {
+            "base_color_rgb": [
+              0.3,
+              0.94,
+              0.55
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.3,
+              0.94,
+              0.55
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.3,
+              0.94,
+              0.55
+            ],
+            "base_color_alpha": 0.35
+          }
+        },
+        "coral": {
+          "wall": {
+            "base_color_rgb": [
+              0.94,
+              0.4,
+              0.8
+            ],
+            "base_color_alpha": 0.22
+          },
+          "bottom": {
+            "base_color_rgb": [
+              0.94,
+              0.4,
+              0.8
+            ],
+            "base_color_alpha": 0.25
+          },
+          "rim": {
+            "base_color_rgb": [
+              0.94,
+              0.4,
+              0.8
+            ],
+            "base_color_alpha": 0.35
+          }
+        }
+      }
+    },
+    "tube_rack": {
+      "schemes": {
+        "original": {},
+        "jade": {
+          "frame": {
+            "base_color_rgb": [
+              0.04,
+              0.48,
+              0.3
+            ],
+            "roughness": 0.42,
+            "metallic": 0.0
+          }
+        },
+        "coral": {
+          "frame": {
+            "base_color_rgb": [
+              0.92,
+              0.3,
+              0.08
+            ],
+            "roughness": 0.68,
+            "metallic": 0.0
+          }
+        }
+      }
+    },
+    "pipette_stand": {
+      "schemes": {
+        "original": {},
+        "jade": {
+          "structure": {
+            "base_color_rgb": [
+              0.05,
+              0.45,
+              0.34
+            ],
+            "roughness": 0.42,
+            "metallic": 0.0
+          }
+        },
+        "coral": {
+          "structure": {
+            "base_color_rgb": [
+              0.83,
+              0.23,
+              0.1
+            ],
+            "roughness": 0.68,
+            "metallic": 0.0
+          }
+        }
+      }
+    },
+    "tip_cup": {
+      "schemes": {
+        "original": {},
+        "jade": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.64,
+              0.9,
+              0.12
+            ],
+            "roughness": 0.42,
+            "metallic": 0.0
+          }
+        },
+        "coral": {
+          "tip_cup": {
+            "base_color_rgb": [
+              0.46,
+              0.06,
+              0.59
+            ],
+            "roughness": 0.68,
+            "metallic": 0.0
+          }
+        }
+      }
+    }
+  },
+  "no_visual_objects": [
+    "liquid_state"
+  ],
+  "new_uv": false,
+  "new_textures": [],
+  "rendering": {
+    "shader_pack": "default",
+    "tip_depth_bias_ndc": 2e-06
+  }
+}

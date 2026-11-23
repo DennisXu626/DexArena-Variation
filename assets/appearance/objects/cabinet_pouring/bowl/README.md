@@ -1,10 +1,10 @@
 # 目标碗（cabinet_pouring.bowl）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**PourBeads 短任务实景与工程检查通过，Dennis 已确认实景**。原版及 Ocean、Citrus、Violet 使用原模型 UV，在内存中保留碗的明暗和纹样。[对照图、运行用法与验证范围](../../../../../docs/variation/evidence/pouring_bowl_beads/README.md)
 
 原始角色：接收珠子的容器。V1资源说明：`RoboCasa bowl/visual/model_normalized_0.obj`。
 
-M1两试点未加载，Long／PourBeads家族分支使用；保留待适配，不把试点未加载误写成整个家族无对象。
+M1 两试点未加载该对象。Long 使用原碗，本次外观接入和实测覆盖 PourBeads。
 
 ## 资料与加载边界
 
@@ -19,3 +19,7 @@ V1对象键：`cabinet_pouring/bowl`；V2对应键：`bowl`。代码调查基准
 - [tasks/cabinet_pouring/cabinet_pouring_long.py](../../../../../tasks/cabinet_pouring/cabinet_pouring_long.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+## 十套家族外观
+
+[十行映射、部件材料和实物参考](../../../../../docs/variation/CABINET_TEN_VARIANTS.md)。新增选型已接入短任务并完成 CPU 核对，实际渲染和运行验收待补。既有已验收方案继续引用原 catalog。

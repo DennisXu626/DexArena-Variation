@@ -1,0 +1,33 @@
+{
+  "commit": "d149f613edc42d001549f76c52a7f5b5e4f5a584",
+  "job_id": "123798",
+  "seed": 7,
+  "results": {
+    "OpenCabinet": {
+      "capture": "passed",
+      "regression": "passed",
+      "original_baseline": "passed",
+      "restore": "passed",
+      "isolation": "passed",
+      "other_materials": "unchanged",
+      "door_qpos": [
+        -0.0,
+        -0.0
+      ]
+    },
+    "PickBottle": {
+      "capture": "passed",
+      "regression": "passed",
+      "original_baseline": "passed",
+      "restore": "passed",
+      "isolation": "passed",
+      "other_materials": "unchanged",
+      "door_qpos": [
+        1.5707963705062866,
+        1.5707963705062866
+      ]
+    }
+  },
+  "builds": 6,
+  "status": "passed"
+}

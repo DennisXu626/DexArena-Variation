@@ -444,6 +444,9 @@ def validate_images(images, num_envs):
         assert pixels.shape[1] > 0 and pixels.shape[2] > 0 and pixels.dtype == np.uint8, (name, pixels.shape, pixels.dtype)
         for frame in pixels:
             assert np.isfinite(frame).all() and np.any(frame != frame[0, 0]), f'{name}: invalid or constant RGB frame'
+    from tools.variation.sapien_sdk.linux_render_receipt import record_render_readback
+
+    record_render_readback()
     return images
 
 

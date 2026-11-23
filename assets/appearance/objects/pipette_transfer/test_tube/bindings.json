@@ -1,0 +1,88 @@
+{
+  "object_id": "test_tube",
+  "representation": "dynamic_actor",
+  "source": "tasks/pipette_transfer/pipette_transfer_long.py",
+  "builder": "_build_test_tube",
+  "expected_visual_count": 41,
+  "roles": {
+    "wall": {
+      "editable": true,
+      "visual_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    "bottom": {
+      "editable": true,
+      "visual_indices": [
+        20
+      ]
+    },
+    "rim": {
+      "editable": true,
+      "visual_indices": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ]
+    }
+  },
+  "preserve": [
+    "visual_geometry",
+    "collision_geometry",
+    "mass",
+    "joints",
+    "physical_materials",
+    "initial_pose",
+    "openings",
+    "original_uv_and_textures",
+    "roughness",
+    "metallic",
+    "transmission",
+    "ior",
+    "specular",
+    "transmission_roughness"
+  ],
+  "new_uv": false,
+  "new_textures": [],
+  "candidate_editable_fields": [
+    "base_color_rgb",
+    "base_color_alpha"
+  ],
+  "original_policy": "Restore exact native RGB, alpha and all PBR values"
+}
