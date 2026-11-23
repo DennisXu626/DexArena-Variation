@@ -79,6 +79,8 @@ $batch = 'outputs/office_realistic'
 
 Windows 的三个短任务均通过标准双环境 CUDA 和 CPU 接口。固定方案逐套恢复原版为零像素差，局部 reset 的未选环境状态和相机保持不变。普通全部候选和独立键帽的无渲染 CPU 动态均逐张量等于各自的关闭外观基线。[任务复算摘要](evidence/office_desk_realistic_v1/summary.json) · [键帽 CPU 动态](evidence/office_desk_realistic_v1/windows-keycaps-cpu.json)
 
+Linux 作业 `135567` 的 Office 阶段通过三个短任务的标准双环境 CUDA。终审独立复算固定相机配对、原版恢复、选中状态读回、未选环境隔离、键盘贴图数据和鼠标五份 CoACD 碰撞缓存，并核对实际加载的 SDK。[Linux 复算与回执](evidence/office_desk_realistic_v1/linux-review.json)
+
 | 实景比较 | 固定相机裁剪 |
 |---|---|
 | OpenLaptop | [屏框](evidence/office_desk_realistic_v1/OpenLaptop_case_comparison.png) · [内置键帽](evidence/office_desk_realistic_v1/OpenLaptop_keycap_comparison.png) |
