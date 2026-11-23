@@ -7,6 +7,7 @@ import hashlib
 import importlib.metadata as metadata
 from importlib.util import find_spec
 import json
+from itertools import combinations
 import math
 import os
 from pathlib import Path
@@ -18,11 +19,29 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[2]
 TASKS = ('PickBolt', 'SeatNut', 'TurnNut')
-SCHEMES = ('original', 'variant_1', 'variant_2')
 CATALOG = ROOT / 'tasks/assets/variation/nut_bolt/v1/catalog.json'
+SCHEMES = tuple(json.loads(CATALOG.read_text(encoding='utf-8'))['schemes'])
 TWO_ENV_GPU_MEMORY = {'max_rigid_contact_count': 2**17, 'max_rigid_patch_count': 2**16,
                       'found_lost_pairs_capacity': 2**20}
 NATIVE_RGB_CAMERAS = ('base_camera', 'task_wrist_camera', 'wrist_camera', 'human')
+MIN_WITNESS_PIXELS = 12
+MIN_WITNESS_CHANNEL_DELTA = 8
+
+
+def visibility_pairs(frames, camera, environments):
+    """Same-pose comparisons of each pair on the original camera."""
+    import numpy as np
+
+    rows = []
+    for left, right in combinations(SCHEMES, 2):
+        for index in range(environments):
+            a = frames[left][camera][index]
+            b = frames[right][camera][index]
+            delta = np.abs(a.astype(np.int16) - b.astype(np.int16))
+            pixels = int((delta.max(axis=-1) >= MIN_WITNESS_CHANNEL_DELTA).sum())
+            rows.append({'schemes': [left, right], 'env_idx': index, 'camera': camera,
+                         'pixels_at_min_delta': pixels, 'max_absolute_error': int(delta.max())})
+    return rows
 
 
 def dump(path, value):
@@ -173,7 +192,7 @@ def stage_visibility_fixture(common, env, seed, output):
     chosen, other = 1, 0
     selected = torch.tensor([chosen], device=base.device)
     adapter = base._nut_bolt_appearance
-    assert adapter.schemes == ['variant_1', 'variant_2']
+    assert all(scheme in SCHEMES[1:] for scheme in adapter.schemes)
 
     def visibility():
         result = {}
@@ -399,7 +418,7 @@ def run_task(task, args, output, result):
         result['checks']['explicit_disabled'] = 'passed'
         close()
 
-        candidate_images = {}
+        candidate_images = {'original': original_images} if gpu else {}
         for scheme in SCHEMES:
             result['stage'] = 'fixed ' + scheme
             base = make({'enabled': True, 'scheme_id': scheme, 'seed': 71})
@@ -422,12 +441,6 @@ def run_task(task, args, output, result):
                     if args.visibility_camera:
                         assert all(item[args.visibility_camera]['changed_values'] > 0 for item in differences)
                     candidate_images[scheme] = fixed
-                    if scheme == 'variant_2':
-                        separation = [common.image_changes(candidate_images['variant_1'], fixed, output,
-                            'candidate_separation', env_id=index) for index in range(count)]
-                        assert all(any(row['changed_values'] for row in item.values()) for item in separation)
-                        if args.visibility_camera:
-                            assert all(item[args.visibility_camera]['changed_values'] > 0 for item in separation)
             else:
                 differences = []
             assert appearance_state(base) == before
@@ -443,6 +456,13 @@ def run_task(task, args, output, result):
                 'pixel_differences': differences, 'records': fixed_records,
                 'restored_records': copy.deepcopy(base._nut_bolt_appearance.records)}
             close()
+
+        if gpu and args.visibility_camera:
+            pairs = visibility_pairs(candidate_images, args.visibility_camera, count)
+            result['checks']['candidate_visibility_pairs'] = pairs
+            close_pairs = [row for row in pairs if row['pixels_at_min_delta'] < MIN_WITNESS_PIXELS]
+            assert not close_pairs, f'Candidate pairs not clearly separated: {close_pairs}'
+        del candidate_images
 
         result['stage'] = 'configuration precedence and invalid request atomicity'
         constructor = {'enabled': True, 'scheme_id': 'original', 'seed': 71,
@@ -554,8 +574,8 @@ def run_task(task, args, output, result):
 
         if gpu:
             result['stage'] = 'two-environment local reset isolation'
-            base = make({'enabled': True, 'scheme_id': 'variant_1', 'seed': 71,
-                         'per_env': {'1': {'scheme_id': 'variant_2'}}})
+            base = make({'enabled': True, 'scheme_id': SCHEMES[3], 'seed': 71,
+                         'per_env': {'1': {'scheme_id': SCHEMES[-1]}}})
             _, info = reset(seed=args.seed)
             rounds = []
             for index, selected in enumerate((1, 0)):
@@ -608,7 +628,7 @@ def run_task(task, args, output, result):
                 rounds.append(row)
                 # This additional cycle follows the frozen local raw receipt and
                 # does not alter the reset/step causal sequence or physical state.
-                for scheme in ('variant_1', 'original'):
+                for scheme in (appearance['schemes'][selected], 'original'):
                     base._nut_bolt_appearance.finish_reset(torch.tensor([selected]),
                         {'nut_bolt_appearance': {'scheme_id': scheme}})
                 restored = common.capture(env, info)
@@ -644,7 +664,7 @@ def main():
     parser.add_argument('--task', action='append', choices=TASKS)
     parser.add_argument('--seed', type=int, default=7, help='Task reset seed, independent of appearance seed')
     parser.add_argument('--visibility-camera', choices=NATIVE_RGB_CAMERAS,
-                        help='Require both candidates to differ in this original RGB camera for both environments')
+                        help='Compare all scheme pairs in this original RGB camera for both environments')
     args = parser.parse_args()
     if not 0 <= args.seed < 2**32:
         parser.error('--seed must be within the native 32-bit reset range')

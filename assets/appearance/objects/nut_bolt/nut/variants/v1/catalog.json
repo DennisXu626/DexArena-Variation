@@ -1,5 +1,5 @@
 {
-  "version": "nut-bolt-nut-appearance-v1",
+  "version": "nut-bolt-nut-appearance-v2",
   "object_id": "nut_bolt.nut",
   "scope": "material_appearance",
   "fields": [
@@ -63,6 +63,214 @@
           ],
           "roughness": 0.48,
           "metallic": 0.4
+        }
+      }
+    },
+    "variant_3": {
+      "mode": "material_override",
+      "label": "Amber and indigo",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.86,
+            0.52,
+            0.02,
+            1
+          ],
+          "roughness": 0.48,
+          "metallic": 0.15
+        },
+        "reference_face": {
+          "base_color": [
+            0.13,
+            0.04,
+            0.35,
+            1
+          ],
+          "roughness": 0.51,
+          "metallic": 0.22
+        }
+      }
+    },
+    "variant_4": {
+      "mode": "material_override",
+      "label": "Crimson and gold",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.75,
+            0.035,
+            0.045,
+            1
+          ],
+          "roughness": 0.71,
+          "metallic": 0.21
+        },
+        "reference_face": {
+          "base_color": [
+            0.9,
+            0.7,
+            0.07,
+            1
+          ],
+          "roughness": 0.46,
+          "metallic": 0.29
+        }
+      }
+    },
+    "variant_5": {
+      "mode": "material_override",
+      "label": "Lime and indigo",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.34,
+            0.69,
+            0.04,
+            1
+          ],
+          "roughness": 0.61,
+          "metallic": 0.13
+        },
+        "reference_face": {
+          "base_color": [
+            0.09,
+            0.03,
+            0.29,
+            1
+          ],
+          "roughness": 0.47,
+          "metallic": 0.2
+        }
+      }
+    },
+    "variant_6": {
+      "mode": "material_override",
+      "label": "Aqua and rose",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.018,
+            0.69,
+            0.88,
+            1
+          ],
+          "roughness": 0.4,
+          "metallic": 0.34
+        },
+        "reference_face": {
+          "base_color": [
+            0.81,
+            0.09,
+            0.38,
+            1
+          ],
+          "roughness": 0.45,
+          "metallic": 0.22
+        }
+      }
+    },
+    "variant_7": {
+      "mode": "material_override",
+      "label": "Violet and lime",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.43,
+            0.055,
+            0.81,
+            1
+          ],
+          "roughness": 0.56,
+          "metallic": 0.24
+        },
+        "reference_face": {
+          "base_color": [
+            0.65,
+            0.92,
+            0.08,
+            1
+          ],
+          "roughness": 0.52,
+          "metallic": 0.18
+        }
+      }
+    },
+    "variant_8": {
+      "mode": "material_override",
+      "label": "Graphite and orange",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.055,
+            0.065,
+            0.085,
+            1
+          ],
+          "roughness": 0.77,
+          "metallic": 0.34
+        },
+        "reference_face": {
+          "base_color": [
+            0.94,
+            0.24,
+            0.025,
+            1
+          ],
+          "roughness": 0.41,
+          "metallic": 0.24
+        }
+      }
+    },
+    "variant_9": {
+      "mode": "material_override",
+      "label": "Frost and deep blue",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.57,
+            0.76,
+            0.91,
+            1
+          ],
+          "roughness": 0.46,
+          "metallic": 0.28
+        },
+        "reference_face": {
+          "base_color": [
+            0.04,
+            0.27,
+            0.52,
+            1
+          ],
+          "roughness": 0.62,
+          "metallic": 0.32
+        }
+      }
+    },
+    "variant_10": {
+      "mode": "material_override",
+      "label": "Magenta and olive",
+      "roles": {
+        "body": {
+          "base_color": [
+            0.94,
+            0.085,
+            0.5,
+            1
+          ],
+          "roughness": 0.39,
+          "metallic": 0.19
+        },
+        "reference_face": {
+          "base_color": [
+            0.18,
+            0.43,
+            0.035,
+            1
+          ],
+          "roughness": 0.53,
+          "metallic": 0.23
         }
       }
     }

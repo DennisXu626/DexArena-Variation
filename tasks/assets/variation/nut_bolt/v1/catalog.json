@@ -1,15 +1,15 @@
 {
-  "version": "nut-bolt-appearance-v1",
+  "version": "nut-bolt-appearance-v2",
   "scope": "material_appearance",
-  "schemes": ["original", "variant_1", "variant_2"],
+  "schemes": ["original", "variant_1", "variant_2", "variant_3", "variant_4", "variant_5", "variant_6", "variant_7", "variant_8", "variant_9", "variant_10"],
   "objects": {
     "bolt": {
       "catalog": "assets/appearance/objects/nut_bolt/bolt/variants/v1/catalog.json",
-      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2", "variant_3": "variant_3", "variant_4": "variant_4", "variant_5": "variant_5", "variant_6": "variant_6", "variant_7": "variant_7", "variant_8": "variant_8", "variant_9": "variant_9", "variant_10": "variant_10"}
     },
     "nut": {
       "catalog": "assets/appearance/objects/nut_bolt/nut/variants/v1/catalog.json",
-      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2"}
+      "scheme_map": {"original": "original", "variant_1": "variant_1", "variant_2": "variant_2", "variant_3": "variant_3", "variant_4": "variant_4", "variant_5": "variant_5", "variant_6": "variant_6", "variant_7": "variant_7", "variant_8": "variant_8", "variant_9": "variant_9", "variant_10": "variant_10"}
     }
   },
   "tasks": {"PickBolt": ["bolt"], "SeatNut": ["bolt", "nut"], "TurnNut": ["bolt", "nut"]}
