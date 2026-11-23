@@ -17,6 +17,7 @@ import torch
 
 sys.path.insert(0,str(Path.cwd()))
 import tasks
+from tasks.robots.franka_joint_impedance_controller import FrankaJointImpedanceController
 
 
 def plain(x):
@@ -123,6 +124,34 @@ def row_state(t,idx):
     return visit(t.get_state_dict())
 
 
+def control_targets(t):
+    """Read live targets, independently of optional controller serialization."""
+    def snapshot(value, label):
+        assert torch.is_tensor(value), (label, "expected batched tensor")
+        assert value.ndim == 2 and value.shape[0] == 2 and value.shape[1] > 0, (label, value.shape)
+        assert torch.isfinite(value).all().item(), (label, "non-finite target")
+        # tolist creates an independent snapshot even for CPU-backed buffers.
+        return value.detach().cpu().tolist()
+
+    arms = {}
+    def visit(controller, path):
+        if isinstance(controller, FrankaJointImpedanceController):
+            arms[path] = snapshot(getattr(controller, "_target_qpos", None), path)
+        for name, child in getattr(controller, "controllers", {}).items():
+            visit(child, path + "/" + str(name))
+    visit(t.agent.controller, "controller")
+    assert arms, "Package A5 requires live arm impedance targets"
+    positions = snapshot(t.agent.robot.get_drive_targets(), "drive_targets")
+    velocities = snapshot(t.agent.robot.get_drive_velocities(), "drive_velocities")
+    assert len(positions[0]) == len(velocities[0]), "drive target dimensions differ"
+    return [{"arm_impedance_qpos": {name: value[i] for name, value in arms.items()},
+             "drive_targets": positions[i], "drive_velocities": velocities[i]} for i in range(2)]
+
+
+def compare_control_targets(before, after, idx, label):
+    return numeric_equal(before["control_targets"][idx], after["control_targets"][idx], label)
+
+
 def counters(t,idx):
     out={}
     for label,obj in (("task",t),("evaluator",getattr(t,"task_evaluator",None))):
@@ -154,6 +183,7 @@ def images(env,info):
 def capture(env,info):
     t=env.unwrapped;rgb,seg=images(env,info);a=getattr(t,KEY)
     return {"images":rgb,"seg":seg,"state":[row_state(t,i) for i in range(2)],
+        "control_targets":control_targets(t) if FAMILY=="package" else None,
         "info":plain(info),"counters":[counters(t,i) for i in range(2)],
         "materials":[materials(t,i) for i in range(2)],"physics":[physical(t,i) for i in range(2)],
         "rng":[rng(t,i) for i in range(2)],"object_ids":[{n:[e.per_scene_id for e in es] for n,es in object_entities(t,i)} for i in range(2)],"records":None if a is None else copy.deepcopy(a.records)}
@@ -196,7 +226,7 @@ def store(x):
     text=json.dumps(plain(x),sort_keys=True,separators=(",",":"));h=hashlib.sha256(text.encode()).hexdigest();SIGNATURES[h]=plain(x);return h
 
 
-def sig(cap):return {k:store(cap[k]) for k in ("state","info","counters","materials","physics","rng","records")}
+def sig(cap):return {k:store(cap[k]) for k in ("state","control_targets","info","counters","materials","physics","rng","records")}
 
 
 def target_rgb(t,base,trial,idx):
@@ -302,6 +332,8 @@ def run():
                     report["pending_case"]={"scheme":scheme,"selected":selected,"before":sig(before),"after":sig(after),
                         "before_images":save_images(before,f"a5_{scheme}_selected{selected}_before"),"after_images":save_images(after,f"a5_{scheme}_selected{selected}_after")}
                     dump(OUT/"report.json",report);dump(OUT/"signatures.json",SIGNATURES)
+                    if FAMILY=="package":
+                        compare_control_targets(before,after,other,"A5 other control targets")
                     numeric_equal(before["state"][other],after["state"][other],"A5 other state")
                     numeric_equal(before["counters"][other],after["counters"][other],"A5 other counters")
                     numeric_equal(before["materials"][other],after["materials"][other],"A5 other materials")
@@ -309,6 +341,8 @@ def run():
                     assert before["rng"][other]==after["rng"][other]
                     assert after["records"][selected]["scheme_id"]=="original"
                     native=native_after
+                    if FAMILY=="package":
+                        compare_control_targets(native,after,selected,"A5 selected control targets vs native")
                     numeric_equal(native["materials"][selected],after["materials"][selected],"A5 selected slots")
                     numeric_equal(native["state"][selected],after["state"][selected],"A5 selected state")
                     case={"request_pair":[scheme,peer],"selected":selected,"before":sig(before),"after":sig(after),
