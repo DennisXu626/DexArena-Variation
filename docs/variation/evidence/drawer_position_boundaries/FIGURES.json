@@ -1,0 +1,44 @@
+{
+  "01_drawer_xy.png": {
+    "sha256": "a0d72fa51cc06644badb0f8a506f9e839cb1b8c99c8851d55f8cf45513d955ac",
+    "size": [
+      2346,
+      1292
+    ]
+  },
+  "02_drawer_yaw.png": {
+    "sha256": "cc7e65751d1f8599879123e91190386f99051bff0fee539407bbe59f40b8810b",
+    "size": [
+      2346,
+      1292
+    ]
+  },
+  "03_charger_in_drawer.png": {
+    "sha256": "9df98cfe7de3e3812318dac8531f38ad02e1405779226f89307878d5e2292f98",
+    "size": [
+      2346,
+      1292
+    ]
+  },
+  "04_charger_table_handoff.png": {
+    "sha256": "21124138495666aa0d48c0c943f62f33876106d7ae20e4e706ab38a81d58c6d6",
+    "size": [
+      2346,
+      1292
+    ]
+  },
+  "05_socket_xy.png": {
+    "sha256": "90ca163e1123f262728950a06491ab443d428774657dd889ff401422171236e8",
+    "size": [
+      2346,
+      1292
+    ]
+  },
+  "06_socket_yaw.png": {
+    "sha256": "37277387829b62bf54d18e821a33e383ed1f17c4260379939415c7461229f5df",
+    "size": [
+      2346,
+      1292
+    ]
+  }
+}
