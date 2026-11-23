@@ -78,21 +78,23 @@ env.close()
 
 新版检查覆盖三个短任务的全部固定方案、随机选择和原版恢复。Linux CUDA 使用两个环境和任务原生相机读回，逐套检查独立贴图及 RGB 的原版恢复，并交替对两个环境做局部 reset。正式任务与预览共用木纹生成器。
 
-### Windows 实拍与复核
+### Windows 实拍与 Linux 复验
 
 冻结输入 `c92d404b5acd5ec5491d1740fa13ab920f8a9c06` 已通过三个短任务的 CPU 接口及标准 Windows CUDA 双环境检查。十套候选逐套恢复原版时，材质、物理状态和原生相机 RGB 一致。两个环境分别进行局部 reset，复核未选环境的材质、状态、随机流和画面。[运行与复核哈希](../../assets/appearance/furniture_assembly/previews/realistic/windows_native_review.json)
 
 CPU 动态按每任务 13 组执行相同动作，覆盖两次关闭外观对照、原版和十套候选。复算 2,340 个控制步、46,800 个物理子步与 2,379 个初始及逐步快照，各组状态和奖励与原生对照逐元素一致。
 
+Server 3 作业 `135475` 使用同一冻结输入、公开 Linux SDK `3.0.3+dexarena.gpu1.linux1` 和 A800 完成三个短任务的标准 CUDA 双环境复验。复算确认 60 张候选原生画面与对应材质读回、十套候选逐套恢复原版。每项任务均验证两个方向的局部 reset，共六次，未选环境的 RGB 和状态保持一致。[Linux 复核回执](../../assets/appearance/furniture_assembly/previews/realistic/linux_native_review.json)
+
 ![原版与十套候选的三个任务原生相机对照](../../assets/appearance/furniture_assembly/previews/realistic/windows_realistic_finishes.png)
 
-对照图按任务固定裁剪原生相机 RGB，保持比例缩放。每任务每环境复算十套候选之间的 45 对差异。按裁剪内每通道平均绝对差排序，最接近的方案仍有下列像素差异。裁剪内包含少量桌面和放置区域。
+对照图使用 Windows 原生相机 RGB，按任务固定裁剪并保持比例缩放。Windows 与 Linux 以相同裁剪复算每任务每环境的 45 对候选差异。按裁剪内每通道平均绝对差排序，两平台得到相同的最近候选，仍有下列像素差异。裁剪内包含少量桌面和放置区域。
 
-| 任务 | 相机 | 最近候选 | env0 变化像素 | env1 变化像素 |
-|---|---|---|---:|---:|
-| LayFlatPanel | human | variant_4 / variant_6 | 7,830 / 15,052 | 7,780 / 15,052 |
-| InsertRail | base_camera | variant_2 / variant_6 | 6,974 / 14,616 | 7,140 / 14,616 |
-| FastenScrew | human | variant_8 / variant_9 | 4,391 / 13,588 | 4,522 / 13,588 |
+| 任务 | 相机 | 最近候选 | Windows 变化像素 env0 / env1 | Linux 变化像素 env0 / env1 | 裁剪总像素 |
+|---|---|---|---:|---:|---:|
+| LayFlatPanel | human | variant_4 / variant_6 | 7,830 / 7,780 | 7,834 / 7,781 | 15,052 |
+| InsertRail | base_camera | variant_2 / variant_6 | 6,974 / 7,140 | 6,974 / 7,140 | 14,616 |
+| FastenScrew | human | variant_8 / variant_9 | 4,391 / 4,522 | 4,391 / 4,522 | 13,588 |
 
 从仓库根目录运行。每次选择新的输出目录。
 

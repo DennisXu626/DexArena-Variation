@@ -1,0 +1,218 @@
+{
+  "status": "passed",
+  "captured_source_sha": "c92d404b5acd5ec5491d1740fa13ab920f8a9c06",
+  "captured_tree_sha": "845f92bd38364a5726d7a1f1f71f580974da4380",
+  "catalog_version": "furniture-appearance-v2",
+  "slurm_job_id": "135475",
+  "platform": "Linux",
+  "scope": "Three short tasks, two environments, standard physx_cuda and original ManiSkill task cameras",
+  "node": "lyg0295",
+  "gpu_model": "NVIDIA A800-SXM4-40GB",
+  "official_review_sha256": "9d1139442bf73c359a3733ef9779fd731fb8b909eb29390178450d33d10fb489",
+  "official_verifier_sha256": "2efd6d479136ab793577b29fa0071eda9b65769657bad7b2f6cd9d4b7f4cb096",
+  "sdk_artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+  "sdk_version": "3.0.3+dexarena.gpu1.linux1",
+  "sdk_wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+  "capture_files_sha256": {
+    "tasks/furniture_assembly/appearance.py": "9dd94a2e484ff4768687db9dafde7bf13bed24f1ea9b365d85b9622b46def2ea",
+    "tasks/furniture_assembly/finishes.py": "7b1fb1ada833e33261c301de845739d3ca73e96aa85fd7731cdec0cc40d5b4d9",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tools/variation/check_furniture_appearance.py": "b8f737170ad3d9cc7f17c0326236f588071946b8574d4c84c54e31eba2d8601b",
+    "tasks/assets/variation/furniture_assembly/v1/catalog.json": "78e09c287132628cc41da0d6feae5ec25215b8bbe719f02f9b580912b91f4914",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "4a216cf2e7862ef77ea7cb1e49abd100b444acb5904aa9b312d6fe1177587bea",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "46c2cf0e981b3e5db5a4c48624c7cf853e5d4ef329eb067e52990204c2e4e63d",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "daeb5ca57ffcfefd4d2b4e2dee4cd0c75903a81ba042b77c99362f104a0bd644",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "90c97805393829ae27b5a8e9b81795b1c0d24581ab46ed57180ee3b1c00a4e6f"
+  },
+  "tasks": {
+    "LayFlatPanel": {
+      "manifest_sha256": "dc2889f37e01987d1a7bbfe9714fa177f946dafe155ae7f8263f6484583c66a5",
+      "results_sha256": "95dd65675596cbdaae108dd451be8445751f0c4b7f0ce261d5465ad3f5bdbfe9",
+      "private_sdk_receipt_sha256": "fb84bfc759c78f2d6a2c10231f2d9d55951cf48a87a06c05bb07a1776dbbfaf9",
+      "control_steps": 2,
+      "physics_steps": 40,
+      "distinct_fixed_schemes_by_environment": {
+        "0": 11,
+        "1": 11
+      },
+      "selected_reset_checks": 40,
+      "native_original_restoration_schemes": [
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "appearance_local_reset_indices": [
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "camera": "human",
+      "crop_xyxy": [
+        418,
+        386,
+        560,
+        492
+      ],
+      "envs": {
+        "0": {
+          "candidate_pairs": 45,
+          "closest_schemes": [
+            "variant_4",
+            "variant_6"
+          ],
+          "changed_pixels": 7834,
+          "crop_pixels": 15052,
+          "mean_absolute_rgb_difference": 10.851338
+        },
+        "1": {
+          "candidate_pairs": 45,
+          "closest_schemes": [
+            "variant_4",
+            "variant_6"
+          ],
+          "changed_pixels": 7781,
+          "crop_pixels": 15052,
+          "mean_absolute_rgb_difference": 10.720259
+        }
+      }
+    },
+    "InsertRail": {
+      "manifest_sha256": "d56b7c60c5ce357e1c209475e3374ad33e0c6ac9f5ad74913d1a5d583706d3da",
+      "results_sha256": "0502046fffff30637ea9cfc6641cbd2df265e6aaf5a15afcd90ec118d0332c5b",
+      "private_sdk_receipt_sha256": "ef1c96458888d207b1b0678ca53138adb4f9ce926abf79127ce87a480c8cb491",
+      "control_steps": 2,
+      "physics_steps": 40,
+      "distinct_fixed_schemes_by_environment": {
+        "0": 11,
+        "1": 11
+      },
+      "selected_reset_checks": 40,
+      "native_original_restoration_schemes": [
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "appearance_local_reset_indices": [
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "camera": "base_camera",
+      "crop_xyxy": [
+        84,
+        82,
+        210,
+        198
+      ],
+      "envs": {
+        "0": {
+          "candidate_pairs": 45,
+          "closest_schemes": [
+            "variant_2",
+            "variant_6"
+          ],
+          "changed_pixels": 6974,
+          "crop_pixels": 14616,
+          "mean_absolute_rgb_difference": 7.993842
+        },
+        "1": {
+          "candidate_pairs": 45,
+          "closest_schemes": [
+            "variant_2",
+            "variant_6"
+          ],
+          "changed_pixels": 7140,
+          "crop_pixels": 14616,
+          "mean_absolute_rgb_difference": 8.587165
+        }
+      }
+    },
+    "FastenScrew": {
+      "manifest_sha256": "d30aab7f1cd910a64604bed799510759e89a935afa4688a9783cccb0068c2b82",
+      "results_sha256": "81e192762d99bbf7e976fdc96499f2b310667cf2a611e85dca42da14be10aaca",
+      "private_sdk_receipt_sha256": "b54f1047600e35bf1385917efaaf298c2288e23e5a1407285ee609840bd89cb6",
+      "control_steps": 2,
+      "physics_steps": 40,
+      "distinct_fixed_schemes_by_environment": {
+        "0": 11,
+        "1": 11
+      },
+      "selected_reset_checks": 40,
+      "native_original_restoration_schemes": [
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "appearance_local_reset_indices": [
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "camera": "human",
+      "crop_xyxy": [
+        328,
+        440,
+        500,
+        519
+      ],
+      "envs": {
+        "0": {
+          "candidate_pairs": 45,
+          "closest_schemes": [
+            "variant_8",
+            "variant_9"
+          ],
+          "changed_pixels": 4391,
+          "crop_pixels": 13588,
+          "mean_absolute_rgb_difference": 5.392331
+        },
+        "1": {
+          "candidate_pairs": 45,
+          "closest_schemes": [
+            "variant_8",
+            "variant_9"
+          ],
+          "changed_pixels": 4522,
+          "crop_pixels": 13588,
+          "mean_absolute_rgb_difference": 5.609729
+        }
+      }
+    }
+  },
+  "candidate_frames_verified": 60,
+  "appearance_local_reset_directions": 6
+}
