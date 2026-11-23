@@ -1,0 +1,11 @@
+{
+  "stable_paths": [
+    "results.json",
+    "results.previous.json"
+  ],
+  "interrupted_primary_previous_count": 2,
+  "recovered_primary_count": 3,
+  "four_snapshots": true,
+  "checker_sha256": "d20e16468eafcd028f1498122e9a467259696a5928f3d30ee1410388d35801e5",
+  "scope": "extracted unchanged flush AST, CPU file IO only"
+}

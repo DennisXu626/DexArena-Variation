@@ -1,4 +1,9 @@
-# Cabinet & Pouring 四短任务位置边界 · 静态审图
+# Cabinet & Pouring 四短任务位置边界
+
+当前实测见 [PR #32 作业 134751 报告](runtime_001/RESULTS.md) 和 [逐点复现表](runtime_001/POINTS.csv)。批准后的层板范围为局部 X ∈ [−22.04, −18] cm。五张原路径 PNG 已回填。单次作业提前停止，19 次 PickBottle 局部 reset 留有记录，5 次短动作均未夹住并退出。其余入口与组合以运行报告为准。
+
+## 首轮静态审图记录
+
 
 基线为 main 的 58b54623308ad736f765a8bbccefc74e344f2a3c。以下坐标为单环境坐标，不含并行环境间距。图以 cm 标尺绘制，[60 条任务×样点请求](SAMPLES.csv)使用 m 和度。所有新边界点等待真实 reset 和操作粗验，GPU 用量为 0。
 
