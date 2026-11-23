@@ -206,7 +206,10 @@ def optical_probe(sapien, scene, camera, body, records, key, catalog, output, si
     for result in results[1:]:
         if result['contrast_ratio'] < .25 or result['stripe_correlation'] < .95:
             raise RuntimeError(f'{key}/{result["scheme_id"]}: through-wall target not readable')
-    Image.fromarray(np.concatenate(frames, axis=1)).save(output/f'{key}_optical_comparison.png')
+    for start in range(1, len(frames), 4):
+        page = [frames[0], *frames[start:start+4]]
+        Image.fromarray(np.concatenate(page, axis=1)).save(
+            output/f'{key}_optical_comparison_{start // 4 + 1}.png')
     restore_records(native)
     camera.entity.pose = saved_pose
     scene.remove_entity(board)

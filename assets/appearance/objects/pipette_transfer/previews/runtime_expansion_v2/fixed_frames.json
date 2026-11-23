@@ -1,0 +1,603 @@
+{
+  "path_base": "original capture directory",
+  "tasks": {
+    "AspirateLiquid": {
+      "original": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/original_base_camera_env0.png",
+          "sha256": "e0f1ed1414427e1ec387ca1e697e035e6c9736a07d6bcfdb035a31be9a9f1fec"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/original_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/original_human_env0.png",
+          "sha256": "d9886e8f72a5b0f62f96d7c5ee6807a96f70698aca2bb48b6a72e954210a74be",
+          "archive_path": "AspirateLiquid/original_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/original_base_camera_env1.png",
+          "sha256": "84e3e5535e263d6ed0fd9ad6c3e2ecfc160a17042ec275b9b42e3568f3b926ca"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/original_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/original_human_env1.png",
+          "sha256": "248841f2bdf189a8217e0e1acde52908727fe3a21ed6f979c3b52e5df7e397ce"
+        }
+      },
+      "jade": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/jade_base_camera_env0.png",
+          "sha256": "8f57c39a76d1ada3c393213796a3d3a60debb6ee8a1dfa4f89dc270904fbd68b"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/jade_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/jade_human_env0.png",
+          "sha256": "4c6c1ab4e42434098f6a69e1a056acbcc860bb7fcc5b02803db5ad1eb04011a1",
+          "archive_path": "AspirateLiquid/jade_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/jade_base_camera_env1.png",
+          "sha256": "1fb547d94ed259fa5553be956e07f7899b5e7f4857a6f5241203292520164209"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/jade_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/jade_human_env1.png",
+          "sha256": "e377ce566983208b32e560e1c59089242c3cb304d12b0a8c58cb1f47e5598079"
+        }
+      },
+      "coral": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/coral_base_camera_env0.png",
+          "sha256": "f86556c14a3462669fa997df2e8f8ae437c54ad61d7365ffd114731482faac08"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/coral_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/coral_human_env0.png",
+          "sha256": "ca9fc681a89d97f88a29bec633ce12d2a36b15fa4881ed93de07017b97bb0eb4",
+          "archive_path": "AspirateLiquid/coral_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/coral_base_camera_env1.png",
+          "sha256": "253a42819bc373e4270cdb57f9f19a81c611c1e02e200a3094ed81b5c553bf44"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/coral_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/coral_human_env1.png",
+          "sha256": "4f5fd4c3a4bfd6b7425e46508d3687d1868459e362e5c59c4f20c0adbbbe67e4"
+        }
+      },
+      "variant_3": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_3_base_camera_env0.png",
+          "sha256": "e32194e98876f814e52c984cffe5738a0e5741438ad48bc5212d41dd22e768f1"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_3_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_3_human_env0.png",
+          "sha256": "d0f86bb17ffb4c7d4bb5f9786424ead86e9a840d6b8dd668c64e4ec10693a97a",
+          "archive_path": "AspirateLiquid/variant_3_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_3_base_camera_env1.png",
+          "sha256": "b7372afcc74f2e005cdf18b11976daba9aa42b42cbd9b033b1eee00245edb833"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_3_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_3_human_env1.png",
+          "sha256": "5d93d981a6f4927169ca516e5e5d2029d4552a94ee669e466927ff09e093aa7c"
+        }
+      },
+      "variant_4": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_4_base_camera_env0.png",
+          "sha256": "11960b8f1543f1fe85d99d2efb1a8bd1472fc47cb7634efdff0984c14c96d26b"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_4_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_4_human_env0.png",
+          "sha256": "aecb839df81f7c4a869edf642ba35f57f5be91f2fc5a28926c284fc5991ef716",
+          "archive_path": "AspirateLiquid/variant_4_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_4_base_camera_env1.png",
+          "sha256": "cbf92c5c920927edf7fac561c6d29595e03aba622657d806e98280647f9b1b23"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_4_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_4_human_env1.png",
+          "sha256": "90f9c71dffd663435749f7375d7c841296fa4acd178a2c0301c64a5a7baea739"
+        }
+      },
+      "variant_5": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_5_base_camera_env0.png",
+          "sha256": "500247bc2afdbbb6d524ee2da9635ca6e5716204649232db7e61467e13beec5b"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_5_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_5_human_env0.png",
+          "sha256": "b142c4ff903defb648da89bd714cc5896846f1cdcc0758e8e49ddebcc4b12e38",
+          "archive_path": "AspirateLiquid/variant_5_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_5_base_camera_env1.png",
+          "sha256": "e7373db6a30eb0240ec6b9e3e38479cab5dd585dda4923db8f6c61dae21f7a3c"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_5_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_5_human_env1.png",
+          "sha256": "0853598158c2866d79052908afda54ab14283699a4988e6f62dae6ee71e82ee6"
+        }
+      },
+      "variant_6": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_6_base_camera_env0.png",
+          "sha256": "ed450569c5b3128b023baa44c7cb14c145a94b53fef66fd812d2e55c9b29c7bf"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_6_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_6_human_env0.png",
+          "sha256": "7e66ce8cb4d35961128dea20d41f6f574cc67df7aa528d9ad52f519a76fa9756",
+          "archive_path": "AspirateLiquid/variant_6_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_6_base_camera_env1.png",
+          "sha256": "65eb3bb92f05e2e9a640a7140f83357aeb4580cb4e39deb9a4a0ec5b34f81e04"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_6_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_6_human_env1.png",
+          "sha256": "72fc1b7e9ea271b9116e8e454f839053c3f6743a1b75df1d9a5cb108264e827b"
+        }
+      },
+      "variant_7": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_7_base_camera_env0.png",
+          "sha256": "2fc0c41910c70ce8aae587c6e7de7e525abd6859488a8eb704368799003ae7b3"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_7_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_7_human_env0.png",
+          "sha256": "0260ccd1a45ae6176d8b500d243322c3c3c55ed46410c1073e43af37e21bbee2",
+          "archive_path": "AspirateLiquid/variant_7_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_7_base_camera_env1.png",
+          "sha256": "cf316d6df7c3ca898be5f0d205fefc8db1792847c501e2bc70d44718881f1779"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_7_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_7_human_env1.png",
+          "sha256": "3a2b0c55cd8e864b44878d3eb7f0db09d6ee07a0d70531c8f68e13eb009de500"
+        }
+      },
+      "variant_8": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_8_base_camera_env0.png",
+          "sha256": "0ba83cf01bdf4258cd1c98053141e89b32a7244c95571655b741b8509e175128"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_8_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_8_human_env0.png",
+          "sha256": "2f6f072ff603126ca88783ed79a247055f874320b3391d3790f17670087076ba",
+          "archive_path": "AspirateLiquid/variant_8_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_8_base_camera_env1.png",
+          "sha256": "9967f68575fa997e11774bd17222c814bb5a44d169b0aec6b5377b4326710263"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_8_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_8_human_env1.png",
+          "sha256": "8846c21e13d6c38a192b37e1560b23b122353c8cc3ae9385af6afbd13f15b6c4"
+        }
+      },
+      "variant_9": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_9_base_camera_env0.png",
+          "sha256": "ed81eeb2594226fff7e30e0f76aef2b755d826e62ce41698f6b33453e52133e0"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_9_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_9_human_env0.png",
+          "sha256": "98012c7d485c466ab93d95e58989f26fc76fa2fb9ba8a36ea3d090ba46830fdf",
+          "archive_path": "AspirateLiquid/variant_9_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_9_base_camera_env1.png",
+          "sha256": "fcad8913db8f814a5b6871747e29c14f04ef6525652af1bac43a0cee5a52c7f3"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_9_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_9_human_env1.png",
+          "sha256": "88c8ab93de180346ca247528062003b4f25f16b9c88c44cff2651ec57f2e16a6"
+        }
+      },
+      "variant_10": {
+        "base_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_10_base_camera_env0.png",
+          "sha256": "d2ae01207d445939d198e113f4deb2d7db73783984a0281f93fb6f8d880a2727"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_10_wrist_camera_env0.png",
+          "sha256": "14949716f79f787ba9fa4fa8508246dd773360cc133c7841b103499767a32243"
+        },
+        "human_env0": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_10_human_env0.png",
+          "sha256": "ebe0808484bae0803e515a786d91b448b345cdd1d51b61455bad3cd079c43852",
+          "archive_path": "AspirateLiquid/variant_10_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_10_base_camera_env1.png",
+          "sha256": "880c67c5e4bd9d2caa3de327793b4d6753fa33a16610ef2831fa055d2aa0b46a"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_10_wrist_camera_env1.png",
+          "sha256": "7c425231afbd4a3f33525ed6b5fc8207622a7fdfddd1526905c157cf444f59b3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_aspirate/AspirateLiquid/variant_10_human_env1.png",
+          "sha256": "de457095e1617364d0495129679593ab5ec831ae785b21276eab633ebc12e9ce"
+        }
+      }
+    },
+    "DispenseLiquid": {
+      "original": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/original_base_camera_env0.png",
+          "sha256": "e971b5f6f5e9a6a1feff5fbb4925ea340b34d5f373bf75d53db0837d69fc2438"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/original_wrist_camera_env0.png",
+          "sha256": "0c7a6f7b7626cf7b07d1a03783b322954d4d773399557d936e275f1589cc3658"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/original_human_env0.png",
+          "sha256": "6058742a4d4c7c4124d85aa0d41096685bf02f5f08681c62c1152793fe887ab1",
+          "archive_path": "DispenseLiquid/original_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/original_base_camera_env1.png",
+          "sha256": "bc779713a7c36dbf8bf1f3738a3ca25ae8ada2f4eff985e14ad4a94909b057dc"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/original_wrist_camera_env1.png",
+          "sha256": "cccb0695b81bdffe599f0f19f4bf137ac31e62c7602e93ffe01deb3421f5bef3"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/original_human_env1.png",
+          "sha256": "e30bdd5de9879df2e2e97c56f2cdc519687af761b524a2514ceb5b2eff7fe19a"
+        }
+      },
+      "jade": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/jade_base_camera_env0.png",
+          "sha256": "626d95af9e7879138963734f567657142ea93acafa84226f1bfa79aa61962136"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/jade_wrist_camera_env0.png",
+          "sha256": "c07842e263ea7e586d2608c3e69b42ee75c0549f1396961413466b6a0b37667d"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/jade_human_env0.png",
+          "sha256": "5df537713900e34fc8cb3bb6caa5d300ac9ac74272c3b95d1e2b4d73f72c5425",
+          "archive_path": "DispenseLiquid/jade_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/jade_base_camera_env1.png",
+          "sha256": "709d1f5d09d547c01b3ecd5abd13d582704524bd15deba8f9497157268de06c5"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/jade_wrist_camera_env1.png",
+          "sha256": "aad5a691da920c630e57f8534e0841be407b35a0c49640b3700fbd6932d28d49"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/jade_human_env1.png",
+          "sha256": "3123185acdcda482164d33599d71fdef10e652c3839a3531c1954328beca3e5f"
+        }
+      },
+      "coral": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/coral_base_camera_env0.png",
+          "sha256": "b62f22a13fd373cd509c2938f421f7fa0d34da21e96497bc2e8ed375a5ad708b"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/coral_wrist_camera_env0.png",
+          "sha256": "d7ac925d0e1eb7ad694f2f4adbb0c8757c7b88e459d48a96bf956babf4e36471"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/coral_human_env0.png",
+          "sha256": "1e7d3ac096e9afa72424c923e7199bd3df37e256de16b6c3abb6f2d6ed2368c3",
+          "archive_path": "DispenseLiquid/coral_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/coral_base_camera_env1.png",
+          "sha256": "3bd3fefb9e638a716e483f7ac9d599ca2d71285d9ad6276c7d58572b05971a66"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/coral_wrist_camera_env1.png",
+          "sha256": "fcae398b0d121294db86917bba42b8291739be087e7551999290fbfe8c8e7736"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/coral_human_env1.png",
+          "sha256": "d929e0bfab3bb1437e9bb6f856b50f7ec50d0a16b126c01109bc8caaf61041ca"
+        }
+      },
+      "variant_3": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_3_base_camera_env0.png",
+          "sha256": "38b0c3c11c543ca1eb25bb0caf052d8f3ab2f7b48adb26f76821d4ff9083df17"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_3_wrist_camera_env0.png",
+          "sha256": "c6d6571a80acbc9a5a4aee0df9d1e4cd917ca08d22e39e4eedb9030156910db0"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_3_human_env0.png",
+          "sha256": "497b9731f66614518aab003663aec872ddbdbd7c5a944abd6ac521bca4546907",
+          "archive_path": "DispenseLiquid/variant_3_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_3_base_camera_env1.png",
+          "sha256": "893249db7d2534f6f7a658828a1187159cdd44772c0cbcf2743d6585ed2e5d6b"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_3_wrist_camera_env1.png",
+          "sha256": "b46322a60d9274f05bf5b334bf0e60b563d4044fabc215c581456838fd84c053"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_3_human_env1.png",
+          "sha256": "6f477bbac0896cce466a832692fa552806a9552c2cf9c74169c34b18d6a865d8"
+        }
+      },
+      "variant_4": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_4_base_camera_env0.png",
+          "sha256": "969485d08b6dace9971098539ea48bd46b828a9dace4e6d9e5b766a6e72ffd53"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_4_wrist_camera_env0.png",
+          "sha256": "2204fe5a9a2a889b6a730a37ee42e719d9363851ba68c753ad9b56fca50317e2"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_4_human_env0.png",
+          "sha256": "8b4fece025191596b7be4cc77d3971f108d532c7e6c99b10889230d0d2aab296",
+          "archive_path": "DispenseLiquid/variant_4_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_4_base_camera_env1.png",
+          "sha256": "6df25c35b20a9139cd1137a3d225ad70f20f40dc5ee3536d369af2f3a3076acb"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_4_wrist_camera_env1.png",
+          "sha256": "c0e7f60fc9b519c7ed7b9d82bb1c7c2b1367ec74f9dbf5127f6e134946e03b38"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_4_human_env1.png",
+          "sha256": "d7919614b03267593568960937cbc820b7b7c72cdd922df159704508a7a25a1a"
+        }
+      },
+      "variant_5": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_5_base_camera_env0.png",
+          "sha256": "2d5cbad33956a9f094e9de0ff755d8cf1337d4731c0415136afc2a81580614ab"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_5_wrist_camera_env0.png",
+          "sha256": "c3deadc4a4c7cd742cd8403bab014812c67f2464306ab70c9eae345a405878b0"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_5_human_env0.png",
+          "sha256": "03a7985c62403a2db4057a80e2e7a3e28830a5001708d5438064e04f76f26821",
+          "archive_path": "DispenseLiquid/variant_5_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_5_base_camera_env1.png",
+          "sha256": "4809d55de4c417b3b8416fce677f1ee7208aef85ec88bf9df1588a02371c0075"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_5_wrist_camera_env1.png",
+          "sha256": "44dd0663a7389b0568e0426104504340f385a8996ad8829f49dcf0174d29b132"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_5_human_env1.png",
+          "sha256": "6e9dab033ecbe3ef74889c694db06179fcb00f7e0eeaed5131dc79df403f8885"
+        }
+      },
+      "variant_6": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_6_base_camera_env0.png",
+          "sha256": "dbb98b6c8a545f7aa0c8d3592f374b4dfd2f84dbdb037fc5fce8b8fa43469335"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_6_wrist_camera_env0.png",
+          "sha256": "7040fff36c7960d308e7e72b7af8e6ba5a8ae21bcdc7578a336aa624f2e0ffd3"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_6_human_env0.png",
+          "sha256": "e85c53bfbc91657cc03bde53d730041cb44f3adfcd6bfe02647eb7a2ec7aa74a",
+          "archive_path": "DispenseLiquid/variant_6_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_6_base_camera_env1.png",
+          "sha256": "35f7f7b53ec18c8a3869f82d4c11c02174421cd9e8a07336ede82b94bd78540a"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_6_wrist_camera_env1.png",
+          "sha256": "9959e1cbf3fdea7b33a2b6a08cbe75acb2863abbb4ba4c5dd07224a430bfa673"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_6_human_env1.png",
+          "sha256": "8494c96d74c6f2d2b9cd9a690768e284ea3434834ab4cfc67c98ebc48383d381"
+        }
+      },
+      "variant_7": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_7_base_camera_env0.png",
+          "sha256": "ce390644c382f79fbec5f28d0337f89baa810c7527e72ee8b933b74702b7fa12"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_7_wrist_camera_env0.png",
+          "sha256": "06ccee7790df60a0f05fcbd42fd99652c7ca9b64d2258aa7c64aef3d7e591380"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_7_human_env0.png",
+          "sha256": "1ea56ced1620d39f7becc8a3fa5514dee610eea0608a0be3572e2d0ef2425857",
+          "archive_path": "DispenseLiquid/variant_7_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_7_base_camera_env1.png",
+          "sha256": "fc8ab31e7ef3341d28475f747e437d3b66d528c0d4e337a9ebc967ee5bd38156"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_7_wrist_camera_env1.png",
+          "sha256": "252dd37474097204188f704b528cfa7e0d4147a6a64d1745918631502a904a84"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_7_human_env1.png",
+          "sha256": "f11ac9683c07dadf6cea9d55a1a41f24763064637f6dda9797d30662dfd883d5"
+        }
+      },
+      "variant_8": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_8_base_camera_env0.png",
+          "sha256": "b5507a6dc6d0e4c9b188b74c97decebe36643840c4bef5f7d0e46e820e1b2af2"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_8_wrist_camera_env0.png",
+          "sha256": "f4761b6873613b5f088798e267f08ede1cffc0405321bebf06238051095b845e"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_8_human_env0.png",
+          "sha256": "d1063a0bca17e0fee6e374be002305e714b3a080deee1df903a1093e4cd02dd9",
+          "archive_path": "DispenseLiquid/variant_8_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_8_base_camera_env1.png",
+          "sha256": "ab8ff53de585905f934ec55bd24fbeb9c0c514268b3ca1a12dd55a385c20aaca"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_8_wrist_camera_env1.png",
+          "sha256": "c092bdbb8d94c22b012d6d479ad57f49010190e41cb2cc4eab0461d7fe60c55e"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_8_human_env1.png",
+          "sha256": "4f97692ba02131ffec99251484d2e33185ae08babf3f8152b82fae02bfb7bdcd"
+        }
+      },
+      "variant_9": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_9_base_camera_env0.png",
+          "sha256": "655e3757763b04072a2fbd6058b434b9d74fc8e94406e0338b9a42683018b797"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_9_wrist_camera_env0.png",
+          "sha256": "4d8581df9a7063f147a966f1c604c99943de84f97fbce8b77b0529267408acb8"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_9_human_env0.png",
+          "sha256": "d0e90024711148cb45ddaeca39f5ebf4ffe94dc632e62c41d7e6685bfb4f51fa",
+          "archive_path": "DispenseLiquid/variant_9_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_9_base_camera_env1.png",
+          "sha256": "cbb100c34b977aa8ea5d56e7807d623bce95d6c98098c9b20289c554c053d375"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_9_wrist_camera_env1.png",
+          "sha256": "473a495a11564dcf4a6ee532704333b1e956d617dc4ba848ed099c91060471d1"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_9_human_env1.png",
+          "sha256": "fca1e750b3e83d395da5be16bdb22d342834ba369ed2c62940882d02088e46d4"
+        }
+      },
+      "variant_10": {
+        "base_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_10_base_camera_env0.png",
+          "sha256": "9e6e7820d1bdd4c3161b19c7134441a722dccff4d8b57fa5b8bd42aaa1ee01a9"
+        },
+        "wrist_camera_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_10_wrist_camera_env0.png",
+          "sha256": "80087cfaf5c0bac3a5c940cafb177ffe7a9e1d686d1a92867b0f0cd79878aad5"
+        },
+        "human_env0": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_10_human_env0.png",
+          "sha256": "4619424d881467c3f9206b8540e1bb6356d663f4952a0dd28e42c989c9381d6d",
+          "archive_path": "DispenseLiquid/variant_10_human_env0.png"
+        },
+        "base_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_10_base_camera_env1.png",
+          "sha256": "5b4a44b92500ed260dbf2b6b530282053ff991c2f4df00dd1e529a794b39230c"
+        },
+        "wrist_camera_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_10_wrist_camera_env1.png",
+          "sha256": "00b5872572d8bd8a0ab21b87497aa55e6982533ede6f1a449a7b593932818e09"
+        },
+        "human_env1": {
+          "raw_path": "gpu_dispense/DispenseLiquid/variant_10_human_env1.png",
+          "sha256": "919956b62bebaa9168ac9b98b612eada09ac97549fa898ce3fd18962cadae2f1"
+        }
+      }
+    }
+  }
+}

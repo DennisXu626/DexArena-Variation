@@ -282,7 +282,7 @@ class PipetteAppearanceTests(unittest.TestCase):
         reset(value)
         reset(value, [1], {'scheme_id': 'coral'})
         self.assertEqual(value.records[-1], {'env_idx': 1, 'episode_index': 2,
-            'scheme_id': 'coral', 'catalog_version': 'pipette-appearance-v1'})
+            'scheme_id': 'coral', 'catalog_version': 'pipette-appearance-v2'})
 
     def test_candidate_requires_compatible_rendering(self):
         value = adapter({'scheme_id': 'jade'})

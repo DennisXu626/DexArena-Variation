@@ -1,0 +1,767 @@
+{
+  "dynamics": {
+    "control_steps": 1560,
+    "physics_steps": 31200,
+    "tasks": {
+      "AspirateLiquid": {
+        "actions_sha256": "2ae0c1dcaf282acdb5e45e8ad31c50c0d6bc4f42b87043043af45129d8bcbad2",
+        "max_joint_motion_rad": 0.015342950820922852,
+        "runs": {
+          "native_off": {
+            "run_sha256": "f8fc5c8a2223676f0827dd1dac968d4bb82bbcb18b7ad3dba40638be88facd9f",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "native_repeat": {
+            "run_sha256": "080753bdb5c65abac6d759c0a38717b8fd4f133868b5f1ff33c1f89606134da4",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "original": {
+            "run_sha256": "8f62bff6a1927f92317ddb3e27c87a16397060a8dca18ecebb65f1b776fce5ae",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "jade": {
+            "run_sha256": "f2df02d9c5723b2f4f98b1512fb80f2f6f513ee461bd9e0153252b1907b70976",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "coral": {
+            "run_sha256": "2ae20e9faca60c92924bff4a17344559a91a4f5cbfa806a9bf7f3f19723d4e5b",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_3": {
+            "run_sha256": "412592d22335534f58c7d1a8d512d588fe110ebd5f18b1ab9f49c4bea9f398a9",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_4": {
+            "run_sha256": "87b89defbbf2fcabe11d1a83e0e73fa4e42e40c3073bb35a763432202e669ea2",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_5": {
+            "run_sha256": "e3853db58db82b46b156c723258e706e10041939883b316c1aecddb2d4dca355",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_6": {
+            "run_sha256": "138ed270b8e905046bd0892ca830385e37d2d13d48d0f4d79f3fb4c04d58bb21",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_7": {
+            "run_sha256": "7952ef1060462fadf4d4a82c01ba00de1e6f3dc0dca7dd969343d5eb31663bf3",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_8": {
+            "run_sha256": "0a5515e8242fa0854438bdc8dfa4c88322dbb3f6106ad39350c1a895f59a75d1",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_9": {
+            "run_sha256": "363cba431733ce26fb6f5950940000bc4b82e4fe9ed3172258f838d9b5d27fc1",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_10": {
+            "run_sha256": "116a76a26b674abb2325b617d181ab9cfe1cbf5ef06806212939ceeb25c2d951",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          }
+        }
+      },
+      "DispenseLiquid": {
+        "actions_sha256": "2ae0c1dcaf282acdb5e45e8ad31c50c0d6bc4f42b87043043af45129d8bcbad2",
+        "max_joint_motion_rad": 0.015329360961914062,
+        "runs": {
+          "native_off": {
+            "run_sha256": "214f1a8f84176a30c3baa1005957e1d9d231cc367941a0fabc42d9d68fe3dd35",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "native_repeat": {
+            "run_sha256": "7a4c29212b570e0ae48547a9bf519715ca9caa0ba186aef1f34137a774e5a147",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "original": {
+            "run_sha256": "d432a3da554d5a17a005e6ef82e0f20d9b1d34ac99197f84be66d458d5062561",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "jade": {
+            "run_sha256": "51e64e5ede5ef70bc3c33248532edd278a8b94ce47cd4097df5dbe98b9ff30d7",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "coral": {
+            "run_sha256": "d664d16889d1136b39fc55e07078b7313214dc6fa712a04a95d5a8900d37352d",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_3": {
+            "run_sha256": "77433b4863bf6477272d59560ed602c1785c9f78d00eb4212f5b7c8a19a3d6e1",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_4": {
+            "run_sha256": "7defdfc5b6026305ec5ba079f115cc80a60c26feebf3a5de542f1b3150259eb3",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_5": {
+            "run_sha256": "461fc76213acaa1dfd84900271f1e1d0de31bdf2962f32aa401df192de4ed820",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_6": {
+            "run_sha256": "c65c908b7e1de3c9d67097ff8fd77f36a044a21a8ef211b94de9c15a511746ac",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_7": {
+            "run_sha256": "f8dadd76a33ef1212ffd072630972ce1b6f1137d6b005ee49e39ad2b098f8b2c",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_8": {
+            "run_sha256": "3fecdc0d17e0639f666c4ae44273ea2b827e6ae5505ad4e36ec428cc09897a2d",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_9": {
+            "run_sha256": "1b8eb17b605291f551ae8fb9487f651dc3ffbacc60c553d552cccb61a3b9674f",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          },
+          "variant_10": {
+            "run_sha256": "cf0ec0cf159d831ab91f6fe2e49620cee2ddd9aad141358d0e30fc5d1fac431b",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "1c22d8fc1b3f4fd3cbff18aef1eb649343619c3d7c01df9f146202886426dff8"
+          }
+        }
+      }
+    },
+    "console": {
+      "process_sha256": "c02434ac6fc1e0b74544af29b3388b8ec3babebbcd825741ec33712f967827e2",
+      "streams_sha256": {
+        "stdout.txt": "818d2c15e79272067df047a1ed74eb7ee78eddd68cdab16258837b2ae7916dcc",
+        "stderr.txt": "fd8b4eafbf0642a230ea93fd9ae3e90df0005fea8f3983c706012db348f22a80"
+      },
+      "command": [
+        "{python}",
+        "-B",
+        "tools/variation/check_pipette_dynamics.py",
+        "--steps",
+        "60",
+        "--seed",
+        "7",
+        "--output",
+        "{capture_directory}",
+        "--sapien-root",
+        "{sdk_root}",
+        "--artifact",
+        "{sdk_artifact}",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}"
+      ],
+      "resources": {
+        "sha256": "5b9d2ac816f3db56bc578c02e07c4dae648695483cc4438e20b947ddfb105204",
+        "sample_count": 729,
+        "initial_free_mib": 3876,
+        "initial_util_percent": 8,
+        "max_delta_mib": 66,
+        "min_free_mib": 3810
+      }
+    }
+  },
+  "interface": {
+    "tasks": {
+      "AspirateLiquid": {
+        "fixed": {
+          "original": {
+            "materials_sha256": "599767c88dd88caa7a8eddde1d0c672e26a1870e24cee9fd76a7e73bf7e10872",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "jade": {
+            "materials_sha256": "6b7fca38fdba4a60336bfe9b3c0f799c47df7b21d714ae52495393e790b429bf",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "coral": {
+            "materials_sha256": "65fee210f913327d3743c4f0f6b1dfe7fc9bd830171b238fab995352e0bc8f72",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_3": {
+            "materials_sha256": "ef6b8871618341986dc6d70effd8a71be19586ed9c2fd8ff21fd271c0ea340a2",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_4": {
+            "materials_sha256": "f1ba87515a6c1f2a3f9e846a4c6a449c986c47df3addeb61df6bbd951a56748e",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_5": {
+            "materials_sha256": "dd96619ef81d8ac712ecb3d2891ba9419f2976f2f06455cd75528296eb60c26f",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_6": {
+            "materials_sha256": "da832365f7b6a04987d5d8c3a3bf2075e6ad246452151c08bdd124f3746b3638",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_7": {
+            "materials_sha256": "74aa292bafe1bc24370700233f83ca161915444a3d297df1c9b5acbe0f31f6b1",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_8": {
+            "materials_sha256": "91d92b177a0203f5779fa48fad93723dfe0341b4ed07f85eb0da063b039857b2",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_9": {
+            "materials_sha256": "2c7e049a0073c4b87326bb4de0618c2861cda9caa2cced230c1ab9cf7a0c3962",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_10": {
+            "materials_sha256": "e7d6f84e5a2af950471b41f92967b49b43c6955f8d0edb9f13fe0fb6ab45a397",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          }
+        },
+        "random_trace_sha256": "f5306faa99044e194934dd252a8a285e9ccecfe086e598515f4cec183ac2a383",
+        "retained_checks": {
+          "default_disabled": "passed",
+          "explicit_disabled": "passed",
+          "selection_precedence": {
+            "status": "passed",
+            "constructor_config": {
+              "enabled": true,
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "coral"
+                }
+              }
+            },
+            "reset_override": {
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "jade"
+                }
+              }
+            },
+            "actual_schemes": [
+              "jade"
+            ],
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 3,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 4,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "invalid_last_environment_atomicity": "passed"
+        }
+      },
+      "DispenseLiquid": {
+        "fixed": {
+          "original": {
+            "materials_sha256": "027bb6030fbd607b47768d3db35e3edb2324d6a03a0aa28e93c1ac3cb520a6bd",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "jade": {
+            "materials_sha256": "fc32477cfdbf6150831179744e423f1db3da23e9e765e3aa2526f9e280754a6c",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "coral": {
+            "materials_sha256": "e32d89061ae8c1f5094d841a1acdcaa09183d0617f6dcada411d929e390e7608",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_3": {
+            "materials_sha256": "4d5a838eae9988e269364f80824b769e1ce69773a4c466f44ee81615b874df61",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_4": {
+            "materials_sha256": "656f468b238cc72d9782f653eacbcd7b2471a0c129f8a1a2f1fff9340214e1a3",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_5": {
+            "materials_sha256": "1aa8988ced9ecd5b3e62ee7108408ac83f190c6f1bd4d182cc4efd3a5ba593c3",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_6": {
+            "materials_sha256": "2efaed59cdb463d0ff4dc15bd723cb0ad431d4d85c8303e7b328a9460d534ce2",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_7": {
+            "materials_sha256": "6ee8e28670eeb90c12b621c5c01505ad731ad64858f8cd2b7c21bdc98dbb0e8f",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_8": {
+            "materials_sha256": "bf3ab5b4454e136aa0e41965a56c7dabf4f84f801c9b6b96c41558ffb14da679",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_9": {
+            "materials_sha256": "f02dfb078e7063aabaeadbd27b43846c45ccc5bc690a6b88695a26c5153458c3",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "variant_10": {
+            "materials_sha256": "9389eee16e1c22bb808df6f144f1afbc588784895d6ea3a043190c01153c0dd1",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          }
+        },
+        "random_trace_sha256": "f5306faa99044e194934dd252a8a285e9ccecfe086e598515f4cec183ac2a383",
+        "retained_checks": {
+          "default_disabled": "passed",
+          "explicit_disabled": "passed",
+          "selection_precedence": {
+            "status": "passed",
+            "constructor_config": {
+              "enabled": true,
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "coral"
+                }
+              }
+            },
+            "reset_override": {
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "jade"
+                }
+              }
+            },
+            "actual_schemes": [
+              "jade"
+            ],
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 3,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v2"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 4,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v2"
+              }
+            ]
+          },
+          "invalid_last_environment_atomicity": "passed"
+        }
+      }
+    },
+    "results_sha256": "47102d6ebe205b1f2dc99006617c64695d9928f8d52b345a0c718a6c690c840f",
+    "console": {
+      "process_sha256": "52f2d96214372bc9ae4f069ff31a0ed4576035f475e1324d7cb636708d5e2e13",
+      "streams_sha256": {
+        "stdout.txt": "a07e035bbfe7e95f857bb1e70f211ffe17659163e11313042c654a29038af470",
+        "stderr.txt": "dbef6c32d47b61008427b14a75b67506e2eb4a4c2ff5cbaf61b5c77065a5e41e"
+      },
+      "returncode": 0,
+      "command": [
+        "{python}",
+        "-B",
+        "tools/variation/sapien_sdk/run_task_check.py",
+        "--repo-root",
+        ".",
+        "--checker",
+        "tools/variation/check_pipette_runtime.py",
+        "--output",
+        "{capture_directory}",
+        "--sapien-root",
+        "{sdk_root}",
+        "--artifact",
+        "{sdk_artifact}",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cpu"
+      ],
+      "resources": {
+        "sha256": "5f0579bac118216f1e9062a739f2a5a57f045221b26a955f4e9ba8ffba3eaaf8",
+        "sample_count": 94,
+        "initial_free_mib": 3828,
+        "initial_util_percent": 1,
+        "max_delta_mib": 61,
+        "min_free_mib": 3767
+      }
+    }
+  }
+}
