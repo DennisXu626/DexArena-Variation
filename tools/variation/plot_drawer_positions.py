@@ -116,13 +116,33 @@ def grid(offsets_x,offsets_y):
     return np.array([(x,y) for x in offsets_x for y in offsets_y])
 
 
-def render(g,out):
+def render(g,out,report=None):
     c,h,s=[np.asarray(g[k]) for k in ("cabinet_xy","handoff_xy","socket_xy")]
     handle=np.array(g["handle_xy"])
     inside=np.array(g["drawer_charger_xy"])
     front_limit=g["table_xy_cm"][0][0]
+    recorded = [(task,p) for task,info in (report or {}).get("tasks",{}).items()
+                for p in info["points"]]
+    west = next((p for task,p in recorded if task=="InsertPlug" and p["id"]=="F4-5"), {})
+    physical_west = west.get("support",{})
+    actual_gaps = {yaw:min((100*p["outline_gap_m"] for _,p in recorded
+                            if "outline_gap_m" in p and round(p["socket_yaw_deg"])==yaw),
+                           default=None) for yaw in (85,90,95)}
+    def failure_overlay(ax,n,coords):
+        for task,p in recorded:
+            if p["figure"]!=f"F{n}" or p["status"]=="rejected":
+                continue
+            failed = (p["status"] in ("init_fail","isolation_fail","support_probe_fail","unexpected_reset_error")
+                      or ("ik" in p and not p["ik"]["passed"])
+                      or ("motion" in p and not p["motion"]["passed"]))
+            if failed:
+                point=coords(task,p["request"])
+                ax.scatter(*point,s=103,facecolors="none",edgecolors="#8a4c2d",lw=1.5,zorder=11)
     def create(title,sub,foot):
-        return canvas(title,sub+"     ·     静态推算／待实测",foot)
+        tag="几何投影与实际样点" if recorded else "静态推算／待实测"
+        if recorded:
+            sub += "   ·   外圈为粗检未达标点"
+        return canvas(title,sub+"     ·     "+tag,foot)
     def save(fig,n):
         fig.savefig(out/FILES[n-1],dpi=170,facecolor=PAPER)
         plt.close(fig)
@@ -145,6 +165,7 @@ def render(g,out):
     label(ax,(-23,46),"拉出方向",8.6)
     label(ax,(-24,-4),"中屉扫掠",8.6)
     panel(ax,"关闭初态、开屉初态与操作侧")
+    failure_overlay(ax,1,lambda task,q:100*np.array(q["drawer_xy_m"]))
     save(fig,1)
 
     fig,(ov,ax)=create("抽屉柜  /  柜体朝向","OpenDrawer、PickCharger   ·   世界 XY   ·   柜根固定 (18, 18) cm",
@@ -164,6 +185,7 @@ def render(g,out):
     arrow(ax,(-43,-16),(-20,-16))
     label(ax,(-31,-24),"手从柜前接近",9)
     panel(ax,"同一把手和三条滑轨方向")
+    failure_overlay(ax,2,lambda task,q:c+handle@rotation(q["drawer_yaw_deg"]).T)
     save(fig,2)
 
     fig,(ov,ax)=create("中层抽屉  /  充电器中心","PickCharger   ·   开屉 22 cm   ·   右图为随屉移动的局部 XY，+X 向深处",
@@ -197,16 +219,31 @@ def render(g,out):
     arrow(ax,(-11,-10),(-31,-10))
     label(ax,(-26,-20),"抬过前沿后取出",8.8)
     panel(ax,"真实屉底、四周边界与最深姿态")
+    failure_overlay(ax,3,lambda task,q:100*np.array(q["charger_drawer_local_xy_m"]))
+    zoom=ax.inset_axes((.66,.34,.30,.25))
+    zoom.set(xlim=(inside[0]-1.8,inside[0]+1.8),ylim=(inside[1]-3,inside[1]+3),
+             aspect="equal",facecolor="#e9d8c0",xticks=[],yticks=[])
+    zoom.set_title("中心域放大",fontsize=8.5,pad=3)
+    patch(zoom,rect,BLUE,BLUE_FILL)
+    patch(zoom,square(inside,1),GREY,GREY_FILL)
+    samples(zoom,inside+grid((-1,0,1),(-2,0,2)),[inside])
+    failure_overlay(zoom,3,lambda task,q:100*np.array(q["charger_drawer_local_xy_m"]))
     save(fig,3)
 
+    west_status = ("西端实测待补" if not physical_west else
+                   f"西端实测：释放 {physical_west['hold_seconds']:.2f} s 后位移 {1000*physical_west['displacement_m']:.2f} mm，倾斜 {physical_west['tilt_deg']:.1f}°，支撑峰值 {physical_west['peak_contact_N']:.2f} N")
     fig,(ov,ax)=create("桌面  /  充电器交接区","PickCharger 放置判定、InsertPlug 初始化   ·   世界 XY   ·   两圆沿用",
-        "西缘支撑：10.5 cm 采样盘余 0.15 cm，14 cm 判定圆极限悬出 3.35 cm。开屉与侧躺 Charger 高度分离，图示为投影净距。")
+        "静态西缘：10.5 cm 盘余 1.5 mm，14 cm 圆极限悬出 33.5 mm。开屉净距为高度分离的投影净距。\n"+west_status+"。")
     overview(ov,g,"both");setup(ax,(-52,19,-82,30));table(ax,g)
     drawer(ax,g,c)
     socket(ax,g,s)
     label(ax,(3,-31),"Socket · InsertPlug",8.6)
     label(ax,(-13,1),"开屉 · PickCharger",8.4)
     handoff(ax,g,h)
+    safe_x=g["handoff_x_table_support_min"]
+    chord=(g["handoff_r"]**2-(safe_x-h[0])**2)**.5
+    ax.plot([safe_x,safe_x],[h[1]-chord,h[1]+chord],ls="-.",lw=1.6,color="#9b5b32",zorder=8)
+    call(ax,(safe_x,h[1]+chord*.75),(-33,-35),"侧躺推荐线 X ≥ −39.65",8.5)
     samples(ax,np.vstack([ring(h,g["handoff_r"]),ring(h,g["handoff_insert_r"])]),[h])
     nearest=g["nearest_socket_nominal"]
     upper=g["handoff_drawer_limit"]
@@ -228,10 +265,17 @@ def render(g,out):
     call(ax,h+[9,-5.4],(3,-68),"虚线 10.5 cm · 初始化",8.6)
     label(ax,h+[1,2],"Charger",9)
     panel(ax,"分任务参照与完整侧躺外廓")
+    failure_overlay(ax,4,lambda task,q:100*np.array(q.get("charger_table_xy_m",q.get("diagnostic_place_center_xy_m"))))
     save(fig,4)
 
+    yaw_notes=[]
+    for pair in g.get("nearest_socket_by_yaw",[g["nearest_socket_new"]]):
+        yaw=pair.get("socket_yaw_deg",90)
+        measured=actual_gaps[yaw]
+        actual="待测" if measured is None else f"实测 {measured:.2f} cm"
+        yaw_notes.append(f"{yaw}°：静态 {pair['gap_cm']:.2f} cm，{actual}")
     fig,(ov,ax)=create("插座  /  XY 平移","InsertPlug   ·   世界 XY   ·   朝向固定 90°   ·   中心 (−12.5, −38) cm",
-        "原生中心域为各轴 ±1 cm，候选半径为 2 cm。两侧同时取最靠近的允许位置，真实外廓静态间隙 1.24 cm。")
+        "  ｜  ".join(yaw_notes))
     overview(ov,g,"socket");setup(ax,(-46,7,-76,-24));table(ax,g)
     disk(ax,h,g["handoff_insert_r"],TEAL,TEAL_FILL,ls="--",zorder=2)
     label(ax,h,"Charger · 原生中心域",8.8)
@@ -254,7 +298,8 @@ def render(g,out):
                 color=STEEL,lw=1.05,zorder=8.7)
     call(ax,sc+[1.55,2.2],(-.4,-32),"Socket · 双孔",8.2)
     call(ax,nearest["charger_xy"],(-34,-51),"最近 Charger",8.2)
-    panel(ax,"最靠近的合法位置")
+    panel(ax,"90° 时最靠近的合法位置")
+    failure_overlay(ax,5,lambda task,q:100*np.array(q["socket_xy_m"]))
     save(fig,5)
 
     fig,(ov,ax)=create("插座  /  壳体朝向","InsertPlug   ·   世界 XY   ·   插座中心固定 (−12.5, −38) cm",
@@ -277,12 +322,14 @@ def render(g,out):
     label(ax,s+[4,0],"Socket",10)
     label(ax,s+[0,-9.2],"细虚线 · 充电器预对准壳体",8.7)
     panel(ax,"三角度叠图与双脚预对准")
+    failure_overlay(ax,6,lambda task,q:s+corner@rotation(q["socket_yaw_deg"]).T)
     save(fig,6)
 
 
 if __name__ == "__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory",type=Path)
+    parser.add_argument("--results",type=Path)
     args=parser.parse_args()
     for name in ("msyh.ttc","msyhbd.ttc"):
         path=Path("C:/Windows/Fonts")/name
@@ -292,4 +339,5 @@ if __name__ == "__main__":
     family=next((name for name in ("Microsoft YaHei","Noto Sans CJK SC") if name in fonts),"DejaVu Sans")
     plt.rcParams.update({"font.family":[family,"DejaVu Sans"],"axes.unicode_minus":False,
                          "axes.labelcolor":INK,"text.color":INK})
-    render(json.loads((args.directory/"GEOMETRY.json").read_bytes()),args.directory)
+    report=json.loads(args.results.read_bytes()) if args.results else None
+    render(json.loads((args.directory/"GEOMETRY.json").read_bytes()),args.directory,report)
