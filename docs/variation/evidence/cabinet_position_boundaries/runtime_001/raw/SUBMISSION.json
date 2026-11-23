@@ -15,6 +15,5 @@
   "stdout": "134751\n",
   "stderr": "sbatch.slurm: GPU Index 3 (1 Shard each). If pending, those Indexes have 0 Shards \u2014 scancel and change --gres=\n",
   "job_id": "134751",
-  "queue_before": "134748|PR28-R1-once|RUNNING\n",
   "watcher_pid": 923388
 }
