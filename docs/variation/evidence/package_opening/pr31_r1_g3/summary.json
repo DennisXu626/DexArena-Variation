@@ -1,0 +1,1987 @@
+{
+  "tested_commit": "425a54a510b1a4b843279e30d41f8f6c69f428be",
+  "job": 135140,
+  "preview_job": 135189,
+  "node": "lyg0295",
+  "physical_gpu": 3,
+  "scope": "Package Sharpa; 2 env; seed7; noise0; full checker A4/A5/random; review original task-camera frames",
+  "stages": {
+    "open": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "control_target_max_delta": {
+        "unselected": 0.0,
+        "selected_vs_native": 0.0
+      },
+      "signature_blocks_verified": 116,
+      "random_reproduced": true
+    },
+    "extract": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "control_target_max_delta": {
+        "unselected": 0.0,
+        "selected_vs_native": 0.0
+      },
+      "signature_blocks_verified": 118,
+      "random_reproduced": true
+    },
+    "long": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "control_target_max_delta": {
+        "unselected": 0.0,
+        "selected_vs_native": 0.0
+      },
+      "signature_blocks_verified": 118,
+      "random_reproduced": true
+    }
+  },
+  "review_cells": [
+    {
+      "task": "open",
+      "request": "variant_3",
+      "environment": 0,
+      "expected": [
+        "#637D68 / #B8C9AE",
+        "#C83D42",
+        "#E7B19A"
+      ],
+      "actual_record_ids": [
+        "variant_3",
+        "variant_3"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_3_base_camera_env0.png",
+          "sha256": "d7a9345f7116de334460b2140758c0c92927dc60a380119f9751d41dadfa56b7"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_3_left_wrist_camera_env0.png",
+          "sha256": "d72525ce140a00156a58f72c51bc28843c5e6a4cabfea6db26aa7d0893b25f3a"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_3_right_wrist_camera_env0.png",
+          "sha256": "7ec6a6414e4403c60e3f369e5eafb4634516d1a320c954876447471e62fb1a69"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_3_human_env0.png",
+          "sha256": "ca9669f6f840357e9f234568006d1f28abc03668b999d7a85b2fefe731b4f951"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_3",
+      "environment": 1,
+      "expected": [
+        "#637D68 / #B8C9AE",
+        "#C83D42",
+        "#E7B19A"
+      ],
+      "actual_record_ids": [
+        "variant_3",
+        "variant_3"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_3_base_camera_env1.png",
+          "sha256": "e4d1a32d493ea6f3a69fbccb3f9a07141b9dd65261ed45d8a30725392310c4e1"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_3_left_wrist_camera_env1.png",
+          "sha256": "de23f17dbe731334cfb73050e15e94a9f8b47ea8e20b3e60f88bbf3e83910ddd"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_3_right_wrist_camera_env1.png",
+          "sha256": "e258b2d2946c37c2b737e065286413f8c9040ad2655226841188c95ed6c3a7ad"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_3_human_env1.png",
+          "sha256": "58e812de14f685e651dbff79be74163ecf9473d2cc8e6e51f6d8998ccc7df020"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_4",
+      "environment": 0,
+      "expected": [
+        "#79678F / #C5B7D5",
+        "#DC8735",
+        "#414A53"
+      ],
+      "actual_record_ids": [
+        "variant_4",
+        "variant_4"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_4_base_camera_env0.png",
+          "sha256": "ea656813ff63c29ecde8b6d51fe0759ea72621045d65e35355b9838e0382d561"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_4_left_wrist_camera_env0.png",
+          "sha256": "8b5d9ae1a54be38f333ac88392bf46b5fe104a79138476b10d286ca1540601bc"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_4_right_wrist_camera_env0.png",
+          "sha256": "268d188fa5839e075132cc4c8f8d915e1f242cd66db09390989b4d71336a21e8"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_4_human_env0.png",
+          "sha256": "6d74da9faed80bda511dbd88eb9c6763e248f356a521df104896738fb67dea22"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_4",
+      "environment": 1,
+      "expected": [
+        "#79678F / #C5B7D5",
+        "#DC8735",
+        "#414A53"
+      ],
+      "actual_record_ids": [
+        "variant_4",
+        "variant_4"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_4_base_camera_env1.png",
+          "sha256": "177a9931bc92995b665230f50b76af585772baf1a28eb5d54002a6f1ef4780bf"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_4_left_wrist_camera_env1.png",
+          "sha256": "29a072723f7c20c7ba73f73c1d67e510843139f7c045a4aa8ffb2db73a94168f"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_4_right_wrist_camera_env1.png",
+          "sha256": "ca6a83a443360fce50bbc32157e7898fd005e28f513d6270f0e8f6781c47811e"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_4_human_env1.png",
+          "sha256": "ede44537abc17d4a18c940a1b7309dc653ee050b4c5ce5f7d481fc75b25c3cb1"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_5",
+      "environment": 0,
+      "expected": [
+        "#3E454D / #AEB7BF",
+        "#D97DA0",
+        "#985468"
+      ],
+      "actual_record_ids": [
+        "variant_5",
+        "variant_5"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_5_base_camera_env0.png",
+          "sha256": "8184b0667c0e65f3f6a167ffdbabc603960de771b97f06da8fe8896fa2e31157"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_5_left_wrist_camera_env0.png",
+          "sha256": "938850f230da53bd520d96e57b1622a7b1af41b37144262b478596b17c8992a0"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_5_right_wrist_camera_env0.png",
+          "sha256": "589263a2ceeb93a56a73100cf2d911406e7bf00bb180489858c80339a30b8f0e"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_5_human_env0.png",
+          "sha256": "fbd95d7432b45c834b02bc88f6abb0be3ec336d18304838a35d7412d1fe00b6b"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_5",
+      "environment": 1,
+      "expected": [
+        "#3E454D / #AEB7BF",
+        "#D97DA0",
+        "#985468"
+      ],
+      "actual_record_ids": [
+        "variant_5",
+        "variant_5"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_5_base_camera_env1.png",
+          "sha256": "742b63ae9cc4c2d7f91f50d5381ff5ed53f09ee84e1bb4f5c40006c95262a971"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_5_left_wrist_camera_env1.png",
+          "sha256": "1f6110f456627681d93684531faa8ab1a684123027792193a9e8be1e49618afc"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_5_right_wrist_camera_env1.png",
+          "sha256": "ca39784cfcd67ff8bbaa896ed2c65529feba5100c1d7724f11645419e6bd9d72"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_5_human_env1.png",
+          "sha256": "86fb70cc99fba3f43fa98f24c90a6a2c9e321cdb70a17483adcec75b76ce46bc"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_6",
+      "environment": 0,
+      "expected": [
+        "#B96350 / #E7AC92",
+        "#B8C96B",
+        "#653D70"
+      ],
+      "actual_record_ids": [
+        "variant_6",
+        "variant_6"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_6_base_camera_env0.png",
+          "sha256": "2462a47e1621fd847998bb09460036ae2e82379613995844d3a77e525897033f"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_6_left_wrist_camera_env0.png",
+          "sha256": "b90fe88f6a71eb59d5f364ae43915c94c41a2a46ddeae7c64faa028468b6d1c7"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_6_right_wrist_camera_env0.png",
+          "sha256": "56d27c42250a8c2d4049a8db1f38804a7b7b63b4fff29ecad890fd5f5e9cc635"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_6_human_env0.png",
+          "sha256": "eeada6af6e414d99bd121b3996443b3e673032c7c776400bbf3b96c829ae4b0a"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_6",
+      "environment": 1,
+      "expected": [
+        "#B96350 / #E7AC92",
+        "#B8C96B",
+        "#653D70"
+      ],
+      "actual_record_ids": [
+        "variant_6",
+        "variant_6"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_6_base_camera_env1.png",
+          "sha256": "da30534323599f59555ca3da35b513df71d5078160f44cbd9a6e810af4f7ec2e"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_6_left_wrist_camera_env1.png",
+          "sha256": "5debf43706acc321002abecdf4eefed8a11a2f268647cc79db2cebfdc1d6e1de"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_6_right_wrist_camera_env1.png",
+          "sha256": "e0d0126718cfd902b947840ac8b9d21fe430e1a620cadda6a0ad3b843df7ca83"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_6_human_env1.png",
+          "sha256": "fec8e965a4ba51be10eae50013e7e81b07761914da96afb8cdd7217e0cfa0420"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_7",
+      "environment": 0,
+      "expected": [
+        "#BA943B / #E6D28E",
+        "#8252A1",
+        "#414F8D"
+      ],
+      "actual_record_ids": [
+        "variant_7",
+        "variant_7"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_7_base_camera_env0.png",
+          "sha256": "e709b84039082a6ff0b7fb9a639bf917f640e15da0e5714388b5d4f682491f31"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_7_left_wrist_camera_env0.png",
+          "sha256": "e5239330ad1b026bd510ac94809e1b0ea2c067c006ad6dc0b20eb67db9d0312f"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_7_right_wrist_camera_env0.png",
+          "sha256": "9105ef9a3a5376b6ad4a3a8e6cd4c55d919570d858fe6792248044dc6297ac17"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_7_human_env0.png",
+          "sha256": "07e29f6a7dc022e08a8117aa24899e4e456f9dea4ab9a3826792052fa2b2a070"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_7",
+      "environment": 1,
+      "expected": [
+        "#BA943B / #E6D28E",
+        "#8252A1",
+        "#414F8D"
+      ],
+      "actual_record_ids": [
+        "variant_7",
+        "variant_7"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_7_base_camera_env1.png",
+          "sha256": "3f1d3d778c5389abd3d516dc32a3e7914339ac1f478fdec72bd459101e37ff2a"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_7_left_wrist_camera_env1.png",
+          "sha256": "3d75692e1f48fd1a5b3247782acd7a161c1ed0a1c3efc00ded16e8939969bd5b"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_7_right_wrist_camera_env1.png",
+          "sha256": "929675a8f46148b8d196fc20a72cd18719b749ff517808446d5727b6767fc41c"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_7_human_env1.png",
+          "sha256": "a009c7933881073151c52ac25e5998e445a8698c8bfcc887de6c1b8bb4af21d3"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_8",
+      "environment": 0,
+      "expected": [
+        "#244C73 / #B8D8EA",
+        "#E8E1CF",
+        "#A4D0C9",
+        "\u6df1\u6d77\u84dd\u76d2\u8eab\uff0f\u51b0\u84dd\u7ffb\u76d6\uff0c\u539f\u7c89\u8272\u5e95\u5e26\u4fdd\u7559"
+      ],
+      "actual_record_ids": [
+        "variant_8",
+        "variant_8"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_8_base_camera_env0.png",
+          "sha256": "f340367b9ffb1639e45992992ae1752f4488fac6e58115dfcd6358314d51442f"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_8_left_wrist_camera_env0.png",
+          "sha256": "460bfc6f44eb43d3363a4fbfb8ae153c461a195567ef798e7ec606b2abe62e7b"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_8_right_wrist_camera_env0.png",
+          "sha256": "a1d7b7d9afa702d87e14b9af9ab37a3e01ab6a05dbff018d05217f7afc83d818"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_8_human_env0.png",
+          "sha256": "5206bcf3ef62716a12d453ffcdfb68c6acd24e5797c9da61d0a243b18779323e"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_8",
+      "environment": 1,
+      "expected": [
+        "#244C73 / #B8D8EA",
+        "#E8E1CF",
+        "#A4D0C9",
+        "\u6df1\u6d77\u84dd\u76d2\u8eab\uff0f\u51b0\u84dd\u7ffb\u76d6\uff0c\u539f\u7c89\u8272\u5e95\u5e26\u4fdd\u7559"
+      ],
+      "actual_record_ids": [
+        "variant_8",
+        "variant_8"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_8_base_camera_env1.png",
+          "sha256": "214e04a1be67e5113730cfd95e8ea3e9cf689e707e83354338e3d2af39c2be36"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_8_left_wrist_camera_env1.png",
+          "sha256": "36f1503f65ec7a1532dc2caebc756e4a1b1865dc39fcbfc34642687b308d85a0"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_8_right_wrist_camera_env1.png",
+          "sha256": "d7d23061b55be28e0dcb52b255df32e1822db4750ee3d1616f16139219323fad"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_8_human_env1.png",
+          "sha256": "2516c139ffe0f9c75137e58b394e089e318da3862f35c7543698cf422b49ec53"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_9",
+      "environment": 0,
+      "expected": [
+        "#AF9270 / #E0CFB0",
+        "#453345",
+        "#C58C3E"
+      ],
+      "actual_record_ids": [
+        "variant_9",
+        "variant_9"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_9_base_camera_env0.png",
+          "sha256": "6c26425cb0753b58a7e811f0a7313b6e99bfd51b373fb0a65ceab82e339c6a2f"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_9_left_wrist_camera_env0.png",
+          "sha256": "ee647b60533e037811ec5e1880f21bd62963055b420f6ac41a5ff7b2b2c9fd02"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_9_right_wrist_camera_env0.png",
+          "sha256": "650d3b1bdbf38226813a72772936728edd3161995328b4d8d07fb7e611a0d346"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_9_human_env0.png",
+          "sha256": "0db114143e7b588b52ec97782998223b2d77d976f635ae6ef842c5caf30097ab"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_9",
+      "environment": 1,
+      "expected": [
+        "#AF9270 / #E0CFB0",
+        "#453345",
+        "#C58C3E"
+      ],
+      "actual_record_ids": [
+        "variant_9",
+        "variant_9"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_9_base_camera_env1.png",
+          "sha256": "e83fe84d74fced4611f26659c8fc7374d2aa17b7177b83e23a91d0fbde3cc31c"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_9_left_wrist_camera_env1.png",
+          "sha256": "c9cab8c59ffa2e38e728763978e3b2a9b1126cd70f01c81f8c349db5ecbf5d57"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_9_right_wrist_camera_env1.png",
+          "sha256": "f371dbea1b72e5e7541cc1b04de79c998afae567eb917dddcbb4cbc4b99e1ed6"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_9_human_env1.png",
+          "sha256": "11f82390fcb023984eee30353de65aea79bed95637ffff0a85f37ded9f6a64b4"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_10",
+      "environment": 0,
+      "expected": [
+        "#783C50 / #C699A7",
+        "#47AEB8",
+        "#8ABDDD"
+      ],
+      "actual_record_ids": [
+        "variant_10",
+        "variant_10"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "open/variant_10_base_camera_env0.png",
+          "sha256": "cca9b53fa49292c0d8d5d390a0e1e16daef1464b9ff7fa52ef6204de46a7c5a1"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "open/variant_10_left_wrist_camera_env0.png",
+          "sha256": "32e937949512f5aeac35f85d5ac39c3014ac4037a441a66143022cea8b0e0afb"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "open/variant_10_right_wrist_camera_env0.png",
+          "sha256": "4f96373c3a50e94db3f5d8c72cb9db82583dea9bfe07057c222997be3b94cdbd"
+        },
+        {
+          "camera": "human/env0",
+          "path": "open/variant_10_human_env0.png",
+          "sha256": "db5fd0a3eb42d5b212f07d491f4b848bbd8b7472f0440bd3a527a1542b73ba5b"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "open",
+      "request": "variant_10",
+      "environment": 1,
+      "expected": [
+        "#783C50 / #C699A7",
+        "#47AEB8",
+        "#8ABDDD"
+      ],
+      "actual_record_ids": [
+        "variant_10",
+        "variant_10"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "open/variant_10_base_camera_env1.png",
+          "sha256": "dfdb33a14425c947a368444ae2fd651a57dc9a594a982c6e984cde0b97d76964"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "open/variant_10_left_wrist_camera_env1.png",
+          "sha256": "7d5c5575cb44618c88284e4d5036a0a715e1cf0f5e2cc4d5061d577a1f3a1f54"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "open/variant_10_right_wrist_camera_env1.png",
+          "sha256": "6af2c5664216e0d0bcbc1b6915afef9298589e070e2f18497ed4d3a0df27b6d5"
+        },
+        {
+          "camera": "human/env1",
+          "path": "open/variant_10_human_env1.png",
+          "sha256": "e789fdd6eb93b2c32f320bc953928e2bde3bcb36294c40aecb58c6513b6ff78d"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_3",
+      "environment": 0,
+      "expected": [
+        "#637D68 / #B8C9AE",
+        "#C83D42",
+        "#E7B19A"
+      ],
+      "actual_record_ids": [
+        "variant_3",
+        "variant_3"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_3_base_camera_env0.png",
+          "sha256": "385f25e4fec4a8506051ecad3502cf0195bfbb66f4be183a6fc1eb7cbbfc091b"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_3_wrist_camera_env0.png",
+          "sha256": "5a7be62fd9f66588ff3cc11d737b5f6af113ae69d53cb3674ff8118ec7a595b9"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_3_human_env0.png",
+          "sha256": "7e897e667f4dff50f0879678382a216e600d885ea60f0be49016627474682212"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_3",
+      "environment": 1,
+      "expected": [
+        "#637D68 / #B8C9AE",
+        "#C83D42",
+        "#E7B19A"
+      ],
+      "actual_record_ids": [
+        "variant_3",
+        "variant_3"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_3_base_camera_env1.png",
+          "sha256": "d12a457820de8dc4d850adfd2ba1b67b3ecf3c495d2215b45dcfc4bb2a309447"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_3_wrist_camera_env1.png",
+          "sha256": "b24b18c77ff934f11bb0dfa623fab480793248e791a7fead8893a0f09c980d87"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_3_human_env1.png",
+          "sha256": "e0c952fceeac2fbfadd5f4e2bf20f54eab41a0807910725b763761e58a30eaf7"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_4",
+      "environment": 0,
+      "expected": [
+        "#79678F / #C5B7D5",
+        "#DC8735",
+        "#414A53"
+      ],
+      "actual_record_ids": [
+        "variant_4",
+        "variant_4"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_4_base_camera_env0.png",
+          "sha256": "8a28a1d110b208b88df18e65517c8270323cd729990f69f29edb71ef905bc2a3"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_4_wrist_camera_env0.png",
+          "sha256": "b900d6fddb7120913b32a4d60a9ea54f984b389119154b60aa2003253765a785"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_4_human_env0.png",
+          "sha256": "c08634fad439d1a256a879f364c605d7363faf9804bde1abf24a5aadc5045257"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_4",
+      "environment": 1,
+      "expected": [
+        "#79678F / #C5B7D5",
+        "#DC8735",
+        "#414A53"
+      ],
+      "actual_record_ids": [
+        "variant_4",
+        "variant_4"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_4_base_camera_env1.png",
+          "sha256": "6eb2ec147b4154be3a7e231f67259bb931bb86bf3946728a8acba2fc40de54f0"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_4_wrist_camera_env1.png",
+          "sha256": "f5f6dc888591539e97f80517e9fec9b7052768ed99a75c66f825fa316b5fe85c"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_4_human_env1.png",
+          "sha256": "cf9ae5aec356596bb829fc4ada07aa67ebb9d2d2e573e307b145b5eb22b5e4c9"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_5",
+      "environment": 0,
+      "expected": [
+        "#3E454D / #AEB7BF",
+        "#D97DA0",
+        "#985468"
+      ],
+      "actual_record_ids": [
+        "variant_5",
+        "variant_5"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_5_base_camera_env0.png",
+          "sha256": "ea3ea50ef1f8e154f73442caf3b7672afc6006ddf7ecd27d1ff3113e3f4aef70"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_5_wrist_camera_env0.png",
+          "sha256": "162fa7ec4da535f763cdc6eb1b08d0a444b4e5a6f5b1ff961e8319368100362b"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_5_human_env0.png",
+          "sha256": "f113891ba77178cd9cab370c89f30aef470f75e398d35a9af004471b61993215"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_5",
+      "environment": 1,
+      "expected": [
+        "#3E454D / #AEB7BF",
+        "#D97DA0",
+        "#985468"
+      ],
+      "actual_record_ids": [
+        "variant_5",
+        "variant_5"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_5_base_camera_env1.png",
+          "sha256": "811008ef60e4997b1bb4888e8e60e700aa860c204545d118d9d1b46ff1306580"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_5_wrist_camera_env1.png",
+          "sha256": "1981f467bd46660be3ca54c481c609d29fa2a539abc646d303e69cf7cb602bbc"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_5_human_env1.png",
+          "sha256": "5351faaf9c83307b9f427abf0e0af124c2f0eac47da55f1365f462b9babd1c04"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_6",
+      "environment": 0,
+      "expected": [
+        "#B96350 / #E7AC92",
+        "#B8C96B",
+        "#653D70"
+      ],
+      "actual_record_ids": [
+        "variant_6",
+        "variant_6"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_6_base_camera_env0.png",
+          "sha256": "1641c0b49c1ace74886924161ff16993e05d7457a19522fa043b4857c3bcc8f3"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_6_wrist_camera_env0.png",
+          "sha256": "1c97f5630499e1416f3c395193bb0f1d00f13fd7455a8f0f0ce67ffddcd2c03b"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_6_human_env0.png",
+          "sha256": "e0a51dca2072f85b0f24d7e1a93f042404f2067c036223c1ca5e331dda57c14f"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_6",
+      "environment": 1,
+      "expected": [
+        "#B96350 / #E7AC92",
+        "#B8C96B",
+        "#653D70"
+      ],
+      "actual_record_ids": [
+        "variant_6",
+        "variant_6"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_6_base_camera_env1.png",
+          "sha256": "e427eed9c77b6349744926f9ab0b24c683c208ee6843dc4ad9d8ad8fcbdcaa7c"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_6_wrist_camera_env1.png",
+          "sha256": "f52acb8620f8de90965d725adb5ff372d970d89db31d723cbeb162a76e381fa0"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_6_human_env1.png",
+          "sha256": "5c7f6cf0366718ce502d017d11ce37ed4ca9f2d5f5a0a0965311c64321d41426"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_7",
+      "environment": 0,
+      "expected": [
+        "#BA943B / #E6D28E",
+        "#8252A1",
+        "#414F8D"
+      ],
+      "actual_record_ids": [
+        "variant_7",
+        "variant_7"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_7_base_camera_env0.png",
+          "sha256": "c0a11ab485dd37b4b4d4dc814b16546da55fb7e0f8cae45b6ca4fb43c6812eae"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_7_wrist_camera_env0.png",
+          "sha256": "6054771f2e80b20149dadef7d5e0354a6aca25ef80ecea541b1355ea94cfbb79"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_7_human_env0.png",
+          "sha256": "9e071eb1d6ac7e8caced566b964cb34b5b664ee292a8171b97c6e0e1ab9d8416"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_7",
+      "environment": 1,
+      "expected": [
+        "#BA943B / #E6D28E",
+        "#8252A1",
+        "#414F8D"
+      ],
+      "actual_record_ids": [
+        "variant_7",
+        "variant_7"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_7_base_camera_env1.png",
+          "sha256": "82a63859db7c263b0bec9cb067213b73ecf6d6aca0a40ade2b7e75d36241d346"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_7_wrist_camera_env1.png",
+          "sha256": "eb55e8fc894c04e60648e5c677902c1c464835e1bd3fcb3f492b28b37954e621"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_7_human_env1.png",
+          "sha256": "0d594aa186e24d219b31e8b5f523eeb44bfdf3dbba0a17e7063103955786bc2a"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_8",
+      "environment": 0,
+      "expected": [
+        "#244C73 / #B8D8EA",
+        "#E8E1CF",
+        "#A4D0C9",
+        "\u6df1\u6d77\u84dd\u76d2\u8eab\uff0f\u51b0\u84dd\u7ffb\u76d6\uff0c\u539f\u7c89\u8272\u5e95\u5e26\u4fdd\u7559"
+      ],
+      "actual_record_ids": [
+        "variant_8",
+        "variant_8"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_8_base_camera_env0.png",
+          "sha256": "de1a6a755076082036d5e64de576b5d319f922421d06db722cb4f0366d6e4f72"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_8_wrist_camera_env0.png",
+          "sha256": "4c5bff806b7321ae56f611f1fd0bcc3daa783f14dc67a99645740df246fc29b4"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_8_human_env0.png",
+          "sha256": "23a5ce523ec57451fea14b4b61e3b2aa770add06f099244f6bbf23fff0c3dbe5"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_8",
+      "environment": 1,
+      "expected": [
+        "#244C73 / #B8D8EA",
+        "#E8E1CF",
+        "#A4D0C9",
+        "\u6df1\u6d77\u84dd\u76d2\u8eab\uff0f\u51b0\u84dd\u7ffb\u76d6\uff0c\u539f\u7c89\u8272\u5e95\u5e26\u4fdd\u7559"
+      ],
+      "actual_record_ids": [
+        "variant_8",
+        "variant_8"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_8_base_camera_env1.png",
+          "sha256": "4c6e974ad8c5e3d7aad5ecb26243917e0bb7bc370f413953a65bd84a86ca8c87"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_8_wrist_camera_env1.png",
+          "sha256": "3b8ec37e1cfd9e53a939962ad29018f1f2a4f304ec7b62bec71b7c9e4e851b0c"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_8_human_env1.png",
+          "sha256": "26ec0f0d9318a12f4b8e3b995fd014b305dbc648ed52230370df14f7601d8c67"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_9",
+      "environment": 0,
+      "expected": [
+        "#AF9270 / #E0CFB0",
+        "#453345",
+        "#C58C3E"
+      ],
+      "actual_record_ids": [
+        "variant_9",
+        "variant_9"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_9_base_camera_env0.png",
+          "sha256": "d690ccef58f6e6141efc50f659615a483dcd64f2434d4799d907307ac8f3125e"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_9_wrist_camera_env0.png",
+          "sha256": "62eb3add921695470956a0aa5d4b94cf16d5c2bbcdf859f2b84e2cfc4e848201"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_9_human_env0.png",
+          "sha256": "a702dc50cce9a1a23e78f918ce1049f4d0df70898c795ee0ecbf4e2c1d13ed8f"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_9",
+      "environment": 1,
+      "expected": [
+        "#AF9270 / #E0CFB0",
+        "#453345",
+        "#C58C3E"
+      ],
+      "actual_record_ids": [
+        "variant_9",
+        "variant_9"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_9_base_camera_env1.png",
+          "sha256": "9145514b437f8586ac485cb3f8c50f5f56ed64dbd3d780e78c2bb5d982bc377e"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_9_wrist_camera_env1.png",
+          "sha256": "86d9b58c0f3816c6317b09288391587d78ecf7389b89de99d2f967c6f97a8c6e"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_9_human_env1.png",
+          "sha256": "f028873c782720e9eef5ee86a3bc26f5069e943685d87c896eb6b4398fe270dc"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_10",
+      "environment": 0,
+      "expected": [
+        "#783C50 / #C699A7",
+        "#47AEB8",
+        "#8ABDDD"
+      ],
+      "actual_record_ids": [
+        "variant_10",
+        "variant_10"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "extract/variant_10_base_camera_env0.png",
+          "sha256": "e6feb938c3be9dcf860bb467e2e57eeb88d12d03b0078dbf92247b2a13273248"
+        },
+        {
+          "camera": "wrist_camera/env0",
+          "path": "extract/variant_10_wrist_camera_env0.png",
+          "sha256": "4858ebc15d8a99a1c7ef9bef059236af3c4ebb99b2e22dfa25a3d814d360afe6"
+        },
+        {
+          "camera": "human/env0",
+          "path": "extract/variant_10_human_env0.png",
+          "sha256": "1ba135a7c2a021ff33fc8097bf07ec1e93d2e75dba3bb744ebcd6215abc86cfc"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "extract",
+      "request": "variant_10",
+      "environment": 1,
+      "expected": [
+        "#783C50 / #C699A7",
+        "#47AEB8",
+        "#8ABDDD"
+      ],
+      "actual_record_ids": [
+        "variant_10",
+        "variant_10"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "extract/variant_10_base_camera_env1.png",
+          "sha256": "54f775b187b3eaa73ead978d9336b3c09fd6e1de2d79e1051e87af9557d435cf"
+        },
+        {
+          "camera": "wrist_camera/env1",
+          "path": "extract/variant_10_wrist_camera_env1.png",
+          "sha256": "88e03ae828f2bad2693725b9474a910bef0ca48d573d3c70e657f6a06add9055"
+        },
+        {
+          "camera": "human/env1",
+          "path": "extract/variant_10_human_env1.png",
+          "sha256": "88747c62e5dd85026a5b783cece9ff9ad5852fe34262d6ad99ce59668236d1fe"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_3",
+      "environment": 0,
+      "expected": [
+        "#637D68 / #B8C9AE",
+        "#C83D42",
+        "#E7B19A"
+      ],
+      "actual_record_ids": [
+        "variant_3",
+        "variant_3"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_3_base_camera_env0.png",
+          "sha256": "9517b8bf6010b23906d50aa7fea96daf259623a8b12270f830ca69c9bebd4695"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_3_left_wrist_camera_env0.png",
+          "sha256": "d72525ce140a00156a58f72c51bc28843c5e6a4cabfea6db26aa7d0893b25f3a"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_3_right_wrist_camera_env0.png",
+          "sha256": "7ec6a6414e4403c60e3f369e5eafb4634516d1a320c954876447471e62fb1a69"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_3_human_env0.png",
+          "sha256": "7942fb55ef750028a948d7add1c65f8f0ff72c08672254417712742a896122a4"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_3",
+      "environment": 1,
+      "expected": [
+        "#637D68 / #B8C9AE",
+        "#C83D42",
+        "#E7B19A"
+      ],
+      "actual_record_ids": [
+        "variant_3",
+        "variant_3"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_3_base_camera_env1.png",
+          "sha256": "2b4d4bec8144afbf0b58bacf839ae45f58f87fafb0d60d7816716e8d860ea28e"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_3_left_wrist_camera_env1.png",
+          "sha256": "de23f17dbe731334cfb73050e15e94a9f8b47ea8e20b3e60f88bbf3e83910ddd"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_3_right_wrist_camera_env1.png",
+          "sha256": "e258b2d2946c37c2b737e065286413f8c9040ad2655226841188c95ed6c3a7ad"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_3_human_env1.png",
+          "sha256": "796a3443d3f4d1f23c0bc7cc286fb7aa5ca8e27a83557d06ad9571a3938ed3e4"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_4",
+      "environment": 0,
+      "expected": [
+        "#79678F / #C5B7D5",
+        "#DC8735",
+        "#414A53"
+      ],
+      "actual_record_ids": [
+        "variant_4",
+        "variant_4"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_4_base_camera_env0.png",
+          "sha256": "864ae8a76d4a2599e55c2f978fc45f4a5db6287f5bd1c3f560e7bc9c2af4bd52"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_4_left_wrist_camera_env0.png",
+          "sha256": "8b5d9ae1a54be38f333ac88392bf46b5fe104a79138476b10d286ca1540601bc"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_4_right_wrist_camera_env0.png",
+          "sha256": "268d188fa5839e075132cc4c8f8d915e1f242cd66db09390989b4d71336a21e8"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_4_human_env0.png",
+          "sha256": "82890c15cbf6d0de77fe71301e18e675387e086b813a6a28fb6310d79aac6987"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_4",
+      "environment": 1,
+      "expected": [
+        "#79678F / #C5B7D5",
+        "#DC8735",
+        "#414A53"
+      ],
+      "actual_record_ids": [
+        "variant_4",
+        "variant_4"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_4_base_camera_env1.png",
+          "sha256": "102776051ab8deb2f86dc972f8589d800d72efe0ea270b94fba94a241c75fc74"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_4_left_wrist_camera_env1.png",
+          "sha256": "29a072723f7c20c7ba73f73c1d67e510843139f7c045a4aa8ffb2db73a94168f"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_4_right_wrist_camera_env1.png",
+          "sha256": "ca6a83a443360fce50bbc32157e7898fd005e28f513d6270f0e8f6781c47811e"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_4_human_env1.png",
+          "sha256": "1679a3eeb2396c773a45fd0aeb842dc178d61cde9e1ee065fadac03247c7a7fd"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_5",
+      "environment": 0,
+      "expected": [
+        "#3E454D / #AEB7BF",
+        "#D97DA0",
+        "#985468"
+      ],
+      "actual_record_ids": [
+        "variant_5",
+        "variant_5"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_5_base_camera_env0.png",
+          "sha256": "b9e1732c7ff7baf5e5fe99bbde3d4de04108cb64a3aef52cf798beb35b9747d1"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_5_left_wrist_camera_env0.png",
+          "sha256": "938850f230da53bd520d96e57b1622a7b1af41b37144262b478596b17c8992a0"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_5_right_wrist_camera_env0.png",
+          "sha256": "589263a2ceeb93a56a73100cf2d911406e7bf00bb180489858c80339a30b8f0e"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_5_human_env0.png",
+          "sha256": "8ff8400ae5219ca7e8dcd83f792b3a6820369cfe3c3fcaac6da625b4b5050ec1"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_5",
+      "environment": 1,
+      "expected": [
+        "#3E454D / #AEB7BF",
+        "#D97DA0",
+        "#985468"
+      ],
+      "actual_record_ids": [
+        "variant_5",
+        "variant_5"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_5_base_camera_env1.png",
+          "sha256": "53e84e82d9e9321dcf60232a2f24893447a94d14a296bc1193f3ef726f07e662"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_5_left_wrist_camera_env1.png",
+          "sha256": "1f6110f456627681d93684531faa8ab1a684123027792193a9e8be1e49618afc"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_5_right_wrist_camera_env1.png",
+          "sha256": "ca39784cfcd67ff8bbaa896ed2c65529feba5100c1d7724f11645419e6bd9d72"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_5_human_env1.png",
+          "sha256": "5822962fbf2757415f1be5315f1b9b1b0c69f67f3ba404b391364e4908fce863"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_6",
+      "environment": 0,
+      "expected": [
+        "#B96350 / #E7AC92",
+        "#B8C96B",
+        "#653D70"
+      ],
+      "actual_record_ids": [
+        "variant_6",
+        "variant_6"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_6_base_camera_env0.png",
+          "sha256": "d0140e69fe79a454ced7829999f64e1352c407cf9b8cd9ce6eb29ef010259d9b"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_6_left_wrist_camera_env0.png",
+          "sha256": "b90fe88f6a71eb59d5f364ae43915c94c41a2a46ddeae7c64faa028468b6d1c7"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_6_right_wrist_camera_env0.png",
+          "sha256": "56d27c42250a8c2d4049a8db1f38804a7b7b63b4fff29ecad890fd5f5e9cc635"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_6_human_env0.png",
+          "sha256": "0f3c3fff3ac0a94c05c6f7775833e640df86ac6674cc9891ecd460bcb2c1def7"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_6",
+      "environment": 1,
+      "expected": [
+        "#B96350 / #E7AC92",
+        "#B8C96B",
+        "#653D70"
+      ],
+      "actual_record_ids": [
+        "variant_6",
+        "variant_6"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_6_base_camera_env1.png",
+          "sha256": "2608b9c981899aba91e88ac9491a0d5566ef9d7a9e38d3253c483182ef9025b2"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_6_left_wrist_camera_env1.png",
+          "sha256": "5debf43706acc321002abecdf4eefed8a11a2f268647cc79db2cebfdc1d6e1de"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_6_right_wrist_camera_env1.png",
+          "sha256": "e0d0126718cfd902b947840ac8b9d21fe430e1a620cadda6a0ad3b843df7ca83"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_6_human_env1.png",
+          "sha256": "7fd49aa967e40618b234a2c7b34b0c1a9d8f5495ca433ab9b7f9b31edb51b68b"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_7",
+      "environment": 0,
+      "expected": [
+        "#BA943B / #E6D28E",
+        "#8252A1",
+        "#414F8D"
+      ],
+      "actual_record_ids": [
+        "variant_7",
+        "variant_7"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_7_base_camera_env0.png",
+          "sha256": "a9c176c1b1f2f0f776795c7939eee26dcbdcca4ed330f1c8c813102e96f93f60"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_7_left_wrist_camera_env0.png",
+          "sha256": "e5239330ad1b026bd510ac94809e1b0ea2c067c006ad6dc0b20eb67db9d0312f"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_7_right_wrist_camera_env0.png",
+          "sha256": "9105ef9a3a5376b6ad4a3a8e6cd4c55d919570d858fe6792248044dc6297ac17"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_7_human_env0.png",
+          "sha256": "ea3b6ef1be041a510ca51acbe91c14d70be9905a35101df1dd5ef697804efba1"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_7",
+      "environment": 1,
+      "expected": [
+        "#BA943B / #E6D28E",
+        "#8252A1",
+        "#414F8D"
+      ],
+      "actual_record_ids": [
+        "variant_7",
+        "variant_7"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_7_base_camera_env1.png",
+          "sha256": "e31ad6c595a6fe24bda00efbe32c3a5fe098e6475142cbd2195c6276e5382cfd"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_7_left_wrist_camera_env1.png",
+          "sha256": "3d75692e1f48fd1a5b3247782acd7a161c1ed0a1c3efc00ded16e8939969bd5b"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_7_right_wrist_camera_env1.png",
+          "sha256": "929675a8f46148b8d196fc20a72cd18719b749ff517808446d5727b6767fc41c"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_7_human_env1.png",
+          "sha256": "300a85fbb512ddda3715f718d71240f97f7ebea4bd688bf92644091109e573e0"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_8",
+      "environment": 0,
+      "expected": [
+        "#244C73 / #B8D8EA",
+        "#E8E1CF",
+        "#A4D0C9",
+        "\u6df1\u6d77\u84dd\u76d2\u8eab\uff0f\u51b0\u84dd\u7ffb\u76d6\uff0c\u539f\u7c89\u8272\u5e95\u5e26\u4fdd\u7559"
+      ],
+      "actual_record_ids": [
+        "variant_8",
+        "variant_8"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_8_base_camera_env0.png",
+          "sha256": "258b9dd68a53a3edbeb291710d46b721be7e02f1da8028e1b2c6c577b19e7e42"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_8_left_wrist_camera_env0.png",
+          "sha256": "460bfc6f44eb43d3363a4fbfb8ae153c461a195567ef798e7ec606b2abe62e7b"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_8_right_wrist_camera_env0.png",
+          "sha256": "a1d7b7d9afa702d87e14b9af9ab37a3e01ab6a05dbff018d05217f7afc83d818"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_8_human_env0.png",
+          "sha256": "6cb486ad659b83c3bb8d2fe9229f0d3c5ce51dc21687a3a4faddc44b8d47e573"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_8",
+      "environment": 1,
+      "expected": [
+        "#244C73 / #B8D8EA",
+        "#E8E1CF",
+        "#A4D0C9",
+        "\u6df1\u6d77\u84dd\u76d2\u8eab\uff0f\u51b0\u84dd\u7ffb\u76d6\uff0c\u539f\u7c89\u8272\u5e95\u5e26\u4fdd\u7559"
+      ],
+      "actual_record_ids": [
+        "variant_8",
+        "variant_8"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_8_base_camera_env1.png",
+          "sha256": "07f0a2b6530ab01edab31bf35849c7c1564640918787d9a107c2eb42653f6c4b"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_8_left_wrist_camera_env1.png",
+          "sha256": "36f1503f65ec7a1532dc2caebc756e4a1b1865dc39fcbfc34642687b308d85a0"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_8_right_wrist_camera_env1.png",
+          "sha256": "d7d23061b55be28e0dcb52b255df32e1822db4750ee3d1616f16139219323fad"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_8_human_env1.png",
+          "sha256": "2f753cd95eb64f3b792ff546424c79f90cc1b4bb2c1a7752a8fffd270b741fc4"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_9",
+      "environment": 0,
+      "expected": [
+        "#AF9270 / #E0CFB0",
+        "#453345",
+        "#C58C3E"
+      ],
+      "actual_record_ids": [
+        "variant_9",
+        "variant_9"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_9_base_camera_env0.png",
+          "sha256": "9ef7be0bcd13cd19a1a341c0f4aff10d21dc6d51b12bc7d1cfd2e9a42510d34b"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_9_left_wrist_camera_env0.png",
+          "sha256": "ee647b60533e037811ec5e1880f21bd62963055b420f6ac41a5ff7b2b2c9fd02"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_9_right_wrist_camera_env0.png",
+          "sha256": "650d3b1bdbf38226813a72772936728edd3161995328b4d8d07fb7e611a0d346"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_9_human_env0.png",
+          "sha256": "351a38bdc14d0672c4a6a56dc334fa1522caddfcca1d234950e8e9fed95e9917"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_9",
+      "environment": 1,
+      "expected": [
+        "#AF9270 / #E0CFB0",
+        "#453345",
+        "#C58C3E"
+      ],
+      "actual_record_ids": [
+        "variant_9",
+        "variant_9"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_9_base_camera_env1.png",
+          "sha256": "66803a24c405f6504391aac9e4e34c864c61fd2184e984f71c9300f0b202fbb7"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_9_left_wrist_camera_env1.png",
+          "sha256": "c9cab8c59ffa2e38e728763978e3b2a9b1126cd70f01c81f8c349db5ecbf5d57"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_9_right_wrist_camera_env1.png",
+          "sha256": "f371dbea1b72e5e7541cc1b04de79c998afae567eb917dddcbb4cbc4b99e1ed6"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_9_human_env1.png",
+          "sha256": "0eda9eb00237f4cb41edd44f17592b83a95278ac400c8fa3f4fc9681263f009e"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_10",
+      "environment": 0,
+      "expected": [
+        "#783C50 / #C699A7",
+        "#47AEB8",
+        "#8ABDDD"
+      ],
+      "actual_record_ids": [
+        "variant_10",
+        "variant_10"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env0",
+          "path": "long/variant_10_base_camera_env0.png",
+          "sha256": "306d09506c84e30e6c7b46633bc26a42afb1b1b8c5790777c17ddf8edbf6f9fc"
+        },
+        {
+          "camera": "left_wrist_camera/env0",
+          "path": "long/variant_10_left_wrist_camera_env0.png",
+          "sha256": "32e937949512f5aeac35f85d5ac39c3014ac4037a441a66143022cea8b0e0afb"
+        },
+        {
+          "camera": "right_wrist_camera/env0",
+          "path": "long/variant_10_right_wrist_camera_env0.png",
+          "sha256": "4f96373c3a50e94db3f5d8c72cb9db82583dea9bfe07057c222997be3b94cdbd"
+        },
+        {
+          "camera": "human/env0",
+          "path": "long/variant_10_human_env0.png",
+          "sha256": "4f8aa39f58cdc41d48d3f2af7e6ec9a5b6354cd22c3e226a494d93b59f42aee9"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    },
+    {
+      "task": "long",
+      "request": "variant_10",
+      "environment": 1,
+      "expected": [
+        "#783C50 / #C699A7",
+        "#47AEB8",
+        "#8ABDDD"
+      ],
+      "actual_record_ids": [
+        "variant_10",
+        "variant_10"
+      ],
+      "independent_visual": {
+        "visible_regions": "Box colors agree with review reference; no visible mismatch found",
+        "limitation": "Native cameras occlude some objects; full per-cell independent visual confirmation of apple/plate is not claimed",
+        "supplement": "supplemental_preview: fresh G3 single-env CPU-physics object views; colors and texture detail reviewed"
+      },
+      "proof": [
+        {
+          "camera": "base_camera/env1",
+          "path": "long/variant_10_base_camera_env1.png",
+          "sha256": "a0b8386c42e030f38d8c3ee9f6ee73996b28c37fb3ca371f9a1da12f0e8d4dc2"
+        },
+        {
+          "camera": "left_wrist_camera/env1",
+          "path": "long/variant_10_left_wrist_camera_env1.png",
+          "sha256": "7d5c5575cb44618c88284e4d5036a0a715e1cf0f5e2cc4d5061d577a1f3a1f54"
+        },
+        {
+          "camera": "right_wrist_camera/env1",
+          "path": "long/variant_10_right_wrist_camera_env1.png",
+          "sha256": "6af2c5664216e0d0bcbc1b6915afef9298589e070e2f18497ed4d3a0df27b6d5"
+        },
+        {
+          "camera": "human/env1",
+          "path": "long/variant_10_human_env1.png",
+          "sha256": "2c0b239db9923b519e6e84bb85da2b40f67942f9fb9458cb3379bf6e79e7c0fc"
+        }
+      ],
+      "status": "rendered; actual IDs and material semantics passed; visible regions reviewed"
+    }
+  ]
+}
