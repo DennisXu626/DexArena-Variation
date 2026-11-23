@@ -219,22 +219,114 @@ def physical_attempt(env, e, kind, i, ik):
 
 
 def diagnostic_place(e, i, center):
-    """Isolated constructed pose for the native placement predicate."""
-    pose = e.charger.pose.raw_pose.clone()
-    pose[i,:3] = pose.new_tensor([*center, e.charger_half[1]])
-    pose[i,3:] = pose.new_tensor(e.charger_initial_quat)
-    e.charger.set_pose(Pose.create(pose))
-    e.scene.px.gpu_apply_rigid_dynamic_data()
-    e.scene._gpu_fetch_all()
-    e._charger_prev_p[i] = e.charger.pose.p[i]
-    e._charger_prev_q[i] = e.charger.pose.q[i]
-    e._charger_speed[i] = 0
-    e._charger_ang_speed[i] = 0
-    e._charger_motion_last_step[i] = e._elapsed_steps[i]
-    placed,outside,bottom,radius,settled = e._charger_table_state()
-    return dict(status="placement_predicate_measured", placed=bool(placed[i]),
-                charger_out=bool(outside[i]), settled=bool(settled[i]), radial_distance_m=float(radius[i]),
-                bottom_z_m=float(bottom[i]), charger_pose=as_pose(e.charger,i).tolist())
+    """Measure the native predicate on a temporary pose, then restore the probe inputs."""
+    history = {
+        key: getattr(e, key)[i].clone()
+        for key in ("_charger_prev_p", "_charger_prev_q", "_charger_speed",
+                    "_charger_ang_speed", "_charger_motion_last_step")
+    }
+    original_pose = e.charger.pose.raw_pose[i].clone()
+    try:
+        pose = e.charger.pose.raw_pose.clone()
+        pose[i, :3] = pose.new_tensor([*center, e.charger_half[1]])
+        pose[i, 3:] = pose.new_tensor(e.charger_initial_quat)
+        e.charger.set_pose(Pose.create(pose))
+        e.scene.px.gpu_apply_rigid_dynamic_data()
+        e.scene._gpu_fetch_all()
+        e._charger_prev_p[i] = e.charger.pose.p[i]
+        e._charger_prev_q[i] = e.charger.pose.q[i]
+        e._charger_speed[i] = 0
+        e._charger_ang_speed[i] = 0
+        e._charger_motion_last_step[i] = e._elapsed_steps[i]
+        placed, outside, bottom, radius, settled = e._charger_table_state()
+        return dict(status="placement_predicate_measured", placed=bool(placed[i]),
+                    charger_out=bool(outside[i]), settled=bool(settled[i]),
+                    radial_distance_m=float(radius[i]), bottom_z_m=float(bottom[i]),
+                    radius_limit_m=float(radius.new_tensor(e.charger_place_radius)),
+                    on_table=bool(bottom[i].abs() < e.charger_table_height_tol),
+                    charger_pose=as_pose(e.charger, i).tolist())
+    finally:
+        # A later reset evaluates the full batch. Keep this synthetic placement local to the probe.
+        pose = e.charger.pose.raw_pose.clone()
+        pose[i] = original_pose
+        e.charger.set_pose(Pose.create(pose))
+        e.scene.px.gpu_apply_rigid_dynamic_data()
+        e.scene._gpu_fetch_all()
+        for key, saved in history.items():
+            getattr(e, key)[i].copy_(saved)
+
+
+def snapshot_state(state):
+    """Retain values rather than aliases to the simulator's writable buffers."""
+    if isinstance(state, dict):
+        return {key: snapshot_state(child) for key, child in state.items()}
+    return state.detach().cpu().clone()
+
+
+def first_state_difference(before, after, env_idx, prefix=()):
+    if isinstance(before, dict):
+        if not isinstance(after, dict) or before.keys() != after.keys():
+            return dict(env_idx=env_idx, field="/".join(prefix), before_keys=list(before),
+                        after_keys=list(after) if isinstance(after, dict) else None)
+        for key, child in before.items():
+            diff = first_state_difference(child, after[key], env_idx, (*prefix, key))
+            if diff is not None:
+                return diff
+        return None
+    a = np.ascontiguousarray(value(before[env_idx])).reshape(-1)
+    b = np.ascontiguousarray(value(after[env_idx])).reshape(-1)
+    field = "/".join(prefix)
+    if a.shape != b.shape or a.dtype != b.dtype:
+        return dict(env_idx=env_idx, field=field, before_shape=list(a.shape),
+                    after_shape=list(b.shape), before_type=str(a.dtype), after_type=str(b.dtype))
+    a_bits = a.view(np.uint8).reshape(a.size, a.itemsize)
+    b_bits = b.view(np.uint8).reshape(b.size, b.itemsize)
+    different = np.flatnonzero((a_bits != b_bits).any(axis=1))
+    if different.size == 0:
+        return None
+    pos = int(different[0])
+    label = "stage_charger_placed" if field == "drawer_plug_task_state" and pos == 3 else field
+    return dict(env_idx=env_idx, field=label, state_path=field, component=pos,
+                before=a[pos].item() if np.isfinite(a[pos]) else str(a[pos]),
+                after=b[pos].item() if np.isfinite(b[pos]) else str(b[pos]),
+                before_hex=a_bits[pos].tobytes().hex(), after_hex=b_bits[pos].tobytes().hex())
+
+
+def record_placement(e, i, center, item, flush, stage):
+    before = snapshot_state(e.get_state_dict())
+    try:
+        item.update(diagnostic_place(e, i, center))
+    except Exception as error:
+        item.update(status="probe_exception", error=f"{type(error).__name__}: {error}")
+        raise
+    finally:
+        current = e.get_state_dict()
+        equal = [env_digest(current, j) == env_digest(before, j) for j in range(e.num_envs)]
+        item["probe_roundtrip_equal"] = equal
+        if not all(equal):
+            item["status"] = "probe_restore_fail"
+            j = equal.index(False)
+            item["first_state_difference"] = first_state_difference(before, current, j)
+            item["difference_step"] = stage
+        flush()
+    if not all(equal):
+        raise AssertionError(f"{stage}: placement probe changed the saved state")
+    actual_inside = item["radial_distance_m"] < item["radius_limit_m"]
+    item["strict_radius_pass"] = actual_inside
+    expected = actual_inside and item["on_table"] and item["charger_out"] and item["settled"]
+    if item["placed"] != expected:
+        item["status"] = "predicate_mismatch"
+        flush()
+        raise AssertionError(f"{stage}: returned value disagrees with native inputs")
+
+
+def placement_rows(rows):
+    batch = [row for row in rows if row["task"] == "DrawerPlugPickCharger-Sharpa-v1"
+             and row["figure"] == "F4" and row["kind"].startswith("native_predicate")]
+    identity = [(row["id"], row["seed"], row["env_idx"]) for row in batch]
+    if identity != [(f"F4-{j}", str(843+j), str(1-j%2)) for j in range(9)]:
+        raise ValueError("Expected the original F4-0 through F4-8 PickCharger sequence")
+    return batch
 
 
 def diagnostic_socket(e, i):
@@ -330,11 +422,14 @@ def order(rows,kind):
     return sorted(rows,key=priority)
 
 
-def run(out, matrix):
+def run(out, matrix, placement_only=False):
     out.mkdir(exist_ok=False)
     with matrix.open(encoding="utf-8",newline="") as stream:
         rows=list(csv.DictReader(stream))
-    result=dict(job=os.environ["SLURM_JOB_ID"],backend="physx_cuda",tasks={},status="running")
+    if placement_only:
+        rows = placement_rows(rows)
+    result=dict(job=os.environ["SLURM_JOB_ID"],backend="physx_cuda",tasks={},status="running",
+                scope="pick_charger_placement" if placement_only else "drawer_position_matrix")
     def flush():
         # Both checkpoint names stay present after creation for the capacity sampler.
         encoded=json.dumps(result,indent=2,allow_nan=False,default=lambda n: n.item())
@@ -345,7 +440,8 @@ def run(out, matrix):
         current.write_text(encoded)
     make=dict(num_envs=2,sim_backend="physx_cuda",obs_mode="state",reconfiguration_freq=0)
     kinds = ("InsertPlug", "OpenDrawer", "PickCharger")
-    phases = [(kind, priority) for priority in (True, False) for kind in kinds]
+    phases = ([("PickCharger", False)] if placement_only else
+              [(kind, priority) for priority in (True, False) for kind in kinds])
     for kind,priority in phases:
         task_id="DrawerPlug"+kind+"-Sharpa-v1"
         def urgent(row):
@@ -375,7 +471,9 @@ def run(out, matrix):
                 opts={"env_idx":idx}
                 if not pickup_diagnostic:
                     opts["position_layout"]={str(i):request}
-                before=env_digest(e.get_state_dict(),1-i)
+                state=e.get_state_dict()
+                reset_before=snapshot_state(state) if pickup_diagnostic else None
+                before=env_digest(state,1-i)
                 item=dict(id=id,figure=row["figure"],kind=row["kind"],env_idx=i,seed=seed,request=request,
                           reset_options={**opts,"env_idx":[i]},status="resetting")
                 task["points"].append(item)
@@ -390,13 +488,35 @@ def run(out, matrix):
                     flush()
                     assert item["passive_unchanged"],id
                     continue
-                item["passive_unchanged"]=before==env_digest(e.get_state_dict(),1-i)
+                reset_after=e.get_state_dict()
+                item["passive_unchanged"]=before==env_digest(reset_after,1-i)
                 if not item["passive_unchanged"] or row["kind"]=="expected_reject":
                     item["status"]="isolation_fail" if not item["passive_unchanged"] else "unexpected_accept"
+                    if pickup_diagnostic:
+                        item["first_state_difference"] = first_state_difference(reset_before, reset_after, 1-i)
+                        item["difference_step"] = f"{id}: after partial reset, before placement"
                     flush()
                     raise AssertionError(id)
                 if pickup_diagnostic:
-                    item.update(diagnostic_place(e,i,request["diagnostic_place_center_xy_m"]))
+                    center=request["diagnostic_place_center_xy_m"]
+                    record_placement(e, i, center, item, flush, f"{id}: placement roundtrip")
+                    if placement_only and id=="F4-0" and not all(
+                        item[name] for name in ("placed", "charger_out", "settled")
+                    ):
+                        item["status"] = "nominal_predicate_fail"
+                        flush()
+                        raise AssertionError(f"{id}: nominal placement did not pass")
+                    # Keep the original boundary input. A 1 mm inner control goes in a separate record.
+                    near_boundary = abs(item["radial_distance_m"] - item["radius_limit_m"]) <= 1e-6
+                    if placement_only and id!="F4-0" and near_boundary:
+                        vector=np.asarray(center)-e.charger_place_center_xy
+                        inset=(np.asarray(center)-0.001*vector/np.linalg.norm(vector)).tolist()
+                        control=item["inset_1mm_control"]={"requested_xy_m":inset}
+                        record_placement(e, i, inset, control, flush, f"{id}: inset roundtrip")
+                        if not control["placed"]:
+                            control["status"] = "inset_predicate_fail"
+                            flush()
+                            raise AssertionError(f"{id}: 1 mm inset did not pass")
                     flush()
                     continue
                 item["checks"]=measure_reset(e,kind,i,request,item)
@@ -432,5 +552,7 @@ if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output",required=True,type=Path)
     parser.add_argument("--samples",required=True,type=Path)
+    parser.add_argument("--placement-only", action="store_true",
+                        help="Run only the original nine PickCharger F4 diagnostic points")
     args=parser.parse_args()
-    run(args.output,args.samples)
+    run(args.output,args.samples,placement_only=args.placement_only)
