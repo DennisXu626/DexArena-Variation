@@ -1,0 +1,238 @@
+{
+  "source": {
+    "commit": "31091fc17ddc9b658255f90af70758f1a2a6163f",
+    "input_sha256": {
+      "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tasks/furniture_assembly/appearance.py": "60f0c9d06be1f15abe7672dd9542d130666a998b2e0db9fc42c321b757341c15",
+      "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b5b3115c451d78209e9d691e93ac4a449823ca0c18762ff1cd044cf5ec319b59",
+      "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "0c4a62496dc1bd170297946cd492fcd05b7dd103d2c102c5c47b2c0bca5c271a",
+      "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c23c74a54e6fe48d8bd476c73ba6aa08585f7c29fe9818170fb46803ca6bd85a",
+      "tasks/furniture_assembly/furniture_assembly_long.py": "f5ded2f12d952c3809342c0e687ca72e398c7f6832a976c1b4803fc941d9e4a1",
+      "tasks/furniture_assembly/position_layout.py": "70caa6c6ab44b786b9dffaed9ffef989268cd406001c5729c440a2862ab49246",
+      "tasks/furniture_assembly/reset_scope.py": "1e7875b2814747948de198ac7a021b8e4172cc425ede565eba4865d4d8836cce",
+      "tools/variation/check_furniture_positions.py": "f858a4efd9fd8676961f8e54a88b4cf9a7e1c0c770f2101254a3d07082c2a01e",
+      "tools/variation/furniture_position_samples.py": "30655a6855adc93eaa96bc44f443a25608f1fe6fa7bf89c7939281b3b5a4aaf1",
+      "tools/variation/check_cabinet_positions.py": "f453b5f2cdf241302810112c09b9ce8d1c8eea72862f4b1e0dc84f7871d965e6"
+    }
+  },
+  "tasks": {
+    "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
+      "make": {
+        "sim_backend": "physx_cpu",
+        "obs_mode": "state",
+        "render_mode": null,
+        "reconfiguration_freq": 0,
+        "furniture_appearance": {
+          "enabled": true,
+          "mode": "explicit",
+          "scheme_id": "original"
+        }
+      },
+      "seed": 701,
+      "options": {
+        "position_layout": {
+          "0": {
+            "rack_yaw_deg": 10
+          }
+        },
+        "furniture_appearance": {
+          "mode": "explicit",
+          "scheme_id": "variant_3"
+        }
+      },
+      "measured_poses": {
+        "rack": [
+          -0.12999999523162842,
+          0.20000000298023224,
+          0.0,
+          0.9961947202682495,
+          0.0,
+          0.0,
+          0.08715573698282242
+        ],
+        "panel": [
+          -0.12999999523162842,
+          0.20000000298023224,
+          0.11050000041723251,
+          0.704416036605835,
+          0.704416036605835,
+          0.06162841245532036,
+          0.06162841245532036
+        ]
+      },
+      "checks": {
+        "rack_request": true,
+        "clearance": true,
+        "panel_in_slot": true,
+        "task_bookkeeping_zero": true,
+        "native_place_center": true
+      },
+      "appearance_record": {
+        "env_idx": 0,
+        "episode_index": 2,
+        "scheme_id": "variant_3",
+        "catalog_version": "furniture-appearance-v1"
+      }
+    },
+    "FurnitureAssemblyInsertRail-Sharpa-v1": {
+      "make": {
+        "sim_backend": "physx_cpu",
+        "obs_mode": "state",
+        "render_mode": null,
+        "reconfiguration_freq": 0,
+        "furniture_appearance": {
+          "enabled": true,
+          "mode": "explicit",
+          "scheme_id": "original"
+        }
+      },
+      "seed": 701,
+      "options": {
+        "position_layout": {
+          "0": {
+            "rail_yaw_deg": -10,
+            "panel_yaw_deg": -7
+          }
+        },
+        "furniture_appearance": {
+          "mode": "explicit",
+          "scheme_id": "variant_3"
+        }
+      },
+      "measured_poses": {
+        "rail": [
+          -0.12999999523162842,
+          -0.27000001072883606,
+          0.006000000052154064,
+          0.9961947202682495,
+          0.0,
+          0.0,
+          -0.08715573698282242
+        ],
+        "panel": [
+          -0.12999999523162842,
+          -0.05999999865889549,
+          0.008999999612569809,
+          0.9981347918510437,
+          0.0,
+          0.0,
+          -0.061048541218042374
+        ],
+        "rail_body": [
+          -0.12999999523162842,
+          -0.27000001072883606,
+          0.006000000052154064,
+          0.9961947202682495,
+          0.0,
+          0.0,
+          -0.08715573698282242
+        ],
+        "screw_head": [
+          -0.23832885921001434,
+          -0.25089871883392334,
+          0.00950000062584877,
+          0.9961947202682495,
+          0.0,
+          0.0,
+          -0.08715573698282242
+        ]
+      },
+      "checks": {
+        "rail_request": true,
+        "panel_request": true,
+        "clearance": true,
+        "rail_body_attached": true,
+        "screw_follows_rail": true,
+        "zero_screw_angle": true,
+        "task_bookkeeping_zero": true,
+        "native_place_center": true
+      },
+      "appearance_record": {
+        "env_idx": 0,
+        "episode_index": 2,
+        "scheme_id": "variant_3",
+        "catalog_version": "furniture-appearance-v1"
+      }
+    },
+    "FurnitureAssemblyFastenScrew-Sharpa-v1": {
+      "make": {
+        "sim_backend": "physx_cpu",
+        "obs_mode": "state",
+        "render_mode": null,
+        "reconfiguration_freq": 0,
+        "furniture_appearance": {
+          "enabled": true,
+          "mode": "explicit",
+          "scheme_id": "original"
+        }
+      },
+      "seed": 701,
+      "options": {
+        "position_layout": {
+          "0": {
+            "panel_yaw_deg": 7
+          }
+        },
+        "furniture_appearance": {
+          "mode": "explicit",
+          "scheme_id": "variant_3"
+        }
+      },
+      "measured_poses": {
+        "panel": [
+          -0.12999999523162842,
+          -0.05999999865889549,
+          0.008999999612569809,
+          0.9981347918510437,
+          0.0,
+          0.0,
+          0.061048541218042374
+        ],
+        "rail": [
+          -0.1051863431930542,
+          -0.05695326626300812,
+          0.01599999889731407,
+          0.9981349110603333,
+          0.0,
+          0.0,
+          0.06104854866862297
+        ],
+        "rail_body": [
+          -0.1051863431930542,
+          -0.05695326626300812,
+          0.01599999889731407,
+          0.9981349110603333,
+          0.0,
+          0.0,
+          0.06104854866862297
+        ],
+        "screw_head": [
+          -0.21436640620231628,
+          -0.07035889476537704,
+          0.012499997392296791,
+          0.9981347918510437,
+          0.0,
+          0.0,
+          0.061048541218042374
+        ]
+      },
+      "checks": {
+        "panel_request": true,
+        "clearance": true,
+        "rail_body_attached": true,
+        "seated_rail_follows_panel": true,
+        "screw_follows_rail": true,
+        "zero_screw_angle": true,
+        "task_bookkeeping_zero": true,
+        "native_place_center": true
+      },
+      "appearance_record": {
+        "env_idx": 0,
+        "episode_index": 2,
+        "scheme_id": "variant_3",
+        "catalog_version": "furniture-appearance-v1"
+      }
+    }
+  },
+  "status": "passed"
+}

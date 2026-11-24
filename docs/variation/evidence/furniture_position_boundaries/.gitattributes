@@ -1,0 +1,2 @@
+runtime_*/results.json -text whitespace=cr-at-eol
+runtime_*/POINTS.csv -text
