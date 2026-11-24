@@ -25,7 +25,12 @@ import tasks  # register the native entry points
 
 from check_cabinet_positions import env_digest, setup_motion, solve_arm, value
 from tasks.pipette_transfer.pipette_transfer_long import (
+    PIPETTE_CUP_RANDOM_XY,
+    PIPETTE_CUP_SUCCESS_RADIUS,
     PIPETTE_MIN_STAND_CUP_GAP,
+    PIPETTE_RACK_RANDOM_XY,
+    PIPETTE_STAND_RANDOM_XY,
+    PIPETTE_STAND_RANDOM_YAW_DEG,
     PipetteConfig,
 )
 from tasks.pipette_transfer.position_layout import (
@@ -153,7 +158,12 @@ def geometry(env):
             base_vertices.extend(rotation(parent_pose[3:]).apply(points) + parent_pose[:3])
     base = np.asarray(base_vertices)[:, :2]
     return {'dimensions': dimensions, 'local_hulls_xy': hulls,
-            'robot_base_world_hull_xy': base[ConvexHull(base).vertices].tolist()}
+            'robot_base_world_hull_xy': base[ConvexHull(base).vertices].tolist(),
+            'dish_target_radius_m': PIPETTE_CUP_SUCCESS_RADIUS,
+            'native_xy_half_ranges_m': {'stand': PIPETTE_STAND_RANDOM_XY, 'cup': PIPETTE_CUP_RANDOM_XY,
+                                        'rack': PIPETTE_RACK_RANDOM_XY},
+            'native_yaw_half_range_deg': PIPETTE_STAND_RANDOM_YAW_DEG,
+            'stand_nominal_yaw_deg': STAND_YAW_DEG[1]}
 
 
 def pose_rows(env, i):
@@ -225,13 +235,16 @@ def initial_checks(env, i, task, request, poses, geo):
         centers = position_centers(env.cfg)
         for name in centers.keys() & poses.keys():
             checks[name + '_request'] = np.allclose(poses[name][:2], request.get(name + '_xy_m', centers[name]), atol=1e-6)
-        checks['yaw_request'] = abs(yaw - request.get('stand_yaw_deg', 90)) < 1e-4
+        checks['yaw_request'] = abs(yaw - request.get('stand_yaw_deg', STAND_YAW_DEG[1])) < 1e-4
     return {'checks': {key: bool(result) for key, result in checks.items()}, **measured}
 
 
 def approach(env, i, task, poses, geo):
     chain = setup_motion(env, i)
     initial_tips = chain[-1]
+    # An arm-only rigid chain cannot shrink the native fingertip separation.
+    # Use the measured open span for pregrasp and assess finger closure in simulation.
+    half_span = np.linalg.norm(initial_tips[1] - initial_tips[0]) / 2
     grip = np.asarray(poses['pipette'][:3])
     grip[2] += geo['dimensions']['pipette']['shapes'][0]['pose'][2]
     lift = grip.copy()
@@ -243,14 +256,14 @@ def approach(env, i, task, poses, geo):
     arm_label = 'right' if task == 'AspirateLiquid' else 'left'
     labels = ('approach', 'barrel', 'lift_above_guide', 'above_' + vessel)
     best = None
-    for angle in np.deg2rad([0, -35, 35]):
-        gather = np.asarray([math.sin(angle), math.cos(angle), 0])
+    for gather in (np.array([0., 1., 0.]), np.array([0., .70710678, .70710678]),
+                   np.array([0., .70710678, -.70710678])):
         if np.dot(initial_tips[1] - initial_tips[0], gather) < 0:
             gather = -gather
         prior = chain[2]
         targets, errors, refs = [], [], []
         for center in (grip - [.045, 0, 0], grip, lift, goal):
-            goals = np.stack([center - gather * .018, center + gather * .018])
+            goals = np.stack([center - gather * half_span, center + gather * half_span])
             prior, err = solve_arm(chain, goals, prior)
             targets.append(prior.tolist())
             errors.append(err)

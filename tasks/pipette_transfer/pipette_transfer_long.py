@@ -139,6 +139,7 @@ PIPETTE_STAND_RANDOM_XY=(0.020,0.020)
 PIPETTE_STAND_RANDOM_YAW_DEG=10.0
 PIPETTE_STAND_HALF_DEPTH_Y=0.055
 PIPETTE_CUP_RADIUS=0.055
+PIPETTE_CUP_SUCCESS_RADIUS=0.040
 PIPETTE_MIN_STAND_CUP_GAP=0.020
 PIPETTE_STAND_NOMINAL_Q=(.7071068,0,0,.7071068)
 
@@ -487,7 +488,7 @@ class PipetteEvaluator:
             pipette_lifted=(pip[:,2]>c.table_z+.04)&(tcp_pip<HAND_ON_OBJECT_DIST)
             if e.sample_cup is not None:
                 cup=e.sample_cup.pose.p; mouth_z=cup[:,2]+c.cup_h
-                tip_cup=torch.linalg.norm((tip-cup)[:,:2],dim=1)<.040
+                tip_cup=torch.linalg.norm((tip-cup)[:,:2],dim=1)<PIPETTE_CUP_SUCCESS_RADIUS
                 tip_cup &= (tip[:,2]>cup[:,2]-.01)&(tip[:,2]<mouth_z-.003)   # anywhere inside the cup below the rim
             if e.test_tube is not None:
                 tube=e.test_tube.pose.p; tip_tube=torch.linalg.norm((tip-tube)[:,:2],dim=1)<TIP_IN_TUBE_XY_TOL; tip_tube &= (tip[:,2]>tube[:,2]+.03)&(tip[:,2]<tube[:,2]+c.tube_h)
