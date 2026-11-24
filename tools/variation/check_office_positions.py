@@ -514,6 +514,10 @@ def run(args):
                 if kind == "TypeKeys":
                     base.sequence_completed[other, 0] = True
                     base._update_key_target_marker()
+                    # Marker placement stages an actor buffer. Synchronize the
+                    # nonzero-stage fixture before taking the first snapshot.
+                    base.scene._gpu_apply_all()
+                    base.scene._gpu_fetch_all()
                     marker["unselected_before"] = read(base.key_target_marker.pose.raw_pose[other]).tolist()
                 before = snap(base, art, other)
                 sample_id, _, request = next(sample for sample in samples
