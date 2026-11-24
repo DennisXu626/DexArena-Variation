@@ -1,0 +1,138 @@
+[
+  {
+    "image": "01_laptop_xy.png",
+    "image_sha256": "510f72369157c30bd46b1d70b8cbdb4cd1d2b130354c12952622d126dc2cc0e6",
+    "plot_source_sha256": "5838f6092c1e52e77ee4c5af36357be45c4da223684ae4bb4c9bb939e6100e6b",
+    "backend": "physx_cpu",
+    "source_commit": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+    "point_ids": [
+      "N",
+      "XY-1-1",
+      "XY-1+0",
+      "XY-1+1",
+      "XY+0-1",
+      "XY+0+1",
+      "XY+1-1",
+      "XY+1+0",
+      "XY+1+1"
+    ],
+    "xy_marker_to_sample_id": {
+      "1": "XY-1-1",
+      "2": "XY-1+0",
+      "3": "XY-1+1",
+      "4": "XY+0-1",
+      "5": "XY+0+1",
+      "6": "XY+1-1",
+      "7": "XY+1+0",
+      "8": "XY+1+1"
+    },
+    "limiting_point": "XY-1-1",
+    "table_edge_margin_m": 0.17899248376488675
+  },
+  {
+    "image": "02_laptop_yaw.png",
+    "image_sha256": "919e21e35d604806fe93b03cb5a4757153ac8edc2f2a5c61f5eb857a7cb05ef0",
+    "plot_source_sha256": "5838f6092c1e52e77ee4c5af36357be45c4da223684ae4bb4c9bb939e6100e6b",
+    "backend": "physx_cpu",
+    "source_commit": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+    "point_ids": [
+      "R-10",
+      "N",
+      "R+10"
+    ],
+    "xy_marker_to_sample_id": {},
+    "limiting_point": "R+10",
+    "table_edge_margin_m": 0.18840617995269263
+  },
+  {
+    "image": "03_keyboard_xy.png",
+    "image_sha256": "ee4619b3f6503badc7019a2acfe763ea95432dfceb2d72705248fc492939e375",
+    "plot_source_sha256": "5838f6092c1e52e77ee4c5af36357be45c4da223684ae4bb4c9bb939e6100e6b",
+    "backend": "physx_cpu",
+    "source_commit": "4f9c5f5a566ff6a132afd4a0d57b268894c5fa1c",
+    "point_ids": [
+      "N",
+      "M",
+      "XY-1-1",
+      "XY-1+0",
+      "XY-1+1",
+      "XY+0-1",
+      "XY+0+1",
+      "XY+1-1",
+      "XY+1+0",
+      "XY+1+1"
+    ],
+    "xy_marker_to_sample_id": {
+      "1": "XY-1-1",
+      "2": "XY-1+0",
+      "3": "XY-1+1",
+      "4": "XY+0-1",
+      "5": "XY+0+1",
+      "6": "XY+1-1",
+      "7": "XY+1+0",
+      "8": "XY+1+1"
+    },
+    "limiting_point": "XY-1-1",
+    "table_edge_margin_m": 0.039807561581857664
+  },
+  {
+    "image": "04_keyboard_yaw.png",
+    "image_sha256": "d02b42c1d02d7fcbf19f35ba42ab53adbd17dc77fac431373220b98c44bc0f7a",
+    "plot_source_sha256": "5838f6092c1e52e77ee4c5af36357be45c4da223684ae4bb4c9bb939e6100e6b",
+    "backend": "physx_cpu",
+    "source_commit": "4f9c5f5a566ff6a132afd4a0d57b268894c5fa1c",
+    "point_ids": [
+      "R-10",
+      "N",
+      "R+10"
+    ],
+    "xy_marker_to_sample_id": {},
+    "limiting_point": "R+10",
+    "table_edge_margin_m": 0.01589889339149342
+  },
+  {
+    "image": "05_mouse_xy.png",
+    "image_sha256": "785884cede815cae4ad62958fa61cd48d8e06a3b809fb27e43c2453d93db6e13",
+    "plot_source_sha256": "5838f6092c1e52e77ee4c5af36357be45c4da223684ae4bb4c9bb939e6100e6b",
+    "backend": "physx_cpu",
+    "source_commit": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+    "point_ids": [
+      "N",
+      "XY-1-1",
+      "XY-1+0",
+      "XY-1+1",
+      "XY+0-1",
+      "XY+0+1",
+      "XY+1-1",
+      "XY+1+0",
+      "XY+1+1"
+    ],
+    "xy_marker_to_sample_id": {
+      "1": "XY-1-1",
+      "2": "XY-1+0",
+      "3": "XY-1+1",
+      "4": "XY+0-1",
+      "5": "XY+0+1",
+      "6": "XY+1-1",
+      "7": "XY+1+0",
+      "8": "XY+1+1"
+    },
+    "limiting_point": "XY-1-1",
+    "table_edge_margin_m": 0.20337704569101323
+  },
+  {
+    "image": "06_mouse_yaw.png",
+    "image_sha256": "f872071ce78052cde489279d3bb577ba3c034a9a6e90ce2c90973fda95c466a9",
+    "plot_source_sha256": "5838f6092c1e52e77ee4c5af36357be45c4da223684ae4bb4c9bb939e6100e6b",
+    "backend": "physx_cpu",
+    "source_commit": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+    "point_ids": [
+      "R-10",
+      "N",
+      "R+10"
+    ],
+    "xy_marker_to_sample_id": {},
+    "limiting_point": "N",
+    "table_edge_margin_m": 0.24337703734636296
+  }
+]

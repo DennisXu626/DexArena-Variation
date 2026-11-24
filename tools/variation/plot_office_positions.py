@@ -1,6 +1,7 @@
 """Draw the six Office Desk boundary diagrams from native reset readbacks."""
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -108,22 +109,29 @@ def bounds(ax, lower, upper, *, color, fill, zorder):
                            alpha=.85, lw=1.3, zorder=zorder))
 
 
-def mark_centers(ax, selected, nominal):
-    for row in selected:
+def mark_centers(ax, selected, nominal, candidate_center):
+    samples = (row for row in selected if row["id"].startswith("XY"))
+    for number, row in enumerate(samples, start=1):
         p = np.asarray(row["pose"][:2]) * 100
         ax.scatter(*p, s=32, color="white", edgecolor=STYLE["text"], lw=1.2, zorder=8)
-        token = row["id"].replace("XY", "").replace("+1", "+").replace("-1", "−").replace("+0", "0")
-        delta = p - np.asarray(nominal["pose"][:2]) * 100
-        offset = [9 if delta[0] >= 0 else -9, 7 if delta[1] >= 0 else -9]
-        annotation = ax.annotate(token, p, xytext=offset, textcoords="offset points", zorder=9,
-                                 ha="left" if delta[0] >= 0 else "right",
-                                 va="bottom" if delta[1] >= 0 else "top", fontsize=8)
+        direction = np.sign(np.round(p - candidate_center, 4))
+        offset = [11 * direction[0], 8 * direction[1]]
+        annotation = ax.annotate(str(number), p, xytext=offset, textcoords="offset points", zorder=9,
+                                 ha={-1: "right", 0: "center", 1: "left"}[direction[0]],
+                                 va={-1: "top", 0: "center", 1: "bottom"}[direction[1]], fontsize=8)
         annotation.set_path_effects([patheffects.withStroke(linewidth=2.5, foreground=STYLE["canvas"])])
     center = np.asarray(nominal["pose"][:2]) * 100
-    ax.scatter(*center, s=26, color=STYLE["center"], edgecolor="white", zorder=10)
+    ax.scatter(*center, s=27, color=STYLE["center"], edgecolor="white", zorder=10)
+    if not np.allclose(center, candidate_center):
+        ax.scatter(*candidate_center, s=24, color=STYLE["center"], marker="D",
+                   edgecolor="white", linewidth=.6, zorder=11)
+        ax.annotate("M 候选域中心", candidate_center, xytext=(28, -25),
+                    textcoords="offset points", fontsize=8, zorder=11,
+                    bbox={"facecolor": STYLE["canvas"], "edgecolor": "none", "pad": 1},
+                    arrowprops={"arrowstyle": "-", "color": STYLE["text"]})
 
 
-def draw_live_geometry(ax, nominal, kind):
+def draw_live_geometry(ax, nominal, kind, mode):
     controls = nominal["controls"]
     if kind == "OpenLaptop":
         lid = controls["lid"]
@@ -141,13 +149,22 @@ def draw_live_geometry(ax, nominal, kind):
         draw_polygon(ax, shape, facecolor=STYLE["attachment"], edgecolor=STYLE["edge"],
                      lw=.7, alpha=.56, zorder=5)
     for label, xyz in controls["targets_xyz_m"].items():
+        if mode == "yaw" and label == TASKS[kind][-1]:
+            continue
         if kind == "OpenLaptop":
             label = "掀屏接触边"
         elif kind == "ClickMouse":
             label = "左键按压点"
         point = np.asarray(xyz[:2]) * 100
         ax.scatter(*point, s=14, color=STYLE["attachment"], edgecolor=STYLE["edge"], zorder=8)
-        outlined_label(ax, label, point + [.2, .6], size=8, zorder=9)
+        offset = [-2.2, .6] if kind == "TypeKeys" and label == "I" and mode == "xy" else [.2, .6]
+        outlined_label(ax, label, point + offset, size=8, zorder=9)
+    if kind == "ClickMouse":
+        right_button = controls["button_links"]["right button"]
+        shape = np.asarray(nominal["attachment_outlines"][right_button]) * 100
+        target = shape.mean(0)
+        ax.annotate("右键", target, xytext=(7, -23), textcoords="offset points", fontsize=8,
+                    arrowprops={"arrowstyle": "->", "color": STYLE["text"]}, zorder=9)
 
 
 def local(ax, selected, nominal, kind, mode, data):
@@ -159,7 +176,8 @@ def local(ax, selected, nominal, kind, mode, data):
     table_edge = table[:, 0].min()
     if low[0] - table_edge < 24:
         low[0] = min(table_edge - 3, low[0])
-    setup_ax(ax, "可采样中心和实际占地" if mode == "xy" else "同一根位置与同一接触点",
+    yaw_target = {"OpenLaptop": "掀屏接触边", "TypeKeys": "P 键", "ClickMouse": "左键按压点"}[kind]
+    setup_ax(ax, "可采样中心和实际占地" if mode == "xy" else f"同一根位置与{yaw_target}",
              axes_widths=list(zip(low, high)))
     draw_polygon(ax, nominal["table_outline"], facecolor=STYLE["table"],
                  edgecolor=STYLE["edge"], lw=1.8)
@@ -167,7 +185,7 @@ def local(ax, selected, nominal, kind, mode, data):
                  edgecolor=STYLE["edge"], alpha=.65, lw=1.3, zorder=2)
     draw_polygon(ax, nominal["support_outline"], facecolor="none",
                  edgecolor=STYLE["edge"], linestyle=":", lw=1, zorder=3)
-    draw_live_geometry(ax, nominal, kind)
+    draw_live_geometry(ax, nominal, kind, mode)
     if mode == "xy":
         draw_polygon(ax, hull / 100, facecolor="none", edgecolor=STYLE["edge"],
                      lw=1.1, linestyle="--", zorder=3)
@@ -179,11 +197,7 @@ def local(ax, selected, nominal, kind, mode, data):
         bounds(ax, lower, upper,
                color=STYLE["new"], fill=(*matplotlib.colors.to_rgb(STYLE["blue_fill"]), .32),
                zorder=7)
-        center_new = (lower + upper) / 2
-        if not np.allclose(center_new, center):
-            ax.scatter(*center_new, s=20, color=STYLE["center"], marker="D", zorder=10)
-            outlined_label(ax, "候选域中心", center_new + [1.6, -1.4], size=7, zorder=10)
-        mark_centers(ax, selected, nominal)
+        mark_centers(ax, selected, nominal, (lower + upper) / 2)
         nearest = min(selected, key=lambda row: row["tightest_table_edge_m"])
         limiting = np.asarray(nearest["device_outline"]) * 100
         corner = limiting[limiting[:, 0].argmin()]
@@ -209,7 +223,9 @@ def local(ax, selected, nominal, kind, mode, data):
                          linestyle=linestyle, lw=1.5, zorder=7)
             p = np.asarray(row["controls"]["targets_xyz_m"][name][:2]) * 100
             ax.scatter(*p, s=27, color="white", edgecolor=STYLE["text"], lw=1.0, zorder=9)
-            offset = ((-34, 20), (0, 27), (30, 17))[YAW_OFFSETS_DEG.index(angle)]
+            labels = ((-36, 20), (-30, 1), (-36, -23)) if kind == "OpenLaptop" else (
+                (-34, 20), (0, 27), (30, 17))
+            offset = labels[YAW_OFFSETS_DEG.index(angle)]
             ax.annotate(f"{angle:+d}°" if angle else "0°", p, xytext=offset,
                         textcoords="offset points", ha="center", fontsize=8,
                         bbox={"facecolor": STYLE["canvas"], "edgecolor": "none", "pad": 1},
@@ -234,7 +250,7 @@ def plot(data, kind, mode, path):
              fontsize=28, fontweight="bold", color=STYLE["text"])
     center = np.asarray(nominal["pose"][:2]) * 100
     context = "相对模型朝向固定 0°" if mode == "xy" else f"设备根固定 ({center[0]:g}, {center[1]:g}) cm"
-    z = "俯视 · 关节初态取本次真实 reset"
+    z = f"俯视 · {data['make_kwargs']['sim_backend']} 实测"
     fig.text(.057, .862, f"{kind} · {action} · {context} · {z}", fontsize=12, color=STYLE["edge"])
     fig.legend(handles=[
         Patch(facecolor="#b8bec0", edgecolor=STYLE["old"], label="旧域"),
@@ -253,13 +269,24 @@ def plot(data, kind, mode, path):
         foot += f" · 标称翻盖扫掠高度 {low:.1f}～{high:.1f} cm"
     else:
         foot += " · 点线为近底支撑外廓，绿色为关节部件"
+    if kind == "TypeKeys":
+        combinations = [row for row in data["points"] if row["id"].startswith("C")]
+        limiting = min(combinations, key=lambda row: row["tightest_table_edge_m"])
+        foot += f" · 叠加转角的 {limiting['id']} 余量 {limiting['tightest_table_edge_m'] * 100:.2f} cm"
     fig.add_artist(Line2D([.056, .961], [.105, .105], transform=fig.transFigure,
                           color="#ab9d83", lw=.7))
     fig.text(.057, .057, foot, fontsize=11, color=STYLE["text"])
     fig.savefig(path, dpi=160, facecolor=fig.get_facecolor())
     plt.close(fig)
-    return {"image": path.name, "backend": data["make_kwargs"]["sim_backend"],
+    sample_labels = {
+        str(number): row["id"] for number, row in
+        enumerate((row for row in selected if row["id"].startswith("XY")), start=1)
+    }
+    return {"image": path.name, "image_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "plot_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "backend": data["make_kwargs"]["sim_backend"],
             "source_commit": data["source_commit"], "point_ids": [row["id"] for row in selected],
+            "xy_marker_to_sample_id": sample_labels,
             "limiting_point": nearest["id"], "table_edge_margin_m": nearest["tightest_table_edge_m"]}
 
 

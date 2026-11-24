@@ -1,0 +1,30 @@
+{
+  "version": "3.0.3+dexarena.gpu1.wininterop5",
+  "artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+  "indexed_gpu_apply_patch_version": 1,
+  "binaries_unchanged": true,
+  "python_source_unchanged": true,
+  "launcher": {
+    "file": "run_task_check.py",
+    "sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb",
+    "checker": "tools/variation/check_office_positions.py",
+    "checker_sha256": "25924ad2818c4ad2d7f9b9a5554c8f062dd142c26c0c124d68b1c2273d2352ef"
+  },
+  "native_binary_sha256": {
+    "sapien.dll": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4",
+    "svulkan2.dll": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e",
+    "simsense.dll": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd",
+    "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+    "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1",
+    "pysapien.cp310-win_amd64.pyd": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+  },
+  "system_vulkan_loader_sha256": "52c656947f0241f92edf444b611152b1cacacbc14d9581595ee7a4139bbb6824",
+  "system_vulkan_loader_unchanged": true,
+  "elapsed_seconds": 75.25,
+  "min_gpu_free_mib": 6271,
+  "receipt_sha256": "394572b3d961a6cf17d41fb678bb3fc80a9dbd617b72251fcfec2caf329c5b19",
+  "artifacts_sha256": {
+    "POINTS.csv": "8f5a061ffc11853b533ec7ed649530f635a04ea36c23d23cdba3611d34473f3e",
+    "results.json": "4b9f2c2429912b6b8242e47071f9f3720e8b01af8a6ca03c88fc304ba48bf7c1"
+  }
+}
