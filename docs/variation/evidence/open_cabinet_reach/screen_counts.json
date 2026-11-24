@@ -1,0 +1,29 @@
+{
+  "10": {
+    "supported_nodes": 11895,
+    "reach_nodes": 2659,
+    "ik_reject": 1394,
+    "jump_reject": 713,
+    "collision_box_reject": 0,
+    "base_sweep_reject": 0,
+    "cells": 487
+  },
+  "15": {
+    "supported_nodes": 11078,
+    "reach_nodes": 2538,
+    "ik_reject": 1227,
+    "jump_reject": 686,
+    "collision_box_reject": 0,
+    "base_sweep_reject": 0,
+    "cells": 554
+  },
+  "20": {
+    "supported_nodes": 10659,
+    "reach_nodes": 2450,
+    "ik_reject": 1117,
+    "jump_reject": 620,
+    "collision_box_reject": 0,
+    "base_sweep_reject": 0,
+    "cells": 641
+  }
+}
