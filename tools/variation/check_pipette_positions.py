@@ -152,8 +152,17 @@ def pose_rows(env, i):
 
 def snapshot(env, index):
     state = env.get_state_dict()
-    state['elapsed_steps'] = env.elapsed_steps
-    return env_digest(state, index)
+    digest = env_digest({'task': state['pipette_task_state'], 'elapsed_steps': env.elapsed_steps}, index)
+    registry = env.scene.state_dict_registry
+    for kind in ('actors', 'articulations'):
+        digest[kind] = {}
+        objects = getattr(registry, kind)
+        for name, raw in state.get(kind, {}).items():
+            # The registry includes both merged and individual actors.
+            for slot, scene_idx in enumerate(objects[name]._scene_idxs.tolist()):
+                if scene_idx == index:
+                    digest[kind][f'{name}/{slot}'] = env_digest(raw, slot)
+    return digest
 
 
 def initial_checks(env, i, task, request, poses, geo):
