@@ -583,9 +583,11 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
     def reset(self,seed=None,options=None):
         indices = validate_reset_request(seed, options, self.num_envs)
         request = options or {}
-        selected = range(self.num_envs) if indices is None else indices
-        requested_layout(self, request, selected, PIPETTE_MIN_STAND_CUP_GAP)
+        if "position_layout" in request:
+            selected = range(self.num_envs) if indices is None else indices
+            requested_layout(self, request, selected, PIPETTE_MIN_STAND_CUP_GAP)
         if self._pipette_appearance is not None and "reset_to_env_states" not in request:
+            selected = range(self.num_envs) if indices is None else indices
             self._pipette_appearance.resolve_requests(selected, request.get("pipette_appearance", {}))
         if indices is not None:
             env_idx=options["env_idx"]
@@ -623,8 +625,8 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
         # (dual rig for the long task / S1, single right-arm rig for S0).
         self.agent.robot.set_root_pose(DUAL_ROBOT_BASE_POSE)
         lay=self._sample_layout(env_idx)   # first episode-RNG draw: layout (see layout_rng)
-        explicit = requested_layout(self, options, env_idx.tolist(), PIPETTE_MIN_STAND_CUP_GAP)
-        if explicit is not None:
+        if "position_layout" in options:
+            explicit = requested_layout(self, options, env_idx.tolist(), PIPETTE_MIN_STAND_CUP_GAP)
             lay = {name: [row[name] for row in explicit] for name in ('cup', 'rack', 'stand')}
             lay['stand_q'] = [offset_pose((0,0,0), PIPETTE_STAND_NOMINAL_Q, 0, 0,
                                          np.deg2rad(row['stand_yaw_deg'] - STAND_YAW_DEG[1]))[1]

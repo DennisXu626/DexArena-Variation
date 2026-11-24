@@ -43,8 +43,6 @@ def _xy(value, base, name):
 
 def requested_layout(env, options, indices, min_stand_dish_gap_m):
     """Validate the entire request before ManiSkill changes state or random streams."""
-    if "position_layout" not in options:
-        return None
     if "reset_to_env_states" in options:
         raise ValueError("Pipette state restoration cannot include position_layout")
     entries = options["position_layout"]
