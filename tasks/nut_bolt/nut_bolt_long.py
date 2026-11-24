@@ -997,12 +997,16 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
             yaw[invalid] = torch.rand(count) * 2 * np.pi - np.pi
         raise RuntimeError("Unable to sample a valid placed-bolt pose")
 
-    def _place_bolt(self, env_idx: torch.Tensor, b: int, already_placed=False):
+    def _place_bolt(self, env_idx: torch.Tensor, b: int, already_placed=False, layout=None):
         with torch.device(self.device):
             xyz = torch.zeros((b, 3))
             if already_placed:
                 xyz[:, :2], yaw = self._sample_placed_bolt_xy_yaw(b)
                 xyz[:, 2] = self.bolt_height / 2 + 1e-3
+                if layout is not None:
+                    xyz[:, :2] = torch.tensor(layout["upright_bolt_xy_m"])
+                    xyz[:, 2] = self.bolt_height / 2
+                    yaw.zero_()
                 quat = quaternion_about_z(yaw)
             else:
                 # Sample the bolt in a disc and lay it down at a large random
@@ -1013,18 +1017,21 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                 )
                 tilt_min, tilt_max = self.bolt_spawn_tilt_range
                 tilt = tilt_min + self._reset_random((b,)) * (tilt_max - tilt_min)
+                yaw = self._reset_random((b,)) * 2 * np.pi - np.pi
+                spin = self._reset_random((b,)) * 2 * np.pi - np.pi
+                if layout is not None:
+                    xyz[:, :2] = torch.tensor(layout["bolt_spawn_xy_m"])
+                    tilt.fill_(tilt_max)
+                    yaw = torch.tensor(layout["bolt_spawn_yaw_deg"])
+                    spin.zero_()
                 tilt_q = axis_angle_to_quaternion(
                     torch.stack(
                         [torch.zeros_like(tilt), tilt, torch.zeros_like(tilt)],
                         dim=-1,
                     )
                 )
-                yaw_q = quaternion_about_z(
-                    self._reset_random((b,)) * 2 * np.pi - np.pi
-                )
-                spin_q = quaternion_about_z(
-                    self._reset_random((b,)) * 2 * np.pi - np.pi
-                )
+                yaw_q = quaternion_about_z(yaw)
+                spin_q = quaternion_about_z(spin)
                 quat = quaternion_multiply(
                     quaternion_multiply(yaw_q, tilt_q), spin_q
                 )
@@ -1071,7 +1078,7 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                 self._stage_bolt_placed[env_idx] = True
                 self._bolt_place_hold_count[env_idx] = self.bolt_place_hold_steps
 
-    def _place_nut_on_table(self, env_idx: torch.Tensor, b: int):
+    def _place_nut_on_table(self, env_idx: torch.Tensor, b: int, layout=None):
         with torch.device(self.device):
             xyz = torch.zeros((b, 3))
             xyz[:, :2] = (
@@ -1080,15 +1087,20 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
             )
             xyz[:, 2] = self.nut_half_height + 1e-3
             yaw = self._reset_random((b,)) * 2 * np.pi - np.pi
+            if layout is not None:
+                xyz[:, :2] = torch.tensor(layout["table_nut_xy_m"])
+                yaw.zero_()
             self._set_nut_pose(xyz, quaternion_about_z(yaw))
             self._park_threaded_nut(env_idx, b)
 
-    def _place_nut_on_platform(self, env_idx: torch.Tensor, b: int):
+    def _place_nut_on_platform(self, env_idx: torch.Tensor, b: int, layout=None):
         """Start from a valid output distribution of the nut-placement stage."""
         with torch.device(self.device):
             lock_pose = self._bolt_lock_pose[env_idx]
             bolt_yaw = yaw_about_z(lock_pose[:, 3:])
             yaw = bolt_yaw + self._reset_random((b,)) * 2 * np.pi - np.pi
+            if layout is not None:
+                yaw = bolt_yaw + torch.tensor(layout["threaded_nut_relative_yaw_deg"])
             quat = quaternion_about_z(yaw)
             self._set_threaded_nut_state(env_idx, lock_pose, quat)
             self._stage_nut_placed[env_idx] = True

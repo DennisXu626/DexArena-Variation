@@ -24,6 +24,7 @@ def load(name, path):
 
 
 PARENT = load('furniture_appearance_cpu', 'tasks/furniture_assembly/appearance.py')
+POSITION = load('nut_bolt_position_cpu', 'tasks/nut_bolt/position_layout.py')
 with patch.dict(sys.modules, {'tasks.furniture_assembly.appearance': PARENT}):
     MODULE = load('nut_bolt_appearance_cpu', 'tasks/nut_bolt/appearance.py')
 
@@ -101,7 +102,8 @@ class NativeResetSpy:
 with patch.dict(sys.modules, {'sapien': SimpleNamespace()}):
     PARENT_SCOPE = load('furniture_reset_scope_cpu', 'tasks/furniture_assembly/reset_scope.py')
 with patch.dict(sys.modules, {'tasks.furniture_assembly.reset_scope': PARENT_SCOPE,
-                              'tasks.nut_bolt.appearance': MODULE}):
+                              'tasks.nut_bolt.appearance': MODULE,
+                              'tasks.nut_bolt.position_layout': POSITION}):
     RESET_MODULE = load('nut_bolt_reset_scope_cpu', 'tasks/nut_bolt/reset_scope.py')
 
 
@@ -146,6 +148,33 @@ class NutBoltResetScopeTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'partial reset must omit seed'):
                 env.reset(seed=seed, options={'env_idx': [1]})
             self.assertEqual(self.snapshot(env), before)
+
+    def test_position_request_validates_every_row_before_reset(self):
+        env = ResetHarness()
+        env.position_layout_task = "PickBolt"
+        env.bolt_spawn_xy = (-.25, -.22)
+        before = self.snapshot(env)
+        for bad in ([True, -.22], [float("nan"), -.22], [10**1000, 0], [-.3201, -.22]):
+            options = {"position_layout": {"0": {}, "1": {"bolt_spawn_xy_m": bad}}}
+            with self.assertRaisesRegex(ValueError, "position_layout env 1"):
+                env.reset(options=options)
+            self.assertEqual(self.snapshot(env), before)
+        with self.assertRaisesRegex(ValueError, "one string key per selected"):
+            env.reset(options={"env_idx": [1], "position_layout": {"0": {}}})
+        with self.assertRaisesRegex(ValueError, "state restoration"):
+            env.reset(options={"reset_to_env_states": {}, "position_layout": {"0": {}, "1": {}}})
+        self.assertEqual(self.snapshot(env), before)
+
+    def test_position_request_uses_selected_short_task_and_preserves_native_long(self):
+        env = ResetHarness()
+        with self.assertRaisesRegex(ValueError, "three Nut & Bolt short tasks"):
+            env.reset(options={"position_layout": {"0": {}, "1": {}}})
+        env.position_layout_task = "TurnNut"
+        env.bolt_place_center_xy = (-.12, 0.)
+        options = {"env_idx": [1], "position_layout": {"1": {"threaded_nut_relative_yaw_deg": 20}}}
+        env.reset(options=options)
+        self.assertEqual(options, {"env_idx": [1], "position_layout": {"1": {"threaded_nut_relative_yaw_deg": 20}}})
+        self.assertEqual(env.calls[-1][1]["position_layout"], options["position_layout"])
 
     def test_invalid_indices_rejected_before_parent_reset(self):
         for indices in ([1, 0], [], [0, 0], [-1], [2], [.5], [True], np.array([[0]])):

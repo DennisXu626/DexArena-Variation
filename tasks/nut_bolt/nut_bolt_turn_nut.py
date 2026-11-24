@@ -40,14 +40,16 @@ class NutBoltTurnNutEnv(NutBoltLongEnv):
     """Nut starts seated; accumulate a net counterclockwise pi turn from above."""
 
     show_bolt_place_region = False
+    position_layout_task = "TurnNut"
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
             b = len(env_idx)
+            layout = self._requested_position_layout(env_idx.tolist(), options)
             self._reset_episode_buffers(env_idx, "turn")
             self._initialize_workspace(env_idx)
-            self._place_bolt(env_idx, b, already_placed=True)
-            self._place_nut_on_platform(env_idx, b)
+            self._place_bolt(env_idx, b, already_placed=True, layout=layout)
+            self._place_nut_on_platform(env_idx, b, layout=layout)
             self._update_platform_pose(env_idx)
             # Reconcile the kinematic hold with the lock masks this reset just
             # set (see NutBoltLongEnv._refresh_hold_state).
