@@ -71,6 +71,19 @@ def _reset_controller_selected(scene, env_idx, reset):
 
 class FurnitureResetScopeMixin:
     def reset(self, seed=None, options=None):
+        position_rows = None
+        if options is not None and 'position_layout' in options:
+            from tasks.furniture_assembly.position_layout import requested_layout
+
+            if 'reset_to_env_states' in options:
+                raise ValueError('position_layout cannot be combined with reset_to_env_states')
+            position_rows = requested_layout(options, self.num_envs, self.POSITION_LAYOUT_CENTERS)
+            if 'env_idx' in options:
+                # ManiSkill's boolean write mask visits selected bodies in scene order.
+                indices = torch.as_tensor(options['env_idx'], device=self.device, dtype=torch.long)
+                sorted_idx, order = indices.sort()
+                position_rows = [position_rows[i] for i in order.tolist()]
+                options = {**options, 'env_idx': sorted_idx}
         env_idx = options.get('env_idx') if options is not None else None
         partial = not is_full_reset(env_idx, self.num_envs)
         if partial and (
@@ -86,8 +99,10 @@ class FurnitureResetScopeMixin:
         controller_resets = []
         previous_scope = getattr(self, '_furniture_reset_env_idx', _MISSING)
         previous_masks = getattr(self, '_furniture_reset_scope_masks', _MISSING)
+        previous_position_rows = getattr(self, '_furniture_position_rows', _MISSING)
         self._furniture_reset_env_idx = None
         self._furniture_reset_scope_masks = {}
+        self._furniture_position_rows = position_rows
         try:
             if options is not None and 'env_idx' in options:
                 self._furniture_reset_env_idx = options['env_idx']
@@ -116,6 +131,7 @@ class FurnitureResetScopeMixin:
             for name, previous in (
                 ('_furniture_reset_env_idx', previous_scope),
                 ('_furniture_reset_scope_masks', previous_masks),
+                ('_furniture_position_rows', previous_position_rows),
             ):
                 if previous is _MISSING:
                     delattr(self, name)

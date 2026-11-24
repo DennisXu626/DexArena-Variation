@@ -87,6 +87,7 @@ from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightM
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.furniture_assembly.appearance import FurnitureAppearance
 from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin
+from tasks.furniture_assembly.position_layout import role_pose_tensor
 from tasks.config.layout_randomization import layout_rng, uniform_offset
 from tasks.config.object_materials import object_material
 from tasks.scene_builders import TableSceneBuilder
@@ -257,6 +258,7 @@ class FurnitureAssemblyFastenScrewEnv(FurnitureResetScopeMixin, DeclarativeTaskS
     # long task leaves it after stage 1, anywhere the PanelLayFlat predicate
     # accepts; the per-episode offsets below are the family's rack half-ranges.
     PANEL_CENTER = PLACE_CENTER
+    POSITION_LAYOUT_CENTERS = {"panel": PANEL_CENTER}
     TARGET_ROTATION = SCREW_TARGET_ROTATION
     TARGET_TOLERANCE = SCREW_TARGET_TOLERANCE
     TIP_CONTACT_FORCE = 0.6
@@ -402,7 +404,13 @@ class FurnitureAssemblyFastenScrewEnv(FurnitureResetScopeMixin, DeclarativeTaskS
                 [[self.PANEL_CENTER[0] + dx, self.PANEL_CENTER[1] + dy, PANEL_HALF[2]] for dx, dy, _ in offsets],
                 device=self.device, dtype=torch.float32,
             )
-            panel_q = yaw_to_quat_wxyz(torch.tensor([yaw for _, _, yaw in offsets], device=self.device, dtype=torch.float32))
+            panel_yaw = torch.tensor([yaw for _, _, yaw in offsets], device=self.device, dtype=torch.float32)
+            position_rows = getattr(self, "_furniture_position_rows", None)
+            if position_rows is not None:
+                panel_xy_yaw = role_pose_tensor(position_rows, "panel", panel_p)
+                panel_p[:, :2] = panel_xy_yaw[:, :2]
+                panel_yaw = panel_xy_yaw[:, 2]
+            panel_q = yaw_to_quat_wxyz(panel_yaw)
             panel_pose = Pose.create_from_pq(p=panel_p, q=panel_q)
             self.panel.set_pose(panel_pose)
             identity = torch.tensor([[1.0, 0.0, 0.0, 0.0]], device=self.device).expand(b, -1)
