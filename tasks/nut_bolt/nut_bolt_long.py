@@ -78,6 +78,7 @@ from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.config.sim_profiles import make_sim_config
 from tasks.nut_bolt.reset_scope import NutBoltResetScopeMixin, is_full_reset
 from tasks.nut_bolt.appearance import NutBoltAppearance, validate_per_env
+from tasks.nut_bolt.position_layout import BOLT_SPAWN_AXIAL_SPIN_DEG
 from tasks.nut_bolt.gpu_hold import hold_pose as gpu_hold_pose, refresh_gpu_hold_state, sync_nut_swap_gpu
 
 
@@ -1005,6 +1006,7 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                 xyz[:, 2] = self.bolt_height / 2 + 1e-3
                 if layout is not None:
                     xyz[:, :2] = torch.tensor(layout["upright_bolt_xy_m"])
+                    # Explicit handoffs use the native snapped, supported lock pose.
                     xyz[:, 2] = self.bolt_height / 2
                     yaw.zero_()
                 quat = quaternion_about_z(yaw)
@@ -1023,7 +1025,8 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                     xyz[:, :2] = torch.tensor(layout["bolt_spawn_xy_m"])
                     tilt.fill_(tilt_max)
                     yaw = torch.tensor(layout["bolt_spawn_yaw_deg"])
-                    spin.zero_()
+                    # Start with a flat head face downward so the bolt does not roll off a vertex.
+                    spin.fill_(np.deg2rad(BOLT_SPAWN_AXIAL_SPIN_DEG))
                 tilt_q = axis_angle_to_quaternion(
                     torch.stack(
                         [torch.zeros_like(tilt), tilt, torch.zeros_like(tilt)],

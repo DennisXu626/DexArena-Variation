@@ -27,6 +27,7 @@ import sapien
 import tasks
 from tasks.nut_bolt.nut_bolt_long import BOLT_HEX_HEAD_PATH, NutBoltLongEnv, TASK_PHASES
 from tasks.nut_bolt.position_layout import (
+    BOLT_SPAWN_AXIAL_SPIN_DEG,
     BOLT_SPAWN_RADIUS_M,
     BOLT_SPAWN_YAW_DEG,
     TABLE_NUT_HALF_RANGE_M,
@@ -120,6 +121,7 @@ def geometry(e):
         "nut_half_height_m": e.nut_half_height,
         "candidate": {
             "bolt_spawn_radius_m": BOLT_SPAWN_RADIUS_M, "bolt_spawn_yaw_deg": BOLT_SPAWN_YAW_DEG,
+            "bolt_spawn_axial_spin_deg": BOLT_SPAWN_AXIAL_SPIN_DEG,
             "upright_bolt_radius_m": UPRIGHT_BOLT_RADIUS_M,
             "table_nut_half_range_m": TABLE_NUT_HALF_RANGE_M,
             "threaded_nut_relative_yaw_deg": THREADED_NUT_RELATIVE_YAW_DEG,
@@ -224,8 +226,12 @@ def readback(e, task, request, i, g):
         expected_axis = [np.cos(np.deg2rad(yaw)), np.sin(np.deg2rad(yaw)), 0]
         result["bolt_axis_world"] = axis.tolist()
         result["bolt_spawn_world_yaw_deg"] = float(np.rad2deg(np.arctan2(axis[1], axis[0])))
+        expected = (Rotation.from_euler("z", yaw, degrees=True)
+                    * Rotation.from_euler("y", 90, degrees=True)
+                    * Rotation.from_euler("z", BOLT_SPAWN_AXIAL_SPIN_DEG, degrees=True))
         assert np.allclose(bolt[:2], request.get("bolt_spawn_xy_m", e.bolt_spawn_xy), atol=1e-6, rtol=0)
         assert np.allclose(axis, expected_axis, atol=1e-6, rtol=0)
+        assert np.allclose(orient(bolt).as_matrix(), expected.as_matrix(), atol=1e-6, rtol=0)
         assert abs(lo[2] - g["table_hi"][2] - .001) <= 1e-6
         return result
     assert np.allclose(bolt[:3], [*request.get("upright_bolt_xy_m", e.bolt_place_center_xy), e.bolt_height / 2],
