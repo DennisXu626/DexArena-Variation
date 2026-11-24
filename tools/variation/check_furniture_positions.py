@@ -252,7 +252,7 @@ def source_identity():
                 input_sha256={p.relative_to(repo).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources})
 
 
-def run(out, backend, num_envs, tasks_to_run, skip_attempt):
+def run(out, backend, num_envs, tasks_to_run, skip_attempt, midpoint_only=False):
     out.mkdir(parents=True, exist_ok=False)
     make = dict(num_envs=num_envs, sim_backend=backend, obs_mode="state", render_mode=None,
                 control_mode="pd_joint_pos", reconfiguration_freq=0)
@@ -260,7 +260,7 @@ def run(out, backend, num_envs, tasks_to_run, skip_attempt):
                   sapien=sapien.__version__, torch=torch.__version__, platform=platform.platform(),
                   cuda_gpu=torch.cuda.get_device_name() if backend == "physx_cuda" else None,
                   indexed_gpu_apply=getattr(sapien.physx, "indexed_gpu_apply_patch_version", lambda: None)(),
-                  ik_limit_m=IK_LIMIT_M, tasks={})
+                  ik_limit_m=IK_LIMIT_M, scope="asymmetric_xy_midpoints" if midpoint_only else "full_matrix", tasks={})
     json_path = out / "results.json"
 
     def flush():
@@ -269,6 +269,10 @@ def run(out, backend, num_envs, tasks_to_run, skip_attempt):
     t0 = time.monotonic()
     all_rows = []
     for kind in tasks_to_run:
+        indexed = [(n, row) for n, row in enumerate(cases(kind))
+                   if not midpoint_only or row[1].endswith("_midpoints")]
+        if not indexed:
+            continue
         task_id = f"FurnitureAssembly{kind}-Sharpa-v1"
         group = result["tasks"][kind] = dict(task_id=task_id, make=make, points=[])
         flush()
@@ -288,7 +292,7 @@ def run(out, backend, num_envs, tasks_to_run, skip_attempt):
                                                  "position_layout": requests})
                 group["full_reordered_layout"] = [measure(e, kind, i, requests[str(i)], table)["checks"] for i in range(2)]
                 assert all(all(row.values()) for row in group["full_reordered_layout"]), group["full_reordered_layout"]
-            for n, (point, figure, request, reject) in enumerate(cases(kind)):
+            for n, (point, figure, request, reject) in indexed:
                 i = n % num_envs
                 seed = 701 + n
                 opts = {"position_layout": {str(i): request}}
@@ -354,7 +358,8 @@ if __name__ == "__main__":
     parser.add_argument("--backend", choices=("physx_cpu", "physx_cuda"), default="physx_cpu")
     parser.add_argument("--task", choices=tuple(TASK_ROLES), action="append")
     parser.add_argument("--skip-attempt", action="store_true")
+    parser.add_argument("--midpoint-only", action="store_true", help="Check only added asymmetric XY midpoints")
     args = parser.parse_args()
     sys_ok = run(args.output, args.backend, 2 if args.backend == "physx_cuda" else 1,
-                 args.task or TASK_ROLES, args.skip_attempt)
+                 args.task or TASK_ROLES, args.skip_attempt, args.midpoint_only)
     raise SystemExit(0 if sys_ok else 1)

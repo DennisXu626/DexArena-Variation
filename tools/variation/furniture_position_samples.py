@@ -51,8 +51,19 @@ def xy_request(role, offset):
     return {f"{role}_xy_m": [round(sum(pair), 6) for pair in zip(CENTERS[role], offset)]}
 
 
+def midpoint_cases(kind):
+    """Supplement an asymmetric Y domain's true centre and the two adjacent edge midpoints."""
+    for role in TASK_ROLES[kind]:
+        (xmin, xmax), (ymin, ymax) = XY_OFFSETS_M[role]
+        ymid = (ymin + ymax) / 2
+        if ymid:
+            for number, x in enumerate((xmin, 0, xmax), start=10):
+                point = f"{FIGURE_PREFIX[role]}XY-{number}"
+                yield point, f"{role}_xy_midpoints", xy_request(role, (x, ymid)), False
+
+
 def cases(kind):
-    """Exactly one shared nominal, nine XY points total, endpoints, and mixed stress cases."""
+    """A shared nominal, corners, centreline points, endpoints and mixed stress cases."""
     yield "N", "nominal", {}, False
     for role in TASK_ROLES[kind]:
         prefix = FIGURE_PREFIX[role]
@@ -80,3 +91,4 @@ def cases(kind):
     if kind == "FastenScrew":
         yield "C-near", "combined", corner("panel", 0, 0, 2), False
         yield "C-far", "combined", corner("panel", 1, 1, 0), False
+    yield from midpoint_cases(kind)
