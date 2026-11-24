@@ -121,11 +121,11 @@ def translation(ax, geometry, poses, bounds, samples, obj):
     for row, pt in zip(samples, values):
         if row['id'] == 'N0':
             continue
-        ax.scatter(*pt, s=30, color='white', edgecolor=INK, zorder=6)
+        if row['id'] == 'M':
+            ax.scatter(*pt, s=35, marker='x', color=BLUE, zorder=7)
+        else:
+            ax.scatter(*pt, s=30, color='white', edgecolor=INK, zorder=6)
         ax.annotate(row['id'], pt, xytext=(5, 4), textcoords='offset points', fontsize=7.8, zorder=7)
-    midpoint = (new_lo + new_hi) / 2
-    if np.linalg.norm(midpoint - cm(xy0)) > .1:
-        ax.scatter(*midpoint, s=35, marker='x', color=BLUE, zorder=7)
     ax.scatter(*cm(xy0), s=42, color=RED, edgecolor='white', zorder=8)
     ax.annotate('N0', cm(xy0), xytext=(4, 5), textcoords='offset points', fontsize=7.8, zorder=9)
     add_workpoint(ax, obj, poses, geometry)

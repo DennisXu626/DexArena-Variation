@@ -51,8 +51,13 @@ RELEASE_STEPS = 18
 
 def xy_samples(name, center):
     lo, hi = XY_OFFSETS_M[name]
-    ax = [[center[i] + lo[i], center[i], center[i] + hi[i]] for i in range(2)]
-    return dict(zip(('SW', 'W', 'NW', 'S', 'N0', 'N', 'SE', 'E', 'NE'), product(*ax)))
+    midpoint = tuple(center[i] + (lo[i] + hi[i]) / 2 for i in range(2))
+    axes = [[center[i] + lo[i], midpoint[i], center[i] + hi[i]] for i in range(2)]
+    rows = dict(zip(('SW', 'W', 'NW', 'S', 'M', 'N', 'SE', 'E', 'NE'), product(*axes)))
+    if midpoint == tuple(center):
+        rows.pop('M')
+    rows['N0'] = tuple(center)
+    return rows
 
 
 def matrix(task):
