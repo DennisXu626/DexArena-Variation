@@ -72,12 +72,13 @@ def _reset_controller_selected(scene, env_idx, reset):
 class FurnitureResetScopeMixin:
     def reset(self, seed=None, options=None):
         position_rows = None
-        if options is not None and 'position_layout' in options:
+        position_centers = getattr(self, 'POSITION_LAYOUT_CENTERS', None)
+        if position_centers is not None and options is not None and 'position_layout' in options:
             from tasks.furniture_assembly.position_layout import requested_layout
 
             if 'reset_to_env_states' in options:
                 raise ValueError('position_layout cannot be combined with reset_to_env_states')
-            position_rows = requested_layout(options, self.num_envs, self.POSITION_LAYOUT_CENTERS)
+            position_rows = requested_layout(options, self.num_envs, position_centers)
             if 'env_idx' in options:
                 # ManiSkill's boolean write mask visits selected bodies in scene order.
                 indices = torch.as_tensor(options['env_idx'], device=self.device, dtype=torch.long)
