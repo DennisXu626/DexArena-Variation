@@ -142,7 +142,18 @@ def geometry(env):
     dimensions['pipette_tip'] = collision_shapes(tip, 0)[0]
     if 'cup' in hulls:
         assert np.linalg.norm(hulls['cup'], axis=1).max() < DISH_COLLISION_RADIUS_LIMIT_M
-    return {'dimensions': dimensions, 'local_hulls_xy': hulls}
+    base_vertices = []
+    for name, link in env.agent.robot.links_map.items():
+        if not name.startswith('mobile_base'):
+            continue
+        parent_pose = value(link.pose.raw_pose[0])
+        for shape in link._bodies[0].collision_shapes:
+            local = shape.local_pose
+            points = rotation(local.q).apply(np.asarray(shape.vertices) * shape.scale) + local.p
+            base_vertices.extend(rotation(parent_pose[3:]).apply(points) + parent_pose[:3])
+    base = np.asarray(base_vertices)[:, :2]
+    return {'dimensions': dimensions, 'local_hulls_xy': hulls,
+            'robot_base_world_hull_xy': base[ConvexHull(base).vertices].tolist()}
 
 
 def pose_rows(env, i):
