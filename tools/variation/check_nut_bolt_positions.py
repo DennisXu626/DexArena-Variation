@@ -205,7 +205,8 @@ def readback(e, task, request, i, g):
              ("bolt_locked", "stage_bolt_placed", "stage_nut_placed", "nut_engaged", "stage_turned")}
     result = {
         "bolt_pose": bolt.tolist(), "target_pose": pose.tolist(), "task_phase": TASK_PHASES[stage],
-        **flags, "target_table_edge_clearance_m": table_clearance,
+        **flags, "robot_qpos": value(e.agent.robot.qpos[i]).tolist(),
+        "target_table_edge_clearance_m": table_clearance,
         "target_lowest_z_m": float(lo[2]), "target_outline_xy_m": hull(np.concatenate(points)),
         "bolt_linear_velocity_m_s": value(e.bolt.linear_velocity[i]).tolist(),
         "bolt_angular_velocity_rad_s": value(e.bolt.angular_velocity[i]).tolist(),
@@ -430,7 +431,7 @@ def check_task(args, task, entries, out):
     num = 2 if args.sim_backend == "physx_cuda" else 1
     spec = f"NutBolt{task}-Sharpa-v1"
     build = dict(num_envs=num, sim_backend=args.sim_backend, obs_mode="state", control_mode="pd_joint_pos",
-                 render_mode=None, reconfiguration_freq=0)
+                 render_mode=None, reconfiguration_freq=0, enhanced_determinism=True)
     if num == 2:
         build["sim_config"] = {"gpu_memory_config": GPU_MEMORY}
     env = gym.make(spec, **build)
@@ -476,6 +477,7 @@ def check_task(args, task, entries, out):
                 }:
                     env.reset(seed=seed)
                     env.reset(options=opts)
+                    assert row["readback"]["robot_qpos"] == value(e.agent.robot.qpos[i]).tolist()
                     row["short_attempt"] = short_attempt(env, e, task, i, row["ik"])
             results.append(row)
             print(f"{label}: {row['kind']}" +
