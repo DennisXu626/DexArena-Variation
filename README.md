@@ -116,7 +116,9 @@ source .local/paths.env
 
 ## 团队怎样开发
 
-本轮按任务家族分工：Dennis负责2个家族，两位实习同学各4个家族；每人先交一个外观样例，再分批推进。对象范围、首个样例、交付包及职责边界统一见[本轮外观协作安排](docs/variation/TEAM_APPEARANCE.md)。位置规则暂由Dennis集中制定，本轮不向实习同学分发位置实现任务。
+外观按任务家族分工，Dennis负责2个家族，两位实习同学各4个家族；每人先交一个外观样例，再分批推进。对象范围、首个样例、交付包及职责边界见[外观协作安排](docs/variation/TEAM_APPEARANCE.md)。
+
+接手场景位置 variation 的同学请从[位置变化工作指南](docs/variation/position/README.md)开始。指南给出了选物体、定范围、画边界、做初始化与可达性粗检，以及交给遥操作复现的做法。
 
 main是供大家使用的集成版本，开发必须从最新main新建任务分支，如 `feat/bottle-appearance`、`feat/pose-regions`、`fix/reset-isolation`，一个分支对应一件工作。禁止直接在main开发或随手推送，不强推main。
 
