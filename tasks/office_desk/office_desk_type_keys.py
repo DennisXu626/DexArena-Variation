@@ -31,6 +31,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from mani_skill.envs.sapien_env import BaseEnv
 from tasks.office_desk.reset_scope import OfficeResetScopeMixin, is_full_reset, office_capacity_config
+from tasks.office_desk.position_layout import apply_position_layout
 from tasks.office_desk.devices_appearance import OfficeDevicesAppearance, appearance_enabled
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
@@ -600,6 +601,9 @@ def press_contact_link(agent, tip_link):
 )
 class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
     """Full-key physical keyboard with a P-A-I-R-Enter success sequence."""
+
+    _position_device_name = "keyboard"
+    _position_center = KEYBOARD_SPAWN_CENTER
 
     SUPPORTED_ROBOTS = [
         "panda_gripper_left_mobile_base",
@@ -1182,6 +1186,7 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
             yaw = (
                 self._office_rand(env_idx, ()) * 2.0 - 1.0
             ) * self.keyboard_random_yaw
+            apply_position_layout(options, env_idx, xyz, yaw)
             for local_index, env_id in enumerate(env_idx.tolist()):
                 yaw[local_index] += float(
                     KEYBOARD_MODELS[self._model_ids_per_env[env_id]]["yaw_offset"]

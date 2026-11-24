@@ -27,6 +27,7 @@ from tasks.robots.panda_wuji_hand_right_mobile_base import (
 
 from mani_skill.envs.sapien_env import BaseEnv
 from tasks.office_desk.reset_scope import OfficeResetScopeMixin, is_full_reset, office_capacity_config
+from tasks.office_desk.position_layout import apply_position_layout
 from tasks.office_desk.devices_appearance import OfficeDevicesAppearance, appearance_enabled
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
@@ -550,6 +551,9 @@ def _configure_task_articulation(articulation) -> None:
 class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
     """Open the laptop lid and keep it above the target angle for 0.2 s."""
 
+    _position_device_name = "laptop"
+    _position_center = (LAPTOP_X, 0.0)
+
     SUPPORTED_ROBOTS = [
         "panda_gripper_right_mobile_base",
         "panda_sharpa_hand_right_mobile_base",
@@ -902,6 +906,7 @@ class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
                 * 2.0
                 - 1.0
             ) * self.laptop_yaw_noise
+            apply_position_layout(options, env_idx, xyz, yaw)
 
             quaternion = torch.zeros(
                 (batch_size, 4),

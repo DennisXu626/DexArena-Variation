@@ -7,6 +7,7 @@ from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_fu
 from tasks.office_desk.devices_appearance import (
     resolve_reset_requests, validate_reset_indices, validate_reset_override,
 )
+from tasks.office_desk.position_layout import resolve_position_layout
 
 
 def office_capacity_config(config, kwargs):
@@ -39,6 +40,13 @@ class OfficeResetScopeMixin(FurnitureResetScopeMixin):
             key, appearance = 'office_devices_appearance', getattr(self, '_office_devices_appearance', None)
         override = {}
         restoring = options is not None and 'reset_to_env_states' in options
+        if options is not None and 'position_layout' in options:
+            if restoring:
+                raise ValueError('Office state restoration cannot include a position layout')
+            layout = resolve_position_layout(
+                options['position_layout'], selected, self._position_device_name, self._position_center,
+            )
+            options = {**options, 'position_layout': layout}
         if options is not None and key in options:
             if restoring:
                 raise ValueError('Office state restoration cannot include an appearance override')
