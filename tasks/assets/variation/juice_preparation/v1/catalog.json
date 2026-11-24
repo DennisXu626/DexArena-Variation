@@ -1,5 +1,5 @@
 {
-  "version": "juice-ten-v1",
+  "version": "juice-ten-v3-preview",
   "schemes": {
     "original": {},
     "variant_1": {
@@ -19,58 +19,66 @@
     "variant_3": {
       "fridge": "#F1E5CA",
       "fridge_roughness": 0.48,
-      "apple": "#B82F40",
+      "apple": "#843EC8",
       "blender": "#6C263C",
-      "lid": "#D9D0C4"
+      "lid": "#D9D0C4",
+      "apple_match_target": true
     },
     "variant_4": {
       "fridge": "#A5CFE3",
       "fridge_roughness": 0.32,
-      "apple": "#D9AD42",
+      "apple": "#25C5D9",
       "blender": "#2455A0",
-      "lid": "#BDCBD9"
+      "lid": "#BDCBD9",
+      "apple_match_target": true
     },
     "variant_5": {
       "fridge": "#E4CC50",
       "fridge_roughness": 0.46,
-      "apple": "#BE3D35",
-      "blender": "#343B43",
-      "lid": "#C5C8CA"
+      "apple": "#F28324",
+      "blender": "#E6BF27",
+      "lid": "#C5C8CA",
+      "apple_match_target": true
     },
     "variant_6": {
       "fridge": "#B7A4CD",
       "fridge_roughness": 0.55,
-      "apple": "#B4BB48",
+      "apple": "#345BDC",
       "blender": "#4A355F",
-      "lid": "#D1C6DC"
+      "lid": "#D1C6DC",
+      "apple_match_target": true
     },
     "variant_7": {
       "fridge": "#DCA06F",
       "fridge_roughness": 0.42,
-      "apple": "#93A752",
-      "blender": "#243F59",
-      "lid": "#E2C6A6"
+      "apple": "#EAE6DA",
+      "blender": "#E87924",
+      "lid": "#E2C6A6",
+      "apple_match_target": true
     },
     "variant_8": {
       "fridge": "#92C6B3",
       "fridge_roughness": 0.38,
-      "apple": "#D96B59",
+      "apple": "#E34599",
       "blender": "#235D60",
-      "lid": "#E4E0D4"
+      "lid": "#E4E0D4",
+      "apple_match_target": true
     },
     "variant_9": {
       "fridge": "#BA929A",
       "fridge_roughness": 0.56,
-      "apple": "#D9AD42",
+      "apple": "#30333C",
       "blender": "#614339",
-      "lid": "#D7BDC0"
+      "lid": "#D7BDC0",
+      "apple_match_target": true
     },
     "variant_10": {
       "fridge": "#A8AFBA",
       "fridge_roughness": 0.34,
-      "apple": "#792D48",
-      "blender": "#242D3D",
-      "lid": "#BEC4CE"
+      "apple": "#BDE52B",
+      "blender": "#EEE5CC",
+      "lid": "#BEC4CE",
+      "apple_match_target": true
     }
   }
 }

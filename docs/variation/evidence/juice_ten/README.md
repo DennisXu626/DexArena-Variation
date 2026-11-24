@@ -1,5 +1,7 @@
 # Juice 十方案限定运行证据
 
+当前新配色及灰白果皮修复后的正式回归见 [v3新结果](v3_regression/README.md)：作业138333全范围通过。以下保留v1历史证据，不将其套用于新配色。
+
 2026-11-24，Server 3 / lyg0295 / G6，一个命名 GPU Index 6 共享 shard。按 pair-slurm 使用宿主 Slurm、--export=NONE、--gres=gpu:6，无嵌套 srun。既有 ms3 环境。代码为 PR19 b611faf 加本轮工作树快照，以实际输入快照和哈希为准，不冒称已提交 Git head。
 
 |检查|结果|作业|

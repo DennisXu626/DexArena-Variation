@@ -101,3 +101,5 @@ PR 建议附已审查的六组 original／两候选近景对照，以及 Long �
 ## 十套扩展（作者工作分支）
 
 保留本页 PR19 两套历史说明。新增八套见 [十套方案](JUICE_TEN_VARIANTS.md) 和 [本轮证据](evidence/juice_ten/README.md)，作为独立十方案分支交付，PR 由作者发起。
+
+新版配色与果皮遮罩已完成作业138333正式回归，见[最新证据](evidence/juice_ten/v3_regression/README.md)。历史两套实现的说明保持原范围。

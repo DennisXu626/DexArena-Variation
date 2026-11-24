@@ -284,7 +284,7 @@ def semantic(t,idx,scheme):
                 assert abs(mat.roughness-recipe["fridge_roughness"])<1e-6
                 out.append({"role":role,"color":recipe[role]})
             else:
-                pixels=(recolor_apple if role=="apple" else recolor_shell)(source.copy(),recipe[role])
+                pixels=recolor_apple(source.copy(),recipe[role],recipe.get("apple_match_target",False)) if role=="apple" else recolor_shell(source.copy(),recipe[role])
                 assert np.array_equal(mat.base_color_texture.download(),pixels)
                 out.append({"role":role,"texture":fingerprint(pixels)})
     return out
