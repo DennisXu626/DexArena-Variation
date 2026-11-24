@@ -33,9 +33,9 @@ VIEWS = {
 }
 
 
-def apple_texture(source, target, output, include_yellow_skin=False):
+def apple_texture(source, target, output, include_yellow_skin=False, match_target_value=False):
     with Image.open(source) as image:
-        pixels, coverage = recolor_apple(image, target, include_yellow_skin)
+        pixels, coverage = recolor_apple(image, target, include_yellow_skin, match_target_value)
     Image.fromarray(pixels).save(output)
     return coverage
 
@@ -163,6 +163,7 @@ def main():
             fractions[scheme_id] = apple_texture(
                 apple_source, scheme["color"], textures[scheme_id],
                 include_yellow_skin=scheme.get("include_yellow_skin", False),
+                match_target_value=scheme.get("match_target_value", False),
             )
     manifest = {"seed": 7, "catalog": catalog["version"], "views": {},
                 "job": os.environ.get("SLURM_JOB_ID"), "apple_mask_fraction": fractions,

@@ -28,3 +28,7 @@ V1对象键：`package_opening/apple`；V2对应键：`package_apple`。代码�
 variant_1→golden（#D7AC42）；variant_2→green（#8EA25C，include_yellow_skin=true）。实际为Package的apple_0、defaultMat.011、visual/image0.png，不能引用其它家族apple；沿原UV现场生成衍生像素，仓库只交配方，分发许可仍未核实。
 
 无数字方案入口；env_idx、材质槽、recipe ID和方案序号分别记录。开包装／取苹果／Long接入及87021限定双环境证据保留；受控成功判定不代表完整机器人轨迹，GPU随机路径未验证。
+
+## 十套扩展候选
+
+原两套保留，新增八套已生成G7真实任务场景预览，待用户审图及后续并行验证；见[十套方案](../../../../../docs/variation/PACKAGE_EXPAND_TO_10.md)。不将新八套标为正式验收通过。

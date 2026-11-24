@@ -1,0 +1,1160 @@
+{
+  "meal/bread": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 2.384185791015625e-07,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 60,
+        "channels": 5,
+        "pixels": 3,
+        "gt1": 3,
+        "gt2": 3,
+        "mean_abs": 0.0006510416666666666
+      },
+      "human": {
+        "max": 1,
+        "channels": 4,
+        "pixels": 2,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 2.2605613425925925e-06
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  },
+  "meal/long": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 2.384185791015625e-07,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 1,
+        "channels": 1,
+        "pixels": 1,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 4.340277777777778e-06
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 1,
+        "channels": 3,
+        "pixels": 2,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 1.6954210069444444e-06
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "left_wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "right_wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  },
+  "meal/open": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 1.1920928955078125e-07,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 1,
+        "channels": 6,
+        "pixels": 4,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 2.604166666666667e-05
+      },
+      "human": {
+        "max": 1,
+        "channels": 3,
+        "pixels": 1,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 1.6954210069444444e-06
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  },
+  "meal/tomato": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 2.384185791015625e-07,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 3,
+        "channels": 8,
+        "pixels": 5,
+        "gt1": 2,
+        "gt2": 1,
+        "mean_abs": 3.90625e-05
+      },
+      "human": {
+        "max": 1,
+        "channels": 3,
+        "pixels": 1,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 1.6954210069444444e-06
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        },
+        "spoon": {
+          "max": 0,
+          "channels": 0
+        },
+        "bread": {
+          "max": 0,
+          "channels": 0
+        },
+        "ball_food": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  },
+  "package/extract": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 3.5762786865234375e-07,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 1,
+        "channels": 3,
+        "pixels": 1,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 4.822530864197531e-07
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  },
+  "package/long": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 3.5762786865234375e-07,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 1,
+        "channels": 3,
+        "pixels": 1,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 4.822530864197531e-07
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "left_wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "right_wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        },
+        "apple": {
+          "max": 0,
+          "channels": 0
+        },
+        "plate": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  },
+  "package/open": {
+    "batches": [
+      0,
+      1
+    ],
+    "rebuilds": 10,
+    "seeds": {
+      "7": 6,
+      "19": 2,
+      "41": 2
+    },
+    "unselected_state_max": 0,
+    "selected_repeat_state_max": 0,
+    "full_repeat_state_max": 0,
+    "short_trace_max": 0,
+    "counters_max": 0,
+    "materials_max": 0,
+    "rng_unchanged": true,
+    "nonnumeric_differences": 0,
+    "initial_info_max": 0,
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "selected_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "full_repeat_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0,
+        "pixels": 0,
+        "gt1": 0,
+        "gt2": 0,
+        "mean_abs": 0
+      }
+    },
+    "target_repeat_rgb": {
+      "base_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "left_wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "right_wrist_camera": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "human": {
+        "box": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    },
+    "short_trace_fields": {}
+  }
+}

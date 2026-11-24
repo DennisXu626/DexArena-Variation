@@ -1,0 +1,27 @@
+JobId=123847 JobName=pb-package-trace
+   UserId=pb(1044) GroupId=pb(1044) MCS_label=N/A
+   Priority=1 Nice=0 Account=(null) QOS=normal
+   JobState=FAILED Reason=NonZeroExitCode Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0
+   RunTime=00:00:59 TimeLimit=00:10:00 TimeMin=N/A
+   SubmitTime=2026-11-20T09:35:49 EligibleTime=2026-11-20T09:35:49
+   AccrueTime=2026-11-20T09:35:49
+   StartTime=2026-11-20T09:35:49 EndTime=2026-11-20T09:36:48 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-20T09:35:49 Scheduler=Main
+   Partition=a800 AllocNode:Sid=lyg0295:703113
+   ReqNodeList=lyg0295 ExcNodeList=(null)
+   NodeList=lyg0295
+   BatchHost=lyg0295
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=2,mem=474480M,node=1,billing=2,gres/shard=1
+   AllocTRES=cpu=2,node=1,billing=2,gres/shard=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/home/pb/package-a4a5-r2-20261120/run-trace.sh
+   WorkDir=/data/home/pb/package-a4a5-r2-20261120
+   StdErr=/data/home/pb/package-a4a5-r2-20261120/slurm-123847.out
+   StdIn=/dev/null
+   StdOut=/data/home/pb/package-a4a5-r2-20261120/slurm-123847.out
+   TresPerNode=gres/shard:idx7:1

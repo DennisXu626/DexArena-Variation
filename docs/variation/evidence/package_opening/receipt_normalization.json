@@ -1,0 +1,57 @@
+{
+  "method": "remove trailing whitespace and extra EOF blank lines only; all receipt fields unchanged; raw originals retained on server",
+  "files": {
+    "docs/variation/evidence/package_opening/environment_validation/receipts/123844.txt": {
+      "original_sha256": "1f82a8cf459e003e1c51405a7b6da2421611d4b66b8f67dabb686547df8b4664",
+      "archived_sha256": "b0624dcaf6b8453ac41c76c7e9210be989ddbce7512b45f6331e3e12bf66432b"
+    },
+    "docs/variation/evidence/package_opening/environment_validation/receipts/123846.txt": {
+      "original_sha256": "9b24d5763fa4083b9a2aef2b38f2f67bf6817e7dbdac0b101be880eda180ca7d",
+      "archived_sha256": "d0e1031400b536e76350070d7a4a1a7ed6c9911e904efdb2c52a3a154541a9fa"
+    },
+    "docs/variation/evidence/package_opening/environment_validation/receipts/123847.txt": {
+      "original_sha256": "d922122e721e33c9b110e890aaabd0ca8abde171aa0d518f164f482dbaab93fa",
+      "archived_sha256": "8c1d3d30ebd8111bea9ec51a0edc4afff512a49ffc5b7db430eaeb205bc7f936"
+    },
+    "docs/variation/evidence/package_opening/environment_validation/receipts/123849.txt": {
+      "original_sha256": "f19854b56d9a6e7352306a7a6893e39ed28978ede7927e0fd0ba5c5360a8c342",
+      "archived_sha256": "9617c99ccd08996a616e2e30d3e4bcb51ca7d7ca8f8ad7af73b13d2ab8f7b928"
+    },
+    "docs/variation/evidence/package_opening/minimal_diagnosis/receipts/125106.txt": {
+      "original_sha256": "00f599728ce6e01c128fd3e5dc2d7851209674f8503b4313eac68c5e3fbc63bf",
+      "archived_sha256": "517ac3f8a503209ebcbb78aeaf79cf6fce76992fdb92c97a2c549e23380a7d30"
+    },
+    "docs/variation/evidence/package_opening/minimal_diagnosis/receipts/125107.txt": {
+      "original_sha256": "fca0ac8fd8cd98588f025e58769e5348c03b7c26f751ae4d314e443d053e9513",
+      "archived_sha256": "965d2666ec73031cc762a3e487ec11c143b8795cc28ef6447166bb83d9942fcf"
+    },
+    "docs/variation/evidence/package_opening/minimal_diagnosis/receipts/125109.txt": {
+      "original_sha256": "24a0ebd81b348a658a5e406dbf20aad75e415b6cd1aab2e0c4b9a9ef6652b44a",
+      "archived_sha256": "3187c985b5557e2fc4cf2c763990203b11751c7956d52d8ac6301f363c845971"
+    },
+    "docs/variation/evidence/package_opening/minimal_diagnosis/receipts/125111.txt": {
+      "original_sha256": "a9a0888e9f964623ca9271923075e4cb609135634ee041b1707f06928b15eba9",
+      "archived_sha256": "10a971dcbe0f04989e82abe73852cc37283b542c4e5cf5c83ac6c904f855f1fd"
+    },
+    "docs/variation/evidence/package_opening/native_calibration/receipt.txt": {
+      "original_sha256": "83182ff6acf945716103a182348850842217f5a780e42c639345cbf99f07de37",
+      "archived_sha256": "271f1f2cdf261d7317a7baa1053df665bd197de4aa716d0db65237d53074518b"
+    },
+    "docs/variation/evidence/package_opening/paired_revalidation/receipt.txt": {
+      "original_sha256": "69edc2de471bb7c7ba0bb05910ed52f7702fcd243d454854e353ba07bfb5fc3a",
+      "archived_sha256": "f1dd09904c2e5b9bb777f4117aa6c32852042e333bb9930e62f10a50a2381276"
+    },
+    "docs/variation/evidence/package_opening/paired_revalidation/receipts/125331.txt": {
+      "original_sha256": "69edc2de471bb7c7ba0bb05910ed52f7702fcd243d454854e353ba07bfb5fc3a",
+      "archived_sha256": "f1dd09904c2e5b9bb777f4117aa6c32852042e333bb9930e62f10a50a2381276"
+    },
+    "docs/variation/evidence/package_opening/paired_revalidation/receipts/125378.txt": {
+      "original_sha256": "017cb0ff2aa790c24805ac504c1a194667e73498cf59826a6b3bcbd009d0e3d4",
+      "archived_sha256": "10d74bc33e715963bfefefacd2f9abdd63c72856728b19de334cf769df2eb42b"
+    },
+    "docs/variation/evidence/package_opening/ten/receipt.txt": {
+      "original_sha256": "c90de6368cd6a4112929fcedbdbcddc66d3fabfd3d01d4ed197214a757020fe6",
+      "archived_sha256": "9fc533fea16bfd7417b911cbbb7557d5ea11343efa9728d6e56884ff8cb22020"
+    }
+  }
+}

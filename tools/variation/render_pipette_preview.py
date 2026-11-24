@@ -128,12 +128,14 @@ def render_object(key, output, catalog, urdf, size, verify_visuals=False):
     drift = int(np.max(np.abs(frames[0][1].astype(int)-frames[-1][1].astype(int))))
     if drift:
         raise RuntimeError(f'{key}: restored RGB differs from original (max difference {drift})')
-    sheet = Image.new('RGB', (3*size, size+40), (28, 31, 35))
-    draw = ImageDraw.Draw(sheet)
-    for index, (scheme, _, frame) in enumerate(frames[:3]):
-        draw.text((index*size+12, 12), scheme, fill='white')
-        sheet.paste(frame, (index*size, 40))
-    sheet.save(output/f'{key}_comparison.png')
+    for start in range(1, len(frames) - 1, 4):
+        page = [frames[0], *frames[start:min(start + 4, len(frames) - 1)]]
+        sheet = Image.new('RGB', (len(page)*size, size+40), (28, 31, 35))
+        draw = ImageDraw.Draw(sheet)
+        for index, (scheme, _, frame) in enumerate(page):
+            draw.text((index*size+12, 12), scheme, fill='white')
+            sheet.paste(frame, (index*size, 40))
+        sheet.save(output/f'{key}_comparison_{start // 4 + 1}.png')
     verification = {}
     if verify_visuals and key in ('sample_cup', 'test_tube'):
         verification['optical_probe'] = optical_probe(sapien, scene, camera, body, records, key,
@@ -168,6 +170,7 @@ def main():
     parser.add_argument('--size', type=int, default=512)
     parser.add_argument('--render', action='store_true', help='Use GPU; run only in an assigned window')
     parser.add_argument('--verify-visuals', action='store_true', help='Add fixed-target glass or multi-view depth tests')
+    parser.add_argument('--physx-gpu-dir', type=Path, help=argparse.SUPPRESS)
     args = parser.parse_args()
     if len(args.objects) != len(set(args.objects)):
         parser.error('--objects must be unique')

@@ -1,6 +1,6 @@
 # Nut & Bolt 外观
 
-三个短任务提供默认关闭的 `nut_bolt_appearance` 接口，每个可见对象保留 `original`、`variant_1` 和 `variant_2`。外观只修改允许角色的 base color、roughness、metallic；原生几何、碰撞、质量、关节、锁定、位姿规则和成功判定保持不变。
+三个短任务提供默认关闭的 `nut_bolt_appearance` 接口，每个可见对象支持 `original` 与 `variant_1`–`variant_10`。外观只修改允许角色的 base color RGB、roughness 和 metallic。两种螺母表示使用同一个方案。新增方案与复现入口见 [扩容记录](NUT_BOLT_EXPANSION.md)。
 
 ## 使用
 
@@ -25,7 +25,7 @@ records = env.unwrapped._nut_bolt_appearance.records
 
 公开 `reset` 先按上述优先级校验所有选中环境的有效方案。显式 ID 和随机列表中的每个 ID 均须在运行 catalog 中。校验通过后才进入原生重置，外观抽样和应用仍在任务初始化结束时进行。显式 `env_idx` 必须严格递增，局部 reset 必须省略任务 `seed`。直接恢复原生状态可使用 `reset_to_env_states`，与外观覆盖互斥。
 
-配置示例见 [default](../../examples/variation/nut_bolt/default.json)、[fixed](../../examples/variation/nut_bolt/fixed.json)、[random](../../examples/variation/nut_bolt/random.json)。
+配置示例见 [default](../../examples/variation/nut_bolt/default.json)、[fixed](../../examples/variation/nut_bolt/fixed.json)、[random](../../examples/variation/nut_bolt/random.json) 和[双环境新增方案](../../examples/variation/nut_bolt/expansion.json)。
 
 ## 对象与绑定
 
@@ -39,11 +39,9 @@ records = env.unwrapped._nut_bolt_appearance.records
 
 运行索引 [catalog](../../tasks/assets/variation/nut_bolt/v1/catalog.json)只映射对象和方案；唯一数值源为 [bolt catalog](../../assets/appearance/objects/nut_bolt/bolt/variants/v1/catalog.json) 与 [nut catalog](../../assets/appearance/objects/nut_bolt/nut/variants/v1/catalog.json)。完整部件、原资产身份及保护规则见 [bolt bindings](../../assets/appearance/objects/nut_bolt/bolt/bindings.json)、[nut bindings](../../assets/appearance/objects/nut_bolt/nut/bindings.json)。没有新增UV或贴图，original从本次实际加载材质捕获并恢复。
 
-## 验证
+## 原 PR #15 两套候选的验证
 
-CPU 契约测试调用三项短任务的公开 `reset`，以替身计数核对末个环境的非法 ID 或随机列表末项非法时，原生重置、RNG、任务状态和锁写入均为零。合法请求、覆盖优先级、局部重置、初始化和状态恢复另有正例。
-
-[Windows v7 成功路径运行档案](../../assets/appearance/objects/nut_bolt/previews/runtime/summary.json)按记录的采集源码和 SDK 身份覆盖三项短任务。各通过 40 次选中状态读回及 2 控制步／40 物理步。两种局部 reset 方向均核对未选环境的状态、控制器、RNG、材质及 RGB。四个原生相机的未选环境、original 恢复和重复帧 RGB 均逐值一致。SeatNut 另核对原生 free／threaded 切换的首帧、重复帧与反向局部 reset。
+[Windows v7 验收记录](../../assets/appearance/objects/nut_bolt/previews/runtime/summary.json)覆盖三项短任务。各通过 40 次选中状态读回及 2 控制步／40 物理步。两种局部 reset 方向均核对未选环境的状态、控制器、RNG、材质及 RGB。四个原生相机的未选环境、original 恢复和重复帧 RGB 均逐值一致。SeatNut 另核对原生 free／threaded 切换的首帧、重复帧与反向局部 reset。
 
 CPU 接口和动态回归通过。三个任务的五组同动作对照共 900 控制步／18,000 物理步，所有逐步动态状态与重复原任务基线精确一致，各组材质保持稳定。
 
@@ -69,32 +67,10 @@ SeatNut 与 TurnNut 的任务视角会被机械臂遮挡。先用关闭外观的
 
 ## 复现
 
-静态检查与公开 reset 契约可从仓库根运行。
-
-```powershell
-python -B tools/variation/check_static.py
-python -B tools/variation/check_appearance_archive.py
-python -B tools/variation/check_nut_bolt_appearance.py --static
-python -B -m unittest discover -s tests -p 'test_nut_bolt*.py'
-```
-
-正式检查使用同一份经源码、wheel 和运行文件校验的 [Windows SDK](../../tools/variation/sapien_sdk/native_lock/README.md)。以下命令从仓库根目录运行，指定 SDK 构建生成的 `runtime/`、`artifact.json` 和 `physx-runtime/`，每次使用新输出目录。
-
-```powershell
-$sdk = 'C:/path/to/private-sdk-build'
-$sdkArgs = @('--sapien-root', "$sdk/runtime", '--artifact', "$sdk/artifact.json", '--physx-gpu-dir', "$sdk/physx-runtime")
-$launch = 'tools/variation/sapien_sdk/native_lock/tools/run_task_check.py'
-$gpuArgs = @('--repo-root', '.', '--checker', 'tools/variation/check_nut_bolt_runtime.py') + $sdkArgs + @('--approved-runtime', '--sim-backend', 'physx_cuda', '--experimental-windows-cuda', '--gpu-memory-profile', 'two_env')
-python -B $launch @gpuArgs --task PickBolt --seed 7 --visibility-camera base_camera --output outputs/variation/nut_bolt/pick_bolt
-python -B $launch @gpuArgs --task SeatNut --seed 1 --visibility-camera wrist_camera --output outputs/variation/nut_bolt/seat_nut
-python -B $launch @gpuArgs --task TurnNut --seed 26 --visibility-camera human --output outputs/variation/nut_bolt/turn_nut
-python -B tools/variation/check_nut_bolt_dynamics.py @sdkArgs --approved-runtime --steps 60 --seed 7 --output outputs/variation/nut_bolt/dynamics
-```
-
-`two_env` 只调整检查进程的 GPU 容量预算。CPU 动态逐步对照原任务、原任务重复组、original 和各候选的相同动作序列，覆盖每组 60 控制步，并核对材质稳定性。
+静态检查、公开 reset 契约、CPU 动态、双环境 CUDA 和 SDK 探针的命令见 [扩容验证命令](NUT_BOLT_EXPANSION.md#验证命令)。
 
 [独立 SDK 验证记录](../../assets/appearance/objects/nut_bolt/previews/runtime/sdk_probe_checks.json)覆盖 [原生六轴锁定](../../tools/variation/sapien_sdk/native_lock/probes/check_runtime_lock.py) 的锁定、解锁、索引恢复和真实接触，以及 [光栅可见性](../../tools/variation/sapien_sdk/native_lock/tools/probe_batched_visibility.py) 的首帧、恢复和结构改动拒绝。两者均可通过 Windows SDK 文档中的 `launch_native_lock.py` 复现。
 
 ## 验收边界
 
-本轮验证覆盖三个 Windows 短任务。Long、Linux 和完整机器人任务成功不在验收范围。CUDA 需要原生 `native_gpu_lock_sync_patch_version()==1` 和 `indexed_gpu_apply_patch_version()==1`。锁状态翻转时只发布选中环境的姿态和速度；状态恢复保留原有速度，稳态不重复写入。
+首批和扩容共覆盖 PickBolt、SeatNut 和 TurnNut 的 Windows／Linux 短任务。Long 和完整机器人任务成功留待验证。CUDA 需要原生 `native_gpu_lock_sync_patch_version()==1` 和 `indexed_gpu_apply_patch_version()==1`。锁状态翻转时只发布选中环境的姿态和速度；状态恢复保留原有速度，稳态不重复写入。

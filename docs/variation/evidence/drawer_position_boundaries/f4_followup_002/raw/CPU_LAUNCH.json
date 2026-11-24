@@ -1,0 +1,79 @@
+{
+  "cwd": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source",
+  "argv": [
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_drawer_positions.py",
+    "--output",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_002/output",
+    "--samples",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/SAMPLES.csv",
+    "--placement-only"
+  ],
+  "python_argv": [
+    "/data/home/xkl/AutoDemo/envs/DexGenTransfer/bin/python",
+    "-B",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_drawer_positions.py",
+    "--output",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_002/output",
+    "--samples",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/SAMPLES.csv",
+    "--placement-only"
+  ],
+  "helper": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_cabinet_positions.py",
+  "checker_sha256": "496d22c22cba4d121a2e57342f138788b3774c36d9ffffa99de1ad2b0ad339f3",
+  "samples_sha256": "d0f38fcac65874b795232c9ba5fe3354a76d41070063b98d86b3978f84f6ef47",
+  "batch": [
+    [
+      "F4-0",
+      843,
+      1
+    ],
+    [
+      "F4-1",
+      844,
+      0
+    ],
+    [
+      "F4-2",
+      845,
+      1
+    ],
+    [
+      "F4-3",
+      846,
+      0
+    ],
+    [
+      "F4-4",
+      847,
+      1
+    ],
+    [
+      "F4-5",
+      848,
+      0
+    ],
+    [
+      "F4-6",
+      849,
+      1
+    ],
+    [
+      "F4-7",
+      850,
+      0
+    ],
+    [
+      "F4-8",
+      851,
+      1
+    ]
+  ],
+  "make": {
+    "num_envs": 2,
+    "sim_backend": "physx_cuda",
+    "obs_mode": "state",
+    "reconfiguration_freq": 0
+  },
+  "task": "DrawerPlugPickCharger-Sharpa-v1",
+  "hook": "immediately before gym.make"
+}

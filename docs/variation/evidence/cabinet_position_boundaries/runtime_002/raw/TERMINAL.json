@@ -1,0 +1,70 @@
+{
+  "scontrol": {
+    "status": 0,
+    "stdout": "JobId=134787 JobName=cabinet_pos_short_v2 UserId=xkl(1039) GroupId=xkl(1039) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=normal JobState=COMPLETED Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:05:15 TimeLimit=00:10:00 TimeMin=N/A SubmitTime=2026-11-23T06:15:52 EligibleTime=2026-11-23T06:15:52 AccrueTime=2026-11-23T06:15:52 StartTime=2026-11-23T06:15:52 EndTime=2026-11-23T06:21:07 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-23T06:15:52 Scheduler=Main Partition=a800 AllocNode:Sid=lyg0295:1082587 ReqNodeList=lyg0295 ExcNodeList=(null) NodeList=lyg0295 BatchHost=lyg0295 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:* ReqTRES=cpu=2,mem=16G,node=1,billing=2,gres/shard=1 AllocTRES=cpu=2,node=1,billing=2,gres/shard=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=2 MinMemoryNode=16G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null) Command=/mnt/ceph2/xkl/DexArena/cabinet_position_boundaries_20261123/runtime_002/job.sh WorkDir=/mnt/ceph2/xkl/DexArena/cabinet_position_boundaries_20261123/runtime_002/source StdErr=/dev/null StdIn=/dev/null StdOut=/dev/null TresPerNode=gres/shard:idx2:1 \n",
+    "stderr": ""
+  },
+  "squeue": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "sacct": {
+    "status": 1,
+    "stdout": "",
+    "stderr": "sacct: error: _open_persist_conn: failed to open persistent connection to host:localhost:6819: Connection refused\nsacct: error: Sending PersistInit msg: Connection refused\nsacct: error: Problem talking to the database: Connection refused\n"
+  },
+  "watcher": {
+    "status": 1,
+    "stdout": "    PID    PPID    PGID STAT COMMAND\n",
+    "stderr": ""
+  },
+  "accounting_fallback": "scontrol terminal JobState and RunTime; sacct unavailable",
+  "owned_process_group": [],
+  "visible_job_cgroup_members": [],
+  "collected_utc_epoch": 1795414919.723644,
+  "post_run_hashes": {
+    "production": {
+      "tasks/assets/variation/drawer_plug/family_variants.json": "42b20ab6ff27209d5e0e3ce3191d04fa6f5165c63199b7bc1862d6a680e30284",
+      "tasks/assets/variation/drawer_plug/fixtures_v1/catalog.json": "494ed9a832eefa2901194e0b45dcd4ae4a467b722dcfc80e279f0cb29ffe5275",
+      "tasks/assets/variation/drawer_plug/v1/catalog.json": "3239c3b72aa530b13e283d4a5651b210de76f8077c4b9941d640d7ec42380315",
+      "tasks/assets/variation/nut_bolt/v1/catalog.json": "c4071f109948d00381f68c259d25ef356558a14994aa87452da57cc8e998593a",
+      "tasks/assets/variation/office_desk/devices/v1/catalog.json": "1c42fa70e06d58eb2257cb5c6b6bc20154e0cce8110c844bc56c8421c145df07",
+      "tasks/assets/variation/pipette_transfer/v1/catalog.json": "5bb14ff3d10f1769342b61ec5968baaf082f732bc0dd3d6283fefc342e92d2ed",
+      "tasks/cabinet_pouring/cabinet_pouring_long.py": "20a2727698fdf6fc8af4e6c5097e19aa7e76e1f3cfb993b6db83aa06f380a168",
+      "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "39698c6d4bb7ff30f0d3f185c3b3d453a7fd800dfd0dd638a5a85a1b8ebb60af",
+      "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "cd6ad04d3bf1c68003d9a6177944b8ca0366f22149b018f9f505deadff99eda7",
+      "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "9022de5d79e71eb5642ee163b791c2cc785406283344913e9798bce1f41a67c8",
+      "tasks/cabinet_pouring/position_layout.py": "39a15d9388216bdc9a45a3814e7ab25438ec1ca6a5a3dcce4a2056e644ae4497",
+      "tasks/drawer_plug/drawer_plug_insert_plug.py": "b41754e4c8069dfff3aa7a082dd0501ec282ec2922cd73ef7e01d8e2d3aa9f44",
+      "tasks/drawer_plug/drawer_plug_long.py": "5b460d56c1f4c94879f24f6359fc17c66545292a35efb15eeaa84718abff9681",
+      "tasks/drawer_plug/drawer_plug_open_drawer.py": "b63005b7afd18e4a2cad528fc97858ccf7884936ede9a1dd4363afb606748198",
+      "tasks/drawer_plug/drawer_plug_pick_charger.py": "8724c11f6c614bbe1072c7cdecb0e48ebdcc79f994cb49675dd28141e01681f4",
+      "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+      "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
+      "tasks/nut_bolt/appearance.py": "17a3ff71c089b72c0538b62048470f08cd572f9c40920cd6c32fcb7306ddc243",
+      "tasks/nut_bolt/gpu_hold.py": "dc78b2adecef3f12db0cab684718ff2a44b87b979bbf5a6967795a0c82aa9907",
+      "tasks/nut_bolt/nut_bolt_long.py": "ccc03931d52b4b0876f6c9233b25b34a7bb7255640177a006f6ebd6c6156c7b1",
+      "tasks/nut_bolt/nut_bolt_pick_bolt.py": "c249bafe219f0ac0a4efb634f8a8ae0f64273fa08dc2ebf6f572ac55c76c64f8",
+      "tasks/nut_bolt/nut_bolt_seat_nut.py": "56e7b52bd93ccfd28c5956f8e7261b1e0fb1712f5ad05e1a5390c537f9e84190",
+      "tasks/nut_bolt/nut_bolt_turn_nut.py": "ff110e48b624f5d2f986de757ac9e385ea7050f8bdd989ccf94b3c5b874bf89c",
+      "tasks/nut_bolt/reset_scope.py": "d3556681109af3e32a94c47d041b8dd8c6df3122528ba68bc4624a9e8fb5446e",
+      "tasks/office_desk/devices_appearance.py": "bb3a3e03fb2639e609ff271a0600e34929bc321fff9b454957f26a1139661489",
+      "tasks/office_desk/mouse_appearance.py": "f4a7a0f240364a517933231021aaeb4e49a1a7dd2c4bb8db5466be875a27bf8d",
+      "tasks/office_desk/office_desk_click_mouse.py": "0d0c5bb3caca0969bebef200d94c9fa17ead566c5180fad41455ce11812e793a",
+      "tasks/office_desk/office_desk_open_laptop.py": "c41cc31c937f7ebddf7df51001000a51dcc454e5e25f16edc93243dfe954d7a7",
+      "tasks/office_desk/office_desk_type_keys.py": "3d716b4ae3b78c084b231c3ce4ef571a83fc26cf3cdc170ccaf4dcf4f8b78b23",
+      "tasks/office_desk/reset_scope.py": "0492ca3d5c07de1b66f491e46d2a61ff128fb3669087a2818fff48491a0a6c2d",
+      "tasks/pipette_transfer/appearance.py": "737f61652006bb641573d0b1a8caa9a4b9edc905a6aaf16b0a28d3be0d0e6d77",
+      "tasks/pipette_transfer/pipette_transfer_long.py": "3533c047e4cf2de867bb4007ef1e03fb67b996787df2df1ebad76aa9b2424b10",
+      "tasks/pipette_transfer/rendering.py": "4c1479e06274b7beaf26d90f5bc7834345a0794db6bc36582608a3ef4562c1d2",
+      "tools/variation/check_cabinet_positions.py": "003fcab10cf753b42038b0ab66dcca39272884c9833cf6008239b00b8e743041",
+      "tools/variation/cabinet_position_points.csv": "620009c3c242a4185627ecaf93a96e093219f0f0dee5cfc3f6083644c843516d",
+      "tools/variation/cabinet_position_followup.csv": "1b0ee0943c9adbc86c9b0ea641fe155fd8cf15b6566ce98cea2d24610d931abd"
+    },
+    "production_matches": true,
+    "checker": "003fcab10cf753b42038b0ab66dcca39272884c9833cf6008239b00b8e743041",
+    "checker_matches": true
+  },
+  "root_final_bytes": 103196472
+}

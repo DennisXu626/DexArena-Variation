@@ -1,0 +1,27 @@
+JobId=125331 JobName=pb-paired-full
+   UserId=pb(1044) GroupId=pb(1044) MCS_label=N/A
+   Priority=1 Nice=0 Account=(null) QOS=normal
+   JobState=FAILED Reason=NonZeroExitCode Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0
+   RunTime=00:16:53 TimeLimit=00:30:00 TimeMin=N/A
+   SubmitTime=2026-11-21T07:50:30 EligibleTime=2026-11-21T07:50:30
+   AccrueTime=2026-11-21T07:50:30
+   StartTime=2026-11-21T07:50:30 EndTime=2026-11-21T08:07:23 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-21T07:50:30 Scheduler=Main
+   Partition=a800 AllocNode:Sid=lyg0295:2799949
+   ReqNodeList=lyg0295 ExcNodeList=(null)
+   NodeList=lyg0295
+   BatchHost=lyg0295
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=2,mem=474480M,node=1,billing=2,gres/shard=1
+   AllocTRES=cpu=2,node=1,billing=2,gres/shard=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=2 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/home/pb/paired-full-20261121/run.sh
+   WorkDir=/data/home/pb/paired-full-20261121
+   StdErr=/data/home/pb/paired-full-20261121/slurm-125331.out
+   StdIn=/dev/null
+   StdOut=/data/home/pb/paired-full-20261121/slurm-125331.out
+   TresPerNode=gres/shard:idx7:1

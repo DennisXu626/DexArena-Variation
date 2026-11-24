@@ -1,0 +1,46 @@
+{
+  "job": 123850,
+  "capture_commit": "0ff502f24fb3cc389a2e2f4c87753b27c56c7561",
+  "figures": {
+    "PickBolt/fixed_variant_4_base_camera_env0.png": {
+      "task": "PickBolt",
+      "camera": "base_camera",
+      "env_idx": 0,
+      "operation": "variant_4",
+      "sha256": "64cedfd9b0890504b4b249900b43b4de5d08f100c9c571c59c0f0ee299d492a9",
+      "comparison_changed_pixels": 59
+    },
+    "SeatNut/fixed_variant_6_wrist_camera_env0.png": {
+      "task": "SeatNut",
+      "camera": "wrist_camera",
+      "env_idx": 0,
+      "operation": "variant_6",
+      "sha256": "07df24bbcc271d750d10ed5dc0c970a333d3bb189f88edb1ec0864c416c8c79d",
+      "comparison_changed_pixels": 231
+    },
+    "TurnNut/fixed_variant_10_human_env0.png": {
+      "task": "TurnNut",
+      "camera": "human",
+      "env_idx": 0,
+      "operation": "variant_10",
+      "sha256": "84e9d34f6c1097523cb3148d7bd322db4d804de3db6d2de0cbf35285078c2ecb",
+      "comparison_changed_pixels": 575
+    },
+    "PickBolt/local_0_base_camera_env0.png": {
+      "task": "PickBolt",
+      "camera": "base_camera",
+      "env_idx": 0,
+      "operation": "reset env1",
+      "sha256": "a65e496da0e9d8c78016d55b5e9c16117a13f929344f7dd0897fa8464e3f5c76",
+      "comparison_changed_pixels": 0
+    },
+    "PickBolt/local_1_base_camera_env1.png": {
+      "task": "PickBolt",
+      "camera": "base_camera",
+      "env_idx": 1,
+      "operation": "reset env0",
+      "sha256": "b25f50bb9acaf73cb111b2fc256e445e0a8677aadf5b83150167ceeda9a14b85",
+      "comparison_changed_pixels": 0
+    }
+  }
+}

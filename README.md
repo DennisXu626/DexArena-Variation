@@ -146,8 +146,8 @@ git push -u origin feat/bottle-appearance
 Meal限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)；当前待整合/合并，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。历史资料见[PR8-R2索引](docs/variation/evidence/meal_preparation/PR8-R2.md)，最新文档整合见[PR8-R3记录](docs/variation/evidence/meal_preparation/PR8-R3.md)。
 
 
-Package Opening的OpenPackage／ExtractApple／Long三个Sharpa入口已交付，限定证据已查收、待PR9最终合并；[用法](docs/variation/PACKAGE_OPENING_APPEARANCE.md)、[方案身份及整合记录](docs/variation/evidence/package_opening/PR9-R2.md)。不把Package方案套成Cabinet Ocean／Citrus／Violet。
+Package Opening的OpenPackage／ExtractApple／Long三个Sharpa入口已合入，支持原版和十套候选，适用范围见[能力清单](docs/variation/STATUS.md#7-package-opening)和[十套方案](docs/variation/PACKAGE_EXPAND_TO_10.md)，[PR9方案身份及整合记录](docs/variation/evidence/package_opening/PR9-R2.md)保留历史证据。不把Package方案套成Cabinet Ocean／Citrus／Violet。
 
-## Juice Preparation 候选交付（PR #19）
+## Juice Preparation（PR #19，待合入）
 
-[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)提供四对象两套新外观和六个 Sharpa 入口；默认关闭，支持逐环境固定方案。历史双环境运行与本轮 CPU 修正的范围分列于[Juice 交付](docs/variation/JUICE_PREPARATION_APPEARANCE.md)和[R1 修正](docs/variation/JUICE_PR19_R1.md)。待最终审验，不扩大为随机、其它规模或完整机器人成功。
+[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)提供四对象两套新外观和六个 Sharpa 入口；默认关闭，支持逐环境固定方案。固定 1／2 号方案已通过 Server 3 作业 136654 的独立运行验收，实际范围见[能力清单](docs/variation/STATUS.md#juice-preparationpr-19待合入)和[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354)。[家族用法](docs/variation/JUICE_PREPARATION_APPEARANCE.md)和[R1 修正](docs/variation/JUICE_PR19_R1.md)保留历史证据及其适用边界。PR 待合入，不扩大为随机、其它规模或完整机器人成功。

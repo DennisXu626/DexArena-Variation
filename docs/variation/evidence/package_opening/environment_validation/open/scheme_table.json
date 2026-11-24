@@ -1,0 +1,178 @@
+[
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "original",
+    "actual": [
+      "original",
+      "original"
+    ],
+    "expected": {
+      "box": "original",
+      "apple": "original",
+      "plate": "original"
+    },
+    "image": "original_human_env0.png",
+    "sha256": "295536509e1ac0eb7eb4cb9c6e364a84668536fde5f74444bd49f4182559e123",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_1",
+    "actual": [
+      "variant_1",
+      "variant_1"
+    ],
+    "expected": {
+      "box": "kraft",
+      "apple": "golden",
+      "plate": "teal_glaze"
+    },
+    "image": "variant_1_human_env0.png",
+    "sha256": "e8aae263c3eb19f53d73e05fd2be72923611905b83964a942d04ef9e596a4f8b",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_2",
+    "actual": [
+      "variant_2",
+      "variant_2"
+    ],
+    "expected": {
+      "box": "blue_gray",
+      "apple": "green",
+      "plate": "ivory_satin"
+    },
+    "image": "variant_2_human_env0.png",
+    "sha256": "dae093ba44f58020bb0c1fc50b2850d5ffcd813cf30cc3a8fb9ef86ce72864e1",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_3",
+    "actual": [
+      "variant_3",
+      "variant_3"
+    ],
+    "expected": {
+      "box": "variant_3",
+      "apple": "variant_3",
+      "plate": "variant_3"
+    },
+    "image": "variant_3_human_env0.png",
+    "sha256": "ca9669f6f840357e9f234568006d1f28abc03668b999d7a85b2fefe731b4f951",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_4",
+    "actual": [
+      "variant_4",
+      "variant_4"
+    ],
+    "expected": {
+      "box": "variant_4",
+      "apple": "variant_4",
+      "plate": "variant_4"
+    },
+    "image": "variant_4_human_env0.png",
+    "sha256": "6d74da9faed80bda511dbd88eb9c6763e248f356a521df104896738fb67dea22",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_5",
+    "actual": [
+      "variant_5",
+      "variant_5"
+    ],
+    "expected": {
+      "box": "variant_5",
+      "apple": "variant_5",
+      "plate": "variant_5"
+    },
+    "image": "variant_5_human_env0.png",
+    "sha256": "fbd95d7432b45c834b02bc88f6abb0be3ec336d18304838a35d7412d1fe00b6b",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_6",
+    "actual": [
+      "variant_6",
+      "variant_6"
+    ],
+    "expected": {
+      "box": "variant_6",
+      "apple": "variant_6",
+      "plate": "variant_6"
+    },
+    "image": "variant_6_human_env0.png",
+    "sha256": "eeada6af6e414d99bd121b3996443b3e673032c7c776400bbf3b96c829ae4b0a",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_7",
+    "actual": [
+      "variant_7",
+      "variant_7"
+    ],
+    "expected": {
+      "box": "variant_7",
+      "apple": "variant_7",
+      "plate": "variant_7"
+    },
+    "image": "variant_7_human_env0.png",
+    "sha256": "07e29f6a7dc022e08a8117aa24899e4e456f9dea4ab9a3826792052fa2b2a070",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_8",
+    "actual": [
+      "variant_8",
+      "variant_8"
+    ],
+    "expected": {
+      "box": "variant_8",
+      "apple": "variant_8",
+      "plate": "variant_8"
+    },
+    "image": "variant_8_human_env0.png",
+    "sha256": "5206bcf3ef62716a12d453ffcdfb68c6acd24e5797c9da61d0a243b18779323e",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_9",
+    "actual": [
+      "variant_9",
+      "variant_9"
+    ],
+    "expected": {
+      "box": "variant_9",
+      "apple": "variant_9",
+      "plate": "variant_9"
+    },
+    "image": "variant_9_human_env0.png",
+    "sha256": "0db114143e7b588b52ec97782998223b2d77d976f635ae6ef842c5caf30097ab",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningOpenPackage-Sharpa-v1",
+    "request": "variant_10",
+    "actual": [
+      "variant_10",
+      "variant_10"
+    ],
+    "expected": {
+      "box": "variant_10",
+      "apple": "variant_10",
+      "plate": "variant_10"
+    },
+    "image": "variant_10_human_env0.png",
+    "sha256": "db5fd0a3eb42d5b212f07d491f4b848bbd8b7472f0440bd3a527a1542b73ba5b",
+    "A4": "passed"
+  }
+]

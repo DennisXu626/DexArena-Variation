@@ -1,0 +1,34 @@
+{
+  "points": 9,
+  "native_true": 6,
+  "strict_predicate_matches": 9,
+  "inset_true": 8,
+  "reset_isolated": 9,
+  "both_envs_restored": 9,
+  "env1_stage_placed": [
+    0,
+    0,
+    0
+  ],
+  "same_cpu_gpu_launch": true,
+  "global_completion_marker": "running",
+  "job_state": "FAILED",
+  "sha256": {
+    "raw/output/results.json": "4ca257b04fd7bf05e09ec7bf34a8c5404566ee2fdd06b8b1bb1f8c9e375cf676",
+    "raw/CPU_LAUNCH.json": "869984f36abbf88a250c6963518b0ed6a6c442855fe3ebe604a87ec9cbd92531",
+    "raw/GPU_LAUNCH.json": "869984f36abbf88a250c6963518b0ed6a6c442855fe3ebe604a87ec9cbd92531",
+    "raw/TRANSITION.jsonl": "996760c16f0652a07712d95c14a00d38116d107bbde946f4ad64c83f078eef69",
+    "raw/EXIT_TRACE.txt": "020bcdfa2f583552417dc49af390d9db21a5fc34327bcad45de35fad5a6cc91a",
+    "raw/TERMINAL.json": "891fe71c6d032309a2b80f6ee197d74fc1ee0e3f2f39acc8ed0e265d742fa9fc",
+    "raw/SUBMISSION.json": "a7dcfd0aa5cd3cf557a960e635523cf20abc7b05bab512413e87bc6cdeaf051a",
+    "raw/SOURCE_VERIFIED.json": "8a9a5da27402cd95469bdad8f70b85f6ad34edc58ad5ae951a78d063e4621c69",
+    "raw/guard_receipt.json": "40de1f4afde46edd3341a62f30971091792ca0c564244672923e72efc86b17d6",
+    "raw/QUEUE_WATCH_RECEIPT.json": "aab16aa18a65d4a20a2aa9f2e42893548c8b83d11ceef9fccc3e78493fa63d86",
+    "raw/capacity_result.json": "695f4803051e2d4744c0a4befb85991cf358d583cc4ad8b2f45780a7e623cb8c",
+    "COSTS.json": "55ad0b64145d43786567285c1172c193b4909a3295f0af68198f043c25b2d976",
+    "RESULTS.md": "0166c9e131fb60e284706a908062e370685ecbed4bd18d87a0b4fe6f5b39d7fe",
+    "POINTS.csv": "014644e2daecf4f8ee48e5d340e428dc28c4f4effe4bc3d8b5af44d17aefbaef",
+    "observer.py.txt": "adcebda62464dee3c50b1545506d50fba6cc4811ef0ae6eb93038e7d73047f60"
+  },
+  "original_guard_receipt_sha256": "f9098c617cb1914f753434abab7a64db43fe7b5ebcbf29e1598f28841628c8e7"
+}

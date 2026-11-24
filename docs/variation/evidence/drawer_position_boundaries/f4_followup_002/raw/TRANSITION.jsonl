@@ -1,0 +1,5 @@
+{"point": "F4-0", "target": 1, "phase": "partial_reset", "field": "stage_charger_placed", "values_by_env": {"before": [0.0, 0.0], "after": [0.0, 0.0]}}
+{"point": "F4-0", "target": 1, "phase": "after_roundtrip", "field": "stage_charger_placed", "values_by_env": {"after": [0.0, 0.0]}}
+{"point": "F4-0", "target": 1, "phase": "after_roundtrip", "field": "stage_charger_placed", "values_by_env": {"after": [0.0, 0.0]}}
+{"point": "F4-1", "target": 0, "phase": "partial_reset", "field": "stage_charger_placed", "values_by_env": {"before": [0.0, 0.0], "after": [0.0, 0.0]}}
+{"point": "F4-1", "target": 0, "phase": "after_roundtrip", "field": "stage_charger_placed", "values_by_env": {"after": [0.0, 0.0]}}

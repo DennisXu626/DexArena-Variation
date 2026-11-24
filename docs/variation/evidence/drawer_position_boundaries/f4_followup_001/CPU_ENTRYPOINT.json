@@ -1,0 +1,33 @@
+{
+  "previous": {
+    "process_argv": [
+      "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/check_drawer_positions.py",
+      "--output",
+      "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/output",
+      "--samples",
+      "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/SAMPLES.csv"
+    ],
+    "cwd": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source",
+    "sys_path_0": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001",
+    "helper": null,
+    "matrix_sha256": null,
+    "placement_only": false
+  },
+  "corrected": {
+    "process_argv": [
+      "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_drawer_positions.py",
+      "--output",
+      "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/output",
+      "--samples",
+      "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/SAMPLES.csv",
+      "--placement-only"
+    ],
+    "cwd": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source",
+    "sys_path_0": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation",
+    "helper": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tools/variation/check_cabinet_positions.py",
+    "matrix_sha256": "d0f38fcac65874b795232c9ba5fe3354a76d41070063b98d86b3978f84f6ef47",
+    "placement_only": true
+  },
+  "only_cpu_import_probe": true,
+  "gpu_seconds": 0
+}

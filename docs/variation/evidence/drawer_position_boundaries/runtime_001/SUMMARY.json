@@ -1,0 +1,107 @@
+{
+  "job": "135501",
+  "status": "running",
+  "planned": 76,
+  "recorded": 69,
+  "counts": {
+    "DrawerPlugOpenDrawer-Sharpa-v1": {
+      "initialization": {
+        "init_pass": 13,
+        "rejected": 2
+      },
+      "ik": {
+        "pass": 13,
+        "": 2
+      },
+      "actual_motion": {
+        "fail": 1,
+        "": 14
+      },
+      "passive_state_equal": {
+        "true": 15
+      },
+      "category": {
+        "initialization": 13,
+        "reject_control": 2
+      },
+      "confirmed_resets_by_env": {
+        "0": 7,
+        "1": 8
+      }
+    },
+    "DrawerPlugPickCharger-Sharpa-v1": {
+      "initialization": {
+        "init_pass": 25,
+        "placement_predicate_measured": 1,
+        "isolation_fail": 1,
+        "not_run": 7,
+        "rejected": 1
+      },
+      "ik": {
+        "fail": 16,
+        "pass": 9,
+        "": 10
+      },
+      "actual_motion": {
+        "": 35
+      },
+      "passive_state_equal": {
+        "true": 27,
+        "false": 1,
+        "": 7
+      },
+      "category": {
+        "initialization": 25,
+        "placement_predicate": 9,
+        "reject_control": 1
+      },
+      "confirmed_resets_by_env": {
+        "0": 14,
+        "1": 13
+      }
+    },
+    "DrawerPlugInsertPlug-Sharpa-v1": {
+      "initialization": {
+        "init_pass": 24,
+        "rejected": 2
+      },
+      "ik": {
+        "fail": 7,
+        "pass": 17,
+        "": 2
+      },
+      "actual_motion": {
+        "": 25,
+        "fail": 1
+      },
+      "passive_state_equal": {
+        "true": 26
+      },
+      "category": {
+        "initialization": 24,
+        "reject_control": 2
+      },
+      "confirmed_resets_by_env": {
+        "0": 13,
+        "1": 13
+      }
+    }
+  },
+  "observed_outline_by_yaw": {
+    "85": {
+      "gap_m": 0.015391845816807616,
+      "point_id": "C-near-85",
+      "seed": 883
+    },
+    "90": {
+      "gap_m": 0.012437135516970663,
+      "point_id": "C-near",
+      "seed": 877
+    },
+    "95": {
+      "gap_m": 0.010707303085524866,
+      "point_id": "C-near-95",
+      "seed": 884
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "job_id": "134787",
+  "pid": 1082593,
+  "samples": [
+    {
+      "epoch": 1795414552.3359168,
+      "state": "PENDING",
+      "exit": 0
+    },
+    {
+      "epoch": 1795414562.35213,
+      "state": "RUNNING",
+      "exit": 0
+    }
+  ],
+  "reason": "left_pending"
+}

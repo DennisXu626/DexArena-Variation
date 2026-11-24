@@ -869,7 +869,7 @@ class DrawerPlugLongEnv(BaseEnv):
         return self.drawer.get_qpos()[:, self.drawer_joint_index]
 
     def _drawer_local_to_world_xy(
-        self, local_xy: torch.Tensor, travel, env_idx: torch.Tensor = None
+        self, local_xy: torch.Tensor, travel, env_idx: torch.Tensor = None, yaw=None
     ) -> torch.Tensor:
         """Drawer-frame xy (at zero travel) -> world xy, shape (b, 2).
 
@@ -883,7 +883,7 @@ class DrawerPlugLongEnv(BaseEnv):
         )
         shifted = local_xy.clone()
         shifted[:, 0] = shifted[:, 0] - travel
-        c, s = np.cos(self.drawer_yaw), np.sin(self.drawer_yaw)
+        c, s = (np.cos(self.drawer_yaw), np.sin(self.drawer_yaw)) if yaw is None else (yaw.cos(), yaw.sin())
         world = torch.stack(
             [c * shifted[:, 0] - s * shifted[:, 1], s * shifted[:, 0] + c * shifted[:, 1]],
             dim=-1,
@@ -893,10 +893,21 @@ class DrawerPlugLongEnv(BaseEnv):
     def _world_to_drawer_local_xy(self, world_xy: torch.Tensor, travel) -> torch.Tensor:
         """World xy -> drawer-frame xy at zero travel, shape (b, 2)."""
         delta = world_xy - self._drawer_episode_xy
-        c, s = np.cos(self.drawer_yaw), np.sin(self.drawer_yaw)
+        # The articulation pose is included in native snapshots, including old ones.
+        q = self.drawer.pose.q
+        c, s = 1 - 2 * q[:, 3].square(), 2 * q[:, 0] * q[:, 3]
         local = torch.stack([c * delta[:, 0] + s * delta[:, 1], -s * delta[:, 0] + c * delta[:, 1]], dim=-1)
         local[:, 0] = local[:, 0] + travel
         return local
+
+    def drawer_handle_world_position(self) -> torch.Tensor:
+        """The same grasp point on the middle drawer for each current pose."""
+        local = self._drawer_handle_xyz_nominal.copy()
+        local[:2] -= self.drawer_xy
+        local[2] -= self.cabinet_z
+        offsets = self.drawer.pose.p.new_tensor(local).expand(self.num_envs, -1).clone()
+        offsets[:, 0] -= self.drawer_travel
+        return self.drawer.pose.p + quaternion_apply(self.drawer.pose.q, offsets)
 
     def _out_of_drawer(self, position: torch.Tensor) -> torch.Tensor:
         """Whether a world point has left the middle drawer's open box.
@@ -1249,23 +1260,31 @@ class DrawerPlugLongEnv(BaseEnv):
             self.agent.reset(self._initial_robot_qpos(len(env_idx)))
             self.agent.robot.set_root_pose(self._robot_base_pose)
 
-    def _initialize_drawer(self, env_idx: torch.Tensor, b: int, travel: float):
-        """Randomise the cabinet pose and park the middle drawer at ``travel``."""
+    def _initialize_drawer(self, env_idx: torch.Tensor, b: int, travel: float, layout=None):
+        """Randomise the native cabinet or apply selected absolute coordinates."""
         with torch.device(self.device):
-            xy_offset = (torch.rand((b, 2)) * 2 - 1) * self.drawer_init_xy_noise
             drawer_p = torch.zeros((b, 3))
-            drawer_p[:, :2] = torch.tensor(self.drawer_xy, dtype=torch.float32) + xy_offset
             drawer_p[:, 2] = self.cabinet_z
+            if layout is None:
+                xy_offset = (torch.rand((b, 2)) * 2 - 1) * self.drawer_init_xy_noise
+                drawer_p[:, :2] = torch.tensor(self.drawer_xy, dtype=torch.float32) + xy_offset
+                drawer_q = torch.tensor(yaw_quaternion(self.drawer_yaw), dtype=torch.float32).expand(b, -1)
+            else:
+                drawer_p[:, :2] = drawer_p.new_tensor([row["drawer_xy"] for row in layout])
+                drawer_q = drawer_p.new_tensor([yaw_quaternion(row["drawer_yaw"]) for row in layout])
             self._drawer_episode_xy[env_idx] = drawer_p[:, :2]
-            drawer_q = torch.tensor(
-                yaw_quaternion(self.drawer_yaw), dtype=torch.float32
-            ).expand(b, -1)
             self.drawer.set_pose(Pose.create_from_pq(p=drawer_p, q=drawer_q))
 
             if self.num_envs == 1:
                 handle = self._drawer_handle_xyz_nominal.copy()
-                handle[:2] += xy_offset[0].cpu().numpy()
-                handle[0] -= travel
+                if layout is None:
+                    handle[:2] += xy_offset[0].cpu().numpy()
+                    handle[0] -= travel
+                else:
+                    local = handle[:2] - self.drawer_xy - [travel, 0]
+                    angle = layout[0]["drawer_yaw"]
+                    c, s = np.cos(angle), np.sin(angle)
+                    handle[:2] = np.array([[c, -s], [s, c]]) @ local + layout[0]["drawer_xy"]
                 self.drawer_handle_xyz = tuple(handle)
 
             qpos = torch.zeros_like(self.drawer.get_qpos()[env_idx])
@@ -1273,42 +1292,50 @@ class DrawerPlugLongEnv(BaseEnv):
             self.drawer.set_qpos(qpos)
             self.drawer.set_qvel(torch.zeros_like(qpos))
 
-    def _place_charger_in_drawer(self, env_idx: torch.Tensor, b: int, travel: float):
+    def _charger_drawer_center(self):
+        return (sum(self.drawer_interior_x) / 2 + self.charger_outer_offset_x,
+                sum(self.drawer_interior_y) / 2)
+
+    def _place_charger_in_drawer(self, env_idx: torch.Tensor, b: int, travel: float, layout=None):
         with torch.device(self.device):
-            # Start from the measured interior centre, then apply the explicit
-            # outward offset so the placement remains meaningful after scaling.
-            center_local_xy = (
-                (self.drawer_interior_x[0] + self.drawer_interior_x[1]) / 2
-                + self.charger_outer_offset_x,
-                (self.drawer_interior_y[0] + self.drawer_interior_y[1]) / 2,
-            )
-            local = torch.tensor(center_local_xy, dtype=torch.float32).expand(b, -1)
-            local = local + (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
             xyz = torch.zeros((b, 3))
-            xyz[:, :2] = self._drawer_local_to_world_xy(local, travel, env_idx)
-            # In the side-resting orientation local y is vertical, and the
-            # solid charger body (not its inward-facing prongs) touches the floor.
+            yaw = None
+            if layout is None:
+                local = torch.tensor(self._charger_drawer_center(), dtype=torch.float32).expand(b, -1)
+                local = local + (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
+            else:
+                local = xyz.new_tensor([row["charger_drawer_xy"] for row in layout])
+                yaw = xyz.new_tensor([row["drawer_yaw"] for row in layout])
+            xyz[:, :2] = self._drawer_local_to_world_xy(local, travel, env_idx, yaw=yaw)
+            # The body rests on the drawer floor with both prongs pointing inward.
             xyz[:, 2] = self.drawer_floor_z + self.charger_half[1] + 1e-3
-            quat = torch.tensor(
-                self.charger_initial_quat, dtype=torch.float32
-            ).expand(b, -1)
+            quat = torch.tensor(self.charger_initial_quat, dtype=torch.float32).expand(b, -1)
+            if layout is not None:
+                # Compose the cabinet's Z rotation with the side-resting orientation.
+                c, s = (yaw / 2).cos(), (yaw / 2).sin()
+                w, x, y, z = quat.unbind(dim=1)
+                quat = torch.stack((c*w - s*z, c*x - s*y, c*y + s*x, c*z + s*w), dim=1)
             self._place_charger(b, xyz, quat)
 
-    def _place_charger_on_table(self, b: int):
+    def _place_charger_on_table(self, b: int, layout=None):
         """Start from a valid outcome of the charger pick-and-place stage."""
         with torch.device(self.device):
             xyz = torch.zeros((b, 3))
-            xyz[:, :2] = sample_drawer_plug_disc_xy(
-                self.charger_place_center_xy,
-                0.75 * self.charger_place_radius,
-                b,
-            )
-            # ``charger_initial_quat`` puts local +y upward, so the charger's
-            # solid body rests on its -y side and the prongs point horizontally.
+            if layout is None:
+                xyz[:, :2] = sample_drawer_plug_disc_xy(
+                    self.charger_place_center_xy, 0.75 * self.charger_place_radius, b
+                )
+            else:
+                random_rows = [i for i, row in enumerate(layout) if "charger_table_xy" not in row]
+                if random_rows:
+                    xyz[random_rows, :2] = sample_drawer_plug_disc_xy(
+                        self.charger_place_center_xy, 0.75 * self.charger_place_radius, len(random_rows)
+                    )
+                for i, row in enumerate(layout):
+                    if "charger_table_xy" in row:
+                        xyz[i, :2] = xyz.new_tensor(row["charger_table_xy"])
             xyz[:, 2] = self.charger_half[1] + 1e-3
-            quat = torch.tensor(
-                self.charger_initial_quat, dtype=torch.float32
-            ).expand(b, -1)
+            quat = torch.tensor(self.charger_initial_quat, dtype=torch.float32).expand(b, -1)
             self._place_charger(b, xyz, quat)
 
     def _place_charger(self, b: int, xyz: torch.Tensor, quat: torch.Tensor):
@@ -1317,22 +1344,20 @@ class DrawerPlugLongEnv(BaseEnv):
             self.charger.set_linear_velocity(torch.zeros((b, 3)))
             self.charger.set_angular_velocity(torch.zeros((b, 3)))
 
-    def _place_socket(self, b: int):
+    def _place_socket(self, b: int, layout=None):
         with torch.device(self.device):
             xyz = torch.zeros((b, 3))
-            xyz[:, :2] = (
-                (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
-                + torch.tensor(self.socket_center_xy, dtype=torch.float32)
-            )
             xyz[:, 2] = self.socket_thickness / 2
-            self.socket.set_pose(
-                Pose.create_from_pq(
-                    p=xyz,
-                    q=torch.tensor(
-                        yaw_quaternion(self.socket_yaw), dtype=torch.float32
-                    ).expand(b, -1),
+            if layout is None:
+                xyz[:, :2] = (
+                    (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
+                    + torch.tensor(self.socket_center_xy, dtype=torch.float32)
                 )
-            )
+                quat = xyz.new_tensor(yaw_quaternion(self.socket_yaw)).expand(b, -1)
+            else:
+                xyz[:, :2] = xyz.new_tensor([row["socket_xy"] for row in layout])
+                quat = xyz.new_tensor([yaw_quaternion(row["socket_yaw"]) for row in layout])
+            self.socket.set_pose(Pose.create_from_pq(p=xyz, q=quat))
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
