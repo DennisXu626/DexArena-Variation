@@ -1,0 +1,27 @@
+JobId=137991 JobName=process-isolated.sh
+   UserId=pb(1044) GroupId=pb(1044) MCS_label=N/A
+   Priority=1 Nice=0 Account=(null) QOS=normal
+   JobState=COMPLETED Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:23:05 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-11-24T03:31:05 EligibleTime=2026-11-24T03:31:18
+   AccrueTime=Unknown
+   StartTime=2026-11-24T03:31:18 EndTime=2026-11-24T03:54:23 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-24T03:31:18 Scheduler=Main
+   Partition=a800 AllocNode:Sid=lyg0295:1828763
+   ReqNodeList=lyg0295 ExcNodeList=(null)
+   NodeList=lyg0295
+   BatchHost=lyg0295
+   NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=1,mem=474480M,node=1,billing=1,gres/shard=1
+   AllocTRES=cpu=2,node=1,billing=2,gres/shard=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/data/home/pb/juice-ten-20261124/process-isolated.sh
+   WorkDir=/data/home/pb
+   StdErr=/data/home/pb/juice-ten-20261124/process-isolated-137991.out
+   StdIn=/dev/null
+   StdOut=/data/home/pb/juice-ten-20261124/process-isolated-137991.out
+   TresPerNode=gres/shard:idx6:1

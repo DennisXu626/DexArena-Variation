@@ -97,3 +97,7 @@ PR 建议附已审查的六组 original／两候选近景对照，以及 Long �
 ## PR19-R1 作者修正
 
 错误请求预校验、局部 reset 临界状态保护、main 冲突解决和按 ID 标图已完成作者侧修正，CPU 回归通过；新版本 GPU 复验待 head 冻结后安排。完整命令、证据边界与版本见[R1 修正报告](JUICE_PR19_R1.md)。
+
+## 十套扩展（作者工作分支）
+
+保留本页 PR19 两套历史说明。新增八套见 [十套方案](JUICE_TEN_VARIANTS.md) 和 [本轮证据](evidence/juice_ten/README.md)，作为独立十方案分支交付，PR 由作者发起。

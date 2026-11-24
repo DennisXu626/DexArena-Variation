@@ -1,0 +1,163 @@
+{
+  "base": "58de243 + PR19 b611faf + source snapshot",
+  "jobs": [
+    137880,
+    137890,
+    137918,
+    137958,
+    137960,
+    137961
+  ],
+  "stages": {
+    "OpenFridge": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "actual_ids": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ]
+    },
+    "AppleToBlender": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "actual_ids": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ]
+    },
+    "CloseFridge": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "actual_ids": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ]
+    },
+    "PlaceLid": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "actual_ids": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ]
+    },
+    "PressButton": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "actual_ids": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ]
+    },
+    "Long": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "actual_ids": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ]
+    }
+  },
+  "limits": "Sharpa,2env,seed7,noise0,fixed schemes; no complete robot trajectory",
+  "short_trace": {
+    "OpenFridge": {
+      "status": "passed",
+      "pairs": 11
+    },
+    "AppleToBlender": {
+      "status": "passed",
+      "pairs": 11
+    },
+    "CloseFridge": {
+      "status": "passed",
+      "pairs": 11,
+      "job": 137960,
+      "method": "independent task process; initial failure retained in short_trace_trace.json.gz"
+    },
+    "PlaceLid": {
+      "status": "passed",
+      "pairs": 11
+    },
+    "PressButton": {
+      "status": "passed",
+      "pairs": 11
+    },
+    "Long": {
+      "status": "passed",
+      "pairs": 11
+    }
+  },
+  "critical": "passed",
+  "initial_full_job_status": "FAILED 1:0: CloseFridge/original fourth-step mismatch; A4/A5, other 55 traces, critical and previews passed",
+  "diagnosis": "137958: two native/native and two native/original fresh task processes passed; underlying cause not established",
+  "status": "limited checks passed using split evidence; initial failure retained",
+  "final_short_trace": {
+    "job": 137991,
+    "status": "passed",
+    "pairs": 66,
+    "maximum_initial_and_trace_difference": 0.0,
+    "method": "fresh Python process per native and candidate instance",
+    "evidence": "root_cause/process-isolated-trace.json.gz"
+  },
+  "root_cause_evidence": "root_cause/README.md"
+}

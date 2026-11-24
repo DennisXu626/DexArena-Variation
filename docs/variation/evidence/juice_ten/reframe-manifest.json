@@ -1,0 +1,3108 @@
+{
+  "job_id": "137961",
+  "gpu": "6",
+  "seed": 7,
+  "num_envs": 1,
+  "physics": "CPU",
+  "rendering": "GPU",
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "views": {
+    "seated_lid_button": {
+      "original": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_1": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "3fc54433bd8b0f98be7446cde6c85d9d31ac80ef780c7e8a09eb2e5afef56d17"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "808eda6505c9538669ee360b8edad90a335d0a3c4ad56f227d218a4e054ce252"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_2": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "ec76f13761bf8acb5f1cefda5fe773e35ce32d95794a69cd35f5eb55e9357328"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "67892c64d0fc5f0467c679c74a39b415cda161ed7c68159d0fa06ebf66315867"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_3": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1cb41a4786057576bd9bd12546b078a53ad55a4e661d9bbd245345a8bcb0da6f"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "0af3a50478916049142d0374d98a3602a3bc8be2ff66899a4faf9f1aa2668f48"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_4": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "9b49404457af76822dc0ef808151c3828cfa12adc5449013b7723d28df057244"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1174a19640dd155c1e8c5492ba724c7887396e9ed229dc7c79d8b82003c71504"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_5": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "534ac21013bdb5cf1fa18dd0ab9f56156be6616aa51da3692675a736ebe0149b"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "d48e3484104ebe0f36b8317fd0f58bf79dd93de10945a1c765c6e8299c946025"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_6": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "f3292e84baf3cb67aa85b4e86ac62b2aa5e092b2f22c6fbe564107b35a317ee7"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "da5ca0af327145c1e28b0c9d348d39e38f286f98c26266d8d9b1de3e1c750e27"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_7": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "4be5e678a686977b70f748cdca9d7cce3f9be8fd7473e3ba4170d66fde62a1bc"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "504544c75c6e3570723e9748840d466c994e6063a04136a26fd8c5200612581d"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_8": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "9a4583e75ffbef051e59a97a69108f20d8a5a7455c8bf9c18e96421a1225bad3"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "d21d4120f6e76b875f23a1220a5c76fcfd439984f98330dba0fb4319c94d4255"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_9": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "99a8422534118ef604c4bb507b21d00e229b59bab565a68d9770aa698ad69bdd"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "d1f81ad5c67a537ba38c23bb361926f0f0dbfb288c92a61808c1f313c7f677f8"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      },
+      "variant_10": {
+        "task": "JuicePreparationPressButton-Sharpa-v1",
+        "state_label": "native integrated-lid reset",
+        "state": {
+          "blender": [
+            [
+              -0.15275248885154724,
+              -0.23125852644443512,
+              0.16144533455371857,
+              0.6673125624656677,
+              0.0,
+              0.0,
+              -0.7447777986526489
+            ]
+          ],
+          "blender_qpos": [
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "robot_qpos": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              0.0,
+              -2.5999999046325684,
+              0.0,
+              2.4000000953674316,
+              0.7853981852531433,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "camera": [
+          [
+            -0.6901535987854004,
+            0.10815273225307465,
+            0.46144533157348633,
+            0.947294294834137,
+            0.04609481617808342,
+            0.1593044549226761,
+            -0.27410006523132324
+          ]
+        ],
+        "fovy": 0.82,
+        "appearance": {
+          "native": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "actual": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              {
+                "link": "scene-0-robocasa_blender023_press_button_object",
+                "mesh": "Body001.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "adf2c81974b9d5507dd0b8e9a35a53fad142891715aa6385fd43c3e527e92959"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_power_button",
+                "mesh": "power_button.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher",
+                "mesh": "pitcher.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_knob_speed",
+                "mesh": "knob_speed.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_integrated_lid",
+                "mesh": "lid.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "4e64bb239a7f3d8b762a14f161fd30f8e3dc0f2c1c42a61a2b52978ea73dd3f3"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_blade",
+                "mesh": "blade.obj",
+                "color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": "1940244e406185382961faadd52c6e1eebad4c4ad8e70b2bafeb281503591b20"
+              },
+              {
+                "link": "scene-0-robocasa_blender023_press_button_pitcher_main",
+                "mesh": "pitcher_main.obj",
+                "color": [
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.03639296442270279,
+                  0.75
+                ],
+                "roughness": 1.0,
+                "metallic": 0.4472135901451111,
+                "texture_sha256": null
+              }
+            ],
+            "lid": []
+          },
+          "bindings": {
+            "fridge": [],
+            "apple": [],
+            "blender": [
+              [
+                0,
+                "blender"
+              ],
+              [
+                4,
+                "lid"
+              ]
+            ],
+            "lid": []
+          }
+        }
+      }
+    }
+  }
+}

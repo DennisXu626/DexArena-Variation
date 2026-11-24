@@ -174,8 +174,8 @@ def framing(task, view):
     direction /= np.linalg.norm(direction)
     tangent = np.array([-direction[1], direction[0]])
     offset = .62*direction + .14*tangent
-    target = center + [.0,.0,.14]
-    return target,[*offset,.22],.70
+    target = center + [.0,.0,.08]
+    return target,[*offset,.22],.82
 
 
 def capture(out, view, scheme, recipe):
@@ -225,15 +225,17 @@ def contact_sheet(out,view,schemes):
         raise ValueError("No schemes to compare")
     panels = [Image.open(out/f"{view}_{scheme}.png").convert("RGB") for scheme, _ in columns]
     w,h = panels[0].size
-    sheet = Image.new("RGB",(len(panels)*w,h+44),"#1B2027")
+    cols=3;rows=(len(panels)+cols-1)//cols
+    sheet=Image.new("RGB",(cols*w,rows*(h+44)),"#1B2027")
     try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",23)
+        font=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",23)
     except OSError:
-        font = ImageFont.load_default()
-    draw = ImageDraw.Draw(sheet)
-    for i, ((scheme, label), panel) in enumerate(zip(columns, panels)):
-        draw.text((i*w+15,8),label,fill="white",font=font)
-        sheet.paste(panel,(i*w,44))
+        font=ImageFont.load_default()
+    draw=ImageDraw.Draw(sheet)
+    for i,((scheme,label),panel) in enumerate(zip(columns,panels)):
+        x=(i%cols)*w;y=(i//cols)*(h+44)
+        draw.text((x+15,y+8),label,fill="white",font=font)
+        sheet.paste(panel,(x,y+44))
     sheet.save(out/f"{view}_comparison.png")
 
 
