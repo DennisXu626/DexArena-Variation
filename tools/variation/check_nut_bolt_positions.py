@@ -164,7 +164,7 @@ def samples():
     yield "SeatNut", [
         *[(f"S-B{index}", {"upright_bolt_xy_m": p}, False) for index, p in enumerate(upright)],
         *[(f"S-N{index}", {"table_nut_xy_m": p}, False) for index, p in enumerate(nut) if index],
-        ("S-near", {"upright_bolt_xy_m": upright[8], "table_nut_xy_m": nut[3]}, False),
+        ("S-near", {"upright_bolt_xy_m": upright[7], "table_nut_xy_m": nut[4]}, False),
         ("S-far", {"upright_bolt_xy_m": upright[1], "table_nut_xy_m": nut[8]}, False),
         ("S-reject-bolt", {"upright_bolt_xy_m": [c.bolt_place_center_xy[0] + UPRIGHT_BOLT_RADIUS_M + .0001,
                                                 c.bolt_place_center_xy[1]]}, True),
