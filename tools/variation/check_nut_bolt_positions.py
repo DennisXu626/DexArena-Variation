@@ -44,6 +44,7 @@ GPU_MEMORY = {
 }
 IK_LIMIT_M = 0.015
 IK_ATTEMPT_LIMIT_M = 0.07
+RESET_TURN_PROGRESS_TOL_RAD = 1e-6
 SUPPORT_STEPS = 10
 TASKS = ("PickBolt", "SeatNut", "TurnNut")
 
@@ -265,7 +266,10 @@ def readback(e, task, request, i, g):
         result.update(threaded_relative_yaw_deg=yaw, turn_progress_rad=progress,
                       threaded_axial_depth_m=float(e._threaded_depth[i]))
         expected_yaw = request.get("threaded_nut_relative_yaw_deg", 0)
-        assert abs(yaw - expected_yaw) <= 1e-4 and abs(progress) < 1e-7
+        assert abs(yaw - expected_yaw) <= 1e-4, (yaw, expected_yaw)
+        # CUDA reconstructs the link quaternion from qpos with float32 rounding.
+        assert abs(progress) <= RESET_TURN_PROGRESS_TOL_RAD, progress
+        assert int(e.elapsed_steps[i]) == 0 and result["threaded_axial_depth_m"] == 0
         assert np.allclose(pose[:2], bolt[:2], atol=1e-6, rtol=0)
         assert np.allclose(orient(pose).as_matrix(), Rotation.from_euler("z", expected_yaw, degrees=True).as_matrix(),
                            atol=1e-6, rtol=0)
