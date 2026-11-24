@@ -1,0 +1,89 @@
+{
+  "commit": "7a9fd3e27757a14161b1c49b3ccaab48db0b9d70",
+  "sapien": "3.0.3",
+  "build": {
+    "sim_backend": "physx_cpu",
+    "render_mode": null,
+    "obs_mode": "state",
+    "reconfiguration_freq": 0,
+    "enhanced_determinism": true
+  },
+  "tasks": {
+    "NutBoltSeatNut-Sharpa-v1": [
+      {
+        "label": "make",
+        "seed": null,
+        "options": null,
+        "actual_bolt_z_m": 0.03999999910593033,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": true
+      },
+      {
+        "label": "native",
+        "seed": 701,
+        "options": null,
+        "actual_bolt_z_m": 0.04100000113248825,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": false
+      },
+      {
+        "label": "position",
+        "seed": 701,
+        "options": {
+          "position_layout": {
+            "0": {}
+          }
+        },
+        "actual_bolt_z_m": 0.03999999910593033,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": true
+      },
+      {
+        "label": "native-again",
+        "seed": 701,
+        "options": null,
+        "actual_bolt_z_m": 0.04100000113248825,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": false
+      }
+    ],
+    "NutBoltTurnNut-Sharpa-v1": [
+      {
+        "label": "make",
+        "seed": null,
+        "options": null,
+        "actual_bolt_z_m": 0.03999999910593033,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": true
+      },
+      {
+        "label": "native",
+        "seed": 701,
+        "options": null,
+        "actual_bolt_z_m": 0.04100000113248825,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": false
+      },
+      {
+        "label": "position",
+        "seed": 701,
+        "options": {
+          "position_layout": {
+            "0": {}
+          }
+        },
+        "actual_bolt_z_m": 0.03999999910593033,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": true
+      },
+      {
+        "label": "native-again",
+        "seed": 701,
+        "options": null,
+        "actual_bolt_z_m": 0.04100000113248825,
+        "native_lock_z_m": 0.03999999910593033,
+        "six_vertex_candidate": false
+      }
+    ]
+  }
+}
