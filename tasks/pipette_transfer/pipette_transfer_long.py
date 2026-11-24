@@ -59,6 +59,7 @@ from tasks.config.workspace_rig import (
     set_work_table_pose,
 )
 from tasks.config.energy_fence import set_task_object_energy_fence
+from tasks.pipette_transfer.position_layout import STAND_BASE_HALF_XY_M, STAND_YAW_DEG, requested_layout
 PIPETTE_URDF=ROOT/"tasks/assets/task_object_meshes/pipette/mobility.urdf"
 PIPETTE_GRIP_ORIGINAL_LENGTH=0.120
 PIPETTE_GRIP_LENGTH=0.160
@@ -329,7 +330,7 @@ def _build_pipette_stand(b):
     the cup and left leaning on a ring still counts as parked.
     """
     blue=[.16,.30,.42]
-    _box(b,[.060,.055,.006],[0,0,.006],blue)                                       # base plate
+    _box(b,[*STAND_BASE_HALF_XY_M,.006],[0,0,.006],blue)                           # base plate
     for x in (-.040,.040):
         _box(b,[.006,.006,.095],[x,-.045,.101],blue)                               # rear posts
     _box(b,[.046,.006,.006],[0,-.045,.196],blue)                                   # rear crossbar
@@ -581,8 +582,9 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
     def reset(self,seed=None,options=None):
         indices = validate_reset_request(seed, options, self.num_envs)
         request = options or {}
+        selected = range(self.num_envs) if indices is None else indices
+        requested_layout(self, request, selected, PIPETTE_MIN_STAND_CUP_GAP)
         if self._pipette_appearance is not None and "reset_to_env_states" not in request:
-            selected = range(self.num_envs) if indices is None else indices
             self._pipette_appearance.resolve_requests(selected, request.get("pipette_appearance", {}))
         if indices is not None:
             env_idx=options["env_idx"]
@@ -620,6 +622,12 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
         # (dual rig for the long task / S1, single right-arm rig for S0).
         self.agent.robot.set_root_pose(DUAL_ROBOT_BASE_POSE)
         lay=self._sample_layout(env_idx)   # first episode-RNG draw: layout (see layout_rng)
+        explicit = requested_layout(self, options, env_idx.tolist(), PIPETTE_MIN_STAND_CUP_GAP)
+        if explicit is not None:
+            lay = {name: [row[name] for row in explicit] for name in ('cup', 'rack', 'stand')}
+            lay['stand_q'] = [offset_pose((0,0,0), PIPETTE_STAND_NOMINAL_Q, 0, 0,
+                                         np.deg2rad(row['stand_yaw_deg'] - STAND_YAW_DEG[1]))[1]
+                              for row in explicit]
         self._reset_arms(env_idx)
         self.eval.reset(env_idx); n=len(env_idx)
         T=lambda rows: torch.tensor(np.asarray(rows),dtype=torch.float32,device=self.device)
