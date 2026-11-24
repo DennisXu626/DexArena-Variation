@@ -160,6 +160,7 @@ def geometry(env):
     return {'dimensions': dimensions, 'local_hulls_xy': hulls,
             'robot_base_world_hull_xy': base[ConvexHull(base).vertices].tolist(),
             'dish_target_radius_m': PIPETTE_CUP_SUCCESS_RADIUS,
+            'stand_return_radius_m': env.cfg.pipette_return_radius,
             'native_xy_half_ranges_m': {'stand': PIPETTE_STAND_RANDOM_XY, 'cup': PIPETTE_CUP_RANDOM_XY,
                                         'rack': PIPETTE_RACK_RANDOM_XY},
             'native_yaw_half_range_deg': PIPETTE_STAND_RANDOM_YAW_DEG,

@@ -62,7 +62,7 @@ def scene(ax, geometry, poses, bounds, focus=None):
     hulls = geometry['local_hulls_xy']
     for name, color in OBJECT_COLORS.items():
         if name in poses and name != focus:
-            yaw = 90 if name == 'stand' else 0
+            yaw = geometry['stand_nominal_yaw_deg'] if name == 'stand' else 0
             poly(ax, outline(hulls, name, poses[name][:2], yaw), color, EDGE, lw=1, alpha=.8, zorder=2)
     ax.set_aspect('equal')
     ax.grid(color='#a99f8e', alpha=.27, lw=.6)
@@ -97,6 +97,9 @@ def add_workpoint(ax, obj, poses, geometry):
     if obj == 'rack':
         label(ax, '试管与中央槽同移', cm(poses['tube'][:2]), xy + [4, 11])
     if obj == 'stand':
+        radius = 100 * geometry['stand_return_radius_m']
+        ax.add_patch(Circle(xy, radius, fc='none', ec='#3f6f62', ls='--', lw=1.15, zorder=3))
+        label(ax, '停放判定 XY 区', xy + [radius, 0], xy + [21, -2])
         ax.annotate('手指接近', xy=xy + [-4, -1], xytext=xy + [-17, -1],
                     color=INK, fontsize=9, arrowprops={'arrowstyle': '->', 'color': INK})
 
@@ -175,7 +178,8 @@ def make_figure(directory, outfile, task, category, title, rows):
     fig.patch.set_facecolor(BG)
     fig.subplots_adjust(left=.09, right=.96, top=.78, bottom=.16, wspace=.23)
     fig.text(.085, .92, title, fontsize=24, fontweight='bold', color=INK)
-    fig.text(.088, .862, f'{task}  ·  场景 XY  ·  支架与竖直移液器共用根 XY，吸头朝下', fontsize=10.5, color=EDGE)
+    scope = 'AspirateLiquid、DispenseLiquid' if category.startswith('stand-') else task
+    fig.text(.088, .862, f'{scope}  ·  场景 XY  ·  支架与竖直移液器共用根 XY，吸头朝下', fontsize=10.5, color=EDGE)
     fig.legend(handles=[Patch(facecolor=OLD, edgecolor=EDGE, label='旧域'),
                         Patch(facecolor='#98c9e5', edgecolor=BLUE, label='候选域'),
                         Line2D([], [], marker='o', ls='', mfc=RED, mec='white', label='标称点'),
