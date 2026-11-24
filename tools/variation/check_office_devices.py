@@ -81,26 +81,50 @@ def source_check(baseline=BASELINE):
     for joint, target in zip(joints, release_targets, strict=True):
         joint.set_drive_target(target)''').body[0]
         keyboard_gpu_marker = ast.parse('''if self.scene.gpu_sim_enabled and self.num_envs > 1:
-    indices = marker._scene_idxs[marker.scene._reset_mask[marker._scene_idxs]]
-    poses = []
-    for env_id in indices.tolist():
-        links = self._target_links[env_id]
-        slot = int(self.sequence_index[env_id])
-        key = links[slot] if 0 <= slot < len(links) else None
-        poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
-    if poses:
-        marker.set_pose(Pose.create(poses, device=marker.device))
+    scene = marker.scene
+    mask = scene._reset_mask
+    if getattr(self, "_furniture_reset_env_idx", None) is not None:
+        scene._reset_mask = mask & self._furniture_reset_mask(mask)
+    try:
+        indices = marker._scene_idxs[scene._reset_mask[marker._scene_idxs]]
+        poses = []
+        for env_id in indices.tolist():
+            links = self._target_links[env_id]
+            slot = int(self.sequence_index[env_id])
+            key = links[slot] if 0 <= slot < len(links) else None
+            poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
+        if poses:
+            marker.set_pose(Pose.create(poses, device=marker.device))
+    finally:
+        scene._reset_mask = mask
     return''').body[0]
         if task == 'type_keys':
             restore_legacy_marker_ast(current, original)
+        device, center = {
+            'open_laptop': ('laptop', '(LAPTOP_X, 0.0)'),
+            'type_keys': ('keyboard', 'KEYBOARD_SPAWN_CENTER'),
+            'click_mouse': ('mouse', '(MOUSE_X, MOUSE_Y)'),
+        }[task]
+        position_import = ast.parse('from tasks.office_desk.position_layout import apply_position_layout').body[0]
+        position_fields = ast.parse(f'_position_device_name = {device!r}\n_position_center = {center}').body
+        position_call = ast.parse('apply_position_layout(options, env_idx, xyz, yaw)').body[0]
+
         def same(left, right):
             return ast.dump(left, include_attributes=False) == ast.dump(right, include_attributes=False)
 
         class Normalize(ast.NodeTransformer):
             def visit_ImportFrom(self, node):
+                if same(node, position_import):
+                    counts['position_import'] = counts.get('position_import', 0) + 1
+                    return None
                 return None if node.module in ('tasks.office_desk.reset_scope', 'tasks.office_desk.devices_appearance') else node
 
             def visit_ClassDef(self, node):
+                if any(ast.unparse(base) == 'OfficeResetScopeMixin' for base in node.bases):
+                    for field in position_fields:
+                        matches = [item for item in node.body if same(item, field)]
+                        assert len(matches) == 1, f'{task}: position class contract changed'
+                        node.body.remove(matches[0])
                 node.bases = [base for base in node.bases if ast.unparse(base) != 'OfficeResetScopeMixin']
                 return self.generic_visit(node)
 
@@ -130,6 +154,13 @@ def source_check(baseline=BASELINE):
                         if node.args.kwonlyargs[index].arg == 'office_devices_appearance':
                             del node.args.kwonlyargs[index]
                             del node.args.kw_defaults[index]
+                if node.name == '_initialize_episode':
+                    for statement in node.body:
+                        if isinstance(statement, ast.With):
+                            matches = [item for item in statement.body if same(item, position_call)]
+                            for item in matches:
+                                statement.body.remove(item)
+                            counts['position_reset_hook'] = counts.get('position_reset_hook', 0) + len(matches)
                 return self.generic_visit(node)
 
             def visit_IfExp(self, node):
@@ -165,7 +196,8 @@ def source_check(baseline=BASELINE):
                 return node
 
         normalized = Normalize().visit(current)
-        assert ast.dump(normalized, include_attributes=False) == ast.dump(original, include_attributes=False), task + ': source changed outside authorized appearance/reset scope'
+        assert ast.dump(normalized, include_attributes=False) == ast.dump(original, include_attributes=False), task + ': source changed outside authorized appearance/position/reset scope'
+        assert counts.get('position_import') == counts.get('position_reset_hook') == 1, counts
         if task != 'click_mouse':
             assert counts.get('appearance_hooks') == 3, counts
         else:

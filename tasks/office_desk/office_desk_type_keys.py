@@ -1388,15 +1388,23 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
         if marker is None or not self._target_links:
             return
         if self.scene.gpu_sim_enabled and self.num_envs > 1:
-            indices = marker._scene_idxs[marker.scene._reset_mask[marker._scene_idxs]]
-            poses = []
-            for env_id in indices.tolist():
-                links = self._target_links[env_id]
-                slot = int(self.sequence_index[env_id])
-                key = links[slot] if 0 <= slot < len(links) else None
-                poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
-            if poses:
-                marker.set_pose(Pose.create(poses, device=marker.device))
+            scene = marker.scene
+            mask = scene._reset_mask
+            # ManiSkill reopens its scene mask before reset readback calls evaluate.
+            if getattr(self, "_furniture_reset_env_idx", None) is not None:
+                scene._reset_mask = mask & self._furniture_reset_mask(mask)
+            try:
+                indices = marker._scene_idxs[scene._reset_mask[marker._scene_idxs]]
+                poses = []
+                for env_id in indices.tolist():
+                    links = self._target_links[env_id]
+                    slot = int(self.sequence_index[env_id])
+                    key = links[slot] if 0 <= slot < len(links) else None
+                    poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
+                if poses:
+                    marker.set_pose(Pose.create(poses, device=marker.device))
+            finally:
+                scene._reset_mask = mask
             return
         # sequence_index, not _current_target_slot(): the latter clamps, which
         # would leave the marker sitting on the last cap after the run is done.

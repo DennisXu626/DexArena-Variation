@@ -510,6 +510,11 @@ def run(args):
                            "ClickMouse": "press_success_counter"}[kind]
                 env.reset(seed=seed, options={"position_layout": {str(i): nominal for i in range(env_count)}})
                 getattr(base, counter)[other] = 1
+                marker = {}
+                if kind == "TypeKeys":
+                    base.sequence_completed[other, 0] = True
+                    base._update_key_target_marker()
+                    marker["unselected_before"] = read(base.key_target_marker.pose.raw_pose[other]).tolist()
                 before = snap(base, art, other)
                 sample_id, _, request = next(sample for sample in samples
                                              if sample[0] == ("C---" if selected == 0 else "C+++"))
@@ -524,6 +529,10 @@ def run(args):
                 error_rad = (orient(readback).inv() * Rotation.from_rotvec([0, 0, desired_yaw])).magnitude()
                 ok = (np.max(np.abs(readback[:2] - request[f"{base._position_device_name}_xy_m"])) < TOLERANCE_M
                       and error_rad < 2e-6)
+                if kind == "TypeKeys":
+                    marker["unselected_after"] = read(base.key_target_marker.pose.raw_pose[other]).tolist()
+                    marker["selected"] = read_controls(base, kind, selected)["marker"]
+                    ok = ok and marker["selected"]["error_m"] < TOLERANCE_M
                 row = {"kind": "indexed_isolation", "task": task, "id": f"ISO{selected}-{sample_id}",
                        "env_idx": selected, "seed": seed, "make_kwargs": make_kwargs,
                        "reset_options": options, "request": request, "pose": readback.tolist(),
@@ -531,7 +540,8 @@ def run(args):
                        "isolation_passed": bool(ok and not changes)}
                 rows.append(row)
                 report["local_reset"].append({**row, "unselected_env_idx": other, "state_changes": changes,
-                                             "stage_fixture": {counter: 1}, "before": before, "after": after})
+                                             "stage_fixture": {counter: 1}, "marker": marker,
+                                             "before": before, "after": after})
         report["assets_unchanged"] = assets.asset_hashes() == cache_before
         if collision_identity is not None:
             report["mouse_collision_unchanged"] = assets.mouse_collision_identity() == collision_identity
