@@ -1,0 +1,181 @@
+{
+  "scope": "Pipette Transfer eight-variant author validation on Server 3 (Linux)",
+  "slurm_job_id": 123819,
+  "capture_commit": "14895f6f224242b32394e12e89a6cb90fc7e0f00",
+  "capture_tree": "0d61ae6dd7c054b2e01a9c449e6c9f84d07b543f",
+  "release_runtime_commit": "7a0cbfcf421e8f054cd320a5aba0a207a569ae61",
+  "release_runtime_parent": "dedbffee48ca56acd9a68b4109e3b00c5c7a357c",
+  "runtime_source_comparison": {
+    "reviewed_package_and_shared_pathspecs": [
+      "tasks/__init__.py",
+      "tasks/pipette_transfer",
+      "tasks/furniture_assembly/reset_scope.py",
+      "tasks/config",
+      "tasks/robots",
+      "tasks/scene_builders",
+      "tasks/assets/variation/pipette_transfer",
+      "assets/appearance/objects/pipette_transfer/catalog.json",
+      "tools/variation/check_pipette_runtime.py",
+      "tools/variation/check_pipette_rendering.py",
+      "tools/variation/check_pipette_dynamics.py",
+      "tools/variation/pipette_preview_materials.py",
+      "tools/variation/pipette_render_fixes.py",
+      "tools/variation/check_furniture_appearance.py",
+      "tools/variation/check_furniture_dynamics.py",
+      "tools/variation/sapien_sdk/run_linux_check.py",
+      "tools/variation/sapien_sdk/linux_render_receipt.py",
+      "tools/variation/sapien_sdk/lock_linux.json",
+      "tools/variation/sapien_sdk/lock.json",
+      "tools/variation/sapien_sdk/build_linux.py"
+    ],
+    "differences_on_reviewed_paths": [],
+    "other_task_registry_tree_differences": [
+      "A\ttasks/assets/variation/drawer_plug/family_variants.json",
+      "M\ttasks/assets/variation/drawer_plug/fixtures_v1/catalog.json",
+      "M\ttasks/assets/variation/drawer_plug/v1/catalog.json",
+      "A\ttasks/assets/variation/nut_bolt/v1/catalog.json",
+      "A\ttasks/assets/variation/office_desk/devices/v1/catalog.json",
+      "M\ttasks/cabinet_pouring/cabinet_pouring_pour_beads.py",
+      "A\ttasks/cabinet_pouring/pouring_appearance.py",
+      "M\ttasks/drawer_plug/drawer_plug_insert_plug.py",
+      "M\ttasks/drawer_plug/drawer_plug_long.py",
+      "M\ttasks/drawer_plug/drawer_plug_open_drawer.py",
+      "M\ttasks/drawer_plug/drawer_plug_pick_charger.py",
+      "A\ttasks/drawer_plug/family_appearance.py",
+      "M\ttasks/drawer_plug/fixture_appearance.py",
+      "A\ttasks/nut_bolt/appearance.py",
+      "A\ttasks/nut_bolt/gpu_hold.py",
+      "M\ttasks/nut_bolt/nut_bolt_long.py",
+      "M\ttasks/nut_bolt/nut_bolt_pick_bolt.py",
+      "M\ttasks/nut_bolt/nut_bolt_seat_nut.py",
+      "M\ttasks/nut_bolt/nut_bolt_turn_nut.py",
+      "A\ttasks/nut_bolt/reset_scope.py",
+      "A\ttasks/office_desk/devices_appearance.py",
+      "M\ttasks/office_desk/mouse_appearance.py",
+      "M\ttasks/office_desk/office_desk_click_mouse.py",
+      "M\ttasks/office_desk/office_desk_open_laptop.py",
+      "M\ttasks/office_desk/office_desk_type_keys.py",
+      "A\ttasks/office_desk/reset_scope.py"
+    ]
+  },
+  "sdk": {
+    "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+    "version": "3.0.3+dexarena.gpu1.linux1",
+    "native_receipt_sha256": "2405aefa9577f2218ad2bb72134371531379eb8e2ac767568086590e0a06dccf",
+    "abi_log_sha256": "7bcbdd1e77b16e7c045a0ecb8235c5d33103fa136d4932e1bf9afa07a3e5d68c"
+  },
+  "actual_system_libraries": {
+    "cuda": {
+      "path": "/usr/lib/x86_64-linux-gnu/libcuda.so.570.158.01",
+      "sha256": "d436bc1e85158010d62564058bcc6f779064c0387d79d0aebf98d5803f21ed52"
+    },
+    "vulkan": {
+      "path": "/usr/lib/x86_64-linux-gnu/libvulkan.so.1.3.204",
+      "sha256": "f2c637267fc08e343f3d617252e1ddcaf035dc714728fbdc35ce9ebd8fc4a453"
+    }
+  },
+  "gpu_model": "NVIDIA A800-SXM4-40GB",
+  "gpu_driver_version": "570.158.01",
+  "counts": {
+    "selected_readbacks": 130,
+    "control_steps": 20,
+    "physics_steps": 400,
+    "object_witness_pairs": 990,
+    "depth_camera_environment_pairs": 112,
+    "added_fixed_pngs": 96,
+    "added_restoration_strips": 96,
+    "expanded_local_directions": 32
+  },
+  "task_manifests": {
+    "AspirateLiquid": "7c89c1873bd04c02434d2c85007cddf5f387f65067bca958d4fefe82abfc8fd8",
+    "DispenseLiquid": "ab41cc2cfa745884eb4351b25c8870e37f8b94dc6eea508928272a8b84660cca"
+  },
+  "actual_sdk_task_receipt_sha256": {
+    "AspirateLiquid": "e60a8fe5d02ef03d84adb9f6f3d06eb00ae9bc895ffef901bc629e830b4f8bbd",
+    "AspirateLiquid-optical": "9db9d27c3551eaeff4cd31c650515aebcee6e8e12b57495af926dbbbb095fc8d",
+    "DispenseLiquid": "c9037bfe96f159ed2a4427963026c308a2f13814c85845babf1f4b21a9bee874",
+    "DispenseLiquid-optical": "f5797901cb3b128d6e37fdbe6522825993216fbffde7c76fc58524e34b31f64d"
+  },
+  "source_review_sha256": "20be1d05ec054e51beac9429aec10603e4f0722217e6054369886529118c9b5d",
+  "review_images": {
+    "AspirateLiquid/local_variant_3_variant_4_1_base_camera_env0.png": {
+      "sha256": "8b0ddb6d5d8255fc5ffafd3ccd7ac87ae1b8db54d6db83eba90c450d954a6c3a",
+      "kind": "original local-reset pair",
+      "identity_checked_against": "transferred native archive entry",
+      "pair_dimensions": [
+        1280,
+        480
+      ],
+      "changed_rgb_pixels_between_halves": 0,
+      "configuration": "base_camera, reset env1, no step, variant_3 kept in env0 and variant_4 restored to original in env1"
+    },
+    "AspirateLiquid/local_variant_3_variant_4_1_base_camera_env1.png": {
+      "sha256": "a9422f5edddc4c7202df6393a3e324fa42072a52732835f617f27232ad0517c6",
+      "kind": "original local-reset pair",
+      "identity_checked_against": "transferred native archive entry",
+      "pair_dimensions": [
+        1280,
+        480
+      ],
+      "changed_rgb_pixels_between_halves": 25644,
+      "configuration": "base_camera, reset env1, no step, variant_3 kept in env0 and variant_4 restored to original in env1"
+    },
+    "DispenseLiquid/local_variant_3_variant_4_1_base_camera_env0.png": {
+      "sha256": "d9ee4e51d86f4279f993e00e185c809b6b95a2b637d8872a2d23e012841b1469",
+      "kind": "original local-reset pair",
+      "identity_checked_against": "transferred native archive entry",
+      "pair_dimensions": [
+        1280,
+        480
+      ],
+      "changed_rgb_pixels_between_halves": 0,
+      "configuration": "base_camera, reset env1, no step, variant_3 kept in env0 and variant_4 restored to original in env1"
+    },
+    "DispenseLiquid/local_variant_3_variant_4_1_base_camera_env1.png": {
+      "sha256": "a9e58cb81dad4341e657dfc33ba4cbf6a2db92dfdc757fcd573409656e67b465",
+      "kind": "original local-reset pair",
+      "identity_checked_against": "transferred native archive entry",
+      "pair_dimensions": [
+        1280,
+        480
+      ],
+      "changed_rgb_pixels_between_halves": 16119,
+      "configuration": "base_camera, reset env1, no step, variant_3 kept in env0 and variant_4 restored to original in env1"
+    },
+    "DispenseLiquid/original_human_env0.png": {
+      "sha256": "6e95adb0d76e5fc9c128334c13c8991db86dc4297e04deba0d7e1901171c70e4",
+      "kind": "original fixed-survey camera frame",
+      "identity_checked_against": "transferred native archive entry and independent fixed-frame review"
+    },
+    "DispenseLiquid/variant_10_human_env0.png": {
+      "sha256": "3a68cdb005b4c243b72f919bc77835530b6b34a41cedd1ecc50bfbb1be74c766",
+      "kind": "original fixed-survey camera frame",
+      "identity_checked_against": "transferred native archive entry and independent fixed-frame review"
+    },
+    "DispenseLiquid/variant_3_human_env0.png": {
+      "sha256": "80bf304acf81bbabc0d06eb5954ad596e0dbb9f72c1a5c47ad537a856b41535f",
+      "kind": "original fixed-survey camera frame",
+      "identity_checked_against": "transferred native archive entry and independent fixed-frame review"
+    },
+    "overview.png": {
+      "sha256": "2ecb7645ec3d96f5ead080611a2cb306148bbee0be33c7cc65f77db222e05700",
+      "kind": "visual review sheet assembled from task cameras"
+    },
+    "closeups.png": {
+      "sha256": "920d9df3684856de5f404da842bded08f66ee7083da642a6691b440fb4e2fca3",
+      "kind": "visual review sheet assembled from task cameras"
+    }
+  },
+  "optical_manifests": {
+    "AspirateLiquid": {
+      "manifest_sha256": "fdf5f39467c59f1a787e0c436691e7e02055b833c2b6975b41dc900874fd2629",
+      "results_sha256": "54e4184552277c140bde9e4525e170c875322199c13c96cc89034e02ec4c8bdd",
+      "camera_environment_pairs": 56
+    },
+    "DispenseLiquid": {
+      "manifest_sha256": "55cb51e1c32f4e5f8445c45de35c0303ae97c465ae9ad623956f501a1262785c",
+      "results_sha256": "8508752031a3079a06c6d81a77ef6be4546212d4383044e2a05576dbfc582d2b",
+      "camera_environment_pairs": 56
+    }
+  }
+}

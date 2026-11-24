@@ -64,13 +64,17 @@ class CabinetPouringPickBottleEnv(CabinetPouringLongEnv):
         super().__init__(*args, **kwargs)
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
+        from .position_layout import requested_layout
+        layout = requested_layout(options, env_idx, "PickBottle")
+        if layout is not None:
+            self._layout_yaw_used = True
         with torch.device(self.device):
             b = len(env_idx)
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
-            cabinet_xy_offset = self._initialize_cabinet(env_idx, b, door_open=True)
+            cabinet_xy_offset = self._initialize_cabinet(env_idx, b, door_open=True, layout=layout)
 
-            source_xyz = self._shelf_bottle_xyz(b, cabinet_xy_offset)
+            source_xyz = self._shelf_bottle_xyz(b, cabinet_xy_offset, layout)
             source_q = self._place_bottle(b, source_xyz)
             self._place_cap_on_bottle(env_idx, b, source_xyz, source_q)
             self._reset_bottle_stage_twins(env_idx)
@@ -78,8 +82,21 @@ class CabinetPouringPickBottleEnv(CabinetPouringLongEnv):
 
             # The stage this one starts from is already done.
             self._stage_door[env_idx] = True
-            if self._variation is not None:
-                self._variation.finish_reset(env_idx, options)
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            else:
+                if self._variation is not None:
+                    self._variation.finish_reset(env_idx, options)
+                if self._cabinet_appearance is not None:
+                    self._cabinet_appearance.finish_reset(env_idx, options)
+
+    def _bottle_out_of_cabinet(self, source_pose):
+        if not getattr(self, "_layout_yaw_used", False):
+            return super()._bottle_out_of_cabinet(source_pose)
+        delta = source_pose.p[:, :2] - self._cabinet_episode_xy
+        q = self.cabinet.pose.q
+        local_x = (1 - 2*q[:, 3].square())*delta[:, 0] + 2*q[:, 0]*q[:, 3]*delta[:, 1]
+        return local_x < self.cabinet_front_local_x - 0.02
 
     def evaluate(self):
         with torch.device(self.device):

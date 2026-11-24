@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "version": "office_desk.laptop.v2",
+  "stage": "runtime",
+  "object_id": "laptop",
+  "model_id": "10211",
+  "fields": [
+    "base_color",
+    "roughness",
+    "metallic"
+  ],
+  "schemes": {
+    "original": {
+      "restore": "captured_native"
+    },
+    "terracotta_matte": {
+      "bezel": {
+        "base_color": [
+          0.62,
+          0.14,
+          0.055,
+          1.0
+        ],
+        "roughness": 0.78,
+        "metallic": 0.0
+      }
+    },
+    "petrol_satin": {
+      "bezel": {
+        "base_color": [
+          0.025,
+          0.25,
+          0.32,
+          1.0
+        ],
+        "roughness": 0.34,
+        "metallic": 0.0
+      }
+    },
+    "variant_3": {
+      "bezel": {
+        "base_color": [
+          0.98,
+          0.025,
+          0.015,
+          1.0
+        ],
+        "roughness": 0.48,
+        "metallic": 0.08
+      }
+    },
+    "variant_4": {
+      "bezel": {
+        "base_color": [
+          0.95,
+          0.82,
+          0.035,
+          1.0
+        ],
+        "roughness": 0.6,
+        "metallic": 0.1
+      }
+    },
+    "variant_5": {
+      "bezel": {
+        "base_color": [
+          0.16,
+          0.82,
+          0.42,
+          1.0
+        ],
+        "roughness": 0.56,
+        "metallic": 0.03
+      }
+    },
+    "variant_6": {
+      "bezel": {
+        "base_color": [
+          0.025,
+          0.38,
+          0.02,
+          1.0
+        ],
+        "roughness": 0.37,
+        "metallic": 0.17
+      }
+    },
+    "variant_7": {
+      "bezel": {
+        "base_color": [
+          0.025,
+          0.21,
+          0.91,
+          1.0
+        ],
+        "roughness": 0.32,
+        "metallic": 0.13
+      }
+    },
+    "variant_8": {
+      "bezel": {
+        "base_color": [
+          0.46,
+          0.04,
+          0.77,
+          1.0
+        ],
+        "roughness": 0.58,
+        "metallic": 0.07
+      }
+    },
+    "variant_9": {
+      "bezel": {
+        "base_color": [
+          0.9,
+          0.25,
+          0.57,
+          1.0
+        ],
+        "roughness": 0.5,
+        "metallic": 0.04
+      }
+    },
+    "variant_10": {
+      "bezel": {
+        "base_color": [
+          0.048,
+          0.052,
+          0.06,
+          1.0
+        ],
+        "roughness": 0.66,
+        "metallic": 0.02
+      }
+    }
+  }
+}

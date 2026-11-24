@@ -1,0 +1,178 @@
+[
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "original",
+    "actual": [
+      "original",
+      "original"
+    ],
+    "expected": {
+      "box": "original",
+      "apple": "original",
+      "plate": "original"
+    },
+    "image": "original_human_env0.png",
+    "sha256": "cfe9fe94563d5e9fad10f8041f8d035463f02e143d3fdeb47f0e528a0d6eebb2",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_1",
+    "actual": [
+      "variant_1",
+      "variant_1"
+    ],
+    "expected": {
+      "box": "kraft",
+      "apple": "golden",
+      "plate": "teal_glaze"
+    },
+    "image": "variant_1_human_env0.png",
+    "sha256": "4275a4898e6f452f9358afb0ee4d6396c5bbbd2d84ee8e0fb3fd41dbdd2454bc",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_2",
+    "actual": [
+      "variant_2",
+      "variant_2"
+    ],
+    "expected": {
+      "box": "blue_gray",
+      "apple": "green",
+      "plate": "ivory_satin"
+    },
+    "image": "variant_2_human_env0.png",
+    "sha256": "f2b47a31fddb6f9897fd9ed006949f318d70dcd0b7a6a314927bf9c4bf84f3e4",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_3",
+    "actual": [
+      "variant_3",
+      "variant_3"
+    ],
+    "expected": {
+      "box": "variant_3",
+      "apple": "variant_3",
+      "plate": "variant_3"
+    },
+    "image": "variant_3_human_env0.png",
+    "sha256": "7942fb55ef750028a948d7add1c65f8f0ff72c08672254417712742a896122a4",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_4",
+    "actual": [
+      "variant_4",
+      "variant_4"
+    ],
+    "expected": {
+      "box": "variant_4",
+      "apple": "variant_4",
+      "plate": "variant_4"
+    },
+    "image": "variant_4_human_env0.png",
+    "sha256": "82890c15cbf6d0de77fe71301e18e675387e086b813a6a28fb6310d79aac6987",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_5",
+    "actual": [
+      "variant_5",
+      "variant_5"
+    ],
+    "expected": {
+      "box": "variant_5",
+      "apple": "variant_5",
+      "plate": "variant_5"
+    },
+    "image": "variant_5_human_env0.png",
+    "sha256": "8ff8400ae5219ca7e8dcd83f792b3a6820369cfe3c3fcaac6da625b4b5050ec1",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_6",
+    "actual": [
+      "variant_6",
+      "variant_6"
+    ],
+    "expected": {
+      "box": "variant_6",
+      "apple": "variant_6",
+      "plate": "variant_6"
+    },
+    "image": "variant_6_human_env0.png",
+    "sha256": "0f3c3fff3ac0a94c05c6f7775833e640df86ac6674cc9891ecd460bcb2c1def7",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_7",
+    "actual": [
+      "variant_7",
+      "variant_7"
+    ],
+    "expected": {
+      "box": "variant_7",
+      "apple": "variant_7",
+      "plate": "variant_7"
+    },
+    "image": "variant_7_human_env0.png",
+    "sha256": "ea3b6ef1be041a510ca51acbe91c14d70be9905a35101df1dd5ef697804efba1",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_8",
+    "actual": [
+      "variant_8",
+      "variant_8"
+    ],
+    "expected": {
+      "box": "variant_8",
+      "apple": "variant_8",
+      "plate": "variant_8"
+    },
+    "image": "variant_8_human_env0.png",
+    "sha256": "6cb486ad659b83c3bb8d2fe9229f0d3c5ce51dc21687a3a4faddc44b8d47e573",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_9",
+    "actual": [
+      "variant_9",
+      "variant_9"
+    ],
+    "expected": {
+      "box": "variant_9",
+      "apple": "variant_9",
+      "plate": "variant_9"
+    },
+    "image": "variant_9_human_env0.png",
+    "sha256": "351a38bdc14d0672c4a6a56dc334fa1522caddfcca1d234950e8e9fed95e9917",
+    "A4": "passed"
+  },
+  {
+    "task": "PackageOpeningLong-Sharpa-v1",
+    "request": "variant_10",
+    "actual": [
+      "variant_10",
+      "variant_10"
+    ],
+    "expected": {
+      "box": "variant_10",
+      "apple": "variant_10",
+      "plate": "variant_10"
+    },
+    "image": "variant_10_human_env0.png",
+    "sha256": "4f8aa39f58cdc41d48d3f2af7e6ec9a5b6354cd22c3e226a494d93b59f42aee9",
+    "A4": "passed"
+  }
+]

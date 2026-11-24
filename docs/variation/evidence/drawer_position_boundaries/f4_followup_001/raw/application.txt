@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/check_drawer_positions.py", line 16, in <module>
+    from check_cabinet_positions import env_digest, rotation, setup_motion, solve_arm, value
+ModuleNotFoundError: No module named 'check_cabinet_positions'

@@ -1,0 +1,119 @@
+{
+  "pr30_original": "049bca9a93a343a50efaf0286e2af247d3e3e9d7",
+  "integrated_main": "58de243f4ba7f09865b3f2cd7d7b65d1b1cb26ed",
+  "production_sources": {
+    "tasks/meal_preparation/__init__.py": {
+      "historical_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_git_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integrated_lf_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical_match_encoding": "git_bytes",
+      "unchanged_from_pr30": true
+    },
+    "tasks/meal_preparation/appearance.py": {
+      "historical_sha256": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "original_git_sha256": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "integrated_lf_sha256": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+      "historical_match_encoding": "git_bytes",
+      "unchanged_from_pr30": true
+    },
+    "tasks/meal_preparation/appearance_textures.py": {
+      "historical_sha256": "a6da38488ee40f5cf01222efc92c98a8f37b99b57e05cd518e3e7ffe24991484",
+      "original_git_sha256": "a6da38488ee40f5cf01222efc92c98a8f37b99b57e05cd518e3e7ffe24991484",
+      "integrated_lf_sha256": "a6da38488ee40f5cf01222efc92c98a8f37b99b57e05cd518e3e7ffe24991484",
+      "historical_match_encoding": "git_bytes",
+      "unchanged_from_pr30": true
+    },
+    "tasks/meal_preparation/meal_preparation_long.py": {
+      "historical_sha256": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "original_git_sha256": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "integrated_lf_sha256": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+      "historical_match_encoding": "git_bytes",
+      "unchanged_from_pr30": true
+    },
+    "tasks/meal_preparation/meal_preparation_open_lunch_box.py": {
+      "historical_sha256": "8a298497da1c4001767b2f654a7e790a2ce2fcc0801d50864615caa7ddc67cb0",
+      "original_git_sha256": "dd61b8e7ad8dbb798a104c451e32fdafa0fae704d535c616bb79a5ad6b6b9d76",
+      "integrated_lf_sha256": "dd61b8e7ad8dbb798a104c451e32fdafa0fae704d535c616bb79a5ad6b6b9d76",
+      "historical_match_encoding": "CRLF",
+      "unchanged_from_pr30": true
+    },
+    "tasks/meal_preparation/meal_preparation_place_bread.py": {
+      "historical_sha256": "b71c20aa1f7e298afbc3bbd19d6a1faf7b7b3b7997bc15ef263b6f38fca389cc",
+      "original_git_sha256": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
+      "integrated_lf_sha256": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
+      "historical_match_encoding": "CRLF",
+      "unchanged_from_pr30": true
+    },
+    "tasks/meal_preparation/meal_preparation_scoop_tomato.py": {
+      "historical_sha256": "d6c1d6218e37fce19e90610bed2bbf2e5354295725800f6955fbe5b195f3d8f8",
+      "original_git_sha256": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
+      "integrated_lf_sha256": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
+      "historical_match_encoding": "CRLF",
+      "unchanged_from_pr30": true
+    },
+    "tasks/assets/variation/meal_preparation/v1/catalog.json": {
+      "historical_sha256": "f09cc4030ff1ae20f100d240981285d2f5f719b779e6953fa0ea4b9994996063",
+      "original_git_sha256": "f09cc4030ff1ae20f100d240981285d2f5f719b779e6953fa0ea4b9994996063",
+      "integrated_lf_sha256": "f09cc4030ff1ae20f100d240981285d2f5f719b779e6953fa0ea4b9994996063",
+      "historical_match_encoding": "git_bytes",
+      "unchanged_from_pr30": true
+    },
+    "tools/variation/check_ten_environment_paired.py": {
+      "historical_sha256": "ed71766c8ddccdd30f11a1c3100c382618b1f0c3444b188ba9a53cb6b1881d7a",
+      "original_git_sha256": "ed71766c8ddccdd30f11a1c3100c382618b1f0c3444b188ba9a53cb6b1881d7a",
+      "integrated_lf_sha256": "65cdce63fd258007e8dc31130f75b54fc7d4dd84a0e7fc645ba0319b956990c6",
+      "historical_match_encoding": "git_bytes",
+      "unchanged_from_pr30": false
+    }
+  },
+  "checks": {
+    "row_state": {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_shared_row_state.py",
+        "-v"
+      ],
+      "returncode": 0
+    },
+    "package_regression": {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_package*.py",
+        "-v"
+      ],
+      "returncode": 0
+    },
+    "check_static": {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "returncode": 0
+    },
+    "check_appearance_archive": {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_appearance_archive.py"
+      ],
+      "returncode": 0
+    }
+  },
+  "gpu_runs": 0,
+  "scope": "Historical Meal results retain their original checker identity; no new GPU validation or active-command isolation claim"
+}

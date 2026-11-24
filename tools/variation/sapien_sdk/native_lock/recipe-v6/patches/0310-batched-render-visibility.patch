@@ -1,0 +1,158 @@
+--- a/3rd_party/sapien-vulkan-2/include/svulkan2/scene/scene.h
++++ b/3rd_party/sapien-vulkan-2/include/svulkan2/scene/scene.h
+@@ -115,6 +115,10 @@
+   uint64_t getVersion() const { return mVersion; }
+   void updateVersion();
+ 
++  // Visibility can change recorded draw calls without changing the transform layout.
++  uint64_t getStructureVersion() const { return mStructureVersion; }
++  void updateVisibilityVersion();
++
+   uint64_t getRenderVersion() const { return mRenderVersion; }
+ 
+   /** call this function to notify something has changed in the scene but the scene does not know.
+@@ -186,6 +190,7 @@
+ 
+   /** when anything is added or removed, the version changes */
+   uint64_t mVersion{1l};
++  uint64_t mStructureVersion{1l};
+ 
+   /** when models in the scene are updated, the version changes */
+   uint64_t mRenderVersion{1l};
+--- a/3rd_party/sapien-vulkan-2/src/scene/scene.cpp
++++ b/3rd_party/sapien-vulkan-2/src/scene/scene.cpp
+@@ -641,6 +641,11 @@
+ }
+ 
+ void Scene::updateVersion() {
++  mStructureVersion++;
++  updateVisibilityVersion();
++}
++
++void Scene::updateVisibilityVersion() {
+   mVersion++;
+   mRenderVersion++;
+ }
+@@ -651,7 +656,7 @@
+   size_t gpuTransformBufferSize = getGpuTransformBufferSize();
+ 
+   // transform buffer is up-to-date
+-  if (mTransformBufferVersion == mVersion) {
++  if (mTransformBufferVersion == mStructureVersion) {
+     return;
+   }
+ 
+@@ -686,7 +691,7 @@
+       core::Buffer::Create(gpuTransformBufferSize * count, vk::BufferUsageFlagBits::eTransferSrc,
+                            VMA_MEMORY_USAGE_CPU_ONLY);
+   mTransformBuffer = core::Buffer::CreateUniform(gpuTransformBufferSize * count, true, true);
+-  mTransformBufferVersion = mVersion;
++  mTransformBufferVersion = mStructureVersion;
+ }
+ 
+ size_t Scene::getGpuTransformBufferSize() {
+--- a/3rd_party/sapien-vulkan-2/src/scene/object.cpp
++++ b/3rd_party/sapien-vulkan-2/src/scene/object.cpp
+@@ -140,13 +140,13 @@
+ 
+ void Object::setTransparency(float transparency) {
+   if (transparency >= 1.f && mTransparency < 1.f) {
+-    mScene->updateVersion();
++    mScene->updateVisibilityVersion();
+   } else if (transparency < 1.f && mTransparency >= 1.f) {
+-    mScene->updateVersion();
++    mScene->updateVisibilityVersion();
+   } else if (transparency <= 0.f && mTransparency > 0.f) {
+-    mScene->updateVersion();
++    mScene->updateVisibilityVersion();
+   } else if (transparency > 0.f && mTransparency <= 0.f) {
+-    mScene->updateVersion();
++    mScene->updateVisibilityVersion();
+   }
+   mTransparency = transparency;
+ }
+--- a/3rd_party/sapien-vulkan-2/include/svulkan2/renderer/renderer.h
++++ b/3rd_party/sapien-vulkan-2/include/svulkan2/renderer/renderer.h
+@@ -247,7 +247,7 @@
+ 
+   // upload resources to gpu, when mAutoUpload is true, it is called immediately after
+   // prepareRender
+-  void uploadGpuResources(scene::Camera &camera);
++  void uploadGpuResources(scene::Camera &camera, bool uploadTransforms = true);
+ };
+ 
+ } // namespace renderer
+--- a/3rd_party/sapien-vulkan-2/src/renderer/renderer.cpp
++++ b/3rd_party/sapien-vulkan-2/src/renderer/renderer.cpp
+@@ -1079,7 +1079,9 @@
+       recordRenderPasses();
+     }
+ 
+-    uploadGpuResources(camera);
++    // Batched cameras already own their pose buffers after the initial render.
++    // Refresh material/object/scene data on re-record without uploading CPU poses.
++    uploadGpuResources(camera, mAutoUpload || mLastVersion == 0);
+     mContext->getQueue().waitIdle();
+   }
+ 
+@@ -1097,12 +1099,13 @@
+   }
+ }
+ 
+-void Renderer::uploadGpuResources(scene::Camera &camera) {
++void Renderer::uploadGpuResources(scene::Camera &camera, bool uploadTransforms) {
+   {
+     SVULKAN2_PROFILE_BLOCK("Update camera & scene");
+-    // update camera
+-    camera.uploadToDevice(*mCameraBufferCpu,
+-                          *mShaderPack->getShaderInputLayouts()->cameraBufferLayout);
++    if (uploadTransforms) {
++      camera.uploadToDevice(*mCameraBufferCpu,
++                            *mShaderPack->getShaderInputLayouts()->cameraBufferLayout);
++    }
+ 
+     // update scene
+     mScene->uploadToDevice(*mSceneBuffer,
+@@ -1119,8 +1122,9 @@
+     auto bufferSize = mShaderPack->getShaderInputLayouts()->objectDataBufferLayout->getAlignedSize(
+         mContext->getPhysicalDeviceLimits().minUniformBufferOffsetAlignment);
+ 
+-    // update objects
+-    mScene->uploadObjectTransforms();
++    if (uploadTransforms) {
++      mScene->uploadObjectTransforms();
++    }
+ 
+     mObjectDataBuffer->map();
+     auto objects = mScene->getObjects();
+@@ -1186,7 +1190,9 @@
+     mObjectDataBuffer->unmap();
+   }
+ 
+-  mContext->getQueue().submit(mUploadCommandBuffer.get(), {});
++  if (uploadTransforms) {
++    mContext->getQueue().submit(mUploadCommandBuffer.get(), {});
++  }
+ }
+ 
+ void Renderer::forceUploadCameraBuffer(scene::Camera &camera) {
+--- a/src/sapien_renderer/batched_render_system.cpp
++++ b/src/sapien_renderer/batched_render_system.cpp
+@@ -233,7 +233,7 @@
+     system->step();
+ 
+     // cache current versions
+-    mSceneVersions.push_back(system->getScene()->getVersion());
++    mSceneVersions.push_back(system->getScene()->getStructureVersion());
+ 
+     auto transformArray = system->getTransformCudaArray();
+     sceneTransformRefs.push_back(transformArray.ptr);
+@@ -353,7 +353,7 @@
+ 
+   // check scene versions
+   for (uint32_t i = 0; i < mSystems.size(); ++i) {
+-    if (mSystems.at(i)->getScene()->getVersion() != mSceneVersions.at(i)) {
++    if (mSystems.at(i)->getScene()->getStructureVersion() != mSceneVersions.at(i)) {
+       throw std::runtime_error("Modifying a scene (add/remove object/camera) is not allowed after "
+                                "creating the batched render system.");
+     }

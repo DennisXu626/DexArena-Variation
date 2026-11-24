@@ -1,0 +1,65 @@
+{
+  "CabinetPouringOpenCabinet-Sharpa-v1": {
+    "init": {
+      "init_pass": 16
+    },
+    "ik": {
+      "pass": 16
+    },
+    "motion": {
+      "fail": 6,
+      "not_run": 10
+    },
+    "passive_state_unchanged": {
+      "true": 16
+    }
+  },
+  "CabinetPouringPickBottle-Sharpa-v1": {
+    "init": {
+      "init_pass": 34,
+      "rejected": 3
+    },
+    "ik": {
+      "pass": 34,
+      "not_run": 3
+    },
+    "motion": {
+      "fail": 10,
+      "not_run": 27
+    },
+    "passive_state_unchanged": {
+      "true": 37
+    }
+  },
+  "CabinetPouringUnscrewCap-Sharpa-v1": {
+    "init": {
+      "init_pass": 9
+    },
+    "ik": {
+      "pass": 9
+    },
+    "motion": {
+      "fail": 1,
+      "not_run": 8
+    },
+    "passive_state_unchanged": {
+      "true": 9
+    }
+  },
+  "CabinetPouringPourBeads-Sharpa-v1": {
+    "init": {
+      "init_pass": 17
+    },
+    "ik": {
+      "pass": 12,
+      "fail": 5
+    },
+    "motion": {
+      "fail": 3,
+      "not_run": 14
+    },
+    "passive_state_unchanged": {
+      "true": 17
+    }
+  }
+}

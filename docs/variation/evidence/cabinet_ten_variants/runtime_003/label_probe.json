@@ -1,0 +1,28 @@
+{
+  "job_id": "128927",
+  "frozen_head": "9f7edb497c1d79c7e93b2c8847c7439e8491e511",
+  "gpu_seconds": 61,
+  "visible_pattern_passed": true,
+  "binding_path": "private_upload",
+  "crop_xyxy": [
+    375,
+    153,
+    587,
+    397
+  ],
+  "manifest_sha256": "0b5e01b6e75bd62d23e1caa8d78b78ae7eca1c3c2e49d6e35d25805ce1abf6a4",
+  "scores": {
+    "hot": {
+      "native": 0.9612941828343134,
+      "wanted": -0.16151271649203053
+    },
+    "cold": {
+      "native": -0.20634714041187527,
+      "wanted": 0.9651242439807131
+    },
+    "private_upload": {
+      "native": -0.20562751597033876,
+      "wanted": 0.9686675132132235
+    }
+  }
+}

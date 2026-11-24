@@ -1,0 +1,20 @@
+{
+  "epoch": 1795420504.9494321,
+  "cmd": [
+    "/opt/slurm/bin/sbatch",
+    "--parsable",
+    "--gres=gpu:2",
+    "--no-requeue",
+    "--time=00:10:00",
+    "--chdir",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source",
+    "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/job.sh"
+  ],
+  "card": 2,
+  "exit": 0,
+  "stdout": "135501\n",
+  "stderr": "sbatch.slurm: GPU Index 2 (1 Shard each). If pending, those Indexes have 0 Shards \u2014 scancel and change --gres=\n",
+  "job_id": "135501",
+  "queue_before": "no pending Drawer position or legacy Drawer job",
+  "watcher_pid": 1559948
+}

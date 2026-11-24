@@ -15,6 +15,7 @@ import gymnasium as gym
 import torch
 
 from tasks.config.hands import register_task
+from tasks.drawer_plug.position_layout import requested_layout
 from mani_skill.utils.wrappers.record import RecordEpisode
 
 from tasks.drawer_plug.drawer_plug_long import (
@@ -44,18 +45,22 @@ class DrawerPlugPickChargerEnv(DrawerPlugLongEnv):
     show_charger_place_region = True
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
+        layout = requested_layout(self, options, env_idx, "PickCharger")
         with torch.device(self.device):
             b = len(env_idx)
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
             travel = self.drawer_success_travel + 0.04
-            self._initialize_drawer(env_idx, b, travel=travel)
-            self._place_charger_in_drawer(env_idx, b, travel)
+            self._initialize_drawer(env_idx, b, travel=travel, layout=layout)
+            self._place_charger_in_drawer(env_idx, b, travel, layout=layout)
             self._stage_drawer_open[env_idx] = True
-            if self._charger_appearance is not None:
-                self._charger_appearance.finish_reset(self, env_idx, options)
-            if self._fixture_appearance is not None:
-                self._fixture_appearance.finish_reset(self, env_idx, options)
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            else:
+                if self._charger_appearance is not None:
+                    self._charger_appearance.finish_reset(self, env_idx, options)
+                if self._fixture_appearance is not None:
+                    self._fixture_appearance.finish_reset(self, env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):

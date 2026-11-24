@@ -51,6 +51,7 @@ class NutBoltSeatNutEnv(NutBoltLongEnv):
             # Reconcile the kinematic hold with the lock masks this reset just
             # set (see NutBoltLongEnv._refresh_hold_state).
             self._refresh_hold_state()
+            self._finish_appearance_reset(env_idx, options)
 
     def evaluate(self):
         with torch.device(self.device):
@@ -66,12 +67,12 @@ class NutBoltSeatNutEnv(NutBoltLongEnv):
                 nut_released,
             ) = self._nut_seating_state()
             nut_ready = self._nut_engagement_ready(nut_threading_geometric)
-            newly_nut_placed = (
+            newly_nut_placed = self._reset_scoped_predicate(
                 (~self._stage_nut_placed)
                 & self._stage_bolt_placed
                 & nut_ready
             )
-            self._stage_nut_placed |= self._stage_bolt_placed & nut_ready
+            self._stage_nut_placed |= self._reset_scoped_predicate(self._stage_bolt_placed & nut_ready)
             self._engage_newly_placed_nuts(newly_nut_placed)
             return dict(
                 bolt_locked=self._bolt_locked.clone(),

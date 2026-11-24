@@ -1,0 +1,34 @@
+{
+  "root": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001",
+  "outer": "/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/f4_followup_001/source",
+  "outer_empty": true,
+  "exit": 0,
+  "stderr": "",
+  "child_output": "{\"cwd\": \"/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source\", \"production_module\": \"/mnt/ceph2/xkl/DexArena/drawer_position_boundaries_20261123/runtime_001/source/tasks/__init__.py\", \"checker_sha256\": \"496d22c22cba4d121a2e57342f138788b3774c36d9ffffa99de1ad2b0ad339f3\", \"python\": \"/data/home/xkl/AutoDemo/envs/DexGenTransfer/bin/python\", \"pid\": 2278598, \"pgid\": 2278597}\n",
+  "guard": {
+    "returncode": 0,
+    "stop_reason": null,
+    "elapsed_seconds": 0.24865934811532497,
+    "retained_log_bytes": 398,
+    "cleanup": {
+      "pgid": 2278597,
+      "errors": [],
+      "TERM_sent": false,
+      "KILL_sent": false,
+      "live_remaining": [],
+      "zombie_remaining": [],
+      "complete": true
+    },
+    "exceptions": [],
+    "drain_deadline_hit": false,
+    "drain_limit_seconds": 0.5,
+    "attempts": 1,
+    "job_id": null,
+    "physical_gpus": null
+  },
+  "root_bytes": 52202498,
+  "run_bytes": 167666,
+  "free": 655133507584,
+  "attempt_reserved": false,
+  "submission_reserved": false
+}

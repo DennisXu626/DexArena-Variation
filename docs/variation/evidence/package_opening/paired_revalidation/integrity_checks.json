@@ -1,0 +1,13 @@
+{
+  "signature_hashes": "all canonical JSON content hashes verified",
+  "A4_rows": 77,
+  "A5_cases": 140,
+  "random_reproducibility_entries": 7,
+  "short_trace_pairs": 33,
+  "short_trace_initial_max": 0,
+  "short_trace_max": 0,
+  "selected_target_rgb_max": 0,
+  "original_PNG_hashes_verified": 98,
+  "production_changes_this_round": false,
+  "full_robot_success_rate": "not measured"
+}

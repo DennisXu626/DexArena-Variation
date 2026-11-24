@@ -45,6 +45,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from tasks.robots.franka_joint_impedance_controller import FrankaJointImpedanceController
+
 from tasks.config.layout_randomization import (
     layout_rng,
     ARM_INIT_QPOS_NOISE_STD,
@@ -996,6 +998,43 @@ class PackageOpeningLongEnv(BaseEnv):
         if self.robot_uids in MOBILE_ROBOT_UIDS:
             return FULL_TROLLEY_BASE_POSE
         return FIXED_BASE_ROOT_POSE
+
+    def reset(self, seed=None, options=None):
+        selected = (options or {}).get("env_idx")
+        if selected is None or len(selected) == self.num_envs:
+            return super().reset(seed=seed, options=options)
+        keep = torch.ones(self.num_envs, dtype=torch.bool, device=self.device)
+        keep[selected] = False
+        saved = []
+
+        def save(controller):
+            if isinstance(controller, FrankaJointImpedanceController):
+                target = getattr(controller, "_target_qpos", None)
+                if target is not None:
+                    saved.append((controller, target[keep].clone()))
+            children = controller if isinstance(controller, dict) else getattr(controller, "controllers", {})
+            for child in children.values():
+                save(child)
+        save(self.agent.controller)
+
+        def restore():
+            for controller, target in saved:
+                controller._target_qpos[keep] = target
+
+        # b22 resets controllers again with an all-row mask after initialization.
+        # Restore before reset observations are assembled, and on every exit.
+        self._package_partial_reset_restore = restore
+        try:
+            return super().reset(seed=seed, options=options)
+        finally:
+            restore()
+            del self._package_partial_reset_restore
+
+    def get_info(self):
+        restore = getattr(self, "_package_partial_reset_restore", None)
+        if restore is not None:
+            restore()
+        return super().get_info()
 
     def _load_agent(self, options):
         super()._load_agent(options, self._robot_base_pose)

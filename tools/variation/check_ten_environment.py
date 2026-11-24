@@ -117,7 +117,7 @@ def materials(t,idx):
 
 def row_state(t,idx):
     def visit(x):
-        if isinstance(x,dict):return {k:visit(v) for k,v in x.items() if not (k.startswith(("procedural_box_","partnet_box_","package_")) and k.rsplit("_",1)[-1].isdigit() and k.rsplit("_",1)[-1]!=str(idx))}
+        if isinstance(x,dict):return {k:visit(v) for k,v in x.items() if not ((FAMILY=="package" and k.endswith(f"_{1-idx}")) or (k.startswith(("procedural_box_","partnet_box_","package_")) and k.rsplit("_",1)[-1].isdigit() and k.rsplit("_",1)[-1]!=str(idx)))}
         if torch.is_tensor(x):return plain(x[idx] if x.ndim and x.shape[0]==2 else x)
         return plain(x)
     return visit(t.get_state_dict())

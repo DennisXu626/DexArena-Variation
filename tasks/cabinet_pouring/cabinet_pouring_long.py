@@ -19,6 +19,7 @@ cabinet; success additionally requires the pour itself to hold for ten
 consecutive control steps, as in `pour.py` and `ball_grasping.py`.
 """
 
+import copy
 import argparse
 import json
 import sys
@@ -500,16 +501,51 @@ class CabinetPouringLongEnv(BaseEnv):
         num_envs=1,
         reconfiguration_freq=None,
         variation=None,
+        cabinet_appearance=None,
+        family_appearance=None,
         **kwargs,
     ):
         self._bottle_render_membership_dirty = False
+        self._family_appearance = None
+        self._family_liquid = None
+        if family_appearance and family_appearance.get("enabled", False):
+            if type(self).__name__ not in {
+                    "CabinetPouringOpenCabinetEnv", "CabinetPouringPickBottleEnv",
+                    "CabinetPouringUnscrewCapEnv", "CabinetPouringPourBeadsEnv"}:
+                raise ValueError("Family appearance supports the four Cabinet & Pouring short tasks")
+            if ((cabinet_appearance or {}).get("enabled", False)
+                    or (variation or {}).get("appearance", {}).get("enabled", False)
+                    or any("appearance" in cfg for cfg in (variation or {}).get("per_env", {}).values())
+                    or getattr(self, "_pouring_appearance", None) is not None):
+                raise ValueError("Choose family appearance or the independent appearance settings")
+            from tasks.cabinet_pouring.family_appearance import FamilyAppearance
+            loaded = {}
+            if self.has_cabinet:
+                loaded["cabinet"] = "cabinet"
+                cabinet_appearance = {"enabled": True}
+            if self.has_bottle:
+                loaded.update(bottle="bottle", beads="pouring")
+                from tasks.cabinet_pouring.pouring_appearance import PouringAppearance
+                self._family_liquid = PouringAppearance({})
+                variation = {**(variation or {}), "appearance": {"enabled": True}}
+            if self.has_cap:
+                loaded["cap"] = "bottle"
+            if self.has_target:
+                loaded["bowl"] = "pouring"
+            self._family_appearance = FamilyAppearance(family_appearance, num_envs, loaded)
+        self._cabinet_appearance = None
+        if cabinet_appearance and cabinet_appearance.get("enabled", False):
+            if type(self).__name__ not in {"CabinetPouringOpenCabinetEnv", "CabinetPouringPickBottleEnv"}:
+                raise ValueError("Cabinet appearance is supported by OpenCabinet and PickBottle")
+            from tasks.cabinet_pouring.cabinet_appearance import CabinetAppearance
+            self._cabinet_appearance = CabinetAppearance(cabinet_appearance, num_envs)
         self._variation = None
         if variation and any(
             variation.get(feature, {}).get("enabled", False)
             for feature in ("appearance", "initial_pose")
         ):
             from tasks.cabinet_pouring.variation import PilotVariation
-            self._variation = PilotVariation(self, variation, num_envs)
+            self._variation = PilotVariation(self, variation, num_envs, family=self._family_appearance is not None)
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         self.robot_init_qpos_noise = float(robot_init_qpos_noise)
         self.cabinet_init_xy_noise = float(cabinet_init_xy_noise)
@@ -714,6 +750,37 @@ class CabinetPouringLongEnv(BaseEnv):
             self._load_target()
         if self.has_bottle:
             self._load_particles()
+        if self._family_liquid is not None:
+            self._family_liquid.bind(self.target if self.has_target else None, self.particles)
+        if self._family_appearance is not None and self._variation is not None:
+            self._variation._collect_bindings()
+
+    @property
+    def family_appearance_records(self):
+        """Snapshot of the family choice made for each reset environment."""
+        return copy.deepcopy(self._family_appearance.records) if self._family_appearance else []
+
+    def _finish_family_appearance(self, env_idx, options):
+        if (any(k in options for k in ("cabinet_appearance", "pouring_appearance"))
+                or "appearance" in options.get("variation", {})
+                or any("appearance" in x for x in options.get("variation", {}).get("per_env", {}).values())):
+            raise ValueError("Per-object reset overrides are not allowed in family appearance mode")
+        family = self._family_appearance
+        for i, sid, schemes in family.select(env_idx, options):
+            selected = torch.tensor([i], device=env_idx.device)
+            if self._cabinet_appearance is not None:
+                self._cabinet_appearance.finish_reset(selected,
+                    {"cabinet_appearance": {"scheme_id": schemes["cabinet"]}})
+            if self._family_liquid is not None:
+                self._family_liquid.finish_reset(selected,
+                    {"pouring_appearance": {"scheme_id": schemes["pouring"]}})
+                old = options.get("variation", {})
+                resolved = {**options, "variation": {**old, "appearance": {"scheme_id": schemes["bottle"]}}}
+                if self.has_cap:
+                    self._variation.finish_reset(selected, resolved)
+                else:
+                    self._variation.apply_appearance(selected, resolved)
+            family.record(i, sid, schemes)
 
     def _load_table(self):
         self.table_scene = TableSceneBuilder(
@@ -878,6 +945,8 @@ class CabinetPouringLongEnv(BaseEnv):
         self.cabinet = Articulation.merge(self._cabinets, name="cabinet", merge_links=True)
         self.add_to_state_dict_registry(self.cabinet)
         self.door_link = self.cabinet.links_map["link_0"]
+        if self._cabinet_appearance is not None:
+            self._cabinet_appearance.bind(self._cabinets, CABINET_URDF_PATH)
 
     @staticmethod
     def _set_task_object_motion_limits(obj, max_linear_velocity: float):
@@ -1993,7 +2062,7 @@ class CabinetPouringLongEnv(BaseEnv):
             self.agent.robot.set_root_pose(self._robot_base_pose)
 
     def _initialize_cabinet(
-        self, env_idx: torch.Tensor, b: int, door_open: bool = False
+        self, env_idx: torch.Tensor, b: int, door_open: bool = False, layout=None
     ) -> torch.Tensor:
         """Randomise the cabinet pose; returns the sampled xy offset, shape (b, 2).
 
@@ -2014,14 +2083,27 @@ class CabinetPouringLongEnv(BaseEnv):
                 [np.cos(self.cabinet_yaw / 2), 0.0, 0.0, np.sin(self.cabinet_yaw / 2)],
                 dtype=torch.float32,
             ).expand(b, -1)
+            if layout is not None:
+                cabinet_p[:, :2] = cabinet_p.new_tensor(layout[:, :2])
+                self._cabinet_episode_xy[env_idx] = cabinet_p[:, :2]
+                cabinet_xy_offset = cabinet_p[:, :2] - cabinet_p.new_tensor(self.cabinet_xy)
+                half = torch.deg2rad(cabinet_p.new_tensor(layout[:, 2])) / 2
+                cabinet_q = torch.zeros((b, 4), device=self.device)
+                cabinet_q[:, 0], cabinet_q[:, 3] = half.cos(), half.sin()
             self.cabinet.set_pose(Pose.create_from_pq(p=cabinet_p, q=cabinet_q))
 
             if self.num_envs == 1:
                 offset = cabinet_xy_offset[0].cpu().numpy()
                 handle = self._door_handle_xyz_nominal.copy()
+                hinge = self._door_hinge_xy_nominal
+                if layout is not None:
+                    angle = np.deg2rad(layout[0, 2]) - self.cabinet_yaw
+                    rotate = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+                    handle[:2] = rotate @ (handle[:2] - self.cabinet_xy) + self.cabinet_xy
+                    hinge = rotate @ (hinge - self.cabinet_xy) + self.cabinet_xy
                 handle[:2] += offset
                 self.door_handle_xyz = tuple(handle)
-                self.door_hinge_xy = tuple(self._door_hinge_xy_nominal + offset)
+                self.door_hinge_xy = tuple(hinge + offset)
             door_qpos = self.cabinet.get_qlimits()[env_idx, :, 0].clone()
             if door_open:
                 door_qpos[:, 0] = self.cabinet.get_qlimits()[env_idx, 0, 1]
@@ -2029,7 +2111,7 @@ class CabinetPouringLongEnv(BaseEnv):
             self.cabinet.set_qvel(torch.zeros_like(door_qpos))
             return cabinet_xy_offset
 
-    def _shelf_bottle_xyz(self, b: int, cabinet_xy_offset: torch.Tensor) -> torch.Tensor:
+    def _shelf_bottle_xyz(self, b: int, cabinet_xy_offset: torch.Tensor, layout=None) -> torch.Tensor:
         """Bottle spawn inside the cabinet, standing on the upper shelf."""
         with torch.device(self.device):
             source_xyz = torch.zeros((b, 3))
@@ -2038,6 +2120,12 @@ class CabinetPouringLongEnv(BaseEnv):
                 + torch.tensor(self.source_start_xy, dtype=torch.float32)
                 + cabinet_xy_offset
             )
+            if layout is not None:
+                values = source_xyz.new_tensor(layout)
+                yaw = torch.deg2rad(values[:, 2])
+                x, y = values[:, 3], values[:, 4]
+                source_xyz[:, :2] = values[:, :2] + torch.stack(
+                    (yaw.cos()*x - yaw.sin()*y, yaw.sin()*x + yaw.cos()*y), dim=1)
             # The bottle stands on the upper shelf (top of the upper panel).
             source_xyz[:, 2] = self.shelf_ceiling_z - self.source_z_lo + 1e-3
             return source_xyz
@@ -2724,7 +2812,7 @@ class CabinetPouringLongEnv(BaseEnv):
                 twist=twist, detached=detached, free=False,
             )
 
-    def _place_target(self, b: int):
+    def _place_target(self, b: int, layout=None):
         """Randomise the bowl's spot on the table."""
         with torch.device(self.device):
             target_xyz = torch.zeros((b, 3))
@@ -2732,6 +2820,8 @@ class CabinetPouringLongEnv(BaseEnv):
                 (torch.rand((b, 2)) * 2 - 1) * self.object_init_xy_noise
                 + torch.tensor(self.target_center_xy, dtype=torch.float32)
             )
+            if layout is not None:
+                target_xyz[:, :2] = target_xyz.new_tensor(layout)
             target_xyz[:, 2] = -self.target_z_lo + 1e-3
             self.target.set_pose(
                 Pose.create_from_pq(p=target_xyz, q=torch.tensor([1.0, 0.0, 0.0, 0.0]).expand(b, -1))

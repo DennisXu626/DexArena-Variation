@@ -1,0 +1,30 @@
+{
+  "job": "135140",
+  "gpu": "3",
+  "family": "package",
+  "task": "PackageOpeningExtractApple-Sharpa-v1",
+  "backend": "physx_cuda / GPU render",
+  "num_envs": 2,
+  "seed": 7,
+  "robot_noise": 0,
+  "catalog_sha256": "86179b421253aa30695d34cdc4b39433d3c10932980837d33688e5677d8ae263",
+  "checker_sha256": "0915e9ca1d079e1413915b70f625857e117a9a2a4756fa37f0c6a7195147c1f5",
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "history_pairing": "native and candidate execute identical reset/env_idx/render sequence; no physical steps in A4/A5",
+  "tolerances": {
+    "numeric": 1e-06,
+    "rgb_max": 1,
+    "rgb_channels": 8,
+    "meal_tomato_unselected_wrist": {
+      "max": 3,
+      "channels": 8,
+      "pixels": 5
+    }
+  },
+  "full_robot_success_rate": "not measured",
+  "short_action_trace": "not run: current production changes are appearance recipes only, no physics/reset code changes"
+}

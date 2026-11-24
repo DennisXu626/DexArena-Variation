@@ -1,0 +1,623 @@
+{
+  "job": "125111",
+  "gpu": "7",
+  "meal": {
+    "open": {
+      "native": {
+        "state": {
+          "max": 0,
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "enabled_original": {
+        "state": {
+          "max": 0,
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "variant_then_original": {
+        "state": {
+          "max": 0,
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "after_native_state_write": {
+        "state": {
+          "max": 1.0,
+          "fields": [
+            {
+              "path": "/0/actors/spoon/2",
+              "delta": 2.60770320892334e-08
+            },
+            {
+              "path": "/0/actors/spoon/6",
+              "delta": 5.960464477539063e-08
+            },
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 3.725290298461914e-09
+            },
+            {
+              "path": "/0/meal_preparation_task_state/26",
+              "delta": 1.0
+            },
+            {
+              "path": "/0/meal_preparation_task_state/27",
+              "delta": 1.0
+            },
+            {
+              "path": "/0/meal_preparation_task_state/30",
+              "delta": 1.0
+            },
+            {
+              "path": "/1/actors/spoon/2",
+              "delta": 2.60770320892334e-08
+            },
+            {
+              "path": "/1/actors/spoon/6",
+              "delta": 5.960464477539063e-08
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 3.725290298461914e-09
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 1,
+            "channels": 1,
+            "pixels": [
+              [
+                424,
+                499
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "history_native": {
+        "state": {
+          "max": 1.564621925354004e-07,
+          "fields": [
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 1.564621925354004e-07
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 1.564621925354004e-07
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 41,
+            "channels": 3,
+            "pixels": [
+              [
+                414,
+                372
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "history_original": {
+        "state": {
+          "max": 1.564621925354004e-07,
+          "fields": [
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 1.564621925354004e-07
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 1.564621925354004e-07
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 41,
+            "channels": 3,
+            "pixels": [
+              [
+                414,
+                372
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "history_variant_then_original": {
+        "state": {
+          "max": 1.564621925354004e-07,
+          "fields": [
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 1.564621925354004e-07
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 1.564621925354004e-07
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 41,
+            "channels": 3,
+            "pixels": [
+              [
+                414,
+                372
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      }
+    },
+    "long": {
+      "native": {
+        "state": {
+          "max": 0,
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "enabled_original": {
+        "state": {
+          "max": 0,
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "variant_then_original": {
+        "state": {
+          "max": 0,
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "after_native_state_write": {
+        "state": {
+          "max": 1.0,
+          "fields": [
+            {
+              "path": "/0/actors/bread/2",
+              "delta": 1.862645149230957e-09
+            },
+            {
+              "path": "/0/actors/bread/3",
+              "delta": 1.1920928955078125e-07
+            },
+            {
+              "path": "/0/actors/bread/4",
+              "delta": 1.8380554855923492e-09
+            },
+            {
+              "path": "/0/actors/bread/5",
+              "delta": 4.078318238676104e-11
+            },
+            {
+              "path": "/0/actors/bread/6",
+              "delta": 1.697686435875312e-10
+            },
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 3.725290298461914e-09
+            },
+            {
+              "path": "/0/meal_preparation_task_state/30",
+              "delta": 1.0
+            },
+            {
+              "path": "/1/actors/bread/1",
+              "delta": 2.384185791015625e-07
+            },
+            {
+              "path": "/1/actors/bread/3",
+              "delta": 1.1920928955078125e-07
+            },
+            {
+              "path": "/1/actors/bread/4",
+              "delta": 3.361799727485959e-11
+            },
+            {
+              "path": "/1/actors/bread/5",
+              "delta": 5.47227679836837e-10
+            },
+            {
+              "path": "/1/actors/bread/6",
+              "delta": 1.5764411998020478e-10
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 3.725290298461914e-09
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 1,
+            "channels": 1,
+            "pixels": [
+              [
+                441,
+                401
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "history_native": {
+        "state": {
+          "max": 1.564621925354004e-07,
+          "fields": [
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 1.564621925354004e-07
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 1.564621925354004e-07
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 41,
+            "channels": 3,
+            "pixels": [
+              [
+                414,
+                372
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "history_original": {
+        "state": {
+          "max": 1.564621925354004e-07,
+          "fields": [
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 1.564621925354004e-07
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 1.564621925354004e-07
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 41,
+            "channels": 3,
+            "pixels": [
+              [
+                414,
+                372
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      },
+      "history_variant_then_original": {
+        "state": {
+          "max": 1.564621925354004e-07,
+          "fields": [
+            {
+              "path": "/0/articulations/procedural_box_0/0/2",
+              "delta": 1.564621925354004e-07
+            },
+            {
+              "path": "/1/articulations/procedural_box_1/0/2",
+              "delta": 1.564621925354004e-07
+            }
+          ]
+        },
+        "materials": {
+          "max": 0,
+          "fields": []
+        },
+        "rgb": {
+          "base_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0,
+            "pixels": []
+          },
+          "human": {
+            "max": 41,
+            "channels": 3,
+            "pixels": [
+              [
+                414,
+                372
+              ]
+            ]
+          }
+        },
+        "controls_note": "no physical step in Meal diagnostic"
+      }
+    }
+  },
+  "package": {},
+  "production_changed": false
+}

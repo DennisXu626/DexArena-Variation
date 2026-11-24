@@ -74,19 +74,28 @@ def strip_fixture_hooks(tree, long_task=False):
 
 
 def static_check(asset_root=None):
+    from check_drawer_ten_variants import static as check_family, old as family_base
+    check_family()
     for f in TASK_FILES:
         original = subprocess.check_output(['git', '-C', str(ROOT), 'show', BASE + ':' + f],
                                            text=True, encoding='utf-8')
-        current = (ROOT / f).read_text(encoding='utf-8')
+        current = family_base(ROOT / f).decode('utf-8')
         normalized = strip_fixture_hooks(ast.parse(current), f.endswith('_long.py'))
         assert ast.dump(normalized) == ast.dump(ast.parse(original)), f
     for f in FILES:
         if f.endswith('.py'): ast.parse((ROOT / f).read_text(encoding='utf-8'))
     for f in FILES[-2:]:
         original = subprocess.check_output(['git', '-C', str(ROOT), 'show', BASE + ':' + f])
-        assert original == (ROOT / f).read_bytes(), 'Charger implementation/catalog changed'
+        current = (ROOT / f).read_bytes()
+        if f.endswith('catalog.json'):
+            legacy = json.loads(original)
+            expanded = json.loads(current)
+            expanded['schemes'] = {k: expanded['schemes'][k] for k in legacy['schemes']}
+            assert expanded == legacy, 'Legacy Charger catalog settings changed'
+        else:
+            assert original == current, 'Charger implementation changed'
     cat = json.loads((ROOT / CAT).read_text(encoding='utf-8'))
-    assert set(cat['schemes']) == {'original', 'warm_white', 'neutral_grey'}
+    assert {'original', 'warm_white', 'neutral_grey'} <= set(cat['schemes'])
     assert cat['schemes']['original'] == {}
     mapping = json.loads((ROOT / 'assets/appearance/objects/drawer_plug/drawer/bindings.json').read_text(encoding='utf-8'))
     assert len(cat['drawer_mesh_roles']) == len(mapping['visuals']) == 47
@@ -96,7 +105,7 @@ def static_check(asset_root=None):
     # the socket settings and catalog version, so drawer finishes may evolve.
     socket_settings = {
         'version': cat['version'],
-        'schemes': {name: scheme.get('socket') for name, scheme in cat['schemes'].items()},
+        'schemes': {name: cat['schemes'][name].get('socket') for name in ('original','warm_white','neutral_grey')},
     }
     encoded = json.dumps(socket_settings, sort_keys=True, separators=(',', ':')).encode('utf-8')
     expected_socket_hash = '528c260ae9012547f7f768e515aafbbefd6f1bf6cb50b82f0a1c04dca5469ba8'
@@ -174,7 +183,7 @@ def static_check(asset_root=None):
     assert not any(x in sys.modules for x in ['tasks', 'sapien', 'torch', 'mani_skill'])
     return {'status': 'passed', 'scope': 'CPU AST/catalog/source closure/pixel encoding only',
             'baseline': BASE, 'protected_task_AST': 'identical after enumerated visual hooks',
-            'charger_code_catalog': 'byte identical', 'asset_hashes_checked': bool(asset_root),
+            'charger_code_catalog': 'implementation byte identical; legacy catalog values exact', 'asset_hashes_checked': bool(asset_root),
             'CPU_selection_records': 'reproducible; env0 stream/records unchanged by env1 (no material bindings)',
             'runtime_realism_A4_A5': 'not run'}
 

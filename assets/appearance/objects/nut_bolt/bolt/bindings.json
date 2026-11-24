@@ -1,0 +1,119 @@
+{
+  "version": "nut-bolt-bolt-bindings-v1",
+  "logical_object": "nut_bolt.bolt",
+  "catalog": "variants/v1/catalog.json",
+  "source": "tasks/nut_bolt/nut_bolt_long.py",
+  "stage": "formal_integration_runtime_pending",
+  "formal_task_integration": true,
+  "roles": {
+    "shaft": {
+      "editable": true,
+      "record_indices": [
+        0
+      ],
+      "source": "_load_bolt/add_cylinder_visual"
+    },
+    "tip": {
+      "editable": false,
+      "record_range_inclusive": [
+        1,
+        20
+      ],
+      "source": "20 stepped cylinders"
+    },
+    "thread": {
+      "editable": false,
+      "record_range_inclusive": [
+        21,
+        212
+      ],
+      "source": "192 decorative helix capsules; no collision"
+    },
+    "head": {
+      "editable": true,
+      "record_indices": [
+        213
+      ],
+      "source": "bolt_hex_head.obj with explicit render_material override"
+    }
+  },
+  "representations": {
+    "PickBolt": {
+      "handle": "env.unwrapped.bolt",
+      "type": "dynamic Actor; same actor is held by native locked axes",
+      "source": "_load_bolt",
+      "expected_visual_records": 214,
+      "expected_render_shapes": 214,
+      "mesh_shape_count": "Single CPU task loader verified 214 shapes, including one head mesh with one material part; standard CUDA verification pending",
+      "formal_appearance_supported": true
+    },
+    "SeatNut": {
+      "handle": "env.unwrapped.bolt",
+      "type": "dynamic Actor; same actor is held by native locked axes",
+      "source": "_load_bolt",
+      "expected_visual_records": 214,
+      "expected_render_shapes": 214,
+      "mesh_shape_count": "Single CPU task loader verified 214 shapes, including one head mesh with one material part; standard CUDA verification pending",
+      "formal_appearance_supported": true
+    },
+    "TurnNut": {
+      "handle": "env.unwrapped.bolt",
+      "type": "dynamic Actor; same actor is held by native locked axes",
+      "source": "_load_bolt",
+      "expected_visual_records": 214,
+      "expected_render_shapes": 214,
+      "mesh_shape_count": "Single CPU task loader verified 214 shapes, including one head mesh with one material part; standard CUDA verification pending",
+      "formal_appearance_supported": true
+    },
+    "Long": {
+      "handle": "env.unwrapped.bolt",
+      "type": "dynamic Actor; same actor is held by native locked axes",
+      "source": "_load_bolt",
+      "expected_visual_records": 214,
+      "expected_render_shapes": 214,
+      "mesh_shape_count": "Single CPU task loader verified 214 shapes, including one head mesh with one material part; standard CUDA verification pending",
+      "formal_appearance_supported": false
+    }
+  },
+  "preserve": [
+    "tip/thread materials",
+    "all geometry, collisions, mass, poses, locked axes",
+    "native green bolt_placement_region guidance marker"
+  ],
+  "original_material": {
+    "base_color": [
+      0.55,
+      0.55,
+      0.6,
+      1.0
+    ],
+    "roughness": 0.4,
+    "metallic": 0.8
+  },
+  "uv": {
+    "new": "none",
+    "original_obj": "No vt or face UV references in the verified original OBJ; no imported UV to preserve",
+    "program_primitives": "no authored UV or textures"
+  },
+  "asset": {
+    "path": "tasks/assets/task_object_meshes/screwing/bolt_hex_head.obj",
+    "source_repository": "SIPAIR/DexArena",
+    "source_revision": "b197a198fe50f41d70f563cfa7c88d3cc9f528b6",
+    "source_path": "assets/task_object_meshes/screwing/bolt_hex_head.obj",
+    "source_uri": "https://huggingface.co/datasets/SIPAIR/DexArena/resolve/b197a198fe50f41d70f563cfa7c88d3cc9f528b6/assets/task_object_meshes/screwing/bolt_hex_head.obj",
+    "size_bytes": 761,
+    "sha256": "2f9940d5d657d2b3af5d14ad7f77db0801808a9060f01c18425afe05a3513ac5",
+    "git_blob_sha1": "015b8f1babc7ad40703a12dc5951be68d185344f",
+    "cpu_structure": {
+      "vertices": 14,
+      "triangles": 24,
+      "uv_coordinates": 0,
+      "authored_normals": 0,
+      "mtllib": [],
+      "usemtl": [],
+      "object_groups": [],
+      "connected_components": 1
+    },
+    "binding_readiness": "Original single connected ungrouped mesh is loaded as one head shape/part in the three single-environment CPU short tasks; GPU acceptance remains separate."
+  }
+}

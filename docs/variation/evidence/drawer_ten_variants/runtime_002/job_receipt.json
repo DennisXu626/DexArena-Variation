@@ -1,0 +1,16 @@
+{
+  "job_id": "128908",
+  "status": "COMPLETED",
+  "exit_code": "0:0",
+  "gpu_seconds": 30,
+  "application_seconds": 29.060228606685996,
+  "requeue": false,
+  "restarts": 0,
+  "source": "scontrol terminal JobState and RunTime; sacct unavailable",
+  "clean_pgid": true,
+  "owned_pgid": [],
+  "visible_cgroup": [],
+  "root_peak_bytes": 319605449,
+  "min_ceph_free_bytes": 266082451456,
+  "samples": 29
+}

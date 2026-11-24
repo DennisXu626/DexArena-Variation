@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "version": "office-devices-appearance-v3",
+  "scope": "material_appearance",
+  "schemes": [
+    "original",
+    "variant_1",
+    "variant_2",
+    "variant_3",
+    "variant_4",
+    "variant_5",
+    "variant_6",
+    "variant_7",
+    "variant_8",
+    "variant_9",
+    "variant_10"
+  ],
+  "objects": {
+    "laptop": {
+      "catalog": "assets/appearance/objects/office_desk/laptop/catalog.json",
+      "scheme_map": {
+        "original": "original",
+        "variant_1": "terracotta_matte",
+        "variant_2": "petrol_satin",
+        "variant_3": "variant_3",
+        "variant_4": "variant_4",
+        "variant_5": "variant_5",
+        "variant_6": "variant_6",
+        "variant_7": "variant_7",
+        "variant_8": "variant_8",
+        "variant_9": "variant_9",
+        "variant_10": "variant_10"
+      }
+    },
+    "keyboard": {
+      "catalog": "assets/appearance/objects/office_desk/keyboard/catalog.json",
+      "scheme_map": {
+        "original": "original",
+        "variant_1": "ochre_matte",
+        "variant_2": "indigo_satin",
+        "variant_3": "variant_3",
+        "variant_4": "variant_4",
+        "variant_5": "variant_5",
+        "variant_6": "variant_6",
+        "variant_7": "variant_7",
+        "variant_8": "variant_8",
+        "variant_9": "variant_9",
+        "variant_10": "variant_10"
+      }
+    }
+  },
+  "tasks": {
+    "OpenLaptop": [
+      "laptop"
+    ],
+    "TypeKeys": [
+      "keyboard"
+    ]
+  }
+}

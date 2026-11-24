@@ -13,6 +13,7 @@ import gymnasium as gym
 import torch
 
 from tasks.config.hands import register_task
+from tasks.drawer_plug.position_layout import requested_layout
 from mani_skill.utils.wrappers.record import RecordEpisode
 
 from tasks.drawer_plug.drawer_plug_long import (
@@ -43,12 +44,15 @@ class DrawerPlugOpenDrawerEnv(DrawerPlugLongEnv):
     show_charger_place_region = False
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
+        layout = requested_layout(self, options, env_idx, "OpenDrawer")
         with torch.device(self.device):
             b = len(env_idx)
             self._reset_episode_buffers(env_idx)
             self._initialize_workspace(env_idx)
-            self._initialize_drawer(env_idx, b, travel=0.0)
-            if self._fixture_appearance is not None:
+            self._initialize_drawer(env_idx, b, travel=0.0, layout=layout)
+            if self._family_appearance is not None:
+                self._finish_family_appearance(env_idx, options)
+            elif self._fixture_appearance is not None:
                 self._fixture_appearance.finish_reset(self, env_idx, options)
 
     def evaluate(self):

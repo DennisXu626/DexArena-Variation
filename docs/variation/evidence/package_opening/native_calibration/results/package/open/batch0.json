@@ -1,0 +1,1877 @@
+{
+  "job": "124658",
+  "gpu": "7",
+  "batch": 0,
+  "family": "package",
+  "task": "PackageOpeningOpenPackage-Sharpa-v1",
+  "seed_schedule": [
+    7,
+    7,
+    7,
+    19,
+    41
+  ],
+  "rows": [
+    {
+      "repeat": 0,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2703,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15194,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15413,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2747,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 16546,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15689,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 1,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2703,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15194,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15413,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2747,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 16546,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15689,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 2,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2703,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15194,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15413,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2747,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 16546,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15689,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 3,
+      "seed": 19,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2788,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 12068,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 740,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15921,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2525,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 14005,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 783,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 14407,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 4,
+      "seed": 41,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2887,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 11988,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 183,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 16481,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 2748,
+                "mean_abs": 0.0
+              }
+            },
+            "left_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 12708,
+                "mean_abs": 0.0
+              }
+            },
+            "right_wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 450,
+                "mean_abs": 0.0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 15684,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    }
+  ],
+  "native_only": true
+}

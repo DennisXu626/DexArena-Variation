@@ -1,0 +1,2691 @@
+{
+  "job": "124658",
+  "gpu": "7",
+  "batch": 0,
+  "family": "meal",
+  "task": "MealPreparationPlaceBread-Sharpa-v1",
+  "seed_schedule": [
+    7,
+    7,
+    7,
+    19,
+    41
+  ],
+  "rows": [
+    {
+      "repeat": 0,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  447,
+                  452
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 393,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 180,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 84,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 20,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8775,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1186,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5835,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4923,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 659,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 449,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 100,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 4.470348358154297e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 4.340277777777778e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  199,
+                  262
+                ]
+              ]
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 429,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 126,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 97,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 25,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8343,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1356,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5083,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5108,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 711,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 439,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 104,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 1,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  447,
+                  452
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 393,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 180,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 84,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 20,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8775,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1186,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5835,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4923,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 659,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 449,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 100,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 4.470348358154297e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 4.340277777777778e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  199,
+                  262
+                ]
+              ]
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 429,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 126,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 97,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 25,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8343,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1356,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5083,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5108,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 711,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 439,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 104,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 2,
+      "seed": 7,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 1,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  447,
+                  452
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 393,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 180,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 84,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 20,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8775,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1186,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5835,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4923,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 659,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 449,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 100,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 4.470348358154297e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 4.340277777777778e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  199,
+                  262
+                ]
+              ]
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 429,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 126,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 97,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 25,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8343,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1356,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5083,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5108,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 711,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 439,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 104,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 3,
+      "seed": 19,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 4.340277777777778e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  179,
+                  264
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 2,
+              "mean_abs": 1.6954210069444444e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  456,
+                  394
+                ],
+                [
+                  457,
+                  396
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 392,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 180,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 85,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 19,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8775,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1189,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5855,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4923,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 680,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 455,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 71,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 7.450580596923828e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 3,
+              "pixels": 3,
+              "mean_abs": 1.3020833333333334e-05,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  207,
+                  257
+                ],
+                [
+                  212,
+                  253
+                ],
+                [
+                  213,
+                  251
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 2,
+              "pixels": 2,
+              "mean_abs": 1.1302806712962962e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  450,
+                  406
+                ],
+                [
+                  451,
+                  406
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 422,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 126,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 91,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 24,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8343,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1339,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5091,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5108,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 640,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 446,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 88,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    },
+    {
+      "repeat": 4,
+      "seed": 41,
+      "partial": {
+        "1": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_0/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 4.340277777777778e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  197,
+                  251
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 4,
+              "pixels": 2,
+              "mean_abs": 2.2605613425925925e-06,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  445,
+                  464
+                ],
+                [
+                  461,
+                  408
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 394,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 180,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 84,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 20,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8775,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1223,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5864,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 4923,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 721,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 452,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 71,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        },
+        "0": {
+          "unselected_state": {
+            "max": 2.384185791015625e-07,
+            "nonnumeric": [],
+            "fields": [
+              {
+                "path": "/actors/spoon/0",
+                "delta": 7.450580596923828e-08
+              },
+              {
+                "path": "/actors/spoon/2",
+                "delta": 5.960464477539063e-08
+              },
+              {
+                "path": "/actors/spoon/6",
+                "delta": 1.1920928955078125e-07
+              },
+              {
+                "path": "/actors/bread/2",
+                "delta": 3.725290298461914e-09
+              },
+              {
+                "path": "/actors/bread/3",
+                "delta": 2.384185791015625e-07
+              },
+              {
+                "path": "/actors/bread/4",
+                "delta": 1.9298809217360713e-09
+              },
+              {
+                "path": "/actors/bread/5",
+                "delta": 3.143970084273917e-10
+              },
+              {
+                "path": "/actors/bread/6",
+                "delta": 3.2983971109956656e-10
+              },
+              {
+                "path": "/articulations/procedural_box_1/0/2",
+                "delta": 7.450580596923828e-09
+              }
+            ]
+          },
+          "unselected_counters": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rng_equal": true,
+          "unselected_materials": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "unselected_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 60,
+              "channels": 5,
+              "pixels": 2,
+              "mean_abs": 0.0006510416666666666,
+              "gt1": 3,
+              "gt2": 3,
+              "coordinates": [
+                [
+                  214,
+                  248
+                ],
+                [
+                  225,
+                  256
+                ]
+              ]
+            },
+            "human": {
+              "max": 1,
+              "channels": 1,
+              "pixels": 1,
+              "mean_abs": 5.651403356481481e-07,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": [
+                [
+                  443,
+                  400
+                ]
+              ]
+            }
+          },
+          "selected_repeat_state": {
+            "max": 0,
+            "nonnumeric": [],
+            "fields": []
+          },
+          "selected_repeat_rgb": {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          "selected_repeat_target": {
+            "base_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 423,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 126,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 95,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 20,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1,
+                "mean_abs": 0.0
+              }
+            },
+            "wrist_camera": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 8343,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 1355,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 0,
+                "mean_abs": 0
+              }
+            },
+            "human": {
+              "box": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5067,
+                "mean_abs": 0.0
+              },
+              "plate": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 5108,
+                "mean_abs": 0.0
+              },
+              "spoon": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 692,
+                "mean_abs": 0.0
+              },
+              "bread": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 453,
+                "mean_abs": 0.0
+              },
+              "ball_food": {
+                "max": 0,
+                "channels": 0,
+                "pixels": 94,
+                "mean_abs": 0.0
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "state": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "info": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "materials": {
+          "max": 0,
+          "nonnumeric": [],
+          "fields": []
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            },
+            "human": {
+              "max": 0,
+              "channels": 0,
+              "pixels": 0,
+              "mean_abs": 0.0,
+              "gt1": 0,
+              "gt2": 0,
+              "coordinates": []
+            }
+          }
+        ]
+      },
+      "trace": {
+        "max": 0,
+        "nonnumeric": [],
+        "fields": []
+      }
+    }
+  ],
+  "native_only": true
+}

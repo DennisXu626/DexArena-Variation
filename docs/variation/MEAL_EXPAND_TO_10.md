@@ -1,6 +1,6 @@
 # Meal Preparation 十套外观（当前v3）
 
-用户已审核v3实景；四入口original＋十套A4、双向A5和随机复现全量通过。完整机器人成功率未测；未commit／push。
+用户已审核v3实景；四入口original＋十套A4、双向A5和随机复现全量通过。完整机器人成功率未测；历史结果的适用范围见下文。
 
 [运行证据与限制](evidence/meal_preparation/ten_final/README.md) · [参数审阅板](figures/meal_expand_to_10.html) · [唯一运行catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json)
 
@@ -36,3 +36,7 @@ ScoopTomato A5按已确认新RGB判据离线重评20/20通过，原始失败JSON
 ## 最新：同历史全量复验通过
 
 本家族全部入口original＋十套A4、双向A5及随机复现均通过；Package另完成33对串行短步。结果、实际运行身份、原帧和范围见[全量复验报告](evidence/meal_preparation/paired_revalidation/README.md)。旧失败不删除，完整机器人成功率仍未测。
+
+## PR30-R1：与已合入PR31的main统一（2026-11-24）
+
+本次同步main `58de243`，统一普通和paired共享检查器，保留Package行筛选及后续控制目标验证。Meal生产代码与catalog未变；两项行筛选回归、8项Package回归和两项仓库静态检查通过。[集成说明、历史执行源码哈希与验证输出](evidence/meal_preparation/pr30_r1_integration/README.md)。历史44行A4／80例A5保留原执行脚本身份，本轮未运行GPU，不扩大活动命令隔离或完整任务成功率结论。

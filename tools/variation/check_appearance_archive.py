@@ -4,6 +4,7 @@ import csv
 import hashlib
 import json
 import re
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -19,6 +20,21 @@ def read(path):
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def accepted_catalog(path, historical_sha):
+    if sha(path) == historical_sha:
+        return read(path)
+    # The acceptance receipt covers a smaller catalog. Authenticate that
+    # snapshot and require exact values for every semantically accepted entry.
+    commit = 'f0a09c9d1722abc831fd5c62ae77a42c9dece95c'
+    data = subprocess.check_output(['git', '-c', 'safe.directory='+root.as_posix(),
+        '-C', str(root), 'show', commit+':'+path.relative_to(root).as_posix()])
+    assert hashlib.sha256(data).hexdigest() == historical_sha, path
+    accepted, current = json.loads(data), read(path)
+    assert {k:v for k,v in current.items() if k!='schemes'} == {k:v for k,v in accepted.items() if k!='schemes'}, path
+    assert all(current['schemes'].get(k) == v for k,v in accepted['schemes'].items()), path
+    return accepted
 
 
 rows = list(csv.DictReader((archive / 'objects.csv').open(encoding='utf-8')))
@@ -41,8 +57,12 @@ for row in rows:
         candidate_catalogs = list((directory / 'variants').rglob('catalog.json'))
         assert len(candidate_catalogs) == 1, row
         authored = read(candidate_catalogs[0])
-        expected_scope = ('furniture_appearance' if row['family'] == 'furniture_assembly'
-                          else 'authoring_and_single_environment_preview_only')
+        if row['family'] == 'furniture_assembly':
+            expected_scope = 'furniture_appearance'
+        elif (row['family'], row['object_id']) in {('nut_bolt', 'bolt'), ('nut_bolt', 'nut')}:
+            expected_scope = 'material_appearance'
+        else:
+            expected_scope = 'authoring_and_single_environment_preview_only'
         assert authored['scope'] == expected_scope, row
         assert authored['object_id'] == f"{row['family']}.{row['object_id']}", row
         assert authored['schemes']['original'] == {'mode': 'restore_native'}, row
@@ -58,8 +78,7 @@ assert inventory['total_objects'] == len(directories)
 assert inventory['families'] == len({r['family'] for r in rows})
 assert inventory['status_counts'] == {k: counts[k] for k in statuses}
 catalog_path = root / mapping['runtime_catalog']
-catalog = read(catalog_path)
-assert sha(catalog_path) == mapping['runtime_catalog_sha256']
+catalog = accepted_catalog(catalog_path, mapping['runtime_catalog_sha256'])
 for name, item in mapping['schemes'].items():
     scheme = catalog['schemes'][name]
     body = read(archive / item['bottle_materials'])
@@ -90,15 +109,14 @@ charger = mapping['charger']
 charger_row, = [r for r in rows if r['family'] == 'drawer_plug' and r['object_id'] == 'charger']
 assert charger_row['status'] == charger['status'] == 'accepted_pilot'
 charger_catalog_path = root / charger['runtime_catalog']
-charger_catalog = read(charger_catalog_path)
-assert sha(charger_catalog_path) == charger['runtime_catalog_sha256']
+charger_catalog = accepted_catalog(charger_catalog_path, charger['runtime_catalog_sha256'])
 assert charger_catalog['version'] == charger['runtime_catalog_version']
 assert charger['scheme_ids'] == list(charger_catalog['schemes'])
 assert set(charger_row['published_variants'].split(';')) == set(charger_catalog['schemes']) - {'original'}
 assert (archive / charger['archive_readme']).is_file()
 measured = read(root / charger['evidence'])
 assert measured['catalog_version'] == charger_catalog['version']
-assert measured['catalog_sha256'] == sha(charger_catalog_path)
+assert measured['catalog_sha256'] == charger['runtime_catalog_sha256']
 assert all(t['A4'] == 'passed' and t['A5']['status'] == 'passed' for t in measured['tasks'])
 
 bottle = archive / 'objects/cabinet_pouring/bottle'
