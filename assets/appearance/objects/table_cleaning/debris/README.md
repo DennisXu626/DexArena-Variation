@@ -19,3 +19,10 @@ V1对象键：`table_cleaning/debris`；V2对应键：`debris`。代码调查基
 - [tasks/table_cleaning/table_cleaning_long.py](../../../../../tasks/table_cleaning/table_cleaning_long.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+## 2026-11-24 十方案实施
+
+用户已确认十套方案，保留 original 与旧 variant_1/2，新增 variant_3–10。
+唯一运行参数见 `tasks/assets/variation/table_cleaning/v1/catalog.json`，支持三个 Sharpa 入口。
+实现与当前验证范围见[十方案记录](../../../../../docs/variation/TABLE_CLEANING_TEN_VARIANTS.md)。
+本节实施状态不将上面的历史“待适配”调查记录当作新增验收证据。

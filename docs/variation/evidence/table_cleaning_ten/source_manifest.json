@@ -1,0 +1,21 @@
+{
+  "tasks/table_cleaning/appearance.py": "7ae45628f6e1b2521119c593d43ef03183ea2f431c39b618af1be8d55cc7722c",
+  "tasks/table_cleaning/table_cleaning_dump_dustpan.py": "f03a2dab45ec591d9da9ff7e7b7c6d52c8b40f4e2616f035874ed4b13d5df879",
+  "tasks/table_cleaning/table_cleaning_long.py": "fcc417ddecdb83cd52e70b679e8969419788cfc369e8f0325d2ae47773393c09",
+  "tasks/table_cleaning/table_cleaning_pick_debris.py": "eeaf1280da2268e6f7ba350f0ef4e0183cab34652dd1d7279ee39207af233cd3",
+  "tasks/table_cleaning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tasks/assets/variation/table_cleaning/v1/catalog.json": "2213d96ce3bb4af5115f179f383d07dc5c18e511369da022fbe4dacd9b42f129",
+  "tools/variation/check_table_cleaning_critical_reset.py": "c877426109c8f5fbbad47cda0503b801fa0a7d71f28000bd41b76fc8994c8d15",
+  "tools/variation/check_table_cleaning_hold_cpu.py": "94af4b112a9962d1157372380efad06c071be1e39d6e898b6baa63b38cdd9cd8",
+  "tools/variation/check_table_cleaning_isolation_cpu.py": "c67507d27a3bd28cb66cd1590dc767a390784367e5efdb9b64cc6b3d770b8914",
+  "tools/variation/check_table_cleaning_parallel.py": "a558ae613c11647f2ecb7a3cd01c8ba8f3e15a199261bca2334336ff710a5cd8",
+  "tools/variation/check_table_cleaning_preview_cpu.py": "dc33519cfccaedae10bbcbb410450b01625e8b87b481409a07c91998391160eb",
+  "tools/variation/check_table_cleaning_reset_cpu.py": "f414425551b27383558e22983d2a2458c50e859aea9f0a162c597f38187509d4",
+  "tools/variation/check_table_cleaning_short_trace_paired.py": "cc67c983832e77530a92596d3621423002aa2ade04ebffce877c4d8c275b452a",
+  "tools/variation/check_table_cleaning_single_env_cpu.py": "fdb1a90e859cf86bc4ff1bba99c4691dad7a4130b698552199d5189a36aec15c",
+  "tools/variation/check_table_cleaning_state_restore_cpu.py": "fc62d45d9ec5461f8753e637e788d0161da366035f2c124b52c33fda3374160f",
+  "tools/variation/check_table_cleaning_ten_paired.py": "7abcd57ad09dc4fb2d79be1d5a97d37a64fe48d5875ab151adb1ed78eee03ee0",
+  "tools/variation/render_table_cleaning.py": "9d12c42924c2b0df20270cffe053f1307c0b8befd40b6895d8f1f0c3b10b7970",
+  "tools/variation/render_table_cleaning_ten.py": "57518abc3b0a3386d77222379fdd775ca921ba4d3e21e71fd2dd9e57ca29748e",
+  "tools/variation/table_cleaning_contract.py": "e91b513cb7a9fd52c701f5fb4717dc4a1c7fcddd8492edd50c31f9ffe1b511c0"
+}
