@@ -86,7 +86,7 @@ from tasks.furniture_assembly.furniture_assembly_insert_rail import (
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.furniture_assembly.appearance import FurnitureAppearance
-from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin
+from tasks.furniture_assembly.workspace import FurnitureWorkspaceMixin
 from tasks.furniture_assembly.position_layout import role_pose_tensor
 from tasks.config.layout_randomization import layout_rng, uniform_offset
 from tasks.config.object_materials import object_material
@@ -236,7 +236,7 @@ def build_wing_screw_rail(
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyFastenScrewEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyFastenScrewEnv(FurnitureWorkspaceMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -258,6 +258,7 @@ class FurnitureAssemblyFastenScrewEnv(FurnitureResetScopeMixin, DeclarativeTaskS
     # long task leaves it after stage 1, anywhere the PanelLayFlat predicate
     # accepts; the per-episode offsets below are the family's rack half-ranges.
     PANEL_CENTER = PLACE_CENTER
+    WORKSPACE_TASK = "FastenScrew"
     POSITION_LAYOUT_CENTERS = {"panel": PANEL_CENTER}
     TARGET_ROTATION = SCREW_TARGET_ROTATION
     TARGET_TOLERANCE = SCREW_TARGET_TOLERANCE
@@ -405,7 +406,7 @@ class FurnitureAssemblyFastenScrewEnv(FurnitureResetScopeMixin, DeclarativeTaskS
                 device=self.device, dtype=torch.float32,
             )
             panel_yaw = torch.tensor([yaw for _, _, yaw in offsets], device=self.device, dtype=torch.float32)
-            position_rows = getattr(self, "_furniture_position_rows", None)
+            position_rows = self._resolved_furniture_rows(env_idx)
             if position_rows is not None:
                 panel_xy_yaw = role_pose_tensor(position_rows, "panel", panel_p)
                 panel_p[:, :2] = panel_xy_yaw[:, :2]

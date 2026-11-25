@@ -118,7 +118,8 @@ from tasks.furniture_assembly.furniture_assembly_lay_flat_panel import (
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.furniture_assembly.appearance import FurnitureAppearance
-from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
+from tasks.furniture_assembly.reset_scope import is_full_reset
+from tasks.furniture_assembly.workspace import FurnitureWorkspaceMixin
 from tasks.furniture_assembly.position_layout import role_pose_tensor
 from tasks.config.object_materials import object_material
 from tasks.scene_builders import TableSceneBuilder
@@ -663,7 +664,7 @@ class RailSeatClip:
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyInsertRailEnv(FurnitureWorkspaceMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -690,6 +691,7 @@ class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskSt
     # rail lane.
     PANEL_SPAWN_CENTER = PLACE_CENTER
     RAIL_SPAWN_CENTER = RAIL_PICK_CENTER
+    WORKSPACE_TASK = "InsertRail"
     POSITION_LAYOUT_CENTERS = {"panel": PANEL_SPAWN_CENTER, "rail": RAIL_SPAWN_CENTER}
 
     # Success thresholds.
@@ -896,7 +898,7 @@ class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskSt
             panel_pos[:, 1] = self.PANEL_SPAWN_CENTER[1]
             panel_pos[:, 2] = self.panel_rest_z
             panel_yaw = torch.zeros((b,), device=self.device)
-            position_rows = getattr(self, "_furniture_position_rows", None)
+            position_rows = self._resolved_furniture_rows(env_idx)
             if position_rows is not None:
                 panel_xy_yaw = role_pose_tensor(position_rows, "panel", panel_pos)
                 panel_pos[:, :2] = panel_xy_yaw[:, :2]

@@ -92,7 +92,8 @@ from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightM
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.furniture_assembly.appearance import FurnitureAppearance
 from tasks.furniture_assembly.position_layout import role_pose_tensor
-from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
+from tasks.furniture_assembly.reset_scope import is_full_reset
+from tasks.furniture_assembly.workspace import FurnitureWorkspaceMixin
 from tasks.robots.panda_sharpa_hand_left_mobile_base import PandaSharpaHandLeftAngledMobileBase  # noqa: F401
 from tasks.robots.panda_wuji_hand_left_mobile_base import PandaWujiHandLeftMobileBase  # noqa: F401
 from tasks.config.object_materials import object_material
@@ -738,7 +739,7 @@ def build_place_marker(scene: ManiSkillScene, half_size, name: str = "place_zone
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyLayFlatPanelEnv(FurnitureWorkspaceMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -764,6 +765,7 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTask
     # distance from the stage it is supposed to reproduce.
     RACK_SPAWN_CENTER = RACK_CENTER
     PLACE_SPAWN_CENTER = PLACE_CENTER
+    WORKSPACE_TASK = "LayFlatPanel"
     POSITION_LAYOUT_CENTERS = {"rack": RACK_SPAWN_CENTER}
 
     # Success thresholds.
@@ -998,7 +1000,7 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTask
             rack_pos[:, 0] = self.RACK_SPAWN_CENTER[0] + rand(self.rack_random_x)
             rack_pos[:, 1] = self.RACK_SPAWN_CENTER[1] + rand(self.rack_random_y)
             rack_yaw = rand(self.rack_random_yaw)
-            position_rows = getattr(self, "_furniture_position_rows", None)
+            position_rows = self._resolved_furniture_rows(env_idx)
             if position_rows is not None:
                 rack_xy_yaw = role_pose_tensor(position_rows, "rack", rack_pos)
                 rack_pos[:, :2] = rack_xy_yaw[:, :2]
