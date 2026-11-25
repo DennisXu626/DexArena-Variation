@@ -376,7 +376,7 @@ class FurnitureAssemblyFastenScrewEnv(FurnitureWorkspaceMixin, DeclarativeTaskSt
 
     def _contact_count(self, actor) -> torch.Tensor:
         """Distinct fingers in force contact with `actor` (collision-bearing links)."""
-        return finger_contact_count(self.scene, self.agent, actor, self.TIP_CONTACT_FORCE)
+        return self._workspace_contact_counts(finger_contact_count(self.scene, self.agent, actor, self.TIP_CONTACT_FORCE))
 
     def _screw_touched(self) -> torch.Tensor:
         return self._contact_count(self.screw_head) >= 1.0

@@ -88,6 +88,7 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
             raise ValueError("position_workspace must be boolean")
         self.position_workspace = position_workspace
         self._placement = None
+        self._workspace_zero_step = None
         self.workspace_records = {}
         self._workspace_stream = {}
         if position_workspace:
@@ -146,8 +147,16 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
                                   mode="fixed" if has_request else "random", layout=layout)
             self._placement = {i: {role: [*r["layout"][role+"_xy_m"], math.radians(r["layout"][role+"_yaw_deg"])]
                                    for role in ROLES[kind]} for i, r in records.items()}
+        previous_mask = self._workspace_zero_step
+        mask = (previous_mask.clone() if previous_mask is not None
+                else torch.zeros(self.num_envs, dtype=torch.bool, device=self.device))
+        mask[indices] = bool(records)
+        self._workspace_zero_step = mask
         try:
             result = super().reset(seed=seed, options=options)
+        except BaseException:
+            self._workspace_zero_step = previous_mask
+            raise
         finally:
             self._placement = None
         self._workspace_stream = stream
@@ -162,3 +171,10 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
         if self._placement is not None:
             return [self._placement[i] for i in env_idx.tolist()]
         return getattr(self, "_furniture_position_rows", None)
+
+    def _workspace_contact_counts(self, counts):
+        # PhysX contact forces are from the last physical step. None has occurred
+        # at the newly selected initial poses, even if the preceding episode grasped.
+        if self._workspace_zero_step is None:
+            return counts
+        return counts.masked_fill(self._workspace_zero_step & (self._elapsed_steps == 0), 0)

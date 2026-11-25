@@ -965,7 +965,7 @@ class FurnitureAssemblyInsertRailEnv(FurnitureWorkspaceMixin, DeclarativeTaskSta
 
     def _contact_count(self, actor) -> torch.Tensor:
         """Distinct fingers in force contact with `actor` (collision-bearing links, see finger_contact_count)."""
-        return finger_contact_count(self.scene, self.agent, actor, self.TIP_CONTACT_FORCE)
+        return self._workspace_contact_counts(finger_contact_count(self.scene, self.agent, actor, self.TIP_CONTACT_FORCE))
 
     # ------------------------------------------------------------------
     # Single source of truth

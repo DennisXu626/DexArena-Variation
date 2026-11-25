@@ -1090,7 +1090,7 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureWorkspaceMixin, DeclarativeTaskS
 
     def _contact_count(self) -> torch.Tensor:
         """How many DISTINCT fingers carry contact force against the panel (collision-bearing links)."""
-        return finger_contact_count(self.scene, self.agent, self.panel, self.TIP_CONTACT_FORCE)
+        return self._workspace_contact_counts(finger_contact_count(self.scene, self.agent, self.panel, self.TIP_CONTACT_FORCE))
 
     def _gripper_opening(self) -> torch.Tensor:
         if self.robot_uids == GRIPPER_ROBOT_UID:
