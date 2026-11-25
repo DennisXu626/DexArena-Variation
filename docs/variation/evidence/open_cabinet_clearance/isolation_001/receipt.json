@@ -1,0 +1,44 @@
+{
+  "job_id": "142435",
+  "tested_source": {
+    "head": "c3e4b5361a16072e078a8c09ed9ecd605bdeb057",
+    "files": 379,
+    "mismatches": []
+  },
+  "scheduler_state": "COMPLETED",
+  "exit": "0:0",
+  "accounting": "terminal scontrol",
+  "allocated_seconds": 12,
+  "allocation_limit_seconds": 120,
+  "application_seconds": 10.713209051638842,
+  "application_limit_seconds": 90,
+  "restarts": 0,
+  "gpu_submissions": 1,
+  "sampled_storage": {
+    "samples": 13,
+    "peak": 51597064,
+    "min_free": 495594766336,
+    "stop_bytes": 134217728,
+    "final_stop": null
+  },
+  "clean_queue": true,
+  "live_owned_processes": 0,
+  "visible_job_cgroup_members": 0,
+  "raw_observations_sha256": "145dca42e0918d8a0ad99fc3bfa57bae2ac7c4d28f09c7df16985411f06079b3",
+  "comparison_sha256": "c6503c260665d063a3081e83e925eb819034d5f08439249d69a8708ebe06af7a",
+  "approval_window_start_epoch": 1795603269,
+  "collection_epoch": 1795603578.907923,
+  "outcome": {
+    "near_result": "OpenCabinet placement 'near' rejected for env 0: start 59.31 mm, approach 29.17 mm",
+    "far_arm_draw_matched": true,
+    "table_x_m": [
+      0.18000006675720215,
+      0.18000000715255737,
+      0.18000006675720215
+    ],
+    "displacement_m": 5.960464477539063e-08,
+    "displacement_mm": 5.9604644775390625e-05,
+    "control_passive_changed_fields": [],
+    "both_final_observations_identical": true
+  }
+}
