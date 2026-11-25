@@ -46,6 +46,19 @@ def geometry_filter(geo, bounds, stand, end, yaw, obj):
     return (end[1] + target[:, 1].min() - (stand[1] + foot[:, 1].max())) > 2 * DELTA
 
 
+def screen_dual_cell_vertices(chain, passive, cells, yaw, geometry, side):
+    """Check each unique projected stand/vessel corner before joining the two arms."""
+    corners = np.asarray(list(product((-HALF_MM, HALF_MM), repeat=4)))
+    vertices = cells[:, None, :] + corners
+    unique, inverse = np.unique(vertices.reshape(-1, 4), axis=0, return_inverse=True)
+    valid = np.empty(len(unique), dtype=bool)
+    for batch in np.array_split(np.arange(len(unique)), 1 + len(unique) // 220):
+        positions = unique[batch] / 1000
+        valid[batch], _, _, _ = screen(chain, positions[:, :2], positions[:, 2:], yaw,
+                                       {**geometry, 'cell_corner': 0}, side, passive=passive)
+    return valid[inverse].reshape(len(cells), len(corners)).all(axis=1)
+
+
 def build(task, audit):
     dual = task == 'Long'
     with closing(gym.make(f'PipetteTransfer{task}-Sharpa-v1', num_envs=1, sim_backend='physx_cpu',
@@ -86,8 +99,15 @@ def build(task, audit):
                         if passed:
                             groups[obj].setdefault(tuple(row[:2]), []).append(tuple(row[2:]))
                         diagnostics.append([*map(int, row), bool(passed), round(float(err) * 1000, 3), int(r)])
+                center_pass = sum(map(len, groups[obj].values()))
+                if dual and center_pass:
+                    pairs = np.array([[*s, *e] for s, targets in groups[obj].items() for e in targets])
+                    whole_cell = screen_dual_cell_vertices(chains[obj], chains[other], pairs, yaw, env_geom, side)
+                    groups[obj] = {}
+                    for row in pairs[whole_cell]:
+                        groups[obj].setdefault(tuple(row[:2]), []).append(tuple(row[2:]))
                 probes[f'{yaw}/{obj}'] = dict(tried=len(candidates), geometry_pass=len(cells),
-                    route_pass=sum(map(len, groups[obj].values())), cells=diagnostics)
+                    center_pass=center_pass, route_pass=sum(map(len, groups[obj].values())), cells=diagnostics)
             if dual:
                 rows = [list(map(int, (*s, *cup, *rack))) for s in sorted(groups['cup'].keys() & groups['rack'])
                         for cup, rack in product(groups['cup'][s], groups['rack'][s])
@@ -122,10 +142,10 @@ def main():
     spec = dict(version=1, half_mm=HALF_MM, tasks={})
     for task in TASKS:
         spec['tasks'][task] = build(task, audit)
-    TABLE.write_text(json.dumps(spec, separators=(',', ':')) + '\n', encoding='ascii')
+    TABLE.write_bytes((json.dumps(spec, separators=(',', ':')) + '\n').encode('ascii'))
     audit['table_sha256'] = hashlib.sha256(TABLE.read_bytes()).hexdigest()
     args.audit.parent.mkdir(parents=True, exist_ok=True)
-    args.audit.write_text(json.dumps(audit, separators=(',', ':')) + '\n', encoding='ascii')
+    args.audit.write_bytes((json.dumps(audit, separators=(',', ':')) + '\n').encode('ascii'))
 
 
 if __name__ == '__main__':
