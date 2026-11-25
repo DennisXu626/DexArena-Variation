@@ -49,4 +49,3 @@ def sample(task, stream):
     yaw = int(stream.choice(list(cells)))
     row = cells[yaw][stream.integers(len(cells[yaw]))]
     return public_row(objects, (row + stream.uniform(-half, half, size=len(row))) / 1000, yaw)
-

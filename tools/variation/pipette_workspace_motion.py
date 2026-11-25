@@ -131,4 +131,3 @@ def screen(chain, stand, vessel, yaw, geo, side, *, witnesses=False, passive=Non
                 best_waypoints[i] = [row[i].tolist() for row in trajectory]
         accepted |= valid
     return accepted, best, best_route, best_waypoints
-
