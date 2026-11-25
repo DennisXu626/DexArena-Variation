@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 import platform
+import pickle
 import subprocess
 import time
 
@@ -27,6 +28,7 @@ from tasks.furniture_assembly.position_layout import XY_OFFSETS_M, YAW_DEGREES
 
 def digest(e, i):
     return dict(scene=env_digest(state(e), i), stream=e._workspace_stream.get(i),
+                native_rng=hashlib.sha256(pickle.dumps(e._batched_episode_rng[i].get_state())).hexdigest(),
                 record=e.workspace_records.get(i), controller=env_digest(e.agent.controller.get_state(),i))
 
 
@@ -86,6 +88,7 @@ def test_task(kind,backend,n,rows):
     make = dict(num_envs=n,sim_backend=backend,obs_mode="state",control_mode="pd_joint_pos",reconfiguration_freq=0)
     task = f"FurnitureAssembly{kind}-Sharpa-v1"
     samples, samples_ms = {}, {}
+    controls = {}
     seeded_native = {}
     with gym.make(task,**make) as baseline:
         for i in range(8):
@@ -95,6 +98,14 @@ def test_task(kind,backend,n,rows):
             v=summary_native(baseline.unwrapped,kind)
             samples.setdefault("native",[]).append(v["operation"])
             seeded_native[i]=v["robot"]
+        if kind == "FastenScrew":
+            e = baseline.unwrapped
+            old_options = {"position_layout":{"0":{}}}
+            if n == 2:
+                old_options["env_idx"]=torch.tensor([0],device=e.device)
+            baseline.reset(seed=701,options=old_options)
+            old_ik=reach(e,kind,0)
+            controls["legacy_seed701_short_action"]=short_attempt(baseline,e,kind,0,old_ik)
     with gym.make(task,position_workspace=True,**make) as env:
         e=env.unwrapped
         for i in range(8):
@@ -148,6 +159,9 @@ def test_task(kind,backend,n,rows):
                 other=copy.deepcopy(digest(e,1-j))
                 env.reset(options={"env_idx":torch.tensor([j],device=e.device)})
                 assert other==digest(e,1-j)
+            streams=copy.deepcopy(e._workspace_stream)
+            env.reset(seed=701,options={"env_idx":torch.tensor([0],device=e.device),"position_layout":{"0":{}}})
+            assert e._workspace_stream==streams and all(measure(e,kind,0,{},table)["checks"].values())
         for k,(name,request,layout,negative) in enumerate(candidates(kind)):
             i=k%n
             seed=1300+k
@@ -216,7 +230,7 @@ def test_task(kind,backend,n,rows):
                         scores.append([float(err[0]),float(jump[0]),float(gap[0])])
                     row["holdout_ik"] = scores
             rows.append(row)
-    return dict(operation_xyz_m=samples,reset_ms=samples_ms)
+    return dict(operation_xyz_m=samples,reset_ms=samples_ms,controls=controls)
 
 
 def main():
