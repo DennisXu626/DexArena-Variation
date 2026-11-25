@@ -1,0 +1,3 @@
+# Preserve captured bytes for the hashes in the SDK and approach receipts.
+*/POINTS.csv -text whitespace=cr-at-eol
+*/results.json -text whitespace=cr-at-eol
