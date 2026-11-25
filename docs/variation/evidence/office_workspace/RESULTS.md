@@ -36,6 +36,10 @@
 | TypeKeys | [CSV](cuda/TypeKeys/POINTS.csv) · [JSON](cuda/TypeKeys/report.json) · [SDK](cuda/TypeKeys/SDK.json) | 标称与远点均完成首键按压释放并推进到 A，指定指腹接触力峰值分别为 3.81 N、3.64 N。 |
 | ClickMouse | [CSV](cuda/ClickMouse/POINTS.csv) · [JSON](cuda/ClickMouse/report.json) · [SDK](cuda/ClickMouse/SDK.json) | 标称两路线均未触发。远点两路线左键峰值都达到满行程，壳侧路线触发原生有效点击。指定 link 对接触力读数为零。 |
 
+## Linux 双环境 CUDA
+
+Server3 在 Linux PhysX CUDA 上使用同一提交，三项各完成 33 行检查。Linux 与 Windows CUDA 对代表点的实际动作给出了相同的通过组合。任务回执、作业状态和接触测量见 [Server3 实测报告](server3/RESULTS.md)。
+
 ## 复现给遥操组的点
 
 使用相应后端报告的 `make_kwargs` 和 `seed`。先按 `reference` 初始化，再通过同样的 `workspace_placement` 请求切到 `far`。比较进手侧时保持位置与朝向相同。各点实测操作坐标和可原样复制的 `reset_options` 在逐点 CSV 中。
