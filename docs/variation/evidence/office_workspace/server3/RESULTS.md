@@ -11,3 +11,7 @@
 | ClickMouse | 两个平台的标称位置两条路线均未触发有效点击。远点两条路线均达到左键满行程，其中壳侧路线触发原生成功。所有试次的指定 link 对接触力读数均为 0 N。 | [逐点 CSV](142367/ClickMouse/POINTS.csv) · [原始 JSON](142367/ClickMouse/report.json) · [SDK](142367/ClickMouse/SDK.json) |
 | TypeKeys | 标称与远点均完成 P 的按压与释放，原生阶段推进至 A。两处指定指腹力峰值为 3.81 N、3.64 N，与 Windows CUDA 的读数四舍五入到 0.01 N 后一致。五键序列仍需遥操验证。 | [逐点 CSV](142367/TypeKeys/POINTS.csv) · [原始 JSON](142367/TypeKeys/report.json) · [SDK](142367/TypeKeys/SDK.json) |
 | OpenLaptop | 标称与远点的主动动作屏角峰值分别为 60.61°、67.10°。两次指定指尖对屏幕的接触力均为 0 N，未完成指定接触的开盖动作。Windows CUDA 上观察到相同结果。 | [逐点 CSV](142367/OpenLaptop/POINTS.csv) · [原始 JSON](142367/OpenLaptop/report.json) · [SDK](142367/OpenLaptop/SDK.json) |
+
+## OpenLaptop 独立复跑
+
+作业 `142407` 在同一节点的同一张卡上单独运行 OpenLaptop，Slurm 终态为 `COMPLETED`，退出码 `0:0`，用时 13:42。SDK 再次通过。33 行逐点 CSV 与首次记录逐字节一致。标称和远点的逐控制步动作、屏角与接触力也相同，两条主动轨迹均未读到指定指尖接触。[检查器状态](142407/status.txt) · [逐点 CSV](142407/OpenLaptop/POINTS.csv) · [原始 JSON](142407/OpenLaptop/report.json) · [SDK](142407/OpenLaptop/SDK.json)
