@@ -1,5 +1,7 @@
 # Office Desk 位置变化
 
+可选的操作路径随机采样及预设见[三短任务工作空间](../office_workspace/README.md)。本页保留原显式位置接口和原始证据。
+
 三个短任务独立复现同一办公流程的操作。位置变化以桌面世界 XY 和各设备根为基准。范围与样点按 [场景位置工作指南](../../position/README.md) 建立，图面组织沿用 [Cabinet](../cabinet_position_boundaries/README.md) 和 [Drawer](../drawer_position_boundaries/RESULTS.md) 的整桌与等比例局部对照。
 
 ## 任务与范围

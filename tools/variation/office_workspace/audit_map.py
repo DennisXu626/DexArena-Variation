@@ -30,6 +30,13 @@ legacy = read_module("position_layout")
 
 def plot(data, table):
     origin = np.asarray(data["origin"])[:2]
+    task = {"laptop": "OpenLaptop", "keyboard": "TypeKeys", "mouse": "ClickMouse"}[data["device"]]
+    observation_path = EVIDENCE / "cpu" / task / "report.json"
+    observed = (
+        json.loads(observation_path.read_text(encoding="utf-8"))["points"]
+        if observation_path.exists()
+        else []
+    )
     yaw_list = table["yaw_deg"]
     target = np.asarray(next(iter(data["controls"]["targets_xyz_m"].values())))[:2]
     fig, axes = plt.subplots(
@@ -92,7 +99,13 @@ def plot(data, table):
         ax.set_aspect("equal")
         ax.set_xlabel("world X (cm)")
         ax.set_ylabel("world Y (cm)")
-        ax.set_title("Table overview" if i == 0 else f"Root XY at {yaw:+}°")
+        title = "Table overview" if i == 0 else f"Root XY at {yaw:+}°"
+        eligible = [row for row in observed if row.get("yaw_offset_deg") == yaw]
+        if i and eligible:
+            limiting = min(eligible, key=lambda row: row["footprint_margin_m"])
+            ax.plot(*np.array(limiting["pose"][:2]) * 100, marker="x", color="#64233e", ms=6)
+            title += f'\n{limiting["id"]}: {1000 * limiting["footprint_margin_m"]:.1f} mm to table edge'
+        ax.set_title(title, fontsize=10)
     fig.suptitle(
         data["device"]
         + " • root XY   |   blue: screened   dashed: old explicit   dotted: native   red: nominal"
@@ -146,6 +159,7 @@ def audit(kind):
         sampled.append((yaw, xy))
     distribution = {}
     holdout = []
+    neighbours = []
     rng = np.random.default_rng(434343)
     for yaw in table["yaw_deg"]:
         cells = table["cells"][str(yaw)]
@@ -163,6 +177,26 @@ def audit(kind):
             worst_cell_standardized_residual=float(np.max(np.abs(residuals))),
         )
         assert abs(yy - 8192 / len(table["yaw_deg"])) < 6 * np.sqrt(8192 * (1 / 3) * (2 / 3))
+        for axis, side in ((0, -1), (0, 1), (1, -1), (1, 1)):
+            cell = max(cells, key=lambda c: side * (c[axis] + (c[2] if side > 0 else 0.0)))
+            edge = np.asarray(cell[:2]) + cell[2] / 2
+            edge[axis] = cell[axis] + (cell[2] if side > 0 else 0.0)
+            outside = edge.copy()
+            outside[axis] += side * 0.02
+            assert runtime.cell_at(table, outside, yaw) is None
+            tested = {
+                route: list(model.evaluate(outside, yaw, route, 45.0)[:5]) for route in ROUTES[kind]
+            }
+            neighbours.append(
+                dict(
+                    axis=axis,
+                    side=side,
+                    yaw_deg=yaw,
+                    edge=edge.tolist(),
+                    outside=outside.tolist(),
+                    results=tested,
+                )
+            )
         for trial in range(24):
             x, y, step, routes = cells[rng.integers(len(cells))]
             xy = np.array([x, y]) + step * rng.random(2)
@@ -183,6 +217,7 @@ def audit(kind):
         independent_paths=len(holdout),
         passed=passed,
         holdout=holdout,
+        neighbouring_paths=neighbours,
     )
     (EVIDENCE / (kind + "_audit.json")).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     plot(frame, table)
