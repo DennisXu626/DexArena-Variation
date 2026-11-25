@@ -118,7 +118,9 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
                 or len(set(indices)) != len(indices)):
             raise ValueError("invalid Furniture workspace environment indices")
         indices = sorted(indices)
-        if len(indices) != self.num_envs and seed is not None:
+        replay = "position_layout" in options or "reset_to_env_states" in options
+        full = len(indices) == self.num_envs
+        if not full and seed is not None and not replay:
             raise ValueError("only full resets may re-seed the Furniture workspace")
         if "env_idx" in options:
             options = {**options, "env_idx": torch.as_tensor(indices, device=self.device)}
@@ -130,13 +132,13 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
                 raise ValueError("workspace_placement needs one string key per selected environment")
             fixed = {i: fixed_layout(kind, requests[str(i)]) for i in indices}
         stream = dict(self._workspace_stream)
-        if seed is not None or not stream:
+        if (full and seed is not None) or not stream:
             seeds = np.atleast_1d(seed) if seed is not None else [int(np.random.SeedSequence().entropy)]
             if len(seeds) not in (1, self.num_envs):
                 raise ValueError("supply one seed or one per environment")
             stream = {i: (int(seeds[0 if len(seeds) == 1 else i]), 0) for i in range(self.num_envs)}
         records = {}
-        if "position_layout" not in options and "reset_to_env_states" not in options:
+        if not replay:
             for i in indices:
                 base, count = stream[i]
                 if has_request:
