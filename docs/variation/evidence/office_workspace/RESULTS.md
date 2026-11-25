@@ -26,6 +26,16 @@
 
 额外用未参与建图的三个种子初始化实际机器人和布局，每项的三个随机点均有至少一条离线路线通过。OpenLaptop 其中一个点的侧向路线超过指尖误差门槛。另按两次主动开盖试验相同的种子、布局及 672 个控制步保持原生关节目标，屏角均从 44.05° 下降到 38.54°。主动探针的峰值分别为 62.74°、67.28°，两次均未读到指定指尖接触。[原生起姿与被动开盖对照](compatibility.json)
 
+## Windows 双环境 CUDA
+
+三个独占作业使用 `f9f64ec`、Windows PhysX CUDA 和支持 indexed apply 的 SAPIEN wininterop5。与 CPU 输入的差异为交接资料与额外离线／CPU 检查。每项共 33 行，包含 17 个合法初态、12 个预期拒绝和 4 个在零步间隔完成的局部 reset。两个方向各做一次固定、一次随机，并实际读回选中实体与未选物理、阶段、控制器和随机流。TypeKeys 同时核提示位置，三项均验证乱序选择 ID 的路由、seed 重播、推进和同种子旧接口。全部通过，最大操作点预测误差 0.00035 mm。三个作业均正常退出，SDK 前后身份一致。
+
+| 短任务 | 双环境逐点、原始记录、SDK 与回执 | 代表点实际短动作 |
+|---|---|---|
+| OpenLaptop | [CSV](cuda/OpenLaptop/POINTS.csv) · [JSON](cuda/OpenLaptop/report.json) · [SDK](cuda/OpenLaptop/SDK.json) | 标称和远点的屏角峰值为 60.61° 和 67.10°，指定指尖对屏幕的接触力读数均为零。 |
+| TypeKeys | [CSV](cuda/TypeKeys/POINTS.csv) · [JSON](cuda/TypeKeys/report.json) · [SDK](cuda/TypeKeys/SDK.json) | 标称与远点均完成首键按压释放并推进到 A，指定指腹接触力峰值分别为 3.81 N、3.64 N。 |
+| ClickMouse | [CSV](cuda/ClickMouse/POINTS.csv) · [JSON](cuda/ClickMouse/report.json) · [SDK](cuda/ClickMouse/SDK.json) | 标称两路线均未触发。远点两路线左键峰值都达到满行程，壳侧路线触发原生有效点击。指定 link 对接触力读数为零。 |
+
 ## 复现给遥操组的点
 
 使用相应后端报告的 `make_kwargs` 和 `seed`。先按 `reference` 初始化，再通过同样的 `workspace_placement` 请求切到 `far`。比较进手侧时保持位置与朝向相同。各点实测操作坐标和可原样复制的 `reset_options` 在逐点 CSV 中。

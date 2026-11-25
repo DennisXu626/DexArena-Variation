@@ -1,0 +1,32 @@
+{
+  "version": "3.0.3+dexarena.gpu1.wininterop5",
+  "commit": "f9f64ecf71b583319f7850400c08492c9d5e4d76",
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB",
+  "min_gpu_free_mib": 5360,
+  "elapsed_seconds": 320.64,
+  "exit_code": 0,
+  "launcher": {
+    "file": "run_task_check.py",
+    "sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb",
+    "checker": "tools/variation/office_workspace/verify.py",
+    "checker_sha256": "27035fe8faf4bce87cf651298d39517ef71cbd0e438a179d17402370c7f6e5f5"
+  },
+  "binaries_unchanged": true,
+  "python_source_unchanged": true,
+  "native_binary_sha256": {
+    "sapien.dll": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4",
+    "svulkan2.dll": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e",
+    "simsense.dll": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd",
+    "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+    "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1",
+    "pysapien.cp310-win_amd64.pyd": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+  },
+  "artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+  "indexed_gpu_apply_patch_version": 1,
+  "raw_process_sha256": "0fbcb0840c3d6b47b4e6fcd65a091f40d80fe55b69a1054b69283e72627467f0",
+  "raw_sdk_sha256": "fafb3ef681fcb51332b70ece6d76ef566b2ac9f88771b5e413a33e5a9137a174",
+  "outputs_sha256": {
+    "report.json": "c4c8f17b721028e0e6dcbcabc32db45d0921408512f9ee20fc243ba8408d2666",
+    "POINTS.csv": "2ebbde72cc8b61cc31f43f1ea7936d0b10b894e6eec47b7cd362318b126a9a2e"
+  }
+}
