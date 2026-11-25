@@ -62,15 +62,26 @@ class CabinetPouringOpenCabinetEnv(CabinetPouringLongEnv):
         from .position_layout import requested_layout
         if "handle_placement" in options and (not self._handle_workspace or "position_layout" in options):
             raise ValueError("handle_placement requires handle_workspace and a single layout request")
-        if self._handle_workspace and "position_layout" not in options:
-            from .open_cabinet_workspace import resolve_workspace
-            layout = resolve_workspace(self, env_idx.tolist(), options.get("handle_placement"))
-        else:
-            layout = requested_layout(options, env_idx, "OpenCabinet")
+        layout = requested_layout(options, env_idx, "OpenCabinet")
         with torch.device(self.device):
             b = len(env_idx)
-            self._reset_episode_buffers(env_idx)
-            self._initialize_workspace(env_idx)
+            if self._handle_workspace and layout is None:
+                # Keep the native table / qpos draw order. Screen the exact qpos sent
+                # to agent.reset, before any physics step or teleoperation command.
+                from .open_cabinet_workspace import resolve_workspace
+                self.table_scene.initialize(env_idx)
+                self._set_work_table_pose()
+                start = self._initial_robot_qpos(b)
+                names = [joint.name for joint in self.agent.robot.get_active_joints()]
+                arm = [names.index(name) for name in self.agent.arm_joint_names]
+                layout = resolve_workspace(self, env_idx.tolist(), options.get("handle_placement"),
+                                           start_qpos=start[:, arm].detach().cpu().numpy())
+                self._reset_episode_buffers(env_idx)
+                self.agent.reset(start)
+                self.agent.robot.set_root_pose(self._robot_base_pose)
+            else:
+                self._reset_episode_buffers(env_idx)
+                self._initialize_workspace(env_idx)
             self._initialize_cabinet(env_idx, b, door_open=False, layout=layout)
             if self._family_appearance is not None:
                 self._finish_family_appearance(env_idx, options)
