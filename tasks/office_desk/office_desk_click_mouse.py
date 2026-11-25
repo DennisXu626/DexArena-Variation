@@ -542,6 +542,10 @@ class OfficeDeskClickMouseEnv(OfficeResetScopeMixin, BaseEnv):
             )
 
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
+        self._configure_position_workspace(
+            kwargs, num_envs, robot_uids == DEFAULT_ROBOT_UID and self.target_finger_id == 1
+            and 0 <= self.robot_init_qpos_noise <= .02,
+        )
         super().__init__(
             *args,
             robot_uids=robot_uids,

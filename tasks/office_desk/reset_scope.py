@@ -24,8 +24,26 @@ def office_capacity_config(config, kwargs):
 
 
 class OfficeResetScopeMixin(FurnitureResetScopeMixin):
+    def _configure_position_workspace(self, kwargs, num_envs, supported):
+        enabled = kwargs.pop('position_workspace', False)
+        if not isinstance(enabled, bool) or (enabled and not supported):
+            raise ValueError('Office position_workspace requires the screened Sharpa, fingertip and asset configuration')
+        self.position_workspace = None
+        if enabled:
+            from tasks.office_desk.position_workspace import OfficeWorkspace
+            self.position_workspace = OfficeWorkspace(self._position_device_name, num_envs)
+
     def reset(self, seed=None, options=None):
         env_idx = options.get('env_idx') if options is not None else None
+        workspace = getattr(self, 'position_workspace', None)
+        if options is not None and 'workspace_placement' in options and workspace is None:
+            raise ValueError('workspace_placement requires position_workspace=True')
+        if (workspace is not None and env_idx is not None
+                and 'position_layout' not in options and 'reset_to_env_states' not in options):
+            # Native Office selection expects ascending IDs. The public layout is keyed by actual env ID.
+            supplied = env_idx.tolist() if hasattr(env_idx, 'tolist') else env_idx
+            if isinstance(supplied, (tuple, list)) and all(type(i) is int for i in supplied):
+                env_idx = sorted(supplied)
         selected = range(self.num_envs)
         if env_idx is not None:
             selected = validate_reset_indices(env_idx, self.num_envs)
@@ -58,7 +76,12 @@ class OfficeResetScopeMixin(FurnitureResetScopeMixin):
             indices = torch.as_tensor(env_idx, dtype=torch.long, device=self._elapsed_steps.device)
             if indices is not env_idx:
                 options = {**options, 'env_idx': indices}
-        return super().reset(seed=seed, options=options)
+        if workspace is None:
+            return super().reset(seed=seed, options=options)
+        options, pending = workspace.prepare(selected, seed, options or {})
+        result = super().reset(seed=seed, options=options)
+        workspace.seeds, workspace.counts, workspace.episodes = pending
+        return result
 
     def _office_rand(self, env_idx, shape):
         if is_full_reset(env_idx, self.num_envs):

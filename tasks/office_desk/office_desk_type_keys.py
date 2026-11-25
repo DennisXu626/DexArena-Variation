@@ -687,6 +687,11 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
         self.available_model_ids = np.asarray(
             [model_id] if model_id else list(KEYBOARD_MODEL_IDS)
         )
+        self._configure_position_workspace(
+            kwargs, num_envs, robot_uids == DEFAULT_ROBOT_UID and self.target_finger_id == 1
+            and 0 <= self.robot_init_qpos_noise <= .01 and self.keyboard_clearance == .002
+            and self.available_model_ids.tolist() == ["13106"],
+        )
         if reconfiguration_freq is None:
             reconfiguration_freq = 1 if num_envs == 1 else 0
 

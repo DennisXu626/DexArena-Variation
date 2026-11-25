@@ -643,6 +643,14 @@ class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
             reconfiguration_freq = 1 if num_envs == 1 else 0
 
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
+        profile = LAPTOP_MODELS[MODEL_ID]
+        self._configure_position_workspace(
+            kwargs, num_envs, robot_uids == DEFAULT_ROBOT_UID and self.target_finger_id == 1
+            and 0 <= self.robot_init_qpos_noise <= .02 and collision_decomposition == "simplified"
+            and cfg["scale"] == profile["scale"]
+            and cfg["start_angle_min_deg"] >= profile["start_angle_min_deg"]
+            and cfg["start_angle_max_deg"] <= profile["start_angle_max_deg"],
+        )
         super().__init__(
             *args,
             robot_uids=robot_uids,
