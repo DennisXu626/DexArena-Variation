@@ -14,7 +14,7 @@ from check_pipette_positions import (ROOT, TASKS, XY_OFFSETS_M, geometry, git, g
                                      np, pose_rows, position_centers, release_probe, sapien,
                                      short_attempt, snapshot, stand_dish_gap_m, torch, version)
 from build_pipette_workspace import envelope, TABLE
-from check_furniture_appearance import controller_state
+import check_furniture_appearance as controller_checks
 from pipette_workspace_motion import capture, screen
 from tasks.pipette_transfer import position_workspace as ws
 
@@ -31,7 +31,7 @@ def digest(env, i):
     stream = env._workspace_streams[i].bit_generator.state
     native = env._batched_episode_rng[i].get_state()
     state = snapshot(env, i)
-    controls = controller_state(env, i)
+    controls = controller_checks.controller_state(env, i)
     return fingerprint([state, controls, stream, native[0], native[1].tolist(), *native[2:]])
 
 
@@ -238,6 +238,7 @@ def replay(task):
 
 
 def main():
+    controller_checks.np, controller_checks.torch = np, torch
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',required=True,type=Path)
     parser.add_argument('--sim-backend',choices=('physx_cpu','physx_cuda'),required=True)
