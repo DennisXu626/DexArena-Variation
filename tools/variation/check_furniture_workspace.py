@@ -84,6 +84,40 @@ def legacy_reference(kind,rng):
     return result
 
 
+def reversed_replay(env, kind):
+    """Compare caller-index order on both legacy rows and legacy state tensors."""
+    e = env.unwrapped
+    indices = torch.tensor([1,0],device=e.device)
+    role = ROLES[kind][0]
+    rows = {"0":{}, "1":{role+"_yaw_deg":YAW_DEGREES[role][-1]}}
+    env.reset(seed=[73,74],options={"env_idx":indices,"position_layout":rows})
+    initial = [env_digest(state(e),i) for i in range(2)]
+    saved = copy.deepcopy(e.get_state_dict())
+    env.reset(seed=89)
+    env.reset(options={"env_idx":indices,"reset_to_env_states":{"env_states":saved}})
+    return initial,[env_digest(state(e),i) for i in range(2)]
+
+
+def audit_arm_noise(task, kind, noise):
+    checks = []
+    with gym.make(task,position_workspace=True,robot_init_qpos_noise=noise,sim_backend="physx_cpu",
+                  obs_mode="state",control_mode="pd_joint_pos",reconfiguration_freq=0) as env:
+        e = env.unwrapped
+        for angles, centers, half in workspace(kind)[1]:
+            point=centers[len(centers)//2]+.271*half
+            layout=world_layout(kind,angles,point)
+            env.reset(seed=137,options={"workspace_placement":{"0":layout}})
+            chain=setup_motion(e,0)
+            scores=[]
+            for tilt in (0,25,-25):
+                err,jump,gap=screen(chain,paths(kind,angles,point[None],np.deg2rad(tilt)),
+                                    hand_enclosures(e),kind,point[None,:2],angles[0])
+                scores.append((float(err[0]),float(jump[0]),float(gap[0])))
+            passed=any(err<=.015 and jump<=1.45 and gap>0 for err,jump,gap in scores)
+            checks.append(dict(angles=angles,scores=scores,passed=passed))
+    return checks
+
+
 def test_task(kind,backend,n,rows):
     make = dict(num_envs=n,sim_backend=backend,obs_mode="state",control_mode="pd_joint_pos",reconfiguration_freq=0)
     task = f"FurnitureAssembly{kind}-Sharpa-v1"
@@ -91,6 +125,8 @@ def test_task(kind,backend,n,rows):
     controls = {}
     seeded_native = {}
     with gym.make(task,**make) as baseline:
+        if n == 2:
+            native_replay=reversed_replay(baseline,kind)
         for i in range(8):
             t=time.perf_counter()
             baseline.reset(seed=501+i)
@@ -144,6 +180,8 @@ def test_task(kind,backend,n,rows):
                 env.reset(seed=909,options={"position_layout":{str(j):req for j in range(n)}})
                 assert all(measure(e,kind,0,req,table)["checks"].values())
         if n==2:
+            assert native_replay==reversed_replay(env,kind),(kind,"reversed legacy replay")
+            controls["legacy_reordered_layout_and_snapshot"]=True
             env.reset(options={"env_idx":torch.tensor([1,0],device=e.device),
                                "workspace_placement":{"0":"near","1":"far"}})
             for j,label in enumerate(("near","far")):
@@ -250,6 +288,9 @@ def main():
         print("checking",kind,flush=True)
         result["tasks"][kind]=test_task(kind,args.backend,n,rows)
         if n == 1:
+            result["tasks"][kind]["arm_noise"]={
+                str(noise):audit_arm_noise(f"FurnitureAssembly{kind}-Sharpa-v1",kind,noise) for noise in (0.,.005)
+            }
             rng, replay = np.random.default_rng(3942), np.random.default_rng(3942)
             layers = Counter()
             for _ in range(8192):

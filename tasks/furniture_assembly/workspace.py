@@ -95,8 +95,8 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
             side = "left" if self.WORKSPACE_TASK == "LayFlatPanel" else "right"
             if kwargs.get("robot_uids") != f"panda_sharpa_hand_{side}_angled_mobile_base":
                 raise ValueError("Furniture position_workspace requires the registered Sharpa configuration")
-            if self.robot_init_qpos_noise != .01:
-                raise ValueError("Furniture position_workspace uses the native Sharpa initial joint noise")
+            if not 0 <= self.robot_init_qpos_noise <= .01:
+                raise ValueError("screened Furniture arm initialization noise is 0 to 0.01 rad")
             if getattr(self, "place_random_x", 0) or getattr(self, "place_random_y", 0):
                 raise ValueError("Furniture position_workspace requires the fixed native handoff region")
         super().__init__(*args, **kwargs)
@@ -122,7 +122,7 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
         full = len(indices) == self.num_envs
         if not full and seed is not None and not replay:
             raise ValueError("only full resets may re-seed the Furniture workspace")
-        if "env_idx" in options:
+        if "env_idx" in options and not replay:
             options = {**options, "env_idx": torch.as_tensor(indices, device=self.device)}
         kind = self.WORKSPACE_TASK
         fixed = {}
