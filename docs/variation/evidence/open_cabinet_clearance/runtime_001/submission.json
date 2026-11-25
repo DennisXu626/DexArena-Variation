@@ -1,0 +1,18 @@
+{
+  "job_id": "142378",
+  "stdout": "142378\n",
+  "stderr": "sbatch.slurm: GPU Index 6 (1 Shard each). If pending, those Indexes have 0 Shards \u2014 scancel and change --gres=\n",
+  "exit": 0,
+  "command": [
+    "/opt/slurm/bin/sbatch",
+    "--parsable",
+    "--gres=gpu:6",
+    "--no-requeue",
+    "--time=00:04:00",
+    "--chdir",
+    "/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/source",
+    "/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/job.sh"
+  ],
+  "epoch": 1795602688.919101,
+  "watcher_pid": 1990652
+}

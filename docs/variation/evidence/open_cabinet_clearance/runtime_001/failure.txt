@@ -1,0 +1,22 @@
+/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/site-packages/sapien/_vulkan_tricks.py:78: UserWarning: Failed to find Vulkan ICD file. This is probably due to an incorrect or partial installation of the NVIDIA driver. SAPIEN will attempt to provide an ICD file anyway but it may not work.
+  warn(
+[33;1m2026-11-25 10:31:33,659 - mani_skill  - WARNING - Overriding registered agent panda[0m
+[33;1m2026-11-25 10:31:33,660 - mani_skill  - WARNING - Overriding registered agent panda_wristcam[0m
+[2026-11-25 10:31:36.345] [SAPIEN] [critical] Cooking::cookConvexMesh: GPU-compatible convex hull could not be built because of oblong shape. SAPIEN ignores this error and enables GPU simulation anyway. This is a temporary workaround until PhysX fixes the oblong shape test.
+[2026-11-25 10:31:36.354] [SAPIEN] [critical] Cooking::cookConvexMesh: GPU-compatible convex hull could not be built because of oblong shape. SAPIEN ignores this error and enables GPU simulation anyway. This is a temporary workaround until PhysX fixes the oblong shape test.
+[2026-11-25 10:31:36.370] [SAPIEN] [critical] Cooking::cookConvexMesh: GPU-compatible convex hull could not be built because of oblong shape. SAPIEN ignores this error and enables GPU simulation anyway. This is a temporary workaround until PhysX fixes the oblong shape test.
+[2026-11-25 10:31:36.385] [SAPIEN] [critical] Cooking::cookConvexMesh: GPU-compatible convex hull could not be built because of oblong shape. SAPIEN ignores this error and enables GPU simulation anyway. This is a temporary workaround until PhysX fixes the oblong shape test.
+Traceback (most recent call last):
+  File "/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/launch.py", line 32, in <module>
+    runpy.run_path(str(script),run_name="__main__")
+  File "/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/data/home/xkl/AutoDemo/envs/DexGenTransfer/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/source/tools/variation/open_cabinet_reach/check_start_runtime.py", line 114, in <module>
+    run(p.parse_args().output)
+  File "/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/source/tools/variation/open_cabinet_reach/check_start_runtime.py", line 107, in run
+    assert actual["passive_unchanged"] and actual["passive_rng_unchanged"] and abs(actual["door_angle"])<1e-4
+AssertionError
