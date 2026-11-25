@@ -299,17 +299,6 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
         position_workspace=False,
         **kwargs,
     ):
-        if not isinstance(position_workspace, bool):
-            raise ValueError("position_workspace must be a boolean")
-        self._nut_workspace = None
-        if position_workspace:
-            from tasks.nut_bolt.workspace import NutWorkspace
-
-            stage = getattr(self, "position_layout_task", None)
-            required = SCREWING_DEFAULT_ROBOT_UID_LEFT if stage == "PickBolt" else SCREWING_DEFAULT_ROBOT_UID_RIGHT
-            if stage not in ("PickBolt", "SeatNut", "TurnNut") or robot_uids != required:
-                raise ValueError("position_workspace requires the registered Nut & Bolt short-task Sharpa")
-            self._nut_workspace = NutWorkspace(stage, num_envs)
         if "sim_config" in kwargs and kwargs["sim_config"] is not None:
             config = kwargs['sim_config']
             allowed = {'max_rigid_contact_count', 'max_rigid_patch_count', 'found_lost_pairs_capacity'}
@@ -321,6 +310,17 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                     'Screwing freezes the Plant configuration; only positive integer '
                     'GPU memory capacities may be overridden'
                 )
+        if not isinstance(position_workspace, bool):
+            raise ValueError("position_workspace must be a boolean")
+        self._nut_workspace = None
+        if position_workspace:
+            from tasks.nut_bolt.workspace import NutWorkspace
+
+            stage = getattr(self, "position_layout_task", None)
+            required = SCREWING_DEFAULT_ROBOT_UID_LEFT if stage == "PickBolt" else SCREWING_DEFAULT_ROBOT_UID_RIGHT
+            if stage not in ("PickBolt", "SeatNut", "TurnNut") or robot_uids != required:
+                raise ValueError("position_workspace requires the registered Nut & Bolt short-task Sharpa")
+            self._nut_workspace = NutWorkspace(stage, num_envs)
         if nut_bolt_appearance is not None:
             validate_per_env(nut_bolt_appearance, num_envs)
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
