@@ -147,7 +147,7 @@ def hand_clearance(rot, trans, boxes, kind, xy, yaw):
     return np.minimum(lowest,separated.min(axis=1))
 
 
-def screen(chain, nodes, boxes, kind, xy, yaw):
+def screen(chain, nodes, boxes, kind, xy, yaw, trajectory=None):
     _, _, home, limits, tips = chain
     q = np.tile(home, (len(nodes[0][0]), 1))
     span = np.linalg.norm(tips[1]-tips[0])
@@ -188,6 +188,8 @@ def screen(chain, nodes, boxes, kind, xy, yaw):
             scale = np.maximum(1, np.max(np.abs(step), axis=1)/.21)
             q = np.clip(q+step/scale[:, None], *limits.T)
         positions, _, rot, trans = fk(q, chain)
+        if trajectory is not None:
+            trajectory.append(q.copy())
         worst = np.maximum(worst, np.linalg.norm(positions-goal, axis=2).max(axis=1))
         if index:
             jump = np.maximum(jump, np.max(np.abs(q-start), axis=1))

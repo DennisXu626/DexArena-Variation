@@ -118,6 +118,43 @@ def audit_arm_noise(task, kind, noise):
     return checks
 
 
+def screened_attempt(env,e,kind,i,layout):
+    from tasks.furniture_assembly.workspace import rotate
+    angles=[layout[r+"_yaw_deg"] for r in ROLES[kind]]
+    xy=layout[ROLES[kind][0]+"_xy_m"]
+    if kind=="InsertRail":
+        xy=[*xy,*rotate(np.array(layout["rail_xy_m"])-xy,-angles[0])]
+    coords=np.array([xy])
+    chain=setup_motion(e,i)
+    boxes=hand_enclosures(e,i)
+    choices=[]
+    for tilt in (0,25,-25):
+        nodes=paths(kind,angles,coords,np.deg2rad(tilt))
+        trajectory=[]
+        err,jump,gap=screen(chain,nodes,boxes,kind,coords[:,:2],angles[0],trajectory)
+        choices.append((float(err[0]),float(jump[0]),float(gap[0]),tilt,nodes,trajectory))
+    feasible=[row for row in choices if row[0]<=.015 and row[1]<=1.45 and row[2]>0]
+    if not feasible:
+        return {"executed":False,"passed":False,"reason":"no screened route from this measured start"}
+    err,jump,gap,tilt,nodes,trajectory=min(feasible,key=lambda row:row[0])
+    contact=operating_point(e,kind,i)
+    if kind=="InsertRail":
+        contact=contact+np.array([0,0,.008])
+    contact_index=min(range(len(nodes)),key=lambda n:np.linalg.norm(nodes[n][0][0]-contact))
+    if kind=="FastenScrew":
+        motion_index=contact_index+1
+    else:
+        # First vertical lift. Select the nearest lift node before lateral transport.
+        motion_index=contact_index+1
+        while (motion_index+1<len(nodes)
+               and np.linalg.norm(nodes[motion_index+1][0][0,:2]-contact[:2])<1e-6
+               and nodes[motion_index+1][0][0,2]>nodes[motion_index][0][0,2]):
+            motion_index+=1
+    targets=[trajectory[n][0].tolist() for n in (0,contact_index,motion_index)]
+    action=short_attempt(env,e,kind,i,{"arm_targets_rad":targets})
+    return dict(action,executed=True,tilt_deg=tilt,model_errors=[err,jump,gap])
+
+
 def test_task(kind,backend,n,rows):
     make = dict(num_envs=n,sim_backend=backend,obs_mode="state",control_mode="pd_joint_pos",reconfiguration_freq=0)
     task = f"FurnitureAssembly{kind}-Sharpa-v1"
@@ -251,6 +288,9 @@ def test_task(kind,backend,n,rows):
                         _,info=env.reset(options=opts)
                         row["post_action_reset_zero"]=measure(e,kind,i,layout,table)["checks"]["task_bookkeeping_zero"]
                         assert row["post_action_reset_zero"]
+                        env.reset(seed=seed)
+                        env.reset(options=opts)
+                        row["workspace_short_action"]=screened_attempt(env,e,kind,i,layout)
                 if name.startswith("interior"):
                     # Independent native reset and IK solve at a point excluded from map generation.
                     from tasks.furniture_assembly.workspace import rotate
@@ -311,6 +351,7 @@ def main():
             result["long_native_compatibility"]=True
     result["counts"]=dict(Counter(r["expected"] for r in rows))
     result["short_action"]=[r["short_action"]["passed"] for r in rows if "short_action" in r]
+    result["workspace_short_action"]=[r["workspace_short_action"]["passed"] for r in rows if "workspace_short_action" in r]
     (args.output/"results.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     keys=list(dict.fromkeys(k for row in rows for k in row))
     with (args.output/"POINTS.csv").open("w",newline="",encoding="utf-8") as fp:
