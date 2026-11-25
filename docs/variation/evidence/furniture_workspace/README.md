@@ -46,9 +46,19 @@ LayFlatPanel 和 FastenScrew 的 `near` 更靠近机器人所在的世界 −X �
 
 Windows 原生 CPU 单环境逐任务各进行了 8,192 次抽样重播，并对比原生随机、旧显式域参考均匀采样和新位置分布，各用相同八个种子记录真实操作点及 reset 耗时。局部接触与抬升／短转探针使用原生 `pd_joint_pos`。新回合零步读数忽略上一回合残留的 PhysX 接触力，回合开始后的实际接触与原生阶段判定照常计算。默认路径另以 7、47、269 对照原主线状态字节摘要。[CPU 逐点表](cpu/POINTS.csv) · [CPU 汇总与对照](cpu/results.json) · [原生状态及原子拒绝](cpu/native_compatibility.json)
 
-受测提交 `ecafc5c`。CPU 通过 135 个合法初态、31 个原子拒绝和 15 个独立格内路径留出点。全量三任务检查覆盖支撑、操作点读回、种子重播及原有显式布局。CPU 最大操作点误差小于 0.00002 mm。按每项 reference、far 各一次，原探针在六点均未达门槛；改用筛出的腕部姿态，拧翼两点分别取得约 17.0°、26.3° 的实际短转。立板测到手部接触而未越壁，导轨测到轻微接触而未达抓取抬升门槛。同后端按旧显式接口、seed 701 复现翼部短转约 29.75°。全程成功与人工操作待测。
+三个后端分别通过 135 个合法初态与 31 个原子拒绝。CPU、Linux 受测提交为 `ecafc5c`，Windows 双环境为 `60f82fa`，三者使用相同任务代码、运行表和主检查器。两套 GPU 各测了 135 次定点局部 reset，逐次核对另一环境的场景、控制器和随机流，三项任务均复现原有乱序显式行与快照行语义。操作点最大读回误差在 CPU 小于 0.00002 mm，在两款 GPU 小于 0.00038 mm。运行表的原始 SHA 随 LF/CRLF 换行而异，归一化后字节相同。
 
-Server3 的 A800 双环境按同一提交运行，135 个合法点与 31 个拒绝点通过。135 次定点局部 reset 均核对另一环境的场景、控制器与随机流；三项任务均复现原有乱序显式行和快照行语义。最大操作点误差 0.00038 mm。按同一六点，旧探针通过 1 点（螺钉 reference 20.4°），筛选腕姿通过 2 点（螺钉 reference 和 far 均约 90°），旧显式 seed 701 对照为 30.0°。立板两点均有接触但未越壁，导轨两点接触后未抬升。Linux 的位置表 SHA 按 LF 计算，Windows 按 CRLF 计算；将换行归一化后内容完全相同。[Linux 双环境逐点表](linux_cuda/POINTS.csv) · [Linux 汇总](linux_cuda/results.json) · [作业 142366 的 SDK 和文件摘要](linux_cuda/SDK.json)
+三项任务分别在 `reference`、`far` 运行相同的 68 步控制器。下列为通过短动作门槛的点数和翼螺钉实测转角。三个后端均测到立板接触但未越壁、导轨接触但未达到抬升门槛。全程成功与人工操作待测。
+
+| 后端 | 原探针（共六点） | 筛选腕姿探针（共六点） | 筛选腕姿拧翼 reference / far | 旧显式 seed 701 拧翼 |
+|---|---|---|---|---|
+| Windows CPU 单环境 | 0 | 2 | 17.0° / 26.3° | 29.75° |
+| Windows RTX 4070 双环境 | 1，螺钉 far 36.6° | 2 | 90.0° / 90.0° | 29.84° |
+| Linux A800 双环境 | 1，螺钉 reference 20.4° | 2 | 90.0° / 90.0° | 29.98° |
+
+[Windows 双环境逐点表](windows_cuda/POINTS.csv) · [Windows 汇总](windows_cuda/results.json) · [Windows SDK 与进程](windows_cuda/SDK.json) · [Linux 双环境逐点表](linux_cuda/POINTS.csv) · [Linux 汇总](linux_cuda/results.json) · [作业 142366 的 SDK 与文件摘要](linux_cuda/SDK.json)
+
+独立留出 15 个格内点。CPU 用原三种进手倾角覆盖 15 点，两套 GPU 各覆盖 14 点。共同剩下立板 +10° 的 seed 1326。两端先重现该起姿的操作点及三条原路线的误差、关节步长和腕部余隙，再在同一位置细分进手倾角；−10°、−5°、+5° 均通过。−10° 路线最大目标误差 0.429 mm、最大关节步长 0.914 rad、腕部最小余隙 19.2 mm。该格保留，遥操可先试 −10°。细扫只用于离线核验，随机 reset 继续查表。[补测工具](../../../../tools/variation/audit_furniture_panel_approach.py) · [CPU 对照](cpu/panel_approach.json) · [Windows 双环境补测](windows_cuda/panel_approach.json) · [Linux 作业 142388 补测](linux_cuda/panel_approach.json)
 
 三任务使用七个臂关节的原生高斯起始扰动，工作区接受标准差 0 至 0.01 rad。CPU 另取新 seed 及格内点测 0、0.005 rad，两组各覆盖每个角度层。零扰动立板 +10° 点在三个初选进手倾角均未通过；加测 −15° 路线后，最大目标误差 0.184 mm，腕部最小余量 25.7 mm。每次路径检查只代表所取初态。[替代进手侧原始读数](quiet_start.json)
 
@@ -65,6 +75,7 @@ Server3 的 A800 双环境按同一提交运行，135 个合法点与 31 个拒�
 ```sh
 python -m tools.variation.build_furniture_workspace
 python -m tools.variation.check_furniture_workspace --backend physx_cpu --output outputs/furniture-workspace-cpu
+python -m tools.variation.audit_furniture_panel_approach --points outputs/furniture-workspace-cpu/POINTS.csv --output outputs/furniture-panel-approach
 python -m tools.variation.plot_furniture_workspace --points outputs/furniture-workspace-cpu/POINTS.csv --output outputs/furniture-workspace-figures
 ```
 

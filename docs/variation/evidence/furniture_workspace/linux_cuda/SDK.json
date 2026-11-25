@@ -27,5 +27,35 @@
     "furniture/POINTS.csv": "750727f9a7839fee9db2710943765b7db3ec145bfede20c0c5c7bda45462dcdb",
     "furniture/results.json": "a5a022b35f7187c610cf279ddca14dee738c17731e2ea76f7b1439d4de7105e1",
     "furniture-sdk.json": "7cd2617f304c0cd590d7ff00aa0e31f23732e78ae3c976c881f8f40475c7f122"
+  },
+  "panel_approach_check": {
+    "commit": "ecafc5cc6e221a9b5c6eebac1c7d323be1d0c3f8",
+    "job": "142388",
+    "family": "furniture",
+    "task_group": "furniture-panel",
+    "passed": true,
+    "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+    "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+    "physx_version": "105.1-physx-5.3.1.patch0",
+    "sapien": "3.0.3+dexarena.gpu1.linux1",
+    "capabilities": {
+      "indexed_gpu_apply_patch_version": 1
+    },
+    "checker_sha256": "230851671da72c7c35a7dfa98ba090ec55a0c49c0e48330972d3386d758c91d1",
+    "numba": null,
+    "mapped_sha256": {
+      "wheel/sapien.libs/liblzma-51a76f52.so.5.2.4": "dc40ee343b9cfea15aa967eb27c4e36c91f694f9ed547845772232cf12f256e9",
+      "wheel/sapien/pysapien_pinocchio.cpython-310-x86_64-linux-gnu.so": "83076cedd355aa61af12edf3ec5ad8aa042a0ab4ffb3c1ab5eb6ba7e87bae9fb",
+      "wheel/sapien.libs/libsvulkan2.so": "8921e631543ae76b7f703a75b49adbb623ce90f0f833b51c0e557e66fa7fb66c",
+      "wheel/sapien.libs/libsimsense-2d74b804.so": "ad59009a14a8148b4671d7a7da739d4e8db1798ffd5de4460a162fe103679480",
+      "wheel/sapien.libs/libsapien.so": "432fe254f14f3f9c4f1b482093efd3b0b8a084f4115e389b4cf052d533425fe2",
+      "wheel/sapien/pysapien.cpython-310-x86_64-linux-gnu.so": "799092c59903caced467fa909d6394b247692e4b710657ebd466db1473789cf9",
+      "wheel/sapien/oidn_library/libOpenImageDenoise_core.so.2.0.1": "b134151cef7eea344a74c677d23fcfbb67fe1ca04eb7cab82dcd92cdcb42fb4f",
+      "wheel/sapien/oidn_library/libOpenImageDenoise.so.2.0.1": "8122bcbba2fbd6327741c89315f2fb437571860117d1aa6cf61ae4e758ccc413"
+    },
+    "captured_files_sha256": {
+      "furniture-panel/panel_approach.json": "2a6fa5a09c4b4a12e93f927a3113f63db16502fee3378888c001d9f5b04315ff",
+      "furniture-panel-sdk.json": "0620e0f411d46f42f9029d55ab505b86f50d69f9c7874cf70e41d74292e3294c"
+    }
   }
 }
