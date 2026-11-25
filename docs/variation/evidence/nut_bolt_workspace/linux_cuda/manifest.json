@@ -1,0 +1,26 @@
+{
+  "commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+  "backend": "physx_cuda",
+  "source_sha256": {
+    "tools/variation/nut_bolt_workspace/capture.py": "2cdd7e7c1e6a9f58ef404a273e988d7d184daf38c4da50bcf68ce6d5a5552369",
+    "tools/variation/nut_bolt_workspace/check.py": "62f065d3397b9582e04fe441c12d20faecf522491c06c8cd393dbf2faf5e8967",
+    "tools/variation/nut_bolt_workspace/routes.py": "1efe2df0a43f35bcc52d0094cdbb147d4178ea798e59281a26b6dabf74028c80",
+    "tools/variation/nut_bolt_workspace/screen.py": "70d43fe81f830e7ed20e2325422c1886bcc722a794ca449a1ffcb6ac799b32ed",
+    "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/nut_bolt/appearance.py": "17a3ff71c089b72c0538b62048470f08cd572f9c40920cd6c32fcb7306ddc243",
+    "tasks/nut_bolt/gpu_hold.py": "dc78b2adecef3f12db0cab684718ff2a44b87b979bbf5a6967795a0c82aa9907",
+    "tasks/nut_bolt/nut_bolt_long.py": "3e1a87569b41f5f50229030dd6a9869a36c47b6f2c915a568d8eb4a30fb8aa54",
+    "tasks/nut_bolt/nut_bolt_pick_bolt.py": "fe84052949fb842e99208b5872d1eea3f5e36c1b4dcd3cb2d659b7915b789512",
+    "tasks/nut_bolt/nut_bolt_seat_nut.py": "610ff2ffabfe191324e01c3dbbe73d2d542c5179ff26e3f19c7db1838612480e",
+    "tasks/nut_bolt/nut_bolt_turn_nut.py": "2bbc36a3b9881aec8c2a3495e933b6516e457b284f361982e63984cff6f1bfe9",
+    "tasks/nut_bolt/position_layout.py": "4f3c02a47ef0aa2de70c4f88dcff1dcfe6f2f5e9a6f61cb6ae269b94aa029d4b",
+    "tasks/nut_bolt/reset_scope.py": "a3811a224e2d4136825a70039ad9b2317c9c156ee4e303885c016ec77769919b",
+    "tasks/nut_bolt/workspace.py": "02ced306588c128367dcc5d98b807437856306e45e6ea02642cd8849f0c06ddd",
+    "tasks/nut_bolt/workspace_cells.json": "8532da2951ced364683e3ead2f4d5aac28b5d163d4842f1ac77813a404e5a538",
+    "tools/variation/check_nut_bolt_positions.py": "fb0cad2d33df136a6cf3781b3676d766d392cd46105faa2ccc3ca90f86160fb4",
+    "tools/variation/check_cabinet_positions.py": "003fcab10cf753b42038b0ab66dcca39272884c9833cf6008239b00b8e743041",
+    "docs/variation/evidence/nut_bolt_workspace/model.json": "24772a39f33ea40ac7b542af2d3479c3f91d49c5249ed1be836b954a48c13844"
+  },
+  "sapien": "3.0.3+dexarena.gpu1.linuxnut1",
+  "mani_skill": "3.0.0b22"
+}

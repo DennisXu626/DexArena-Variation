@@ -1,0 +1,53 @@
+{
+  "commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+  "job": "142368",
+  "family": "nut",
+  "passed": true,
+  "sapien": "3.0.3+dexarena.gpu1.linuxnut1",
+  "physx_version": "105.1-physx-5.3.1.patch0",
+  "artifact_sha256": "25c0b48f4d4cf54b614f9f3d0884c38e6c57585ce9e0cc9afe9865d3769a97fb",
+  "wheel_sha256": "2ad5aff8c23859a2c270c8b296a797aba0dc76df592cf3b0c3f45b2f06e11590",
+  "capabilities": {
+    "indexed_gpu_apply_patch_version": 1,
+    "native_gpu_lock_sync_patch_version": 1
+  },
+  "loaded_sha256": {
+    "wheel/sapien.libs/liblzma-51a76f52.so.5.2.4": "dc40ee343b9cfea15aa967eb27c4e36c91f694f9ed547845772232cf12f256e9",
+    "wheel/sapien/pysapien_pinocchio.cpython-310-x86_64-linux-gnu.so": "cb4a70a16979f957d596a5d7a63509e9b765f56771f1e8e5f304ce25b530de95",
+    "wheel/sapien.libs/libsvulkan2.so": "ba883f3c76448d6e678b92e298b5c51395965f551a13cad9f0fdb79648d546e0",
+    "wheel/sapien.libs/libsimsense-865fbbdd.so": "3183288dabd86e44e53bf77aaa553c49a99f6e1343b6a17ae1393d681e596137",
+    "wheel/sapien.libs/libsapien.so": "e361f94a3d2f7bbcd74caf5925c6f8457ebfcdd0951c00542cd20455f264e9ed",
+    "wheel/sapien/pysapien.cpython-310-x86_64-linux-gnu.so": "cdcc5abae6a69fbf1165d5650ee035c22b51ffcac0c8578a0253c33d7a313701",
+    "wheel/sapien/oidn_library/libOpenImageDenoise_core.so.2.0.1": "b6e82e390ff1d24890b13f7a71a3514173c55e0c4278e91369c825963f998418",
+    "wheel/sapien/oidn_library/libOpenImageDenoise.so.2.0.1": "c8dbbaf0a130cc65867b2a6424c1ce70f0dc572c364145115d09fe5092624f13"
+  },
+  "binding": "job=142368 node=lyg0295 physical=6 uuid=GPU-ed1d8db9-8417-a8ea-8715-2d4b50eb5a31",
+  "gpu": "name, uuid, pci.bus_id, driver_version, memory.free [MiB]\nNVIDIA A800-SXM4-40GB, GPU-ed1d8db9-8417-a8ea-8715-2d4b50eb5a31, 00000000:C7:00.0, 570.158.01, 39485 MiB",
+  "sdk_receipt_sha256": "73db97c73f77bfa72b2c4e3aeaef5abc9894988206ad9c739b3c4c4ba66b0bb7",
+  "results": {
+    "PickBolt": {
+      "legal": 29,
+      "invalid": 7,
+      "support": 7,
+      "short_actions": 3,
+      "passed": 0,
+      "native_success": 0
+    },
+    "SeatNut": {
+      "legal": 15,
+      "invalid": 7,
+      "support": 4,
+      "short_actions": 3,
+      "passed": 0,
+      "native_success": 0
+    },
+    "TurnNut": {
+      "legal": 23,
+      "invalid": 7,
+      "support": 6,
+      "short_actions": 3,
+      "passed": 0,
+      "native_success": 0
+    }
+  }
+}

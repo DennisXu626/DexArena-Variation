@@ -1,0 +1,38 @@
+{
+  "run": "nut-cuda-v1",
+  "commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+  "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB",
+  "elapsed_seconds": 195.81,
+  "min_gpu_free_mib": 5515,
+  "exit_code": 0,
+  "sdk_version": "3.0.3+dexarena.gpu1.wininterop7",
+  "artifact_sha256": "d6dc0cebfb1a2f7adef54909de8cd37c054281a94d09902092d225c89be083d0",
+  "lock_sha256": "1e13f16fd5f3f9a31ae74fa5bda4071f695ccb356294c5b091aeb74627de4eb8",
+  "native_capabilities": {
+    "native_gpu_lock_sync_patch_version": 1,
+    "indexed_gpu_apply_patch_version": 1
+  },
+  "loaded_sha256": {
+    "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+    "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1",
+    "pysapien.cp310-win_amd64.pyd": "65892ac20b08d7b8e5464a1e11c1b90782af3168033e76c3956653b5f26addf5",
+    "sapien.dll": "8733bf9a4d78450c12b3c91e783f3f535446bb5530472afd8d183b947078dc77",
+    "simsense.dll": "0b4d8291267df648b59cbb364bdae5c4474b78eee68ec25254391d411ffbb13f",
+    "svulkan2.dll": "3dd0b442955b716f32b6c6e0cb6fc5c602c660c95f8a20037c0272303d19f596"
+  },
+  "binaries_unchanged": true,
+  "python_source_unchanged": true,
+  "vulkan_loader_unchanged": true,
+  "launcher": {
+    "file": "run_task_check.py",
+    "sha256": "e30fa2382d142ad6a16763235a0527d844ab31fed01d13a77675a9c5eb3bf848",
+    "checker": "tools/variation/nut_bolt_workspace/check.py",
+    "checker_sha256": "62f065d3397b9582e04fe441c12d20faecf522491c06c8cd393dbf2faf5e8967",
+    "validator": "tools/variation/sapien_sdk/native_lock/tools/native_lock_identity.py",
+    "validator_sha256": "494427f2a991c89c25eafd3ce69b3053d5ea2cb635e70a03fc318702899a242e"
+  },
+  "original_receipts_sha256": {
+    "process.json": "c078f02e79f00f92af968285efe811aa2c58157e8a96d8e688419761624fd739",
+    "private_sdk.json": "126679513e7846e9b993da990a995997164c2f3f0bb1a8daed46c8eee11045e0"
+  }
+}

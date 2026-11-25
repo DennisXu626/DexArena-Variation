@@ -1,0 +1,56 @@
+{
+  "PickBolt": {
+    "30": {
+      "unique_layouts": 339,
+      "table_z_m": -1.2137770927234115e-09,
+      "table_edge_m": 0.06785897021712667
+    },
+    "60": {
+      "unique_layouts": 363,
+      "table_z_m": -1.2137770996623054e-09,
+      "table_edge_m": 0.07371537697628483
+    },
+    "75": {
+      "unique_layouts": 363,
+      "table_z_m": -1.2137770719067298e-09,
+      "table_edge_m": 0.08096500538199125
+    },
+    "90": {
+      "unique_layouts": 363,
+      "table_z_m": -1.2137771066011993e-09,
+      "table_edge_m": 0.09049998747182009
+    }
+  },
+  "SeatNut": {
+    "0": {
+      "unique_layouts": 564,
+      "table_z_m": 0.0009999996200203889,
+      "table_edge_m": 0.2224474290199579,
+      "bolt_envelope_clearance_m": 0.0010525592716817342,
+      "platform_clearance_m": -3.799796033376879e-10
+    }
+  },
+  "TurnNut": {
+    "-20": {
+      "unique_layouts": 81,
+      "table_z_m": 0.059999999620020394,
+      "table_edge_m": 0.21935191181208902,
+      "bolt_envelope_clearance_m": 0.0010525592716819701,
+      "platform_clearance_m": -3.799796033376879e-10
+    },
+    "0": {
+      "unique_layouts": 192,
+      "table_z_m": 0.059999999620020394,
+      "table_edge_m": 0.21935191181208902,
+      "bolt_envelope_clearance_m": 0.0010525592716819701,
+      "platform_clearance_m": -3.799796033376879e-10
+    },
+    "20": {
+      "unique_layouts": 289,
+      "table_z_m": 0.059999999620020394,
+      "table_edge_m": 0.21935191181208902,
+      "bolt_envelope_clearance_m": 0.0010525592716819701,
+      "platform_clearance_m": -3.799796033376879e-10
+    }
+  }
+}
