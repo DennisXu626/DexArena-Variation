@@ -1,3 +1,5 @@
 tasks/pipette_transfer/workspace_cells.json text eol=lf
 docs/variation/evidence/pipette_workspace/BUILD.json text eol=lf
 docs/variation/evidence/pipette_workspace/**/POINTS.csv -text whitespace=cr-at-eol
+docs/variation/evidence/pipette_workspace/**/RESULTS.json -text whitespace=cr-at-eol
+docs/variation/evidence/pipette_workspace/**/private_sdk.json -text whitespace=cr-at-eol
