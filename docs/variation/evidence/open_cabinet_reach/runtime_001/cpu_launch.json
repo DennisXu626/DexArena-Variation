@@ -1,0 +1,56 @@
+{
+  "cwd": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source",
+  "argv": [
+    "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/tools/variation/open_cabinet_reach/check_runtime.py",
+    "--output",
+    "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/output/results.json"
+  ],
+  "python": "/data/home/xkl/AutoDemo/envs/DexGenTransfer/bin/python",
+  "task": "CabinetPouringOpenCabinet-Sharpa-v1",
+  "registered": "CabinetPouringOpenCabinet-Sharpa-v1",
+  "tasks_module": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/tasks/__init__.py",
+  "checker": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/tools/variation/open_cabinet_reach/check_runtime.py",
+  "reference": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/docs/variation/evidence/open_cabinet_reach/CPU_RESULTS.json",
+  "reference_sha256": "0541ecbc320613802b9bc1c0201ff77c839d855e37d6a7b55f34ecf3a047faf1",
+  "output": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/output/results.json",
+  "cpu_preflight": true,
+  "match": {
+    "expected_xyz_m": [
+      -0.3530144546951076,
+      -0.19310873735727868,
+      0.45209868794123376
+    ],
+    "measured_xyz_m": [
+      -0.3530144546951076,
+      -0.19310873735727868,
+      0.45209868794123376
+    ],
+    "delta_xyz_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "error_mm": 0.0,
+    "passed": true
+  },
+  "displaced": {
+    "expected_xyz_m": [
+      -0.3530144546951076,
+      -0.19310873735727868,
+      0.45209868794123376
+    ],
+    "measured_xyz_m": [
+      -0.3530144546951076,
+      -0.19110873735727868,
+      0.45209868794123376
+    ],
+    "delta_xyz_mm": [
+      0.0,
+      2.0000000000000018,
+      0.0
+    ],
+    "error_mm": 2.0000000000000018,
+    "passed": false
+  },
+  "displaced_rejected": true
+}

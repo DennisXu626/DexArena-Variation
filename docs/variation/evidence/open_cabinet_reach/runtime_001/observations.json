@@ -1,0 +1,800 @@
+{
+  "launch": {
+    "cwd": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source",
+    "argv": [
+      "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/tools/variation/open_cabinet_reach/check_runtime.py",
+      "--output",
+      "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/output/results.json"
+    ],
+    "python": "/data/home/xkl/AutoDemo/envs/DexGenTransfer/bin/python",
+    "task": "CabinetPouringOpenCabinet-Sharpa-v1",
+    "registered": "CabinetPouringOpenCabinet-Sharpa-v1",
+    "tasks_module": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/tasks/__init__.py",
+    "checker": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/tools/variation/open_cabinet_reach/check_runtime.py",
+    "reference": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/source/docs/variation/evidence/open_cabinet_reach/CPU_RESULTS.json",
+    "reference_sha256": "0541ecbc320613802b9bc1c0201ff77c839d855e37d6a7b55f34ecf3a047faf1",
+    "output": "/mnt/ceph2/xkl/DexArena/open_cabinet_handle_workspace_20261124/runtime_001/output/results.json",
+    "cpu_preflight": false
+  },
+  "checks": [
+    {
+      "test": "native control",
+      "poses": [
+        {
+          "root_xy_m": [
+            0.1381392478942871,
+            0.1277468204498291
+          ],
+          "yaw_deg": 15.0,
+          "handle_xyz_m": [
+            -0.1298748083894381,
+            -0.12036180579444,
+            0.4520986346786904
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        },
+        {
+          "root_xy_m": [
+            0.14859771728515625,
+            0.12174797058105469
+          ],
+          "yaw_deg": 15.0,
+          "handle_xyz_m": [
+            -0.11941627939392419,
+            -0.12636065566321442,
+            0.4520986346786904
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "PR32 control",
+      "poses": [
+        {
+          "root_xy_m": [
+            0.19000005722045898,
+            0.1700000762939453
+          ],
+          "yaw_deg": 20.0,
+          "handle_xyz_m": [
+            -0.05519101659642622,
+            -0.10056021126743886,
+            0.4520986372628135
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        },
+        {
+          "root_xy_m": [
+            0.1899999976158142,
+            0.1700000762939453
+          ],
+          "yaw_deg": 20.0,
+          "handle_xyz_m": [
+            -0.05519101659642622,
+            -0.10056021126743886,
+            0.4520986372628135
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "preset",
+      "name": "near",
+      "pose": {
+        "root_xy_m": [
+          -0.08500003814697266,
+          0.05500006675720215
+        ],
+        "yaw_deg": 15.000000953674316,
+        "handle_xyz_m": [
+          -0.3530141000089433,
+          -0.19310849575370526,
+          0.4520985929079586
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.3530144546951076,
+          -0.19310873735727868,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.3530141000089433,
+          -0.19310849575370526,
+          0.4520985929079586
+        ],
+        "delta_xyz_mm": [
+          0.00035468616432776656,
+          0.0002416035734253974,
+          -9.503327513815663e-05
+        ],
+        "error_mm": 0.0004395519141591234,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "preset",
+      "name": "far",
+      "pose": {
+        "root_xy_m": [
+          0.09500002861022949,
+          0.05500006675720215
+        ],
+        "yaw_deg": 15.000000953674316,
+        "handle_xyz_m": [
+          -0.17301403325174114,
+          -0.19310849575370526,
+          0.4520985929079586
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.17301445499313084,
+          -0.19310873735727868,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.17301403325174114,
+          -0.19310849575370526,
+          0.4520985929079586
+        ],
+        "delta_xyz_mm": [
+          0.000421741389700081,
+          0.0002416035734253974,
+          -9.503327513815663e-05
+        ],
+        "error_mm": 0.0004952468171140139,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "preset",
+      "name": "left",
+      "pose": {
+        "root_xy_m": [
+          0.005000114440917969,
+          0.14499998092651367
+        ],
+        "yaw_deg": 15.000000953674316,
+        "handle_xyz_m": [
+          -0.26301394742105266,
+          -0.10310858158439373,
+          0.4520985929079586
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.26301445391279665,
+          -0.10310874123158059,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.26301394742105266,
+          -0.10310858158439373,
+          0.4520985929079586
+        ],
+        "delta_xyz_mm": [
+          0.0005064917439900896,
+          0.0001596471868592353,
+          -9.503327513815663e-05
+        ],
+        "error_mm": 0.0005394927565646036,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "preset",
+      "name": "right",
+      "pose": {
+        "root_xy_m": [
+          0.005000114440917969,
+          -0.11500000953674316
+        ],
+        "yaw_deg": 15.000000953674316,
+        "handle_xyz_m": [
+          -0.26301394742105266,
+          -0.36310860184997296,
+          0.4520985929079586
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.26301445391279665,
+          -0.363108739145418,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.26301394742105266,
+          -0.36310860184997296,
+          0.4520985929079586
+        ],
+        "delta_xyz_mm": [
+          0.0005064917439900896,
+          0.0001372954450684638,
+          -9.503327513815663e-05
+        ],
+        "error_mm": 0.0005333059622300829,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "seeded and advancing ordinary resets",
+      "first": [
+        {
+          "root_xy_m": [
+            -0.09681034088134766,
+            -0.20021772384643555
+          ],
+          "yaw_deg": 9.999999046325684,
+          "handle_xyz_m": [
+            -0.38560749731954935,
+            -0.4240051260016422,
+            0.4520987260027738
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        },
+        {
+          "root_xy_m": [
+            0.04231558367609978,
+            0.11033010482788086
+          ],
+          "yaw_deg": 15.000000953674316,
+          "handle_xyz_m": [
+            -0.22569842975709697,
+            -0.13777845768302655,
+            0.4520985929079586
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        }
+      ],
+      "second": [
+        {
+          "root_xy_m": [
+            0.015384912490844727,
+            -0.09498882293701172
+          ],
+          "yaw_deg": 9.999999046325684,
+          "handle_xyz_m": [
+            -0.27341248236593607,
+            -0.31877622509221837,
+            0.4520987260027738
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        },
+        {
+          "root_xy_m": [
+            -0.04184805601835251,
+            -0.11403369903564453
+          ],
+          "yaw_deg": 20.0,
+          "handle_xyz_m": [
+            -0.28703907768117354,
+            -0.3845939567947063,
+            0.4520986372628135
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        }
+      ],
+      "replay": [
+        {
+          "root_xy_m": [
+            -0.09681034088134766,
+            -0.20021772384643555
+          ],
+          "yaw_deg": 9.999999046325684,
+          "handle_xyz_m": [
+            -0.38560749731954935,
+            -0.4240051260016422,
+            0.4520987260027738
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        },
+        {
+          "root_xy_m": [
+            0.04231558367609978,
+            0.11033010482788086
+          ],
+          "yaw_deg": 15.000000953674316,
+          "handle_xyz_m": [
+            -0.22569842975709697,
+            -0.13777845768302655,
+            0.4520985929079586
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        }
+      ],
+      "following": [
+        {
+          "root_xy_m": [
+            0.015384912490844727,
+            -0.09498882293701172
+          ],
+          "yaw_deg": 9.999999046325684,
+          "handle_xyz_m": [
+            -0.27341248236593607,
+            -0.31877622509221837,
+            0.4520987260027738
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        },
+        {
+          "root_xy_m": [
+            -0.04184805601835251,
+            -0.11403369903564453
+          ],
+          "yaw_deg": 20.0,
+          "handle_xyz_m": [
+            -0.28703907768117354,
+            -0.3845939567947063,
+            0.4520986372628135
+          ],
+          "handle_piece": 13,
+          "door_rad": -0.0,
+          "door_latched": false
+        }
+      ],
+      "comparisons": [
+        {
+          "expected_xyz_m": [
+            -0.38542902375566945,
+            -0.42402332866297965,
+            0.45209868794123376
+          ],
+          "measured_xyz_m": [
+            -0.38560749731954935,
+            -0.4240051260016422,
+            0.4520987260027738
+          ],
+          "delta_xyz_mm": [
+            -0.17847356387989954,
+            0.018202661337451964,
+            3.806154003083151e-05
+          ],
+          "error_mm": 0.1793994184283756,
+          "passed": true
+        },
+        {
+          "expected_xyz_m": [
+            -0.22569886599522854,
+            -0.13777863669240997,
+            0.45209868794123376
+          ],
+          "measured_xyz_m": [
+            -0.22569842975709697,
+            -0.13777845768302655,
+            0.4520985929079586
+          ],
+          "delta_xyz_mm": [
+            0.00043623813156257185,
+            0.0001790093834275197,
+            -9.503327513815663e-05
+          ],
+          "error_mm": 0.0004810191162186687,
+          "passed": true
+        },
+        {
+          "expected_xyz_m": [
+            -0.27323377038347707,
+            -0.3187944277535558,
+            0.45209868794123376
+          ],
+          "measured_xyz_m": [
+            -0.27341248236593607,
+            -0.31877622509221837,
+            0.4520987260027738
+          ],
+          "delta_xyz_mm": [
+            -0.1787119824590011,
+            0.018202661337451964,
+            3.806154003083151e-05
+          ],
+          "error_mm": 0.17963660819240915,
+          "passed": true
+        },
+        {
+          "expected_xyz_m": [
+            -0.28721853264631875,
+            -0.38455730623245116,
+            0.45209868794123376
+          ],
+          "measured_xyz_m": [
+            -0.28703907768117354,
+            -0.3845939567947063,
+            0.4520986372628135
+          ],
+          "delta_xyz_mm": [
+            0.1794549651452093,
+            -0.03665056225515828,
+            -5.067842023809277e-05
+          ],
+          "error_mm": 0.18315935902156297,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "local reset",
+      "selected": 0,
+      "passive": 1,
+      "pose": {
+        "root_xy_m": [
+          0.10268449783325195,
+          0.17499876022338867
+        ],
+        "yaw_deg": 20.0,
+        "handle_xyz_m": [
+          -0.14250657598363325,
+          -0.0955615273379955,
+          0.4520986372628135
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "before": {
+        "actors": {
+          "table-workspace": [
+            "<f4",
+            [
+              13
+            ],
+            "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93"
+          ]
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": [
+            "<f4",
+            [
+              71
+            ],
+            "f770f4c59e5774cca28407e9cddebd3f3648117f769bae762b85b801df41ebbc"
+          ],
+          "cabinet": [
+            "<f4",
+            [
+              15
+            ],
+            "53c695aa914500712c32ab26c57cac3a47af4044fb82be8ac0cc761759daf330"
+          ]
+        },
+        "cabinet_pour_task_state": [
+          "<f4",
+          [
+            29
+          ],
+          "9cf31cc09bf7ea97a7d6a7cf4521236d9247ec8fc12752a98cff0dab4e426270"
+        ]
+      },
+      "after": {
+        "actors": {
+          "table-workspace": [
+            "<f4",
+            [
+              13
+            ],
+            "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93"
+          ]
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": [
+            "<f4",
+            [
+              71
+            ],
+            "f770f4c59e5774cca28407e9cddebd3f3648117f769bae762b85b801df41ebbc"
+          ],
+          "cabinet": [
+            "<f4",
+            [
+              15
+            ],
+            "53c695aa914500712c32ab26c57cac3a47af4044fb82be8ac0cc761759daf330"
+          ]
+        },
+        "cabinet_pour_task_state": [
+          "<f4",
+          [
+            29
+          ],
+          "9cf31cc09bf7ea97a7d6a7cf4521236d9247ec8fc12752a98cff0dab4e426270"
+        ]
+      },
+      "unchanged": true,
+      "rng_equal": true,
+      "passed": true
+    },
+    {
+      "test": "local reset",
+      "selected": 1,
+      "passive": 0,
+      "pose": {
+        "root_xy_m": [
+          -0.10842986404895782,
+          -0.19551610946655273
+        ],
+        "yaw_deg": 9.999999046325684,
+        "handle_xyz_m": [
+          -0.3972270353883207,
+          -0.4193035116217594,
+          0.4520987260027738
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "before": {
+        "actors": {
+          "table-workspace": [
+            "<f4",
+            [
+              13
+            ],
+            "0312da59a29db7216a1aae5f57c6331db4e7ef4613853734dd0f1df9cf5daea6"
+          ]
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": [
+            "<f4",
+            [
+              71
+            ],
+            "4a99e7e66417e8ad2c47cfc825eed33fe2203bfa789ca8c3920a134be9c170c3"
+          ],
+          "cabinet": [
+            "<f4",
+            [
+              15
+            ],
+            "ced0155a07b051ce8915a7353b7fb7eca679e3ba4af667e3ee90e1ee4af1c78c"
+          ]
+        },
+        "cabinet_pour_task_state": [
+          "<f4",
+          [
+            29
+          ],
+          "e884e343df05d2f766aeaffeaa9e33ba54028f28b7763367d8f3fdf4f8194971"
+        ]
+      },
+      "after": {
+        "actors": {
+          "table-workspace": [
+            "<f4",
+            [
+              13
+            ],
+            "0312da59a29db7216a1aae5f57c6331db4e7ef4613853734dd0f1df9cf5daea6"
+          ]
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": [
+            "<f4",
+            [
+              71
+            ],
+            "4a99e7e66417e8ad2c47cfc825eed33fe2203bfa789ca8c3920a134be9c170c3"
+          ],
+          "cabinet": [
+            "<f4",
+            [
+              15
+            ],
+            "ced0155a07b051ce8915a7353b7fb7eca679e3ba4af667e3ee90e1ee4af1c78c"
+          ]
+        },
+        "cabinet_pour_task_state": [
+          "<f4",
+          [
+            29
+          ],
+          "e884e343df05d2f766aeaffeaa9e33ba54028f28b7763367d8f3fdf4f8194971"
+        ]
+      },
+      "unchanged": true,
+      "rng_equal": true,
+      "passed": true
+    },
+    {
+      "test": "boundary",
+      "yaw": 10,
+      "xy": [
+        -0.11,
+        -0.26
+      ],
+      "pose": {
+        "root_xy_m": [
+          -0.1099998950958252,
+          -0.25999999046325684
+        ],
+        "yaw_deg": 9.999999046325684,
+        "handle_xyz_m": [
+          -0.398797289952606,
+          -0.4837873926184635,
+          0.4520987260027738
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.398618577970147,
+          -0.48380559527980094,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.398797289952606,
+          -0.4837873926184635,
+          0.4520987260027738
+        ],
+        "delta_xyz_mm": [
+          -0.1787119824590011,
+          0.018202661337451964,
+          3.806154003083151e-05
+        ],
+        "error_mm": 0.17963660819240915,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "exterior",
+      "yaw": 10,
+      "xy": [
+        -0.12,
+        -0.26
+      ],
+      "reason": "Outside OpenCabinet handle workspace for environment 0: {'cabinet_xy_m': [np.float64(-0.12), np.float64(-0.26)], 'yaw_deg': 10}",
+      "passed": true
+    },
+    {
+      "test": "boundary",
+      "yaw": 15,
+      "xy": [
+        -0.1,
+        -0.2
+      ],
+      "pose": {
+        "root_xy_m": [
+          -0.09999990463256836,
+          -0.20000004768371582
+        ],
+        "yaw_deg": 15.000000953674316,
+        "handle_xyz_m": [
+          -0.368013966494539,
+          -0.4481086399969456,
+          0.4520985929079586
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.3680143543038967,
+          -0.44810878920400665,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.368013966494539,
+          -0.4481086399969456,
+          0.4520985929079586
+        ],
+        "delta_xyz_mm": [
+          0.00038780935768256697,
+          0.0001492070610398244,
+          -9.503327513815663e-05
+        ],
+        "error_mm": 0.0004262512971872246,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "exterior",
+      "yaw": 15,
+      "xy": [
+        -0.11,
+        -0.2
+      ],
+      "reason": "Outside OpenCabinet handle workspace for environment 0: {'cabinet_xy_m': [np.float64(-0.11), np.float64(-0.2)], 'yaw_deg': 15}",
+      "passed": true
+    },
+    {
+      "test": "boundary",
+      "yaw": 20,
+      "xy": [
+        -0.1,
+        -0.16
+      ],
+      "pose": {
+        "root_xy_m": [
+          -0.09999990463256836,
+          -0.16000008583068848
+        ],
+        "yaw_deg": 20.0,
+        "handle_xyz_m": [
+          -0.34519097844945357,
+          -0.43056034358975026,
+          0.4520986372628135
+        ],
+        "handle_piece": 13,
+        "door_rad": -0.0,
+        "door_latched": false
+      },
+      "comparison": {
+        "expected_xyz_m": [
+          -0.3453703812605346,
+          -0.4305236930274951,
+          0.45209868794123376
+        ],
+        "measured_xyz_m": [
+          -0.34519097844945357,
+          -0.43056034358975026,
+          0.4520986372628135
+        ],
+        "delta_xyz_mm": [
+          0.17940281108103084,
+          -0.03665056225515828,
+          -5.067842023809277e-05
+        ],
+        "error_mm": 0.1831082600695489,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "test": "exterior",
+      "yaw": 20,
+      "xy": [
+        -0.11,
+        -0.16
+      ],
+      "reason": "Outside OpenCabinet handle workspace for environment 0: {'cabinet_xy_m': [np.float64(-0.11), np.float64(-0.16)], 'yaw_deg': 20}",
+      "passed": true
+    }
+  ]
+}
