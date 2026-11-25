@@ -95,6 +95,8 @@ class FurnitureWorkspaceMixin(FurnitureResetScopeMixin):
             side = "left" if self.WORKSPACE_TASK == "LayFlatPanel" else "right"
             if kwargs.get("robot_uids") != f"panda_sharpa_hand_{side}_angled_mobile_base":
                 raise ValueError("Furniture position_workspace requires the registered Sharpa configuration")
+            if self.robot_init_qpos_noise != .01:
+                raise ValueError("Furniture position_workspace uses the native Sharpa initial joint noise")
             if getattr(self, "place_random_x", 0) or getattr(self, "place_random_y", 0):
                 raise ValueError("Furniture position_workspace requires the fixed native handoff region")
         super().__init__(*args, **kwargs)

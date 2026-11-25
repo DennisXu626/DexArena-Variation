@@ -127,6 +127,11 @@ def test_task(kind,backend,n,rows):
         streams=copy.deepcopy(e._workspace_stream)
         env.reset(options={"reset_to_env_states":{"env_states":snapshot}})
         assert streams==e._workspace_stream
+        # Compare old requests on fresh zero-step reset history, as in the PR baseline.
+        for label, _, req, negative in cases(kind):
+            if not negative and label in ("C-edge","C-lane","C-far"):
+                env.reset(seed=909,options={"position_layout":{str(j):req for j in range(n)}})
+                assert all(measure(e,kind,0,req,table)["checks"].values())
         if n==2:
             env.reset(options={"env_idx":torch.tensor([1,0],device=e.device),
                                "workspace_placement":{"0":"near","1":"far"}})
@@ -191,6 +196,9 @@ def test_task(kind,backend,n,rows):
                         env.reset(seed=seed)
                         env.reset(options=opts)
                         row["short_action"]=short_attempt(env,e,kind,i,a)
+                        _,info=env.reset(options=opts)
+                        row["post_action_reset_zero"]=measure(e,kind,i,layout,table)["checks"]["task_bookkeeping_zero"]
+                        assert row["post_action_reset_zero"]
                 if name.startswith("interior"):
                     # Independent native reset and IK solve at a point excluded from map generation.
                     from tasks.furniture_assembly.workspace import rotate
@@ -208,11 +216,6 @@ def test_task(kind,backend,n,rows):
                         scores.append([float(err[0]),float(jump[0]),float(gap[0])])
                     row["holdout_ik"] = scores
             rows.append(row)
-        # Existing legal points outside our screened map retain their original interface.
-        for name, _, req, negative in cases(kind):
-            if not negative and name in ("C-edge","C-lane","C-far"):
-                env.reset(seed=909,options={"position_layout":{str(j):req for j in range(n)}})
-                assert all(measure(e,kind,0,req,table)["checks"].values())
     return dict(operation_xyz_m=samples,reset_ms=samples_ms)
 
 
