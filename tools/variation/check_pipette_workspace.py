@@ -32,7 +32,8 @@ def digest(env, i):
     native = env._batched_episode_rng[i].get_state()
     state = snapshot(env, i)
     controls = controller_checks.controller_state(env, i)
-    return fingerprint([state, controls, stream, native[0], native[1].tolist(), *native[2:]])
+    return fingerprint([state, controls, stream, env._workspace_records[i], env._workspace_counters[i],
+                        native[0], native[1].tolist(), *native[2:]])
 
 
 def numeric_examples(task):
@@ -134,6 +135,8 @@ def check_task(writer, task, backend, base):
                 request = (info['workspace_placement']['0'] if mode == 'workspace' else
                            extras['position_layout']['0'] if mode == 'legacy' else None)
                 row['initial'] = initial_checks(env, 0, task, request, poses, geo)
+                if mode == 'workspace':
+                    row['workspace_episode'] = info['workspace_episode']['0']
                 test(all(row['initial']['checks'].values()), row['id'])
                 writer.writerow({k:serial(v) if isinstance(v,(dict,list)) else v for k,v in row.items()})
         results[mode] = group_summary(samples)
@@ -153,8 +156,11 @@ def check_task(writer, task, backend, base):
         first = sequence()
         test(first == sequence() and first[0] != first[1], 'seeded sequence')
         wrapped.reset(seed=8361)
-        wrapped.reset(options=both('left'))
-        test(wrapped.reset()[1]['workspace_placement'] == first[1], 'fixed preset consumes no position draw')
+        fixed_info = wrapped.reset(options=both('left'))[1]
+        next_info = wrapped.reset()[1]
+        test(next_info['workspace_placement'] == first[1] and
+             next_info['workspace_episode']['0']['draw_index'] == fixed_info['workspace_episode']['0']['draw_index'],
+             'fixed preset consumes no position draw')
         wrapped.reset(seed=8361)
         wrapped.reset(options={'position_layout': {str(j):{} for j in range(n)}})
         test(wrapped.reset()[1]['workspace_placement'] == first[1], 'legacy request consumes no position draw')
@@ -188,6 +194,7 @@ def check_task(writer, task, backend, base):
                 init = initial_checks(env,i,task,expected,poses,geo)
                 test(all(init['checks'].values()),'readback '+label)
                 row.update(outcome='initial_passed',actual=poses,initial=init,workpoints=workpoints(env,i,poses,geo))
+                row['workspace_episode'] = info['workspace_episode'][str(i)]
             test(before == {j:digest(env,j) for j in protected},'isolation '+label)
             row['protected_sha256'] = before
             if not bad:
@@ -255,7 +262,7 @@ def main():
                  *[Path(__file__).with_name(s) for s in ('build_pipette_workspace.py','pipette_workspace_motion.py',
                                                           'check_pipette_positions.py','check_cabinet_positions.py')]]:
         report['sha256'][str(path.relative_to(ROOT).as_posix())]=hashlib.sha256(path.read_bytes()).hexdigest()
-    fields='task make id seed env request outcome reason initial actual workpoints protected_sha256 ik support short'.split()
+    fields='task make id seed env request outcome reason initial actual workpoints protected_sha256 ik support short workspace_episode'.split()
     with (args.output/'POINTS.csv').open('w',newline='',encoding='utf-8') as stream:
         writer=csv.DictWriter(stream,fieldnames=fields)
         writer.writeheader()

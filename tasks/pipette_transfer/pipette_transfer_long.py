@@ -8,6 +8,7 @@ plunger is a real prismatic URDF joint; no fluid simulation is used.
 """
 from __future__ import annotations
 import argparse, sys
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -546,6 +547,8 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
             if kw.get('robot_uids', ROBOT_UID) != expected[self._workspace_task]:
                 raise ValueError("position_workspace requires the task's registered Sharpa rig")
             self._workspace_streams = {}
+            self._workspace_counters = {}
+            self._workspace_seeds = {}
             self._workspace_records = {}
         if pipette_appearance is not None:
             validate_per_env(pipette_appearance,num_envs)
@@ -618,13 +621,21 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
             return super().reset(seed=seed,options=options)
         self._workspace_fixed = placements
         self._workspace_reseed = seed is not None
+        self._workspace_pending = {}
         try:
             obs, info = super().reset(seed=seed,options=options)
+            for i, (stream, initial_seed, count, record) in self._workspace_pending.items():
+                self._workspace_streams[i] = stream
+                self._workspace_seeds[i] = initial_seed
+                self._workspace_counters[i] = count
+                self._workspace_records[i] = record
         finally:
             self._workspace_fixed = None
             self._workspace_reseed = False
+            self._workspace_pending = None
         if not ('position_layout' in request or 'reset_to_env_states' in request):
-            info['workspace_placement'] = {str(i): dict(self._workspace_records[i]) for i in selected}
+            info['workspace_placement'] = {str(i): deepcopy(self._workspace_records[i]['layout']) for i in selected}
+            info['workspace_episode'] = {str(i): deepcopy(self._workspace_records[i]) for i in selected}
         return obs, info
     def _setup_sensors(self,options):
         if self._pipette_rendering is not None:
@@ -660,19 +671,29 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
         if "position_layout" in options:
             explicit = requested_layout(self, options, env_idx.tolist(), PIPETTE_MIN_STAND_CUP_GAP)
         if self._workspace_task and 'reset_to_env_states' not in options:
+            workspace_rows = []
             for i in env_idx.tolist():
                 if self._workspace_reseed or i not in self._workspace_streams:
-                    key = np.random.SeedSequence([int(self._main_seed[i]), i, 0x504950])
-                    self._workspace_streams[i] = np.random.default_rng(key)
-            if explicit is None:
-                explicit = []
-                centers = {'cup': self.cfg.cup_xy, 'rack': self.cfg.rack_xy, 'stand': self.cfg.pipette_stand_xy}
-                for i in env_idx.tolist():
+                    initial_seed, count = int(self._main_seed[i]), 0
+                    stream = np.random.default_rng(np.random.SeedSequence([initial_seed, i, 0x504950]))
+                else:
+                    initial_seed = self._workspace_seeds[i]
+                    count = self._workspace_counters[i]
+                    stream = deepcopy(self._workspace_streams[i])
+                record = None
+                if explicit is None:
                     row = (self._workspace_fixed[i] if self._workspace_fixed is not None
-                           else workstation.sample(self._workspace_task, self._workspace_streams[i]))
-                    self._workspace_records[i] = row
-                    explicit.append({**{k: row.get(k + '_xy_m', base) for k, base in centers.items()},
-                                     'stand_yaw_deg': row['stand_yaw_deg']})
+                           else workstation.sample(self._workspace_task, stream))
+                    record = {'version': workstation.workspace(self._workspace_task)[-1], 'env_idx': i,
+                              'seed': initial_seed, 'draw_index': count, 'layout': row,
+                              'mode': 'random' if self._workspace_fixed is None else 'fixed'}
+                    count += int(self._workspace_fixed is None)
+                    centers = {'cup': self.cfg.cup_xy, 'rack': self.cfg.rack_xy, 'stand': self.cfg.pipette_stand_xy}
+                    workspace_rows.append({**{k: row.get(k + '_xy_m', base) for k, base in centers.items()},
+                                           'stand_yaw_deg': row['stand_yaw_deg']})
+                self._workspace_pending[i] = stream, initial_seed, count, record
+            if workspace_rows:
+                explicit = workspace_rows
         if explicit is not None:
             lay = {name: [row[name] for row in explicit] for name in ('cup', 'rack', 'stand')}
             lay['stand_q'] = [offset_pose((0,0,0), PIPETTE_STAND_NOMINAL_Q, 0, 0,
