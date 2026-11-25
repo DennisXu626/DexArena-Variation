@@ -1,5 +1,7 @@
 # Furniture Assembly 位置变化
 
+可选随机工作区按三项任务分别筛选操作路径，提供成对预设及真实后端复现。[工作区方法与证据](../furniture_workspace/README.md)
+
 覆盖 `LayFlatPanel`、`InsertRail`、`FastenScrew`。三个短任务沿用各自的原生 `make/reset`。显式位置按场景分别选取，用于复现拾取、对槽和转翼的不同接近路径。
 
 ## 范围与阶段
