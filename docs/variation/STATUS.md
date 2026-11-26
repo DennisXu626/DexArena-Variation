@@ -134,3 +134,13 @@ Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合�
 六个 Juice Sharpa 入口的固定 1／2 号方案已通过 Server 3 作业 136654 验收。双环境 12 个局部 reset 方向、活动控制目标隔离、original 恢复和 24 格可见配色通过。PressButton 的临界夹具中，未选行计数保持 3，成功锁存保持为假。AppleToBlender 和 Long 的苹果在本轮机位被遮挡，已核贴图，果皮实景未测。历史 73 槽与 16 步证据按原范围保留。PR 待合入。
 
 [#19 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354) · [家族用法](JUICE_PREPARATION_APPEARANCE.md) · [R1 修正](JUICE_PR19_R1.md)。集合随机、其它规模／手型、完整机器人成功未测；其它家族的 main 状态与证据保留。
+
+## 8. Table Cleaning
+
+[PR #12](https://github.com/DennisXu626/DexArena-Variation/pull/12) 已合入 main，限定验收覆盖 PickDebris、DumpDustpan、Long 三个 Sharpa 入口，各 2 环境，固定 `original`／`variant_1`／`variant_2`（方案 ID 1、2）。三个入口分别 reset env0、env1，共六个局部 reset 方向；未选行在 reset 前、evaluate／get_obs 期间及 reset 后保持实际活动控制器／drive 目标，选中行恢复 original 的原生材质／纹理槽及逐值一致的完整帧 RGB，十二格可见配色均已核对。
+
+PickDebris 的一个方向、两格配色及同一步 1 cm 扰动后的保存状态恢复检查来自作业 `135707`；其余五个方向与十格配色来自作业 `143152`。未选行状态最大差为 `1.1920928955078125e-7`；仅 DumpDustpan 的 reset env0 方向在保持行出现 RGB 差异，最大差 1、共 7 个通道值变化，符合预先约定的最大差 1／至多 12 通道门槛。选中行 original 恢复的完整帧与原生对照精确一致。
+
+[家族用法与实现](TABLE_CLEANING_APPEARANCE.md) · [已接受的 GitHub 审阅](https://github.com/DennisXu626/DexArena-Variation/pull/12#pullrequestreview-6070134153)
+
+以上不包含 PR #41 的 3–10 号方案、策略或完整机器人任务成功、其它手型及进一步实验。对象档案继续沿用 42 项、14 个 `accepted_pilot` 的基线统计，不按本条验收重算；本次仅同步文档，未重跑仿真。
