@@ -23,6 +23,7 @@ import traceback
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / 'tasks/assets/variation/furniture_assembly/v1/catalog.json'
 ADAPTER = 'tasks/furniture_assembly/appearance.py'
+FINISHES = 'tasks/furniture_assembly/finishes.py'
 RESET_SCOPE = 'tasks/furniture_assembly/reset_scope.py'
 IMPEDANCE = 'tasks/robots/franka_joint_impedance_controller.py'
 TASKS = {
@@ -54,7 +55,7 @@ def protected_scheme_fields(scheme):
     """Ignore editable PBR values while retaining the alpha and role structure."""
     protected = {}
     for key, value in scheme.items():
-        if key == 'label':
+        if key in ('label', 'surface'):
             continue
         if key == 'base_color':
             protected[key] = value[3:]
@@ -71,7 +72,7 @@ def protected_scheme_fields(scheme):
 
 def static_check(baseline):
     catalog = read(CATALOG)
-    assert catalog['version'] == 'furniture-appearance-v1'
+    assert catalog['version'] == 'furniture-appearance-v2'
     assert catalog['scope'] == 'material_appearance'
     assert tuple(catalog['schemes']) == SCHEMES
     assert SCHEMES[:3] == ('original', 'variant_1', 'variant_2')
@@ -79,7 +80,7 @@ def static_check(baseline):
     released = '56a4aec4740b7139307e01048fa0e8e6ed430f14'
     released_index = json.loads(git('show', f'{released}:{CATALOG.relative_to(ROOT).as_posix()}'))
     assert catalog['tasks'] == released_index['tasks']
-    sources = [ADAPTER, RESET_SCOPE, IMPEDANCE, 'tools/variation/check_furniture_appearance.py', *TASKS.values()]
+    sources = [ADAPTER, FINISHES, RESET_SCOPE, IMPEDANCE, 'tools/variation/check_furniture_appearance.py', *TASKS.values()]
     for source in sources:
         ast.parse((ROOT / source).read_text(encoding='utf-8'), filename=source)
     for object_id, entry in catalog['objects'].items():
@@ -95,14 +96,23 @@ def static_check(baseline):
         assert set(entry['scheme_map'].values()) == set(obj['schemes']), object_id
         assert entry['catalog'] == old_entry['catalog'], object_id
         assert all(entry['scheme_map'][key] == value for key, value in old_entry['scheme_map'].items()), object_id
-        assert all(obj['schemes'][key] == value for key, value in old_obj['schemes'].items()), object_id
-        assert {k: v for k, v in obj.items() if k != 'schemes'} == {k: v for k, v in old_obj.items() if k != 'schemes'}, object_id
+        assert obj['schemes']['original'] == old_obj['schemes']['original'], object_id
+        protected = set(old_obj) - {'schemes', 'scheme_descriptions', 'preserve_properties'}
+        assert all(obj[key] == old_obj[key] for key in protected), object_id
+        if object_id == 'flat_panel':
+            assert set(obj['preserve_properties']) == {
+                'normal_texture', 'roughness_texture', 'metallic_texture', 'emission_texture',
+                'transmission_texture', 'uv', 'specular',
+            }
+        else:
+            assert obj.get('preserve_properties') == old_obj.get('preserve_properties'), object_id
         template = old_obj['schemes'][old_entry['scheme_map']['variant_1']]
-        for scheme in SCHEMES[3:]:
+        for scheme in SCHEMES[1:]:
             candidate = obj['schemes'][entry['scheme_map'][scheme]]
             assert protected_scheme_fields(candidate) == protected_scheme_fields(template), (object_id, scheme)
+            assert candidate['label'], (object_id, scheme)
             if object_id == 'flat_panel':
-                assert candidate['metallic'] == 0, scheme
+                assert candidate['metallic'] == 0 and candidate['surface'], scheme
         for name, scheme in obj['schemes'].items():
             if name == 'original':
                 assert scheme['mode'] == 'restore_native'
@@ -276,17 +286,33 @@ def joint_targets(base):
             for name, art in articulations(base).items()}
 
 
-def material_values(material):
+def texture_values(texture):
+    if texture is None:
+        return None
+    filename = Path(texture.filename) if texture.filename else None
+    return {'name': filename.name if filename else '', 'width': texture.width,
+            'height': texture.height, 'format': str(texture.format),
+            'mipmap_levels': texture.mipmap_levels,
+            'sha256': hashlib.sha256(filename.read_bytes()).hexdigest()
+            if filename and filename.is_file() else None}
+
+
+def material_values(material, panel_surface=None):
     values = {}
     for field in MATERIAL_FIELDS:
         value = getattr(material, field)
-        if field.endswith('_texture') and value is not None:
-            filename = Path(value.filename) if value.filename else None
-            value = {'name': filename.name if filename else '', 'width': value.width,
-                     'height': value.height, 'format': str(value.format),
-                     'mipmap_levels': value.mipmap_levels,
-                     'sha256': hashlib.sha256(filename.read_bytes()).hexdigest()
-                     if filename and filename.is_file() else None}
+        if field.endswith('_texture'):
+            if field == 'base_color_texture' and panel_surface is not None:
+                assert value == panel_surface.texture, 'Panel albedo handle was replaced'
+                pixels = value.download()
+                if panel_surface.current == 'original':
+                    np.testing.assert_array_equal(pixels, panel_surface.original_pixels)
+                    value = texture_values(panel_surface.source)
+                else:
+                    value = {**texture_values(value),
+                             'data_sha256': hashlib.sha256(pixels.tobytes()).hexdigest()}
+            else:
+                value = texture_values(value)
         values[field] = plain(value)
     return values
 
@@ -307,9 +333,18 @@ def material_slots(base):
 
 
 def materials(base):
-    return [[{'entity': name, 'shape': shape, 'part': index,
-              'material': material_values(part.material)}
-             for name, shape, index, part in slots] for slots in material_slots(base)]
+    adapter = base._furniture_appearance
+    all_rows = []
+    for env_id, slots in enumerate(material_slots(base)):
+        surfaces = adapter.panel_surfaces[env_id] if adapter is not None else ()
+        rows = []
+        for name, shape, index, part in slots:
+            material = part.material
+            surface = next((surface for surface in surfaces if surface.material == material), None)
+            rows.append({'entity': name, 'shape': shape, 'part': index,
+                         'material': material_values(material, surface)})
+        all_rows.append(rows)
+    return all_rows
 
 
 def verify(base, expected_ids, native):
@@ -329,6 +364,15 @@ def verify(base, expected_ids, native):
             for key in FIELDS:
                 np.testing.assert_allclose(captured[key], native[env_id][index]['material'][key], rtol=0, atol=1e-7)
                 expected[env_id][index]['material'][key] = params[key]
+            surface = next((surface for surface in adapter.panel_surfaces[env_id]
+                            if surface.material == material), None)
+            if surface is not None:
+                assert object_id == 'flat_panel' and role == 'face' and surface.current == scheme
+                if scheme != 'original':
+                    pixels = surface.pixels(scheme, adapter.panel_finish(scheme), params['base_color'])
+                    expected[env_id][index]['material']['base_color_texture'] = {
+                        **texture_values(surface.texture), 'data_sha256': hashlib.sha256(pixels.tobytes()).hexdigest(),
+                    }
         for observed, target in zip(actual[env_id], expected[env_id]):
             assert observed.keys() == target.keys()
             for key in FIELDS:
@@ -880,7 +924,7 @@ def run_task(task, args, output, result):
                         Image.fromarray(pixels[index, ..., :3]).save(output / f'{scheme}_{camera}_env{index}.png')
                 assert records == base._furniture_appearance.records
             result['checks'][scheme] = {'status': 'passed', 'materials': measured, 'records': records}
-            if scheme in SCHEMES[3:]:
+            if scheme != 'original':
                 result['stage'] = 'restore original after ' + scheme
                 _, raw_info = checked_reset(seed=7, options={'furniture_appearance': {'scheme_id': 'original'}})
                 assert verify(base, ['original'] * num_envs, native) == native
@@ -1131,7 +1175,7 @@ def main():
         import tasks  # Register existing repository tasks only.
         selected = args.task or list(TASKS)
         catalog = read(CATALOG)
-        files = [ADAPTER, RESET_SCOPE, IMPEDANCE, 'tools/variation/check_furniture_appearance.py',
+        files = [ADAPTER, FINISHES, RESET_SCOPE, IMPEDANCE, 'tools/variation/check_furniture_appearance.py',
                  CATALOG.relative_to(ROOT).as_posix(), *TASKS.values(),
                  *(entry['catalog'] for entry in catalog['objects'].values())]
         manifest = {'git_commit': git('rev-parse', 'HEAD'), 'command': sys.argv,

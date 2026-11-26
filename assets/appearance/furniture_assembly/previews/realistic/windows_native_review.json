@@ -1,0 +1,3140 @@
+{
+  "status": "passed",
+  "captured_source_sha": "c92d404b5acd5ec5491d1740fa13ab920f8a9c06",
+  "catalog_version": "furniture-appearance-v2",
+  "original_camera_capture": "original ManiSkill RGB cameras",
+  "pair_ranking": "mean absolute RGB difference over fixed crop",
+  "scope": "Windows, physx_cuda, 2 envs, formal standard capture",
+  "tasks": {
+    "LayFlatPanel": {
+      "camera": "human",
+      "crop_xyxy": [
+        418,
+        386,
+        560,
+        492
+      ],
+      "capture_manifest_sha256": "8777b2bb0d7f5d52a7a67e31c9d2820344bed413f4b6cc956641efe61036bba6",
+      "capture_results_sha256": "e332f7873acc532a00036c6d80b0e8e20f7d0f9f132ba86fd37e0d140d54e055",
+      "private_sdk_receipt_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "control_steps": 2,
+      "physics_steps": 40,
+      "selected_reset_checks": 40,
+      "bidirectional_appearance_local_reset_checks": 2,
+      "bidirectional_native_local_reset_checks": 2,
+      "distinct_fixed_task_camera_schemes": {
+        "0": 11,
+        "1": 11
+      },
+      "candidate_native_rgb_and_material_restorations": [
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "envs": {
+        "0": {
+          "candidate_pairs_checked": 45,
+          "closest_candidate_pair": {
+            "schemes": [
+              "variant_4",
+              "variant_6"
+            ],
+            "changed_pixels": 7830,
+            "crop_pixels": 15052,
+            "mean_absolute_rgb_difference": 10.8462,
+            "mean_absolute_rgb_difference_on_changed_pixels": 20.850192
+          },
+          "minimum_changed_pixels_across_any_candidate_pair": 7830,
+          "native_png_sha256": {
+            "original_human_env0.png": "4ceb77ba284c207574d6194c6243151bca43fac8d386b8bedfb140596a15b5a6",
+            "variant_1_human_env0.png": "acea82b6c1ef0beb62bdbc736c80760428efa6ba524710960621f25ddca453dc",
+            "variant_2_human_env0.png": "b3779107f7cbda0ec7df43cdaef3e32d0479c74bd7a9415ab81f7a878472ce4d",
+            "variant_3_human_env0.png": "382faa2889b4dc40aec67f07d329104854c04c67828a22f35d00982087a206f1",
+            "variant_4_human_env0.png": "163b1f32c29dc26e7a3e6fb599a9139935741800368be709a2cb9b1de1d7e75e",
+            "variant_5_human_env0.png": "1781298846213b2b0c1b5d1667d7f5bed7a56ba8d749e32bf1bb29e353a65514",
+            "variant_6_human_env0.png": "2d6211ae48c1f195e6e48822dc42c434d782e413721582891c2c05ade2d8f1c7",
+            "variant_7_human_env0.png": "b020c51811508a941a3625800eb5ccfb63ff6e9cbdcb652af2e057a25b90d165",
+            "variant_8_human_env0.png": "18202a19d5d1bcc779ab54802d386ccbf6db731193e26e76324cc3d1e4f5acd1",
+            "variant_9_human_env0.png": "4eac025eff855f4d8c4d7a50f089166a2542bf6f8491de8aea9a850158c95434",
+            "variant_10_human_env0.png": "b51db9b57fb7ef3b9f82d9e885bdf651358a3d55d6645d8af63daa495d6abbc0"
+          },
+          "candidate_pair_metrics": [
+            {
+              "schemes": [
+                "variant_4",
+                "variant_6"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 10.8462,
+              "mean_absolute_rgb_difference_on_changed_pixels": 20.850192
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_7"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 11.388099,
+              "mean_absolute_rgb_difference_on_changed_pixels": 21.891911
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_5"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 12.033484,
+              "mean_absolute_rgb_difference_on_changed_pixels": 23.132567
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_6"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 12.145186,
+              "mean_absolute_rgb_difference_on_changed_pixels": 23.347297
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 12.614581,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.249638
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_6"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 12.662215,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.341209
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 13.966538,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.848574
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.038267,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.986462
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.271813,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.435419
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.32742,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.542316
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.599234,
+              "mean_absolute_rgb_difference_on_changed_pixels": 28.064836
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.901962,
+              "mean_absolute_rgb_difference_on_changed_pixels": 28.646786
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_5"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 16.070378,
+              "mean_absolute_rgb_difference_on_changed_pixels": 30.892891
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_4"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 16.277261,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.290592
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 16.809328,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.31341
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 17.234653,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.131034
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_4"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 17.695655,
+              "mean_absolute_rgb_difference_on_changed_pixels": 34.017241
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 19.009678,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.543252
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 19.142794,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.799149
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 19.256001,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.016773
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 19.281646,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.066071
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 19.855877,
+              "mean_absolute_rgb_difference_on_changed_pixels": 38.169945
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_7"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 20.310501,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.043891
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_7"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 20.699531,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.791741
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_6"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 21.477301,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.286888
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 21.643968,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.60728
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 22.226924,
+              "mean_absolute_rgb_difference_on_changed_pixels": 42.727927
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_5"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 22.976991,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.169817
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_7"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 23.05543,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.320605
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_6"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 23.228475,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.653257
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 23.943418,
+              "mean_absolute_rgb_difference_on_changed_pixels": 46.027629
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_3"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 24.65008,
+              "mean_absolute_rgb_difference_on_changed_pixels": 47.386079
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 27.694459,
+              "mean_absolute_rgb_difference_on_changed_pixels": 53.238442
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 27.746191,
+              "mean_absolute_rgb_difference_on_changed_pixels": 53.337888
+            },
+            {
+              "schemes": [
+                "variant_9",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 28.020573,
+              "mean_absolute_rgb_difference_on_changed_pixels": 53.865347
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_4"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 29.374347,
+              "mean_absolute_rgb_difference_on_changed_pixels": 56.467774
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_9"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 29.765613,
+              "mean_absolute_rgb_difference_on_changed_pixels": 57.219923
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_3"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 30.381367,
+              "mean_absolute_rgb_difference_on_changed_pixels": 58.403619
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_5"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 31.486624,
+              "mean_absolute_rgb_difference_on_changed_pixels": 60.52831
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_7"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 32.293161,
+              "mean_absolute_rgb_difference_on_changed_pixels": 62.078757
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_7"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 34.697338,
+              "mean_absolute_rgb_difference_on_changed_pixels": 66.700426
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_8"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 35.233147,
+              "mean_absolute_rgb_difference_on_changed_pixels": 67.730438
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 37.751639,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.57186
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_10"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 38.686553,
+              "mean_absolute_rgb_difference_on_changed_pixels": 74.369093
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_2"
+              ],
+              "changed_pixels": 7830,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 42.947648,
+              "mean_absolute_rgb_difference_on_changed_pixels": 82.560409
+            }
+          ]
+        },
+        "1": {
+          "candidate_pairs_checked": 45,
+          "closest_candidate_pair": {
+            "schemes": [
+              "variant_4",
+              "variant_6"
+            ],
+            "changed_pixels": 7780,
+            "crop_pixels": 15052,
+            "mean_absolute_rgb_difference": 10.718753,
+            "mean_absolute_rgb_difference_on_changed_pixels": 20.737618
+          },
+          "minimum_changed_pixels_across_any_candidate_pair": 7780,
+          "native_png_sha256": {
+            "original_human_env1.png": "1d4d278afb08097eb57efa02c8b85f97fcb2ac656643cc4a080b78522f197413",
+            "variant_1_human_env1.png": "697628ddb7a05a332cb007e7536bb0550e283ec8c717167d88dc382626229b34",
+            "variant_2_human_env1.png": "d0e47ef55e02153a1f367aa62b7855c5aec665c5a714719b31ec7d7cdf058b49",
+            "variant_3_human_env1.png": "86f56ae66a5bf76a773221e02c84ea0d7df578e11c867d8bb1b50898769ac1d9",
+            "variant_4_human_env1.png": "62bad986bf48631f8ef9e7988606185d4e63b5d8860d0c5ddb9a8a6ea49eea72",
+            "variant_5_human_env1.png": "8e931f688a37bdbd404c30ebbb58a8b9db2c9379d7237c6fad58d63ffdfa74a6",
+            "variant_6_human_env1.png": "54eb936bb04e65f8fdf20278dc463bbfe5f8f82e17b1fa779eb31c70ef8c3545",
+            "variant_7_human_env1.png": "d16aca10c636d35f3060f636b1ec05c14c0db77463e537143b8823e750f85d9e",
+            "variant_8_human_env1.png": "9228aa6d825aef4402b98893b2ae5344d2b74cd5c3e04a1b041db06f16d531cb",
+            "variant_9_human_env1.png": "2c0cad5400a218e91847b7216fa6be33bc08bde8cf0bc95815290f8dd807fcca",
+            "variant_10_human_env1.png": "279b0010bde778fa536be4ab182e116ea32a600fe0a5d68b19d956ebb12be79f"
+          },
+          "candidate_pair_metrics": [
+            {
+              "schemes": [
+                "variant_4",
+                "variant_6"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 10.718753,
+              "mean_absolute_rgb_difference_on_changed_pixels": 20.737618
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_7"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 11.011626,
+              "mean_absolute_rgb_difference_on_changed_pixels": 21.304242
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_6"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 11.859,
+              "mean_absolute_rgb_difference_on_changed_pixels": 22.943659
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_5"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 11.984343,
+              "mean_absolute_rgb_difference_on_changed_pixels": 23.186161
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 12.468553,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.122965
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_6"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 12.519112,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.22078
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 13.753433,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.608826
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 13.776287,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.653042
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 13.983546,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.054027
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.062096,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.205998
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.348592,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.760283
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 14.553747,
+              "mean_absolute_rgb_difference_on_changed_pixels": 28.157198
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_4"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 15.930397,
+              "mean_absolute_rgb_difference_on_changed_pixels": 30.820608
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_5"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 16.055718,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.063068
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 16.26032,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.458912
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 17.294667,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.460069
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_4"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 17.354881,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.576564
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 18.501307,
+              "mean_absolute_rgb_difference_on_changed_pixels": 35.794559
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 18.509057,
+              "mean_absolute_rgb_difference_on_changed_pixels": 35.809554
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 18.79573,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.364182
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 18.951147,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.664867
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 19.371844,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.478792
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_7"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 20.055275,
+              "mean_absolute_rgb_difference_on_changed_pixels": 38.801028
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_7"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 20.503233,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.667695
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_6"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 21.104416,
+              "mean_absolute_rgb_difference_on_changed_pixels": 40.830805
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 21.366884,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.338603
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 21.988706,
+              "mean_absolute_rgb_difference_on_changed_pixels": 42.541645
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_7"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 22.609509,
+              "mean_absolute_rgb_difference_on_changed_pixels": 43.742716
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_5"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 22.610594,
+              "mean_absolute_rgb_difference_on_changed_pixels": 43.744816
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_6"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 22.681991,
+              "mean_absolute_rgb_difference_on_changed_pixels": 43.882948
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 23.43693,
+              "mean_absolute_rgb_difference_on_changed_pixels": 45.34353
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_3"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 24.396005,
+              "mean_absolute_rgb_difference_on_changed_pixels": 47.199057
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 27.303946,
+              "mean_absolute_rgb_difference_on_changed_pixels": 52.825064
+            },
+            {
+              "schemes": [
+                "variant_9",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 27.342192,
+              "mean_absolute_rgb_difference_on_changed_pixels": 52.899057
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 27.596709,
+              "mean_absolute_rgb_difference_on_changed_pixels": 53.391474
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_4"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 28.80419,
+              "mean_absolute_rgb_difference_on_changed_pixels": 55.727592
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_9"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 29.158318,
+              "mean_absolute_rgb_difference_on_changed_pixels": 56.412725
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_3"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 29.584352,
+              "mean_absolute_rgb_difference_on_changed_pixels": 57.236975
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_5"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 30.559992,
+              "mean_absolute_rgb_difference_on_changed_pixels": 59.12455
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_7"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 31.827288,
+              "mean_absolute_rgb_difference_on_changed_pixels": 61.576392
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_7"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 34.165028,
+              "mean_absolute_rgb_difference_on_changed_pixels": 66.099229
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_8"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 34.445411,
+              "mean_absolute_rgb_difference_on_changed_pixels": 66.641688
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 36.79139,
+              "mean_absolute_rgb_difference_on_changed_pixels": 71.180463
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_10"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 38.077642,
+              "mean_absolute_rgb_difference_on_changed_pixels": 73.66898
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_2"
+              ],
+              "changed_pixels": 7780,
+              "crop_pixels": 15052,
+              "mean_absolute_rgb_difference": 42.04108,
+              "mean_absolute_rgb_difference_on_changed_pixels": 81.337061
+            }
+          ]
+        }
+      }
+    },
+    "InsertRail": {
+      "camera": "base_camera",
+      "crop_xyxy": [
+        84,
+        82,
+        210,
+        198
+      ],
+      "capture_manifest_sha256": "e9ab53d2a470075a983564e6d2248cc0ccabafb29a7e2a45e2b39d86ee637f73",
+      "capture_results_sha256": "fffe8f667065fe16bdde7b2a02628fecde1b0839e86a43d991d8b976fe93f43a",
+      "private_sdk_receipt_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "control_steps": 2,
+      "physics_steps": 40,
+      "selected_reset_checks": 40,
+      "bidirectional_appearance_local_reset_checks": 2,
+      "bidirectional_native_local_reset_checks": 2,
+      "distinct_fixed_task_camera_schemes": {
+        "0": 11,
+        "1": 11
+      },
+      "candidate_native_rgb_and_material_restorations": [
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "envs": {
+        "0": {
+          "candidate_pairs_checked": 45,
+          "closest_candidate_pair": {
+            "schemes": [
+              "variant_2",
+              "variant_6"
+            ],
+            "changed_pixels": 6974,
+            "crop_pixels": 14616,
+            "mean_absolute_rgb_difference": 7.993842,
+            "mean_absolute_rgb_difference_on_changed_pixels": 16.75337
+          },
+          "minimum_changed_pixels_across_any_candidate_pair": 6890,
+          "native_png_sha256": {
+            "original_base_camera_env0.png": "7c33d6f1531a7137e960c0b276d3abdd7e61cdd828e893c95539a222a071e6ee",
+            "variant_1_base_camera_env0.png": "3196d4c34b1cc84808b316acaa5ede05acc25fb3bb06cc0a154c11400c222e3e",
+            "variant_2_base_camera_env0.png": "19415077ce9027546805ae161e1c85a5e43aaa88b0a288b25f6b628999abd888",
+            "variant_3_base_camera_env0.png": "77c10fcfaad6727c415f8d815b362964c581b7ecd8ebf298458483490bd0ec7b",
+            "variant_4_base_camera_env0.png": "0165f9eedd9d5147f3e6df8a3b90e4a31bf8c03f7524e6fd0288fd9227465d98",
+            "variant_5_base_camera_env0.png": "c8d5289b640093cc296b213def28650279d3b5e94fc6cb905d167493539a536f",
+            "variant_6_base_camera_env0.png": "3714d74405b37a93089d2cb12a4a0a90e181957daefc41b912648ed723f23fb6",
+            "variant_7_base_camera_env0.png": "f02f3337e90ca5ca840e23e0ef78f805c133f4de1d768dfead655d09b61d2db5",
+            "variant_8_base_camera_env0.png": "2bb6f4ea51cd007aceef71ced4f8328fa5436b501cb264b74fe68df7c32594dd",
+            "variant_9_base_camera_env0.png": "46261ba36be602d85e69cd2256d2a2865f01bd347675c53f9c0a8679594b04e3",
+            "variant_10_base_camera_env0.png": "31dd67e2dec5f1678902e57bbed3357367f289bfc2f7962395b7c55b5391f2c5"
+          },
+          "candidate_pair_metrics": [
+            {
+              "schemes": [
+                "variant_2",
+                "variant_6"
+              ],
+              "changed_pixels": 6974,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 7.993842,
+              "mean_absolute_rgb_difference_on_changed_pixels": 16.75337
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_9"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 8.765508,
+              "mean_absolute_rgb_difference_on_changed_pixels": 18.057317
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 10.98903,
+              "mean_absolute_rgb_difference_on_changed_pixels": 22.637867
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_4"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.01081,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.742777
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.09127,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.908527
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_5"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.326834,
+              "mean_absolute_rgb_difference_on_changed_pixels": 25.393798
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_9"
+              ],
+              "changed_pixels": 6964,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.738506,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.735497
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_9"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.981618,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.742683
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_9"
+              ],
+              "changed_pixels": 6898,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 13.8841,
+              "mean_absolute_rgb_difference_on_changed_pixels": 29.418672
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_6"
+              ],
+              "changed_pixels": 6964,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 14.281564,
+              "mean_absolute_rgb_difference_on_changed_pixels": 29.974057
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_6"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 14.358055,
+              "mean_absolute_rgb_difference_on_changed_pixels": 29.578201
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 15.438196,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.803336
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_5"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 15.614053,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.16561
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_3"
+              ],
+              "changed_pixels": 6973,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 15.677842,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.862087
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_7"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 15.691297,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.324736
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 16.175424,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.322058
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 16.464924,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.91844
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_7"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 17.546866,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.147287
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_9"
+              ],
+              "changed_pixels": 6973,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 18.6632,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.119652
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 18.982827,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.105426
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_9"
+              ],
+              "changed_pixels": 6898,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 19.55624,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.437228
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_4"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 20.306331,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.8319
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_6"
+              ],
+              "changed_pixels": 6964,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.033799,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.145606
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.062785,
+              "mean_absolute_rgb_difference_on_changed_pixels": 43.390228
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.473248,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.2358
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_6"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.595808,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.488278
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_9"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.814518,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.93883
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 22.315978,
+              "mean_absolute_rgb_difference_on_changed_pixels": 45.971858
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 22.476054,
+              "mean_absolute_rgb_difference_on_changed_pixels": 46.301621
+            },
+            {
+              "schemes": [
+                "variant_9",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 22.852468,
+              "mean_absolute_rgb_difference_on_changed_pixels": 47.07705
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_5"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 23.891922,
+              "mean_absolute_rgb_difference_on_changed_pixels": 49.21837
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_2"
+              ],
+              "changed_pixels": 6973,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 25.211138,
+              "mean_absolute_rgb_difference_on_changed_pixels": 52.844687
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_7"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 25.34891,
+              "mean_absolute_rgb_difference_on_changed_pixels": 52.219826
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_4"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 26.561896,
+              "mean_absolute_rgb_difference_on_changed_pixels": 54.718628
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 32.206281,
+              "mean_absolute_rgb_difference_on_changed_pixels": 66.3463
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_3"
+              ],
+              "changed_pixels": 6890,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 32.662698,
+              "mean_absolute_rgb_difference_on_changed_pixels": 69.288534
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_5"
+              ],
+              "changed_pixels": 7094,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 34.78519,
+              "mean_absolute_rgb_difference_on_changed_pixels": 71.669063
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_9"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 35.337324,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.796382
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_7"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 36.207558,
+              "mean_absolute_rgb_difference_on_changed_pixels": 74.5891
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_8"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 36.948025,
+              "mean_absolute_rgb_difference_on_changed_pixels": 76.114494
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_7"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 38.90068,
+              "mean_absolute_rgb_difference_on_changed_pixels": 80.137045
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 41.057836,
+              "mean_absolute_rgb_difference_on_changed_pixels": 84.580879
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 42.019818,
+              "mean_absolute_rgb_difference_on_changed_pixels": 86.562603
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_7"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 48.538839,
+              "mean_absolute_rgb_difference_on_changed_pixels": 99.99206
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_10"
+              ],
+              "changed_pixels": 7095,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 56.36549,
+              "mean_absolute_rgb_difference_on_changed_pixels": 116.115292
+            }
+          ]
+        },
+        "1": {
+          "candidate_pairs_checked": 45,
+          "closest_candidate_pair": {
+            "schemes": [
+              "variant_2",
+              "variant_6"
+            ],
+            "changed_pixels": 7140,
+            "crop_pixels": 14616,
+            "mean_absolute_rgb_difference": 8.587165,
+            "mean_absolute_rgb_difference_on_changed_pixels": 17.578431
+          },
+          "minimum_changed_pixels_across_any_candidate_pair": 6978,
+          "native_png_sha256": {
+            "original_base_camera_env1.png": "29591e9f69e5f1698a8c9b6f5f72fd447ec76ca0c83edb0a0cfeaa4a926fb766",
+            "variant_1_base_camera_env1.png": "e8691a7cb0c72c13d9f8091346cbcb732b0b651fffbf0e69052d7f4d178631ae",
+            "variant_2_base_camera_env1.png": "14a9c39a4a5980ca92b400a946bd058f96b4ae9f95dbb0c751115420c788cab4",
+            "variant_3_base_camera_env1.png": "2563d1e6f2c6f8b576354baa223bf2924f916ce147965b7225d8d6c1788caee5",
+            "variant_4_base_camera_env1.png": "706707007eb8ee5d2e53ff055424004d25ca005e8d45f5727d0dcb3561986cb0",
+            "variant_5_base_camera_env1.png": "712763dadb7914eed2abfd7e989b5de628c22bab772354c8d019b2d2053ecdd8",
+            "variant_6_base_camera_env1.png": "9b4937c0e836dc30b462ceca183ac5b235d372862c632fb48b9c19b3fdf38393",
+            "variant_7_base_camera_env1.png": "11359e2be25ac9ee4b7c1263d9b51d33e8a0d2422fe289b33912a2584e199792",
+            "variant_8_base_camera_env1.png": "8b664297e8906784f62872df2f2e91e5dde1c610f37c4bfcdaf60bee4aac5c17",
+            "variant_9_base_camera_env1.png": "d08160ff1fb3f288f1b2c30a1d7581bed769603121a2d7729f43fc08dd12cc6f",
+            "variant_10_base_camera_env1.png": "c20dada95af83426378d7e04cb8e99b73ca607e8b4386df92169f25760015b78"
+          },
+          "candidate_pair_metrics": [
+            {
+              "schemes": [
+                "variant_2",
+                "variant_6"
+              ],
+              "changed_pixels": 7140,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 8.587165,
+              "mean_absolute_rgb_difference_on_changed_pixels": 17.578431
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_9"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 9.346812,
+              "mean_absolute_rgb_difference_on_changed_pixels": 19.104041
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 11.208037,
+              "mean_absolute_rgb_difference_on_changed_pixels": 22.908218
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.340905,
+              "mean_absolute_rgb_difference_on_changed_pixels": 25.223698
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_5"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.536079,
+              "mean_absolute_rgb_difference_on_changed_pixels": 25.622617
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_4"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.68409,
+              "mean_absolute_rgb_difference_on_changed_pixels": 25.925139
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_9"
+              ],
+              "changed_pixels": 7132,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 12.77942,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.189568
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_9"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 13.304849,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.193912
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_9"
+              ],
+              "changed_pixels": 6996,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 14.168263,
+              "mean_absolute_rgb_difference_on_changed_pixels": 29.600248
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_6"
+              ],
+              "changed_pixels": 7132,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 14.538998,
+              "mean_absolute_rgb_difference_on_changed_pixels": 29.795569
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_6"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 14.738757,
+              "mean_absolute_rgb_difference_on_changed_pixels": 30.124691
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_5"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 15.832512,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.360229
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_7"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 15.889254,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.476204
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 16.148308,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.005687
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 16.37199,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.462872
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_3"
+              ],
+              "changed_pixels": 7140,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 16.535441,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.84902
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 17.334496,
+              "mean_absolute_rgb_difference_on_changed_pixels": 35.43015
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_7"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 17.600575,
+              "mean_absolute_rgb_difference_on_changed_pixels": 35.97399
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 18.728471,
+              "mean_absolute_rgb_difference_on_changed_pixels": 38.279308
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_9"
+              ],
+              "changed_pixels": 7140,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 19.307882,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.52437
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_9"
+              ],
+              "changed_pixels": 6996,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 19.972747,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.726939
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_4"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 20.425128,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.747122
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.007822,
+              "mean_absolute_rgb_difference_on_changed_pixels": 42.938097
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_6"
+              ],
+              "changed_pixels": 7132,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.458379,
+              "mean_absolute_rgb_difference_on_changed_pixels": 43.975837
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.611248,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.171445
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_6"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.655515,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.261921
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_9"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 21.837552,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.633991
+            },
+            {
+              "schemes": [
+                "variant_9",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 22.897829,
+              "mean_absolute_rgb_difference_on_changed_pixels": 46.8011
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 22.979475,
+              "mean_absolute_rgb_difference_on_changed_pixels": 46.967977
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 23.516785,
+              "mean_absolute_rgb_difference_on_changed_pixels": 48.066191
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_5"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 24.074781,
+              "mean_absolute_rgb_difference_on_changed_pixels": 49.206684
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_7"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 25.902071,
+              "mean_absolute_rgb_difference_on_changed_pixels": 52.9415
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_2"
+              ],
+              "changed_pixels": 7140,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 26.208242,
+              "mean_absolute_rgb_difference_on_changed_pixels": 53.649813
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_4"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 27.18831,
+              "mean_absolute_rgb_difference_on_changed_pixels": 55.570456
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 32.338693,
+              "mean_absolute_rgb_difference_on_changed_pixels": 66.097376
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_3"
+              ],
+              "changed_pixels": 6978,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 32.865786,
+              "mean_absolute_rgb_difference_on_changed_pixels": 68.840117
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_5"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 35.120804,
+              "mean_absolute_rgb_difference_on_changed_pixels": 71.78376
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_9"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 35.535965,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.632312
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_7"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 36.416644,
+              "mean_absolute_rgb_difference_on_changed_pixels": 74.43234
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_8"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 37.932813,
+              "mean_absolute_rgb_difference_on_changed_pixels": 77.531254
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_7"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 39.400953,
+              "mean_absolute_rgb_difference_on_changed_pixels": 80.532
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 41.364236,
+              "mean_absolute_rgb_difference_on_changed_pixels": 84.544772
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 42.523011,
+              "mean_absolute_rgb_difference_on_changed_pixels": 86.913206
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_7"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 48.814518,
+              "mean_absolute_rgb_difference_on_changed_pixels": 99.772479
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_10"
+              ],
+              "changed_pixels": 7151,
+              "crop_pixels": 14616,
+              "mean_absolute_rgb_difference": 56.937397,
+              "mean_absolute_rgb_difference_on_changed_pixels": 116.374913
+            }
+          ]
+        }
+      }
+    },
+    "FastenScrew": {
+      "camera": "human",
+      "crop_xyxy": [
+        328,
+        440,
+        500,
+        519
+      ],
+      "capture_manifest_sha256": "951f7e6aad1556b6982f1bfd4f2a4a8a0ee67d81fad17487ed2ad0bdf2925ad2",
+      "capture_results_sha256": "12be791484cfa9d730bbb0a36d14c27877564a9a894b7f8da5645ea30d6bea8f",
+      "private_sdk_receipt_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "control_steps": 2,
+      "physics_steps": 40,
+      "selected_reset_checks": 40,
+      "bidirectional_appearance_local_reset_checks": 2,
+      "bidirectional_native_local_reset_checks": 2,
+      "distinct_fixed_task_camera_schemes": {
+        "0": 11,
+        "1": 11
+      },
+      "candidate_native_rgb_and_material_restorations": [
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "envs": {
+        "0": {
+          "candidate_pairs_checked": 45,
+          "closest_candidate_pair": {
+            "schemes": [
+              "variant_8",
+              "variant_9"
+            ],
+            "changed_pixels": 4391,
+            "crop_pixels": 13588,
+            "mean_absolute_rgb_difference": 5.392331,
+            "mean_absolute_rgb_difference_on_changed_pixels": 16.686632
+          },
+          "minimum_changed_pixels_across_any_candidate_pair": 4391,
+          "native_png_sha256": {
+            "original_human_env0.png": "3f2e672f6c3c7e457a4418c73f1e3570ab0199229a329b79b44161e103d26164",
+            "variant_1_human_env0.png": "0111998ee462baac216a9dd5df5afd36a77c81cbfcdae40ecc71311647bb78d3",
+            "variant_2_human_env0.png": "3fd64aa8476417aaf92573fd52321ba304dbbd4c9ebfd16e217abc84eea26e83",
+            "variant_3_human_env0.png": "b69d3292e88b2712af69b0c0832956c5aa4e792b8e4ba0ef45f0d08b8f66755b",
+            "variant_4_human_env0.png": "a48c3f41eba2f0bbf86b9dc6ebb28cfd4c8b872d0117802c33518cebe7cb63fb",
+            "variant_5_human_env0.png": "fc2bf2b4e0aef0f129dcfec4e89cb085c4c2ff0860b4ca079f8edc9ca6be7d56",
+            "variant_6_human_env0.png": "e3e395a018c0ed6013d4abfe197dd1d5dabb3c89aeaa58bde89d5c01a830a067",
+            "variant_7_human_env0.png": "95dbc9bb9d0808f489e633beb70a060749e1003f067df73cd26d26f6fdaabb55",
+            "variant_8_human_env0.png": "46ad4b6a79f2db8540f1b2616ae93599ddb264a9e31796404b4a37fba09cb828",
+            "variant_9_human_env0.png": "8438159b8a5eb44384588dab723472a8078bad4a97b1820a00d32405786708f0",
+            "variant_10_human_env0.png": "01223a8a7b08845dee2cfb72bb7bfc7b4ad7f9f30f39af85dbdd2d57053b59c2"
+          },
+          "candidate_pair_metrics": [
+            {
+              "schemes": [
+                "variant_8",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 5.392331,
+              "mean_absolute_rgb_difference_on_changed_pixels": 16.686632
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_6"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 5.494677,
+              "mean_absolute_rgb_difference_on_changed_pixels": 17.00334
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 5.944387,
+              "mean_absolute_rgb_difference_on_changed_pixels": 18.394975
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_5"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 6.42275,
+              "mean_absolute_rgb_difference_on_changed_pixels": 19.875275
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 7.830144,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.230471
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_4"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 7.870155,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.354285
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 7.985257,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.710468
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.075042,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.988309
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_6"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.50238,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.310711
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.7526,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.085022
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_6"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 9.244186,
+              "mean_absolute_rgb_difference_on_changed_pixels": 28.60624
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.007948,
+              "mean_absolute_rgb_difference_on_changed_pixels": 30.969711
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.046512,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.089046
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_5"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.452311,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.344796
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_7"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.543789,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.627875
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_3"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.649176,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.953997
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.810445,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.453048
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_7"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 11.106221,
+              "mean_absolute_rgb_difference_on_changed_pixels": 34.368329
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 11.640811,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.022622
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.194265,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.735292
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.228339,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.840735
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.27041,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.970925
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_4"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.279659,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.999545
+            },
+            {
+              "schemes": [
+                "variant_9",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.791041,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.582024
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_6"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.925719,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.998785
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_6"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.081714,
+              "mean_absolute_rgb_difference_on_changed_pixels": 40.481515
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.21362,
+              "mean_absolute_rgb_difference_on_changed_pixels": 40.889699
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.649029,
+              "mean_absolute_rgb_difference_on_changed_pixels": 42.237076
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 14.444314,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.698095
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 15.417206,
+              "mean_absolute_rgb_difference_on_changed_pixels": 47.708722
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_5"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 15.742616,
+              "mean_absolute_rgb_difference_on_changed_pixels": 48.715706
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_4"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 16.163208,
+              "mean_absolute_rgb_difference_on_changed_pixels": 50.017232
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_2"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 16.24269,
+              "mean_absolute_rgb_difference_on_changed_pixels": 50.26319
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_7"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 17.860784,
+              "mean_absolute_rgb_difference_on_changed_pixels": 55.270402
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 19.174173,
+              "mean_absolute_rgb_difference_on_changed_pixels": 59.3347
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_3"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 19.563831,
+              "mean_absolute_rgb_difference_on_changed_pixels": 60.5405
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_5"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 20.591085,
+              "mean_absolute_rgb_difference_on_changed_pixels": 63.71935
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_9"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 23.310838,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.135656
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_7"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 23.452703,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.57466
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 23.480547,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.660821
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 23.985428,
+              "mean_absolute_rgb_difference_on_changed_pixels": 74.223184
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_8"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 25.510156,
+              "mean_absolute_rgb_difference_on_changed_pixels": 78.941471
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_7"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 25.92329,
+              "mean_absolute_rgb_difference_on_changed_pixels": 80.21992
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_7"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 30.649985,
+              "mean_absolute_rgb_difference_on_changed_pixels": 94.846732
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_10"
+              ],
+              "changed_pixels": 4391,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 34.302301,
+              "mean_absolute_rgb_difference_on_changed_pixels": 106.148865
+            }
+          ]
+        },
+        "1": {
+          "candidate_pairs_checked": 45,
+          "closest_candidate_pair": {
+            "schemes": [
+              "variant_8",
+              "variant_9"
+            ],
+            "changed_pixels": 4522,
+            "crop_pixels": 13588,
+            "mean_absolute_rgb_difference": 5.609729,
+            "mean_absolute_rgb_difference_on_changed_pixels": 16.856479
+          },
+          "minimum_changed_pixels_across_any_candidate_pair": 4522,
+          "native_png_sha256": {
+            "original_human_env1.png": "7a36d3a7f96b5c3cfd8a36a038875695448ea9c9dd1c33d93c43516817870627",
+            "variant_1_human_env1.png": "60d47e11ba78b327cb89999c1d0b01a7a577dae54341bb1b681f77ad4bdeb2fd",
+            "variant_2_human_env1.png": "0bfda1ab35534f55b6e6058a721db6574647710bd04fb7bc6676174d02d8a73b",
+            "variant_3_human_env1.png": "a0819a5187caaa749a193db904ec048440ec5a31ee89e0f0e809a8915c288cd8",
+            "variant_4_human_env1.png": "a8fcfc024dffc0607bb124b3e3c77d3ae91e161737cf34f49773cc4f7ff26e4c",
+            "variant_5_human_env1.png": "b5870f2e9492c6a8506ed45e8cf28a5b5ba82f9d828a2df14b1c461f73340f7b",
+            "variant_6_human_env1.png": "cbf6fed03bdf892c66df311a1c1535a53db460c1767069c170e7db0b60888cf9",
+            "variant_7_human_env1.png": "190addc73b09dbf17ea65c5d00a394bfe26a9f03543bbc74eef8e4c9240c473a",
+            "variant_8_human_env1.png": "8a6f2b9fe31569c4eb92b4ed87b03fd5a7b8f96b660a02e636707acf2883657d",
+            "variant_9_human_env1.png": "237cbd2469e9657e7ae4de7fc467cd7ab405c1575a7cfbe3f68ff629044917b6",
+            "variant_10_human_env1.png": "94faa3c96301ea236f199b1668c51da7d2f1397c4356e758b8ea1be4efea017f"
+          },
+          "candidate_pair_metrics": [
+            {
+              "schemes": [
+                "variant_8",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 5.609729,
+              "mean_absolute_rgb_difference_on_changed_pixels": 16.856479
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_6"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 5.738176,
+              "mean_absolute_rgb_difference_on_changed_pixels": 17.242444
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 6.185605,
+              "mean_absolute_rgb_difference_on_changed_pixels": 18.586908
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_5"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 6.64893,
+              "mean_absolute_rgb_difference_on_changed_pixels": 19.979139
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.177387,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.571945
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_4"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.188426,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.605116
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.283804,
+              "mean_absolute_rgb_difference_on_changed_pixels": 24.891715
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.416102,
+              "mean_absolute_rgb_difference_on_changed_pixels": 25.289253
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_6"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 8.79634,
+              "mean_absolute_rgb_difference_on_changed_pixels": 26.431815
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 9.02095,
+              "mean_absolute_rgb_difference_on_changed_pixels": 27.106737
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_6"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 9.567977,
+              "mean_absolute_rgb_difference_on_changed_pixels": 28.750479
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.415465,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.297066
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.433005,
+              "mean_absolute_rgb_difference_on_changed_pixels": 31.349771
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_5"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.828378,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.537815
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_7"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 10.837602,
+              "mean_absolute_rgb_difference_on_changed_pixels": 32.565531
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_3"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 11.099205,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.351614
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 11.293911,
+              "mean_absolute_rgb_difference_on_changed_pixels": 33.93668
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_7"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 11.433348,
+              "mean_absolute_rgb_difference_on_changed_pixels": 34.355669
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.050093,
+              "mean_absolute_rgb_difference_on_changed_pixels": 36.208905
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.57249,
+              "mean_absolute_rgb_difference_on_changed_pixels": 37.778638
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.684084,
+              "mean_absolute_rgb_difference_on_changed_pixels": 38.113961
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_4"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.710946,
+              "mean_absolute_rgb_difference_on_changed_pixels": 38.194678
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 12.732558,
+              "mean_absolute_rgb_difference_on_changed_pixels": 38.25962
+            },
+            {
+              "schemes": [
+                "variant_9",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.217643,
+              "mean_absolute_rgb_difference_on_changed_pixels": 39.717234
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_6"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.372265,
+              "mean_absolute_rgb_difference_on_changed_pixels": 40.181852
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_6"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.52463,
+              "mean_absolute_rgb_difference_on_changed_pixels": 40.639687
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 13.659136,
+              "mean_absolute_rgb_difference_on_changed_pixels": 41.04386
+            },
+            {
+              "schemes": [
+                "variant_8",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 14.176651,
+              "mean_absolute_rgb_difference_on_changed_pixels": 42.598924
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 14.953905,
+              "mean_absolute_rgb_difference_on_changed_pixels": 44.934469
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 15.956677,
+              "mean_absolute_rgb_difference_on_changed_pixels": 47.947663
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_5"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 16.347439,
+              "mean_absolute_rgb_difference_on_changed_pixels": 49.121849
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_4"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 16.746762,
+              "mean_absolute_rgb_difference_on_changed_pixels": 50.32176
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_2"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 16.867285,
+              "mean_absolute_rgb_difference_on_changed_pixels": 50.683916
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_7"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 18.406879,
+              "mean_absolute_rgb_difference_on_changed_pixels": 55.310187
+            },
+            {
+              "schemes": [
+                "variant_4",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 19.792292,
+              "mean_absolute_rgb_difference_on_changed_pixels": 59.473168
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_3"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 20.14449,
+              "mean_absolute_rgb_difference_on_changed_pixels": 60.531476
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_5"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 21.227578,
+              "mean_absolute_rgb_difference_on_changed_pixels": 63.786009
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_9"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 24.048057,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.261168
+            },
+            {
+              "schemes": [
+                "variant_6",
+                "variant_7"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 24.158375,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.592658
+            },
+            {
+              "schemes": [
+                "variant_1",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 24.216416,
+              "mean_absolute_rgb_difference_on_changed_pixels": 72.767065
+            },
+            {
+              "schemes": [
+                "variant_5",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 24.75,
+              "mean_absolute_rgb_difference_on_changed_pixels": 74.370411
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_8"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 26.344225,
+              "mean_absolute_rgb_difference_on_changed_pixels": 79.160843
+            },
+            {
+              "schemes": [
+                "variant_2",
+                "variant_7"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 26.76678,
+              "mean_absolute_rgb_difference_on_changed_pixels": 80.430562
+            },
+            {
+              "schemes": [
+                "variant_3",
+                "variant_7"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 31.562383,
+              "mean_absolute_rgb_difference_on_changed_pixels": 94.840705
+            },
+            {
+              "schemes": [
+                "variant_7",
+                "variant_10"
+              ],
+              "changed_pixels": 4522,
+              "crop_pixels": 13588,
+              "mean_absolute_rgb_difference": 35.361373,
+              "mean_absolute_rgb_difference_on_changed_pixels": 106.256155
+            }
+          ]
+        }
+      }
+    }
+  },
+  "captured_runtime_files": {
+    "tasks/furniture_assembly/appearance.py": "9dd94a2e484ff4768687db9dafde7bf13bed24f1ea9b365d85b9622b46def2ea",
+    "tasks/furniture_assembly/finishes.py": "7b1fb1ada833e33261c301de845739d3ca73e96aa85fd7731cdec0cc40d5b4d9",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tools/variation/check_furniture_appearance.py": "b8f737170ad3d9cc7f17c0326236f588071946b8574d4c84c54e31eba2d8601b",
+    "tasks/assets/variation/furniture_assembly/v1/catalog.json": "78e09c287132628cc41da0d6feae5ec25215b8bbe719f02f9b580912b91f4914",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "assets/appearance/objects/furniture_assembly/flat_panel/variants/v1/catalog.json": "4a216cf2e7862ef77ea7cb1e49abd100b444acb5904aa9b312d6fe1177587bea",
+    "assets/appearance/objects/furniture_assembly/panel_rack/variants/v1/catalog.json": "46c2cf0e981b3e5db5a4c48624c7cf853e5d4ef329eb067e52990204c2e4e63d",
+    "assets/appearance/objects/furniture_assembly/rail/variants/v1/catalog.json": "daeb5ca57ffcfefd4d2b4e2dee4cd0c75903a81ba042b77c99362f104a0bd644",
+    "assets/appearance/objects/furniture_assembly/screw/variants/v1/catalog.json": "90c97805393829ae27b5a8e9b81795b1c0d24581ab46ed57180ee3b1c00a4e6f"
+  },
+  "cpu_interface": {
+    "status": "passed",
+    "scope": "single-environment CPU material/state checks; no RGB or parallel isolation",
+    "manifest_sha256": "ef1b8f967618e3536518a1f71f5d4d844880110c0941fb4eab4eb880831aefb4",
+    "results_sha256": "6e1a6d00f9a6f9bfe34504fe2a9d5628338599dcbbb0f4c42c9b126790eea720",
+    "private_sdk_sha256": "5f828fb825e32862c2625e5ad95ceffd7e6bb3fcb6a25d3bc6032125c2e0217d",
+    "tasks": {
+      "LayFlatPanel": {
+        "native_state_sha256": "1dead42685ba1fb37d16c35535e45ed1245114d9f9e57cf03eb90f4c0d2a0e16",
+        "fixed_state_sha256": {
+          "original": "b1904feeaf45828ad5165891c0ce15c46accba49449645491d2b7656a3428ef4",
+          "variant_1": "89bd9ab2920ddc5f15619663f7bf47c211573ed1dd44ba0b6cd69077e636ecd7",
+          "variant_2": "af732c6e17cd7a4144310e4d1fc9cebd1ae847de9bb3e23c7e05160cf2417ff0",
+          "variant_3": "5b9401580e3d30e1448753c5f1d52484548455e194a3907db84953b7c47db677",
+          "variant_4": "41595cf19e454c3d5eb2a49a370efebb2ea63a95ee3ed4459710b22ad4958b1c",
+          "variant_5": "79bdf7af07d596f519f990850d31b2d339896c8376b8c2d6ba12771964cc696d",
+          "variant_6": "551405308e29ca84a478ef6808284aa840cc8eb40cf20a7cbaf51c192a7f5beb",
+          "variant_7": "b6854c45135bdfe4bde13171b5156259f3e582a86580fe1796c67b4e732f242c",
+          "variant_8": "7023a9fe861cc4f4bceae66743f34ada24893b532133602dc8c6d7432a65738c",
+          "variant_9": "9874561cb68a7b762de43bf2ae4963aad792d813cfa3247971b26c7cfc80ed83",
+          "variant_10": "13dff3db2d12d53ca909f97fe5a3488d1737d8ee787c10434a304745f6e1db9b"
+        }
+      },
+      "InsertRail": {
+        "native_state_sha256": "8407728bc9973c2f84a35eb1806dd0f2e93077245179fdbf56df52297e989488",
+        "fixed_state_sha256": {
+          "original": "5be33a6c1f10470e626d0c60605b32c9857151bdd9039082624dff865412b567",
+          "variant_1": "10023660efd25ddd50264d63bf0a7f0acf5490f3f331ee1d797ba702b5ea2440",
+          "variant_2": "c0e4e045e7062fba3e86281f3773d304f9b468c9c66b005515eb2a8204f64610",
+          "variant_3": "a1d0594fb4fd9f36bc098418854ac962721bb74eb7314ef2c86100c66f865337",
+          "variant_4": "b9f5ef0f78e42f8b05b51edf466afabce3a386753a16adc6dcc23216a50882e8",
+          "variant_5": "b52802fbc861773c16da3e829e040933c4ea34013c8b91530f5972e463d97085",
+          "variant_6": "09dec7a9a96a9c8ffff9118fac4431bd38b049a1a79f6aca8b74a6e53e09767d",
+          "variant_7": "d815f8b5b8da4d8bf43b998280ceb477ce0c43cca8782ce2525200738f791ba1",
+          "variant_8": "01e3988688ff6b2b1be72a2971a8a6b9ca289f3df70566541c3ff576b83957de",
+          "variant_9": "cc6819e70d55b2fedeb6d8eb7eadfa1c951d7f6a75e12aa38b2b343d4ed406b0",
+          "variant_10": "c82dd1be74385a8f5f8145dc3c04747512abc49c53e6753e1cbd9f60cdceda7a"
+        }
+      },
+      "FastenScrew": {
+        "native_state_sha256": "66ddd5bb7a1a249bd9e3df26b8d381e784e84d9f2f47787d75b087c6c4e68e4f",
+        "fixed_state_sha256": {
+          "original": "45dc27a358c78f7a3f21fd82172ce0cb188bb31e0384b84930db1589c8417641",
+          "variant_1": "44edfcd7dd22a58d9dadef6c950bf19cc1a2c44016f4eecba08b1cee7f77d511",
+          "variant_2": "4dd9823d953f731ae80a9080595ecb3e56f970ad9ab4649bff0dc8165d3f5e72",
+          "variant_3": "9269f5cc45f218bbd2986c680383dc5d3c6204f8edafa0e5dac3b679d3545326",
+          "variant_4": "6d00e746bf0d4412a2166b1406a1c56688a05f1c3c1728e9ef2fc4e4c000840e",
+          "variant_5": "9fff7a201617cdf639b3691996dceb17ff0a317ea10b271c64d639bf9580d190",
+          "variant_6": "42c67850ba21eaa82a06edd99eb0c2e8ba19850fa7c54312e0fd52b8673ef360",
+          "variant_7": "933f9be9c3dba80064666286e20e1ef362eeafba18a32fc6f55fe89a3add61b6",
+          "variant_8": "c48cfa8db5013c23aa2feef8ad4a7a7116b7fa0d456b1e3eb59a481d66141e81",
+          "variant_9": "9020125036fd41cfab3d5c7bfa42b41c7ea3f05065f727028ac6951429824eee",
+          "variant_10": "c1b7469f9bce2fbfb518151afb7386e9b313305b75f6e38348339735f5b502c8"
+        }
+      }
+    }
+  },
+  "cpu_dynamics": {
+    "status": "passed",
+    "summary_sha256": "e457c054b65b6e9b776645f2168d9622799da76b82089ae8a307e130840fbcf4",
+    "seed": 7,
+    "control_steps": 2340,
+    "physics_steps": 46800,
+    "tasks": {
+      "LayFlatPanel": {
+        "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+        "trajectory_sha256": {
+          "native_off": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "native_repeat": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "original": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_1": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_2": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_3": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_4": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_5": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_6": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_7": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_8": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_9": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c",
+          "variant_10": "b58be3794fed664660db8887daea01282a964d2bec8864075a8cdcc4df41a32c"
+        },
+        "equal_state_snapshots": 793
+      },
+      "InsertRail": {
+        "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+        "trajectory_sha256": {
+          "native_off": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "native_repeat": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "original": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_1": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_2": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_3": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_4": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_5": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_6": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_7": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_8": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_9": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48",
+          "variant_10": "63734143c11560ffabee0ce01333017900ca1cebe7ef97e350ee02a9de8f1c48"
+        },
+        "equal_state_snapshots": 793
+      },
+      "FastenScrew": {
+        "actions_sha256": "bac0ca59ac036ae9a25c26055ea7a2c7a5129292a51f7108270da3cd40c4d4fc",
+        "trajectory_sha256": {
+          "native_off": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "native_repeat": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "original": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_1": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_2": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_3": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_4": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_5": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_6": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_7": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_8": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_9": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6",
+          "variant_10": "9015528c1cc79710a6c5dacc36bbaa624797619544c45bf43027845042df11a6"
+        },
+        "equal_state_snapshots": 793
+      }
+    }
+  },
+  "review_tool_sha256": "7093623ed9a831921d6acfc29a03471df46b14d4f13c71e27691d4220aa51517",
+  "figure_script_sha256": "fd1ad88140efd1d1aa93938ded4ae31f16bcd178a9bcec98752a050db82f1c42",
+  "figure": {
+    "file": "windows_realistic_finishes.png",
+    "sha256": "cd88a312aa2c4ae870a882da9f6ba8b34f70d9db534005a137aa929b183c8da9",
+    "env_idx": 0
+  }
+}

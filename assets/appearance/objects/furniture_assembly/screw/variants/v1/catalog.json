@@ -12,68 +12,72 @@
     "original": {"mode": "restore_native"},
     "variant_1": {
       "mode": "material_override",
-      "label": "deep_teal_head",
-      "roles": {"grip": {"base_color": [0.035, 0.34, 0.38, 1.0], "roughness": 0.62, "metallic": 0.08}}
+      "label": "Iron-grey glass-filled nylon",
+      "roles": {
+        "grip": {"base_color": [0.16, 0.204, 0.219, 1.0], "roughness": 0.69, "metallic": 0}
+      }
     },
     "variant_2": {
       "mode": "material_override",
-      "label": "brick_red_head",
-      "roles": {"grip": {"base_color": [0.7, 0.12, 0.045, 1.0], "roughness": 0.5, "metallic": 0.08}}
+      "label": "Ivory acetal",
+      "roles": {
+        "grip": {"base_color": [0.79, 0.74, 0.59, 1.0], "roughness": 0.56, "metallic": 0}
+      }
     },
     "variant_3": {
       "mode": "material_override",
-      "label": "wine_head",
+      "label": "Dark nickel grip",
       "roles": {
-        "grip": {"base_color": [0.48, 0.025, 0.105, 1.0], "roughness": 0.79, "metallic": 0.12}
+        "grip": {"base_color": [0.28, 0.3, 0.324, 1.0], "roughness": 0.4, "metallic": 0.89}
       }
     },
     "variant_4": {
       "mode": "material_override",
-      "label": "amber_head",
+      "label": "Taupe molded polyamide",
       "roles": {
-        "grip": {"base_color": [0.94, 0.29, 0.022, 1.0], "roughness": 0.52, "metallic": 0.38}
+        "grip": {"base_color": [0.48, 0.407, 0.318, 1.0], "roughness": 0.66, "metallic": 0}
       }
     },
     "variant_5": {
       "mode": "material_override",
-      "label": "citron_head",
+      "label": "Silver zinc-plated grip",
       "roles": {
-        "grip": {"base_color": [0.69, 0.86, 0.05, 1.0], "roughness": 0.68, "metallic": 0.22}
+        "grip": {"base_color": [0.62, 0.644, 0.674, 1.0], "roughness": 0.31, "metallic": 0.93}
       }
     },
     "variant_6": {
       "mode": "material_override",
-      "label": "forest_head",
+      "label": "Grey-green molded polyamide",
       "roles": {
-        "grip": {"base_color": [0.035, 0.285, 0.08, 1.0], "roughness": 0.65, "metallic": 0.3}
+        "grip": {"base_color": [0.266, 0.362, 0.285, 1.0], "roughness": 0.62, "metallic": 0}
       }
     },
     "variant_7": {
       "mode": "material_override",
-      "label": "cyan_head",
+      "label": "Smoky blue molded ABS",
       "roles": {
-        "grip": {"base_color": [0.025, 0.68, 0.83, 1.0], "roughness": 0.32, "metallic": 0.55}
+        "grip": {"base_color": [0.237, 0.331, 0.448, 1.0], "roughness": 0.53, "metallic": 0}
       }
     },
     "variant_8": {
       "mode": "material_override",
-      "label": "violet_head",
+      "label": "Dark graphite acetal",
       "roles": {
-        "grip": {"base_color": [0.295, 0.065, 0.68, 1.0], "roughness": 0.43, "metallic": 0.5}
+        "grip": {"base_color": [0.045, 0.05, 0.056, 1.0], "roughness": 0.48, "metallic": 0}
       }
     },
     "variant_9": {
       "mode": "material_override",
-      "label": "rose_head",
+      "label": "Warm oxidized bronze grip",
       "roles": {
-        "grip": {"base_color": [0.96, 0.24, 0.52, 1.0], "roughness": 0.37, "metallic": 0.27}
+        "grip": {"base_color": [0.4, 0.25, 0.146, 1.0], "roughness": 0.42, "metallic": 0.9}
       }
     },
     "variant_10": {
       "mode": "material_override",
-      "label": "graphite_head",
+      "label": "Brick brown high-durability enamel",
       "roles": {
-        "grip": {"base_color": [0.105, 0.135, 0.165, 1.0], "roughness": 0.45, "metallic": 0.8}
+        "grip": {"base_color": [0.415, 0.244, 0.206, 1.0], "roughness": 0.57, "metallic": 0}
       }
     }
   }

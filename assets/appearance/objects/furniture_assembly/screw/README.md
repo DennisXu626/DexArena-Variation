@@ -4,7 +4,7 @@
 
 ## 方案与部件
 
-唯一参数源：[catalog](variants/v1/catalog.json)；部件对应：[bindings](bindings.json)。original恢复当前任务实例捕获的原生材质；variant_1为深青头部，variant_2为砖红头部。
+材质参数见 [catalog](variants/v1/catalog.json)，部件角色见 [bindings](bindings.json)。original 恢复本次建场捕获的原生材质。十套候选的握持面采用工程塑料、锌或镍镀层及耐用搪瓷漆。
 
 仅绑定screw_head link，导轨rail_body独立处理。grip随方案变化，reference完整保留。
 

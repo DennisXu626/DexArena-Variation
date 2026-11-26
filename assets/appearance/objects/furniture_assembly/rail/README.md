@@ -4,7 +4,7 @@
 
 ## 方案与部件
 
-唯一参数源：[catalog](variants/v1/catalog.json)；部件对应：[bindings](bindings.json)。original恢复当前实例捕获的原生材质；variant_1为深蓝金属／深蓝槽唇，variant_2为香槟铜金属／深铜槽唇。
+材质参数见 [catalog](variants/v1/catalog.json)，部件角色见 [bindings](bindings.json)。original 恢复本次建场捕获的原生材质。十套候选覆盖阳极氧化铝、镀镍、镀锌、发黑钢和涂层钢，滑轨与槽唇的饰面分别定义。
 
 | 角色 | 源码材质 | 部件 | InsertRail／FastenScrew shape数 |
 |---|---|---|---|

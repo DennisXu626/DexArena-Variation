@@ -12,6 +12,10 @@ SPEC = importlib.util.spec_from_file_location(
     'furniture_appearance_under_test', ROOT / 'tasks/furniture_assembly/appearance.py')
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
+FINISH_SPEC = importlib.util.spec_from_file_location(
+    'furniture_finishes_under_test', ROOT / 'tasks/furniture_assembly/finishes.py')
+FINISHES = importlib.util.module_from_spec(FINISH_SPEC)
+FINISH_SPEC.loader.exec_module(FINISHES)
 
 
 def make_adapter(config):
@@ -48,11 +52,13 @@ class FurnitureAppearanceTests(unittest.TestCase):
                                 'per_env': {'1': {'scheme_id': 'variant_1'}}})
         reset(adapter, [0, 1])
         self.assertEqual(adapter.schemes, ['original', 'variant_1'])
-        np.testing.assert_allclose(adapter.bindings[1][0][3].base_color, [.88, .86, .8, 1.])
+        np.testing.assert_allclose(adapter.bindings[1][0][3].base_color,
+                                   adapter.scheme_parameters('flat_panel', 'variant_1')['face']['base_color'])
 
         reset(adapter, [1], {'scheme_id': 'variant_2'})
         self.assertEqual(adapter.schemes, ['original', 'variant_2'])
-        np.testing.assert_allclose(adapter.bindings[1][0][3].base_color, [.06, .18, .38, 1.])
+        np.testing.assert_allclose(adapter.bindings[1][0][3].base_color,
+                                   adapter.scheme_parameters('flat_panel', 'variant_2')['face']['base_color'])
 
         reset(adapter, [1], {'scheme_id': 'variant_1',
                              'per_env': {'1': {'scheme_id': 'original'}}})
@@ -60,7 +66,57 @@ class FurnitureAppearanceTests(unittest.TestCase):
         self.assertEqual(adapter.episodes, [1, 3])
         self.assertEqual(adapter.records[-1], {
             'env_idx': 1, 'episode_index': 3, 'scheme_id': 'original',
-            'catalog_version': 'furniture-appearance-v1'})
+            'catalog_version': 'furniture-appearance-v2'})
+
+    def test_wood_profiles_differ_at_equal_color_and_plain_finish_is_uniform(self):
+        def image(profile):
+            return FINISHES.panel_albedo(profile, (.7, .6, .55, 1.), (0, 0), (.19, .095), 384, 288)
+
+        plain = image('plain')
+        np.testing.assert_array_equal(plain, np.broadcast_to(plain[0, 0], plain.shape))
+        grains = []
+        for profile in FINISHES.WOOD_FINISHES:
+            pixels = image(profile)
+            face = pixels[96:192, 96:192]
+            self.assertGreater(float(np.ptp(face[:, :, 0])), .1, profile)
+            np.testing.assert_array_equal(pixels[:, :, 3], 1)
+            self.assertTrue(all(not np.array_equal(face, previous) for previous in grains), profile)
+            self.assertIs(pixels, image(profile))
+            grains.append(face)
+
+    def test_local_reset_reuses_panel_texture_and_restores_native_pixels(self):
+        class Texture:
+            def __init__(self, array, **descriptor):
+                self.array = array.copy()
+
+            def upload(self, pixels):
+                self.array = pixels.copy()
+
+        adapter = make_adapter({'scheme_id': 'variant_1'})
+        shape = SimpleNamespace(local_pose=SimpleNamespace(p=(0, 0, -.004)), half_size=(.19, .095, .005))
+        native = []
+        for env_id, bindings in enumerate(adapter.bindings):
+            material = bindings[0][3]
+            material.base_color_texture = None
+            surface = FINISHES.PanelSurface(material, shape, Texture)
+            adapter.panel_surfaces[env_id] = (surface,)
+            native.append(surface.texture.array.copy())
+
+        first, second = [row[0] for row in adapter.panel_surfaces]
+        self.assertIsNot(first.texture, second.texture)
+        first_texture, second_texture = first.texture, second.texture
+        reset(adapter, [0, 1])
+        self.assertFalse(np.array_equal(first.texture.array, native[0]))
+        self.assertFalse(np.array_equal(second.texture.array, native[1]))
+        frozen_pixels = first.texture.array.copy()
+        reset(adapter, [1], {'scheme_id': 'variant_2'})
+        np.testing.assert_array_equal(second.texture.array,
+                                      np.broadcast_to(second.texture.array[0, 0], second.texture.array.shape))
+        reset(adapter, [1], {'scheme_id': 'original'})
+        np.testing.assert_array_equal(second.texture.array, native[1])
+        self.assertIs(first.material.base_color_texture, first_texture)
+        self.assertIs(second.material.base_color_texture, second_texture)
+        np.testing.assert_array_equal(first.texture.array, frozen_pixels)
 
     def test_fixed_reset_leaves_unselected_materials_and_records_unchanged(self):
         adapter = make_adapter({'scheme_id': 'variant_1'})

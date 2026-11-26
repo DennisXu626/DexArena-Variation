@@ -41,6 +41,7 @@ def material_readback(module, catalog, task, scheme, original, candidate):
     targets = catalog.catalog["tasks"][task]
     expected = {obj: catalog.scheme_parameters(obj, scheme) for obj in targets}
     readback = {obj: {role: [] for role in roles} for obj, roles in expected.items()}
+    panel_albedos = []
     for slot, native in baseline.items():
         observed = actual[slot]
         evidence.require(native.keys() == observed.keys(), f"{slot}: render material fields differ")
@@ -63,14 +64,24 @@ def material_readback(module, catalog, task, scheme, original, candidate):
         for key in module.FIELDS:
             evidence.require(np.allclose(observed[key], params[key], rtol=0, atol=1e-7),
                              f"{task}/{scheme}/{slot}: wrong actual {key}")
+        editable_fields = module.FIELDS
+        if obj == 'flat_panel' and role == 'face' and observed['base_color_texture'] != native['base_color_texture']:
+            albedo = observed['base_color_texture']
+            evidence.require(isinstance(albedo, dict) and albedo['name'] == ''
+                             and albedo['width'] > 0 and albedo['height'] > 0, f'{slot}: missing live albedo')
+            evidence.digest_map({'panel_albedo': albedo.get('data_sha256')}, f'{slot}: sampled panel albedo')
+            panel_albedos.append(albedo['data_sha256'])
+            editable_fields += ('base_color_texture',)
         evidence.require(all(observed[key] == value for key, value in native.items()
-                             if key not in module.FIELDS), f"{slot}: protected material field differed")
+                             if key not in editable_fields), f"{slot}: protected material field differed")
     for obj, roles in readback.items():
         expected_counts = catalog._expected_counts(obj, task, detail=True)
         for role, values in roles.items():
             evidence.require(len(values) == expected_counts[role], f"{obj}/{role}: incomplete slot readback")
             roles[role] = {"slots": len(values), "actual": values[0],
                            "catalog": expected[obj][role]}
+    evidence.require(len(panel_albedos) == 3, f'{task}/{scheme}: expected three panel albedo readbacks')
+    readback['flat_panel']['face']['albedo_data_sha256'] = panel_albedos
     return {obj: {"scheme_id": catalog.catalog["objects"][obj]["scheme_map"][scheme],
                   "editable_roles": roles} for obj, roles in readback.items()}
 
@@ -100,7 +111,7 @@ def image_row(task, scheme, env, directory, checks, module, catalog):
         catalog.catalog["objects"]["screw"]["scheme_map"][scheme]]
     return {"task": task, "env_idx": env, "requested_id": scheme,
             "recorded_id": records[-1]["scheme_id"], "episode_record": records[-1], "objects": objects,
-            "palette_reference": color_meta["label"].removesuffix("_head"),
+            "palette_reference": color_meta["label"],
             "camera": CAMERA, "png": f"{task}/{source.name}", "sha256": evidence.sha(source),
             "original_png": f"{task}/{original.name}", "original_sha256": evidence.sha(original),
             "changed_pixels": changed,
@@ -249,10 +260,10 @@ def main():
                          f"Current source patch bytes differ from lock: {patch['file']}")
     module = load_appearance()
     catalog = module.FurnitureAppearance({}, 2)
-    schemes = tuple(f"variant_{i}" for i in range(3, 11))
-    evidence.require(evidence.SCHEMES[3:] == schemes, "Unexpected added schemes")
-    from check_furniture_appearance import ADAPTER, IMPEDANCE, RESET_SCOPE, TASKS
-    published_sources = {ADAPTER, IMPEDANCE, RESET_SCOPE, "tools/variation/check_furniture_appearance.py",
+    schemes = tuple(f"variant_{i}" for i in range(1, 11))
+    evidence.require(evidence.SCHEMES[1:] == schemes, "Unexpected candidate schemes")
+    from check_furniture_appearance import ADAPTER, FINISHES, IMPEDANCE, RESET_SCOPE, TASKS
+    published_sources = {ADAPTER, FINISHES, IMPEDANCE, RESET_SCOPE, "tools/variation/check_furniture_appearance.py",
                          evidence.CATALOG.relative_to(ROOT).as_posix(), *TASKS.values(),
                          *(v["catalog"] for v in catalog.catalog["objects"].values())}
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
@@ -290,8 +301,8 @@ def main():
         evidence.require(manifest["task_ids"] == found, "Requested tasks differ from actual capture")
         captures.append({"tasks": found, "manifest_sha256": evidence.sha(run / "manifest.json"),
                          "results_sha256": evidence.sha(run / "results.json"), **sdk["receipt"]})
-    evidence.require(set(tasks) == set(TASKS) and len(images) == 48,
-                     "Three tasks and all 48 added-scheme cells are required")
+    evidence.require(set(tasks) == set(TASKS) and len(images) == len(TASKS) * len(schemes) * 2,
+                     "All candidate schemes are required for three tasks in both environments")
 
     # The existing raw acceptance verifier also checked the native-only directions.
     # Keep six appearance directions in this index, with original before/after PNGs.
@@ -331,7 +342,7 @@ def main():
         "linux_lock_sha256": evidence.sha(lock_path),
         "source_sha256": source_identity, "verifier_sha256": evidence.sha(Path(__file__)),
         "shared_verifier_sha256": evidence.sha(Path(evidence.__file__)),
-        "added_scheme_cells": images, "appearance_local_resets": local_evidence, "task_checks": tasks,
+        "candidate_scheme_cells": images, "appearance_local_resets": local_evidence, "task_checks": tasks,
         "notes": "Role colors are measured material parameters; PNGs are original camera output. "
                  "No task success or policy evaluation was performed.",
     })
@@ -345,7 +356,7 @@ def main():
                      f"{row['recorded_id']}]({row['png']}) | {row['palette_reference']} | "
                      f"[Original]({row['original_png']}) |")
     (args.output / "INDEX.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Verified {len(images)} added-scheme RGB frames and {len(local_evidence)} local reset directions.")
+    print(f"Verified {len(images)} candidate RGB frames and {len(local_evidence)} local reset directions.")
 
 
 if __name__ == "__main__":
