@@ -1,7 +1,6 @@
 """CPU regression for PR30/31 shared row-state conflict resolution."""
 import ast
 from pathlib import Path
-import subprocess
 from types import SimpleNamespace
 import unittest
 
@@ -10,6 +9,19 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKERS = ('check_ten_environment.py', 'check_ten_environment_paired.py')
+
+# Frozen PR30 Meal outputs for state(), kept with the test so source exports
+# and squash checkouts do not need contributor Git objects to run it.
+MEAL_EXPECTED_ROWS = (
+    {'articulations': {
+        'robot': [10., 11.], 'box_0': [[100.]], 'box_1': [[200.]],
+        'procedural_box_0': [[1.]], 'partnet_box_0': [[3.]], 'package_0': [[5.]]},
+     'metadata': {'global': 7, 'stage': 0}},
+    {'articulations': {
+        'robot': [20., 21.], 'box_0': [[100.]], 'box_1': [[200.]],
+        'procedural_box_1': [[2.]], 'partnet_box_1': [[4.]], 'package_1': [[6.]]},
+     'metadata': {'global': 7, 'stage': 1}},
+)
 
 
 def load(source, family):
@@ -45,13 +57,12 @@ class SharedRowStateTests(unittest.TestCase):
     def test_meal_matches_original_pr30_and_preserves_unprefixed_keys(self):
         for filename in CHECKERS:
             current = load((ROOT / 'tools/variation' / filename).read_text(encoding='utf-8'), 'meal')
-            original = load(subprocess.check_output(['git', 'show', '049bca9:tools/variation/'+filename], cwd=ROOT).decode(), 'meal')
             state = self.state()
             env = SimpleNamespace(get_state_dict=lambda: state)
             for idx in (0, 1):
                 with self.subTest(checker=filename, env=idx):
                     row = current(env, idx)
-                    self.assertEqual(row, original(env, idx))
+                    self.assertEqual(row, MEAL_EXPECTED_ROWS[idx])
                     self.assertTrue({'box_0', 'box_1'} <= row['articulations'].keys())
                     self.assertIn(f'procedural_box_{idx}', row['articulations'])
                     self.assertNotIn(f'procedural_box_{1-idx}', row['articulations'])
