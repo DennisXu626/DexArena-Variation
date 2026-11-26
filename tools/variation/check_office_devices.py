@@ -66,6 +66,29 @@ def restore_legacy_marker_ast(current, original):
     current.body[current.body.index(wrapper)] = copy.deepcopy(native)
 
 
+def normalize_workspace_setup(task, constructor):
+    """Match only the reviewed, top-level workspace setup before comparing native code."""
+    hand = 'robot_uids == DEFAULT_ROBOT_UID and self.target_finger_id == 1'
+    limits = {
+        'open_laptop': ('0 <= self.robot_init_qpos_noise <= .02 and collision_decomposition == "simplified"'
+                        ' and cfg["scale"] == profile["scale"]'
+                        ' and cfg["start_angle_min_deg"] >= profile["start_angle_min_deg"]'
+                        ' and cfg["start_angle_max_deg"] <= profile["start_angle_max_deg"]'),
+        'type_keys': ('0 <= self.robot_init_qpos_noise <= .01 and self.keyboard_clearance == .002'
+                      ' and self.available_model_ids.tolist() == ["13106"]'),
+        'click_mouse': '0 <= self.robot_init_qpos_noise <= .02',
+    }
+    setup = f'self._configure_position_workspace(kwargs, num_envs, {hand} and {limits[task]})'
+    if task == 'open_laptop':
+        setup = 'profile = LAPTOP_MODELS[MODEL_ID]\n' + setup
+    expected = [ast.dump(stmt) for stmt in ast.parse(setup).body]
+    actual = [ast.dump(stmt) for stmt in constructor.body]
+    starts = [i for i in range(len(actual)) if actual[i:i + len(expected)] == expected]
+    assert len(starts) == 1, f'{task}: workspace constructor contract changed'
+    start = starts[0]
+    del constructor.body[start:start + len(expected)]
+
+
 def source_check(baseline=BASELINE):
     result = {}
     for task in TASKS:
@@ -121,6 +144,10 @@ def source_check(baseline=BASELINE):
 
             def visit_ClassDef(self, node):
                 if any(ast.unparse(base) == 'OfficeResetScopeMixin' for base in node.bases):
+                    constructor = next(item for item in node.body
+                                       if isinstance(item, ast.FunctionDef) and item.name == '__init__')
+                    normalize_workspace_setup(task, constructor)
+                    counts['workspace_constructor'] = counts.get('workspace_constructor', 0) + 1
                     for field in position_fields:
                         matches = [item for item in node.body if same(item, field)]
                         assert len(matches) == 1, f'{task}: position class contract changed'
