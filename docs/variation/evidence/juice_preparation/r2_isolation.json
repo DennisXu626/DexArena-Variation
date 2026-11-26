@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-B",
+    "tools/variation/check_juice_r2_isolation_cpu.py",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\DexArena-Variation-juice",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\DexArena\\.review-sdk\\mani_skill"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"selected\": 0, \"unselected\": 1, \"seed\": null, \"arm_before\": 0.25, \"arm_after\": 0.25, \"next_before\": 239442143, \"next_after\": 239442143}\n{\"selected\": 0, \"unselected\": 1, \"seed\": 123, \"arm_before\": 0.25, \"arm_after\": 0.25, \"next_before\": 239442143, \"next_after\": 239442143}\n{\"selected\": 1, \"unselected\": 0, \"seed\": null, \"arm_before\": 0.25, \"arm_after\": 0.25, \"next_before\": 327741615, \"next_after\": 327741615}\n{\"selected\": 1, \"unselected\": 0, \"seed\": 123, \"arm_before\": 0.25, \"arm_after\": 0.25, \"next_before\": 327741615, \"next_after\": 327741615}\n",
+  "stderr": "",
+  "main": "58b54623308ad736f765a8bbccefc74e344f2a3c"
+}

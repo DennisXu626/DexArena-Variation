@@ -1,0 +1,20 @@
+{
+  "version": "juice-preview-v1",
+  "schemes": {
+    "original": {},
+    "variant_1": {
+      "fridge": "#769184",
+      "fridge_roughness": 0.38,
+      "apple": "#D9AD42",
+      "blender": "#285C53",
+      "lid": "#A9BDB2"
+    },
+    "variant_2": {
+      "fridge": "#A95647",
+      "fridge_roughness": 0.58,
+      "apple": "#93A752",
+      "blender": "#344B60",
+      "lid": "#C1B5A7"
+    }
+  }
+}

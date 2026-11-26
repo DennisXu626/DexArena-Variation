@@ -51,6 +51,7 @@ if str(TASK_DIR) not in sys.path:
     sys.path.insert(0, str(TASK_DIR))
 
 from mani_skill.envs.sapien_env import BaseEnv
+from tasks.juice_preparation.reset_guard import JuiceResetMixin
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from tasks.config.hands import register_task
@@ -241,7 +242,7 @@ def apple_inside_blender(apple_position, blender_geometry, *, device):
     """Cylinder bounded below by the pitcher floor and above by its rim."""
     opening = torch.tensor(
         blender_geometry.seat_position, dtype=torch.float32, device=device
-    ).view(1, 3)
+    ).reshape(-1, 3)
     xy = torch.linalg.norm(apple_position[:, :2] - opening[:, :2], dim=1)
     bottom = float(
         blender_geometry.blender_root[2]
@@ -251,7 +252,7 @@ def apple_inside_blender(apple_position, blender_geometry, *, device):
     return (
         (xy <= BLENDER_INSIDE_RADIUS)
         & (apple_position[:, 2] >= bottom)
-        & (apple_position[:, 2] <= float(opening[0, 2]) + 0.015)
+        & (apple_position[:, 2] <= opening[:, 2] + 0.015)
     ), opening, xy
 
 
@@ -809,6 +810,7 @@ def build_robocasa_apple_actor(
     *,
     initial_pose: sapien.Pose,
     name: str = "robocasa_apple",
+    num_envs=1, appearance=None,
 ):
     """
     Build one dynamic apple actor from RoboCasa's original visual and all
@@ -837,6 +839,9 @@ def build_robocasa_apple_actor(
         )
 
     builder.initial_pose = initial_pose
+    builder.set_scene_idxs(list(range(num_envs)))
+    if appearance is not None:
+        appearance.bind_builder(builder, range(num_envs))
     actor = builder.build(name=name)
     configure_task_object_physics(
         actor, "produce", restitution=APPLE_RESTITUTION
@@ -856,6 +861,7 @@ def load_custom_tabletop_fridge(
     pose: sapien.Pose,
     scene_idx: int = 0,
     name: str = "custom_tabletop_mini_fridge",
+    num_envs=1, appearance=None,
 ):
     if not FRIDGE_URDF.exists():
         raise FileNotFoundError(
@@ -881,7 +887,10 @@ def load_custom_tabletop_fridge(
 
     builder = builders[0]
     builder.disable_self_collisions = True
-    builder.set_scene_idxs([scene_idx])
+    builder.set_scene_idxs(list(range(num_envs)))
+    if appearance is not None:
+        for link in builder.link_builders:
+            appearance.bind_builder(link, range(num_envs))
     builder.initial_pose = pose
 
     fridge = builder.build(name=name)
@@ -933,7 +942,7 @@ def blender_shift_from_pose(nominal, position, quaternion) -> tuple[float, float
     control_mode="pd_joint_pos",
     render_mode="rgb_array",
 )
-class JuicePreparationAppleToBlenderEnv(BaseEnv):
+class JuicePreparationAppleToBlenderEnv(JuiceResetMixin, BaseEnv):
     SUPPORTED_ROBOTS = list(ROBOT_UIDS)
     agent: Any
 
@@ -956,12 +965,6 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
                 "tasks/config/sim_profiles.py; runtime sim_config overrides "
                 "are not allowed"
             )
-        if num_envs != 1:
-            raise ValueError(
-                "This visual validation environment currently "
-                "supports num_envs=1 only."
-            )
-
         # Every env in the family builds its blender-side geometry at this
         # scale. It lives here, on the shared base, because the long task used
         # to reach for it with `hasattr(self, "global_scale") else 1.0` and
@@ -1005,6 +1008,9 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             )
         )
 
+        from .appearance import JuiceAppearance
+        config = kwargs.pop("juice_appearance", None)
+        self.juice_appearance = JuiceAppearance(config, num_envs) if config is not None else None
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
         super().__init__(
             *args,
@@ -1100,6 +1106,10 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
         )
 
     def _load_scene(self, options: dict):
+        if self.juice_appearance is not None:
+            self.juice_appearance.begin_scene()
+        self._layouts_by_env = [None] * self.num_envs
+        self._geometries_by_env = [None] * self.num_envs
         self.table_scene = TableSceneBuilder(
             env=self,
             robot_init_qpos_noise=(
@@ -1112,6 +1122,7 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
         self.fridge = load_custom_tabletop_fridge(
             self.scene,
             pose=sapien.Pose(p=FRIDGE_ROOT_P),
+            num_envs=self.num_envs, appearance=self.juice_appearance,
         )
         self.door_joint = self.fridge.active_joints_map[
             DOOR_JOINT_NAME
@@ -1136,6 +1147,7 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             self.apple_asset_info,
             initial_pose=self._apple_world_pose(),
             name="robocasa_apple_inside_fridge",
+            num_envs=self.num_envs, appearance=self.juice_appearance,
         )
         (
             self.blender,
@@ -1148,6 +1160,7 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             scale=GLOBAL_SCALE,
             num_envs=self.num_envs,
             name="robocasa_blender023_open",
+            appearance=self.juice_appearance,
         )
 
     def _after_reconfigure(self, options: dict):
@@ -1181,12 +1194,13 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             # Per-episode layout (FIRST episode-RNG draw, shared order for the family):
             # fridge offset (the apple rides inside), blender offset + yaw (seat and
             # lid table point ride on it). The long task reads the lid part.
-            self._juice_layout = sample_juice_layout(layout_rng(self, int(env_idx[0])))
-            fdx, fdy = self._juice_layout["fridge"]
-            fridge_root = np.asarray(FRIDGE_ROOT_P, dtype=np.float64) + np.array([fdx, fdy, 0.0])
-            bdx, bdy, byaw = self._juice_layout["blender"]
-            self.blender_geometry = shifted_blender_geometry(self._blender_geometry_nominal, bdx, bdy, byaw)
-
+            layouts = [sample_juice_layout(layout_rng(self, int(index))) for index in env_idx.tolist()]
+            geometries = [shifted_blender_geometry(self._blender_geometry_nominal, *x["blender"]) for x in layouts]
+            roots = [np.asarray(FRIDGE_ROOT_P) + [*x["fridge"], 0.] for x in layouts]
+            for index, layout, geometry in zip(env_idx.tolist(), layouts, geometries):
+                self._layouts_by_env[index] = layout
+                self._geometries_by_env[index] = geometry
+            self._juice_layout, self.blender_geometry = layouts[0], geometries[0]
 
             batch_size = len(env_idx)
             if hasattr(self.agent, "get_reset_pos"):
@@ -1232,7 +1246,7 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             self.fridge.set_pose(
                 Pose.create_from_pq(
                     p=torch.tensor(
-                        [fridge_root],
+                        np.asarray(roots),
                         dtype=torch.float32,
                         device=self.device,
                     ),
@@ -1244,7 +1258,7 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
                 )
             )
 
-            fridge_qpos = self.fridge.get_qpos()
+            fridge_qpos = self.fridge.get_qpos()[env_idx].clone()
             fridge_qpos[:, 0] = np.deg2rad(
                 np.clip(
                     self.initial_door_angle_deg,
@@ -1255,23 +1269,23 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             self.fridge.set_qpos(fridge_qpos)
             self.fridge.set_qvel(
                 torch.zeros_like(
-                    self.fridge.get_qvel()
+                    self.fridge.get_qvel()[env_idx]
                 )
             )
 
-            apple_pose = self._apple_world_pose(fridge_root)
+            apple_poses = [self._apple_world_pose(root) for root in roots]
             apple_p = torch.tensor(
-                [apple_pose.p],
+                np.asarray([pose.p for pose in apple_poses]),
                 dtype=torch.float32,
                 device=self.device,
             )
             apple_q = torch.tensor(
-                [apple_pose.q],
+                np.asarray([pose.q for pose in apple_poses]),
                 dtype=torch.float32,
                 device=self.device,
             )
             zero_velocity = torch.zeros(
-                (1, 3),
+                (batch_size, 3),
                 dtype=torch.float32,
                 device=self.device,
             )
@@ -1296,15 +1310,15 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             )
 
             blender_p = torch.tensor(
-                [self.blender_geometry.blender_root], dtype=torch.float32, device=self.device
+                np.asarray([g.blender_root for g in geometries]), dtype=torch.float32, device=self.device
             )
             blender_q = torch.tensor(
-                [self.blender_geometry.blender_quat], dtype=torch.float32, device=self.device
+                np.asarray([g.blender_quat for g in geometries]), dtype=torch.float32, device=self.device
             )
             self.blender.set_pose(Pose.create_from_pq(blender_p, blender_q))
             if self.blender_is_articulation:
-                self.blender.set_qpos(torch.zeros_like(self.blender.get_qpos()))
-                self.blender.set_qvel(torch.zeros_like(self.blender.get_qvel()))
+                self.blender.set_qpos(torch.zeros_like(self.blender.get_qpos()[env_idx]))
+                self.blender.set_qvel(torch.zeros_like(self.blender.get_qvel()[env_idx]))
 
             self.stable_counter[env_idx] = 0
             self.success_latched[env_idx] = False
@@ -1313,6 +1327,14 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             fresh = new_apple_motion_state(self.num_envs, self.device)
             for key, value in fresh.items():
                 self.apple_motion[key][env_idx] = value[env_idx]
+            if self.juice_appearance is not None and not hasattr(self, "lid"):
+                self.juice_appearance.apply(env_idx.tolist(), options)
+
+    def _batched_blender_geometry(self):
+        import copy
+        geometry = copy.copy(self.blender_geometry)
+        object.__setattr__(geometry, "seat_position", np.array([g.seat_position for g in self._geometries_by_env]))
+        return geometry
 
     def evaluate(self):
         apple_position = self.apple.pose.p
@@ -1339,23 +1361,23 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
         # Diagnostic only; the interior test above owns the predicate.
         apple_local_position = apple_position - self.fridge.pose.p
         in_blender, opening_center, blender_xy_distance = apple_inside_blender(
-            apple_position, self.blender_geometry, device=self.device
+            apple_position, self._batched_blender_geometry(), device=self.device
         )
         (
             self.apple_left_fridge_latched,
             self.apple_lifted_latched,
-        ) = apple_route_latches(
+        ) = self._juice_update((self.apple_left_fridge_latched, self.apple_lifted_latched), apple_route_latches(
             apple_position,
             in_fridge,
             self.apple_left_fridge_latched,
             self.apple_lifted_latched,
-        )
-        self.apple_motion = apple_motion_update(
+        ))
+        self.apple_motion = self._juice_update(self.apple_motion, apple_motion_update(
             self.apple.pose,
             self.apple_motion,
             self._elapsed_steps,
             control_timestep=self.control_timestep,
-        )
+        ))
         stable_now = (
             in_blender
             & apple_settled(self.apple_motion)
@@ -1363,18 +1385,18 @@ class JuicePreparationAppleToBlenderEnv(BaseEnv):
             & self.apple_lifted_latched
         )
 
-        self.stable_counter = torch.where(
+        self.stable_counter = self._juice_update(self.stable_counter, torch.where(
             stable_now,
             self.stable_counter + 1,
             torch.zeros_like(
                 self.stable_counter
             ),
-        )
+        ))
         success_now = (
             self.stable_counter
             >= SUCCESS_SETTLE_STEPS
         )
-        self.success_latched |= success_now
+        self.success_latched |= (success_now) & self._juice_active_mask()
 
         door_qpos = self.fridge.get_qpos()[:, 0]
         door_qvel = self.fridge.get_qvel()[:, 0]

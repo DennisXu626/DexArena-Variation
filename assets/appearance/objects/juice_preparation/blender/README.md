@@ -1,6 +1,6 @@
 # 搅拌机（juice_preparation.blender）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**本分支已制作并完成限定双环境验证，待 Dennis 最终审阅**。原版＋两候选；未标正式验收通过。
 
 原始角色：家电／食材接收容器。V1资源说明：`assets/task_object_meshes/juice/Blender023（MJCF 引用）；另有 Blender023_Lid`。
 
@@ -26,3 +26,5 @@ V1对象键：`juice_preparation/blender`；V2对应键：`blender, integrated_b
 ## 2026-11-15候选静态分析
 
 状态仍为待适配。本轮仅核对现有源文件、资产部件与材质／UV事实，实际SAPIEN绑定、并行隔离和A6仍未验证；见[候选分析](../../../../../docs/variation/OBJECT_CANDIDATES.md)。没有创建该对象的新方案、配置或运行代码。
+
+本分支候选说明及未测范围统一见[Juice 交付](../../../../../docs/variation/JUICE_PREPARATION_APPEARANCE.md)；资料中的历史 HF revision 不是本次实际运行身份，见交付中的文件哈希。

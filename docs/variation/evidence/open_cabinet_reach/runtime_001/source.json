@@ -1,0 +1,10 @@
+{
+  "head": "01ef9aed779e0c6d2b50062716b9063f0a87cd37",
+  "reference": "docs/variation/evidence/open_cabinet_reach/CPU_RESULTS.json",
+  "checker": "tools/variation/open_cabinet_reach/check_runtime.py",
+  "checker_blob": "abd2a088b828e020f9c3bab31a9dd03f7c7ac63d",
+  "reference_blob": "cdadcf837350a8f5d9f26aa7fac6f286e35a114b",
+  "verified_source_files": 375,
+  "cabinet_assets": 70,
+  "physx_sha256": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706"
+}

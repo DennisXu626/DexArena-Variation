@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "reviewed_head": "fc028483b5d865c05ee6e7e18b95975c836c9935",
+  "integrated_main": "aee41a3439287a17ce9d4c14c6320fa6f5b4579d",
+  "tested_index_tree": "23185591559923ea0465c0167c8df51c12a7c5cf",
+  "snapshot_command": [
+    "git",
+    "-c",
+    "core.autocrlf=false",
+    "archive",
+    "--format=tar",
+    "23185591559923ea0465c0167c8df51c12a7c5cf"
+  ],
+  "artifact_note": "R1 result/manifest JSON finalized after static checks; runtime/test sources frozen at tested tree",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "cwd": "canonical LF integrated index snapshot",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 24, \"json_configs\": 10, \"relative_links\": 232, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_appearance_archive.py"
+      ],
+      "cwd": "canonical LF integrated index snapshot",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 11, \"pending_adaptation\": 20, \"no_visual\": 3, \"not_loaded\": 1, \"implemented_pending_review\": 3, \"external_pending\": 4}, \"decoded_pngs\": 80, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 385, \"pending_appearance_packages\": 4, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "cwd": "author working tree/index",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 24, \"json_configs\": 10, \"relative_links\": 232, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "cwd": "author working tree/index",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check",
+        "origin/main"
+      ],
+      "cwd": "author working tree/index",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "other_family_csv_rows_unchanged": true,
+  "main_mapping_non_inventory_keys_preserved": true,
+  "unresolved_conflicts": 0,
+  "gpu_jobs": 0,
+  "gpu_seconds": 0,
+  "initial_export_issue": "First git archive inherited Windows autocrlf and Cabinet JSON raw SHA check failed; reran original checks on explicit LF archive without altering checker or Git configuration",
+  "cpu_command": {
+    "command": [
+      "python",
+      "-B",
+      "tools/variation/check_juice_r1_cpu.py",
+      "--output",
+      "$R1_STAGE/cpu_results.json"
+    ],
+    "cwd": "author working tree",
+    "output_note": "result copied without numeric modification to r1_cpu.json",
+    "exit_code": 0,
+    "torch_version": "2.6.0+cpu"
+  }
+}
