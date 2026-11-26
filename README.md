@@ -19,6 +19,8 @@ Charger外观支持`DrawerPlugPickCharger-Sharpa-v1`和`DrawerPlugInsertPlug-Sha
 
 Meal Preparation 已在 [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 交付五个对象的original＋两候选及四个Sharpa任务入口；限定技术验收通过，待整合/合并；集成状态见PR8。[Meal 使用说明](docs/variation/MEAL_APPEARANCE.md)和[历史运行证据](docs/variation/evidence/meal_preparation/README.md)包含双环境隔离、原版恢复及适用边界。
 
+Table Cleaning 的 PickDebris、DumpDustpan、Long 三个 Sharpa 入口已通过 original＋固定方案 1／2 的双环境限定验收；见[家族说明](docs/variation/TABLE_CLEANING_APPEARANCE.md)及[六方向局部 reset、十二格配色与恢复边界](docs/variation/STATUS.md#8-table-cleaning)。
+
 **本次补交仅整理历史证据并做静态检查。** 以上不代表全部任务、任意并行规模、范围扩大、完整机器人任务成功、A6或强化学习能力。详见[当前能力和限制](docs/variation/STATUS.md)、[来源与版本](docs/variation/PROVENANCE.md)。
 
 本分支另提供 `cabinet_pouring.bottle_table.xy_v2`：圆心(−.25,−.35)m、底圈区域R=.16m，保留旧默认。它是平移后的较大圆盘，**不包含全部旧位置**。完整碰撞补测和新区域检查单列于[M3验证说明](docs/variation/TABLE_XY_VALIDATION.md)，不能把M2历史通过当成本次新区域证据。
