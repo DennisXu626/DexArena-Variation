@@ -210,11 +210,11 @@ def _actor(env, idx, name, pose, build, dynamic=False, material=None):
     if material is not None:
         for record in getattr(b,"collision_records",[]):
             record.material=material
+    key=name.rsplit("_",1)[0]
     if env._pipette_appearance is not None:
-        env._pipette_appearance.isolate_builder_materials(b)
+        env._pipette_appearance.isolate_builder_materials(b,stand_env=idx if key=="pipette_stand" else None)
     actor=b.build_dynamic(name) if dynamic else b.build_kinematic(name)
     if dynamic: set_task_object_energy_fence(actor)
-    key=name.rsplit("_",1)[0]
     if key in TASK_OBJECT_MASS:
         import sapien.physx as _physx
         for raw in actor._objs:

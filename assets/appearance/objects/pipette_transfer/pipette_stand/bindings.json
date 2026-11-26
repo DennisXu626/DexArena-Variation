@@ -13,7 +13,7 @@
       "candidate_color_texture": {
         "directory": "assets/appearance/objects/pipette_transfer/pipette_stand/plates",
         "source_mask": "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png",
-        "mipmap_levels": 4
+        "mipmap_levels": 1
       }
     },
     "uprights": {

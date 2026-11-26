@@ -10,7 +10,6 @@ import json
 import os
 from pathlib import Path
 import platform
-import struct
 import subprocess
 import sys
 import time
@@ -84,7 +83,8 @@ def source_hashes(*, include_probe=True):
     stand_binding = read(ROOT / index['bindings']['pipette_stand'])
     files.add(ROOT / stand_binding['roles']['base_plate']['candidate_color_texture']['source_mask'])
     files.update(ROOT / 'tools/variation' / name for name in (
-        'check_pipette_runtime.py', 'check_pipette_dynamics.py', 'build_pipette_stand_textures.py'))
+        'check_pipette_runtime.py', 'check_pipette_dynamics.py', 'build_pipette_stand_textures.py',
+        'check_pipette_plate_reset.py'))
     if include_probe:
         files.add(ROOT / 'tools/variation/check_pipette_rendering.py')
     files.update(ROOT / 'tools/variation' / name for name in (
@@ -251,13 +251,29 @@ def load_runtime():
     import check_furniture_appearance as shared
     shared.np, shared.torch, shared.gym, shared.sapien = np, torch, gym, sapien
     native_material_values = shared.material_values
-    def complete_material_values(material, owner=None, texture_cache=None):
+    def complete_material_values(material, owner=None, texture_cache=None, plate=None, adapter=None):
         values = native_material_values(material)
         for field in shared.MATERIAL_FIELDS:
             texture = getattr(material, field) if field.endswith('_texture') else None
             if texture is not None:
                 values[field].update({name: getattr(texture, name) for name in
                                       ('channels', 'filter_mode', 'address_mode', 'is_srgb')})
+                if field == 'base_color_texture' and plate is not None and texture == plate.texture:
+                    if plate.scheme == 'original':
+                        # The captured native albedo is sampled uniformly. verify()
+                        # independently checks native pixels and the retained handle.
+                        values[field] = None
+                    else:
+                        path = adapter._plate_label_paths[plate.scheme]
+                        pixels = adapter.plate_pixels(plate.scheme)
+                        values[field].update({
+                            'source_kind': 'pipette_private_stand_plate',
+                            'asset_ref': path.relative_to(ROOT).as_posix(),
+                            'source_asset_sha256': sha(path),
+                            'upload_data_sha256': hashlib.sha256(pixels.tobytes()).hexdigest(),
+                            'data_dtype': str(pixels.dtype), 'data_shape': list(pixels.shape),
+                        })
+                    continue
                 if not texture.filename:
                     assert owner is not None and owner.endswith('table-workspace'), 'Unknown embedded texture owner'
                     import mani_skill
@@ -286,9 +302,12 @@ def load_runtime():
     def measured_materials(base):
         if not hasattr(base, '_pipette_texture_measurements'):
             base._pipette_texture_measurements = []
+        adapter = base._pipette_appearance
         return [[{'entity': name, 'shape': shape, 'part': index,
-                  'material': complete_material_values(part.material, name, base._pipette_texture_measurements)}
-                 for name, shape, index, part in slots] for slots in shared.material_slots(base)]
+                  'material': complete_material_values(part.material, name, base._pipette_texture_measurements,
+                      plate=adapter.stand_plates[env_id] if adapter else None, adapter=adapter)}
+                 for name, shape, index, part in slots]
+                for env_id, slots in enumerate(shared.material_slots(base))]
     shared.materials = measured_materials
     shared.articulations = lambda base: {'robot': base.agent.robot, 'pipette': base.pipette}
     native_snapshot = shared.snapshot
@@ -303,18 +322,12 @@ def load_runtime():
 
 
 def verify(base, schemes, native):
+    from tasks.pipette_transfer.appearance import PLATE_TEXTURE_FORMAT, load_plate_pixels
+
     adapter = base._pipette_appearance
     assert adapter.schemes == schemes
-    label_definition = adapter.definitions['pipette_stand']['roles']['base_plate']['candidate_color_texture']
-    label_fields = {}
-    for name in set(schemes) - {'original'}:
-        path = Path(label_definition['directory']) / f'{name}.png'
-        label_bytes = (ROOT / path).read_bytes()
-        assert label_bytes[:8] == b'\x89PNG\r\n\x1a\n' and label_bytes[25] == 2, 'Expected opaque RGB PNG'
-        width, height = struct.unpack_from('>II', label_bytes, 16)
-        label_fields[name] = {'asset_ref': path.as_posix(), 'sha256': hashlib.sha256(label_bytes).hexdigest(),
-                              'width': width, 'height': height,
-                              'mipmap_levels': label_definition['mipmap_levels'], 'is_srgb': True}
+    candidates = {name: load_plate_pixels(adapter._plate_label_paths[name])
+                  for name in set(schemes) - {'original'}}
     slots, actual, expected = shared.material_slots(base), shared.materials(base), copy.deepcopy(native)
     for i, scheme in enumerate(schemes):
         assert adapter.bindings[i]
@@ -323,18 +336,27 @@ def verify(base, schemes, native):
             matches = [index for index, slot in enumerate(slots[i]) if slot[-1] == part]
             assert len(matches) == 1, (oid, role, matches)
             index, = matches
-            assert shared.material_values(material).keys() == captured.keys()
+            assert actual[i][index]['material'].keys() == captured.keys()
             for field in shared.MATERIAL_FIELDS:
                 if field.endswith('_texture'):
                     assert captured[field] is None
                 else:
                     np.testing.assert_allclose(captured[field], native[i][index]['material'][field], rtol=0, atol=1e-7)
             values = adapter.resolved_parameters(captured, adapter.scheme_parameters(oid, scheme).get(role, {}))
-            if scheme != 'original' and (oid, role) == ('pipette_stand', 'base_plate'):
-                label = actual[i][index]['material']['base_color_texture']
-                assert label is not None and all(label.get(key) == value
-                                                 for key, value in label_fields[scheme].items())
-                values['base_color_texture'] = label
+            if (oid, role) == ('pipette_stand', 'base_plate'):
+                plate = adapter.stand_plates[i]
+                texture = material.base_color_texture
+                assert plate is not None and texture == plate.texture and plate.scheme == scheme
+                assert texture.format == PLATE_TEXTURE_FORMAT and texture.mipmap_levels == 1 and not texture.is_srgb
+                measured_pixels = texture.download()
+                if scheme == 'original':
+                    color = np.asarray(native[i][index]['material']['base_color'], dtype=np.float32)
+                    wanted = np.broadcast_to(color, plate.original.shape)
+                else:
+                    wanted = candidates[scheme]
+                    values['base_color_texture'] = actual[i][index]['material']['base_color_texture']
+                assert measured_pixels.dtype == wanted.dtype
+                np.testing.assert_array_equal(measured_pixels, wanted)
             expected[i][index]['material'] = {key: shared.plain(value) for key, value in values.items()}
         for observed, target in zip(actual[i], expected[i]):
             assert {k: v for k, v in observed.items() if k != 'material'} == {
@@ -963,6 +985,9 @@ def main():
             try:
                 with native_log(folder / 'native.log'):
                     run_task(task, args, folder, row)
+                    if args.sim_backend == 'physx_cuda' and not args.rendering_probe_only:
+                        from check_pipette_plate_reset import run as check_plate_reset
+                        row['checks']['plate_reset'] = check_plate_reset(task, folder / 'plate_reset')
                 row['native_buffer_errors'] = buffer_errors(folder / 'native.log')
                 row['native_log_sha256'] = sha(folder / 'native.log')
                 assert not row['native_buffer_errors'], 'Native capacity/buffer overflow or allocation failure'
