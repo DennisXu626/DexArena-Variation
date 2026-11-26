@@ -77,10 +77,19 @@ def material_valid(material: dict) -> bool:
                     for k in ("roughness", "metallic")))
 
 
+def finish_differs(first: dict, second: dict) -> bool:
+    if not material_valid(first) or not material_valid(second):
+        return False
+    color_delta = max(abs(a - b) for a, b in zip(first["base_color"], second["base_color"]))
+    return (color_delta >= 0.13
+            or abs(first["roughness"] - second["roughness"]) >= 0.14
+            or abs(first["metallic"] - second["metallic"]) >= 0.24)
+
+
 def inspect_catalog(obj: str, check, source_audit: dict) -> dict:
     path = FAMILY / obj / "variants/v1/catalog.json"
     data = json.loads(path.read_text(encoding="utf-8"))
-    check(f"{obj}.catalog_version", data.get("version") == f"nut-bolt-{obj}-appearance-v2")
+    check(f"{obj}.catalog_version", data.get("version") == f"nut-bolt-{obj}-appearance-v3")
     check(f"{obj}.object_id", data.get("object_id") == f"nut_bolt.{obj}")
     check(f"{obj}.preserve_roles", data.get("preserve_roles") == PRESERVED[obj])
     check(f"{obj}.preview_scope", data.get("scope") == "material_appearance")
@@ -95,7 +104,11 @@ def inspect_catalog(obj: str, check, source_audit: dict) -> dict:
         check(f"{obj}.{scheme_id}.mode", scheme.get("mode") == "material_override")
         check(f"{obj}.{scheme_id}.roles", set(roles) == ROLES[obj])
         for role in ROLES[obj]:
-            check(f"{obj}.{scheme_id}.{role}.ranges", material_valid(roles.get(role)))
+            finish = roles.get(role)
+            valid = material_valid(finish)
+            check(f"{obj}.{scheme_id}.{role}.ranges", valid)
+            check(f"{obj}.{scheme_id}.{role}.muted",
+                  valid and max(finish["base_color"][:3]) - min(finish["base_color"][:3]) <= 0.28)
         if obj == "nut" and set(roles) == ROLES[obj]:
             check(f"{obj}.{scheme_id}.rotation_reference_contrast",
                   max(abs(a-b) for a, b in zip(roles["body"]["base_color"][:3],
@@ -103,11 +116,8 @@ def inspect_catalog(obj: str, check, source_audit: dict) -> dict:
     for a, b in combinations(SCHEMES[1:], 2):
         first = schemes.get(a, {}).get("roles", {})
         second = schemes.get(b, {}).get("roles", {})
-        check(f"{obj}.{a}.{b}.candidate_color_difference", any(
-            role in first and role in second and material_valid(first[role]) and material_valid(second[role])
-            and max(abs(x-y) for x, y in zip(first[role]["base_color"][:3],
-                                            second[role]["base_color"][:3])) >= 0.25
-            for role in ROLES[obj]))
+        check(f"{obj}.{a}.{b}.candidate_finish_difference",
+              any(finish_differs(first.get(role), second.get(role)) for role in ROLES[obj]))
     bindings_path = FAMILY / obj / "bindings.json"
     bindings = json.loads(bindings_path.read_text(encoding="utf-8"))
     reference = bindings.get("catalog", "")
@@ -453,7 +463,7 @@ def output_path(raw: str) -> Path:
 def inspect_runtime_index(check):
     path = ROOT / 'tasks/assets/variation/nut_bolt/v1/catalog.json'
     data = json.loads(path.read_text(encoding='utf-8'))
-    check('runtime.catalog_version', data.get('version') == 'nut-bolt-appearance-v2')
+    check('runtime.catalog_version', data.get('version') == 'nut-bolt-appearance-v3')
     check('runtime.material_scope', data.get('scope') == 'material_appearance')
     check('runtime.scheme_ids', tuple(data.get('schemes', ())) == SCHEMES)
     check('runtime.objects', set(data.get('objects', {})) == {'bolt', 'nut'})

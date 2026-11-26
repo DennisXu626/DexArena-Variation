@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "capture_commit": "55d01179c9e1c56285f6e45af780793709e0042d",
+  "sim_backend": "physx_cpu",
+  "interface_manifest_sha256": "d65d547ff935965fd7b54b6779f57d860efc5f6a00704f2caa2bb41f4542690c",
+  "interface_results_sha256": "c82fe1f24a3c3ea10c3a3980e607006bea613561dbf9fc063dfaf40cb416fc2d",
+  "dynamics_summary_sha256": "1f0ea4dc0ea0831336559124c253e800cdafeb393e1f0b76e1696e282d3dbc2b",
+  "trajectory_payload_sha256": {
+    "PickBolt": {
+      "native_off": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "native_repeat": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "original": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_1": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_2": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_3": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_4": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_5": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_6": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_7": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_8": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_9": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74",
+      "variant_10": "143a46888ea1267a6c714a2bd16850c1807722e3688c07d6c77af9d07a2c8a74"
+    },
+    "SeatNut": {
+      "native_off": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "native_repeat": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "original": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_1": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_2": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_3": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_4": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_5": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_6": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_7": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_8": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_9": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4",
+      "variant_10": "39bc41cce67b59fa65b7092ddfce0bea6f565ddc7d2c5820a990ce99c1ae86e4"
+    },
+    "TurnNut": {
+      "native_off": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "native_repeat": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "original": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_1": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_2": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_3": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_4": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_5": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_6": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_7": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_8": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_9": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56",
+      "variant_10": "f59d1276416058e699dcad32d94849b93bd178ea2a04deccbb3a5731cde38a56"
+    }
+  },
+  "runs": 39,
+  "snapshots": 2379,
+  "control_steps": 2340,
+  "physics_steps": 46800
+}
