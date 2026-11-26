@@ -1,0 +1,10 @@
+{
+  "check_static": "passed: 11 Python files, 10 JSON configs, 141 relative links",
+  "juice_source_manifest": "9 files matched exact bytes or LF normalization",
+  "gpu_result_assertions": "6 tasks x 15 assertions passed; result dictionaries independently checked",
+  "signature_registry": "16 material and 15 physics records independently rehashed",
+  "git_diff_check": "passed; Git warns future LF/CRLF conversion for objects.csv",
+  "check_appearance_archive_raw": "failed on existing Cabinet catalog raw SHA256 due Windows CRLF checkout",
+  "check_appearance_archive_lf_json": "passed with in-memory normalization of JSON CRLF only; original checker and unrelated catalogs not modified",
+  "scope": "CPU static only; no additional GPU jobs"
+}

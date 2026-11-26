@@ -1,10 +1,10 @@
 # 搅拌机盖（juice_preparation.blender_lid）
 
-状态：**待适配**。本轮为资料归档，不增加运行能力、材质或UV；没有新仿真验证。
+状态：**本分支已制作并完成限定双环境验证，待 Dennis 最终审阅**。原版＋两候选；未标正式验收通过。
 
 原始角色：可抓取／放置部件。V1资源说明：`assets/task_object_meshes/juice/Blender023_Lid`。
 
-独立lid与PressButton合入blender的盖视觉存在阶段差别；后续同逻辑盖适配须覆盖实际加载分支，不给integrated_blender_top重复建素材。
+独立lid与PressButton合入blender的盖视觉存在阶段差别；本分支已覆盖独立盖和集成盖的实际加载分支，不给integrated_blender_top重复建素材。
 
 ## 资料与加载边界
 
@@ -21,3 +21,5 @@ V1对象键：`juice_preparation/blender_lid`；V2对应键：`blender_lid, inte
 - [tasks/juice_preparation/juice_preparation_place_lid.py](../../../../../tasks/juice_preparation/juice_preparation_place_lid.py)
 
 原始模型／贴图／第三方字体不复制进本档案。获取方式见[环境与资产说明](../../../../../docs/variation/SETUP.md)，原许可见[资源说明](../../../../../tasks/assets/README.md)。不同家族的apple／plate等未确认共享，分别保留目录。[总索引](../../../README.md)。
+
+本分支候选说明及未测范围统一见[Juice 交付](../../../../../docs/variation/JUICE_PREPARATION_APPEARANCE.md)；资料中的历史 HF revision 不是本次实际运行身份，见交付中的文件哈希。

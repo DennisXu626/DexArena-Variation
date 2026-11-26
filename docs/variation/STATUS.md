@@ -128,3 +128,9 @@ Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合�
 三个入口已通过双环境双向局部 reset、未选行活动控制目标隔离和选中行 original 恢复。3–10 号在三个入口的两个环境共 48 格可见配色已验收。OpenPackage 未加载苹果，ExtractApple 和 Long 的苹果在本轮采集机位中被遮挡，保留贴图记录，苹果实景未测。历史 33 对四步轨迹按原范围复用，完整机器人任务成功率未测。对象档案沿用现有状态标记与 42 项统计口径。
 
 [配置用法](PACKAGE_OPENING_APPEARANCE.md) · [十套方案](PACKAGE_EXPAND_TO_10.md) · [PR9-R2 历史证据](evidence/package_opening/PR9-R2.md) · [#31 正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/31#pullrequestreview-6024095724)
+
+## Juice Preparation：PR #19，待合入
+
+六个 Juice Sharpa 入口的固定 1／2 号方案已通过 Server 3 作业 136654 验收。双环境 12 个局部 reset 方向、活动控制目标隔离、original 恢复和 24 格可见配色通过。PressButton 的临界夹具中，未选行计数保持 3，成功锁存保持为假。AppleToBlender 和 Long 的苹果在本轮机位被遮挡，已核贴图，果皮实景未测。历史 73 槽与 16 步证据按原范围保留。PR 待合入。
+
+[#19 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354) · [家族用法](JUICE_PREPARATION_APPEARANCE.md) · [R1 修正](JUICE_PR19_R1.md)。集合随机、其它规模／手型、完整机器人成功未测；其它家族的 main 状态与证据保留。

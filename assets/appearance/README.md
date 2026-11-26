@@ -17,7 +17,7 @@
 
 ## 对象与状态
 
-按实际目录与CSV复核：42个对象、10家族；已验收限定试点14（原有4＋Meal5＋抽屉和插座2＋单门柜1＋碗和模拟液滴2）；待适配21；无视觉不适用3；当前未加载1；已实现待审验3；外部推进待验收0。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
+按实际目录与CSV复核：42个对象、10家族；已验收限定试点14（原有4＋Meal5＋抽屉和插座2＋单门柜1＋碗和模拟液滴2）；待适配17；无视觉不适用3；当前未加载1；已实现待审验3；外部推进待验收4。Mouse仅保留既有ClickMouse限定验收；Meal依据[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)标记为限定技术验收通过，待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。待适配仅表示未来入口，非本轮开发授权。
 
 | 家族 | 对象目录 | 当前状态 |
 |---|---|---|
@@ -33,10 +33,10 @@
 | furniture_assembly | [panel_rack](objects/furniture_assembly/panel_rack/README.md) | 待适配 |
 | furniture_assembly | [rail](objects/furniture_assembly/rail/README.md) | 待适配 |
 | furniture_assembly | [screw](objects/furniture_assembly/screw/README.md) | 待适配 |
-| juice_preparation | [mini_fridge](objects/juice_preparation/mini_fridge/README.md) | 待适配 |
-| juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 待适配 |
-| juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 待适配 |
-| juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 待适配 |
+| juice_preparation | [mini_fridge](objects/juice_preparation/mini_fridge/README.md) | 外部推进待最终审验（PR #19） |
+| juice_preparation | [apple](objects/juice_preparation/apple/README.md) | 外部推进待最终审验（PR #19） |
+| juice_preparation | [blender](objects/juice_preparation/blender/README.md) | 外部推进待最终审验（PR #19） |
+| juice_preparation | [blender_lid](objects/juice_preparation/blender_lid/README.md) | 外部推进待最终审验（PR #19） |
 | meal_preparation | [lunch_box](objects/meal_preparation/lunch_box/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
 | meal_preparation | [plate](objects/meal_preparation/plate/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
 | meal_preparation | [spoon](objects/meal_preparation/spoon/README.md) | 限定技术验收通过，待整合/合并；集成状态见PR8 |
@@ -76,3 +76,7 @@ Meal 五对象依据[PR8-R2查收结论](https://github.com/DennisXu626/DexArena
 
 
 Package三对象的接入和限定证据见[PR9-R2索引](../../docs/variation/evidence/package_opening/PR9-R2.md)，当前implemented_pending_review，不增加已验收计数。
+
+## Juice Preparation：PR #19 待审候选
+
+[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)交付冰箱、苹果、搅拌机、盖的 original＋两候选。历史限定运行可复用；R1 的错误请求、局部 reset 临界计数及图注问题已修正并做 CPU 回归，新的冻结版本 GPU 复验待审验层安排。见[交付](../../docs/variation/JUICE_PREPARATION_APPEARANCE.md)。不提前写正式验收通过。

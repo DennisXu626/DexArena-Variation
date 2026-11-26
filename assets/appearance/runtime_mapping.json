@@ -78,11 +78,11 @@
     "families": 10,
     "status_counts": {
       "accepted_pilot": 14,
-      "pending_adaptation": 21,
+      "pending_adaptation": 17,
       "no_visual": 3,
       "not_loaded": 1,
       "implemented_pending_review": 3,
-      "external_pending": 0
+      "external_pending": 4
     },
     "basis": "Actual objects/*/*/README.md directories and matching unique CSV rows; not adaptation-completion count"
   },
@@ -178,5 +178,12 @@
       "drawer_plug.socket"
     ],
     "charger_catalog_unchanged": true
+  },
+  "juice_candidate": {
+    "status": "external_pending",
+    "catalog": "tasks/assets/variation/juice_preparation/v1/catalog.json",
+    "docs": "docs/variation/JUICE_PREPARATION_APPEARANCE.md",
+    "scope": "6 Sharpa tasks; fixed schemes; historical 2env checks; R1 CPU fixes; frozen-head GPU retest pending",
+    "review": "https://github.com/DennisXu626/DexArena-Variation/pull/19"
   }
 }
