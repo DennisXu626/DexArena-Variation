@@ -94,6 +94,8 @@ LayFlatPanel、InsertRail、FastenScrew 三个 Sharpa 短任务通过标准双�
 
 [接口与方案](FURNITURE_APPEARANCE.md) · [Linux 运行与复现](FURNITURE_LINUX_RESET.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/23#pullrequestreview-6011107988) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/23)
 
+**PR #34 真实版。** LayFlatPanel、InsertRail、FastenScrew 三个 Sharpa 短任务在标准双环境核对十套饰面，共 60 个固定配色格、六个局部 reset 方向和逐套 `original` 恢复。未选行的活动手臂和驱动目标在 `evaluate`、`get_obs` 及 reset 返回后保持一致。另核对 `1/2` 和 `2/1` 两种排列，共 12 个混合格。上文 4 号琥珀橙、8 号鸢尾紫是 #23 的历史配色。当前编号以真实版方案表为准。 [正式审阅](https://github.com/DennisXu626/DexArena-Variation/pull/34#pullrequestreview-6073336325) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/34)
+
 ### Pipette Transfer（PR #14）
 
 AspirateLiquid、DispenseLiquid 两个 Sharpa 短任务通过标准双环境的双向局部 reset、原版恢复，以及任务内可见部件的 `original`／`jade`／`coral` 配色核对。结论限于这两个短任务及已验的可见部件。
@@ -106,11 +108,15 @@ Nut 专用 `linuxnut1` SDK 的 lock、raster 两项原生探针，以及 PickBol
 
 [接口、配色与验证边界](NUT_BOLT_APPEARANCE.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/15#pullrequestreview-6011115157) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/15)
 
+**PR #35 真实版。** PickBolt、SeatNut、TurnNut 三个 Sharpa 短任务在标准双环境核对十套饰面，共 60 个固定配色格、六个局部 reset 方向和逐套 `original` 恢复。另核对 `2/7` 和 `7/2` 两种排列，共 12 个混合格，SeatNut 的两种排列均在相同阶段和表示下对照。R1 的游离／接合夹具继续作为表示切换与可见性证据，范围限于夹具实测。 [正式审阅](https://github.com/DennisXu626/DexArena-Variation/pull/35#pullrequestreview-6073340674) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/35)
+
 ### Office Desk（PR #16）
 
 OpenLaptop 复用 PR16-R3，TypeKeys、ClickMouse 使用 PR16-R4 的 Server 3 标准双环境证据，三个 Sharpa 短任务的双向局部 reset、原版恢复和实际配色通过限定验收。TypeKeys 的 `variant_1` 为赭黄、`variant_2` 为靛蓝，R4 另核对实际键盘纹理与绿色目标提示；ClickMouse 使用正式 ID `ivory_matte`／`navy_satin`，对应象牙白／海军蓝，核对 CoACD 1.0.14 原生库及五份碰撞缓存。Mouse 101408 沿用上文 [PR #6 的 ClickMouse 限定范围](https://github.com/DennisXu626/DexArena-Variation/pull/6)，不扩为 Long 或其它 Mouse 入口。
 
 [设备接口与绑定](OFFICE_DEVICES_APPEARANCE.md) · [Mouse 101408 接口](MOUSE_101408.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/16#pullrequestreview-6011116262) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/16)
+
+**PR #36 真实版。** OpenLaptop、TypeKeys、ClickMouse 三个 Sharpa 短任务在标准双环境核对 60 个设备固定配色格，前两项另核对 40 个独立键帽固定配色格。六个局部 reset 方向和逐套 `original` 恢复通过。另核对三个设备通道和两个独立键帽通道的双行互换，共 20 个混合格。Mouse 101408 保留公开 ID `ivory_matte`／`navy_satin`，验收限于 ClickMouse 短任务场景和可见的壳体、按钮与滚轮。 [正式审阅](https://github.com/DennisXu626/DexArena-Variation/pull/36#pullrequestreview-6073344981) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/36)
 
 ## 仍待实现／验证
 
