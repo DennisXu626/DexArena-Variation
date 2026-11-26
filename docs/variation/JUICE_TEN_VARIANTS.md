@@ -1,3 +1,5 @@
+> PR40-R1 更新（2026-11-26）：当前已整合正式 main `6e3467b`（包含 PR19 squash `d02df83`）。下文建分支与作业 138333 信息保留为历史记录；最终整合版的独立验证以 [R1 报告](JUICE_PR40_R1.md) 为准。
+
 # Juice Preparation 十套方案
 
 本轮从团队 main `58de243` 建分支 `codex/juice-preparation-ten-variants`，快进接入 PR19 `b611faf`。保留 original 和原有 variant_1/2，增加 variant_3 至 variant_10。唯一参数源为 `tasks/assets/variation/juice_preparation/v1/catalog.json`，版本 juice-ten-v3-preview。没有新增模型、UV 或第三方贴图文件。

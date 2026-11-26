@@ -52,9 +52,21 @@ class CabinetPouringOpenCabinetEnv(CabinetPouringLongEnv):
     placement_region = None
     lock_bottle_during_cap_stages = False
 
+    def __init__(self, *args, handle_workspace=False, **kwargs):
+        if handle_workspace and kwargs.get("robot_uids") != DEFAULT_ROBOT_UID_LEFT:
+            raise ValueError("handle_workspace requires the registered left angled Sharpa arm")
+        self._handle_workspace = handle_workspace
+        super().__init__(*args, **kwargs)
+
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         from .position_layout import requested_layout
-        layout = requested_layout(options, env_idx, "OpenCabinet")
+        if "handle_placement" in options and (not self._handle_workspace or "position_layout" in options):
+            raise ValueError("handle_placement requires handle_workspace and a single layout request")
+        if self._handle_workspace and "position_layout" not in options:
+            from .open_cabinet_workspace import resolve_workspace
+            layout = resolve_workspace(self, env_idx.tolist(), options.get("handle_placement"))
+        else:
+            layout = requested_layout(options, env_idx, "OpenCabinet")
         with torch.device(self.device):
             b = len(env_idx)
             self._reset_episode_buffers(env_idx)

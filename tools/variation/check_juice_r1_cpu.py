@@ -24,6 +24,7 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[2]
 FAMILY = ROOT / "tasks/juice_preparation"
 FROZEN = "fc028483b5d865c05ee6e7e18b95975c836c9935"
+CURRENT_HEAD = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip() if (ROOT / ".git").exists() else "see frozen-source manifest"
 
 
 def compile_nodes(nodes, namespace, filename):
@@ -314,8 +315,8 @@ class JuiceR1Tests(unittest.TestCase):
                 ns["contact_sheet"](folder, "test", schemes)
             self.assertEqual(drawn, [label for _, label in columns])
             with Image.open(folder / "test_comparison.png") as sheet:
-                self.assertEqual(sheet.width, 400)
-                for i, color in enumerate(colors): self.assertEqual(sheet.getpixel((i * 100 + 50, 50)), color)
+                self.assertEqual(sheet.size, (300, 128))
+                for i, color in enumerate(colors): self.assertEqual(sheet.getpixel(((i % 3) * 100 + 50, (i // 3) * 64 + 50)), color)
 
 
 if __name__ == "__main__":
@@ -329,5 +330,5 @@ if __name__ == "__main__":
             "failures": len(result.failures), "errors": len(result.errors), "torch": torch.__version__, "torch_device": "cpu",
             "public_reset_invalid_cases": 12, "critical_reset_cases": 20,
             "scope": "actual reset/evaluate/helpers; external BaseEnv, geometry and render inputs replaced; no simulator/GPU",
-            "frozen_head": FROZEN}, indent=2) + "\n")
+            "historical_counterexample_head": FROZEN, "tested_head": CURRENT_HEAD}, indent=2) + "\n")
     raise SystemExit(0 if result.wasSuccessful() else 1)

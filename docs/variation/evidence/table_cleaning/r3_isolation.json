@@ -1,0 +1,156 @@
+{
+  "passed": true,
+  "revision": "working tree",
+  "tests": 4,
+  "failures": 0,
+  "errors": 0,
+  "mani_skill_wheel": "mani_skill-3.0.0b22-py3-none-any.whl",
+  "reset_source_sha256": "7fe3717bdb25913b54993758153e78cbf3ab9fb809734d5cf21e62083ed4b4ca",
+  "cases": [
+    {
+      "kind": "unseeded_partial",
+      "appearance": false,
+      "selected": 0,
+      "enhanced_determinism": false,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": false,
+      "selected": 0,
+      "enhanced_determinism": true,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": false,
+      "selected": 1,
+      "enhanced_determinism": false,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": false,
+      "selected": 1,
+      "enhanced_determinism": true,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": true,
+      "selected": 0,
+      "enhanced_determinism": false,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": true,
+      "selected": 0,
+      "enhanced_determinism": true,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": true,
+      "selected": 1,
+      "enhanced_determinism": false,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "unseeded_partial",
+      "appearance": true,
+      "selected": 1,
+      "enhanced_determinism": true,
+      "unselected_target": 0.25,
+      "returned_stage": [
+        1.0,
+        0.0
+      ],
+      "info_stage": 0,
+      "stored_stage": 0
+    },
+    {
+      "kind": "seeded_partial",
+      "appearance": false,
+      "selected": 0,
+      "rejected": true,
+      "main_seed_before": 327741615,
+      "main_seed_after": 327741615,
+      "episode_next_before": 239442143,
+      "episode_next_after": 239442143
+    },
+    {
+      "kind": "seeded_partial",
+      "appearance": false,
+      "selected": 1,
+      "rejected": true,
+      "main_seed_before": 7,
+      "main_seed_after": 7,
+      "episode_next_before": 327741615,
+      "episode_next_after": 327741615
+    },
+    {
+      "kind": "seeded_partial",
+      "appearance": true,
+      "selected": 0,
+      "rejected": true,
+      "main_seed_before": 327741615,
+      "main_seed_after": 327741615,
+      "episode_next_before": 239442143,
+      "episode_next_after": 239442143
+    },
+    {
+      "kind": "seeded_partial",
+      "appearance": true,
+      "selected": 1,
+      "rejected": true,
+      "main_seed_before": 7,
+      "main_seed_after": 7,
+      "episode_next_before": 327741615,
+      "episode_next_after": 327741615
+    }
+  ],
+  "scope": "CPU Torch; AST-loaded ManiSkill 3.0.0b22 reset/RNG/observation and task methods; physics/contact doubles; no GPU"
+}

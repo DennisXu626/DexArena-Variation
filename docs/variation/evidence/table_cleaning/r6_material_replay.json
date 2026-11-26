@@ -1,0 +1,112 @@
+{
+  "base_head": "eba0a9b0f20255c5a41556c26091dd938047c64e",
+  "texture_sha256": "fc101a378e6dcc487074243f083d62fa9ad06c37dae57340c4514dacfeab04d3",
+  "snapshots_sha256": "7cd27c814d59f7500154789d3fb15e9c14e20f0da69aecbaaaaf2ce0f8cab76f",
+  "replay_script_sha256": "fbc15127ba7546166f36c4a8440a6f231fbcfc5e4737fc4080c2e6128e0f92fa",
+  "command": [
+    "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-B",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\PR12-R6-AUTHOR(1)\\replay_materials.py",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\DexArena",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\DexArena\\.review-r6\\T_BC001.png"
+  ],
+  "exit_code": 0,
+  "stdout": "env0 variant_1: valid snapshot passed\n  detected changed debris_1/1/0/roughness\n  detected changed debris_0/0/0/base_color_texture\nenv1 variant_2: valid snapshot passed\n  detected changed debris_1/1/0/roughness\n  detected changed debris_0/0/0/base_color_texture\n",
+  "stderr": "",
+  "all_three_sugar_and_auxiliary_slot_negatives": [
+    {
+      "env": 0,
+      "slot": "debris_0/0/0",
+      "field": "base_color_texture",
+      "detected": true
+    },
+    {
+      "env": 0,
+      "slot": "debris_0/1/0",
+      "field": "roughness",
+      "detected": true
+    },
+    {
+      "env": 0,
+      "slot": "debris_1/0/0",
+      "field": "base_color_texture",
+      "detected": true
+    },
+    {
+      "env": 0,
+      "slot": "debris_1/1/0",
+      "field": "roughness",
+      "detected": true
+    },
+    {
+      "env": 0,
+      "slot": "debris_2/0/0",
+      "field": "base_color_texture",
+      "detected": true
+    },
+    {
+      "env": 0,
+      "slot": "debris_2/1/0",
+      "field": "roughness",
+      "detected": true
+    },
+    {
+      "env": 1,
+      "slot": "debris_0/0/0",
+      "field": "base_color_texture",
+      "detected": true
+    },
+    {
+      "env": 1,
+      "slot": "debris_0/1/0",
+      "field": "roughness",
+      "detected": true
+    },
+    {
+      "env": 1,
+      "slot": "debris_1/0/0",
+      "field": "base_color_texture",
+      "detected": true
+    },
+    {
+      "env": 1,
+      "slot": "debris_1/1/0",
+      "field": "roughness",
+      "detected": true
+    },
+    {
+      "env": 1,
+      "slot": "debris_2/0/0",
+      "field": "base_color_texture",
+      "detected": true
+    },
+    {
+      "env": 1,
+      "slot": "debris_2/1/0",
+      "field": "roughness",
+      "detected": true
+    }
+  ],
+  "static_checks": [
+    {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 61, \"json_configs\": 10, \"relative_links\": 330, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_appearance_archive.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 14, \"pending_adaptation\": 21, \"no_visual\": 3, \"not_loaded\": 1, \"implemented_pending_review\": 3, \"external_pending\": 0}, \"decoded_pngs\": 137, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 385, \"pending_appearance_packages\": 6, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n",
+      "stderr": ""
+    }
+  ]
+}

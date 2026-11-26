@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-B",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\PR12-R3-AUTHOR\\PR12_counterexample.py",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\DexArena",
+    "C:\\pengbo\\PAIR\\DexArena_Variation\\DexArena\\.review-sdk\\mani_skill"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"selected\": 0, \"appearance\": false, \"arm_target\": 0.25, \"stage_one_hot\": [1.0, 0.0], \"seed_rejected\": true, \"n_in_pan_before\": 0, \"n_in_pan_obs_after\": 0, \"n_in_pan_info_after\": 0}\n{\"selected\": 0, \"appearance\": true, \"arm_target\": 0.25, \"stage_one_hot\": [1.0, 0.0], \"seed_rejected\": true, \"n_in_pan_before\": 0, \"n_in_pan_obs_after\": 0, \"n_in_pan_info_after\": 0}\n{\"selected\": 1, \"appearance\": false, \"arm_target\": 0.25, \"stage_one_hot\": [1.0, 0.0], \"seed_rejected\": true, \"n_in_pan_before\": 0, \"n_in_pan_obs_after\": 0, \"n_in_pan_info_after\": 0}\n{\"selected\": 1, \"appearance\": true, \"arm_target\": 0.25, \"stage_one_hot\": [1.0, 0.0], \"seed_rejected\": true, \"n_in_pan_before\": 0, \"n_in_pan_obs_after\": 0, \"n_in_pan_info_after\": 0}\n",
+  "stderr": "",
+  "main": "58b54623308ad736f765a8bbccefc74e344f2a3c"
+}

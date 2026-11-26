@@ -1,0 +1,14 @@
+{
+  "reference_head": "c40151f5b52d40697e60429cf31fe752b2c57c5d",
+  "expected_regression_reproduced": true,
+  "old_public_reset_events": [
+    "base_reset",
+    "random_draw",
+    "state_write"
+  ],
+  "old_spy_stage_after": [
+    9,
+    9
+  ],
+  "scope": "CPU real reviewed reset + spy BaseEnv; no measured physical state"
+}
