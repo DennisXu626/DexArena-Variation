@@ -1,0 +1,53 @@
+{
+  "base_head": "710f5a059c43d53d65a70d1bc39a3d2b3a260545",
+  "main": "58b54623308ad736f765a8bbccefc74e344f2a3c",
+  "checks": [
+    {
+      "name": "AUTHOR",
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "C:\\pengbo\\PAIR\\DexArena_Variation\\PR12-R4-AUTHOR\\state_restore_probe.py",
+        ".",
+        ".review-sdk/mani_skill"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"selected\": 0, \"step\": 0, \"x\": 0.009999999776482582, \"count\": 0.0, \"obs_count\": 0.0, \"stage\": 0, \"source_stage\": 0}\n{\"selected\": 1, \"step\": 0, \"x\": 0.009999999776482582, \"count\": 0.0, \"obs_count\": 0.0, \"stage\": 0, \"source_stage\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "name": "reset",
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_table_cleaning_reset_cpu.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_actual_apply_two_ids_and_restore (__main__.ResetTests.test_actual_apply_two_ids_and_restore) ... ok\ntest_config_per_env_over_global (__main__.ResetTests.test_config_per_env_over_global) ... ok\ntest_disabled_path_delegates (__main__.ResetTests.test_disabled_path_delegates) ... ok\ntest_invalid_constructor_config_at_public_reset (__main__.ResetTests.test_invalid_constructor_config_at_public_reset) ... ok\ntest_invalid_single_environment (__main__.ResetTests.test_invalid_single_environment) ... ok\ntest_last_invalid_full_reset (__main__.ResetTests.test_last_invalid_full_reset) ... ok\ntest_last_invalid_local_reset (__main__.ResetTests.test_last_invalid_local_reset) ... ok\ntest_local_reset_ignores_unselected_invalid_config (__main__.ResetTests.test_local_reset_ignores_unselected_invalid_config) ... ok\ntest_override_order_and_legal_public_reset (__main__.ResetTests.test_override_order_and_legal_public_reset) ... ok\ntest_swapped_actual_materials_are_rejected (__main__.ResetTests.test_swapped_actual_materials_are_rejected) ... ok\ntest_swapped_legal_catalog_is_rejected (__main__.ResetTests.test_swapped_legal_catalog_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.272s\n\nOK\n"
+    },
+    {
+      "name": "static",
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"python_syntax_files\": 61, \"json_configs\": 10, \"relative_links\": 327, \"scope\": \"CPU static only; no environment import or physical verification\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "archive",
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-B",
+        "tools/variation/check_appearance_archive.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"objects\": 42, \"families\": 10, \"status_counts\": {\"accepted_pilot\": 14, \"pending_adaptation\": 21, \"no_visual\": 3, \"not_loaded\": 1, \"implemented_pending_review\": 3, \"external_pending\": 0}, \"decoded_pngs\": 137, \"archive_runtime_png_matches\": 3, \"paired_schemes\": 3, \"relative_links\": 385, \"pending_appearance_packages\": 6, \"scope\": \"CPU archive only; no runtime capability or simulation claim\"}\n",
+      "stderr": ""
+    }
+  ],
+  "source_sha256": "f02f97598b166f263521978ef9abbe30096c5cf1b49117b9102aaba28e568378"
+}

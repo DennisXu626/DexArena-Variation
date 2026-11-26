@@ -1,0 +1,51 @@
+{
+  "reviewed_head": "c40151f5b52d40697e60429cf31fe752b2c57c5d",
+  "frozen_main": "aee41a3439287a17ce9d4c14c6320fa6f5b4579d",
+  "new_head": "not committed; author will fill after commit",
+  "uncommitted_files": [
+    "docs/variation/TABLE_CLEANING_APPEARANCE.md",
+    "docs/variation/TABLE_CLEANING_PR12_R1.md",
+    "docs/variation/evidence/table_cleaning/integration_checks.json",
+    "docs/variation/evidence/table_cleaning/old_reset_counterexample.json",
+    "docs/variation/evidence/table_cleaning/preview_90644_manifest.json",
+    "docs/variation/evidence/table_cleaning/preview_semantics.json",
+    "docs/variation/evidence/table_cleaning/r1_manifest.json",
+    "docs/variation/evidence/table_cleaning/reset_cpu.json",
+    "docs/variation/evidence/table_cleaning/reused_file_hashes.json",
+    "docs/variation/evidence/table_cleaning/single_env_cpu.json",
+    "tasks/table_cleaning/appearance.py",
+    "tasks/table_cleaning/table_cleaning_long.py",
+    "tools/variation/check_table_cleaning_parallel.py",
+    "tools/variation/check_table_cleaning_preview_cpu.py",
+    "tools/variation/check_table_cleaning_reset_cpu.py",
+    "tools/variation/check_table_cleaning_single_env_cpu.py",
+    "tools/variation/table_cleaning_contract.py"
+  ],
+  "source_semantics": {
+    "selector_extraction_ast_equal": true,
+    "material_application_loop_ast_equal_except_iterator": true
+  },
+  "changed_file_sha256": {
+    "docs/variation/TABLE_CLEANING_APPEARANCE.md": "1906bb3e9fd966992eb40695be65811dc002645e46a13957d1645115ae5086d3",
+    "docs/variation/TABLE_CLEANING_PR12_R1.md": "ce36403020cd1d0c4766fd05d04fc08a2771fb1d16edc39022ee181c81065458",
+    "docs/variation/evidence/table_cleaning/integration_checks.json": "b41fe15cb32edce88f5b7b53d8771a6f9fa1d05bd3b300fe99c2e47fa2fe8a12",
+    "docs/variation/evidence/table_cleaning/old_reset_counterexample.json": "d86e055070bdac938b57e92977e26f9329a40300cdd29f31737bffc6976a73a7",
+    "docs/variation/evidence/table_cleaning/preview_90644_manifest.json": "28628340eed43747db3e6ff5f7dd26e0ddf8cd40665321c504ecf5073dec351c",
+    "docs/variation/evidence/table_cleaning/preview_semantics.json": "3cbde0f435a0951ac8440308e96f1e7264c5638d12701c75ad4ab7e9fe61b023",
+    "docs/variation/evidence/table_cleaning/reset_cpu.json": "a8ceba48574e15485ad87f3bc53253a46fed817b44c8d6601695b233fe38f9d1",
+    "docs/variation/evidence/table_cleaning/reused_file_hashes.json": "c6a0a8f989629f364bec1c4c4357ae085414825cb370550ca1a2b695ee5ebf76",
+    "docs/variation/evidence/table_cleaning/single_env_cpu.json": "2eb6a25b9a0bca09af9b39a98d2153a048be29057be1f00311499c50f6e8f944",
+    "tasks/table_cleaning/appearance.py": "718467fada0a2073e2bd43b5092f55627ba2ec4ecd47a8f79a7a124dcf233eef",
+    "tasks/table_cleaning/table_cleaning_long.py": "82ac500874f90a36677140f024304a4ad76b77f51393f95d0b0a6cef034806e8",
+    "tools/variation/check_table_cleaning_parallel.py": "7f388cf368a2c1f8e68a221285cd41a8bc30a48106a596159009bd710719438e",
+    "tools/variation/check_table_cleaning_preview_cpu.py": "dc33519cfccaedae10bbcbb410450b01625e8b87b481409a07c91998391160eb",
+    "tools/variation/check_table_cleaning_reset_cpu.py": "f414425551b27383558e22983d2a2458c50e859aea9f0a162c597f38187509d4",
+    "tools/variation/check_table_cleaning_single_env_cpu.py": "fdb1a90e859cf86bc4ff1bba99c4691dad7a4130b698552199d5189a36aec15c",
+    "tools/variation/table_cleaning_contract.py": "280af1e446064b1bfa9634ae07d755e4d8e3acc9949564d67ac4a8768dcbcfed"
+  },
+  "reused_summary_sha256": "6486d5217790f9f813600e1ed7bd2a52eadc2dc5782de56b6683b9619cbd999f",
+  "scope": "AST match supports reusing legal appearance path evidence; new public reset preflight checked by CPU spies; no new GPU",
+  "additional_gpu_jobs": 0,
+  "additional_gpu_seconds": 0,
+  "hash_scope": "all R1 changed files except this self-referential manifest; current byte hashes, LF may be used for Git verification"
+}

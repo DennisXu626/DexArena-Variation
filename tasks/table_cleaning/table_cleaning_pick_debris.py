@@ -57,7 +57,7 @@ class TableCleaningPickDebrisEnv(TableCleanBase):
 
     def _initialize_episode(self, env_idx, options):
         with torch.device(self.device):
-            self._place_scene_start(env_idx)
+            self._place_scene_start(env_idx, options)
 
     def evaluate(self):
         n_pan, picked_now = self._update_pick(self._pick_target)

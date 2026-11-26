@@ -1,0 +1,571 @@
+{
+  "job_id": "90672",
+  "gpu": "0",
+  "num_envs": 2,
+  "tasks": {
+    "TableCleaningPickDebris-Sharpa-v1": {
+      "changed_slots": [
+        [
+          "pan/0/1",
+          "bin/0/1",
+          "debris_0/0/0",
+          "debris_1/0/0",
+          "debris_2/0/0"
+        ],
+        [
+          "pan/0/1",
+          "bin/0/1",
+          "debris_0/0/0",
+          "debris_1/0/0",
+          "debris_2/0/0"
+        ]
+      ],
+      "appearance_image_differences": [
+        {
+          "nonzero": 26217,
+          "max": 133.0
+        },
+        {
+          "nonzero": 25623,
+          "max": 178.0
+        }
+      ],
+      "env0_state_differences": {
+        "robot": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "qvel": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "bin": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0": {
+          "nonzero": 4,
+          "max": 1.1920928955078125e-07
+        },
+        "debris_0.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1": {
+          "nonzero": 1,
+          "max": 2.1469652722316823e-09
+        },
+        "debris_1.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "task": {
+          "nonzero": 0,
+          "max": 0.0
+        }
+      },
+      "native_env0_state_differences": {
+        "robot": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "qvel": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "bin": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0": {
+          "nonzero": 4,
+          "max": 1.1920928955078125e-07
+        },
+        "debris_0.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1": {
+          "nonzero": 1,
+          "max": 2.1469652722316823e-09
+        },
+        "debris_1.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "task": {
+          "nonzero": 0,
+          "max": 0.0
+        }
+      },
+      "env0_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "native_env0_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "restored_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "env1_materials_match_original": true,
+      "env0_materials_unchanged": true,
+      "records": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "table-cleaning-preview-v1",
+          "episode_index": 2
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "original",
+          "catalog_version": "table-cleaning-preview-v1",
+          "episode_index": 3
+        }
+      ]
+    },
+    "TableCleaningDumpDustpan-Sharpa-v1": {
+      "changed_slots": [
+        [
+          "pan/0/1",
+          "bin/0/1",
+          "debris_0/0/0",
+          "debris_1/0/0",
+          "debris_2/0/0"
+        ],
+        [
+          "pan/0/1",
+          "bin/0/1",
+          "debris_0/0/0",
+          "debris_1/0/0",
+          "debris_2/0/0"
+        ]
+      ],
+      "appearance_image_differences": [
+        {
+          "nonzero": 24246,
+          "max": 133.0
+        },
+        {
+          "nonzero": 23664,
+          "max": 178.0
+        }
+      ],
+      "env0_state_differences": {
+        "robot": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "qvel": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "bin": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0": {
+          "nonzero": 4,
+          "max": 1.1920928955078125e-07
+        },
+        "debris_0.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1": {
+          "nonzero": 1,
+          "max": 2.1469652722316823e-09
+        },
+        "debris_1.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "task": {
+          "nonzero": 0,
+          "max": 0.0
+        }
+      },
+      "native_env0_state_differences": {
+        "robot": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "qvel": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "bin": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0": {
+          "nonzero": 4,
+          "max": 1.1920928955078125e-07
+        },
+        "debris_0.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1": {
+          "nonzero": 1,
+          "max": 2.1469652722316823e-09
+        },
+        "debris_1.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "task": {
+          "nonzero": 0,
+          "max": 0.0
+        }
+      },
+      "env0_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "native_env0_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "restored_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "env1_materials_match_original": true,
+      "env0_materials_unchanged": true,
+      "records": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "table-cleaning-preview-v1",
+          "episode_index": 2
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "original",
+          "catalog_version": "table-cleaning-preview-v1",
+          "episode_index": 3
+        }
+      ]
+    },
+    "TableCleaningLong-Sharpa-v1": {
+      "changed_slots": [
+        [
+          "pan/0/1",
+          "bin/0/1",
+          "debris_0/0/0",
+          "debris_1/0/0",
+          "debris_2/0/0"
+        ],
+        [
+          "pan/0/1",
+          "bin/0/1",
+          "debris_0/0/0",
+          "debris_1/0/0",
+          "debris_2/0/0"
+        ]
+      ],
+      "appearance_image_differences": [
+        {
+          "nonzero": 26217,
+          "max": 133.0
+        },
+        {
+          "nonzero": 25623,
+          "max": 178.0
+        }
+      ],
+      "env0_state_differences": {
+        "robot": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "qvel": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "bin": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0": {
+          "nonzero": 4,
+          "max": 1.1920928955078125e-07
+        },
+        "debris_0.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1": {
+          "nonzero": 1,
+          "max": 2.1469652722316823e-09
+        },
+        "debris_1.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "task": {
+          "nonzero": 0,
+          "max": 0.0
+        }
+      },
+      "native_env0_state_differences": {
+        "robot": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "qvel": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "pan.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "bin": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0": {
+          "nonzero": 4,
+          "max": 1.1920928955078125e-07
+        },
+        "debris_0.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_0.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1": {
+          "nonzero": 1,
+          "max": 2.1469652722316823e-09
+        },
+        "debris_1.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_1.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.linear_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "debris_2.angular_velocity": {
+          "nonzero": 0,
+          "max": 0.0
+        },
+        "task": {
+          "nonzero": 0,
+          "max": 0.0
+        }
+      },
+      "env0_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "native_env0_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "restored_rgb": {
+        "nonzero": 0,
+        "max": 0.0
+      },
+      "env1_materials_match_original": true,
+      "env0_materials_unchanged": true,
+      "records": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "catalog_version": "table-cleaning-preview-v1",
+          "episode_index": 2
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "original",
+          "catalog_version": "table-cleaning-preview-v1",
+          "episode_index": 3
+        }
+      ]
+    }
+  }
+}
