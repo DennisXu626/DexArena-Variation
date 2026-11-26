@@ -26,18 +26,23 @@ def config(layout):
         str(i): {'scheme_id': name} for i, name in enumerate(layout)}}
 
 
-def plate_identity(base, row, scheme):
+def stand_plate(base, row):
     import sapien
 
     adapter = base._pipette_appearance
-    assert adapter.schemes[row] == scheme
     part, = [part for oid, role, part, _, _ in adapter.bindings[row]
              if (oid, role) == ('pipette_stand', 'base_plate')]
     actor = base.pipette_stand._objs[row]
     body = actor.find_component_by_type(sapien.render.RenderBodyComponent)
     shape, = [shape for shape in body.render_shapes if part in shape.parts]
+    return part, int(shape.per_scene_id)
+
+
+def plate_identity(adapter, row, plate, scheme):
+    part, shape_id = plate
+    assert adapter.schemes[row] == scheme
     texture = part.material.base_color_texture
-    result = {'scheme': scheme, 'shape_id': int(shape.per_scene_id), 'texture': None}
+    result = {'scheme': scheme, 'shape_id': shape_id, 'texture': None}
     if texture is None:
         assert scheme == 'original'
         return result
@@ -93,12 +98,16 @@ def capture(task, initial, requested, output, seed):
             obs, info = env.reset(seed=seed, options=options)
             # Copy reset-returned RGB before any other capture can reuse its buffer.
             first = obs['sensor_data']['base_camera']['rgb'].clone()
-            identity = [plate_identity(base, i, scheme) for i, scheme in enumerate(layout)]
-            ids = [row['shape_id'] for row in identity]
+            plates = [stand_plate(base, i) for i in range(2)]
+            ids = [shape_id for _, shape_id in plates]
             save_view(folder, 'reset', first, sensor, ids)
             following = base.get_obs(info=info)['sensor_data']['base_camera']['rgb']
             save_view(folder, 'next', following, sensor, ids)
             save_view(folder, 'human', env.render(), human, ids)
+            # A GPU texture download may synchronize rendering. Inspect it only
+            # after recording all three camera outputs for this reset.
+            identity = [plate_identity(base._pipette_appearance, i, plates[i], scheme)
+                        for i, scheme in enumerate(layout)]
             assert base.elapsed_steps.count_nonzero().item() == 0
             (folder / 'identity.json').write_text(json.dumps(identity, indent=2), encoding='utf-8')
     finally:
