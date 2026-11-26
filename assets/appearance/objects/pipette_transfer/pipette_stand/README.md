@@ -4,4 +4,6 @@
 
 [灰阶底板原稿](base-plate-mark.png)为本仓原创，含字样和细微喷涂颗粒，字样位于原生盒体顶面的 UV 区域。默认光栅管线直接采用色彩贴图中的颜色。[烘焙工具](../../../../../tools/variation/build_pipette_stand_textures.py)在色彩线性空间组合原稿与 catalog 底板色，再编码成各候选的不透明 sRGB PNG。运行工具可校验全部贴图像素，加入 `--write` 可按相同规则重新生成。original 恢复原生材质。
 
+任务在建场时为每个环境的底板绑定一张私有线性 RGBA32F 贴图。候选从烘焙图解码后原位上传，original 上传实际捕获的原生色值。运行时采用单级 mip，覆盖 SAPIEN 当前上传接口会更新的完整采样范围。重置期间始终保留同一贴图句柄。
+
 [任务验收与实景](../previews/runtime/summary.json) · [正式说明](../../../../../docs/variation/PIPETTE_APPEARANCE.md)

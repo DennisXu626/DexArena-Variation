@@ -3,6 +3,7 @@ import argparse
 from collections import Counter
 from contextlib import contextmanager
 import copy
+import hashlib
 from itertools import combinations
 from pathlib import Path
 import re
@@ -97,18 +98,21 @@ def validate_plate_texture(native, actual, scheme, bindings):
         current = scheme[env] if isinstance(scheme, list) else scheme
         require(baseline is None, 'Native stand already has a base-plate texture')
         if current == 'original':
-            require(measured is None, 'Stand texture was retained after native restore')
+            require(measured is None, 'Native stand albedo was not recovered')
         else:
             asset = Path(label['directory']) / f'{current}.png'
             path = ROOT / asset
             with Image.open(path) as image:
                 require(image.mode == 'RGB', 'Stand label must be opaque RGB')
                 width, height = image.size
-            expected = {'asset_ref': asset.as_posix(), 'sha256': raw.track(path), 'name': path.name,
-                        'width': width, 'height': height, 'mipmap_levels': label['mipmap_levels'],
-                        'is_srgb': True}
+                rgb = np.asarray(image, dtype=np.float64) / 255
+            pixels = np.ones((height, width, 4), dtype=np.float32)
+            pixels[..., :3] = np.where(rgb <= .04045, rgb / 12.92, ((rgb + .055) / 1.055)**2.4)
+            expected = {'asset_ref': asset.as_posix(), 'source_asset_sha256': raw.track(path),
+                        'width': width, 'height': height,
+                        'upload_data_sha256': hashlib.sha256(pixels.tobytes()).hexdigest()}
             require(measured is not None and all(measured.get(k) == v for k, v in expected.items()),
-                    'Stand label does not match the captured catalog asset')
+                    'Stand upload does not match the decoded catalog asset')
             normal[env][slot]['material']['base_color_texture'] = baseline
             changes.append(key + '/base_color_texture')
     require(plates == set(range(len(actual))), 'Stand base plate binding coverage differs')
@@ -118,6 +122,26 @@ def validate_plate_texture(native, actual, scheme, bindings):
 @contextmanager
 def pipette_material_check():
     original = raw.material_check
+    original_profile = raw.pbr_profile
+
+    def profile(material, entity, context):
+        texture = material.get('base_color_texture')
+        if texture is not None and texture.get('source_kind') == 'pipette_private_stand_plate':
+            asset = texture['asset_ref']
+            require(re.fullmatch(r'scene-\d+_pipette_stand_\d+', entity) is not None
+                    and asset.startswith('assets/appearance/objects/pipette_transfer/pipette_stand/plates/')
+                    and texture['source_asset_sha256'] == raw.CAPTURE_FILES.get(asset)
+                    and all(texture[k] == v for k, v in {
+                        'name': '', 'sha256': None, 'format': 'R32G32B32A32Sfloat',
+                        'mipmap_levels': 1, 'channels': 4, 'filter_mode': 'linear', 'address_mode': 'repeat',
+                        'is_srgb': False, 'data_dtype': 'float32',
+                    }.items())
+                    and texture['data_shape'] == [texture['height'], texture['width'], 4],
+                    'Pipette private plate source, slot, or sampler differs')
+            raw.H.digest_map({'source': texture['source_asset_sha256'],
+                              'uploaded_texels': texture['upload_data_sha256']}, context)
+            material = dict(material, base_color_texture=None)
+        original_profile(material, entity, context)
 
     def check(native, actual, scheme, bindings, parameters, roles, counts):
         normalized, changes = validate_plate_texture(native, actual, scheme, bindings)
@@ -127,10 +151,12 @@ def pipette_material_check():
         return result
 
     raw.material_check = check
+    raw.pbr_profile = profile
     try:
         yield
     finally:
         raw.material_check = original
+        raw.pbr_profile = original_profile
 
 
 def gpu_task(capture, console, name, build, images):
@@ -388,7 +414,8 @@ def cpu_interface(directory, console, identity, build):
                     'CPU interface fixed scheme failed')
             actual = row['materials']
             require(len(native) == len(actual) == 1, 'Expected one CPU interface environment')
-            normalized, _ = validate_plate_texture(native, actual, scheme, bindings)
+            with pipette_material_check():
+                normalized, _ = validate_plate_texture(native, actual, scheme, bindings)
             original_slots, measured = map(raw.material_rows, (native, normalized))
             require(original_slots.keys() == measured.keys() and set(bindings) <= original_slots.keys(),
                     'CPU material slots differ')
