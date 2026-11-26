@@ -1,6 +1,6 @@
 # OpenCabinet: clearance before the operator moves
 
-**Current repair.** The opt-in public reset now screens every requested start before ManiSkill changes the scene. The recorded 59.31 mm rejection preserved both CPU rows, and both matched-control sequences passed. [CPU evidence and pending CUDA check](rejected_reset_repair/RESULTS.md)
+**Current repair.** PhysX CUDA job 142978 confirmed that the 59.31 mm rejection preserves both scenes before the next reset. Both matched-control directions passed. Accepted starts are ready for Dennis's VR trial. [CUDA measurements and receipt](reset_repair_001/RESULTS.md) · [CPU evidence](rejected_reset_repair/RESULTS.md)
 
 **GPU follow-up.** Job 142378 reproduced penetration at the two old starts. The corrected near request was explicitly rejected and far cleared the geometry screen. Passive state changed on the subsequent local reset, which stopped the run. [First-frame results and remaining blocker](runtime_001/RESULTS.md)
 
