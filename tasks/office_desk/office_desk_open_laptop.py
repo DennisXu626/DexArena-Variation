@@ -583,11 +583,17 @@ class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
         num_envs: int = 1,
         reconfiguration_freq=None,
         office_devices_appearance: dict | None = None,
+        office_keyboard_appearance: dict | None = None,
         **kwargs,
     ):
         self._office_devices_appearance = (
             OfficeDevicesAppearance(office_devices_appearance, num_envs, "laptop", LAPTOP_ASSET_DIR)
             if appearance_enabled(office_devices_appearance, num_envs) else None
+        )
+        self._office_keyboard_appearance = (
+            OfficeDevicesAppearance(office_keyboard_appearance, num_envs, "laptop", LAPTOP_ASSET_DIR,
+                                    keycaps=True)
+            if appearance_enabled(office_keyboard_appearance, num_envs) else None
         )
         runtime_sim_config = office_capacity_config(kwargs.pop("sim_config", None), kwargs)
         if runtime_sim_config not in (None, {"control_freq": CONTROL_FREQUENCY}):
@@ -755,11 +761,15 @@ class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
 
             if self._office_devices_appearance is not None:
                 self._office_devices_appearance.isolate_builder_materials(builder, env_id)
+            if self._office_keyboard_appearance is not None:
+                self._office_keyboard_appearance.isolate_builder_materials(builder, env_id)
             laptop = builder.build(
                 name=f"laptop-{env_id}"
             )
             if self._office_devices_appearance is not None:
                 self._office_devices_appearance.bind(laptop, env_id)
+            if self._office_keyboard_appearance is not None:
+                self._office_keyboard_appearance.bind(laptop, env_id)
             self.remove_from_state_dict_registry(laptop)
             _configure_task_articulation(laptop)
             apply_laptop_masses(laptop)
@@ -985,6 +995,8 @@ class OfficeDeskOpenLaptopEnv(OfficeResetScopeMixin, BaseEnv):
 
         if self._office_devices_appearance is not None:
             self._office_devices_appearance.finish_reset(env_idx, options)
+        if self._office_keyboard_appearance is not None:
+            self._office_keyboard_appearance.finish_reset(env_idx, options)
 
     def _ensure_buffers(self):
         if hasattr(self, "reached_once"):

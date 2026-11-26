@@ -640,11 +640,17 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
         num_envs: int = 1,
         reconfiguration_freq=None,
         office_devices_appearance: dict | None = None,
+        office_keyboard_appearance: dict | None = None,
         **kwargs,
     ):
         self._office_devices_appearance = (
             OfficeDevicesAppearance(office_devices_appearance, num_envs, "keyboard", KEYBOARD_ASSET_DIR)
             if appearance_enabled(office_devices_appearance, num_envs) else None
+        )
+        self._office_keyboard_appearance = (
+            OfficeDevicesAppearance(office_keyboard_appearance, num_envs, "keyboard", KEYBOARD_ASSET_DIR,
+                                    keycaps=True)
+            if appearance_enabled(office_keyboard_appearance, num_envs) else None
         )
         runtime_sim_config = office_capacity_config(kwargs.pop("sim_config", None), kwargs)
         if runtime_sim_config not in (None, {"control_freq": CONTROL_FREQ}):
@@ -843,11 +849,15 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
             builder.initial_pose = sapien.Pose()
             if self._office_devices_appearance is not None:
                 self._office_devices_appearance.isolate_builder_materials(builder, scene_index)
+            if self._office_keyboard_appearance is not None:
+                self._office_keyboard_appearance.isolate_builder_materials(builder, scene_index)
             keyboard = builder.build(
                 name=f"keyboard-{model_id}-{scene_index}"
             )
             if self._office_devices_appearance is not None:
                 self._office_devices_appearance.bind(keyboard, scene_index)
+            if self._office_keyboard_appearance is not None:
+                self._office_keyboard_appearance.bind(keyboard, scene_index)
             self.remove_from_state_dict_registry(keyboard)
             _configure_task_articulation(keyboard)
 
@@ -1256,6 +1266,8 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
 
         if self._office_devices_appearance is not None:
             self._office_devices_appearance.finish_reset(env_idx, options)
+        if self._office_keyboard_appearance is not None:
+            self._office_keyboard_appearance.finish_reset(env_idx, options)
 
     # ------------------------------------------------------------------
     # State quantities

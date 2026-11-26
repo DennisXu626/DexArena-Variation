@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "source_commit": "b4723a71b01402b6a3e5d3b7b8bfd30ecdd83781",
+  "sim_backend": "physx_cpu",
+  "render_mode": null,
+  "seed": 7,
+  "tasks": {
+    "OpenLaptop": {
+      "schemes": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "control_steps": 22,
+      "physics_steps": 440,
+      "native_trace_sha256": "2910c5d18f54d2111d23271b36a1c1407ea7eb7679b5eb4f4b843b4a71a134ee"
+    },
+    "TypeKeys": {
+      "schemes": [
+        "original",
+        "variant_1",
+        "variant_2",
+        "variant_3",
+        "variant_4",
+        "variant_5",
+        "variant_6",
+        "variant_7",
+        "variant_8",
+        "variant_9",
+        "variant_10"
+      ],
+      "control_steps": 22,
+      "physics_steps": 440,
+      "native_trace_sha256": "96affdbf2f97b544c92c7996c63fd60b90af45bfedddde8caa72d1fc140c798c"
+    }
+  },
+  "checks": "every numeric leaf exact native-off in all three snapshots per scheme",
+  "raw_results_sha256": "89dffc434a5703bd66dddd26947e257fbee0d5d2e6c59f2bb964a1e4b840af05",
+  "probe_sha256": "66f333c273c09c4c07712701baebe02cc08d0718811d22475e407ab28c6fe35f",
+  "loaded_sdk_receipt_sha256": "85b71255ef46bf39296b3428ace4e65b9519ad3376112438518f15276cc4ea79"
+}

@@ -1,5 +1,5 @@
 {
-  "version": "mouse-101408-v2",
+  "version": "mouse-101408-v3",
   "status": "runtime_unverified",
   "source": "Self-authored scalar render parameters; original restores native loader material per render part. No external textures.",
   "binding": {
@@ -15,322 +15,334 @@
     "ivory_matte": {
       "shell": {
         "base_color": [
-          0.82,
-          0.77,
-          0.65,
+          0.67244,
+          0.6105,
+          0.47932,
           1.0
         ],
-        "roughness": 0.85,
-        "metallic": 0.0
+        "roughness": 0.74,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.94,
-          0.91,
-          0.83,
+          0.77582,
+          0.70838,
+          0.57112,
           1.0
         ],
-        "roughness": 0.85,
-        "metallic": 0.0
+        "roughness": 0.68,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.12,
-          0.15,
-          0.18,
+          0.18447,
+          0.16203,
+          0.13843,
           1.0
         ],
-        "roughness": 0.85,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "navy_satin": {
       "shell": {
         "base_color": [
-          0.025,
-          0.065,
-          0.16,
+          0.04971,
+          0.0999,
+          0.14703,
           1.0
         ],
-        "roughness": 0.4,
-        "metallic": 0.0
+        "roughness": 0.48,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.12,
-          0.28,
-          0.42,
+          0.09531,
+          0.17465,
+          0.2462,
           1.0
         ],
-        "roughness": 0.4,
-        "metallic": 0.0
+        "roughness": 0.43,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.65,
-          0.45,
-          0.16,
+          0.04519,
+          0.05781,
+          0.07036,
           1.0
         ],
-        "roughness": 0.4,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_3": {
       "shell": {
         "base_color": [
-          0.98,
-          0.025,
-          0.015,
+          0.40198,
+          0.46208,
+          0.49693,
           1.0
         ],
-        "roughness": 0.48,
-        "metallic": 0.08
+        "roughness": 0.61,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.904,
-          0.15,
-          0.142,
+          0.54572,
+          0.5972,
+          0.63076,
           1.0
         ],
-        "roughness": 0.58,
-        "metallic": 0.08
+        "roughness": 0.56,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.13014,
+          0.16513,
+          0.19462,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_4": {
       "shell": {
         "base_color": [
-          0.95,
-          0.82,
-          0.035,
+          0.02217,
+          0.02732,
+          0.02956,
           1.0
         ],
-        "roughness": 0.6,
-        "metallic": 0.1
+        "roughness": 0.68,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.88,
-          0.778,
-          0.158,
+          0.05448,
+          0.06301,
+          0.08022,
           1.0
         ],
-        "roughness": 0.7,
-        "metallic": 0.1
+        "roughness": 0.62,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.0356,
+          0.04374,
+          0.04519,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_5": {
       "shell": {
         "base_color": [
-          0.16,
-          0.82,
-          0.42,
+          0.47353,
+          0.40198,
+          0.22697,
           1.0
         ],
-        "roughness": 0.56,
-        "metallic": 0.03
+        "roughness": 0.62,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.256,
-          0.778,
-          0.462,
+          0.63076,
+          0.54572,
+          0.30947,
           1.0
         ],
-        "roughness": 0.66,
-        "metallic": 0.03
+        "roughness": 0.58,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.18447,
+          0.15896,
+          0.10702,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_6": {
       "shell": {
         "base_color": [
-          0.025,
-          0.38,
-          0.02,
+          0.15896,
+          0.19807,
+          0.11954,
           1.0
         ],
-        "roughness": 0.37,
-        "metallic": 0.17
+        "roughness": 0.65,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.15,
-          0.43,
-          0.146,
+          0.22323,
+          0.27889,
+          0.17144,
           1.0
         ],
-        "roughness": 0.47,
-        "metallic": 0.17
+        "roughness": 0.58,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.6,
-          0.66,
-          0.7,
+          0.08022,
+          0.09531,
+          0.06301,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_7": {
       "shell": {
         "base_color": [
-          0.025,
-          0.21,
-          0.91,
+          0.3467,
+          0.28744,
+          0.28315,
           1.0
         ],
-        "roughness": 0.32,
-        "metallic": 0.13
+        "roughness": 0.46,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.15,
-          0.296,
-          0.849,
+          0.43415,
+          0.37124,
+          0.36131,
           1.0
         ],
-        "roughness": 0.42000000000000004,
-        "metallic": 0.13
+        "roughness": 0.43,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.14703,
+          0.12477,
+          0.13563,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_8": {
       "shell": {
         "base_color": [
-          0.46,
-          0.04,
-          0.77,
+          0.17465,
+          0.07819,
+          0.08438,
           1.0
         ],
-        "roughness": 0.58,
-        "metallic": 0.07
+        "roughness": 0.7,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.493,
-          0.162,
-          0.738,
+          0.29614,
+          0.14126,
+          0.14413,
           1.0
         ],
-        "roughness": 0.6799999999999999,
-        "metallic": 0.07
+        "roughness": 0.63,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.09084,
+          0.06125,
+          0.07036,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_9": {
       "shell": {
         "base_color": [
-          0.9,
-          0.25,
-          0.57,
+          0.07421,
+          0.03071,
+          0.02122,
           1.0
         ],
-        "roughness": 0.5,
-        "metallic": 0.04
+        "roughness": 0.52,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.841,
-          0.328,
-          0.58,
+          0.08228,
+          0.04971,
+          0.04519,
           1.0
         ],
-        "roughness": 0.6,
-        "metallic": 0.04
+        "roughness": 0.46,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.04092,
+          0.0319,
+          0.0331,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     },
     "variant_10": {
       "shell": {
         "base_color": [
-          0.96,
-          0.97,
-          0.99,
+          0.18447,
+          0.21953,
+          0.23455,
           1.0
         ],
-        "roughness": 0.66,
-        "metallic": 0.02
+        "roughness": 0.51,
+        "metallic": 0
       },
       "buttons": {
         "base_color": [
-          0.888,
-          0.896,
-          0.912,
+          0.31855,
+          0.3467,
+          0.36625,
           1.0
         ],
-        "roughness": 0.76,
-        "metallic": 0.02
+        "roughness": 0.47,
+        "metallic": 0
       },
       "wheel": {
         "base_color": [
-          0.075,
-          0.085,
-          0.1,
+          0.10946,
+          0.12744,
+          0.16203,
           1.0
         ],
-        "roughness": 0.64,
-        "metallic": 0.0
+        "roughness": 0.78,
+        "metallic": 0
       }
     }
+  },
+  "finish_names": {
+    "ivory_matte": "Bone white matte ABS",
+    "navy_satin": "Slate blue satin ABS",
+    "variant_3": "Fog gray molded ABS",
+    "variant_4": "Dark carbon matte ABS",
+    "variant_5": "Pale khaki coated ABS",
+    "variant_6": "Lichen olive molded ABS",
+    "variant_7": "Warm aluminum-colored coated ABS",
+    "variant_8": "Oxide red-brown matte ABS",
+    "variant_9": "Warm black low-sheen ABS",
+    "variant_10": "Pewter gray satin ABS"
   }
 }

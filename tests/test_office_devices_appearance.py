@@ -132,7 +132,8 @@ class OfficeSelections(unittest.TestCase):
             material=Material((1.,1.,1.,1.));material.base_color_texture=strips[i].texture
             captured={field:copy.deepcopy(getattr(material,field)) for field in M.FIELDS}
             a.bindings[i].append((M.STRIP_ROLE,Part(material),material,captured))
-            a.prepared[i]=SimpleNamespace(strip_texture=strips[i])
+            a.prepared[i]=M.OfficePartMaterials({'runtime_source_sha256': {}}, Path('.'))
+            a.prepared[i].strip_texture=strips[i]
         self.assertIsNot(strips[0].texture,strips[1].texture)
         reset(a,[1])
         np.testing.assert_array_equal(strips[0].texture.download(),original)
@@ -195,6 +196,60 @@ class OfficeSelections(unittest.TestCase):
 
 
 class OfficePartPreparation(unittest.TestCase):
+    def test_keycap_material_keeps_atlas_sampler_uv_and_restores_original_pixels(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            mesh = root / 'key.obj'
+            mesh.write_bytes(b'original key')
+            atlas = root / 'atlas.jpg'
+            atlas.write_bytes(b'original key atlas')
+            pixels = np.array([[[235, 235, 235, 255], [150, 150, 150, 255]],
+                               [[18, 18, 18, 255], [220, 220, 220, 255]]], dtype=np.uint8)
+            texture = Texture(pixels)
+            texture.filename = str(atlas)
+            pixels = texture.download()
+            material = Material((1., 1., 1., 1.))
+            material.base_color_texture = texture
+            part = Part(material)
+            native_body = Body()
+            native_body.attach(Shape(parts=[part]))
+            digest = M.triangle_positions_hash(part.vertices, part.triangles)
+            definition = {'editable_role': 'keycap', 'base_color_texture': atlas.name,
+                          'runtime_source_sha256': {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                                                    for p in (mesh, atlas)},
+                          'part_bindings': [{'link': 'link_1', 'index': 0, 'name': 'key',
+                                             'mesh': mesh.name, 'native_part_count': 1,
+                                             'editable_slots': [{'material': 'cap', 'triangles': 1,
+                                                                 'diffuse': [1., 1., 1.],
+                                                                 'position_triangles_sha256': digest}]}]}
+            render = SimpleNamespace(RenderBodyComponent=Body, RenderMaterial=Material, RenderShapeTriangleMesh=Shape,
+                                     RenderTexture2D=Texture)
+            record = SimpleNamespace(type='file', name='key', filename=str(mesh), material=None)
+            link = SimpleNamespace(name='link_1', visual_records=[record], build_render_component=lambda: native_body)
+            with patch.dict(sys.modules, {'sapien': SimpleNamespace(render=render), 'sapien.render': render}):
+                prepared = M.OfficePartMaterials(definition, root)
+                prepared.install(SimpleNamespace(link_builders=[link]))
+                link.build_render_component()
+            _, rebuilt, mutable, _ = prepared.bindings[0]
+            chromatic = [.63, .58, .55, 1.]
+            private = prepared.keycap_textures['keycap']
+            prepared.apply_texture('keycap', mutable, chromatic)
+            self.assertIsNot(mutable, material)
+            self.assertIs(mutable.base_color_texture, private.texture)
+            self.assertIsNot(mutable.base_color_texture, texture)
+            self.assertEqual(M.texture_descriptor(private.texture), M.texture_descriptor(texture))
+            self.assertIsNone(prepared.strip_texture)
+            changed = private.texture.download()
+            self.assertFalse(np.array_equal(changed, pixels))
+            np.testing.assert_array_equal(changed[..., 3], pixels[..., 3])
+            self.assertEqual(int(changed[0, 0, 0]) - int(changed[0, 1, 0]), 85)
+            np.testing.assert_array_equal(changed[1, 0], pixels[1, 0])
+            np.testing.assert_array_equal(texture.download(), pixels)
+            prepared.apply_texture('keycap', mutable, None)
+            np.testing.assert_array_equal(private.texture.download(), pixels)
+            np.testing.assert_array_equal(rebuilt.get_vertex_uv(), part.get_vertex_uv())
+            self.assertEqual(material.base_color, [1., 1., 1., 1.])
+
     def test_triangle_partition_preserves_indices_attributes_and_texture_handle(self):
         from PIL import Image, ImageDraw
         with tempfile.TemporaryDirectory() as folder, patch.object(M, 'ROOT', Path(folder).resolve()):
@@ -300,13 +355,15 @@ class PublicOfficeReset(unittest.TestCase):
                 self.state_writes += 1
                 if options is None:
                     options = {}
-                if self.appearance is not None and 'reset_to_env_states' not in options:
+                if 'reset_to_env_states' not in options:
                     indices = options.get('env_idx', range(self.num_envs))
-                    for index in indices:
-                        index = int(index)
-                        if self.appearance.bindings[index] is None:
-                            self.appearance.bindings[index] = []
-                    self.appearance.finish_reset(list(map(int, indices)), options)
+                    ids = list(map(int, indices))
+                    for appearance in (self.appearance, getattr(self, '_office_keyboard_appearance', None)):
+                        if appearance is not None:
+                            for index in ids:
+                                if appearance.bindings[index] is None:
+                                    appearance.bindings[index] = []
+                            appearance.finish_reset(ids, options)
                 return 'observations', 'info'
 
             def __setattr__(self, name, value):
@@ -351,18 +408,21 @@ class PublicOfficeReset(unittest.TestCase):
             actual.decorator_list = []
             constructor = next(node for node in actual.body if isinstance(node, ast.FunctionDef)
                                and node.name == '__init__')
+            appearance_fields = {f'self._{key}', 'self._office_keyboard_appearance'}
             constructor.body = [
                 node for node in constructor.body if isinstance(node, ast.Assign)
-                and [ast.unparse(target) for target in node.targets] == [f'self._{key}']
+                and any(ast.unparse(target) in appearance_fields for target in node.targets)
             ]
-            assert len(constructor.body) == 1
+            assert len(constructor.body) == (1 if task == 'ClickMouse' else 2)
             actual.body = [constructor] + [node for node in actual.body
                                            if isinstance(node, ast.FunctionDef) and node.name == 'reset']
             exec(compile(ast.Module(body=[actual], type_ignores=[]), str(task_path), 'exec'), namespace)
             cls.env_classes[task] = namespace[actual.name]
 
-    def env(self, task, key, config=None):
+    def env(self, task, key, config=None, *, keycaps=None):
         kwargs = {} if config is None else {key: config}
+        if keycaps is not None:
+            kwargs['office_keyboard_appearance'] = keycaps
         instance = self.env_classes[task](num_envs=2, **kwargs)
         instance.appearance = getattr(instance, f'_{key}')
         instance.num_envs = 2
@@ -457,6 +517,34 @@ class PublicOfficeReset(unittest.TestCase):
                     options = {key: {'mode': 'random_choice', 'scheme_ids': ['inactive_typo']}}
                     self.assertEqual(env.reset(options=options), ('observations', 'info'))
                     self.assertIs(env.calls[0][1], options)
+
+    def test_keycaps_and_device_channels_select_independently_before_native_reset(self):
+        key = 'office_devices_appearance'
+        keycaps_key = 'office_keyboard_appearance'
+        for task in ('OpenLaptop', 'TypeKeys'):
+            with self.subTest(task=task):
+                caps_only = self.env(task, key, {'enabled': False},
+                                     keycaps={'enabled': True, 'scheme_id': 'variant_3'})
+                caps_only.reset()
+                self.assertIsNone(caps_only.appearance)
+                self.assertEqual(caps_only._office_keyboard_appearance.schemes, ['variant_3'] * 2)
+                device_only = self.env(task, key, {'enabled': True, 'scheme_id': 'variant_1'},
+                                       keycaps={'enabled': False})
+                device_only.reset()
+                self.assertEqual(device_only.appearance.schemes, ['variant_1'] * 2)
+                self.assertIsNone(device_only._office_keyboard_appearance)
+
+                env = self.env(task, key, {'enabled': True, 'scheme_id': 'variant_1'},
+                               keycaps={'enabled': True, 'scheme_id': 'variant_8'})
+                caps = env._office_keyboard_appearance
+                self.reject(env, 'env 1.*invalid', {key: {'scheme_id': 'variant_2'}, keycaps_key: {
+                    'per_env': {'1': {'scheme_id': 'invalid'}}}})
+                self.assertEqual(caps.records, [])
+                env.reset()
+                env.reset(options={'env_idx': [1], keycaps_key: {'scheme_id': 'original'}})
+                self.assertEqual(env.appearance.schemes, ['variant_1', 'variant_1'])
+                self.assertEqual(caps.schemes, ['variant_8', 'original'])
+                self.assertEqual(caps.episodes, [1, 2])
 
     def test_all_expansion_ids_forward_and_reject_late_typo(self):
         for task, _, key, _, original_candidates, _ in self.CASES:

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "office_desk.keyboard.v3",
+  "version": "office_desk.keyboard.realistic.v1",
   "stage": "runtime",
   "object_id": "keyboard",
   "model_id": "13106",
@@ -16,126 +16,223 @@
     "ochre_matte": {
       "shell": {
         "base_color": [
-          0.72,
-          0.34,
-          0.035,
+          0.38133,
+          0.26636,
+          0.14703,
           1.0
         ],
-        "roughness": 0.8,
-        "metallic": 0.0
+        "roughness": 0.72,
+        "metallic": 0
+      },
+      "shell_strip": {
+        "base_color": [
+          0.55834,
+          0.46208,
+          0.33716,
+          1.0
+        ],
+        "roughness": 0.65,
+        "metallic": 0
       }
     },
     "indigo_satin": {
       "shell": {
         "base_color": [
-          0.085,
-          0.075,
-          0.39,
+          0.09084,
+          0.10462,
+          0.18116,
           1.0
         ],
-        "roughness": 0.36,
-        "metallic": 0.0
+        "roughness": 0.43,
+        "metallic": 0.28
+      },
+      "shell_strip": {
+        "base_color": [
+          0.18782,
+          0.21586,
+          0.30499,
+          1.0
+        ],
+        "roughness": 0.45,
+        "metallic": 0.25
       }
     },
     "variant_3": {
       "shell": {
         "base_color": [
-          0.98,
-          0.025,
-          0.015,
+          0.56471,
+          0.60383,
+          0.63076,
           1.0
         ],
-        "roughness": 0.48,
-        "metallic": 0.08
+        "roughness": 0.64,
+        "metallic": 0
+      },
+      "shell_strip": {
+        "base_color": [
+          0.37124,
+          0.42869,
+          0.46208,
+          1.0
+        ],
+        "roughness": 0.61,
+        "metallic": 0
       }
     },
     "variant_4": {
       "shell": {
         "base_color": [
-          0.95,
-          0.82,
-          0.035,
+          0.05781,
+          0.07421,
+          0.0648,
           1.0
         ],
-        "roughness": 0.6,
-        "metallic": 0.1
+        "roughness": 0.66,
+        "metallic": 0
+      },
+      "shell_strip": {
+        "base_color": [
+          0.12214,
+          0.15896,
+          0.13843,
+          1.0
+        ],
+        "roughness": 0.59,
+        "metallic": 0
       }
     },
     "variant_5": {
       "shell": {
         "base_color": [
-          0.16,
-          0.82,
-          0.42,
+          0.67244,
+          0.58408,
+          0.4452,
           1.0
         ],
-        "roughness": 0.56,
-        "metallic": 0.03
+        "roughness": 0.48,
+        "metallic": 0.16
+      },
+      "shell_strip": {
+        "base_color": [
+          0.37626,
+          0.31855,
+          0.23074,
+          1.0
+        ],
+        "roughness": 0.5,
+        "metallic": 0.19
       }
     },
     "variant_6": {
       "shell": {
         "base_color": [
-          0.025,
-          0.38,
-          0.02,
+          0.24228,
+          0.27468,
+          0.14996,
           1.0
         ],
-        "roughness": 0.37,
-        "metallic": 0.17
+        "roughness": 0.69,
+        "metallic": 0
+      },
+      "shell_strip": {
+        "base_color": [
+          0.14996,
+          0.16513,
+          0.10224,
+          1.0
+        ],
+        "roughness": 0.64,
+        "metallic": 0
       }
     },
     "variant_7": {
       "shell": {
         "base_color": [
-          0.025,
-          0.21,
-          0.91,
+          0.18447,
+          0.30054,
+          0.37124,
           1.0
         ],
-        "roughness": 0.32,
-        "metallic": 0.13
+        "roughness": 0.39,
+        "metallic": 0.28
+      },
+      "shell_strip": {
+        "base_color": [
+          0.09306,
+          0.17789,
+          0.22323,
+          1.0
+        ],
+        "roughness": 0.49,
+        "metallic": 0.27
       }
     },
     "variant_8": {
       "shell": {
         "base_color": [
-          0.46,
-          0.04,
-          0.77,
+          0.21586,
+          0.08438,
+          0.09759,
           1.0
         ],
-        "roughness": 0.58,
-        "metallic": 0.07
+        "roughness": 0.57,
+        "metallic": 0.11
+      },
+      "shell_strip": {
+        "base_color": [
+          0.38643,
+          0.19807,
+          0.20864,
+          1.0
+        ],
+        "roughness": 0.47,
+        "metallic": 0.12
       }
     },
     "variant_9": {
       "shell": {
         "base_color": [
-          0.9,
-          0.25,
-          0.57,
+          0.02122,
+          0.0185,
+          0.01764,
           1.0
         ],
-        "roughness": 0.5,
-        "metallic": 0.04
+        "roughness": 0.75,
+        "metallic": 0
+      },
+      "shell_strip": {
+        "base_color": [
+          0.07036,
+          0.05448,
+          0.05448,
+          1.0
+        ],
+        "roughness": 0.66,
+        "metallic": 0
       }
     },
     "variant_10": {
       "shell": {
         "base_color": [
-          0.96,
-          0.97,
-          0.99,
+          0.39157,
+          0.36625,
+          0.36131,
           1.0
         ],
-        "roughness": 0.66,
-        "metallic": 0.02
+        "roughness": 0.68,
+        "metallic": 0
+      },
+      "shell_strip": {
+        "base_color": [
+          0.55201,
+          0.49693,
+          0.47353,
+          1.0
+        ],
+        "roughness": 0.64,
+        "metallic": 0
       }
     }
-  },
-  "role_aliases": {
-    "shell_strip": "shell"
   },
   "role_fields": {
     "shell": [
@@ -148,5 +245,17 @@
       "roughness",
       "metallic"
     ]
+  },
+  "finish_names": {
+    "ochre_matte": "Putty tan textured powder coat",
+    "indigo_satin": "Dusty indigo satin anodized aluminum",
+    "variant_3": "Light mineral ABS",
+    "variant_4": "Ink charcoal matte ABS",
+    "variant_5": "Warm pearl coated aluminum",
+    "variant_6": "Muted olive green powder coat",
+    "variant_7": "Dust blue satin anodized aluminum",
+    "variant_8": "Oxide wine coated aluminum",
+    "variant_9": "Espresso charcoal matte ABS",
+    "variant_10": "Almond pale gray molded ABS"
   }
 }

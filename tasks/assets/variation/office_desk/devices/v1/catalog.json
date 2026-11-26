@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "office-devices-appearance-v3",
+  "version": "office-devices-appearance-v4",
   "scope": "material_appearance",
   "schemes": [
     "original",
@@ -30,6 +30,22 @@
         "variant_8": "variant_8",
         "variant_9": "variant_9",
         "variant_10": "variant_10"
+      },
+      "keycaps": {
+        "catalog": "assets/appearance/objects/office_desk/laptop/keycaps_catalog.json",
+        "scheme_map": {
+          "original": "original",
+          "variant_1": "variant_1",
+          "variant_2": "variant_2",
+          "variant_3": "variant_3",
+          "variant_4": "variant_4",
+          "variant_5": "variant_5",
+          "variant_6": "variant_6",
+          "variant_7": "variant_7",
+          "variant_8": "variant_8",
+          "variant_9": "variant_9",
+          "variant_10": "variant_10"
+        }
       }
     },
     "keyboard": {
@@ -46,6 +62,22 @@
         "variant_8": "variant_8",
         "variant_9": "variant_9",
         "variant_10": "variant_10"
+      },
+      "keycaps": {
+        "catalog": "assets/appearance/objects/office_desk/keyboard/keycaps_catalog.json",
+        "scheme_map": {
+          "original": "original",
+          "variant_1": "variant_1",
+          "variant_2": "variant_2",
+          "variant_3": "variant_3",
+          "variant_4": "variant_4",
+          "variant_5": "variant_5",
+          "variant_6": "variant_6",
+          "variant_7": "variant_7",
+          "variant_8": "variant_8",
+          "variant_9": "variant_9",
+          "variant_10": "variant_10"
+        }
       }
     }
   },

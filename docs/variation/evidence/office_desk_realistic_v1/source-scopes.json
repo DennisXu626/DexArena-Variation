@@ -1,0 +1,16 @@
+{
+  "native_task_capture_commit": "b4723a71b01402b6a3e5d3b7b8bfd30ecdd83781",
+  "isolated_preview_capture_commit": "f90a619d8244eea4ee64ee5e3995b21766132bec",
+  "native_task_production_source_byte_diff": [],
+  "preview_scope_difference": {
+    "file": "tools/variation/office_devices_materials.py",
+    "changed_function": "plain",
+    "native_capture_sha256": "c32d84f9c56eb62bfd9a0c37a6fe86fbd6ac90a2c2c741614ef537df1915e23f",
+    "isolated_preview_sha256": "7d7ea2ae92b2dfec3286f31e7baedbdcab94adc6ba55a7619186910902e19a46",
+    "difference": "diff --git a/tools/variation/office_devices_materials.py b/tools/variation/office_devices_materials.py\nindex 67c8d73..dc59de7 100644\n--- a/tools/variation/office_devices_materials.py\n+++ b/tools/variation/office_devices_materials.py\n@@ -15,4 +15,6 @@ def plain(value):\n     if hasattr(value, \"tolist\"):\n         return value.tolist()\n+    if isinstance(value, dict):\n+        return {key: plain(item) for key, item in value.items()}\n     if isinstance(value, (tuple, list)):\n         return [plain(x) for x in value]\n",
+    "native_checker_imports_only": "office_devices_materials._RUNTIME",
+    "serializer_called_by_native_checker": false,
+    "runtime_helper_module_source_changed": false,
+    "method": "Git path diff, AST equality after removing plain, native imports inspected"
+  }
+}

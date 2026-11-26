@@ -1,0 +1,148 @@
+{
+  "schema": "office-desk-realistic-linux-review-v1",
+  "slurm_job_id": 135567,
+  "runtime_commit": "b4723a71b01402b6a3e5d3b7b8bfd30ecdd83781",
+  "runtime_tree": "038dc77cf0b6ab5144ffbe87e951b60d6c7cd495",
+  "scope": "Linux standard two-environment CUDA short tasks and independent keycaps",
+  "gpu": {
+    "name": "NVIDIA A800-SXM4-40GB",
+    "driver_version": "570.158.01"
+  },
+  "tasks": {
+    "OpenLaptop": {
+      "manifest_sha256": "1793d840ffa856c64ef55776582a1c7e3dd2898ac36681a80611eb72abee567a",
+      "results_sha256": "b87459bc55dc995ff0e5119c29265fb35a5c56fedb89e2b6a90a71cd6524678a",
+      "native_receipt_sha256": "272d15550c4197d9042b509154ba76a64ab6f575a9d546066759298b03314fd5",
+      "sdk_artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+      "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+      "sdk_version": "3.0.3+dexarena.gpu1.linux1",
+      "fixed_camera_rgb_pairs": 110,
+      "minimum_fraction_over_8": 0.0429229736328125,
+      "selected_state_checks": 42,
+      "native_rgb_restorations": 60,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "independent_keycaps": {
+        "camera": "front_detail",
+        "fixed_pairs": 55,
+        "selected_state_checks": 26,
+        "editable_native_parts_per_env": 153,
+        "raw_slot_evidence_sha256": "1b2183af19e3f297f5783f36f61be216661ac94a4cc3df6e3e2b7ea7fb249534",
+        "raw_geometry_sha256": "5649474ddb29b9c2446cfc00eed7c66f210a0227554464cae060284002bcc426",
+        "asset_preview_sha256": {
+          "OpenLaptop/keycaps_original_front_detail_env0.png": "f6f2959665533bed0c81146f3f4b0ee7a0474f34af1e1fcb6803dba38191488c",
+          "OpenLaptop/keycaps_variant_1_front_detail_env0.png": "3aeb599fba7979620aa795adacc93789739f7653b113de86acb1f41d4239e9f2",
+          "OpenLaptop/keycaps_variant_2_front_detail_env0.png": "518bf3e5ddfee7923669ab9cf6d6c1ae1241abfb8a30d0f082111b43ed34a7d1",
+          "OpenLaptop/keycaps_variant_3_front_detail_env0.png": "afc80497c34dc88026fd8886b4df9c2b2c7c5390aba772764d38f6e0f51e8825",
+          "OpenLaptop/keycaps_variant_4_front_detail_env0.png": "ca6958ec8ac96cac59ba476296035616f2f1ee802cd0073f7bf6b8a9082f32b2",
+          "OpenLaptop/keycaps_variant_5_front_detail_env0.png": "b821bc22564f10798c8643207b5b8d6b7b993e58e72c09d3ed66446f3ae55e66",
+          "OpenLaptop/keycaps_variant_6_front_detail_env0.png": "3e143e16fe969e74be26095646d678b008706534d245ddc51927446aaf5f3279",
+          "OpenLaptop/keycaps_variant_7_front_detail_env0.png": "c88af4b88eaf20f08fe65fb076537320b3773be1f9c8b7343366383feb7d9cda",
+          "OpenLaptop/keycaps_variant_8_front_detail_env0.png": "21b421cda910c446d655e14b5b321efb601b3d52919be4b961db1805591ececb",
+          "OpenLaptop/keycaps_variant_9_front_detail_env0.png": "e3b9e6d517a620341121f2852febc07698c7afa6ee841e6d994ae224c1a0a252",
+          "OpenLaptop/keycaps_variant_10_front_detail_env0.png": "2db6543e4682e58319d4db871fc7615b6babb0e1e7f4cc1372ef205a513a2e37"
+        },
+        "minimum_fraction_over_8": 0.012983957926432291
+      },
+      "keyboard_private_strip": null,
+      "mouse_collision": null
+    },
+    "TypeKeys": {
+      "manifest_sha256": "c7f2ef33485a907ac0b6be8eda04d540ca6a0ca7c2fce8a3d1515666448fb937",
+      "results_sha256": "ae8c74b775092f787ffdb566d93264eec34db5e2fe2cb34a6be960bff2db9b04",
+      "native_receipt_sha256": "6fe5a5794c0b884202e72fd827b43d0dded01021343f52b4f2b8770976fd6418",
+      "sdk_artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+      "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+      "sdk_version": "3.0.3+dexarena.gpu1.linux1",
+      "fixed_camera_rgb_pairs": 110,
+      "minimum_fraction_over_8": 0.0041068672839506175,
+      "selected_state_checks": 42,
+      "native_rgb_restorations": 80,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "independent_keycaps": {
+        "camera": "human",
+        "fixed_pairs": 55,
+        "selected_state_checks": 26,
+        "editable_native_parts_per_env": 77,
+        "raw_slot_evidence_sha256": "36c47df8bcfb5909b59947c95ec14a9497459e705cb5c7187a723b1f75df8cd7",
+        "raw_geometry_sha256": "3c8d4a6d7421a7f7ef6041c26d15b4817469884b8240760a545ba4fe94d38c89",
+        "asset_preview_sha256": {
+          "TypeKeys/keycaps_original_human_env0.png": "04b3fd081f8d5d6098b5117a1f299cec082d9b129cbd14b3738f8d7b101b980c",
+          "TypeKeys/keycaps_variant_1_human_env0.png": "16a0be0c6732ec69066b686c31077ad124fab118dc43c6292961741f8e58cddb",
+          "TypeKeys/keycaps_variant_2_human_env0.png": "2b59541561aef9e4140c386b4eab1381449d1e982a3ad687d0394129ddfa2de7",
+          "TypeKeys/keycaps_variant_3_human_env0.png": "10bc97f5c4139caee2e0bd49774fb2f15faa91a2dd17a8656821ca0585483368",
+          "TypeKeys/keycaps_variant_4_human_env0.png": "00c444a5913ab3fa0dbd8906a53b297436e10aa65d007f5130725c57505e8062",
+          "TypeKeys/keycaps_variant_5_human_env0.png": "8bdf1d0e1d3ab7f87bd0c571b356447342b75a3d1d81ebbf0795cb0255fea2f5",
+          "TypeKeys/keycaps_variant_6_human_env0.png": "7b9b4401115de7c567fad4cada5d0056c161bd6601f770037a9533f3459c71ab",
+          "TypeKeys/keycaps_variant_7_human_env0.png": "210bc829f377fefe6086b2da8e15f9c1fd0b8d2af96ab421a371ef60b86e44f3",
+          "TypeKeys/keycaps_variant_8_human_env0.png": "851814f602b821ffb5cb32d23582c06b2e5540b031fa8e9bae078f8ef41a963e",
+          "TypeKeys/keycaps_variant_9_human_env0.png": "a84096e02a83f8d3d901dce79f6962a1d75b50982f1241025a6237adab99d554",
+          "TypeKeys/keycaps_variant_10_human_env0.png": "4972891a3e6cba5f0bea574c52e1e793f0e5fe1f3f1803971ac67f3e393cf5b0"
+        },
+        "minimum_fraction_over_8": 0.004286265432098766
+      },
+      "keyboard_private_strip": {
+        "sha256": "ec10e71f7a5ca5b6d6b2493ffac1ca0812433440b4bbb8d884cc3753248948c2",
+        "stages": 22,
+        "arrays_recomputed": 128
+      },
+      "mouse_collision": null
+    },
+    "ClickMouse": {
+      "manifest_sha256": "98b64a72e7a218d9fd23803be5713386151b6843ab03a5398626a8b82977dcf5",
+      "results_sha256": "364ec3dad0c5629f643311bd7d322bf1e28ba6de344fa8587e271a5eb6813196",
+      "native_receipt_sha256": "7ac160e0eca3bbcd9865bec6b3c008095a173ceb848bd1bce6736581fc3d088f",
+      "sdk_artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+      "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+      "sdk_version": "3.0.3+dexarena.gpu1.linux1",
+      "fixed_camera_rgb_pairs": 110,
+      "minimum_fraction_over_8": 0.0028292338053385415,
+      "selected_state_checks": 42,
+      "native_rgb_restorations": 60,
+      "control_steps": 2,
+      "physics_steps": 40,
+      "independent_keycaps": null,
+      "keyboard_private_strip": null,
+      "mouse_collision": {
+        "coacd_version": "1.0.14",
+        "coacd_files": {
+          "coacd/__init__.py": "c5730c358f078af8fe2d017fa7cb374f1511c2cca3da8fb15b25171786f01044",
+          "coacd/lib_coacd.so": "4c7134a59d9e96278d291703042063ecb52dd4c00a3574a5ee2c6de45fb0b487"
+        },
+        "trimesh_version": "5.2.1",
+        "trimesh_import_sha256": "a50d8a9c4346fa0c5f6ca0c234effd12c548b1bee58197abb8106cb5e79d3360",
+        "caches": {
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-1.obj.coacd.ply": {
+            "sha256": "cbbedd015fdbf5dcbf587e597b3da7d8b375fdeb61c353c96e4014499e79e25f",
+            "mesh_source_md5": "cb0f3b20f5eab9296db956b4f4e8a7b6"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-2.obj.coacd.ply": {
+            "sha256": "c90f148e147a36c058608f8019e76d45feec660d6a149c5bd214e3cdcf35134c",
+            "mesh_source_md5": "42840d8ff95f3c045f01b83a35b65dc0"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-3.obj.coacd.ply": {
+            "sha256": "a631e437fccb412faafe5432f7e8586c3254f5bfc2687d10da8d88ef143f14ed",
+            "mesh_source_md5": "d900818d54ef78a8060486fbaed975df"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-4.obj.coacd.ply": {
+            "sha256": "cccf838ab9704acb89db7ec830eb398040f090b4a44213dd89d22d26c3cc16d3",
+            "mesh_source_md5": "e63cf8f28103dc8738560ea05f6fef7d"
+          },
+          "tasks/assets/task_object_meshes/office/101408/textured_objs/original-5.obj.coacd.ply": {
+            "sha256": "6b90eae89236e7e7676e1619522ed71c03d653e0a73a920555701675dceb6d9d",
+            "mesh_source_md5": "beb8452e4a34196f3143dc7c3ca9385c"
+          }
+        }
+      }
+    }
+  },
+  "status": "passed",
+  "office_phase_exit_code": 0,
+  "slurm_log_sha256": "cc4173e5c8117b8b82638ba72b6f9188f8633fc4738b2ea38f9de1ca7ed0cd74",
+  "independent_replay": {
+    "mode": "read-only saved artifacts and manifest replay, no simulation run",
+    "program_sha256": "1b54d507940042c5d58dbfefca40461df94e98d7fa755c5ad91e52aca532b4f8",
+    "stdout_sha256": "dc613852b65ee5221cd34929dd184a26b3f83b8d3b4edff80a155350bf195ff9"
+  }
+}

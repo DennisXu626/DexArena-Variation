@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "version": "office_desk.keyboard.keycaps.v1",
+  "stage": "runtime",
+  "object_id": "keyboard",
+  "model_id": "13106",
+  "fields": [
+    "base_color",
+    "roughness",
+    "metallic"
+  ],
+  "schemes": {
+    "original": {
+      "restore": "captured_native"
+    },
+    "variant_1": {
+      "keycap": {
+        "base_color": [
+          0.7991,
+          0.69387,
+          0.53948,
+          1.0
+        ],
+        "roughness": 0.69,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.38133,
+          0.40724,
+          0.35153,
+          1.0
+        ],
+        "roughness": 0.69,
+        "metallic": 0
+      }
+    },
+    "variant_2": {
+      "keycap": {
+        "base_color": [
+          0.55834,
+          0.65141,
+          0.75294,
+          1.0
+        ],
+        "roughness": 0.67,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.77582,
+          0.76815,
+          0.62396,
+          1.0
+        ],
+        "roughness": 0.67,
+        "metallic": 0
+      }
+    },
+    "variant_3": {
+      "keycap": {
+        "base_color": [
+          0.7454,
+          0.76052,
+          0.73791,
+          1.0
+        ],
+        "roughness": 0.54,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.38133,
+          0.45641,
+          0.50888,
+          1.0
+        ],
+        "roughness": 0.54,
+        "metallic": 0
+      }
+    },
+    "variant_4": {
+      "keycap": {
+        "base_color": [
+          0.41789,
+          0.53328,
+          0.39157,
+          1.0
+        ],
+        "roughness": 0.7,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.68669,
+          0.66539,
+          0.48515,
+          1.0
+        ],
+        "roughness": 0.7,
+        "metallic": 0
+      }
+    },
+    "variant_5": {
+      "keycap": {
+        "base_color": [
+          0.68669,
+          0.55201,
+          0.39157,
+          1.0
+        ],
+        "roughness": 0.65,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.3564,
+          0.34191,
+          0.28315,
+          1.0
+        ],
+        "roughness": 0.65,
+        "metallic": 0
+      }
+    },
+    "variant_6": {
+      "keycap": {
+        "base_color": [
+          0.6376,
+          0.69387,
+          0.43966,
+          1.0
+        ],
+        "roughness": 0.7,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.41789,
+          0.42869,
+          0.29177,
+          1.0
+        ],
+        "roughness": 0.7,
+        "metallic": 0
+      }
+    },
+    "variant_7": {
+      "keycap": {
+        "base_color": [
+          0.42327,
+          0.521,
+          0.60383,
+          1.0
+        ],
+        "roughness": 0.55,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.75294,
+          0.78354,
+          0.76052,
+          1.0
+        ],
+        "roughness": 0.55,
+        "metallic": 0
+      }
+    },
+    "variant_8": {
+      "keycap": {
+        "base_color": [
+          0.67244,
+          0.47932,
+          0.50289,
+          1.0
+        ],
+        "roughness": 0.68,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.38133,
+          0.32778,
+          0.33245,
+          1.0
+        ],
+        "roughness": 0.68,
+        "metallic": 0
+      }
+    },
+    "variant_9": {
+      "keycap": {
+        "base_color": [
+          0.50289,
+          0.46778,
+          0.41254,
+          1.0
+        ],
+        "roughness": 0.55,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.67244,
+          0.56471,
+          0.42869,
+          1.0
+        ],
+        "roughness": 0.55,
+        "metallic": 0
+      }
+    },
+    "variant_10": {
+      "keycap": {
+        "base_color": [
+          0.55201,
+          0.55201,
+          0.56471,
+          1.0
+        ],
+        "roughness": 0.56,
+        "metallic": 0
+      },
+      "keycap_accent": {
+        "base_color": [
+          0.37626,
+          0.47932,
+          0.50289,
+          1.0
+        ],
+        "roughness": 0.56,
+        "metallic": 0
+      }
+    }
+  },
+  "finish_names": {
+    "variant_1": "Warm ivory molded PBT",
+    "variant_2": "Cool mist molded PBT",
+    "variant_3": "Cloud neutral molded ABS",
+    "variant_4": "Mineral sage molded PBT",
+    "variant_5": "Pale sandstone molded PBT",
+    "variant_6": "Light olive-gray molded PBT",
+    "variant_7": "Blue-gray molded ABS",
+    "variant_8": "Light clay beige molded PBT",
+    "variant_9": "Mushroom gray molded ABS",
+    "variant_10": "Neutral pale gray molded ABS"
+  }
+}

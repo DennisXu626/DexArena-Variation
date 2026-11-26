@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "office_desk.laptop.v2",
+  "version": "office_desk.laptop.realistic.v1",
   "stage": "runtime",
   "object_id": "laptop",
   "model_id": "10211",
@@ -16,122 +16,134 @@
     "terracotta_matte": {
       "bezel": {
         "base_color": [
-          0.62,
-          0.14,
-          0.055,
+          0.37626,
+          0.22323,
+          0.16827,
           1.0
         ],
-        "roughness": 0.78,
-        "metallic": 0.0
+        "roughness": 0.48,
+        "metallic": 0.34
       }
     },
     "petrol_satin": {
       "bezel": {
         "base_color": [
-          0.025,
-          0.25,
-          0.32,
+          0.0865,
+          0.17789,
+          0.22323,
           1.0
         ],
-        "roughness": 0.34,
-        "metallic": 0.0
+        "roughness": 0.37,
+        "metallic": 0.33
       }
     },
     "variant_3": {
       "bezel": {
         "base_color": [
-          0.98,
-          0.025,
-          0.015,
+          0.48515,
+          0.43415,
+          0.36131,
           1.0
         ],
-        "roughness": 0.48,
-        "metallic": 0.08
+        "roughness": 0.37,
+        "metallic": 0.56
       }
     },
     "variant_4": {
       "bezel": {
         "base_color": [
-          0.95,
-          0.82,
-          0.035,
+          0.05286,
+          0.06301,
+          0.08022,
           1.0
         ],
-        "roughness": 0.6,
-        "metallic": 0.1
+        "roughness": 0.5,
+        "metallic": 0.29
       }
     },
     "variant_5": {
       "bezel": {
         "base_color": [
-          0.16,
-          0.82,
-          0.42,
+          0.65837,
+          0.55201,
+          0.40724,
           1.0
         ],
-        "roughness": 0.56,
-        "metallic": 0.03
+        "roughness": 0.36,
+        "metallic": 0.47
       }
     },
     "variant_6": {
       "bezel": {
         "base_color": [
-          0.025,
-          0.38,
-          0.02,
+          0.21953,
+          0.25818,
+          0.16827,
           1.0
         ],
-        "roughness": 0.37,
-        "metallic": 0.17
+        "roughness": 0.62,
+        "metallic": 0
       }
     },
     "variant_7": {
       "bezel": {
         "base_color": [
-          0.025,
-          0.21,
-          0.91,
+          0.28744,
+          0.34191,
+          0.42327,
           1.0
         ],
-        "roughness": 0.32,
-        "metallic": 0.13
+        "roughness": 0.42,
+        "metallic": 0.35
       }
     },
     "variant_8": {
       "bezel": {
         "base_color": [
-          0.46,
-          0.04,
-          0.77,
+          0.18782,
+          0.08022,
+          0.0999,
           1.0
         ],
         "roughness": 0.58,
-        "metallic": 0.07
+        "metallic": 0
       }
     },
     "variant_9": {
       "bezel": {
         "base_color": [
-          0.9,
-          0.25,
-          0.57,
+          0.02029,
+          0.02217,
+          0.02029,
           1.0
         ],
-        "roughness": 0.5,
-        "metallic": 0.04
+        "roughness": 0.55,
+        "metallic": 0.21
       }
     },
     "variant_10": {
       "bezel": {
         "base_color": [
-          0.048,
-          0.052,
-          0.06,
+          0.64448,
+          0.68669,
+          0.68669,
           1.0
         ],
-        "roughness": 0.66,
-        "metallic": 0.02
+        "roughness": 0.55,
+        "metallic": 0.08
       }
     }
+  },
+  "finish_names": {
+    "terracotta_matte": "Clay bronze satin anodized aluminum",
+    "petrol_satin": "Petrol blue satin anodized aluminum",
+    "variant_3": "Warm silver fine-bead anodized aluminum",
+    "variant_4": "Graphite matte anodized aluminum",
+    "variant_5": "Pale champagne satin anodized aluminum",
+    "variant_6": "Sage gray powder coat",
+    "variant_7": "Cosmic gray-blue fine-bead anodized aluminum",
+    "variant_8": "Oxide burgundy powder coat",
+    "variant_9": "Museum black low-sheen anodized aluminum",
+    "variant_10": "Cloud gray satin ceramic coating"
   }
 }

@@ -1,4 +1,4 @@
-"""Recompute Office expansion evidence from the raw CPU and CUDA captures."""
+"""Recompute Office appearance evidence from the raw CPU and CUDA captures."""
 import argparse
 import hashlib
 from itertools import combinations
@@ -26,6 +26,8 @@ REVIEW_IMAGES = (
     'OpenLaptop/variant_10_human_env0.png',
     'TypeKeys/local_0_base_camera_env0.png',
     'TypeKeys/local_0_base_camera_env1.png',
+    'OpenLaptop/keycaps_variant_8_front_detail_env0.png',
+    'TypeKeys/keycaps_variant_4_human_env0.png',
 )
 
 
@@ -101,6 +103,64 @@ def check_strip(directory, evidence, parameters, native, fixed_materials, scheme
                     assert row['bound']['sha256'] == safe_sha(fixed_materials[stage][env_id])
         assert set(archive.files) == seen
     return {'sha256': evidence['sha256'], 'stages': len(stages), 'arrays_recomputed': len(seen)}
+
+
+def check_keycaps(directory, checks, task, schemes, images):
+    evidence = checks['independent_keycaps']
+    assert evidence['status'] == evidence['device_only_keycaps_native'] == 'passed'
+    assert evidence['combined_preflight_atomicity'] == 'passed'
+    assert evidence['editable_native_parts_per_env'] == (153 if task == 'OpenLaptop' else 77)
+    camera = 'front_detail' if task == 'OpenLaptop' else 'human'
+    assert evidence['camera'] == camera
+    separator = audit.read(directory / 'keycaps_fixed_scheme_pairwise.json')
+    assert separator['schemes'] == list(schemes) and separator['camera'] == camera
+    assert separator['minimum_fraction_over_8'] == .001
+    native = [audit.png(directory / f'keycaps_native_{camera}_env{i}.png') for i in (0, 1)]
+    frames = {}
+    for scheme in schemes:
+        row = evidence['fixed'][scheme]
+        assert row['status'] == 'passed'
+        frames[scheme] = []
+        for i in (0, 1):
+            frame = directory / f'keycaps_{scheme}_{camera}_env{i}.png'
+            rendered = audit.png(frame)
+            frames[scheme].append(rendered)
+            if i == 0:
+                images[f'{task}/{frame.name}'] = frame
+            count = int(np.count_nonzero(np.any(rendered != native[i], axis=-1)))
+            assert row['detail_changed_pixels'][i] == count
+            if scheme == 'original':
+                assert count == 0
+            else:
+                assert count > 0 and row['exact_original_restoration']
+                restored = audit.png(directory / f'keycaps_restored_from_{scheme}_{camera}_env{i}.png')
+                assert np.array_equal(native[i], restored)
+    for (left, arrays_left), (right, arrays_right) in combinations(frames.items(), 2):
+        values = []
+        for a, b in zip(arrays_left, arrays_right, strict=True):
+            delta = np.abs(a.astype(np.int16) - b.astype(np.int16))
+            pixels = int(np.count_nonzero(delta.max(axis=-1) > 8))
+            assert pixels / delta[..., 0].size >= .001
+            values.append({'pixels_over_8': pixels, 'fraction_over_8': pixels / delta[..., 0].size,
+                           'mean_absolute_difference': float(delta.mean())})
+        assert separator['pairs'][f'{left}/{right}'] == values
+    selected = {}
+    for item in checks['keycap_selected_reset_state']:
+        assert item['evidence'] not in selected
+        audit.selected_check(directory, item)
+        selected[item['evidence']] = item['selected']
+    for i, row in zip((1, 0), evidence['local_resets'], strict=True):
+        assert row['selected'] == i and row['unselected'] == 1 - i
+        assert selected[row['state_evidence']] == [i]
+        assert row['keycap_schemes'][i] == 'original'
+        assert len(set(row['device_schemes'])) == 1 and row['device_schemes'][i] != 'original'
+        for view, pixels in row['unselected_pixel_changes'].items():
+            before, after = audit.pair(directory / f'keycaps_reset_{i}_{view}_env{1-i}.png')
+            assert pixels['changed_values'] == 0 and np.array_equal(before, after)
+    return {'camera': camera, 'fixed_pairs': len(separator['pairs']), 'selected_state_checks': len(selected),
+            'editable_native_parts_per_env': evidence['editable_native_parts_per_env'],
+            'raw_slot_evidence_sha256': audit.track(directory / evidence['keycaps_only_slot_evidence']),
+            'raw_geometry_sha256': audit.track(directory / 'keycaps_only_actual_geometry.pt')}
 
 
 def check_task(root, task, capture_commit, sources, artifact, expected, required, images):
@@ -202,8 +262,8 @@ def check_task(root, task, capture_commit, sources, artifact, expected, required
 
     baseline_images = ROOT / 'assets/appearance/objects/office_desk/previews/runtime' / task
     for scheme in schemes[:3]:
-        camera = 'human'
-        assert np.array_equal(frames[scheme, camera, 0], audit.png(baseline_images / f'{scheme}_{camera}_env0.png'))
+        previous = audit.png(baseline_images / f'{scheme}_human_env0.png')
+        assert np.array_equal(frames[scheme, 'human', 0], previous) == (scheme == 'original')
     for camera in cameras:
         for i in (0, 1):
             raw, _ = audit.pair(directory / f'native_capture_{camera}_env{i}.png')
@@ -240,6 +300,7 @@ def check_task(root, task, capture_commit, sources, artifact, expected, required
     strip = (check_strip(directory, checks['strip_texture_evidence'], parameters, native, fixed_materials, schemes)
              if task == 'TypeKeys' else None)
     mouse = audit.mouse_collision_check(row, ROOT) if task == 'ClickMouse' else None
+    keycaps = check_keycaps(directory, checks, task, schemes, images) if task != 'ClickMouse' else None
     identity = {**manifest, 'robot_asset_closure': row['asset_closure_sha256'],
                 'mouse_collision_identity': row.get('mouse_collision_identity')}
     return {'manifest_sha256': audit.track(capture / 'manifest.json'), 'results_sha256': audit.track(capture / 'results.json'),
@@ -248,7 +309,7 @@ def check_task(root, task, capture_commit, sources, artifact, expected, required
             'original_restorations': list(restored), 'first_repeat_stages': len(first_repeat),
             'native_cameras': list(cameras), 'selected_state_checks': len(reads), 'control_steps': 2, 'physics_steps': 40,
             'bidirectional_resets': local_evidence, 'counter_scope': counter, 'keyboard_private_strip': strip,
-            'mouse_collision': mouse, 'legacy_images_equal': list(schemes[:3])}, identity
+            'mouse_collision': mouse, 'independent_keycaps': keycaps, 'legacy_original_rgb_equal': True}, identity
 
 
 def check_cpu(batch, capture_commit, sources, manifests, artifact, expected, required):
@@ -351,7 +412,8 @@ def main():
     for task in runtime.TASKS:
         tasks[task], captures[task] = check_task(args.batch, task, capture_commit, sources, args.artifact, expected, required, images)
     cpu = check_cpu(args.batch, capture_commit, sources, captures, args.artifact, expected, required)
-    assert len(images) == 45 and set(REVIEW_IMAGES) <= images.keys()
+    expected_images = 45 + len(runtime.DEVICE_SCHEMES) * 2
+    assert len(images) == expected_images and set(REVIEW_IMAGES) <= images.keys()
     args.output.mkdir(parents=True)
     for name, path in images.items():
         target = args.output / name
@@ -359,7 +421,7 @@ def main():
         shutil.copyfile(path, target)
         assert audit.track(path) == audit.H.sha(target)
     assert sources == runtime.source_hashes()
-    audit.H.write(args.output / 'summary.json', {'format': 'office-expansion-evidence-v1', 'status': 'passed',
+    audit.H.write(args.output / 'summary.json', {'format': 'office-realistic-evidence-v1', 'status': 'passed',
         'baseline': capture_commit, 'capture_tree': capture_tree, 'source_identity': audit.source_identity(sources, ROOT), 'sdk': sdk,
         'tasks': tasks, 'cpu': cpu, 'images': {name: audit.track(path) for name, path in images.items()},
         'review_images': list(REVIEW_IMAGES),

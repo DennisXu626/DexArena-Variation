@@ -34,18 +34,20 @@ class OfficeResetScopeMixin(FurnitureResetScopeMixin):
         if seed is not None and not is_full_reset(env_idx, self.num_envs):
             raise ValueError('Office partial reset must omit seed; reseed only a full reset')
         if hasattr(self, '_mouse_appearance'):
-            key, appearance = 'mouse_appearance', self._mouse_appearance
+            channels = ('mouse_appearance',)
         else:
-            key, appearance = 'office_devices_appearance', getattr(self, '_office_devices_appearance', None)
-        override = {}
+            channels = ('office_devices_appearance', 'office_keyboard_appearance')
         restoring = options is not None and 'reset_to_env_states' in options
-        if options is not None and key in options:
-            if restoring:
-                raise ValueError('Office state restoration cannot include an appearance override')
-            override = options[key]
-            validate_reset_override(override, self.num_envs)
-        if appearance is not None and not restoring:
-            resolve_reset_requests(appearance.config, override, selected, appearance.catalog['schemes'])
+        for key in channels:
+            override = {}
+            if options is not None and key in options:
+                if restoring:
+                    raise ValueError('Office state restoration cannot include an appearance override')
+                override = options[key]
+                validate_reset_override(override, self.num_envs)
+            appearance = getattr(self, '_' + key, None)
+            if appearance is not None and not restoring:
+                resolve_reset_requests(appearance.config, override, selected, appearance.catalog['schemes'])
         if env_idx is not None:
             indices = torch.as_tensor(env_idx, dtype=torch.long, device=self._elapsed_steps.device)
             if indices is not env_idx:
