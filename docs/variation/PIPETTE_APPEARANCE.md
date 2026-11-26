@@ -41,7 +41,7 @@ obs, info = env.reset(options={"pipette_appearance": {"scheme_id": "original"}})
 records = env.unwrapped._pipette_appearance.records
 ```
 
-省略外观配置或关闭时，不创建外观材质、随机流或记录器。启用时在建场前按环境克隆材质，保留组件内部原有共享拓扑，捕获完整原生 PBR；原任务及短任务阶段初始化完成后统一应用方案。original 准确恢复捕获值，render 不重抽方案。
+省略外观配置或关闭时，不创建外观材质、随机流或记录器。启用时，建场按环境克隆材质，保留组件内部原有共享关系并捕获原生 PBR 值。启用候选渲染时，每行支架底板在加入场景前绑定自己的贴图。公开 reset 在返回首帧前原位上传该行所选候选的线性 RGBA，恢复 original 时则上传捕获的原生底色。render 沿用本轮选择。[双环境四种排列的首帧与下一帧](evidence/pipette_transfer/realistic/README.md)
 
 覆盖顺序为构造公共 → 构造 `per_env` → reset 公共 → reset `per_env`。`per_env` 使用实际环境编号的标准字符串键（如 `"0"`）和字典值。外观启用时，公开 `reset` 在进入父类前校验所有选中环境的有效显式 ID 或完整 `random_choice` 列表。无效方案在任务初始化、抽样、物理写入和材质修改前即被拒绝。外观关闭时，合法形状的 reset 覆盖不会启用外观。
 

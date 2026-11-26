@@ -1,0 +1,902 @@
+{
+  "status": "passed",
+  "scope": "CPU interface and render-none state/action trajectory verification",
+  "git_commit": "03ef33adfd2e0bc93c6c50aea8375af32f4d4163",
+  "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+  "source_sha256": {
+    "assets/appearance/objects/pipette_transfer/catalog.json": "f2e78f79b427859ab7e097cc7a973d3e6be7de69935a177f84992372618058f1",
+    "assets/appearance/objects/pipette_transfer/pipette/bindings.json": "cbd9c5e75846eec7535167136fc70cb44915840d7b30e3cb6a7bdde87018ece4",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png": "cba75536907673751f51fda92cbec47f2a7a7048526cda5c8e2c4e432c5dd48d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json": "88ac94e4857f205d9341e45f9589c62e6938ef7d4d34d16fffe015f1c1ca2fec",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/coral.png": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/jade.png": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_10.png": "586ce033196da93843dca9a616c10439d2dd1988be16b6773d389ee995a0ad9d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_3.png": "ab74eb62690610167b1048aa0325810246ae88950bfe43aebf8a43fdbc49f589",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_4.png": "92a9c2181802714a8ea3956a00d3c15ac91272556b8708af59309eae01949894",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_5.png": "d2421fd368418fb29a4b51bcac27d34a153a535db785c4d1a35aac185fcb4c19",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_6.png": "4e04a3c83d4e10785499ff66fc41da6a09dd7cea713f3d3017bfa504b8f84893",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_7.png": "cbd804dda0e02de9382c301a14c767c355bceb7b6a7458aafeaa0fb46ddfd317",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_8.png": "8982e253586487a6d3b55c20d6a754039392a1835b82083a2fdaa1eaaec1b39a",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_9.png": "11f1745cd02657a60b0a4e1bb1c62a29b9b330062600a257c6eab654d68a6142",
+    "assets/appearance/objects/pipette_transfer/sample_cup/bindings.json": "ba999d5504cedfc9bf42492e22547e19c4b800ab7d2f293932f8957966e38c31",
+    "assets/appearance/objects/pipette_transfer/test_tube/bindings.json": "4285ee1ab06da4e7c4df742b69ac4ff8f2691993db27eaf39136583178cbfec8",
+    "assets/appearance/objects/pipette_transfer/tip_cup/bindings.json": "62c9a268576044d8a9542ce5fd3f3c06e354f5fb654c15f6f01e24d0eef75829",
+    "assets/appearance/objects/pipette_transfer/tube_rack/bindings.json": "e50b7e45c2c60b37bb073f8010f8807aed60801d458e572000735e827205e142",
+    "tasks/__init__.py": "c58e1c183543c3923c2b041044312f9e13d9512c630e8c08157c92093b4bce33",
+    "tasks/assets/task_object_meshes/pipette/mobility.urdf": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+    "tasks/assets/task_object_meshes/pipette/README.md": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+    "tasks/assets/variation/pipette_transfer/v1/catalog.json": "72d9bcaeb654a5af77ddc0f1a6a3f864db83ba3787966a27d64b508aff3103d5",
+    "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/cabinet_pouring/cabinet_appearance.py": "e8bde99e12292c33b230bcdc41ad869dd75b5ce5cd0ad709de3ddddc8f51411a",
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": "fa7fb33ad079dabb99a843071fb88b2acaa619f30a27da9a7de1bc5cf5da78f5",
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "643267bf432aa86b6fc3c1ae911c4ead47f38adadec693f86ad753c505178cdd",
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "5b7bfa2b45b18c73a87c72abbbbdf0f7b16920d85c515b500a412a50dc16d6a2",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "f095fc74386f26935bb2292bfc807617037f876afd1ae85f6f5514f8b8507124",
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "52997f72ee539167b2eace7457799f54921bfd7d7e1a145d3dc32e0dbb0034f9",
+    "tasks/cabinet_pouring/family_appearance.py": "0cd255da8a4cb8e509d729d8589db809fba929c319f7e562fcccc705f8a0ebb1",
+    "tasks/cabinet_pouring/position_layout.py": "7dbdf0ead02816126f4df4ac536199e3157a48a88ea3565f3413639c2208adfa",
+    "tasks/cabinet_pouring/pouring_appearance.py": "bee89ec84057f82957802462d544aa6924b5dd6c6462cd175709f39fd9ef91e9",
+    "tasks/cabinet_pouring/variation.py": "67b037ca29310f0cb4f039685612704a7152b886f5f1d6709cc409dc892f6e02",
+    "tasks/config/__init__.py": "c00706d46b5c4da7e791e890e01729177f641ffdf2b4602b411ebec888aab4a7",
+    "tasks/config/code_fingerprint.py": "4066b9b78e60d95707f9ff0544f34f3eb1c6dd053de5cb0aacb7e1ace37a4d70",
+    "tasks/config/collection_targets.py": "43cd589b2fbb1904bcebbf9ea9befbad54e2cb62419c25aeffa8ae5f903c6ebf",
+    "tasks/config/contact_materials.py": "7b164cd063ce4353532ac510805c11b08512d19859aad672a4efbb7e05b386fa",
+    "tasks/config/energy_fence.py": "fb9344827b372b491daf5fe32e27acd49a2f40393faef1e437f98c4a2b6b3099",
+    "tasks/config/fingerprint_lineage.py": "a6a6c0ef474afbb42c4cc270187acc1dee9497ecc67c963e161d71af3d63c122",
+    "tasks/config/guidance_markers.py": "299f963e4834986fcbcf2b07a7477e75ebab4ddbc5f18ccc11e99001e264b95a",
+    "tasks/config/hands.py": "28ee1c670a80bfb73eeead124e1f9ad4c65f501386048e64b8d4a911a9b1e97c",
+    "tasks/config/layout_randomization.py": "4fd1e3caed613ecd4b595ed630260db1af7954c70c1b92cd528b8a68fcb305db",
+    "tasks/config/mass_properties.py": "91e7db6c781a2fd9366e0e645128621b2eadeedd718e70c69df12024fcff777c",
+    "tasks/config/object_materials.py": "49a9b2050ec27aea1c2bf68966f8e5f58765708713787abe52a5e329315ab9c3",
+    "tasks/config/sim_profiles.py": "cc91fd1985f72574a159b3e79cad38a44ef59a1c4abdeba43a3d619da1546191",
+    "tasks/config/task_state.py": "54663ace9db8c13899ecec5bf46be5b28c2352dc10b053d7253e80eecff8e711",
+    "tasks/config/workspace_rig.py": "4ef72264517d9500b995dbebb52c5c07e8b18e238b3aaf36c67b6f50bc93977f",
+    "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/drawer_plug/charger_appearance.py": "adedb85ff7db9eff7b25d9ebdff570f99f472f37f1f925f267c22569df23e79a",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "da1dc1a96d173c1afd7fa0211b57c657dbd72e15038f0cda5c0fe4dcee6ac157",
+    "tasks/drawer_plug/drawer_plug_long.py": "313c67bc618c40259ac0e19fa8134112f595dd1da079a8d453a8ac45c2bfacef",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "dc7ae809ea11e12a35e6fed6ccad5dd7a12a6206c7b2b87bbf13b3f7a57d9068",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "3c474322e3e7b4c8dc2940b831a77d3b3efe72eace372f18a11fc35dacec3c56",
+    "tasks/drawer_plug/family_appearance.py": "67ce784004d613606d5f50442b6087621229b0c2ae3ef37693bca8169dd979d7",
+    "tasks/drawer_plug/fixture_appearance.py": "85a9d2db4c33c748c35597e51f90eda57a2856eb5820c6a5597bc7fe4f944b59",
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "60f0c9d06be1f15abe7672dd9542d130666a998b2e0db9fc42c321b757341c15",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "0126c8fb833e6766f1c9f5171d915cec73d87793f2f4f838f0830121241f181c",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "97637298917bb95e9f25e798e284d2b0ad630e16a95e94165145c46bbfe4d80d",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "adc34d944be3e0b1ddc00e756622bcd52d65e30367fe41478c25bfebb6b2c7ae",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "f5ded2f12d952c3809342c0e687ca72e398c7f6832a976c1b4803fc941d9e4a1",
+    "tasks/furniture_assembly/reset_scope.py": "5e045aac8d0e50d770baa0dfed283b31312430be4738831af15f3cfd7cc3db6e",
+    "tasks/juice_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/juice_preparation/juice_preparation_apple_to_blender.py": "fe60f0a4b33f20bca40a6142813e5597b4f9ee7b5793f21fbce4cd8f07e632ba",
+    "tasks/juice_preparation/juice_preparation_close_fridge.py": "f103ddab029a883eac0786eec0d2067ad0af6a37fb8f3fc838aafa3a85c24872",
+    "tasks/juice_preparation/juice_preparation_long.py": "50dc25d2adfa13def14b36231946818febed927d9e722a00ee711179f056944e",
+    "tasks/juice_preparation/juice_preparation_open_fridge.py": "ecdb1e3d5d3fbfd3dee93b186e2a8ca85da819cd37278f9e69b5df405097cfe6",
+    "tasks/juice_preparation/juice_preparation_place_lid.py": "0e72c8fd9c27c635bec121ac3ce2127616f94ac1cb5e8bb27e664db6b85d8575",
+    "tasks/juice_preparation/juice_preparation_press_button.py": "5ffbe3e93bd64a7c395eab5755f95814758634badab4ffaeb9ca1976c9c10828",
+    "tasks/meal_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/meal_preparation/appearance.py": "50161c719ee3058343fc709f33175d9498ea38faa2c4a3a162f7dc42ecb768e9",
+    "tasks/meal_preparation/appearance_textures.py": "b05324c44e68dffbeef4e806b9291b250f8cee1c30a80471d57837ae9bdc34f5",
+    "tasks/meal_preparation/meal_preparation_long.py": "98f71d059bf21c17e48b4747b62c8b6e751bc4e0b80079d27e8e6eec74d9b9c4",
+    "tasks/meal_preparation/meal_preparation_open_lunch_box.py": "8a298497da1c4001767b2f654a7e790a2ce2fcc0801d50864615caa7ddc67cb0",
+    "tasks/meal_preparation/meal_preparation_place_bread.py": "b71c20aa1f7e298afbc3bbd19d6a1faf7b7b3b7997bc15ef263b6f38fca389cc",
+    "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "d6c1d6218e37fce19e90610bed2bbf2e5354295725800f6955fbe5b195f3d8f8",
+    "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/nut_bolt/appearance.py": "a38bfb70eee156a7519a50e25816d2885c7f03505dd56721c33b34a01942a8e2",
+    "tasks/nut_bolt/gpu_hold.py": "6e9206ef7260c006ecdbd286052f26e00fb9a7ecb3e8722b7207084c6c1eeefb",
+    "tasks/nut_bolt/nut_bolt_long.py": "de558f8f259abf6abf962f97faf9d42d6942a94dc3f8b9c6cd08034be6b81116",
+    "tasks/nut_bolt/nut_bolt_pick_bolt.py": "09f75e9ec5c9cd7087f9fcc440c1f47daf1437874c6152f73e2006f3df2b1eab",
+    "tasks/nut_bolt/nut_bolt_seat_nut.py": "48f84f70f615b5050c36a325df383538bc74be50dcad0752d9b8ca74e887710c",
+    "tasks/nut_bolt/nut_bolt_turn_nut.py": "dbb34b1fc87a509a7cae8454e375646da9b4c1fbdc6b244857c892161c396df3",
+    "tasks/nut_bolt/reset_scope.py": "31c8ce2a0e953a16c571ff26d8a4bebb2b42879bd6eeb7aca37dba7f7f60c77f",
+    "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/office_desk/devices_appearance.py": "cd0328592fadff99ff033749b51ab8640b44881721f244355ec0fe48fd63aa02",
+    "tasks/office_desk/mouse_appearance.py": "da2b6cb549fe4e6cacbe2a6ddab8058cdc5fd3dc2066b9289e721caef7d5709c",
+    "tasks/office_desk/office_desk_click_mouse.py": "d1cdaec778d5b6fad6f82b52aba98865383c7c79ca2f398720cafa1e0aecee32",
+    "tasks/office_desk/office_desk_long.py": "42dbb44534dababa7ca4546728b4304b28be8e29908500887baf7ce8e1e45f97",
+    "tasks/office_desk/office_desk_open_laptop.py": "ce40e235b4db4f92c455220220950829561d5ee24887b1e50d5e15506d39dd21",
+    "tasks/office_desk/office_desk_type_keys.py": "288acab8ad4d0797260e56a4012167021f6c5acd78e86e0caee2b3da6833caf0",
+    "tasks/office_desk/reset_scope.py": "766a4463f3d7a0f54b77d7e8a6eef8ef770b97ba22db7f0f0da65b11ce68f9b0",
+    "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/package_opening/appearance.py": "8be86b06fbc66e7071642df134fa215fdcdfed80165b9ea5d9b269f86c9f36c7",
+    "tasks/package_opening/package_opening_extract_apple.py": "dc8d2577c3e693ac372ee4cc1590306619833b889a2003da93c49dbc105b97c1",
+    "tasks/package_opening/package_opening_long.py": "9f6b353a03df28f000ab8103b65868d143877b2555fc663e1507bd6c33a2887e",
+    "tasks/package_opening/package_opening_open_package.py": "316830470eed9eba9f87737660a2cb1f66a60ab4810f7a9656c0fbe0a460ba49",
+    "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/pipette_transfer/appearance.py": "51903de65ff963bc7c3cade7b5fa0b4897e0dbcdaca48aa49aba77f31dc9b866",
+    "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "f8d53a4d410f1087ded229b1e58a11e3561cc084d59398cc34aec81ee2443624",
+    "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "5a287b2781c3fdb9816cdc197a56403476bcd92cb7192856aba58efcc4330d5b",
+    "tasks/pipette_transfer/pipette_transfer_long.py": "ee9c3fd8318333b7ba04e0def41f86312d6b96fe95b0003b2c1668754d4dd883",
+    "tasks/pipette_transfer/rendering.py": "ad2b0518c6b6e29ca44857c5fd6b20f4b45f6d666c298159106e4bfd46591064",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "3e7c463f4423f17d8e1421e6282e058f8c04822dc717417ea89a8871a0ea4740",
+    "tasks/robots/dual_arm_impedance_mixin.py": "65c982b84f6b8ade0d88e553e1eb0e798a19cc973cc510195f28cc515d7d8faa",
+    "tasks/robots/franka_joint_impedance_controller.py": "d705c01ea58d7109b737bd2dee5689b164e16f5dfc88a5ac5251192248238e89",
+    "tasks/robots/hand_controller_gains.py": "0d0b0bba6d2e1cc2f809a370cfecb3ca0a6dee96aa354bce05c37fbc0d06f0e0",
+    "tasks/robots/panda_base.py": "9bde96f2badc3a66b3c735201041b5faa38bf1fbd0681761bf4aa9297d3bb657",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "91c34337e8760885392dcf4d0e9715d71509fe7500f2adc84f238fd70af6acf2",
+    "tasks/robots/panda_dual_sharpa_hand.py": "19fba9459affa6668954561f7071acc6ef7ff2b0ccf862e861dd7eb41483bc82",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "00bf92e1851e8d153096218afc8c02af2798049f29b2ee452f397161f36fbda3",
+    "tasks/robots/panda_dual_wuji_hand.py": "9dcacce39f71b1d92e14518424369c39e51d4db6edc9340cf1a8e97e6b9d0e0f",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "9ced25ed1ead4adcd518cce3b099415e588817d1d23dda74c07055af42af2e77",
+    "tasks/robots/panda_dual_xhand_hand.py": "9573f9ffbf8fe525ac809a22827bc3900e0ab005ebbe4285d65729903aed994c",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "14c062fee161493e4db75f766363d5c8f16033cbdc1f732753405e017592fae1",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "7ee19e81356442dfe6e86200628eea08d6a143085dbe96f67290b5574275d208",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "f070dce37009835a83d6ac9e0057f1d3ec757d22e8ef62b7dc5e9eeea9971722",
+    "tasks/robots/panda_impedance.py": "99c42520e9a3161d4984e4d7d87e4dd773d25fb883f408bec6be361addd200d8",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "3333aa65cd0b0c1bb0302acdc5146ac499d364d4099e689b493ba271bdd9f56a",
+    "tasks/robots/panda_sharpa_hand_right.py": "533b821942a7b834efcba3449f695b17494d73ee6b4e44393f72be4caf7d5801",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "d36a5b7fb10e5c6c13f5b369e704959a135d7e23539331e9a633979b76cd4592",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "c3253ec752e611a7e85ff1874438dfc33409b7b7ccf2192e1a5562a063c29b83",
+    "tasks/robots/panda_wuji_hand_right.py": "b779fa8c4361964f11608c3564d5e68d67d69fcfb7ed9f0634d8ea3c14057f5b",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "3e82f5e13233abc9ce5b9f4aaadf53b976a519174e2ddf3d06ab416ae0ea5755",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "cc0ec17c811e19b297556c3460c543ff11a1030e28e147d8bcf94748b738c9c6",
+    "tasks/robots/panda_xhand_hand_right.py": "6c8b2b11baaaec32a79abd1404ce5df304b2be50b7d122b4569b9e0c488672a0",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "b5186a6eb14a8b2ab00f796d14bf9bf0c2ed18d8764d48a1defb9c840828ed22",
+    "tasks/scene_builders/__init__.py": "b8e71f3d14af2695a1033a71090354dbcf4384c8c6cafa9d47a295c0ee1b10bd",
+    "tasks/scene_builders/anchor.py": "fb17cd604ed4c4168a21c5887d9b0ba41d4adfdfb858050236734efea164249d",
+    "tasks/scene_builders/backgrounds.py": "39bab06603de2696d8e941be2f4cac8d6b728746ee4ed41b1ef1d994ce480260",
+    "tasks/scene_builders/camera_dr.py": "318645eaa0f813680892399c6c287224cacaf4cc739293836bb3fc3f7b719333",
+    "tasks/scene_builders/convert_labutopia.py": "31de41aedd8070603af0bfd91f03cb23e30174e7df80227ac9677b0d1fa3f46a",
+    "tasks/scene_builders/fetch_labutopia_scene.py": "ab9bafb71effc72050ca26a7f04a7239335b1ea15aa8f3b13068b69ce4fc22a5",
+    "tasks/scene_builders/fetch_objaverse_scene.py": "cac47e5e3c96f19698f6e43a7f99e7e4a568ee86bf52e63d4592b4d82428aa5e",
+    "tasks/scene_builders/find_glb_surfaces.py": "5f09d645460fe053a6f92665a9f2a75d5ec253afe84dda97dc926483c2a46fa5",
+    "tasks/scene_builders/labutopia.py": "8ed1ca9e44c0e618f210438de2509feea411da33e7630e83144b30aed597ac6f",
+    "tasks/scene_builders/lighting.py": "6dd7fb0163c01f9105a8a6769f41e2773e934658c3dbf6b67d019aa14d082e06",
+    "tasks/scene_builders/randomized_table.py": "9cdc304b1c731f66e69985b25ba89bcad8a1698bfdad484afb9929d0ddc7b878",
+    "tasks/scene_builders/render_labutopia.py": "614fc2f322e53b71abca33fda034d5ede1f4e8f8cfbf225f00a32f45eb551e5c",
+    "tasks/scene_builders/scene_library.py": "aa69ce52bd569833aa49418e7c802edabceb01d2e44c12a003e822797ea6e89d",
+    "tasks/scene_builders/table.py": "780d5fb1670e024fc24001fdea199e87e991fcd95cbe7d97066d63f38fe4654b",
+    "tasks/scene_builders/textures.py": "65e657cd2d7e98bfec2d49107c1c3d44d47f518282a70d171743d2594a9b6532",
+    "tasks/table_cleaning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/table_cleaning/table_cleaning_dump_dustpan.py": "50201dafa54c852978d9a7d04a520b7d03c35eee435611d6f15f5870502ef0ea",
+    "tasks/table_cleaning/table_cleaning_long.py": "916f368c70dcf147363a8e69aa967145c57264dbc507bb9d78a0234188935e5c",
+    "tasks/table_cleaning/table_cleaning_pick_debris.py": "c2fe9a43bb0a685b6b7a904d987a69403f215b5a0f7c3a6c9ea4b4d8d241eabe",
+    "tools/variation/build_pipette_stand_textures.py": "f8428abfa57d4bfeb56b0e3e62bd0a54bf7871501d0626a70ba2402bdf6f55a1",
+    "tools/variation/check_furniture_appearance.py": "478eeeea4e3dc95707cdb018a22d8d095260d01ec04d44594068944251ffcf82",
+    "tools/variation/check_furniture_dynamics.py": "5ba5f4b132ff1299b48ddc0f2c8eeb8c12f6054d9c72ba1c7739296f6da666ed",
+    "tools/variation/check_pipette_dynamics.py": "61307cae66ce58610d91821259ed9b80cbb175f534134e5d3a06aaabb84d1fbc",
+    "tools/variation/check_pipette_plate_reset.py": "4f86431b1a1d99690913cc095874c3694b88c09b7db4465054da084e4d164d1d",
+    "tools/variation/check_pipette_runtime.py": "4b82e015a0ac09b4efc78f1ffc6386d71db0c6ab9dbcd60baa90ded0bda02d86",
+    "tools/variation/sapien_sdk/run_task_check.py": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb"
+  },
+  "interface": {
+    "tasks": {
+      "AspirateLiquid": {
+        "fixed": {
+          "original": {
+            "materials_sha256": "599767c88dd88caa7a8eddde1d0c672e26a1870e24cee9fd76a7e73bf7e10872",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "jade": {
+            "materials_sha256": "0015fb43a2277d1d3c3eabed10836daef23bc1531b39dc7d879a89b91356d123",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "coral": {
+            "materials_sha256": "dbd726792971b7b2ac62718a87c2c6d7b9700c24f1ee8786a0f3ae1f97d70f54",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_3": {
+            "materials_sha256": "a923b2785a7cba22772d19a8d8bd1df5dade0a50758c7b07c994ee7239b05e82",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_4": {
+            "materials_sha256": "39d0499b5943695cca38f2fce04e5f7e1aa68c650183b3678000e43a3b15d6ce",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_5": {
+            "materials_sha256": "ff728d54d668aaa650a7be3628200aa86aa42050e8100af811256ed717bd9bae",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_6": {
+            "materials_sha256": "2eb31837ab58f7f7c651ddf20e49de1d14667c90255d3f6dec00361fd027b040",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_7": {
+            "materials_sha256": "b74d9935438994d79c3a09df6a8bbf860f3703d78d9604f4791bc0ae158f5959",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_8": {
+            "materials_sha256": "60b48328bbeba5861471a606ddf461fce161a7f1d2ed9094cd9d76e831f5bbdb",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_9": {
+            "materials_sha256": "3136dc0dddc0485ba1b3698a8feafc92187aa8a73a93fdd18f972feb0d9807d3",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_10": {
+            "materials_sha256": "bb8fabc18217000d9c3466db2e97ca5e8f37d082c24e16be295dec3e9212ddd1",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          }
+        },
+        "random_trace_sha256": "d43fa7eddf2fd4b0be36bdca67b6db68b9f29c25405891755e909215b8bdc030",
+        "retained_checks": {
+          "default_disabled": "passed",
+          "explicit_disabled": "passed",
+          "selection_precedence": {
+            "status": "passed",
+            "constructor_config": {
+              "enabled": true,
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "coral"
+                }
+              }
+            },
+            "reset_override": {
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "jade"
+                }
+              }
+            },
+            "actual_schemes": [
+              "jade"
+            ],
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 3,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 4,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "invalid_last_environment_atomicity": "passed"
+        }
+      },
+      "DispenseLiquid": {
+        "fixed": {
+          "original": {
+            "materials_sha256": "027bb6030fbd607b47768d3db35e3edb2324d6a03a0aa28e93c1ac3cb520a6bd",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "jade": {
+            "materials_sha256": "29cb910816d0ab2c2524a8b77c3bccc80e1a99887def0ab109955c24c4a4c19d",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "coral": {
+            "materials_sha256": "1c8303cfa85f6e0172e94baf8728493bc68cd2d61a34a48e33c7b91ffce8970c",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_3": {
+            "materials_sha256": "4e07191d7e7e8820a543b43245ebe1c3b24770647953670cd489e52e4ad1d185",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_3",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_4": {
+            "materials_sha256": "e06f60dc98b258a03ddb5f39f5ab57dccc36a5691069eb0ea908b2df199e541e",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_4",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_5": {
+            "materials_sha256": "de26a4ba38f78995a76a12597d9be4a2cdeaa682172bdcb29e625e9db8bc55aa",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_5",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_6": {
+            "materials_sha256": "70b59e82abaabaa20510ee94c1ea7def90b87d6acf35aa4e0d59fadd18f855fe",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_6",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_7": {
+            "materials_sha256": "67d26e834212773da9214bdb4496a158a212045e10864ef1b1323d1c011e7b87",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_7",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_8": {
+            "materials_sha256": "5b9384c366049f5240c7796b0a4b53ca02e932bbbd0c5c90dc054b43fbfa73bc",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_8",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_9": {
+            "materials_sha256": "69ec8695ccab133e4a69e23b13574b5aaa1b370f5b654fe9363e47014fb04e10",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_9",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "variant_10": {
+            "materials_sha256": "2a4be77a0b194c88fd1b1d2fa177e257d9fc391a1444db490482dd84b6318832",
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "variant_10",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          }
+        },
+        "random_trace_sha256": "d43fa7eddf2fd4b0be36bdca67b6db68b9f29c25405891755e909215b8bdc030",
+        "retained_checks": {
+          "default_disabled": "passed",
+          "explicit_disabled": "passed",
+          "selection_precedence": {
+            "status": "passed",
+            "constructor_config": {
+              "enabled": true,
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "coral"
+                }
+              }
+            },
+            "reset_override": {
+              "scheme_id": "original",
+              "per_env": {
+                "0": {
+                  "scheme_id": "jade"
+                }
+              }
+            },
+            "actual_schemes": [
+              "jade"
+            ],
+            "records": [
+              {
+                "env_idx": 0,
+                "episode_index": 1,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 2,
+                "scheme_id": "coral",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 3,
+                "scheme_id": "original",
+                "catalog_version": "pipette-appearance-v3"
+              },
+              {
+                "env_idx": 0,
+                "episode_index": 4,
+                "scheme_id": "jade",
+                "catalog_version": "pipette-appearance-v3"
+              }
+            ]
+          },
+          "invalid_last_environment_atomicity": "passed"
+        }
+      }
+    },
+    "results_sha256": "7a5d9197489bcf458536f11c7df6076f490f4d695e54fc3016645103334b989a",
+    "console": {
+      "process_sha256": "245ac6209dc445c41f856bf133b3dc156698f8325b52346ca3bbe41fab14dd98",
+      "streams_sha256": {
+        "stdout.txt": "a07e035bbfe7e95f857bb1e70f211ffe17659163e11313042c654a29038af470",
+        "stderr.txt": "d720efe68803c8e8753cf5089605e1e0f4ad72e8613b8ffb49b762c2c5a79639"
+      },
+      "returncode": 0,
+      "command": [
+        "{python}",
+        "-B",
+        "tools/variation/sapien_sdk/run_task_check.py",
+        "--repo-root",
+        ".",
+        "--checker",
+        "tools/variation/check_pipette_runtime.py",
+        "--output",
+        "{capture_directory}",
+        "--approved-runtime",
+        "--sim-backend",
+        "physx_cpu",
+        "--sapien-root",
+        "{sdk_root}",
+        "--artifact",
+        "{sdk_artifact}",
+        "--physx-gpu-dir",
+        "{physx_gpu_directory}"
+      ],
+      "resources": {
+        "sha256": "9e7645bee28d0eb31cf62e3f69db52d25504c524077491d3287be5c317f3680c",
+        "sample_count": 102,
+        "initial_free_mib": 5948,
+        "initial_util_percent": 2,
+        "max_delta_mib": 91,
+        "min_free_mib": 5857
+      }
+    }
+  },
+  "dynamics": {
+    "control_steps": 1560,
+    "physics_steps": 31200,
+    "tasks": {
+      "AspirateLiquid": {
+        "actions_sha256": "2ae0c1dcaf282acdb5e45e8ad31c50c0d6bc4f42b87043043af45129d8bcbad2",
+        "max_joint_motion_rad": 0.015342950820922852,
+        "runs": {
+          "native_off": {
+            "run_sha256": "6bba7b279e00f8b349a5413f3d4d4f10bd6553c4a2ab4ea149ff1c5c55fc2e5f",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "native_repeat": {
+            "run_sha256": "a63452d998ae626578478775b9c32e302fca5a0cb46bf50820378b0e8604d4b0",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "original": {
+            "run_sha256": "0103b12c274fcf5e8b2534f28c0a7d3e78dfd6d5027062a642117b28f163e709",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "jade": {
+            "run_sha256": "10f320bd164cf230c392c5e38917a9d4a2af0e37c181a9f7bed86d6a159a431a",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "coral": {
+            "run_sha256": "fb33921d4565669816398f20326d6e1aa32267cd4a6b7ee3a0b6db546433529a",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_3": {
+            "run_sha256": "dd34b43b1819046770afe94c53b21fc0e2a2ec8e1cebf636499ca6a5ae843193",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_4": {
+            "run_sha256": "7eb6f11a37313317840d6e57cb58170625d986b0c9d938e8b45b4a3bf1622315",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_5": {
+            "run_sha256": "900a0c20b2a8928c72f5c8e85827f341d7ee5b1e6fa931b637b2b6a644517900",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_6": {
+            "run_sha256": "b2bca7bfaa5d4a37663604c6854fa3ff14f21af6a76f04b1077bc441497d107d",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_7": {
+            "run_sha256": "a9134034d585434cc42f14364eef9fb5eba066fbf30a9aeaa898858b46cc96a5",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_8": {
+            "run_sha256": "4dfcd65d48a35e31545c6ccb4f92614759138c2114cee6e0d6fe777f0f9e7730",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_9": {
+            "run_sha256": "62914a24f15af60feebfc7762e3bbd8d62f04fb8924621ac414c27bf06a25a6b",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_10": {
+            "run_sha256": "3200271e3748bdb03d30783cbeae83de3af9f189c49f37ac4e91ed84b9eaf1e9",
+            "frames": 61,
+            "trajectory_sha256": "7ed87cd73e05108fce91530313caa9fa667891f4c54625e29cc176d25cfaca61",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          }
+        }
+      },
+      "DispenseLiquid": {
+        "actions_sha256": "2ae0c1dcaf282acdb5e45e8ad31c50c0d6bc4f42b87043043af45129d8bcbad2",
+        "max_joint_motion_rad": 0.015329360961914062,
+        "runs": {
+          "native_off": {
+            "run_sha256": "d5571ca07f3bdf9f1359322c52f9c8b3d40a95160fcfe10965fdc053a14c81ae",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "native_repeat": {
+            "run_sha256": "f4045402353604020c493216d73de59af2c500f7c2794504cb2556d9fc4986ab",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "original": {
+            "run_sha256": "bc5f5cc53f8fd87106c94ec6410a03dfe157ffd4f2f0b15fb0e3eedd8f51b2af",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "jade": {
+            "run_sha256": "4ecbfee9c375dec9b2587dcb1a0f55f72697b4c9b3860e43b1eb3196a98dc6fb",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "coral": {
+            "run_sha256": "395f9377c76f62afef19cc0d9e31bea70c8bfe23b3c481243a72ae59f204792a",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_3": {
+            "run_sha256": "de09577c340aad20d8e1e4c15e1adbdcb8ff94672d4f6f5775b535f9fd47889c",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_4": {
+            "run_sha256": "d043d0f3e3eb10cdb993843d7b15ddecaa5a2d2a239ca834a037b055a5903fa5",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_5": {
+            "run_sha256": "b989f2d12827f30723a17f9b7ca5cf5bc1433a292964675ad0416194412847c3",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_6": {
+            "run_sha256": "1f51cbf0adb3c2b308f6c9c450a64b5f4800bf3a41e7b7f0b763e3cf81909e46",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_7": {
+            "run_sha256": "1734ef223166c1cef35c4873a2cd958b857b08293e70038631a41cf8551e3e0e",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_8": {
+            "run_sha256": "199db3466356c37ec4d674a34ff2903241639c81c0ada13d81acbfc9190c108a",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_9": {
+            "run_sha256": "f348214ab860b3883ed6307ab7cc6e3fce0392c5e6854286147b08957133bc32",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          },
+          "variant_10": {
+            "run_sha256": "317d96ddd76e000c128e4522cf39f7ea0228a5f32daca0a734ba86fd12269c73",
+            "frames": 61,
+            "trajectory_sha256": "af7468c4461e0f227f444b76d14a6dcb3f2f40f2c0a1a1d12c894cc12d578f3c",
+            "max_abs_error": 0,
+            "private_sdk_sha256": "c93113b149d63a4a583f7e2a8d17f68992cdbee9e187e813299ce6301f6103c5"
+          }
+        }
+      }
+    },
+    "console": {
+      "process_sha256": "6bbed56065688dbda87cb09d166f5a7fa1e4e2747b8a0270d7db317e036a306a",
+      "returncode": 0,
+      "stdout_sha256": "818d2c15e79272067df047a1ed74eb7ee78eddd68cdab16258837b2ae7916dcc",
+      "stderr_sha256": "fd8b4eafbf0642a230ea93fd9ae3e90df0005fea8f3983c706012db348f22a80",
+      "image_capture": false
+    }
+  }
+}
