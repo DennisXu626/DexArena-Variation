@@ -1,0 +1,41 @@
+{
+  "frozen_sha": "b9b4ab662b86b6227040d429890f14a721c6a4b7",
+  "stages": {
+    "OpenFridge": {
+      "A4": 11,
+      "A5": 20,
+      "status": "passed"
+    },
+    "AppleToBlender": {
+      "A4": 11,
+      "A5": 20,
+      "status": "passed"
+    },
+    "CloseFridge": {
+      "A4": 11,
+      "A5": 20,
+      "status": "passed"
+    },
+    "PlaceLid": {
+      "A4": 11,
+      "A5": 20,
+      "status": "passed"
+    },
+    "PressButton": {
+      "A4": 11,
+      "A5": 20,
+      "status": "passed"
+    },
+    "Long": {
+      "A4": 11,
+      "A5": 20,
+      "status": "passed"
+    }
+  },
+  "short_trace": "passed",
+  "new_id_matrix_rows": 96,
+  "critical_cases": 6,
+  "A4_total": 66,
+  "A5_total": 120,
+  "trace_pairs": 66
+}

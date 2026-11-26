@@ -1,0 +1,35 @@
+{
+  "scope": "deterministic synthetic RGBA fixture, seed7, 512x512; CPU only",
+  "cases": [
+    {
+      "scheme": "variant_1",
+      "role": "apple",
+      "exact_output_match": true
+    },
+    {
+      "scheme": "variant_1",
+      "role": "blender",
+      "exact_output_match": true
+    },
+    {
+      "scheme": "variant_1",
+      "role": "lid",
+      "exact_output_match": true
+    },
+    {
+      "scheme": "variant_2",
+      "role": "apple",
+      "exact_output_match": true
+    },
+    {
+      "scheme": "variant_2",
+      "role": "blender",
+      "exact_output_match": true
+    },
+    {
+      "scheme": "variant_2",
+      "role": "lid",
+      "exact_output_match": true
+    }
+  ]
+}

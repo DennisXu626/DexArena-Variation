@@ -9,5 +9,5 @@
   "critical_reset_cases": 20,
   "scope": "actual reset/evaluate/helpers; external BaseEnv, geometry and render inputs replaced; no simulator/GPU",
   "historical_counterexample_head": "fc028483b5d865c05ee6e7e18b95975c836c9935",
-  "tested_head": "1bca422f9e561d847233a63d1f572cfe4590ab25"
+  "tested_head": "b9b4ab662b86b6227040d429890f14a721c6a4b7"
 }
