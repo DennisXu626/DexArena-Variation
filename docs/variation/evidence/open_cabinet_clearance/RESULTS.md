@@ -1,5 +1,7 @@
 # OpenCabinet: clearance before the operator moves
 
+**Current repair.** The opt-in public reset now screens every requested start before ManiSkill changes the scene. The recorded 59.31 mm rejection preserved both CPU rows, and both matched-control sequences passed. [CPU evidence and pending CUDA check](rejected_reset_repair/RESULTS.md)
+
 **GPU follow-up.** Job 142378 reproduced penetration at the two old starts. The corrected near request was explicitly rejected and far cleared the geometry screen. Passive state changed on the subsequent local reset, which stopped the run. [First-frame results and remaining blocker](runtime_001/RESULTS.md)
 
 The old near and right starts intersect the closed door in the reconstructed collision meshes. The old left start is separate but leaves only 35.90 mm at the neutral posture. This change tests the actual noisy arm posture before accepting a cabinet root and also tests a path from that posture to pre-grasp. The scope is the opt-in left Sharpa OpenCabinet task on main `54ba60d3e700a7d56022696e554f6ef20130a858`.

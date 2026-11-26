@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 import gymnasium as gym
+import numpy as np
 import torch
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -26,7 +27,9 @@ if str(REPO_ROOT) not in sys.path:
 from tasks.config.hands import register_task
 from mani_skill.utils.wrappers.record import RecordEpisode
 
-from tasks.cabinet_pouring.cabinet_pouring_long import DEFAULT_CONTROL_MODE, DEFAULT_ROBOT_UID_LEFT, CabinetPouringLongEnv
+from tasks.cabinet_pouring.cabinet_pouring_long import (
+    DEFAULT_ARM_INIT_QPOS, DEFAULT_CONTROL_MODE, DEFAULT_ROBOT_UID_LEFT, CabinetPouringLongEnv,
+)
 
 
 ENV_ID = "CabinetPouringOpenCabinet-Sharpa-v1"
@@ -56,7 +59,58 @@ class CabinetPouringOpenCabinetEnv(CabinetPouringLongEnv):
         if handle_workspace and kwargs.get("robot_uids") != DEFAULT_ROBOT_UID_LEFT:
             raise ValueError("handle_workspace requires the registered left angled Sharpa arm")
         self._handle_workspace = handle_workspace
+        self._workspace_next_seed = {}  # Advanced only for a successfully reset environment.
         super().__init__(*args, **kwargs)
+
+    def _workspace_arm_draw(self, seed):
+        # The constructor also enters reset, before the articulation exists.
+        # Same seven native means, Gaussian noise and device, with a private RNG.
+        generator = torch.Generator(device=self.device).manual_seed(seed)
+        home = torch.tensor(DEFAULT_ARM_INIT_QPOS, dtype=torch.float32, device=self.device)
+        noise = torch.randn(home.shape, dtype=home.dtype, device=self.device, generator=generator)
+        return home + noise * self.robot_init_qpos_noise
+
+    def reset(self, seed=None, options=None):
+        options = {} if options is None else options
+        if not self._handle_workspace or "reset_to_env_states" in options:
+            return super().reset(seed=seed, options=options)
+        if "position_layout" in options:
+            if "handle_placement" in options:
+                raise ValueError("handle_placement requires a single layout request")
+            return super().reset(seed=seed, options=options)
+
+        # BaseEnv.reset writes the reset mask, elapsed steps and GPU buffers.
+        # Finish every fallible placement check before crossing that boundary.
+        from .open_cabinet_workspace import resolve_workspace
+
+        indices = list(range(self.num_envs))
+        if "env_idx" in options:
+            selected = torch.as_tensor(options["env_idx"], device=self.device)
+            if selected.ndim != 1 or selected.dtype not in (torch.int32, torch.int64):
+                raise ValueError("env_idx must contain integer environment indices")
+            indices = sorted(selected.tolist())
+            if (not indices or indices[0] < 0 or indices[-1] >= self.num_envs
+                    or len(indices) != len(set(indices))):
+                raise ValueError("env_idx must contain distinct, in-range environment indices")
+            # Articulation setters consume rows in boolean-mask (scene index) order.
+            options = {**options, "env_idx": selected.new_tensor(indices, dtype=torch.long)}
+        seeds = self._workspace_next_seed.copy()
+        if seed is not None:
+            values = np.atleast_1d(seed).tolist()
+            if len(values) == 1:
+                expansion = np.random.RandomState(values[0])
+                values += expansion.randint(2**31, size=self.num_envs - 1).tolist()
+            if len(values) != self.num_envs:
+                raise ValueError("Expected one seed or one per environment")
+            seeds.update((i, values[i]) for i in indices)
+        streams = {i: np.random.RandomState(seeds[i]) for i in indices}
+        arm = torch.stack([self._workspace_arm_draw(int(streams[i].randint(2**31))) for i in indices])
+        layout = resolve_workspace(self, indices, options.get("handle_placement"),
+                                   start_qpos=arm.cpu().numpy(), streams=streams)
+        seeds.update((i, int(streams[i].randint(2**31))) for i in indices)
+        result = super().reset(seed=seed, options={**options, "_workspace_plan": (layout, arm)})
+        self._workspace_next_seed = seeds
+        return result
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         from .position_layout import requested_layout
@@ -66,16 +120,14 @@ class CabinetPouringOpenCabinetEnv(CabinetPouringLongEnv):
         with torch.device(self.device):
             b = len(env_idx)
             if self._handle_workspace and layout is None:
-                # Keep the native table / qpos draw order. Screen the exact qpos sent
-                # to agent.reset, before any physics step or teleoperation command.
-                from .open_cabinet_workspace import resolve_workspace
+                layout, arm = options["_workspace_plan"]
                 self.table_scene.initialize(env_idx)
                 self._set_work_table_pose()
-                start = self._initial_robot_qpos(b)
+                # For this single-arm registration, rest is in active joint order.
+                start = torch.as_tensor(self.agent.keyframes["rest"].qpos, device=self.device,
+                                        dtype=torch.float32).expand(b, -1).clone()
                 names = [joint.name for joint in self.agent.robot.get_active_joints()]
-                arm = [names.index(name) for name in self.agent.arm_joint_names]
-                layout = resolve_workspace(self, env_idx.tolist(), options.get("handle_placement"),
-                                           start_qpos=start[:, arm].detach().cpu().numpy())
+                start[:, [names.index(name) for name in self.agent.arm_joint_names]] = arm
                 self._reset_episode_buffers(env_idx)
                 self.agent.reset(start)
                 self.agent.robot.set_root_pose(self._robot_base_pose)

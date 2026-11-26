@@ -22,7 +22,7 @@ def contains(rows, xy):
                        (rows[:, 1] - eps <= x) & (x <= rows[:, 2] + eps)))
 
 
-def resolve_workspace(env, indices, requests, *, start_qpos=None):
+def resolve_workspace(env, indices, requests, *, start_qpos=None, streams=None):
     """Draw only selected episode streams; fixed requests consume no random draws."""
     checked = start_qpos is not None
     regions, presets = workspace(start_clearance=checked)
@@ -35,7 +35,7 @@ def resolve_workspace(env, indices, requests, *, start_qpos=None):
     poses = []
     for row, i in enumerate(indices):
         if requests is None:
-            rng = env._batched_episode_rng[i]
+            rng = (env._batched_episode_rng if streams is None else streams)[i]
             for _ in range(MAX_PLACEMENT_DRAWS if checked else 1):
                 yaw = int(rng.choice((10, 15, 20)))
                 rows = regions[yaw]

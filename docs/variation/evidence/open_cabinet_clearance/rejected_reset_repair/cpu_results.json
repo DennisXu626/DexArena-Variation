@@ -1,0 +1,1527 @@
+{
+ "backend": {
+  "source.txt": "83066a0e68f8679b02aa7afc56b7f5fcea1e1886b31e9cf50e1aaa3758f56f2c",
+  "rng.txt": "adf36f08a97ebf6c785154ca60c82d12393e1b7ebd771f578fac16d03e130f23"
+ },
+ "checks": [
+  {
+   "check": "near/0",
+   "rejection": "OpenCabinet placement 'near' rejected for env 0: start 59.31 mm, approach 29.17 mm",
+   "before": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "4edefebe3e5d48be214ad73a800724c002494d3b81491b40e7f8493f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "bfdfb73de32d11bd00002041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "0000803e"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "0d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 1322904761
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "444702bf3df840be664fd73c2ec924c0144811bbd2b01940acb24f3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "7b1e623da645863d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "000000be"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "1d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 284961259
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   },
+   "after": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "4edefebe3e5d48be214ad73a800724c002494d3b81491b40e7f8493f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "bfdfb73de32d11bd00002041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "0000803e"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "0d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 1322904761
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "444702bf3df840be664fd73c2ec924c0144811bbd2b01940acb24f3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "7b1e623da645863d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "000000be"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "1d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 284961259
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   }
+  },
+  {
+   "check": "near/0/unchanged",
+   "equal": true
+  },
+  {
+   "check": "far/1/passive",
+   "equal": true
+  },
+  {
+   "check": "near env unchanged after far/0",
+   "equal": true
+  },
+  {
+   "check": "matched baseline/0",
+   "equal": true
+  },
+  {
+   "check": "far/1/passive",
+   "equal": true
+  },
+  {
+   "check": "near env unchanged after far/0",
+   "equal": true
+  },
+  {
+   "check": "matched final/0",
+   "equal": true
+  },
+  {
+   "check": "near/1",
+   "rejection": "OpenCabinet placement 'near' rejected for env 1: start 59.31 mm, approach 29.17 mm",
+   "before": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "4edefebe3e5d48be214ad73a800724c002494d3b81491b40e7f8493f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "bfdfb73de32d11bd00002041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "0000803e"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "0d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 1322904761
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "444702bf3df840be664fd73c2ec924c0144811bbd2b01940acb24f3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "7b1e623da645863d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "000000be"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "1d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 284961259
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   },
+   "after": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "4edefebe3e5d48be214ad73a800724c002494d3b81491b40e7f8493f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "bfdfb73de32d11bd00002041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "0000803e"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "0d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 1322904761
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "444702bf3df840be664fd73c2ec924c0144811bbd2b01940acb24f3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "7b1e623da645863d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "000000be"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "1d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 284961259
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   }
+  },
+  {
+   "check": "near/1/unchanged",
+   "equal": true
+  },
+  {
+   "check": "far/0/passive",
+   "equal": true
+  },
+  {
+   "check": "near env unchanged after far/1",
+   "equal": true
+  },
+  {
+   "check": "matched baseline/1",
+   "equal": true
+  },
+  {
+   "check": "far/0/passive",
+   "equal": true
+  },
+  {
+   "check": "near env unchanged after far/1",
+   "equal": true
+  },
+  {
+   "check": "matched final/1",
+   "equal": true
+  },
+  {
+   "check": "mixed, explicit seed",
+   "rejection": "OpenCabinet placement 'near' rejected for env 1: start 59.31 mm, approach 29.17 mm",
+   "before": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "4edefebe3e5d48be214ad73a800724c002494d3b81491b40e7f8493f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "bfdfb73de32d11bd00002041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "0000803e"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "0d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 1322904761
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "444702bf3df840be664fd73c2ec924c0144811bbd2b01940acb24f3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "7b1e623da645863d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "000000be"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "1d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 284961259
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   },
+   "after": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "4edefebe3e5d48be214ad73a800724c002494d3b81491b40e7f8493f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "bfdfb73de32d11bd00002041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "0000803e"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "0d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 1322904761
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "444702bf3df840be664fd73c2ec924c0144811bbd2b01940acb24f3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "7b1e623da645863d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "000000be"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "1d000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 284961259
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   }
+  },
+  {
+   "check": "mixed, explicit seed/unchanged",
+   "equal": true
+  },
+  {
+   "check": "reverse order applied arm/0",
+   "equal": true
+  },
+  {
+   "check": "reverse order applied arm/1",
+   "equal": true
+  },
+  {
+   "check": "bounded exhaustion",
+   "rejection": "No clear OpenCabinet start for env 1 after 48 candidates; last: forced exhaustion",
+   "before": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "0e64f7be8a343ebec2620d3de3a227c065eb0cbcb4b0194009353e3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "1f85eb3dec51383d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "00000000"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "00"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "00000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 213068688
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "f9bb04bfd48255be779558bdd33626c0096c1ebba3db184079df453f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "1f85eb3dec51383d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "00000000"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "00"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "00000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 394965512
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   },
+   "after": {
+    "envs": [
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "0e64f7be8a343ebec2620d3de3a227c065eb0cbcb4b0194009353e3f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "1f85eb3dec51383d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "00000000"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "00"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "00000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+      "main_seed": 7,
+      "episode_seed": 7,
+      "workspace": 213068688
+     },
+     {
+      "state/q": [
+       "<f4",
+       [
+        9
+       ],
+       "f9bb04bfd48255be779558bdd33626c0096c1ebba3db184079df453f3333333fcdcc4c3f"
+      ],
+      "state/cabinet": [
+       "<f4",
+       [
+        3
+       ],
+       "1f85eb3dec51383d00007041"
+      ],
+      "state/table": [
+       "<f4",
+       [],
+       "ec51383e"
+      ],
+      "state/velocity": [
+       "<f4",
+       [],
+       "00000000"
+      ],
+      "state/task": [
+       "|b1",
+       [],
+       "00"
+      ],
+      "elapsed": [
+       "<i4",
+       [],
+       "00000000"
+      ],
+      "mask": [
+       "|b1",
+       [],
+       "01"
+      ],
+      "main": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "episode": "34bab0fdc3aacc1f027024420481fc025dff2a00d736607b9d52932323308e03",
+      "main_seed": 327741615,
+      "episode_seed": 327741615,
+      "workspace": 394965512
+     }
+    ],
+    "streams": {
+     "legacy_main": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "legacy_episode": "712416bc7cb4b776369cb28fab4ff9105ab0108b738e138b9c20a91875756d7c",
+     "numpy": "8d1ae1acfaaaf57e6324b9656b211cfa271b2da4651f40ac8d8bff43862a12d1",
+     "python": "da13d8ac068fd05b7920048d274660233efd3e1d8aa50279c9305ca2b1314c01",
+     "torch_cpu": "2ec21778d7ec931a32a99bae8b2f255bd23a3f1f9a0fee4c3790af628910b976"
+    }
+   }
+  },
+  {
+   "check": "bounded exhaustion/unchanged",
+   "equal": true
+  },
+  {
+   "check": "left/0/passive",
+   "equal": true
+  },
+  {
+   "check": "left/1/passive",
+   "equal": true
+  },
+  {
+   "check": "right/0/passive",
+   "equal": true
+  },
+  {
+   "check": "right/1/passive",
+   "equal": true
+  },
+  {
+   "check": "#32 bypasses workspace streams",
+   "equal": true
+  },
+  {
+   "check": "ordinary/0/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/1/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/0/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/1/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/0/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/1/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/0/passive",
+   "equal": true
+  },
+  {
+   "check": "ordinary/1/passive",
+   "equal": true
+  },
+  {
+   "check": "seed-once ordinary sequence",
+   "equal": true
+  },
+  {
+   "check": "native reset bypasses workspace streams",
+   "equal": true
+  }
+ ],
+ "placements": [
+  {
+   "env": 1,
+   "request": "far",
+   "planned_pose": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "applied_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "start_clearance_mm": 143.43201400905306,
+   "screen": "start 143.43 mm, approach 29.05 mm"
+  },
+  {
+   "env": 1,
+   "request": "far",
+   "planned_pose": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "applied_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "start_clearance_mm": 143.43201400905306,
+   "screen": "start 143.43 mm, approach 29.05 mm"
+  },
+  {
+   "env": 0,
+   "request": "far",
+   "planned_pose": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "applied_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "start_clearance_mm": 143.43201400905306,
+   "screen": "start 143.43 mm, approach 29.05 mm"
+  },
+  {
+   "env": 0,
+   "request": "far",
+   "planned_pose": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.11500000208616257,
+    0.04500000178813934,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "applied_arm": [
+    -0.5184932351112366,
+    -0.20850688219070435,
+    -0.05287691578269005,
+    -2.5970962047576904,
+    -0.002417328068986535,
+    2.3884055614471436,
+    0.7729411721229553
+   ],
+   "start_clearance_mm": 143.43201400905306,
+   "screen": "start 143.43 mm, approach 29.05 mm"
+  },
+  {
+   "env": 0,
+   "request": "left",
+   "planned_pose": [
+    0.08500000089406967,
+    0.1550000011920929,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.08500000089406967,
+    0.1550000011920929,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5104851722717285,
+    -0.1994311362504959,
+    -0.03505789488554001,
+    -2.626479387283325,
+    -0.007092897314578295,
+    2.4083847999572754,
+    0.7499510049819946
+   ],
+   "applied_arm": [
+    -0.5104851722717285,
+    -0.1994311362504959,
+    -0.03505789488554001,
+    -2.626479387283325,
+    -0.007092897314578295,
+    2.4083847999572754,
+    0.7499510049819946
+   ],
+   "start_clearance_mm": 108.47406635709606,
+   "screen": "start 108.47 mm, approach 29.85 mm"
+  },
+  {
+   "env": 1,
+   "request": "left",
+   "planned_pose": [
+    0.08500000089406967,
+    0.1550000011920929,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.08500000089406967,
+    0.1550000011920929,
+    15.0
+   ],
+   "screened_arm": [
+    -0.45647385716438293,
+    -0.24314594268798828,
+    -0.022559024393558502,
+    -2.5852932929992676,
+    -0.013005398213863373,
+    2.409357786178589,
+    0.7883844375610352
+   ],
+   "applied_arm": [
+    -0.45647385716438293,
+    -0.24314594268798828,
+    -0.022559024393558502,
+    -2.5852932929992676,
+    -0.013005398213863373,
+    2.409357786178589,
+    0.7883844375610352
+   ],
+   "start_clearance_mm": 63.29533071616855,
+   "screen": "start 63.30 mm, approach 29.93 mm"
+  },
+  {
+   "env": 0,
+   "request": "right",
+   "planned_pose": [
+    0.08500000089406967,
+    0.02500000037252903,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.08500000089406967,
+    0.02500000037252903,
+    15.0
+   ],
+   "screened_arm": [
+    -0.4921858310699463,
+    -0.16093620657920837,
+    0.011409172788262367,
+    -2.580814838409424,
+    -0.013903317973017693,
+    2.4069983959198,
+    0.7885740995407104
+   ],
+   "applied_arm": [
+    -0.4921858310699463,
+    -0.16093620657920837,
+    0.011409172788262367,
+    -2.580814838409424,
+    -0.013903317973017693,
+    2.4069983959198,
+    0.7885740995407104
+   ],
+   "start_clearance_mm": 82.71378048079426,
+   "screen": "start 82.71 mm, approach 28.96 mm"
+  },
+  {
+   "env": 1,
+   "request": "right",
+   "planned_pose": [
+    0.08500000089406967,
+    0.02500000037252903,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.08500000089406967,
+    0.02500000037252903,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5059863328933716,
+    -0.19722770154476166,
+    -0.018593396991491318,
+    -2.5843231678009033,
+    -0.009547867812216282,
+    2.41251277923584,
+    0.8228808045387268
+   ],
+   "applied_arm": [
+    -0.5059863328933716,
+    -0.19722770154476166,
+    -0.018593396991491318,
+    -2.5843231678009033,
+    -0.009547867812216282,
+    2.41251277923584,
+    0.8228808045387268
+   ],
+   "start_clearance_mm": 107.8440052694965,
+   "screen": "start 107.84 mm, approach 29.01 mm"
+  },
+  {
+   "env": 0,
+   "request": "ordinary",
+   "planned_pose": [
+    0.07693009823560715,
+    -0.017418546602129936,
+    10.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.07693009823560715,
+    -0.017418546602129936,
+    10.0
+   ],
+   "screened_arm": [
+    -0.48025766015052795,
+    -0.24633537232875824,
+    -0.002531475620344281,
+    -2.636272430419922,
+    0.029429223388433456,
+    2.3756728172302246,
+    0.7606574892997742
+   ],
+   "applied_arm": [
+    -0.48025766015052795,
+    -0.24633537232875824,
+    -0.002531475620344281,
+    -2.636272430419922,
+    0.029429223388433456,
+    2.3756728172302246,
+    0.7606574892997742
+   ],
+   "start_clearance_mm": 81.9240971133508,
+   "screen": "start 81.92 mm, approach 29.13 mm"
+  },
+  {
+   "env": 1,
+   "request": "ordinary",
+   "planned_pose": [
+    0.09333053231239319,
+    -0.0485384501516819,
+    10.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.09333053231239319,
+    -0.0485384501516819,
+    10.0
+   ],
+   "screened_arm": [
+    -0.5120036005973816,
+    -0.17758390307426453,
+    -0.010621119290590286,
+    -2.577608108520508,
+    0.0005518016987480223,
+    2.4177842140197754,
+    0.8124298453330994
+   ],
+   "applied_arm": [
+    -0.5120036005973816,
+    -0.17758390307426453,
+    -0.010621119290590286,
+    -2.577608108520508,
+    0.0005518016987480223,
+    2.4177842140197754,
+    0.8124298453330994
+   ],
+   "start_clearance_mm": 94.86225960181716,
+   "screen": "start 94.86 mm, approach 28.83 mm"
+  },
+  {
+   "env": 0,
+   "request": "ordinary",
+   "planned_pose": [
+    0.07591372728347778,
+    0.10110504925251007,
+    20.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.07591372728347778,
+    0.10110504925251007,
+    20.0
+   ],
+   "screened_arm": [
+    -0.5258358716964722,
+    -0.24984560906887054,
+    0.004232941661030054,
+    -2.6148900985717773,
+    0.03712894022464752,
+    2.4498109817504883,
+    0.7722325921058655
+   ],
+   "applied_arm": [
+    -0.5258358716964722,
+    -0.24984560906887054,
+    0.004232941661030054,
+    -2.6148900985717773,
+    0.03712894022464752,
+    2.4498109817504883,
+    0.7722325921058655
+   ],
+   "start_clearance_mm": 103.12106057388381,
+   "screen": "start 103.12 mm, approach 29.01 mm"
+  },
+  {
+   "env": 1,
+   "request": "ordinary",
+   "planned_pose": [
+    0.07152941077947617,
+    -0.04427672550082207,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.07152941077947617,
+    -0.04427672550082207,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5029069781303406,
+    -0.15918652713298798,
+    -0.014624742791056633,
+    -2.604870319366455,
+    0.02379116415977478,
+    2.4221363067626953,
+    0.7745692133903503
+   ],
+   "applied_arm": [
+    -0.5029069781303406,
+    -0.15918652713298798,
+    -0.014624742791056633,
+    -2.604870319366455,
+    0.02379116415977478,
+    2.4221363067626953,
+    0.7745692133903503
+   ],
+   "start_clearance_mm": 74.96414846902188,
+   "screen": "start 74.96 mm, approach 28.08 mm"
+  },
+  {
+   "env": 0,
+   "request": "ordinary",
+   "planned_pose": [
+    0.07693009823560715,
+    -0.017418546602129936,
+    10.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.07693009823560715,
+    -0.017418546602129936,
+    10.0
+   ],
+   "screened_arm": [
+    -0.48025766015052795,
+    -0.24633537232875824,
+    -0.002531475620344281,
+    -2.636272430419922,
+    0.029429223388433456,
+    2.3756728172302246,
+    0.7606574892997742
+   ],
+   "applied_arm": [
+    -0.48025766015052795,
+    -0.24633537232875824,
+    -0.002531475620344281,
+    -2.636272430419922,
+    0.029429223388433456,
+    2.3756728172302246,
+    0.7606574892997742
+   ],
+   "start_clearance_mm": 81.9240971133508,
+   "screen": "start 81.92 mm, approach 29.13 mm"
+  },
+  {
+   "env": 1,
+   "request": "ordinary",
+   "planned_pose": [
+    0.09333053231239319,
+    -0.0485384501516819,
+    10.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.09333053231239319,
+    -0.0485384501516819,
+    10.0
+   ],
+   "screened_arm": [
+    -0.5120036005973816,
+    -0.17758390307426453,
+    -0.010621119290590286,
+    -2.577608108520508,
+    0.0005518016987480223,
+    2.4177842140197754,
+    0.8124298453330994
+   ],
+   "applied_arm": [
+    -0.5120036005973816,
+    -0.17758390307426453,
+    -0.010621119290590286,
+    -2.577608108520508,
+    0.0005518016987480223,
+    2.4177842140197754,
+    0.8124298453330994
+   ],
+   "start_clearance_mm": 94.86225960181716,
+   "screen": "start 94.86 mm, approach 28.83 mm"
+  },
+  {
+   "env": 0,
+   "request": "ordinary",
+   "planned_pose": [
+    0.07591372728347778,
+    0.10110504925251007,
+    20.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.07591372728347778,
+    0.10110504925251007,
+    20.0
+   ],
+   "screened_arm": [
+    -0.5258358716964722,
+    -0.24984560906887054,
+    0.004232941661030054,
+    -2.6148900985717773,
+    0.03712894022464752,
+    2.4498109817504883,
+    0.7722325921058655
+   ],
+   "applied_arm": [
+    -0.5258358716964722,
+    -0.24984560906887054,
+    0.004232941661030054,
+    -2.6148900985717773,
+    0.03712894022464752,
+    2.4498109817504883,
+    0.7722325921058655
+   ],
+   "start_clearance_mm": 103.12106057388381,
+   "screen": "start 103.12 mm, approach 29.01 mm"
+  },
+  {
+   "env": 1,
+   "request": "ordinary",
+   "planned_pose": [
+    0.07152941077947617,
+    -0.04427672550082207,
+    15.0
+   ],
+   "applied_xy_m_yaw_deg": [
+    0.07152941077947617,
+    -0.04427672550082207,
+    15.0
+   ],
+   "screened_arm": [
+    -0.5029069781303406,
+    -0.15918652713298798,
+    -0.014624742791056633,
+    -2.604870319366455,
+    0.02379116415977478,
+    2.4221363067626953,
+    0.7745692133903503
+   ],
+   "applied_arm": [
+    -0.5029069781303406,
+    -0.15918652713298798,
+    -0.014624742791056633,
+    -2.604870319366455,
+    0.02379116415977478,
+    2.4221363067626953,
+    0.7745692133903503
+   ],
+   "start_clearance_mm": 74.96414846902188,
+   "screen": "start 74.96 mm, approach 28.08 mm"
+  }
+ ],
+ "status": "passed"
+}

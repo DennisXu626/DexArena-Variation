@@ -34,7 +34,7 @@ def method(filename,name):
 class Reset:
     _initial_robot_qpos=method("cabinet_pouring_long.py","_initial_robot_qpos")
     _initialize_workspace=method("cabinet_pouring_long.py","_initialize_workspace")
-    reset=method("cabinet_pouring_open_cabinet.py","_initialize_episode")
+    _initialize_episode=method("cabinet_pouring_open_cabinet.py","_initialize_episode")
     device="cpu"
     _handle_workspace=True
     _robot_base_pose=m.BASE
@@ -53,6 +53,15 @@ class Reset:
                                                   set_root_pose=lambda p:None))
 
     def _reset_episode_buffers(self,idx):self.indices=idx.tolist()
+    def reset(self,idx,options):
+        # Replay the historical CPU geometry/noise fixtures at the commit hook.
+        # The public reset transaction is exercised separately by check_atomic_reset.
+        if self._handle_workspace and "position_layout" not in options:
+            arm=self._initial_robot_qpos(len(idx))
+            placement=sampler.resolve_workspace(self,idx.tolist(),options.get("handle_placement"),
+                                                start_qpos=arm.numpy())
+            options={**options,"_workspace_plan":(placement,arm)}
+        return self._initialize_episode(idx,options)
     def apply_q(self,q):self.q[self.indices]=q.numpy()
     def _initialize_cabinet(self,idx,b,door_open,layout):
         assert not door_open
