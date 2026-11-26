@@ -58,13 +58,6 @@ class OfficeResetScopeMixin(FurnitureResetScopeMixin):
             key, appearance = 'office_devices_appearance', getattr(self, '_office_devices_appearance', None)
         override = {}
         restoring = options is not None and 'reset_to_env_states' in options
-        if options is not None and 'position_layout' in options:
-            if restoring:
-                raise ValueError('Office state restoration cannot include a position layout')
-            layout = resolve_position_layout(
-                options['position_layout'], selected, self._position_device_name, self._position_center,
-            )
-            options = {**options, 'position_layout': layout}
         if options is not None and key in options:
             if restoring:
                 raise ValueError('Office state restoration cannot include an appearance override')
@@ -76,6 +69,13 @@ class OfficeResetScopeMixin(FurnitureResetScopeMixin):
             indices = torch.as_tensor(env_idx, dtype=torch.long, device=self._elapsed_steps.device)
             if indices is not env_idx:
                 options = {**options, 'env_idx': indices}
+        if options is not None and 'position_layout' in options:
+            if restoring:
+                raise ValueError('Office state restoration cannot include a position layout')
+            layout = resolve_position_layout(
+                options['position_layout'], selected, self._position_device_name, self._position_center,
+            )
+            options = {**options, 'position_layout': layout}
         if workspace is None:
             return super().reset(seed=seed, options=options)
         options, pending = workspace.prepare(selected, seed, options or {})
