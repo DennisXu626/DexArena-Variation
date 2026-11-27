@@ -1,6 +1,6 @@
 # Juice Preparation 外观与双环境验证交付
 
-状态：四对象的 original＋两套新外观已制作，用户已完成人工预览审查；六任务限定双环境验证通过，待 Dennis 最终审阅。[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)已发起；本轮 R1 作者修正与 main 整合待用户提交，不代表正式集成验收通过。
+状态：PR #19 已由 main 的 squash 提交 `d02df83` 接受。本页保留两套方案历史范围；PR #40 十套扩展已整合到 main `6e3467b`，最终整合版本的独立验证另行记录，不以历史作业代替。
 
 分支 `codex/juice-preparation-appearance`，来自团队本地固定基线 `acd6ba232b8da7a97fd313aa3df8a9f595fd55e0`；现已整合 main 的 aee41a3439287a17ce9d4c14c6320fa6f5b4579d，并保留其它家族已合入内容；本地合并和 R1 修正尚未提交。
 
@@ -97,3 +97,13 @@ PR 建议附已审查的六组 original／两候选近景对照，以及 Long �
 ## PR19-R1 作者修正
 
 错误请求预校验、局部 reset 临界状态保护、main 冲突解决和按 ID 标图已完成作者侧修正，CPU 回归通过；新版本 GPU 复验待 head 冻结后安排。完整命令、证据边界与版本见[R1 修正报告](JUICE_PR19_R1.md)。
+
+## 十套扩展（作者工作分支）
+
+保留本页 PR19 两套历史说明。新增八套见 [十套方案](JUICE_TEN_VARIANTS.md) 和 [本轮证据](evidence/juice_ten/README.md)，作为独立十方案分支交付，PR 由作者发起。
+
+新版配色与果皮遮罩已完成作业138333正式回归，见[最新证据](evidence/juice_ten/v3_regression/README.md)。历史两套实现的说明保持原范围。
+
+## PR40-R1 基线整合
+
+2026-11-26：逐项审查五处 add/add 冲突，并保留当前 main 的 STATUS 索引。original、ID 1/2 配方及旧算法输出不变；六任务与 reset_guard 与正式 main 一致。八套新增配方与 138333 运行源码按换行规范化比较，详情见 [整合报告](JUICE_PR40_R1.md)。

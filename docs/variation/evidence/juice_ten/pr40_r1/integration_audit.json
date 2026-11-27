@@ -1,0 +1,109 @@
+{
+  "main": "6e3467b537bd67de3aeadb6758dc46d54170b96f",
+  "accepted_pr19": "d02df83ded4bbf7375531313ff2977572b3e8454",
+  "pr40": "1bca422f9e561d847233a63d1f572cfe4590ab25",
+  "snapshot_comparison": [
+    {
+      "path": "tasks/juice_preparation/appearance.py",
+      "job_138333_sha256": "d491bbc83deed2206269253e02695312680ce4d14afbcf19f32039be64458cca",
+      "integrated_sha256": "d491bbc83deed2206269253e02695312680ce4d14afbcf19f32039be64458cca",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/appearance_colors.py",
+      "job_138333_sha256": "1e36070357bd1cf52794e8ec9833ea2535ae45591c3201a7604dc85dea89a113",
+      "integrated_sha256": "1e36070357bd1cf52794e8ec9833ea2535ae45591c3201a7604dc85dea89a113",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/juice_preparation_apple_to_blender.py",
+      "job_138333_sha256": "115276b66cfd5fd826664a08747fffb13954b1aca34ca20b6595d1ad3817145d",
+      "integrated_sha256": "115276b66cfd5fd826664a08747fffb13954b1aca34ca20b6595d1ad3817145d",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/juice_preparation_close_fridge.py",
+      "job_138333_sha256": "36c51493ff093b0d1f2213d484d858228c29b001114f67a61200a38446214b2a",
+      "integrated_sha256": "36c51493ff093b0d1f2213d484d858228c29b001114f67a61200a38446214b2a",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/juice_preparation_long.py",
+      "job_138333_sha256": "ec68f756a0f03bd42447eb50be431839706e9ae966defcad577aad296b6ad7c5",
+      "integrated_sha256": "ec68f756a0f03bd42447eb50be431839706e9ae966defcad577aad296b6ad7c5",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/juice_preparation_open_fridge.py",
+      "job_138333_sha256": "b47d24c04348c5519e086becd02b0168bc20723d3dfc3e06e964f6da976d8fd5",
+      "integrated_sha256": "b47d24c04348c5519e086becd02b0168bc20723d3dfc3e06e964f6da976d8fd5",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/juice_preparation_place_lid.py",
+      "job_138333_sha256": "39aafb598f81b29bc04fa74d24f49dc726b689ed82031ab9d418cff4b0008e95",
+      "integrated_sha256": "39aafb598f81b29bc04fa74d24f49dc726b689ed82031ab9d418cff4b0008e95",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/juice_preparation_press_button.py",
+      "job_138333_sha256": "0b8b18909e6cee57149926045672c4fc205397d09eb7d22a3fd40f84a75392a3",
+      "integrated_sha256": "0b8b18909e6cee57149926045672c4fc205397d09eb7d22a3fd40f84a75392a3",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/reset_guard.py",
+      "job_138333_sha256": "112e4ac02f1ee3270a69092083f0008b7b9144c1b59b7c2b9c16047adc14b888",
+      "integrated_sha256": "112e4ac02f1ee3270a69092083f0008b7b9144c1b59b7c2b9c16047adc14b888",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/juice_preparation/__init__.py",
+      "job_138333_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "integrated_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "comparison": "exact"
+    },
+    {
+      "path": "tasks/assets/variation/juice_preparation/v1/catalog.json",
+      "job_138333_sha256": "bd2fa6e5c7caa5265ef7f49e62f4b46d0b6760136fd4ee64c925eec3dfac07da",
+      "integrated_sha256": "bd2fa6e5c7caa5265ef7f49e62f4b46d0b6760136fd4ee64c925eec3dfac07da",
+      "comparison": "exact"
+    },
+    {
+      "path": "tools/variation/check_juice_ten_paired.py",
+      "job_138333_sha256": "d20a3dfbd5a1760659c899506b6221c50eb7a37dfd894ba6691f07c2659fdd09",
+      "integrated_sha256": "d20a3dfbd5a1760659c899506b6221c50eb7a37dfd894ba6691f07c2659fdd09",
+      "comparison": "exact"
+    },
+    {
+      "path": "tools/variation/check_juice_short_trace_paired.py",
+      "job_138333_sha256": "f792f78c1263fe5eb28ae3ac58079b7f9c07110516232b2fc4403f4cab011ab4",
+      "integrated_sha256": "f792f78c1263fe5eb28ae3ac58079b7f9c07110516232b2fc4403f4cab011ab4",
+      "comparison": "exact"
+    },
+    {
+      "path": "tools/variation/check_juice_critical_reset.py",
+      "job_138333_sha256": "0be2a886d2da5374dd145c6b36e70d3391e2810c75a444160927848396009178",
+      "integrated_sha256": "0be2a886d2da5374dd145c6b36e70d3391e2810c75a444160927848396009178",
+      "comparison": "exact"
+    },
+    {
+      "path": "tools/variation/render_juice_preview.py",
+      "job_138333_sha256": "b07219ae60cd18432d166199ee27f9f44f02d1e7a555e52f8e4a452514d87e91",
+      "integrated_sha256": "b07219ae60cd18432d166199ee27f9f44f02d1e7a555e52f8e4a452514d87e91",
+      "comparison": "exact"
+    }
+  ],
+  "old_schemes_unchanged": true,
+  "task_and_reset_files_equal_main": [
+    "tasks/juice_preparation/__init__.py",
+    "tasks/juice_preparation/juice_preparation_apple_to_blender.py",
+    "tasks/juice_preparation/juice_preparation_close_fridge.py",
+    "tasks/juice_preparation/juice_preparation_long.py",
+    "tasks/juice_preparation/juice_preparation_open_fridge.py",
+    "tasks/juice_preparation/juice_preparation_place_lid.py",
+    "tasks/juice_preparation/juice_preparation_press_button.py",
+    "tasks/juice_preparation/reset_guard.py"
+  ],
+  "cpu_checker_delta": "Update existing contact sheet regression for three-column wrapping; frozen_head derived from HEAD rather than historical PR19 constant. Production/GPU checkers unchanged."
+}

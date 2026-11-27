@@ -1,0 +1,19 @@
+{
+  "job_id": 143212,
+  "host": "lyg0295",
+  "gpu_index": 6,
+  "cuda_ordinal": 0,
+  "frozen_sha": "b9b4ab662b86b6227040d429890f14a721c6a4b7",
+  "runtime_archive_sha256": "d618e4c6fe44ff23a3f796dd84589247553a1bce7a7d5870a50d3eb72412cd70",
+  "runtime_manifest_sha256": "b64c887e59b15838fba17a209675e3dcdebdc0394a6d9eb825d6668b2c35e0ee",
+  "runtime_files": 525,
+  "occupancy_source": "user-supplied Monica screenshot, Server3 G6 11/14 shards and low VRAM bar",
+  "submit_time_shanghai": "2026-11-26 16:05:28",
+  "slurm_options": [
+    "--export=NONE",
+    "--gres=gpu:6",
+    "--time=02:00:00"
+  ],
+  "server_directory": "/data/home/pb/juice-pr40-r1-20261126",
+  "scope": "PhysX CUDA + GPU render A4/A5, fresh-process short traces, critical reset; CPU physics + GPU render previews"
+}

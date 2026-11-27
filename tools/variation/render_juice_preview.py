@@ -63,29 +63,7 @@ def texture_pixels(texture):
     return np.asarray(Image.fromarray(pixels).convert("RGBA")).copy()
 
 
-def recolor_apple(rgba, color):
-    source = Image.fromarray(rgba).convert("RGB")
-    hsv = np.asarray(source.convert("HSV"), dtype=np.float32) / 255
-    hue,sat,value = np.moveaxis(hsv,-1,0)
-    target_h,target_s,_ = colorsys.rgb_to_hsv(*rgb_hex(color))
-    warm = (hue + .5) % 1 - .5
-    weight = np.clip((warm+.13)/.095,0,1) * np.clip((.22-warm)/.06,0,1)
-    weight *= np.clip((sat-.10)/.30,0,1) * np.clip((value-.20)/.27,0,1)
-    mapped = np.stack(((target_h + .19*warm) % 1,
-                       np.clip(sat * .36 + target_s*.42,0,1),
-                       np.clip(value*.97+.015,0,1)),axis=-1)
-    colors = np.asarray(Image.fromarray(np.rint(mapped*255).astype(np.uint8),"HSV").convert("RGB"))
-    rgba[..., :3] = np.rint((1-weight[...,None])*np.asarray(source) + weight[...,None]*colors)
-    return rgba
-
-
-def recolor_shell(rgba, color):
-    rgb = rgba[..., :3].astype(np.float32) / 255
-    luminance = rgb @ np.array([.2126,.7152,.0722], dtype=np.float32)
-    strength = np.clip((luminance-.05)/.25, .48, .88) * np.clip((.96-luminance)/.20, 0, 1)
-    shade = np.clip((.37 + luminance)[...,None]*rgb_hex(color) + (luminance*.23)[...,None],0,1)
-    rgba[..., :3] = np.rint(((1-strength[...,None])*rgb + strength[...,None]*shade)*255)
-    return rgba
+from tasks.juice_preparation.appearance_colors import recolor_apple, recolor_shell
 
 
 def snapshot(groups):
@@ -132,7 +110,7 @@ def appearance(task, recipe, stage):
                     if source is None:
                         raise RuntimeError(f"{role} has no base color texture: {link}/{mesh}")
                     transform = recolor_apple if role == "apple" else recolor_shell
-                    pixels = transform(texture_pixels(source), recipe[role])
+                    pixels = recolor_apple(texture_pixels(source), recipe[role], recipe.get("apple_match_target", False)) if role == "apple" else transform(texture_pixels(source), recipe[role])
                     texture = sapien.render.RenderTexture2D(pixels, "R8G8B8A8Unorm", srgb=True)
                     material.base_color_texture = texture
                     keepalive.append(texture)
@@ -174,8 +152,8 @@ def framing(task, view):
     direction /= np.linalg.norm(direction)
     tangent = np.array([-direction[1], direction[0]])
     offset = .62*direction + .14*tangent
-    target = center + [.0,.0,.14]
-    return target,[*offset,.22],.70
+    target = center + [.0,.0,.08]
+    return target,[*offset,.22],.82
 
 
 def capture(out, view, scheme, recipe):
@@ -225,15 +203,17 @@ def contact_sheet(out,view,schemes):
         raise ValueError("No schemes to compare")
     panels = [Image.open(out/f"{view}_{scheme}.png").convert("RGB") for scheme, _ in columns]
     w,h = panels[0].size
-    sheet = Image.new("RGB",(len(panels)*w,h+44),"#1B2027")
+    cols=3;rows=(len(panels)+cols-1)//cols
+    sheet=Image.new("RGB",(cols*w,rows*(h+44)),"#1B2027")
     try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",23)
+        font=ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",23)
     except OSError:
-        font = ImageFont.load_default()
-    draw = ImageDraw.Draw(sheet)
-    for i, ((scheme, label), panel) in enumerate(zip(columns, panels)):
-        draw.text((i*w+15,8),label,fill="white",font=font)
-        sheet.paste(panel,(i*w,44))
+        font=ImageFont.load_default()
+    draw=ImageDraw.Draw(sheet)
+    for i,((scheme,label),panel) in enumerate(zip(columns,panels)):
+        x=(i%cols)*w;y=(i//cols)*(h+44)
+        draw.text((x+15,y+8),label,fill="white",font=font)
+        sheet.paste(panel,(x,y+44))
     sheet.save(out/f"{view}_comparison.png")
 
 

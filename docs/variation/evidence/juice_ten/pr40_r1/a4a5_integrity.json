@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "job": 143212,
+  "signature_blocks_verified": 708,
+  "A4": 66,
+  "A5": 120,
+  "matrix_rows": 96,
+  "scope": "local independent SHA-256 rehash and coverage audit of newly downloaded reports"
+}

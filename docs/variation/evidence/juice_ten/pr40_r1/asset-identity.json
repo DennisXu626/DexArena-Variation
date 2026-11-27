@@ -1,0 +1,246 @@
+{
+  "files": [
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/Blender023_Lid/model.xml",
+      "sha256": "d94322dc4c1aa6f474d88cc9485a992bfb83ff82c4dd671ab47b1c4b819e8764"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/Blender023_Lid/visuals/lid.obj",
+      "sha256": "ef5196cca660b6d6269521d4df2946a16f3666f4fbeb33d9a6f206911bd6960f"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/Blender023_Lid/visuals/material_0.png",
+      "sha256": "632f43596a9c3bdfd6ee36b4c46d4f8c0fbd784d1cb032b64e410dabecaab166"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/Blender023_Lid/visuals/material.mtl",
+      "sha256": "0d90fe7d688a6da0b82b0f8053231a1c8986de34aa839f8113ed53a610c09227"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/Blender023_Lid/visuals/T_BC001.png",
+      "sha256": "cab6cc61e92ee9721aade1c0393cf8e7f22c2bd046c974e87d4d1c71b28ebe7c"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/model.xml",
+      "sha256": "b7f9249739f2355a58759abb020d5147af28633295ab04ae07494fe7b8b29f20"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/blade.obj",
+      "sha256": "72f934d0bac399bd7fd2a04baec670490bf33a0b7a73d5db71bf8d4938e8f76e"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/Body001.obj",
+      "sha256": "373e93deddce66ae4faaaa9a53fb51a2a55ddaa0dba0017e1f6135222f200192"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/knob_speed.obj",
+      "sha256": "810c92f61540deff5133e282dcb7dc4c918496118bac03a123c989f5483039ff"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/pitcher_main.obj",
+      "sha256": "987d3d1b4c65508e7ad4dc293c44dbb21fc297cfcf10d186b8380cb925a6ea98"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/pitcher.obj",
+      "sha256": "f3d0af6d8c5bbdd87288770b91b2118051dd4a71ca5ddd5d53955c7da2b3f82f"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/power_button.obj",
+      "sha256": "cd991dd4e2414ed327e308b09d0af67fa79ff26321ae7b69961d16942b5bb084"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/Blender023/visuals/T_BC001.png",
+      "sha256": "cab6cc61e92ee9721aade1c0393cf8e7f22c2bd046c974e87d4d1c71b28ebe7c"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/README.md",
+      "sha256": "e0ec55bcd62610c21e97b8e70d0c14e14253d0afdef22c15415882a42a7fc86e"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_0.obj",
+      "sha256": "59bac6dd8b2db1dac1ff8e4ce133ae7d36bd8e70e32aeb2f55a4541f301e111d"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_10.obj",
+      "sha256": "29d95b01197014301141a3cc6cb70b073d8d59e5e4f56c33c49025081dfeb3a7"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_11.obj",
+      "sha256": "86871246be7ad486aa877ffc0525c5d2a0330e2a90d7cde738ff9a54909a3461"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_12.obj",
+      "sha256": "436496728d33953965cae8dc7e65647616ac18cda58e2ff66c6758658798859d"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_13.obj",
+      "sha256": "45d5fa51fb998a45a45e6ab169020935a46d1b2144814961d8564f0537ba3d0e"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_14.obj",
+      "sha256": "2c0317ab53803324054fd00fa2326a1c42dadaa5a49e68770191d5ae2f1ccec0"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_15.obj",
+      "sha256": "e4ae374343b560a116cbacacd7063eb54f192d4932e2a175fb1d1f2d01209d73"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_16.obj",
+      "sha256": "56e93bb2775d0d8705c9a6d235f97931e7e49858d7b84a46b321403d5b77bcf8"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_17.obj",
+      "sha256": "9da3b9ce9dc4211cfbfbf2584f5bd3ba1bbd276a8d7335d84f74fbe9b52d3b9b"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_18.obj",
+      "sha256": "81e2928841101814b2fe2b6e4f95d0fc971863f3bb4fc77c04a9957aff263de4"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_19.obj",
+      "sha256": "57991eb3e78efb01620f4eaff3c04f7167970b7970c6426aafaf97041174a3a3"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_1.obj",
+      "sha256": "6cf8514d3dd9201be599287053c944010fdd07ede6cb3899051f1d8e0b36153d"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_20.obj",
+      "sha256": "67c1bfbb55a877825f491a44ace58970bba46b48d61ab1b79d15084c9cb252ec"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_21.obj",
+      "sha256": "7d236bdb134e4701945cc5764b14f469c4314b1dfd997a38265a097aa6a2de91"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_22.obj",
+      "sha256": "7410ecb4855d86afa7db2553d9a57e8301e1b59f10ad2a1a5f578da39043e762"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_23.obj",
+      "sha256": "510a1f4711d322deb051a6b490c7103375444c5b411854b383acb258f8323532"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_24.obj",
+      "sha256": "bfc41ba618f198ffda627960676a2c2b58816c78e106f2733e1a2eba2196d0f3"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_25.obj",
+      "sha256": "54b4ae07d25054484543a1fcd76f06b476ea8d432f099142f5e7927b23b99f58"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_26.obj",
+      "sha256": "fb6bfd857117f22ab527c5dd3cbb0eb410f97a16257f448a696eebece4a97c54"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_27.obj",
+      "sha256": "0cd9809a3a809051f1e38a55da0e2eb63f57103b21152fb620674c00c7e556b6"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_28.obj",
+      "sha256": "f3ef24b2a5e36ffa8a08124ae809facfb6eaf6b506c79f08876ee0bad6f8a88d"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_29.obj",
+      "sha256": "9019b95d41b680a6beb6cc05004b299ffec5c98052b0a39f4f7c5d630ff67cbb"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_2.obj",
+      "sha256": "bff023691b4b16e26e4ec3c5755d55a91187a6efb9fcf6adf49ecbe6674d48b9"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_30.obj",
+      "sha256": "594c3ddf4d2ad3e494ade7507ea616d3457d0bf03591389ffc419518ffc9613e"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_31.obj",
+      "sha256": "fd094ac4cef23741baaadb8ed3a7fcf19d2ae1d9e8cff5b9834c7cfe5175c6f2"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_3.obj",
+      "sha256": "71302b020b46f454fbbdb669bb4015c0f58d537b252a88b0b026f4a882282f86"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_4.obj",
+      "sha256": "0e44f089b9e405790c94b969208652d687cac84c29858ec13e8b8a7ff3a540cc"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_5.obj",
+      "sha256": "d39452bf8ea6524050f3bea4623d99b158bc2b0f669b350d97289bcf069bdda3"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_6.obj",
+      "sha256": "789164dd17f274accb67fa9d87b974911d0411637247ae8ba25177d09aed0648"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_7.obj",
+      "sha256": "e242fecbf6d648f33e7cccc2640c3c6ed45ca86ecd0f4178fd52b39da054f650"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_8.obj",
+      "sha256": "29b638859b0bf998a4f7b2686d613eaca1daf7fbfc094639c5f53f14097348d9"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/collision/model_normalized_collision_9.obj",
+      "sha256": "062b69e422f9e2890f18aa2581df8de2c7699580d586b047eab134da457762d3"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/model.xml",
+      "sha256": "46c0041ea31b243cfd8ba307b1d830843e52b27321f0cc0c2cd4c0bc6e9be39f"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/visual/af5c861952ac_apple__3d_asset_0_g_texture_kd.png",
+      "sha256": "160bf97e46539a4e0fd948cc7b024205b0fd355126a54228bbaacce29492067c"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/visual/material_0.jpeg",
+      "sha256": "c0abb876f04d60f5591636857d44b688d3fb9044415b509604bce8da7622d9a1"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/visual/material.mtl",
+      "sha256": "ce825b697e3de735b52a52479572303f20d105b00e800fde94ad936d18d252b6"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/robocasa_apple_0/visual/model_normalized_0.obj",
+      "sha256": "4060679fcbaa8509f50d841b3468d58fe1e824e23d824bd1fd7563f20d7198a5"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/generate_asset.py",
+      "sha256": "268602fc35689fac863f7ed2c7f6e8fd7d9e15aecaa0e073f359311ed6b6326c"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/meshes/body_visual.glb",
+      "sha256": "0ff0adf28d969b70f48f65b181e6f92b3b2e688f0f047c85e465f4fe4862bbb4"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/meshes/door_visual.glb",
+      "sha256": "efccf0ddcc17c7b9f69679206b738e9c5b9d90985458e270d517f57e00e55305"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/meshes/handle_visual.glb",
+      "sha256": "96d8d1622f47aa23bc187e101aa4e116e31cac9258f9ad4c53b7a5bed213869c"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/model_config.json",
+      "sha256": "bc342afae65e1d264e32f6e4bffc0e8088ddb80c689fabca11918904db02f4ae"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/preview_custom_fridge_v1.py",
+      "sha256": "864d8c799da4b0d6c09698ba8be59b4cd3217f1524146a305a2e1e5c24b89620"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/README.md",
+      "sha256": "3ba9e119cbbe875723ae524f1d686c05a82dcda11ebab019e827cdda9b7943ab"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/semantics.txt",
+      "sha256": "492b327e12935ffdeebbf95473c2c98b8d0f92e1093a13138e76fbb3f5e3afc2"
+    },
+    {
+      "path": "tasks/assets/task_object_meshes/juice/tabletop_mini_fridge_v1/tabletop_mini_fridge.urdf",
+      "sha256": "f59242b1e408c67933ecdb895415bd49cdb6f45edad186d6213c0a45be8cf624"
+    }
+  ],
+  "count": 60,
+  "all_match_job_138333": true
+}

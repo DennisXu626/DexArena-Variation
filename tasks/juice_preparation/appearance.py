@@ -112,7 +112,7 @@ class JuiceAppearance:
                         material.roughness = recipe["fridge_roughness"] if recipe else source[1]
                     else:
                         transform = recolor_apple if role == "apple" else recolor_shell
-                        pixels = transform(source.copy(),recipe[role]) if recipe else source
+                        pixels = (recolor_apple(source.copy(), recipe[role], recipe.get("apple_match_target", False)) if role == "apple" else transform(source.copy(), recipe[role])) if recipe else source
                         material.base_color_texture.upload(np.ascontiguousarray(pixels))
             old=self.records[i]
             self.records[i]={"env_idx":i,"scheme_id":scheme,"catalog_version":self.catalog["version"],

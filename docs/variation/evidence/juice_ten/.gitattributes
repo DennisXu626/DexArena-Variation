@@ -1,0 +1,2 @@
+inputs/** -text whitespace=cr-at-eol
+root_cause/inputs/** -text whitespace=cr-at-eol
