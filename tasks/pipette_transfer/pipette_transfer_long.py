@@ -8,6 +8,7 @@ plunger is a real prismatic URDF joint; no fluid simulation is used.
 """
 from __future__ import annotations
 import argparse, sys
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -59,6 +60,8 @@ from tasks.config.workspace_rig import (
     set_work_table_pose,
 )
 from tasks.config.energy_fence import set_task_object_energy_fence
+from tasks.pipette_transfer.position_layout import STAND_BASE_HALF_XY_M, STAND_YAW_DEG, requested_layout
+from tasks.pipette_transfer import position_workspace as workstation
 PIPETTE_URDF=ROOT/"tasks/assets/task_object_meshes/pipette/mobility.urdf"
 PIPETTE_GRIP_ORIGINAL_LENGTH=0.120
 PIPETTE_GRIP_LENGTH=0.160
@@ -138,6 +141,7 @@ PIPETTE_STAND_RANDOM_XY=(0.020,0.020)
 PIPETTE_STAND_RANDOM_YAW_DEG=10.0
 PIPETTE_STAND_HALF_DEPTH_Y=0.055
 PIPETTE_CUP_RADIUS=0.055
+PIPETTE_CUP_SUCCESS_RADIUS=0.040
 PIPETTE_MIN_STAND_CUP_GAP=0.020
 PIPETTE_STAND_NOMINAL_Q=(.7071068,0,0,.7071068)
 
@@ -329,7 +333,7 @@ def _build_pipette_stand(b):
     the cup and left leaning on a ring still counts as parked.
     """
     blue=[.16,.30,.42]
-    _box(b,[.060,.055,.006],[0,0,.006],blue)                                       # base plate
+    _box(b,[*STAND_BASE_HALF_XY_M,.006],[0,0,.006],blue)                           # base plate
     for x in (-.040,.040):
         _box(b,[.006,.006,.095],[x,-.045,.101],blue)                               # rear posts
     _box(b,[.046,.006,.006],[0,-.045,.196],blue)                                   # rear crossbar
@@ -486,7 +490,7 @@ class PipetteEvaluator:
             pipette_lifted=(pip[:,2]>c.table_z+.04)&(tcp_pip<HAND_ON_OBJECT_DIST)
             if e.sample_cup is not None:
                 cup=e.sample_cup.pose.p; mouth_z=cup[:,2]+c.cup_h
-                tip_cup=torch.linalg.norm((tip-cup)[:,:2],dim=1)<.040
+                tip_cup=torch.linalg.norm((tip-cup)[:,:2],dim=1)<PIPETTE_CUP_SUCCESS_RADIUS
                 tip_cup &= (tip[:,2]>cup[:,2]-.01)&(tip[:,2]<mouth_z-.003)   # anywhere inside the cup below the rim
             if e.test_tube is not None:
                 tube=e.test_tube.pose.p; tip_tube=torch.linalg.norm((tip-tube)[:,:2],dim=1)<TIP_IN_TUBE_XY_TOL; tip_tube &= (tip[:,2]>tube[:,2]+.03)&(tip[:,2]<tube[:,2]+c.tube_h)
@@ -531,8 +535,21 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
     LOAD_CUP=True; LOAD_PIPETTE=True; LOAD_TUBE=True; LOAD_RACK=True; LOAD_PIPETTE_STAND=True
     _DEFER_APPEARANCE_RESET=False
     def __init__(self,*a,robot_init_qpos_noise=ARM_INIT_QPOS_NOISE_STD,
-                 pipette_appearance=None,pipette_rendering=None,**kw):
+                 pipette_appearance=None,pipette_rendering=None,position_workspace=False,**kw):
         num_envs=kw.get("num_envs",a[0] if a else 1)
+        if type(position_workspace) is not bool:
+            raise ValueError("position_workspace must be a boolean")
+        self._workspace_task = None
+        if position_workspace:
+            self._workspace_task = ('Long' if self.LOAD_CUP and self.LOAD_RACK else
+                                    'AspirateLiquid' if self.LOAD_CUP else 'DispenseLiquid')
+            expected = {'Long': ROBOT_UID, 'AspirateLiquid': RIGHT_ROBOT_UID, 'DispenseLiquid': LEFT_ROBOT_UID}
+            if kw.get('robot_uids', ROBOT_UID) != expected[self._workspace_task]:
+                raise ValueError("position_workspace requires the task's registered Sharpa rig")
+            self._workspace_streams = {}
+            self._workspace_counters = {}
+            self._workspace_seeds = {}
+            self._workspace_records = {}
         if pipette_appearance is not None:
             validate_per_env(pipette_appearance,num_envs)
         self._pipette_appearance=(PipetteAppearance(pipette_appearance,num_envs,
@@ -581,15 +598,45 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
     def reset(self,seed=None,options=None):
         indices = validate_reset_request(seed, options, self.num_envs)
         request = options or {}
+        selected = range(self.num_envs) if indices is None else indices
+        workspace_task = getattr(self, '_workspace_task', None)
+        placements = None
+        if 'workspace_placement' in request:
+            if not workspace_task or 'position_layout' in request or 'reset_to_env_states' in request:
+                raise ValueError('workspace_placement requires workspace mode and an exclusive placement request')
+            entries = request['workspace_placement']
+            if not isinstance(entries, dict) or set(entries) != set(map(str, selected)):
+                raise ValueError('workspace_placement requires exactly one string key per selected env')
+            placements = {i: workstation.resolve(workspace_task, entries[str(i)]) for i in selected}
+        if "position_layout" in request:
+            requested_layout(self, request, selected, PIPETTE_MIN_STAND_CUP_GAP)
         if self._pipette_appearance is not None and "reset_to_env_states" not in request:
-            selected = range(self.num_envs) if indices is None else indices
             self._pipette_appearance.resolve_requests(selected, request.get("pipette_appearance", {}))
         if indices is not None:
             env_idx=options["env_idx"]
             device=self._elapsed_steps.device
             if not (isinstance(env_idx,torch.Tensor) and env_idx.dtype==torch.long and env_idx.device==device):
                 options={**options,"env_idx":torch.tensor(indices,dtype=torch.long,device=device)}
-        return super().reset(seed=seed,options=options)
+        if workspace_task is None:
+            return super().reset(seed=seed,options=options)
+        self._workspace_fixed = placements
+        self._workspace_reseed = seed is not None
+        self._workspace_pending = {}
+        try:
+            obs, info = super().reset(seed=seed,options=options)
+            for i, (stream, initial_seed, count, record) in self._workspace_pending.items():
+                self._workspace_streams[i] = stream
+                self._workspace_seeds[i] = initial_seed
+                self._workspace_counters[i] = count
+                self._workspace_records[i] = record
+        finally:
+            self._workspace_fixed = None
+            self._workspace_reseed = False
+            self._workspace_pending = None
+        if not ('position_layout' in request or 'reset_to_env_states' in request):
+            info['workspace_placement'] = {str(i): deepcopy(self._workspace_records[i]['layout']) for i in selected}
+            info['workspace_episode'] = {str(i): deepcopy(self._workspace_records[i]) for i in selected}
+        return obs, info
     def _setup_sensors(self,options):
         if self._pipette_rendering is not None:
             self._pipette_rendering.prepare_formats()
@@ -620,6 +667,38 @@ class PipetteTransferLongEnv(FurnitureResetScopeMixin, BaseEnv):
         # (dual rig for the long task / S1, single right-arm rig for S0).
         self.agent.robot.set_root_pose(DUAL_ROBOT_BASE_POSE)
         lay=self._sample_layout(env_idx)   # first episode-RNG draw: layout (see layout_rng)
+        explicit = None
+        if "position_layout" in options:
+            explicit = requested_layout(self, options, env_idx.tolist(), PIPETTE_MIN_STAND_CUP_GAP)
+        if self._workspace_task and 'reset_to_env_states' not in options:
+            workspace_rows = []
+            for i in env_idx.tolist():
+                if self._workspace_reseed or i not in self._workspace_streams:
+                    initial_seed, count = int(self._main_seed[i]), 0
+                    stream = np.random.default_rng(np.random.SeedSequence([initial_seed, i, 0x504950]))
+                else:
+                    initial_seed = self._workspace_seeds[i]
+                    count = self._workspace_counters[i]
+                    stream = deepcopy(self._workspace_streams[i])
+                record = None
+                if explicit is None:
+                    row = (self._workspace_fixed[i] if self._workspace_fixed is not None
+                           else workstation.sample(self._workspace_task, stream))
+                    record = {'version': workstation.workspace(self._workspace_task)[-1], 'env_idx': i,
+                              'seed': initial_seed, 'draw_index': count, 'layout': row,
+                              'mode': 'random' if self._workspace_fixed is None else 'fixed'}
+                    count += int(self._workspace_fixed is None)
+                    centers = {'cup': self.cfg.cup_xy, 'rack': self.cfg.rack_xy, 'stand': self.cfg.pipette_stand_xy}
+                    workspace_rows.append({**{k: row.get(k + '_xy_m', base) for k, base in centers.items()},
+                                           'stand_yaw_deg': row['stand_yaw_deg']})
+                self._workspace_pending[i] = stream, initial_seed, count, record
+            if workspace_rows:
+                explicit = workspace_rows
+        if explicit is not None:
+            lay = {name: [row[name] for row in explicit] for name in ('cup', 'rack', 'stand')}
+            lay['stand_q'] = [offset_pose((0,0,0), PIPETTE_STAND_NOMINAL_Q, 0, 0,
+                                         np.deg2rad(row['stand_yaw_deg'] - STAND_YAW_DEG[1]))[1]
+                              for row in explicit]
         self._reset_arms(env_idx)
         self.eval.reset(env_idx); n=len(env_idx)
         T=lambda rows: torch.tensor(np.asarray(rows),dtype=torch.float32,device=self.device)

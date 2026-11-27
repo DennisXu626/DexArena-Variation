@@ -1,0 +1,33 @@
+{
+  "sdk": "3.0.3+dexarena.gpu1.wininterop5",
+  "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+  "indexed_gpu_apply_patch_version": 1,
+  "native_sha256": {
+    "sapien.dll": "1d58f8e87f408779bc7aa6a74e7a6376a1378de5a8a12427b9df40858fb531b4",
+    "svulkan2.dll": "cc530a254f3b77e6a970cf26c51b461d6f357f223d177ba37b3e7657496c788e",
+    "simsense.dll": "14934d1c5d2092ddf17908d18c4cb38eb257e60ad4f6cceced8bd59c3acf54bd",
+    "PhysXDevice64.dll": "5c4343255f24df885cfdb2845f3fee4a4ad5d94031f397997098444897784b54",
+    "PhysXGpu_64.dll": "f70b3179e71a40853bcc9c5b0e6d500d2c31b1b62cdd24b5888535b58b162ab1",
+    "pysapien.cp310-win_amd64.pyd": "3422ea7b91c0bbbbb5bb2dd4b200bdff258eac7220a889a3f8e9ab16b8ad10f9"
+  },
+  "vulkan_sha256": "52c656947f0241f92edf444b611152b1cacacbc14d9581595ee7a4139bbb6824",
+  "binaries_unchanged": true,
+  "python_source_unchanged": true,
+  "runtime_commit": "5e22bee3110491d3221a79b9bfc17c927af3959d",
+  "elapsed_seconds": 155.41,
+  "min_gpu_free_mib": 4059,
+  "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB",
+  "files_sha256": {
+    "01_stand_xy.png": "d63a5bcb6194dbcc966982b94230999d1ca52f291e2ba6308ef8ffdd4732ae64",
+    "02_stand_yaw.png": "16b7d7834b265bdcd44412864653f11e1a7b5c1f4e10b9f61ade92a321161798",
+    "03_sample_dish_xy.png": "e26e8e657c04a61e0bde72eeead5f97e0413267ab8fdf15f21481290bba127bd",
+    "04_tube_rack_xy.png": "2bf72e5a5cef7b5c9137f875babd2499de29531b195fb13eddbcf0dcf4540522",
+    "cpu/IDENTITY.json": "5fadff773de2b3c39489f5dc656051f086f34f478dc1fa01f92134c8a9040a6c",
+    "cpu/POINTS.csv": "b7aa96661c260e6e19c76490d2ff5997e5bff17888b0644e349987fc94b47ffe",
+    "GEOMETRY-AspirateLiquid.json": "c7be629fe25504e9a0a5ac78b07cdaa7ba05ac95396ce985a74778ebd965185e",
+    "GEOMETRY-DispenseLiquid.json": "4be522ced339eb1ab40a0a8cb1e528840863331b314001d572f29774003a8f6d",
+    "GEOMETRY-Long.json": "0b1d8162cc5f118beccfb6d55a89bc9c1e9dee29885ecc3e59dbdade279167e0",
+    "IDENTITY.json": "d4b118d9ecfbfdbe3c7d99c716e84a7d7aa5326e7f3005ef4fa84f3fb8caaee7",
+    "POINTS.csv": "0c6069944558de9e9b7ff4dbecfb3806c7bc79ce162fb7b7b410f1b50c0c7e15"
+  }
+}

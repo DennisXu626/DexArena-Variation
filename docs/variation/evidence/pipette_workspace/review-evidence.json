@@ -1,0 +1,861 @@
+{
+  "provenance": "2026-11-27 offline cross-check. SHA256 values below identify stored file bytes; extracted rows keep the field names of the original record.",
+  "prior_head": "1099fc9954d9757d1d70d2893c10c778b7033ec4",
+  "windows_receipts": [
+    {
+      "name": "pipette-cuda-001",
+      "source_receipt_sha256": "41d48998d2c4b5570633066154eade858cafe42bec6b68154f15197bd76651ea",
+      "process_commit": "3a1593a8074703445d273532509b2f64bed81570",
+      "command": [
+        "<PYTHON_ENV>\\python.exe",
+        "-B",
+        "tools/variation/sapien_sdk/run_task_check.py",
+        "--repo-root",
+        "<WORKSPACE>\\family-work\\pipette-transfer-position",
+        "--checker",
+        "tools/variation/check_pipette_workspace.py",
+        "--sapien-root",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\sapien-runtime-repro-v5",
+        "--artifact",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\artifact.json",
+        "--physx-gpu-dir",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\physx-runtime",
+        "--output",
+        "<WORKSPACE>\\.coordination\\position-workspace-20261125\\pipette-cuda-001\\output",
+        "--sim-backend",
+        "physx_cuda"
+      ],
+      "exit_code": 0,
+      "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB"
+    }
+  ],
+  "server_account": "lyt",
+  "server_root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/position-workspace-20261125.2itE7q",
+  "server_read_method": "opened each listed file on lyg0295 as lyt with sha256sum; compared with archived bytes",
+  "server_job_submissions": 1,
+  "slurm": {
+    "142368": {
+      "archived_dashboard_row": [
+        "142368",
+        "lyt",
+        "position-nut-pip",
+        "COMPLETED",
+        "lyg0295",
+        "0",
+        "4",
+        "00:10:45",
+        "2026-11-25 18:03:53",
+        "2026-11-25 18:41:34",
+        "2026-11-25 18:52:19"
+      ],
+      "state": "COMPLETED",
+      "elapsed_seconds": 645,
+      "allocation_seconds_basis": "elapsed seconds x one assigned GPU; shared jobs counted once, across both families",
+      "exit_code": null,
+      "exit_code_note": "archived dashboard did not record raw Slurm exit codes; status.txt records checker outcomes when present"
+    }
+  },
+  "server_original_sha256": {
+    "capture-142368/binding.txt": "f77a6031f7f9ab7be310074ab38f0299d2260ae80a3ad05ea64b2c45626b3a52",
+    "capture-142368/gpu.csv": "82f37887d5a9e26fc44b3cf689598c44adf1dc826ca9b07bedef3e2f576f6288",
+    "capture-142368/pipette-sdk.json": "d10037e9a4c8555f40e05c88ec794d84aff8eb091f5ce6aa0b884f97918093dc",
+    "capture-142368/pipette/POINTS.csv": "263b580d025bdde4ceda27b621e2aacc5e345c9f1a0a3bbfabd6db15824434d1",
+    "capture-142368/pipette/RESULTS.json": "003d7638795575988614124e3a9622216bbbd5ed6110ebfd89c083887a343efb",
+    "capture-142368/status.txt": "fe145b201d294093e70b64d3eb4d2cec4d9b63d3d73588e9dc977c36238c2946"
+  },
+  "server_input_and_private_asset_identity": {
+    "commit": "3a1593a8074703445d273532509b2f64bed81570",
+    "private_asset_count": 2,
+    "private_asset_sha256": {
+      "tasks/assets/task_object_meshes/pipette/README.md": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+      "tasks/assets/task_object_meshes/pipette/mobility.urdf": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776"
+    },
+    "tracked_digest": "f41faa0655f5028c1b5469c5871d584373c15af54ece35ca87bdd866dda669db",
+    "tracked_file_count": 509,
+    "tree": "ec5a33f2f458e37774568879d767d4e112a926bc"
+  },
+  "github_evidence_sha256": {
+    "cpu/POINTS.csv": "3c2c83b09586a813ea461f43e5b9341043b70bc5a3282cb7827596c131077232",
+    "cpu/RESULTS.json": "3cd328accd090d96daf47b40167836f5603bfd810463714c164118beb7280cf6",
+    "cuda/POINTS.csv": "6d612ff3bb7d0f9e7efd656903a2217c67e70fea2f879a08367bfbfbd1f9072c",
+    "cuda/RESULTS.json": "b91425daf11efd1fccbdf76fb9c7443e47cd831466c362b24636f1bace47aed5",
+    "cuda/private_sdk.json": "9cb5790c8c19502dc759060e51285538723bec2f68492b8c304d0ee6250fbb00",
+    "linux-cuda/POINTS.csv": "263b580d025bdde4ceda27b621e2aacc5e345c9f1a0a3bbfabd6db15824434d1",
+    "linux-cuda/RESULTS.json": "003d7638795575988614124e3a9622216bbbd5ed6110ebfd89c083887a343efb",
+    "linux-cuda/pipette-sdk.json": "d10037e9a4c8555f40e05c88ec794d84aff8eb091f5ce6aa0b884f97918093dc"
+  },
+  "windows_selected_examples": [
+    {
+      "task": "PipetteTransferAspirateLiquid-Sharpa-v1",
+      "file": "cuda/POINTS.csv",
+      "id": "near",
+      "seed": 6136,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "request": {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "near"
+          }
+        },
+        "actual": {
+          "stand": [
+            -0.23000001907348633,
+            -0.19000005722045898,
+            -1.862645149230957e-08,
+            0.7071069478988647,
+            -9.580104709527859e-09,
+            6.305901578684825e-09,
+            0.70710688829422
+          ],
+          "pipette": [
+            -0.23000000417232513,
+            -0.19000005722045898,
+            0.23899999260902405,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cup": [
+            -0.20999999344348907,
+            -0.010000228881835938,
+            0.0,
+            0.9999999403953552,
+            0.0,
+            0.0,
+            -8.800355999483145e-10
+          ]
+        },
+        "initial": {
+          "checks": {
+            "stage": true,
+            "plunger_rest": true,
+            "pipette_centered": true,
+            "pipette_upright": true,
+            "complete_table_support": true,
+            "native_release_heights": true,
+            "tip_above_rest": true,
+            "stand_dish_clear": true,
+            "stand_request": true,
+            "cup_request": true,
+            "yaw_request": true
+          },
+          "stand_yaw_deg": 89.99999517032785,
+          "stage": 0,
+          "table_bounds_m": [
+            [
+              -0.4244999885559081,
+              -1.208999991416931
+            ],
+            [
+              0.7845000028610228,
+              1.208999991416931
+            ]
+          ],
+          "table_margin_m": {
+            "stand": 0.13949996472282444,
+            "cup": 0.15622590277509552
+          },
+          "footprint_bottom_z_m": {
+            "stand": -1.862645149230957e-08,
+            "cup": 0.0
+          },
+          "physical_tip_rest_gap_m": 0.007000005338340998,
+          "stand_dish_gap_lower_bound_m": 0.060999830024498186
+        },
+        "workspace_episode": {
+          "version": 1,
+          "env_idx": 1,
+          "seed": 1555327870,
+          "draw_index": 1,
+          "layout": {
+            "stand_yaw_deg": 90,
+            "stand_xy_m": [
+              -0.23,
+              -0.19
+            ],
+            "cup_xy_m": [
+              -0.21,
+              -0.01
+            ]
+          },
+          "mode": "fixed"
+        },
+        "protected_sha256": {
+          "0": "47ddc5936e19ab01938732a80914b487ea688e90f042a3775b92e349506787ee"
+        }
+      }
+    },
+    {
+      "task": "PipetteTransferAspirateLiquid-Sharpa-v1",
+      "file": "cuda/POINTS.csv",
+      "id": "far",
+      "seed": 6137,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "request": {
+          "env_idx": [
+            0
+          ],
+          "workspace_placement": {
+            "0": "far"
+          }
+        },
+        "actual": {
+          "stand": [
+            -0.1100001335144043,
+            -0.19000005722045898,
+            -1.862645149230957e-08,
+            0.7071069478988647,
+            -9.580104709527859e-09,
+            6.305901578684825e-09,
+            0.70710688829422
+          ],
+          "pipette": [
+            -0.1100001335144043,
+            -0.19000005722045898,
+            0.23899999260902405,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cup": [
+            -0.1700000762939453,
+            -0.010000228881835938,
+            0.0,
+            0.9999999403953552,
+            0.0,
+            0.0,
+            -8.800355999483145e-10
+          ]
+        },
+        "initial": {
+          "checks": {
+            "stage": true,
+            "plunger_rest": true,
+            "pipette_centered": true,
+            "pipette_upright": true,
+            "complete_table_support": true,
+            "native_release_heights": true,
+            "tip_above_rest": true,
+            "stand_dish_clear": true,
+            "stand_request": true,
+            "cup_request": true,
+            "yaw_request": true
+          },
+          "stand_yaw_deg": 89.99999517032785,
+          "stage": 0,
+          "table_bounds_m": [
+            [
+              -0.4245001673698424,
+              -1.208999991416931
+            ],
+            [
+              0.7844998240470885,
+              1.208999991416931
+            ]
+          ],
+          "table_margin_m": {
+            "stand": 0.2595000290958408,
+            "cup": 0.1962259987385736
+          },
+          "footprint_bottom_z_m": {
+            "stand": -1.862645149230957e-08,
+            "cup": 0.0
+          },
+          "physical_tip_rest_gap_m": 0.007000005338340998,
+          "stand_dish_gap_lower_bound_m": 0.06110394317839203
+        },
+        "workspace_episode": {
+          "version": 1,
+          "env_idx": 0,
+          "seed": 6137,
+          "draw_index": 1,
+          "layout": {
+            "stand_yaw_deg": 90,
+            "stand_xy_m": [
+              -0.11,
+              -0.19
+            ],
+            "cup_xy_m": [
+              -0.17,
+              -0.01
+            ]
+          },
+          "mode": "fixed"
+        },
+        "protected_sha256": {
+          "1": "134e81efca357fafcf80dd531b200e4f4cb50107a502fc396605e464d326a629"
+        }
+      }
+    },
+    {
+      "task": "PipetteTransferDispenseLiquid-Sharpa-v1",
+      "file": "cuda/POINTS.csv",
+      "id": "near",
+      "seed": 6136,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "request": {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "near"
+          }
+        },
+        "actual": {
+          "stand": [
+            -0.23000001907348633,
+            -0.1700000762939453,
+            -1.862645149230957e-08,
+            0.7071069478988647,
+            -9.580104709527859e-09,
+            6.305901578684825e-09,
+            0.70710688829422
+          ],
+          "pipette": [
+            -0.23000000417232513,
+            -0.1700000762939453,
+            0.23899999260902405,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rack": [
+            -0.20999999344348907,
+            0.23999977111816406,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tube": [
+            -0.20999999344348907,
+            0.23999977111816406,
+            0.00299999862909317,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial": {
+          "checks": {
+            "stage": true,
+            "plunger_rest": true,
+            "pipette_centered": true,
+            "pipette_upright": true,
+            "complete_table_support": true,
+            "native_release_heights": true,
+            "tip_above_rest": true,
+            "tube_in_slot": true,
+            "tube_wall_clearance": true,
+            "stand_request": true,
+            "rack_request": true,
+            "yaw_request": true
+          },
+          "stand_yaw_deg": 89.99999517032785,
+          "stage": 1,
+          "table_bounds_m": [
+            [
+              -0.4244999885559081,
+              -1.208999991416931
+            ],
+            [
+              0.7845000028610228,
+              1.208999991416931
+            ]
+          ],
+          "table_margin_m": {
+            "stand": 0.13949996472282444,
+            "rack": 0.14599999412894238,
+            "tube": 0.20299999532289792
+          },
+          "footprint_bottom_z_m": {
+            "stand": -1.862645149230957e-08,
+            "rack": 0.0,
+            "tube": 0.00299999862909317
+          },
+          "physical_tip_rest_gap_m": 0.007000005338340998,
+          "tube_slot_margin_m": 0.0023687220850982828
+        },
+        "workspace_episode": {
+          "version": 1,
+          "env_idx": 1,
+          "seed": 1555327870,
+          "draw_index": 1,
+          "layout": {
+            "stand_yaw_deg": 90,
+            "stand_xy_m": [
+              -0.23,
+              -0.17
+            ],
+            "rack_xy_m": [
+              -0.21,
+              0.24
+            ]
+          },
+          "mode": "fixed"
+        },
+        "protected_sha256": {
+          "0": "505097522eef0ba14d109da0baee413ea4233d4bb40f321e0cdf2282f5255f32"
+        }
+      }
+    },
+    {
+      "task": "PipetteTransferDispenseLiquid-Sharpa-v1",
+      "file": "cuda/POINTS.csv",
+      "id": "far",
+      "seed": 6137,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "request": {
+          "env_idx": [
+            0
+          ],
+          "workspace_placement": {
+            "0": "far"
+          }
+        },
+        "actual": {
+          "stand": [
+            -0.1100001335144043,
+            -0.1700000762939453,
+            -1.862645149230957e-08,
+            0.7071069478988647,
+            -9.580104709527859e-09,
+            6.305901578684825e-09,
+            0.70710688829422
+          ],
+          "pipette": [
+            -0.1100001335144043,
+            -0.1700000762939453,
+            0.23899999260902405,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rack": [
+            -0.1700000762939453,
+            0.23999977111816406,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tube": [
+            -0.1700000762939453,
+            0.23999977111816406,
+            0.00299999862909317,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial": {
+          "checks": {
+            "stage": true,
+            "plunger_rest": true,
+            "pipette_centered": true,
+            "pipette_upright": true,
+            "complete_table_support": true,
+            "native_release_heights": true,
+            "tip_above_rest": true,
+            "tube_in_slot": true,
+            "tube_wall_clearance": true,
+            "stand_request": true,
+            "rack_request": true,
+            "yaw_request": true
+          },
+          "stand_yaw_deg": 89.99999517032785,
+          "stage": 1,
+          "table_bounds_m": [
+            [
+              -0.4245001673698424,
+              -1.208999991416931
+            ],
+            [
+              0.7844998240470885,
+              1.208999991416931
+            ]
+          ],
+          "table_margin_m": {
+            "stand": 0.2595000290958408,
+            "rack": 0.18600009009242047,
+            "tube": 0.243000091286376
+          },
+          "footprint_bottom_z_m": {
+            "stand": -1.862645149230957e-08,
+            "rack": 0.0,
+            "tube": 0.00299999862909317
+          },
+          "physical_tip_rest_gap_m": 0.007000005338340998,
+          "tube_slot_margin_m": 0.0023687220850982828
+        },
+        "workspace_episode": {
+          "version": 1,
+          "env_idx": 0,
+          "seed": 6137,
+          "draw_index": 1,
+          "layout": {
+            "stand_yaw_deg": 90,
+            "stand_xy_m": [
+              -0.11,
+              -0.17
+            ],
+            "rack_xy_m": [
+              -0.17,
+              0.24
+            ]
+          },
+          "mode": "fixed"
+        },
+        "protected_sha256": {
+          "1": "376fb590198b97d4d46e48fa377a9d754a93fcef10a92ab7f474f0782dec7a4e"
+        }
+      }
+    },
+    {
+      "task": "PipetteTransferLong-Sharpa-v1",
+      "file": "cuda/POINTS.csv",
+      "id": "near",
+      "seed": 6136,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "request": {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "near"
+          }
+        },
+        "actual": {
+          "stand": [
+            -0.23000001907348633,
+            -0.19999980926513672,
+            -1.862645149230957e-08,
+            0.7071069478988647,
+            -9.580104709527859e-09,
+            6.305901578684825e-09,
+            0.70710688829422
+          ],
+          "pipette": [
+            -0.23000000417232513,
+            -0.19999980926513672,
+            0.23899999260902405,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cup": [
+            -0.20999999344348907,
+            -0.019999980926513672,
+            0.0,
+            0.9999999403953552,
+            0.0,
+            0.0,
+            -8.800355999483145e-10
+          ],
+          "rack": [
+            -0.20999999344348907,
+            0.23999977111816406,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tube": [
+            -0.20999999344348907,
+            0.23999977111816406,
+            0.00299999862909317,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial": {
+          "checks": {
+            "stage": true,
+            "plunger_rest": true,
+            "pipette_centered": true,
+            "pipette_upright": true,
+            "complete_table_support": true,
+            "native_release_heights": true,
+            "tip_above_rest": true,
+            "tube_in_slot": true,
+            "tube_wall_clearance": true,
+            "stand_dish_clear": true,
+            "stand_request": true,
+            "rack_request": true,
+            "cup_request": true,
+            "yaw_request": true
+          },
+          "stand_yaw_deg": 89.99999517032785,
+          "stage": 0,
+          "table_bounds_m": [
+            [
+              -0.4244999885559081,
+              -1.208999991416931
+            ],
+            [
+              0.7845000028610228,
+              1.208999991416931
+            ]
+          ],
+          "table_margin_m": {
+            "stand": 0.13949996472282444,
+            "cup": 0.15622590277509552,
+            "rack": 0.14599999412894238,
+            "tube": 0.20299999532289792
+          },
+          "footprint_bottom_z_m": {
+            "stand": -1.862645149230957e-08,
+            "cup": 0.0,
+            "rack": 0.0,
+            "tube": 0.00299999862909317
+          },
+          "physical_tip_rest_gap_m": 0.007000005338340998,
+          "tube_slot_margin_m": 0.0023687220850982828,
+          "stand_dish_gap_lower_bound_m": 0.060999830024498186
+        },
+        "workspace_episode": {
+          "version": 1,
+          "env_idx": 1,
+          "seed": 1555327870,
+          "draw_index": 1,
+          "layout": {
+            "stand_yaw_deg": 90,
+            "stand_xy_m": [
+              -0.23,
+              -0.2
+            ],
+            "cup_xy_m": [
+              -0.21,
+              -0.02
+            ],
+            "rack_xy_m": [
+              -0.21,
+              0.24
+            ]
+          },
+          "mode": "fixed"
+        },
+        "protected_sha256": {
+          "0": "44a09d4f14ced7f523904129c8cb251fffc44228425c617a8fa0830f78ba5901"
+        }
+      }
+    },
+    {
+      "task": "PipetteTransferLong-Sharpa-v1",
+      "file": "cuda/POINTS.csv",
+      "id": "far",
+      "seed": 6137,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "request": {
+          "env_idx": [
+            0
+          ],
+          "workspace_placement": {
+            "0": "far"
+          }
+        },
+        "actual": {
+          "stand": [
+            -0.1100001335144043,
+            -0.19000005722045898,
+            -1.862645149230957e-08,
+            0.7071069478988647,
+            -9.580104709527859e-09,
+            6.305901578684825e-09,
+            0.70710688829422
+          ],
+          "pipette": [
+            -0.1100001335144043,
+            -0.19000005722045898,
+            0.23899999260902405,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cup": [
+            -0.1700000762939453,
+            -0.010000228881835938,
+            0.0,
+            0.9999999403953552,
+            0.0,
+            0.0,
+            -8.800355999483145e-10
+          ],
+          "rack": [
+            -0.1700000762939453,
+            0.25,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tube": [
+            -0.1700000762939453,
+            0.25,
+            0.00299999862909317,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "initial": {
+          "checks": {
+            "stage": true,
+            "plunger_rest": true,
+            "pipette_centered": true,
+            "pipette_upright": true,
+            "complete_table_support": true,
+            "native_release_heights": true,
+            "tip_above_rest": true,
+            "tube_in_slot": true,
+            "tube_wall_clearance": true,
+            "stand_dish_clear": true,
+            "stand_request": true,
+            "rack_request": true,
+            "cup_request": true,
+            "yaw_request": true
+          },
+          "stand_yaw_deg": 89.99999517032785,
+          "stage": 0,
+          "table_bounds_m": [
+            [
+              -0.4245001673698424,
+              -1.208999991416931
+            ],
+            [
+              0.7844998240470885,
+              1.208999991416931
+            ]
+          ],
+          "table_margin_m": {
+            "stand": 0.2595000290958408,
+            "cup": 0.1962259987385736,
+            "rack": 0.18600009009242047,
+            "tube": 0.243000091286376
+          },
+          "footprint_bottom_z_m": {
+            "stand": -1.862645149230957e-08,
+            "cup": 0.0,
+            "rack": 0.0,
+            "tube": 0.00299999862909317
+          },
+          "physical_tip_rest_gap_m": 0.007000005338340998,
+          "tube_slot_margin_m": 0.0023687220850982828,
+          "stand_dish_gap_lower_bound_m": 0.06110394317839203
+        },
+        "workspace_episode": {
+          "version": 1,
+          "env_idx": 0,
+          "seed": 6137,
+          "draw_index": 1,
+          "layout": {
+            "stand_yaw_deg": 90,
+            "stand_xy_m": [
+              -0.11,
+              -0.19
+            ],
+            "cup_xy_m": [
+              -0.17,
+              -0.01
+            ],
+            "rack_xy_m": [
+              -0.17,
+              0.25
+            ]
+          },
+          "mode": "fixed"
+        },
+        "protected_sha256": {
+          "1": "f7d4823fb9a12f849fc424decc890fcd45d182c99e1aca4e12dfd7bb4009d0f3"
+        }
+      }
+    }
+  ],
+  "server_launcher_sha256": {
+    "gpu_job.sh": "e8014a9d9bad3fb197531eaf29306f17c9a95dfaa82e63332621403c7754edb8",
+    "server_sdk.py": "4c4fcc2c08985fc44fddf7a6efd213fe4b5e0aaadf2330e56b890c9d30af5ea9"
+  }
+}
