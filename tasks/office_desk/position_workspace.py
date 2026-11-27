@@ -6,6 +6,7 @@ from collections.abc import Mapping
 from functools import lru_cache
 from numbers import Integral, Real
 from pathlib import Path
+from sys import float_info
 
 import numpy as np
 
@@ -53,7 +54,7 @@ class OfficeWorkspace:
         if (
             not isinstance(xy, (tuple, list))
             or len(xy) != 2
-            or any(isinstance(x, bool) or not isinstance(x, Real) or not math.isfinite(x) for x in xy)
+            or any(isinstance(x, bool) or not isinstance(x, Real) or not -float_info.max <= x <= float_info.max for x in xy)
             or isinstance(yaw, bool)
             or not isinstance(yaw, Real)
             or yaw not in self.table["yaw_deg"]

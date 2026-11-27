@@ -3,6 +3,7 @@
 import math
 from collections.abc import Mapping
 from numbers import Real
+from sys import float_info
 
 
 XY_BOUNDS_M = {
@@ -31,7 +32,7 @@ def resolve_position_layout(requests, selected, device_name, center):
         xy = request.get(xy_key, list(center))
         if (not isinstance(xy, (tuple, list)) or len(xy) != 2
                 or any(not isinstance(axis, Real) or isinstance(axis, bool)
-                       or not math.isfinite(axis) for axis in xy)):
+                       or not -float_info.max <= axis <= float_info.max for axis in xy)):
             raise ValueError(f"position_layout env {index}: {xy_key} requires two finite numbers")
         if any(not low - 1e-8 <= axis - origin <= high + 1e-8
                for axis, origin, low, high in zip(xy, center, lower, upper)):
