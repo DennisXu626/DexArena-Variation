@@ -152,6 +152,8 @@ Meal限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/
 
 Package Opening的OpenPackage／ExtractApple／Long三个Sharpa入口已合入，支持原版和十套候选，适用范围见[能力清单](docs/variation/STATUS.md#7-package-opening)和[十套方案](docs/variation/PACKAGE_EXPAND_TO_10.md)，[PR9方案身份及整合记录](docs/variation/evidence/package_opening/PR9-R2.md)保留历史证据。不把Package方案套成Cabinet Ocean／Citrus／Violet。
 
-## Juice Preparation（PR #19，待合入）
+## Juice Preparation
 
-[PR #19](https://github.com/DennisXu626/DexArena-Variation/pull/19)提供四对象两套新外观和六个 Sharpa 入口；默认关闭，支持逐环境固定方案。固定 1／2 号方案已通过 Server 3 作业 136654 的独立运行验收，实际范围见[能力清单](docs/variation/STATUS.md#juice-preparationpr-19待合入)和[审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354)。[家族用法](docs/variation/JUICE_PREPARATION_APPEARANCE.md)和[R1 修正](docs/variation/JUICE_PR19_R1.md)保留历史证据及其适用边界。PR 待合入，不扩大为随机、其它规模或完整机器人成功。
+果汁制作的四个对象已接入六个 Sharpa 入口。外观默认关闭，可逐环境指定方案。已合入 main 的 [#19](https://github.com/DennisXu626/DexArena-Variation/pull/19) 提供 1、2 号，[#40](https://github.com/DennisXu626/DexArena-Variation/pull/40) 新增 3–10 号。两个环境的配色、局部 reset 和原版恢复各自覆盖的范围见[能力清单](docs/variation/STATUS.md#juice-preparation)。
+
+[家族用法](docs/variation/JUICE_PREPARATION_APPEARANCE.md) · [#19 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354) · [#19 R1 修正](docs/variation/JUICE_PR19_R1.md) · [#40 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/40#pullrequestreview-6083201097)

@@ -139,11 +139,14 @@ Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合�
 
 [配置用法](PACKAGE_OPENING_APPEARANCE.md) · [十套方案](PACKAGE_EXPAND_TO_10.md) · [PR9-R2 历史证据](evidence/package_opening/PR9-R2.md) · [#31 正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/31#pullrequestreview-6024095724)
 
-## Juice Preparation：PR #19，待合入
+## Juice Preparation
 
-六个 Juice Sharpa 入口的固定 1／2 号方案已通过 Server 3 作业 136654 验收。双环境 12 个局部 reset 方向、活动控制目标隔离、original 恢复和 24 格可见配色通过。PressButton 的临界夹具中，未选行计数保持 3，成功锁存保持为假。AppleToBlender 和 Long 的苹果在本轮机位被遮挡，已核贴图，果皮实景未测。历史 73 槽与 16 步证据按原范围保留。PR 待合入。
+#19 和 #40 均已合入 main。六个 Sharpa 入口为 OpenFridge、AppleToBlender、CloseFridge、PlaceLid、PressButton 和 Long。
 
-[#19 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354) · [家族用法](JUICE_PREPARATION_APPEARANCE.md) · [R1 修正](JUICE_PR19_R1.md)。集合随机、其它规模／手型、完整机器人成功未测；其它家族的 main 状态与证据保留。
+- **#19 · 固定 1、2 号。** Server 3 作业 `136654` 验收了 24 格可见配色和 12 个局部 reset 方向。未选环境的活动控制目标保持，选中环境恢复 `original`。PressButton 的未选环境在临界计数 3 时经过 reset 及回调，计数保持为 3，成功锁存始终为假。历史 73 个材质槽与 16 步轨迹证据保留原范围。[#19 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/19#pullrequestreview-6024535354) · [R1 修正](JUICE_PR19_R1.md)
+- **#40 · 固定 3–10 号。** 复核作业 `143212` 的原帧，六个入口 × 两个环境 × 八套方案共 96 格，请求编号、实际编号和可见部件配色均吻合。72 个混合案例的 504 组原帧逐一与同入口、同相机、同环境行、同编号的固定参照比对，SHA-256 全部一致。[#40 审验结论](https://github.com/DennisXu626/DexArena-Variation/pull/40#pullrequestreview-6083201097) · [#40 合并提交](https://github.com/DennisXu626/DexArena-Variation/commit/1ce445c41eceba17a777b5293ba681180d0f459a)
+
+AppleToBlender 和 Long 的默认机位遮挡了苹果，双环境任务原帧中的果皮颜色未测。#19 已核对贴图，#40 的 5、6 号果皮颜色仅在单环境近景预览中可见。集合随机、其它环境规模或手型、完整机器人任务成功均未测。[家族用法](JUICE_PREPARATION_APPEARANCE.md) · [README 入口](../../README.md#juice-preparation)
 
 ## 8. Table Cleaning
 
