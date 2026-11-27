@@ -1,0 +1,142 @@
+{
+  "status": "passed",
+  "cases": 25,
+  "results": [
+    {
+      "mode": "pick",
+      "selected": 0,
+      "counted": false,
+      "wrapped": false
+    },
+    {
+      "mode": "pick",
+      "selected": 0,
+      "counted": false,
+      "wrapped": true
+    },
+    {
+      "mode": "pick",
+      "selected": 0,
+      "counted": true,
+      "wrapped": false
+    },
+    {
+      "mode": "pick",
+      "selected": 0,
+      "counted": true,
+      "wrapped": true
+    },
+    {
+      "mode": "pick",
+      "selected": 0,
+      "legacy_task": false
+    },
+    {
+      "mode": "pick",
+      "selected": 0,
+      "legacy_task": true
+    },
+    {
+      "mode": "pick",
+      "selected": 1,
+      "counted": false,
+      "wrapped": false
+    },
+    {
+      "mode": "pick",
+      "selected": 1,
+      "counted": false,
+      "wrapped": true
+    },
+    {
+      "mode": "pick",
+      "selected": 1,
+      "counted": true,
+      "wrapped": false
+    },
+    {
+      "mode": "pick",
+      "selected": 1,
+      "counted": true,
+      "wrapped": true
+    },
+    {
+      "mode": "pick",
+      "selected": 1,
+      "legacy_task": false
+    },
+    {
+      "mode": "pick",
+      "selected": 1,
+      "legacy_task": true
+    },
+    {
+      "mode": "dump",
+      "selected": 0,
+      "counted": false,
+      "wrapped": false
+    },
+    {
+      "mode": "dump",
+      "selected": 0,
+      "counted": false,
+      "wrapped": true
+    },
+    {
+      "mode": "dump",
+      "selected": 0,
+      "counted": true,
+      "wrapped": false
+    },
+    {
+      "mode": "dump",
+      "selected": 0,
+      "counted": true,
+      "wrapped": true
+    },
+    {
+      "mode": "dump",
+      "selected": 0,
+      "legacy_task": false
+    },
+    {
+      "mode": "dump",
+      "selected": 0,
+      "legacy_task": true
+    },
+    {
+      "mode": "dump",
+      "selected": 1,
+      "counted": false,
+      "wrapped": false
+    },
+    {
+      "mode": "dump",
+      "selected": 1,
+      "counted": false,
+      "wrapped": true
+    },
+    {
+      "mode": "dump",
+      "selected": 1,
+      "counted": true,
+      "wrapped": false
+    },
+    {
+      "mode": "dump",
+      "selected": 1,
+      "counted": true,
+      "wrapped": true
+    },
+    {
+      "mode": "dump",
+      "selected": 1,
+      "legacy_task": false
+    },
+    {
+      "mode": "dump",
+      "selected": 1,
+      "legacy_task": true
+    }
+  ]
+}

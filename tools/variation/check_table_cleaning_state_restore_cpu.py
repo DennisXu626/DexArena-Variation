@@ -95,7 +95,8 @@ def next_draw(rng):
 
 Scene = extract(sdk/'envs/scene.py', 'ManiSkillScene', ['set_sim_state'])
 records = []
-for selected, enabled, mode, with_task in itertools.product((0, 1), (False, True), ('direct', 'reset'), (False, True)):
+for selected, enabled, mode, with_task, counted in itertools.product(
+        (0, 1), (False, True), ('direct', 'reset'), (False, True), (None, False, True)):
     e=fixture(enabled)
     e.TASK_STATE_DIM=7
     e.hold=e.hold.to(torch.int32)
@@ -125,6 +126,8 @@ for selected, enabled, mode, with_task in itertools.product((0, 1), (False, True
     saved={'actors':{str(i):target.clone() for i in range(3)},'table_clean_task_state':torch.zeros(1,7)}
     if not with_task:
         saved.pop('table_clean_task_state')
+    if counted is not None:
+        saved['table_clean_hold_counted'] = torch.tensor([[counted]])
     if mode == 'reset':
         obs,info=e.reset(options={'env_idx':torch.tensor([selected]),'reset_to_env_states':{'env_states':saved}})
     else:
@@ -147,7 +150,7 @@ for selected, enabled, mode, with_task in itertools.product((0, 1), (False, True
     advanced=e.get_info()
     assert advanced['n_in_pan'][selected].item() == 3
     assert advanced['stage'][selected].item() == 1
-    record=dict(selected=selected,appearance=enabled,mode=mode,task_state=with_task,
+    record=dict(selected=selected,appearance=enabled,mode=mode,task_state=with_task,counted=counted,
                 first_count=0,first_stage=0,repeated_count=0,neighbour_count=3,next_step_count=3,next_step_stage=1)
     records.append(record)
     print(json.dumps(record))

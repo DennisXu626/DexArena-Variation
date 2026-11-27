@@ -1,0 +1,34 @@
+[
+  {
+    "check": "hold-restore",
+    "exit_code": 0
+  },
+  {
+    "check": "state-restore",
+    "exit_code": 0
+  },
+  {
+    "check": "isolation",
+    "exit_code": 0
+  },
+  {
+    "check": "hold",
+    "exit_code": 0
+  },
+  {
+    "check": "reset",
+    "exit_code": 0
+  },
+  {
+    "check": "single-env",
+    "exit_code": 0
+  },
+  {
+    "check": "static",
+    "exit_code": 0
+  },
+  {
+    "check": "archive",
+    "exit_code": 0
+  }
+]
