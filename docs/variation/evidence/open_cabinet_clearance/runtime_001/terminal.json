@@ -1,0 +1,32 @@
+{
+  "scontrol": {
+    "status": 0,
+    "stdout": "JobId=142378 JobName=open_cab_start47 UserId=xkl(1039) GroupId=xkl(1039) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=normal JobState=FAILED Reason=NonZeroExitCode Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=1:0 RunTime=00:00:19 TimeLimit=00:04:00 TimeMin=N/A SubmitTime=2026-11-25T10:31:28 EligibleTime=2026-11-25T10:31:28 AccrueTime=2026-11-25T10:31:28 StartTime=2026-11-25T10:31:28 EndTime=2026-11-25T10:31:47 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-25T10:31:28 Scheduler=Main Partition=a800 AllocNode:Sid=lyg0295:1990646 ReqNodeList=lyg0295 ExcNodeList=(null) NodeList=lyg0295 BatchHost=lyg0295 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=2 ReqB:S:C:T=0:0:*:* ReqTRES=cpu=2,mem=16G,node=1,billing=2,gres/shard=1 AllocTRES=cpu=2,node=1,billing=2,gres/shard=1 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=2 MinMemoryNode=16G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null) Command=/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/job.sh WorkDir=/mnt/ceph2/xkl/DexArena/open_cabinet_start_clearance_20261125/runtime_001/source StdErr=/dev/null StdIn=/dev/null StdOut=/dev/null TresPerNode=gres/shard:idx6:1 \n",
+    "stderr": ""
+  },
+  "squeue": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "sacct": {
+    "status": 1,
+    "stdout": "",
+    "stderr": "sacct: error: _open_persist_conn: failed to open persistent connection to host:localhost:6819: Connection refused\nsacct: error: Sending PersistInit msg: Connection refused\nsacct: error: Problem talking to the database: Connection refused\n"
+  },
+  "watcher": {
+    "status": 1,
+    "stdout": "    PID    PPID    PGID STAT COMMAND\n",
+    "stderr": ""
+  },
+  "accounting_fallback": "scontrol terminal JobState and RunTime; sacct unavailable",
+  "owned_process_group": [],
+  "visible_job_cgroup_members": [],
+  "collected_utc_epoch": 1795602730.5606008,
+  "post_run_source": {
+    "head": "c3e4b5361a16072e078a8c09ed9ecd605bdeb057",
+    "files": 379,
+    "mismatches": []
+  },
+  "root_bytes": 51245654
+}

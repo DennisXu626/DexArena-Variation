@@ -1,0 +1,135 @@
+{
+  "tested": {
+    "head": "77c46c05a64716c8c17d398b597540283df062e9",
+    "reference": "docs/variation/evidence/open_cabinet_clearance/isolation_001/observations.json",
+    "checker": "tools/variation/open_cabinet_reach/check_atomic_reset.py",
+    "checker_blob": "143f30158076ecf690e3952db6e149c51063e72b",
+    "reference_blob": "7adf21b26899bf378d2ecfe9241d1919cff93204",
+    "verified_source_files": 381,
+    "cabinet_assets": 70,
+    "physx_sha256": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706"
+  },
+  "job": {
+    "JobId": "142978",
+    "JobState": "COMPLETED",
+    "ExitCode": "0:0",
+    "RunTime": "00:00:32",
+    "SubmitTime": "2026-11-26T06:13:39",
+    "StartTime": "2026-11-26T06:13:39",
+    "EndTime": "2026-11-26T06:14:11",
+    "TimeLimit": "00:03:00",
+    "Requeue": "0",
+    "Restarts": "0",
+    "BatchHost": "lyg0295",
+    "AllocTRES": "cpu=2,node=1,billing=2,gres/shard=1"
+  },
+  "physical_gpu": "6",
+  "source_after": {
+    "head": "77c46c05a64716c8c17d398b597540283df062e9",
+    "files": 381,
+    "mismatches": []
+  },
+  "allocation_seconds": 32,
+  "app_seconds": 30.22550776042044,
+  "queue_seconds": 0,
+  "submit_attempts": 1,
+  "accounting": "scontrol terminal JobState and RunTime; sacct unavailable",
+  "application_guard": {
+    "returncode": 0,
+    "stop_reason": null,
+    "elapsed_seconds": 30.22550776042044,
+    "retained_log_bytes": 1608,
+    "cleanup": {
+      "pgid": 1438976,
+      "errors": [],
+      "TERM_sent": false,
+      "KILL_sent": false,
+      "live_remaining": [],
+      "zombie_remaining": [],
+      "complete": true
+    },
+    "exceptions": [],
+    "drain_deadline_hit": false,
+    "drain_limit_seconds": 0.5,
+    "attempts": 1,
+    "job_id": "142978",
+    "physical_gpus": "6"
+  },
+  "capacity": {
+    "samples": 32,
+    "peak": 102861036,
+    "min_free": 422190252032,
+    "stop_bytes": 134217728,
+    "final_stop": null
+  },
+  "root_bytes_before": 51833306,
+  "root_bytes_after": 51941903,
+  "D_free_before": 118595592192,
+  "squeue_empty": true,
+  "owned_pgids_empty": true,
+  "visible_job_cgroup_empty": true,
+  "queue_watcher_exited": true,
+  "start_epoch": 1795673345.0,
+  "collected_epoch": 1795673691.5051036,
+  "rejection_witnesses": [
+    {
+      "case": "near/0",
+      "env": 0,
+      "table_x_before_m": 0.18000006675720215,
+      "table_x_after_m": 0.18000006675720215,
+      "mask_before": "01",
+      "mask_after": "01",
+      "elapsed_bytes": "00000000"
+    },
+    {
+      "case": "near/0",
+      "env": 1,
+      "table_x_before_m": 0.18000000715255737,
+      "table_x_after_m": 0.18000000715255737,
+      "mask_before": "01",
+      "mask_after": "01",
+      "elapsed_bytes": "00000000"
+    },
+    {
+      "case": "near/1",
+      "env": 0,
+      "table_x_before_m": 0.18000006675720215,
+      "table_x_after_m": 0.18000006675720215,
+      "mask_before": "01",
+      "mask_after": "01",
+      "elapsed_bytes": "00000000"
+    },
+    {
+      "case": "near/1",
+      "env": 1,
+      "table_x_before_m": 0.18000000715255737,
+      "table_x_after_m": 0.18000000715255737,
+      "mask_before": "01",
+      "mask_after": "01",
+      "elapsed_bytes": "00000000"
+    },
+    {
+      "case": "mixed, explicit seed",
+      "env": 0,
+      "table_x_before_m": 0.18000006675720215,
+      "table_x_after_m": 0.18000006675720215,
+      "mask_before": "01",
+      "mask_after": "01",
+      "elapsed_bytes": "00000000"
+    },
+    {
+      "case": "mixed, explicit seed",
+      "env": 1,
+      "table_x_before_m": 0.18000000715255737,
+      "table_x_after_m": 0.18000000715255737,
+      "mask_before": "01",
+      "mask_after": "01",
+      "elapsed_bytes": "00000000"
+    }
+  ],
+  "partial_source_edits": 0,
+  "raw_sha256": {
+    "observations.json": "fede6351a238f09bfdbeedd030741f6fc607e0bbf1a2234612fa94299059d8ee",
+    "terminal.json": "9ff297bf0c3a221bdf58438f2bae05defc78011fddbc3b070be37b33ad8df562"
+  }
+}

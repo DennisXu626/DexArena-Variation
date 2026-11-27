@@ -1,0 +1,244 @@
+[
+  {
+    "case": "old_near",
+    "env": 0,
+    "root_xyz_m": [
+      -0.08500003814697266,
+      0.05500006675720215,
+      0.3658020794391632
+    ],
+    "yaw_deg": 15.000000018336834,
+    "door_angle_rad": -0.0,
+    "direct_box_gap_mm": 0.0,
+    "direct_box_pair": [
+      "left_index_DP:0",
+      "link_0:4"
+    ],
+    "deepest_direct_witness": {
+      "pair": [
+        "left_index_DP:0",
+        "link_0:4"
+      ],
+      "inside_mm": 4.802772760744645,
+      "vertex_in_cabinet_frame_m": [
+        -0.2683314085006714,
+        -0.14307717978954315,
+        -0.07895978540182114
+      ]
+    },
+    "hand_rigid_residual_mm": 0.0003065038041577455,
+    "source_mesh": {
+      "hand": "left_index_DP:0",
+      "cabinet": "door:4",
+      "mesh_gap_mm": 0.0,
+      "inside_witness_mm": 7.171965786395395,
+      "hand_xyz_m": [
+        -0.3093357455337175,
+        -0.15358588515450852,
+        0.2847207054436681
+      ],
+      "cabinet_xyz_m": [
+        -0.30284822101978054,
+        -0.15052825225922944,
+        0.2847207056370114
+      ],
+      "overlapping_AABB_pairs": 32
+    }
+  },
+  {
+    "case": "old_far",
+    "env": 0,
+    "root_xyz_m": [
+      0.09500002861022949,
+      0.05500006675720215,
+      0.3658020794391632
+    ],
+    "yaw_deg": 15.000000018336834,
+    "door_angle_rad": -0.0,
+    "direct_box_gap_mm": 117.10382080078125,
+    "direct_box_pair": [
+      "left_middle_DP:0",
+      "link_0:14"
+    ],
+    "deepest_direct_witness": null,
+    "hand_rigid_residual_mm": 0.0003065038041577455,
+    "source_mesh": {
+      "hand": "left_pinky_DP:0",
+      "cabinet": "door:0",
+      "mesh_gap_mm": 117.88123203916086,
+      "inside_witness_mm": 0.0,
+      "hand_xyz_m": [
+        -0.26889797418334094,
+        -0.09191629883364678,
+        0.28176666150018204
+      ],
+      "cabinet_xyz_m": [
+        -0.1550334468445293,
+        -0.061406394196308264,
+        0.28176666489360896
+      ],
+      "overlapping_AABB_pairs": 0
+    }
+  },
+  {
+    "case": "old_left",
+    "env": 0,
+    "root_xyz_m": [
+      0.005000114440917969,
+      0.14499998092651367,
+      0.3658020794391632
+    ],
+    "yaw_deg": 15.000000018336834,
+    "door_angle_rad": -0.0,
+    "direct_box_gap_mm": 29.701255798339844,
+    "direct_box_pair": [
+      "left_pinky_DP:0",
+      "link_0:14"
+    ],
+    "deepest_direct_witness": null,
+    "hand_rigid_residual_mm": 0.0003065038041577455,
+    "source_mesh": {
+      "hand": "left_pinky_DP:0",
+      "cabinet": "handle:15",
+      "mesh_gap_mm": 43.568612707338744,
+      "inside_witness_mm": 0.0,
+      "hand_xyz_m": [
+        -0.26973013201088414,
+        -0.093000531816142,
+        0.28401302635781733
+      ],
+      "cabinet_xyz_m": [
+        -0.2363014516339012,
+        -0.08970664415234611,
+        0.3117600558484473
+      ],
+      "overlapping_AABB_pairs": 0
+    }
+  },
+  {
+    "case": "old_right",
+    "env": 0,
+    "root_xyz_m": [
+      0.005000114440917969,
+      -0.11500000953674316,
+      0.3658020794391632
+    ],
+    "yaw_deg": 15.000000018336834,
+    "door_angle_rad": -0.0,
+    "direct_box_gap_mm": 0.0,
+    "direct_box_pair": [
+      "left_pinky_DP:0",
+      "link_0:0"
+    ],
+    "deepest_direct_witness": {
+      "pair": [
+        "left_pinky_MP:0",
+        "link_0:2"
+      ],
+      "inside_mm": 1.4321938017302915,
+      "vertex_in_cabinet_frame_m": [
+        -0.2708086371421814,
+        0.10979452729225159,
+        -0.08792994171380997
+      ]
+    },
+    "hand_rigid_residual_mm": 0.0003065038041577455,
+    "source_mesh": {
+      "hand": "left_pinky_DP:0",
+      "cabinet": "door:2",
+      "mesh_gap_mm": 0.0,
+      "inside_witness_mm": 2.121303055635182,
+      "hand_xyz_m": [
+        -0.2838642440872195,
+        -0.07950479246040756,
+        0.279117911411752
+      ],
+      "cabinet_xyz_m": [
+        -0.28563542527913083,
+        -0.0806722014886692,
+        0.2791179113589667
+      ],
+      "overlapping_AABB_pairs": 17
+    }
+  },
+  {
+    "case": "old_native_nominal",
+    "env": 0,
+    "root_xyz_m": [
+      0.1400001049041748,
+      0.11999988555908203,
+      0.3658020794391632
+    ],
+    "yaw_deg": 15.000000018336834,
+    "door_angle_rad": -0.0,
+    "direct_box_gap_mm": 144.0610809326172,
+    "direct_box_pair": [
+      "left_pinky_DP:0",
+      "link_0:14"
+    ],
+    "deepest_direct_witness": null,
+    "hand_rigid_residual_mm": 0.0003065038041577455,
+    "source_mesh": {
+      "hand": "left_pinky_DP:0",
+      "cabinet": "handle:14",
+      "mesh_gap_mm": 161.9731867822094,
+      "inside_witness_mm": 0.0,
+      "hand_xyz_m": [
+        -0.26916848946407923,
+        -0.0946606367638183,
+        0.2830198347631684
+      ],
+      "cabinet_xyz_m": [
+        -0.12040352936206217,
+        -0.11494256855581023,
+        0.34378942522595457
+      ],
+      "overlapping_AABB_pairs": 0
+    }
+  },
+  {
+    "case": "near",
+    "env": 0,
+    "rejection": "OpenCabinet placement 'near' rejected for env 0: start 50.76 mm, approach 23.92 mm",
+    "passive_unchanged": true,
+    "passive_rng_unchanged": true
+  },
+  {
+    "case": "far",
+    "env": 1,
+    "root_xyz_m": [
+      0.11500000208616257,
+      0.04500007629394531,
+      0.3658020794391632
+    ],
+    "yaw_deg": 15.000001725884134,
+    "door_angle_rad": -0.0,
+    "direct_box_gap_mm": 142.7542724609375,
+    "direct_box_pair": [
+      "left_middle_DP:0",
+      "link_0:14"
+    ],
+    "deepest_direct_witness": null,
+    "hand_rigid_residual_mm": 0.00045877330104533704,
+    "source_mesh": {
+      "hand": "left_pinky_DP:0",
+      "cabinet": "door:0",
+      "mesh_gap_mm": 144.0476004022819,
+      "inside_witness_mm": 0.0,
+      "hand_xyz_m": [
+        -0.27660388755737686,
+        -0.09961533185314166,
+        0.3011654376644986
+      ],
+      "cabinet_xyz_m": [
+        -0.1374645917632956,
+        -0.062333063311882375,
+        0.3011654459578469
+      ],
+      "overlapping_AABB_pairs": 0
+    },
+    "passive_unchanged": false,
+    "passive_rng_unchanged": true,
+    "approach_screen": "start 137.87 mm, approach 28.91 mm"
+  }
+]

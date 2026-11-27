@@ -1,5 +1,7 @@
 # OpenCabinet VR placement trial
 
+For the updated sampler and headset calls, see the [start-clearance investigation](../open_cabinet_clearance/RESULTS.md). The measurements below describe the original PR #46 presets.
+
 **Simulator update, 25 November.** All four presets passed the 1 mm handle-position check. The measured separations were 18.000007 cm near–far and 26.000002 cm left–right. [GPU reset results and VR invocation](runtime_001/RESULTS.md)
 
 **Start with `near` and `far`.** The closed handle moves 18 cm in depth at the same lateral position. Then try `left` and `right`: the handle moves 26 cm sideways at the same depth. All four use a 15° cabinet yaw and the native closed door. CPU evidence is ready for review. Actual reset, contacts and operability still need the runtime short check and a VR pull.
