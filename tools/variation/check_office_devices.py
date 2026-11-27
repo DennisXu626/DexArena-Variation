@@ -119,6 +119,11 @@ def source_check(baseline=BASELINE):
             poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
         if poses:
             marker.set_pose(Pose.create(poses, device=marker.device))
+            scene_ids = marker._scene_idxs[rows]
+            offsets = scene.scene_offsets[0 if scene.parallel_in_single_scene else scene_ids]
+            body_rows = marker._body_data_index[rows]
+            buffer = scene.px.cuda_rigid_body_data.torch()
+            buffer[body_rows, :3] = (buffer[body_rows, :3] + offsets) - offsets
             body_ids = torch.tensor([marker._bodies[row].gpu_index for row in rows],
                                     dtype=torch.int32, device=marker.device)
             torch.cuda.synchronize(marker.device)
