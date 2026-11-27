@@ -6,7 +6,7 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 import sys
 
 import numpy as np
@@ -282,7 +282,7 @@ class PipetteAppearanceTests(unittest.TestCase):
         reset(value)
         reset(value, [1], {'scheme_id': 'coral'})
         self.assertEqual(value.records[-1], {'env_idx': 1, 'episode_index': 2,
-            'scheme_id': 'coral', 'catalog_version': 'pipette-appearance-v2'})
+            'scheme_id': 'coral', 'catalog_version': 'pipette-appearance-v3'})
 
     def test_candidate_requires_compatible_rendering(self):
         value = adapter({'scheme_id': 'jade'})
@@ -432,10 +432,17 @@ class PipetteAppearanceTests(unittest.TestCase):
                 draw.assert_not_called()
 
     def test_native_binding_shape_and_parent_mapping(self):
-        value = MODULE.PipetteAppearance({'enabled': True}, 2)
+        value = MODULE.PipetteAppearance({'enabled': True}, 2, rendering_enabled=True)
+        writes = []
+
+        class RecordingMaterial(IdentityNamespace):
+            def __setattr__(self, name, field):
+                writes.append((self, name))
+                super().__setattr__(name, field)
+
         def shape():
-            return SimpleNamespace(parts=[SimpleNamespace(material=IdentityNamespace(
-                base_color=[.1, .2, .3, 1.], roughness=.5, metallic=0.))])
+            return SimpleNamespace(parts=[SimpleNamespace(material=RecordingMaterial(
+                base_color=[.1, .2, .3, 1.], roughness=.5, metallic=0., base_color_texture=None))])
         def entity(count):
             body = SimpleNamespace(render_shapes=[shape() for _ in range(count)])
             return SimpleNamespace(find_component_by_type=lambda cls: body)
@@ -449,8 +456,29 @@ class PipetteAppearanceTests(unittest.TestCase):
             pipette_stand=SimpleNamespace(_objs=stands), pipette=SimpleNamespace(_objs=articulations))
         base.scene = SimpleNamespace(sub_scenes=[SimpleNamespace(render_system=SimpleNamespace(
             _internal_scene=SimpleNamespace(force_rebuild=lambda: None))) for _ in range(2)])
-        render = SimpleNamespace(RenderBodyComponent=object)
+        class Texture:
+            def __init__(self, pixels, fmt, *, mipmap_levels):
+                self.pixels = pixels.copy()
+                self.format, self.mipmap_levels = fmt, mipmap_levels
+                self.uploads = []
+
+            def upload(self, pixels):
+                self.pixels[:] = pixels
+                self.uploads.append(pixels)
+
+        render = SimpleNamespace(RenderBodyComponent=object, RenderMaterial=RecordingMaterial,
+                                 RenderTexture2D=Mock(side_effect=Texture))
         with patch.dict(sys.modules, {'sapien': SimpleNamespace(render=render), 'sapien.render': render}):
+            for i, entity in enumerate(stands):
+                old_body = entity.find_component_by_type(object)
+                records = [SimpleNamespace(material=shape.parts[0].material)
+                           for shape in old_body.render_shapes]
+                builder = SimpleNamespace(visual_records=records)
+                builder.build_render_component = lambda: SimpleNamespace(render_shapes=[
+                    SimpleNamespace(parts=[SimpleNamespace(material=record.material)]) for record in records])
+                value.isolate_builder_materials(builder, stand_env=i)
+                render_body = builder.build_render_component()
+                entity.find_component_by_type = lambda _, body=render_body: body
             value.bind(base, 0)
             value.bind(base, 1)
             self.assertEqual(len(value.bindings[0]), 53)
@@ -460,6 +488,36 @@ class PipetteAppearanceTests(unittest.TestCase):
             counts = {role: sum(row[:2] == ('pipette', role) for row in value.bindings[0])
                       for role in value.definitions['pipette']['roles']}
             self.assertEqual(counts, {role: 1 for role in counts})
+            plates = [row.texture for row in value.stand_plates]
+            plate_materials = [rows[0][3] for rows in value.bindings]
+            self.assertEqual(render.RenderTexture2D.call_count, 2)
+            self.assertIsNot(plates[0], plates[1])
+            for plate in plates:
+                np.testing.assert_array_equal(plate.pixels[0, 0], np.asarray([.1, .2, .3, 1.], dtype=np.float32))
+                self.assertEqual(plate.format, MODULE.PLATE_TEXTURE_FORMAT)
+                self.assertEqual(plate.mipmap_levels, 1)
+            writes.clear()
+            reset(value)
+            self.assertEqual([len(plate.uploads) for plate in plates], [0, 0])
+            reset(value, [1], {'scheme_id': 'jade'})
+            self.assertEqual([len(plate.uploads) for plate in plates], [0, 1])
+            for i, rows in enumerate(value.bindings):
+                textured = [(oid, role) for oid, role, _, mat, _ in rows
+                            if mat.base_color_texture is plates[i]]
+                self.assertEqual(textured, [('pipette_stand', 'base_plate')])
+            np.testing.assert_array_equal(plates[1].pixels, value.plate_pixels('jade'))
+            reset(value, [0], {'scheme_id': 'coral'})
+            np.testing.assert_array_equal(plates[0].pixels, value.plate_pixels('coral'))
+            self.assertFalse(np.array_equal(plates[0].pixels, plates[1].pixels))
+            reset(value, [0], {'scheme_id': 'coral'})
+            self.assertEqual([len(plate.uploads) for plate in plates], [1, 1])
+            reset(value, [1])
+            self.assertIs(value.bindings[0][0][3].base_color_texture, plates[0])
+            self.assertIs(value.bindings[1][0][3].base_color_texture, plates[1])
+            np.testing.assert_array_equal(plates[1].pixels, value.stand_plates[1].original)
+            self.assertEqual(render.RenderTexture2D.call_count, 2)
+            self.assertFalse(any(name == 'base_color_texture' and material in plate_materials
+                                 for material, name in writes))
             # A shared environment material is rejected before storing bindings.
             stands[1].find_component_by_type(object).render_shapes[0].parts[0].material = value.bindings[0][0][3]
             with self.assertRaises(RuntimeError):
@@ -474,7 +532,7 @@ class PipetteAppearanceTests(unittest.TestCase):
             SimpleNamespace(parts=[SimpleNamespace(material=record.material)]) for record in records])
         render = SimpleNamespace(RenderMaterial=IdentityNamespace)
         with patch.dict(sys.modules, {'sapien': SimpleNamespace(render=render), 'sapien.render': render}):
-            MODULE.PipetteAppearance.isolate_builder_materials(builder)
+            adapter().isolate_builder_materials(builder)
             first = builder.build_render_component()
             first_mats = [shape.parts[0].material for shape in first.render_shapes]
             self.assertIs(first_mats[0], first_mats[1])

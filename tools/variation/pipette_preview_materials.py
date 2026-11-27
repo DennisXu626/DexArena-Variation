@@ -39,8 +39,12 @@ def input_file_sha256():
     tasks = ROOT/'tasks/pipette_transfer'
     files = [tools/name for name in ('render_pipette_preview.py', 'pipette_preview_materials.py',
                                      'check_pipette_appearance.py', 'pipette_render_fixes.py',
+                                     'build_pipette_stand_textures.py',
                                      'sapien_sdk/run_task_check.py')]
     files += [CATALOG]
+    files += [ROOT / path for path in read_json(CATALOG)['new_textures']]
+    label = bindings('pipette_stand')['roles']['base_plate']['candidate_color_texture']
+    files += [ROOT / label['source_mask']]
     files += [ARCHIVE/key/'bindings.json' for key in
               ('pipette', 'sample_cup', 'test_tube', 'tube_rack', 'pipette_stand', 'tip_cup')]
     files += [tasks/name for name in ('pipette_transfer_long.py', 'pipette_transfer_aspirate_liquid.py',
@@ -116,6 +120,7 @@ class Material:
         self.transmission = 0.
         self.ior = 1.5
         self.specular = .5
+        self.base_color_texture = None
         self.__dict__.update(values)
 
 
@@ -184,26 +189,35 @@ def apply_material(material, params):
             raise ValueError(f'Unsupported appearance field: {key}')
 
 
-def apply_records(records, object_id, scheme, catalog):
+def apply_records(records, object_id, scheme, catalog, *, load_texture=None):
     binding = bindings(object_id)
     if len(records) != binding['expected_visual_count']:
         raise ValueError(f'{object_id}: unexpected visual count {len(records)}')
     for role, indices in role_indices(binding):
         params = parameters(catalog, object_id, role, scheme)
+        label = binding['roles'][role].get('candidate_color_texture') if params else None
+        if label:
+            path = Path(label['directory']) / f'{scheme}.png'
+            texture = load_texture(ROOT / path, label['mipmap_levels']) if load_texture else path.as_posix()
         for index in indices:
-            apply_material(records[index].material, params)
+            material = records[index].material
+            if label:
+                material.base_color_texture = texture
+            apply_material(material, params)
 
 
 def snapshot_records(records):
-    return [(record.material, {key: copy.deepcopy(getattr(record.material, key))
-                              for key in ('base_color', 'roughness', 'metallic')})
+    # Restore the texture before the uniform update that uploads its mask.
+    return [(record.material, {key: (getattr(record.material, key) if key == 'base_color_texture'
+                                    else copy.deepcopy(getattr(record.material, key)))
+                              for key in ('base_color_texture', 'base_color', 'roughness', 'metallic')})
             for record in records]
 
 
 def restore_records(snapshot):
     for material, fields in snapshot:
         for key, value in fields.items():
-            setattr(material, key, copy.deepcopy(value))
+            setattr(material, key, value if key == 'base_color_texture' else copy.deepcopy(value))
 
 
 def private_material(sapien, source):
@@ -316,11 +330,24 @@ def validate_catalog(catalog):
     candidates = catalog['candidate_ids']
     if len(candidates) < 2 or len(set(candidates)) != len(candidates) or 'original' in candidates:
         raise ValueError('Expected at least two distinct candidate IDs')
+    textures = []
     for key, obj in catalog['objects'].items():
         if set(obj['schemes']) != {'original', *candidates} or obj['schemes']['original'] != {}:
             raise ValueError(f'{key}: original must use captured native materials')
         definition = bindings(key)
         editable = {role for role, entry in definition['roles'].items() if entry['editable']}
+        for role, entry in definition['roles'].items():
+            texture = entry.get('candidate_color_texture')
+            if texture:
+                directory = Path(texture['directory'])
+                mask = (ROOT / texture['source_mask']).resolve()
+                if ((key, role) != ('pipette_stand', 'base_plate') or entry['visual_indices'] != [0]
+                        or role not in editable or not (ROOT / directory).resolve().is_relative_to(ARCHIVE.resolve())
+                        or not mask.is_relative_to(ARCHIVE.resolve()) or not mask.is_file()
+                        or type(texture['mipmap_levels']) is not int
+                        or texture['mipmap_levels'] < 1):
+                    raise ValueError('Expected stand base-plate textures on the native box UVs')
+                textures.extend((directory / f'{name}.png').as_posix() for name in candidates)
         for scheme in candidates:
             if set(obj['schemes'][scheme]) != editable:
                 raise ValueError(f'{key}/{scheme}: incomplete role parameters')
@@ -340,11 +367,19 @@ def validate_catalog(catalog):
                 elif 'base_color_alpha' in params:
                     raise ValueError('Only glass roles may change alpha')
         for left, right in combinations(candidates, 2):
-            for role in editable:
-                a = obj['schemes'][left][role]['base_color_rgb']
-                b = obj['schemes'][right][role]['base_color_rgb']
-                if math.dist(a, b) < .45:
-                    raise ValueError(f'{key}/{role}: RGB separation too small for {left} and {right}')
+            difference = max(
+                abs(a - b) for role in editable for a, b in zip(
+                    obj['schemes'][left][role]['base_color_rgb'],
+                    obj['schemes'][right][role]['base_color_rgb'], strict=True)
+            )
+            # Coordinated accents can overlap. Check for near-duplicate palettes
+            # per object, then use actual camera pixels for formal acceptance.
+            if difference < (.16 if key in ('sample_cup', 'test_tube') else .075):
+                raise ValueError(f'{key}: palette separation too small for {left} and {right}')
+    if len(textures) != len(candidates) or catalog['new_textures'] != textures or catalog['new_uv']:
+        raise ValueError('Unexpected texture inventory or UV change')
+    from build_pipette_stand_textures import check_stand_textures
+    check_stand_textures(catalog)
     return catalog
 
 

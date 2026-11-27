@@ -1,0 +1,1440 @@
+{
+  "status": "passed",
+  "slurm_job_id": "143432",
+  "node": "lyg0295",
+  "gpu": "NVIDIA A800-SXM4-40GB",
+  "capture_git_commit": "03ef33adfd2e0bc93c6c50aea8375af32f4d4163",
+  "capture_tree": "05d2673e1dce6cc3d52727e9c295791cb99e892f",
+  "catalog_schemes": [
+    "original",
+    "jade",
+    "coral",
+    "variant_3",
+    "variant_4",
+    "variant_5",
+    "variant_6",
+    "variant_7",
+    "variant_8",
+    "variant_9",
+    "variant_10"
+  ],
+  "sdk_version": "3.0.3+dexarena.gpu1.linux1",
+  "sdk_artifact": "linux1",
+  "sdk_artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+  "source_sha256": {
+    "assets/appearance/objects/pipette_transfer/catalog.json": "8a419daa4e054ad70802544ff2dc12d2f43d5df4448826a487375457543cd091",
+    "assets/appearance/objects/pipette_transfer/pipette/bindings.json": "40fe55f3e012c930f54a79948e790730f568c7b184874972c434ce119bc628ba",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png": "cba75536907673751f51fda92cbec47f2a7a7048526cda5c8e2c4e432c5dd48d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/bindings.json": "b092f82a34c417de465036c114b187394bf57ecd13bd3cff6cb23576e13ee0de",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/coral.png": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/jade.png": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_10.png": "586ce033196da93843dca9a616c10439d2dd1988be16b6773d389ee995a0ad9d",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_3.png": "ab74eb62690610167b1048aa0325810246ae88950bfe43aebf8a43fdbc49f589",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_4.png": "92a9c2181802714a8ea3956a00d3c15ac91272556b8708af59309eae01949894",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_5.png": "d2421fd368418fb29a4b51bcac27d34a153a535db785c4d1a35aac185fcb4c19",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_6.png": "4e04a3c83d4e10785499ff66fc41da6a09dd7cea713f3d3017bfa504b8f84893",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_7.png": "cbd804dda0e02de9382c301a14c767c355bceb7b6a7458aafeaa0fb46ddfd317",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_8.png": "8982e253586487a6d3b55c20d6a754039392a1835b82083a2fdaa1eaaec1b39a",
+    "assets/appearance/objects/pipette_transfer/pipette_stand/plates/variant_9.png": "11f1745cd02657a60b0a4e1bb1c62a29b9b330062600a257c6eab654d68a6142",
+    "assets/appearance/objects/pipette_transfer/sample_cup/bindings.json": "1bd8fa3804e9a0db3d7a0376126d8321e8e6fe535472fe27763de6772637c5ee",
+    "assets/appearance/objects/pipette_transfer/test_tube/bindings.json": "467d0fdfce2a96cff0263169a27181726993b00eb1fa90d43639512558a3b8ab",
+    "assets/appearance/objects/pipette_transfer/tip_cup/bindings.json": "65ab9e5424ce5f9c474abc71fee1a0bd8a6fa669786acbec4248579c4cc37b48",
+    "assets/appearance/objects/pipette_transfer/tube_rack/bindings.json": "990631f8367a9a134475e8add85aaae1ee70c33185ceb0c52eefd96457b81e23",
+    "tasks/__init__.py": "2030acebc725b7ee2dc7144e8bf60b11ab29b319535ac19158214d4bb778f7d4",
+    "tasks/assets/task_object_meshes/pipette/README.md": "68d2c11beb679b33525b766a24678f6cf4cd31798d5e7fb4a8cc2dcac75c38be",
+    "tasks/assets/task_object_meshes/pipette/mobility.urdf": "82fe5a621d62cde957707deeb490f067109a103627f88a8be8f44a6e5b4ec776",
+    "tasks/assets/variation/pipette_transfer/v1/catalog.json": "323ad9f3a317498b9a09c3cbbbe46905825da8cba82b16dc263160437dc8558f",
+    "tasks/cabinet_pouring/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/cabinet_pouring/cabinet_appearance.py": "6b9db1780ff64424eca4b9c522af37bf69f67f602edbb393d54c86dfa0461dae",
+    "tasks/cabinet_pouring/cabinet_pouring_long.py": "20a2727698fdf6fc8af4e6c5097e19aa7e76e1f3cfb993b6db83aa06f380a168",
+    "tasks/cabinet_pouring/cabinet_pouring_open_cabinet.py": "39698c6d4bb7ff30f0d3f185c3b3d453a7fd800dfd0dd638a5a85a1b8ebb60af",
+    "tasks/cabinet_pouring/cabinet_pouring_pick_bottle.py": "cd6ad04d3bf1c68003d9a6177944b8ca0366f22149b018f9f505deadff99eda7",
+    "tasks/cabinet_pouring/cabinet_pouring_pour_beads.py": "9022de5d79e71eb5642ee163b791c2cc785406283344913e9798bce1f41a67c8",
+    "tasks/cabinet_pouring/cabinet_pouring_unscrew_cap.py": "8d092a0001ff62c07991da48a9c248548057e2e59627b7e2e44bbc4da87d9888",
+    "tasks/cabinet_pouring/family_appearance.py": "3ec3fa5bf75bd7e414a3e95d88142c3abf4f36140072a0fd33388ce3dd1673c7",
+    "tasks/cabinet_pouring/position_layout.py": "39a15d9388216bdc9a45a3814e7ab25438ec1ca6a5a3dcce4a2056e644ae4497",
+    "tasks/cabinet_pouring/pouring_appearance.py": "c6ae6092caeb47fa1fada48c450268877c0eff27a89d850f4033e7aa19f25eb0",
+    "tasks/cabinet_pouring/variation.py": "3b27d2106d27da43cadf8a8ac440853a05166ed583b8ac3fd302d82dcdd243a8",
+    "tasks/config/__init__.py": "089f2af7f03496254cd5531b84baad9a08c3601c578a2ee0216f5ddfe67f7d5a",
+    "tasks/config/code_fingerprint.py": "bdd250487e656a61aad99828b42c91e86252c40e59bd2be782e749f965e1c302",
+    "tasks/config/collection_targets.py": "75227d736dd1951f787965f92b2b47afde8da2feac90e2d807263435bf092704",
+    "tasks/config/contact_materials.py": "165c0a1e3f5ce0803982098c1e34c373dd55cdff1cdb9a165f793e35a4f5d7bd",
+    "tasks/config/energy_fence.py": "0d57bb3e7ed9e56b3680e889b744f23df377b1b017d91089911859bf9f23cd48",
+    "tasks/config/fingerprint_lineage.py": "1b1def57271bf26ec7678a445c9c11a3bf4108ade654126d5f201ab985738c17",
+    "tasks/config/guidance_markers.py": "f08bb801a15c306122fb2cd0b502bc8f428280a91073757b98def331e8be09f4",
+    "tasks/config/hands.py": "cada26611e4c1576999bb77067d695871709cc31b161ab9feff4feb1e53e650f",
+    "tasks/config/layout_randomization.py": "b662d44cb7755e7f7fbe581de0f5a0f7bff55e38aad6fa1f5f8f5983866654cc",
+    "tasks/config/mass_properties.py": "660e06f6d7287ecf7f3d9ce47500249efe7e61c7b4ea5824af3b0036605434bb",
+    "tasks/config/object_materials.py": "7aa092093da4cea999ff3c76f92d26dc158d8f50e4d2a810758c8536c18af127",
+    "tasks/config/sim_profiles.py": "385653b80dcb3349d20e244102aee01e2ed0f1a6d78792b55396a74825f37e5e",
+    "tasks/config/task_state.py": "86524b8f68b69eeffbc9fcc9d7479a6fa8343d7e68d6d66a4241eb899c061f42",
+    "tasks/config/workspace_rig.py": "c8f93c6e1ae8951778c987dc0704efb0a21536a75bc1b95844ec95a9dc90d462",
+    "tasks/drawer_plug/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/drawer_plug/charger_appearance.py": "af6fdfdf43895968c715b35e147356738b3357e0299bde1a7f360d13d6bf29c9",
+    "tasks/drawer_plug/drawer_plug_insert_plug.py": "b41754e4c8069dfff3aa7a082dd0501ec282ec2922cd73ef7e01d8e2d3aa9f44",
+    "tasks/drawer_plug/drawer_plug_long.py": "5b460d56c1f4c94879f24f6359fc17c66545292a35efb15eeaa84718abff9681",
+    "tasks/drawer_plug/drawer_plug_open_drawer.py": "b63005b7afd18e4a2cad528fc97858ccf7884936ede9a1dd4363afb606748198",
+    "tasks/drawer_plug/drawer_plug_pick_charger.py": "8724c11f6c614bbe1072c7cdecb0e48ebdcc79f994cb49675dd28141e01681f4",
+    "tasks/drawer_plug/family_appearance.py": "6d5df6d749d70d816533ef385d8f4ae0868551cda2b32e2ed5948b18d7b717ed",
+    "tasks/drawer_plug/fixture_appearance.py": "47158095b860d7a99310b3894368ea7e4099e4855fd7a23ed684bbfa386d95bf",
+    "tasks/furniture_assembly/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/furniture_assembly/appearance.py": "346eab59afebc9e599c945756ef9fab5d1db2e94f4e3024e1d2db3b1599e82c8",
+    "tasks/furniture_assembly/furniture_assembly_fasten_screw.py": "b9f255501e6ff2d604294dea432549b4cdaa804d663f57f0e8f812ef9be34513",
+    "tasks/furniture_assembly/furniture_assembly_insert_rail.py": "c8fe92c8aff4f223722a60159e2656314c1915ccbdfe5414986260b61702f23b",
+    "tasks/furniture_assembly/furniture_assembly_lay_flat_panel.py": "c136693815a07f2327518c1f96afdbf5688b16ae001a9e49a4251cc84d3239ef",
+    "tasks/furniture_assembly/furniture_assembly_long.py": "73608e52c17a535b0a21ffb61a8fd89b1916aad83057630829034f44931c614a",
+    "tasks/furniture_assembly/reset_scope.py": "a9cb51182eb6862d929a566e2bc8c6d093a29c5355303b1cbddc6508756c3520",
+    "tasks/juice_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/juice_preparation/juice_preparation_apple_to_blender.py": "e00304c858103a299f4e7ee42ea9dc38bd1f5cd29c34ba02498d0193fb6e872e",
+    "tasks/juice_preparation/juice_preparation_close_fridge.py": "5a21b933e37052ae28e13e46163d53485cc4d6a656f20e5c98f76f14852c3253",
+    "tasks/juice_preparation/juice_preparation_long.py": "79bddd76c2db1c0e57f038e86210c8dff963b9f6a14703e4394709dbe68fd3dd",
+    "tasks/juice_preparation/juice_preparation_open_fridge.py": "7e45c84b96b391713918a35188d85adfe672416c5eb428ec1ec7bad6f35a71a8",
+    "tasks/juice_preparation/juice_preparation_place_lid.py": "f96ecf206d7cf7fdd160828478ff15d3d2a2d65ea120817def118859979e3d60",
+    "tasks/juice_preparation/juice_preparation_press_button.py": "0b3cf4504517dbc48de5d81578a18e231a8967b907e881909aec46841fcad1ca",
+    "tasks/meal_preparation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/meal_preparation/appearance.py": "a5ff16e5746a0808d8d9141918214243273bb3abd0cf70e09fe5e6629a1562a3",
+    "tasks/meal_preparation/appearance_textures.py": "67b9450e92d0ee606528250a09b1d0346e583f09c8246f32de8de2ea3bbc28e6",
+    "tasks/meal_preparation/meal_preparation_long.py": "112671e2e511b0dcdd1de86b9746af31e21061cbace7eca81d61c301f8a3c4b6",
+    "tasks/meal_preparation/meal_preparation_open_lunch_box.py": "dd61b8e7ad8dbb798a104c451e32fdafa0fae704d535c616bb79a5ad6b6b9d76",
+    "tasks/meal_preparation/meal_preparation_place_bread.py": "ffa971242b891574e973c113e07cc378300ccab8004d4ee0145fb3ab17b74d89",
+    "tasks/meal_preparation/meal_preparation_scoop_tomato.py": "09106ccaebeb38ee7094b5a180ff3bab8626e8ec2515d9e1e2a6bfa243c9b017",
+    "tasks/nut_bolt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/nut_bolt/appearance.py": "17a3ff71c089b72c0538b62048470f08cd572f9c40920cd6c32fcb7306ddc243",
+    "tasks/nut_bolt/gpu_hold.py": "dc78b2adecef3f12db0cab684718ff2a44b87b979bbf5a6967795a0c82aa9907",
+    "tasks/nut_bolt/nut_bolt_long.py": "ccc03931d52b4b0876f6c9233b25b34a7bb7255640177a006f6ebd6c6156c7b1",
+    "tasks/nut_bolt/nut_bolt_pick_bolt.py": "c249bafe219f0ac0a4efb634f8a8ae0f64273fa08dc2ebf6f572ac55c76c64f8",
+    "tasks/nut_bolt/nut_bolt_seat_nut.py": "56e7b52bd93ccfd28c5956f8e7261b1e0fb1712f5ad05e1a5390c537f9e84190",
+    "tasks/nut_bolt/nut_bolt_turn_nut.py": "ff110e48b624f5d2f986de757ac9e385ea7050f8bdd989ccf94b3c5b874bf89c",
+    "tasks/nut_bolt/reset_scope.py": "d3556681109af3e32a94c47d041b8dd8c6df3122528ba68bc4624a9e8fb5446e",
+    "tasks/office_desk/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/office_desk/devices_appearance.py": "bb3a3e03fb2639e609ff271a0600e34929bc321fff9b454957f26a1139661489",
+    "tasks/office_desk/mouse_appearance.py": "f4a7a0f240364a517933231021aaeb4e49a1a7dd2c4bb8db5466be875a27bf8d",
+    "tasks/office_desk/office_desk_click_mouse.py": "0d0c5bb3caca0969bebef200d94c9fa17ead566c5180fad41455ce11812e793a",
+    "tasks/office_desk/office_desk_long.py": "0acc26306d8ff41b9455112031fcb904e0b24c837de95a4b5e6f71d016f01b38",
+    "tasks/office_desk/office_desk_open_laptop.py": "c41cc31c937f7ebddf7df51001000a51dcc454e5e25f16edc93243dfe954d7a7",
+    "tasks/office_desk/office_desk_type_keys.py": "3d716b4ae3b78c084b231c3ce4ef571a83fc26cf3cdc170ccaf4dcf4f8b78b23",
+    "tasks/office_desk/reset_scope.py": "0492ca3d5c07de1b66f491e46d2a61ff128fb3669087a2818fff48491a0a6c2d",
+    "tasks/package_opening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/package_opening/appearance.py": "f86f464b495232e32dc6bd2fa99f67138b906826c97b47caf5e7ed36c287753f",
+    "tasks/package_opening/package_opening_extract_apple.py": "d327a6c2ee39aa2a6db567eea80c55c532cf19c6f84f80a5c4ca841678aca61d",
+    "tasks/package_opening/package_opening_long.py": "479a1caa35062c3fdbd1748f50a67a6ecbab7dfb8c79311142423a33802170b5",
+    "tasks/package_opening/package_opening_open_package.py": "0f53f59a0a91841defe224ff059f7d7e7cfb6fe35b4ea7ec8bd9499d1b2b4cff",
+    "tasks/pipette_transfer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/pipette_transfer/appearance.py": "61a6537020438a1fe4865b809c126ed0d1fc631d2185c0c89ab68d5e9f971c7d",
+    "tasks/pipette_transfer/pipette_transfer_aspirate_liquid.py": "ce4feb2cde53a783e2b581b708ea50ef6c7dbc286e9a957105ed0582bdcb3347",
+    "tasks/pipette_transfer/pipette_transfer_dispense_liquid.py": "b0a13fc7640d57e06cdd4e4e1bf0a682d8a8a021468fd0da6c8427813885e71b",
+    "tasks/pipette_transfer/pipette_transfer_long.py": "e05537f538736b93e2268a5bd6a8b1c18215cdc96b918fe22208a4577535a53a",
+    "tasks/pipette_transfer/rendering.py": "4c1479e06274b7beaf26d90f5bc7834345a0794db6bc36582608a3ef4562c1d2",
+    "tasks/robots/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/robots/angled_mount.py": "9f9363ced1e0b6eb46c31a9b5c6f41db8d1026c9d79b4e07146e9630b7d38bbf",
+    "tasks/robots/dual_arm_impedance_mixin.py": "00e92b94b74185b8c07657a82412e628942eb7294c97179172d09a93a6b38318",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca",
+    "tasks/robots/hand_controller_gains.py": "c8542a3a856aedf9b2687db6ca5e30fbb893fc8715f252b78af1fe1c19f1cdc5",
+    "tasks/robots/panda_base.py": "709bb5e7002f6d2af4e397b20f2e2d45ac685dc3ea2bc907a60512aafde78648",
+    "tasks/robots/panda_dual_gripper_mobile_base.py": "08b5d2dcc3499176244f7ce228990516fc0c7eee70a1568b934e277ed0a5dff5",
+    "tasks/robots/panda_dual_sharpa_hand.py": "b39d49835e7d7a3c64a344b3311ddece34cd10b33245d1130af0fb1d9421767f",
+    "tasks/robots/panda_dual_sharpa_hand_mobile_base.py": "27b59640e6a5be032cfe24f1298eeebfb600f1720151ec8f2a83176379043a22",
+    "tasks/robots/panda_dual_wuji_hand.py": "5d0b0ae91e4a58ef1a1e05b47fb3fbce81d5c4b144026ed7cecf6c9b6270feb2",
+    "tasks/robots/panda_dual_wuji_hand_mobile_base.py": "f0f7b4c3cb094edeaf3c2a0f60dcb832c59c1a78ecef9512f511f40d5d379817",
+    "tasks/robots/panda_dual_xhand_hand.py": "40e7445790b07aec29c083e7fdf6d8b400d7d1ebd42d36fc8efe7d5be00a9ed0",
+    "tasks/robots/panda_dual_xhand_hand_mobile_base.py": "f8c880151be70be212ca59223dc64ef755ec2200d16ca7f95a6fbf9f0938154b",
+    "tasks/robots/panda_gripper_left_mobile_base.py": "4acb353194c5a81ded23e0764b7ca792091a17a19f9ba9e7e97baf30ceef07e0",
+    "tasks/robots/panda_gripper_right_mobile_base.py": "95136d64ff7503ab08ff7f3db402304a9e8531c2f6bf2c564977c5c77af788f0",
+    "tasks/robots/panda_impedance.py": "1a6aeeba3887738758f0a2c0536f6703fd5ab6db2537b30d1c3ee9c02c3a0f85",
+    "tasks/robots/panda_sharpa_hand_left_mobile_base.py": "4785c550f90d8eedb475acdecf9d9b868c729b60c070b9a7b62c5f1ffe8fbc32",
+    "tasks/robots/panda_sharpa_hand_right.py": "a46da81e87d33179dadc9a4e9f5961bd9c9fb287cdf06be39bac4f62217bbbf8",
+    "tasks/robots/panda_sharpa_hand_right_mobile_base.py": "b2df2a781d33c2fadf607b8453846319ed0fd7638f313aa25f73226cee3c8579",
+    "tasks/robots/panda_wuji_hand_left_mobile_base.py": "477b0b57255bfd615b68a424241a5b0fc7cd12ddbc33a5341e3e8b0b6ac167e9",
+    "tasks/robots/panda_wuji_hand_right.py": "a62a9a7cad9bec524e273988b891de778184b214be0da128399f76278cb8e5a4",
+    "tasks/robots/panda_wuji_hand_right_mobile_base.py": "9aeddd05dadd3884e81ef27bc00a8b0b7ef6450c3bb9e8b5247d305ff533ef84",
+    "tasks/robots/panda_xhand_hand_left_mobile_base.py": "37239c14903ea500e3434aaefb8b293b20a0029a1fcd98588c998227d5a32ffa",
+    "tasks/robots/panda_xhand_hand_right.py": "c778abfc2ebae2366e52283a5e5162f35e4c6d8f6f27eb43f9bcba7b4a545a6b",
+    "tasks/robots/panda_xhand_hand_right_mobile_base.py": "0b350d12893f58031ce00d2e72f178f1e58576bf2484da300f518a17dac1c031",
+    "tasks/scene_builders/__init__.py": "53fcd8a549c1401d8d4680676da4938187f385edc63bf89de5008350cab3d287",
+    "tasks/scene_builders/anchor.py": "d492c02c643a7f71ebe45b1c6b84e51c2a8d7128e1d022ab410f27991a5263ab",
+    "tasks/scene_builders/backgrounds.py": "9612cbc52f45a70df0dfc8f08eca5d20fe4ebc28a8049d485ab8752e0bb92b00",
+    "tasks/scene_builders/camera_dr.py": "5da26be3d206903cabe25d3b5aa91ab1bd7992e1efc8d6f0b17d366b5c8b29a3",
+    "tasks/scene_builders/convert_labutopia.py": "c2fb33d92768d7f669212eb951db176d997b37002baecf030ba35f846d032001",
+    "tasks/scene_builders/fetch_labutopia_scene.py": "57c1085fdb12106c1f05a947ea9651af86008eacce1a4d301c55b8f37e9d2250",
+    "tasks/scene_builders/fetch_objaverse_scene.py": "62fca3d4b1f83a271cf05198de8601eb9e1dbf9d782ac66d14215eda0c08b6a4",
+    "tasks/scene_builders/find_glb_surfaces.py": "93523632c862b501ecebab4ee4d7379805e460fe1862ade068c622e04177d699",
+    "tasks/scene_builders/labutopia.py": "f0ef506b84964563dd184123814dfaf2a1918bba3eff1d33016fcec3052bdb7d",
+    "tasks/scene_builders/lighting.py": "7bb42f337fa8acdd4f091a42bf26c9d9ee9d77b98f8fe2cbf81d1e19e67130af",
+    "tasks/scene_builders/randomized_table.py": "59fdc6a5045ad25b96a53711b03da0102535019250dd53ef6ad6e124204a8df2",
+    "tasks/scene_builders/render_labutopia.py": "4979edc6ca0e22c6534d4423a583ab8170228171358a0650c8638ee0ba4daf1e",
+    "tasks/scene_builders/scene_library.py": "03fef87e26e8b4dafc467cb508bc179d8653a14187f2beef91ecfc39eae56390",
+    "tasks/scene_builders/table.py": "e69dd2152091851e63794699e03734b8570199e542889b7f0caae394da854d4d",
+    "tasks/scene_builders/textures.py": "95a2d5e1e18b73510174c4f4d40449c3a40af2b9afb82602619c403e6fdd5939",
+    "tasks/table_cleaning/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tasks/table_cleaning/table_cleaning_dump_dustpan.py": "331959e02d6e4c6c95c39c64e4f0bac3e3871b4058941c6bc9e83dab8d8fa561",
+    "tasks/table_cleaning/table_cleaning_long.py": "02de8ebaa612438a3d46ee866c3e2907620bb2e5f682bfe81543019ce3c05bce",
+    "tasks/table_cleaning/table_cleaning_pick_debris.py": "bc9cd131c31ea7657c0b97d86757f4620501cdd07e5b4af186ad9e45e2bbd749",
+    "tools/variation/build_pipette_stand_textures.py": "f8428abfa57d4bfeb56b0e3e62bd0a54bf7871501d0626a70ba2402bdf6f55a1",
+    "tools/variation/check_furniture_appearance.py": "a95ced8933b7ca00d537d95d135e97cff464560ca2679e7a18b1a8c8d2a4281f",
+    "tools/variation/check_furniture_dynamics.py": "9df5261aab58b7f32775f838be7146b61e6935c302349430a655b699f9ea3f9b",
+    "tools/variation/check_pipette_dynamics.py": "edd80b69cadeaffd7d7a521b3b95922cd23fb49ec8b560825e9104da23533eb3",
+    "tools/variation/check_pipette_plate_reset.py": "4f86431b1a1d99690913cc095874c3694b88c09b7db4465054da084e4d164d1d",
+    "tools/variation/check_pipette_runtime.py": "19ec0a7fce93bacedf0c3ddb23593b4b8cfee34800a78c26d8f24a3bcc355fc3",
+    "tools/variation/sapien_sdk/run_task_check.py": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb"
+  },
+  "raw_reviewer_sha256": "6c72559c15e0a0ff6ab3b4b7cb62ab94aacc32867e866cf7aa5f4da910571c87",
+  "tasks": {
+    "AspirateLiquid": {
+      "standard_sdk": {
+        "status": "passed",
+        "execution": "standard_cuda",
+        "source_receipts_sha256": {
+          "manifest": "ec16d3c14563fc41b8b8755ea3c038de557c5315d45557c3ce06a98c40d75e98",
+          "results": "94cc0a4b69d55c4ae092a0b8431c69564af7e3321a4c625a77e337e485e409ec"
+        },
+        "private_sdk_sha256": "c709197588ac93a79bb1fc8aba9a61550ad766cb2afe2e757c31dd4a85c21d38",
+        "actual_elf_sha256": {
+          "wheel/sapien/pysapien.cpython-310-x86_64-linux-gnu.so": "799092c59903caced467fa909d6394b247692e4b710657ebd466db1473789cf9",
+          "wheel/sapien.libs/libsapien.so": "432fe254f14f3f9c4f1b482093efd3b0b8a084f4115e389b4cf052d533425fe2",
+          "wheel/sapien.libs/libsvulkan2.so": "8921e631543ae76b7f703a75b49adbb623ce90f0f833b51c0e557e66fa7fb66c",
+          "physx/libPhysXGpu_64.so": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706",
+          "driver/libcuda.so.1": "d436bc1e85158010d62564058bcc6f779064c0387d79d0aebf98d5803f21ed52",
+          "vulkan/libvulkan.so.1": "f2c637267fc08e343f3d617252e1ddcaf035dc714728fbdc35ce9ebd8fc4a453"
+        },
+        "vulkan_samples": 66
+      },
+      "supplementary_sdk": {
+        "status": "passed",
+        "execution": "supplementary_optical",
+        "source_receipts_sha256": {
+          "manifest": "65458d0cbb138b4b9bb5cb8b8788bc7443cb27e8624b8f7a96220f79b9b9f2a1",
+          "results": "e4983b5b7e3a9e4c9a10cc7f040c15b99fa22ced94a45ab034e9a766bc5a1f40"
+        },
+        "private_sdk_sha256": "a20ce965cc0b4c5839029ab806e092aa51c0966cbedb244d6b6dcf6dc2c190ae",
+        "actual_elf_sha256": {
+          "wheel/sapien/pysapien.cpython-310-x86_64-linux-gnu.so": "799092c59903caced467fa909d6394b247692e4b710657ebd466db1473789cf9",
+          "wheel/sapien.libs/libsapien.so": "432fe254f14f3f9c4f1b482093efd3b0b8a084f4115e389b4cf052d533425fe2",
+          "wheel/sapien.libs/libsvulkan2.so": "8921e631543ae76b7f703a75b49adbb623ce90f0f833b51c0e557e66fa7fb66c",
+          "physx/libPhysXGpu_64.so": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706",
+          "driver/libcuda.so.1": "d436bc1e85158010d62564058bcc6f779064c0387d79d0aebf98d5803f21ed52",
+          "vulkan/libvulkan.so.1": "f2c637267fc08e343f3d617252e1ddcaf035dc714728fbdc35ce9ebd8fc4a453"
+        },
+        "vulkan_samples": 28
+      },
+      "fixed_frames": {
+        "original": {
+          "fixed_readback": "selected_reset_04.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "original_base_camera_env0.png",
+              "sha256": "acc3d46125ab91d30f6d2c82264093458559531cd582cfd2b2328601673568cd"
+            },
+            "wrist_camera_env0": {
+              "file": "original_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "original_human_env0.png",
+              "sha256": "055b0107d747190a1d3263c1ae220ac446f5d110bfe6bf7bf9d849c41a06ea7e"
+            },
+            "base_camera_env1": {
+              "file": "original_base_camera_env1.png",
+              "sha256": "370c6ea16aa29ee21802d123859344c7b57a028d2bfa88e712d1e9d072b45074"
+            },
+            "wrist_camera_env1": {
+              "file": "original_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "original_human_env1.png",
+              "sha256": "d0dfedf849fed6621573c27922ef88fb7875447a884c96db65db58ba5fec3210"
+            }
+          }
+        },
+        "jade": {
+          "fixed_readback": "selected_reset_05.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "jade_base_camera_env0.png",
+              "sha256": "1eca0dbd3064141881e466f024842ad907a7ffc772f96a970d8b91bfd757aa42"
+            },
+            "wrist_camera_env0": {
+              "file": "jade_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "jade_human_env0.png",
+              "sha256": "48927e33409cc18f9351cd7ac11f6957d7ce58e9c3b20f0f58b357343f693149"
+            },
+            "base_camera_env1": {
+              "file": "jade_base_camera_env1.png",
+              "sha256": "46a547ed5362a86af865d00c3359cb069be5085ba3c900ddfa8263726dc41f0a"
+            },
+            "wrist_camera_env1": {
+              "file": "jade_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "jade_human_env1.png",
+              "sha256": "f7aa2b774cec14f3169c6cf08d451823769a4bfde6afb91ae107f43152dcaaef"
+            }
+          }
+        },
+        "coral": {
+          "fixed_readback": "selected_reset_07.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "coral_base_camera_env0.png",
+              "sha256": "0ca3c854b779d0436953a33969bfa8230822eb887655339d3c3a2b0b6c19a165"
+            },
+            "wrist_camera_env0": {
+              "file": "coral_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "coral_human_env0.png",
+              "sha256": "cfd2e40f0302b65aefb1c576b9ee37810936cf584a6196e679a97af8d90ab04b"
+            },
+            "base_camera_env1": {
+              "file": "coral_base_camera_env1.png",
+              "sha256": "05cb1da5b6c4426a6a0b6cffe390ba1ed999e16b365c3dfe0a56416f239a314a"
+            },
+            "wrist_camera_env1": {
+              "file": "coral_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "coral_human_env1.png",
+              "sha256": "c82b76001bc2b2522d5781c912da8884ac9afd153a30e71c4d5bcdea8ae509ff"
+            }
+          }
+        },
+        "variant_3": {
+          "fixed_readback": "selected_reset_09.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_3_base_camera_env0.png",
+              "sha256": "cfbeaa07c1ca406099260e5e233f48a4415afa3d34ca66d6bd197b12d2e40ad9"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_3_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_3_human_env0.png",
+              "sha256": "b6dbcaa05b5594f7c254590f0d2e55457fe3863cd9dd2340ca629e0c6f58d277"
+            },
+            "base_camera_env1": {
+              "file": "variant_3_base_camera_env1.png",
+              "sha256": "4e15cf73855abe92fd6a59332419eb52012e09eedd0c5713ab4c22c140da5abb"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_3_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_3_human_env1.png",
+              "sha256": "f7c3ae40aeb668084440d62f4af61a9a8f649cdbb3350782ffe4a543d913de23"
+            }
+          }
+        },
+        "variant_4": {
+          "fixed_readback": "selected_reset_11.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_4_base_camera_env0.png",
+              "sha256": "9e75a3ee13d668b8f0723dc96543dceaf690aee380a1eee96f79734474eddf4a"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_4_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_4_human_env0.png",
+              "sha256": "8d7866f4d8834a631adc0ad7d68611b8a42b4da3850250fb5dc8cf67c6f0a00b"
+            },
+            "base_camera_env1": {
+              "file": "variant_4_base_camera_env1.png",
+              "sha256": "66190a9c0fe247a9cb28cec3b6c6a489b1c1bff7c6b15447cb1811201e571e43"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_4_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_4_human_env1.png",
+              "sha256": "d53049b5501e5efa613ef3943cb344e5e8a1057c26b1d496160913d1ee45f14e"
+            }
+          }
+        },
+        "variant_5": {
+          "fixed_readback": "selected_reset_13.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_5_base_camera_env0.png",
+              "sha256": "71cb64ef75de75efe0721b14a7629ad9e9af1910c54650559637d884481cb86b"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_5_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_5_human_env0.png",
+              "sha256": "2c0b8071599f6eae3c7d5cde5ea2b76a778c33713223d784773ffe61880493fc"
+            },
+            "base_camera_env1": {
+              "file": "variant_5_base_camera_env1.png",
+              "sha256": "44e5efa9676aa3fd2b53fc5e937ef8f90fa47992c2bb5d10d5302174726bb98c"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_5_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_5_human_env1.png",
+              "sha256": "37b20bf9b6ef4127771de5a661a01eda92adf2cd55bede4e189fd3be73438c9f"
+            }
+          }
+        },
+        "variant_6": {
+          "fixed_readback": "selected_reset_15.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_6_base_camera_env0.png",
+              "sha256": "a609b33bbd9b7d8785f077b0f2afac793461a9ceb3426ce89c2ee4f15223a9e2"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_6_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_6_human_env0.png",
+              "sha256": "909f1b1855c0ecba3807acf5dfcd37fb3499dc6a8af97ce34ea69ada38be78f1"
+            },
+            "base_camera_env1": {
+              "file": "variant_6_base_camera_env1.png",
+              "sha256": "361df1a223e62ecc12af695b8420bfb84e566a91119b508784a3442f0fa3f2af"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_6_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_6_human_env1.png",
+              "sha256": "d9fe562a431fa5467f9d6415813465c4211ed18248e3df8adcd269883cede644"
+            }
+          }
+        },
+        "variant_7": {
+          "fixed_readback": "selected_reset_17.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_7_base_camera_env0.png",
+              "sha256": "0bb73f8754d92b50b53801d3d313d0711439b08c920e347a79d78ae8a55fa9e6"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_7_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_7_human_env0.png",
+              "sha256": "5005c030bf0606ac3c58f240613a138111896949ce6918cd77cc77bfc99b711b"
+            },
+            "base_camera_env1": {
+              "file": "variant_7_base_camera_env1.png",
+              "sha256": "1c2da8efa8b5e39c8d99d26162faee73755f3ded1fba6e776f75d093b6de3d4f"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_7_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_7_human_env1.png",
+              "sha256": "96e79f75226b03210a1d4c5be230c705f55dd2550b36d6547fa0ba18ecfb7bed"
+            }
+          }
+        },
+        "variant_8": {
+          "fixed_readback": "selected_reset_19.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_8_base_camera_env0.png",
+              "sha256": "a51526db3775414528f75d214b8af75e9fb23b7e486a568856e27f402b9f0da0"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_8_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_8_human_env0.png",
+              "sha256": "c4fe9491e3f16dbd9f221c42601edb5969a7efbde1c841c3740edb5c37b2b7e0"
+            },
+            "base_camera_env1": {
+              "file": "variant_8_base_camera_env1.png",
+              "sha256": "f8362d403bdd38d03515619157d903379e937a19b35083909c89425d416e1716"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_8_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_8_human_env1.png",
+              "sha256": "7420951bdf0cb6af4537462b6fecf267e0412edbb8198441c61bd632c963a867"
+            }
+          }
+        },
+        "variant_9": {
+          "fixed_readback": "selected_reset_21.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_9_base_camera_env0.png",
+              "sha256": "90ea53939cf7b02177e54d75a7263a38d145df64f65a5bcd1850e7350f60b8f5"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_9_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_9_human_env0.png",
+              "sha256": "0472c9cafae1b209c37533facb0b9fcbab966858d56642d5b551644e60dea267"
+            },
+            "base_camera_env1": {
+              "file": "variant_9_base_camera_env1.png",
+              "sha256": "1594c605ce9bde7e31802da6db60d37469ce73981a351571688f6c22ea2a0ca9"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_9_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_9_human_env1.png",
+              "sha256": "a0d25e5dfd996a7ff72025b24ac32c35b1a87ced85604973ac20a3c070e3ff65"
+            }
+          }
+        },
+        "variant_10": {
+          "fixed_readback": "selected_reset_23.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_10_base_camera_env0.png",
+              "sha256": "b8cab9a9f3d599783afd39c13814e7a999cfa313ca9a540f7cf6ab6fecadd7c9"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_10_wrist_camera_env0.png",
+              "sha256": "bc66baf2807d779f2e229a7654af7c86dcfe6798ae3916c64ee1ecd97d3586c5"
+            },
+            "human_env0": {
+              "file": "variant_10_human_env0.png",
+              "sha256": "8548985d7cead23984412b28e2ca201ae01939f4aea39b2443db85f802944389"
+            },
+            "base_camera_env1": {
+              "file": "variant_10_base_camera_env1.png",
+              "sha256": "c30f35de38d76135de7cae857015786981c73aee8a08d3d4b915275e6e1cc4a2"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_10_wrist_camera_env1.png",
+              "sha256": "78828f96e24e650b912f6bf5f3bb3464c5b1358a80aaf90553cc10b4d898d874"
+            },
+            "human_env1": {
+              "file": "variant_10_human_env1.png",
+              "sha256": "b8840f02d89b479ab5950d9b0da1f86624d873312a3c7a0a17596817fe689818"
+            }
+          }
+        }
+      },
+      "selected_state_checks": 65,
+      "fixed_scheme_restorations": 10,
+      "control_steps": 10,
+      "physics_steps": 200,
+      "witness": {
+        "pairs": 440,
+        "minimum_pixels_with_delta_8_by_object": {
+          "pipette": 693,
+          "pipette_stand": 978,
+          "sample_cup": 71,
+          "tip_cup": 122
+        }
+      },
+      "plate_rgb": [
+        {
+          "camera": "base_camera_env0",
+          "visible_base_plate_pixels": 224,
+          "scheme_mean_rgb": {
+            "original": [
+              89.888,
+              119.504,
+              139.335
+            ],
+            "jade": [
+              113.375,
+              133.679,
+              124.094
+            ],
+            "coral": [
+              145.0,
+              110.754,
+              104.696
+            ],
+            "variant_3": [
+              184.031,
+              178.83,
+              166.643
+            ],
+            "variant_4": [
+              99.554,
+              114.295,
+              142.348
+            ],
+            "variant_5": [
+              87.862,
+              90.393,
+              92.728
+            ],
+            "variant_6": [
+              161.723,
+              166.643,
+              174.665
+            ],
+            "variant_7": [
+              151.679,
+              143.567,
+              120.46
+            ],
+            "variant_8": [
+              109.652,
+              142.348,
+              147.951
+            ],
+            "variant_9": [
+              136.446,
+              124.094,
+              142.348
+            ],
+            "variant_10": [
+              169.013,
+              153.009,
+              142.348
+            ]
+          }
+        },
+        {
+          "camera": "base_camera_env1",
+          "visible_base_plate_pixels": 228,
+          "scheme_mean_rgb": {
+            "original": [
+              90.654,
+              120.43,
+              140.452
+            ],
+            "jade": [
+              114.697,
+              135.211,
+              125.566
+            ],
+            "coral": [
+              146.636,
+              112.013,
+              105.952
+            ],
+            "variant_3": [
+              186.219,
+              180.904,
+              168.561
+            ],
+            "variant_4": [
+              100.706,
+              115.623,
+              144.009
+            ],
+            "variant_5": [
+              88.825,
+              91.465,
+              93.825
+            ],
+            "variant_6": [
+              163.654,
+              168.557,
+              176.724
+            ],
+            "variant_7": [
+              153.531,
+              145.368,
+              121.925
+            ],
+            "variant_8": [
+              110.974,
+              144.009,
+              149.697
+            ],
+            "variant_9": [
+              137.996,
+              125.566,
+              144.009
+            ],
+            "variant_10": [
+              170.956,
+              154.873,
+              144.009
+            ]
+          }
+        },
+        {
+          "camera": "human_env0",
+          "visible_base_plate_pixels": 503,
+          "scheme_mean_rgb": {
+            "original": [
+              89.793,
+              119.374,
+              139.183
+            ],
+            "jade": [
+              113.65,
+              134.024,
+              124.394
+            ],
+            "coral": [
+              145.326,
+              111.028,
+              104.954
+            ],
+            "variant_3": [
+              184.515,
+              179.254,
+              167.032
+            ],
+            "variant_4": [
+              99.763,
+              114.581,
+              142.686
+            ],
+            "variant_5": [
+              88.07,
+              90.632,
+              92.964
+            ],
+            "variant_6": [
+              162.129,
+              167.028,
+              175.117
+            ],
+            "variant_7": [
+              152.097,
+              143.968,
+              120.805
+            ],
+            "variant_8": [
+              109.913,
+              142.684,
+              148.29
+            ],
+            "variant_9": [
+              136.831,
+              124.394,
+              142.686
+            ],
+            "variant_10": [
+              169.402,
+              153.425,
+              142.686
+            ]
+          }
+        },
+        {
+          "camera": "human_env1",
+          "visible_base_plate_pixels": 515,
+          "scheme_mean_rgb": {
+            "original": [
+              90.889,
+              120.75,
+              140.816
+            ],
+            "jade": [
+              115.017,
+              135.594,
+              125.903
+            ],
+            "coral": [
+              147.017,
+              112.353,
+              106.19
+            ],
+            "variant_3": [
+              186.724,
+              181.383,
+              169.023
+            ],
+            "variant_4": [
+              100.988,
+              115.951,
+              144.421
+            ],
+            "variant_5": [
+              89.105,
+              91.728,
+              94.074
+            ],
+            "variant_6": [
+              164.085,
+              169.023,
+              177.171
+            ],
+            "variant_7": [
+              153.928,
+              145.751,
+              122.247
+            ],
+            "variant_8": [
+              111.245,
+              144.412,
+              150.074
+            ],
+            "variant_9": [
+              138.416,
+              125.903,
+              144.421
+            ],
+            "variant_10": [
+              171.41,
+              155.264,
+              144.421
+            ]
+          }
+        }
+      ],
+      "depth": {
+        "manifest_sha256": "65458d0cbb138b4b9bb5cb8b8788bc7443cb27e8624b8f7a96220f79b9b9f2a1",
+        "results_sha256": "e4983b5b7e3a9e4c9a10cc7f040c15b99fa22ced94a45ab034e9a766bc5a1f40",
+        "fresh_constructions": 28,
+        "camera_environment_pairs": 56,
+        "maximum_depth_bias_error": 2.655792236328134e-08,
+        "control_steps": 0,
+        "physics_steps": 0
+      },
+      "depth_rows_without_common_tip_pixels": 5
+    },
+    "DispenseLiquid": {
+      "standard_sdk": {
+        "status": "passed",
+        "execution": "standard_cuda",
+        "source_receipts_sha256": {
+          "manifest": "938542bab6169b5967220ef3e149e56819db09dd95817e291ca5e28f0c7a4eb8",
+          "results": "1b472659e3ae6368f3f336bc4ba003085f39a418580b430c5db4d76fa47437a5"
+        },
+        "private_sdk_sha256": "1a3b78866ce96b3f0f0ceaeb4de8cfa02bfc1b4a0a5787f185fc0d49e20f31ba",
+        "actual_elf_sha256": {
+          "wheel/sapien/pysapien.cpython-310-x86_64-linux-gnu.so": "799092c59903caced467fa909d6394b247692e4b710657ebd466db1473789cf9",
+          "wheel/sapien.libs/libsapien.so": "432fe254f14f3f9c4f1b482093efd3b0b8a084f4115e389b4cf052d533425fe2",
+          "wheel/sapien.libs/libsvulkan2.so": "8921e631543ae76b7f703a75b49adbb623ce90f0f833b51c0e557e66fa7fb66c",
+          "physx/libPhysXGpu_64.so": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706",
+          "driver/libcuda.so.1": "d436bc1e85158010d62564058bcc6f779064c0387d79d0aebf98d5803f21ed52",
+          "vulkan/libvulkan.so.1": "f2c637267fc08e343f3d617252e1ddcaf035dc714728fbdc35ce9ebd8fc4a453"
+        },
+        "vulkan_samples": 66
+      },
+      "supplementary_sdk": {
+        "status": "passed",
+        "execution": "supplementary_optical",
+        "source_receipts_sha256": {
+          "manifest": "c7c19aade7150c9750b9fc57a7cc35bdc5fffadfb21d48d575460974d2c15af5",
+          "results": "731685dfa11f8184767db33bbee28b6e6f26cfba00ce1ed678c84f43fc37bada"
+        },
+        "private_sdk_sha256": "1aad03c2423fe374737cd609d54944e3eeb73a6ae319cd393f98ea8f5c52ceb7",
+        "actual_elf_sha256": {
+          "wheel/sapien/pysapien.cpython-310-x86_64-linux-gnu.so": "799092c59903caced467fa909d6394b247692e4b710657ebd466db1473789cf9",
+          "wheel/sapien.libs/libsapien.so": "432fe254f14f3f9c4f1b482093efd3b0b8a084f4115e389b4cf052d533425fe2",
+          "wheel/sapien.libs/libsvulkan2.so": "8921e631543ae76b7f703a75b49adbb623ce90f0f833b51c0e557e66fa7fb66c",
+          "physx/libPhysXGpu_64.so": "4c582a16509a71faf5592fe9708586dfcc7ab61ae932eabc1ddd81f290818706",
+          "driver/libcuda.so.1": "d436bc1e85158010d62564058bcc6f779064c0387d79d0aebf98d5803f21ed52",
+          "vulkan/libvulkan.so.1": "f2c637267fc08e343f3d617252e1ddcaf035dc714728fbdc35ce9ebd8fc4a453"
+        },
+        "vulkan_samples": 28
+      },
+      "fixed_frames": {
+        "original": {
+          "fixed_readback": "selected_reset_04.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "original_base_camera_env0.png",
+              "sha256": "453446ad4f9daab7aafe344cd187388876bd5a173cc443aed28b62f52f134f43"
+            },
+            "wrist_camera_env0": {
+              "file": "original_wrist_camera_env0.png",
+              "sha256": "8ff422d3606c62902d45d9c491fab4f9923fd0965092fe2a6208025ec6ed2a6c"
+            },
+            "human_env0": {
+              "file": "original_human_env0.png",
+              "sha256": "6e95adb0d76e5fc9c128334c13c8991db86dc4297e04deba0d7e1901171c70e4"
+            },
+            "base_camera_env1": {
+              "file": "original_base_camera_env1.png",
+              "sha256": "9cb8b0d91b368dc983d61907080521b29b67e2a306415e9a858fce5fd22bd930"
+            },
+            "wrist_camera_env1": {
+              "file": "original_wrist_camera_env1.png",
+              "sha256": "ae9a3650b084c13e76d1a767eb87143d96378f6fe2a2679b58a99ef392266dd5"
+            },
+            "human_env1": {
+              "file": "original_human_env1.png",
+              "sha256": "61b74d28ffb6dafd2e246ce82a010e75961d31827ff2f4b1f2d1e3ffce79448d"
+            }
+          }
+        },
+        "jade": {
+          "fixed_readback": "selected_reset_05.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "jade_base_camera_env0.png",
+              "sha256": "ee0c5287128f89ecfeb5bfd3a5c45533924315f1601a8ec588a4cfae3042e590"
+            },
+            "wrist_camera_env0": {
+              "file": "jade_wrist_camera_env0.png",
+              "sha256": "411cabcb45a9df18178f0944ba61e40febc2f143a0c239b8c6cec38b8c1a9850"
+            },
+            "human_env0": {
+              "file": "jade_human_env0.png",
+              "sha256": "cd9a92a6fcb13fcdc03377370ec79994babedf684a5a4b4aac1ea6929d8d9e81"
+            },
+            "base_camera_env1": {
+              "file": "jade_base_camera_env1.png",
+              "sha256": "aea0ad58f002dd5666bc3bde1fcd643c761bb9648bf492eef2d4d21425a2c3ab"
+            },
+            "wrist_camera_env1": {
+              "file": "jade_wrist_camera_env1.png",
+              "sha256": "4ab3d4b6d4cdd61b193e0329c6b7de7efeaf67d047bd3734a606e61ca6fb2ba2"
+            },
+            "human_env1": {
+              "file": "jade_human_env1.png",
+              "sha256": "e6b485ba6e814b25fcf2a39b0c56223bb0719e1f55ac075a311c5b3c5163c417"
+            }
+          }
+        },
+        "coral": {
+          "fixed_readback": "selected_reset_07.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "coral_base_camera_env0.png",
+              "sha256": "f1cdebf1ead9e4f1e7a2e7e87523d51a82ec6127315caa901514a750eb878566"
+            },
+            "wrist_camera_env0": {
+              "file": "coral_wrist_camera_env0.png",
+              "sha256": "d7e705f3f718dbe315a048bab69b4198f9d4c85e0626494e50ea035671e7ff48"
+            },
+            "human_env0": {
+              "file": "coral_human_env0.png",
+              "sha256": "ce3c9f5cb18c3c5e3241148e27f55762f2a7d13575f1a90b003e5dcea19f2a58"
+            },
+            "base_camera_env1": {
+              "file": "coral_base_camera_env1.png",
+              "sha256": "56e300beb23913d2675326785e14acf9b060da396e2a3b5ba1896e85b66dab5a"
+            },
+            "wrist_camera_env1": {
+              "file": "coral_wrist_camera_env1.png",
+              "sha256": "3105f32ff599f056a11a13ada099704be15bebfa245e7713c296dfe92c2138e0"
+            },
+            "human_env1": {
+              "file": "coral_human_env1.png",
+              "sha256": "602cc97f5592f6ee8ee65d607f53f770e62fccb4bcfdd2cb84ae1d19172c8b89"
+            }
+          }
+        },
+        "variant_3": {
+          "fixed_readback": "selected_reset_09.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_3_base_camera_env0.png",
+              "sha256": "afa34d8de3ce672b2035e74248b0bbc857aa3c49a242a8e6ae6ed16b985674ce"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_3_wrist_camera_env0.png",
+              "sha256": "459f142d821d039c5cec6a4e9bfa6b7631af5a74ccd123a9f2882848086e53ab"
+            },
+            "human_env0": {
+              "file": "variant_3_human_env0.png",
+              "sha256": "a1e40a7e31625a6af2fadfe177daa5d031ba0f945d286182c405fc141797ffa7"
+            },
+            "base_camera_env1": {
+              "file": "variant_3_base_camera_env1.png",
+              "sha256": "befa25e68e508cd87379f2aab265dfa6f1127a083df426bcb48fac09470f7c30"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_3_wrist_camera_env1.png",
+              "sha256": "98651af496dd52ac5aca1a754ee5f23ecf7516313ab1db76035a2e9820738d0e"
+            },
+            "human_env1": {
+              "file": "variant_3_human_env1.png",
+              "sha256": "f3c62afcc54a317047621f0d2e033ea6a56bda45672b23ceab824a812a4adaf9"
+            }
+          }
+        },
+        "variant_4": {
+          "fixed_readback": "selected_reset_11.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_4_base_camera_env0.png",
+              "sha256": "f1454cf235fa8f9655f1fd2dfb1da44686f90ed783314a63d5f0898ce8369655"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_4_wrist_camera_env0.png",
+              "sha256": "674770e92b41e2485c4e7a447b53982ed3930828da4899e636b8feb38d6b648e"
+            },
+            "human_env0": {
+              "file": "variant_4_human_env0.png",
+              "sha256": "37090b5cf87c19512b56ec756ea661bb964500ff98844b77965d0007a4a1ede0"
+            },
+            "base_camera_env1": {
+              "file": "variant_4_base_camera_env1.png",
+              "sha256": "9869af9e721154815e8b65ea6f5488baa44122f820c7f652f9cf731c81889fae"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_4_wrist_camera_env1.png",
+              "sha256": "be664a94052de1d348140c07e7f00aaec060197b2ce4f142be70d9f700c33d16"
+            },
+            "human_env1": {
+              "file": "variant_4_human_env1.png",
+              "sha256": "308e96daf28044f4ef8b829898fe067319c02e44e94a50a753d526ce8320b564"
+            }
+          }
+        },
+        "variant_5": {
+          "fixed_readback": "selected_reset_13.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_5_base_camera_env0.png",
+              "sha256": "57cb11a7eada204f8e461a98384a64171578d7e0292e914e05390931c56b1cfc"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_5_wrist_camera_env0.png",
+              "sha256": "148ffe6d35f8af103b5756b58362ac09901b317532f192c004cd8cf66da80f32"
+            },
+            "human_env0": {
+              "file": "variant_5_human_env0.png",
+              "sha256": "1d066fe0aedff47dff99ea354af44fa5ea0fe5a79aff9e0849e2520b7747e8bf"
+            },
+            "base_camera_env1": {
+              "file": "variant_5_base_camera_env1.png",
+              "sha256": "a7871c857d811020c7d4024c2ea5ab610e2e91e2e8db5a962ffc9e9e67ef1c1c"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_5_wrist_camera_env1.png",
+              "sha256": "e5aaf5754265c740e6bb7634672c9c087ebb7d04b1ee08a2cdfd24589599b70f"
+            },
+            "human_env1": {
+              "file": "variant_5_human_env1.png",
+              "sha256": "f3c28a2706a75fbf95b6987de0ce9fb0cd30dc1d789587691441798f5c93a240"
+            }
+          }
+        },
+        "variant_6": {
+          "fixed_readback": "selected_reset_15.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_6_base_camera_env0.png",
+              "sha256": "567fb8b5da822c312ec1db6d398ca3bfc9fe8848da187df1db1353f17378a321"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_6_wrist_camera_env0.png",
+              "sha256": "e278c0b1dcd5a0f112e2334f2639965acbe2045cad9daf3768994ea80c382271"
+            },
+            "human_env0": {
+              "file": "variant_6_human_env0.png",
+              "sha256": "0f26d25d863513d56f482fd229e2488ef5036444a6ba4ee6ba48390e77efc7e1"
+            },
+            "base_camera_env1": {
+              "file": "variant_6_base_camera_env1.png",
+              "sha256": "d8529c2b481ffd9c40bdef6c6fe343742e0c2007aa65937c25530ff74bb2fcbe"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_6_wrist_camera_env1.png",
+              "sha256": "2fc9b310e5414836ef8567ad028bc301a5c503d30bff1e6b66d5d3470a213f84"
+            },
+            "human_env1": {
+              "file": "variant_6_human_env1.png",
+              "sha256": "f2efd563be75898eabf81f90e70cae871a3c2a5cf7e1847b7ec7a70fbf730057"
+            }
+          }
+        },
+        "variant_7": {
+          "fixed_readback": "selected_reset_17.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_7_base_camera_env0.png",
+              "sha256": "754dee09e3e4a60988656f06ae6c616c6f5df6d92af135d56bcd2f0d8fbe5ba8"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_7_wrist_camera_env0.png",
+              "sha256": "8320b185697fcbecb68b558a70c0c54d6ed9ea9ae16674a3e507a61d3b841db6"
+            },
+            "human_env0": {
+              "file": "variant_7_human_env0.png",
+              "sha256": "c58e6e9709943fdb21cf756fe35d0a1b163dc3688fbe7607b9f029902c473b1d"
+            },
+            "base_camera_env1": {
+              "file": "variant_7_base_camera_env1.png",
+              "sha256": "af8ea3385a9efea53cb502aafe8bdbf54bf8b89a3f009bd406ac968901e3410e"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_7_wrist_camera_env1.png",
+              "sha256": "9d0a733d3e148560bca8eae750fc0ccd88987138df9a4f973c4867134ec0bd35"
+            },
+            "human_env1": {
+              "file": "variant_7_human_env1.png",
+              "sha256": "f9bb0e7ce97600a0203082a15cbce1d77cc3a405313ac8d75413eaf7ee11888b"
+            }
+          }
+        },
+        "variant_8": {
+          "fixed_readback": "selected_reset_19.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_8_base_camera_env0.png",
+              "sha256": "210e206629178253e5cc97d665f89bcecd6c445a3aa8998309cac9e5bc1336be"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_8_wrist_camera_env0.png",
+              "sha256": "541dc445c6c10b6e56c2cef76541d833bdaf51f83c3c830076ec70b0c404d8f3"
+            },
+            "human_env0": {
+              "file": "variant_8_human_env0.png",
+              "sha256": "3cb19225ec4f8c8f25d2ef044994af6c122fc5ccb994e3ba9e14a60a42406734"
+            },
+            "base_camera_env1": {
+              "file": "variant_8_base_camera_env1.png",
+              "sha256": "3916f7fcb2e1095f2e702c95706fdc7c7beb5ccdaeee579a75f5a0234e562e6f"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_8_wrist_camera_env1.png",
+              "sha256": "f224e9dc223619185845da763d3fc143ab5b295bc3d1dbde59a22a8027f1208c"
+            },
+            "human_env1": {
+              "file": "variant_8_human_env1.png",
+              "sha256": "cb008d76674ff641105ae28347b05f61bbfb082b85fdfec78ebcd691f8c6815c"
+            }
+          }
+        },
+        "variant_9": {
+          "fixed_readback": "selected_reset_21.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_9_base_camera_env0.png",
+              "sha256": "519f41966cc8cf1a3d38a56e01bf3a1ab3663a6f06d0eb6a0d7c541a66ddcf34"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_9_wrist_camera_env0.png",
+              "sha256": "4e5cdebc0168f0b730b83ed6c131b4208af03b98d014219ef3624669301466fc"
+            },
+            "human_env0": {
+              "file": "variant_9_human_env0.png",
+              "sha256": "793465488de77301bff2851db15bc3c08448b1c88607ed0ccef9ffdcaf111e1d"
+            },
+            "base_camera_env1": {
+              "file": "variant_9_base_camera_env1.png",
+              "sha256": "741316ba81465a6b180279f7d5e9c70a4441fa7508ceb48a59a8f9dd4147c71d"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_9_wrist_camera_env1.png",
+              "sha256": "ce079bd0a06cf2d6f6e57f66d9bc327ca6f7a253b5c486a6833f77252fb6e2bc"
+            },
+            "human_env1": {
+              "file": "variant_9_human_env1.png",
+              "sha256": "219976f406aa16123b0d6a303f607b3ca3fcd2bca196ee0cb0792be1f5dd4910"
+            }
+          }
+        },
+        "variant_10": {
+          "fixed_readback": "selected_reset_23.json",
+          "frames": {
+            "base_camera_env0": {
+              "file": "variant_10_base_camera_env0.png",
+              "sha256": "7521898e47c1e50f0370c7e6b4ab06eae6c72d9b3556e94e1e019225c8bb1885"
+            },
+            "wrist_camera_env0": {
+              "file": "variant_10_wrist_camera_env0.png",
+              "sha256": "ff974cdbd79d07338dff5975b87041fed741d7c7be6c57881e4405ad93d8d35c"
+            },
+            "human_env0": {
+              "file": "variant_10_human_env0.png",
+              "sha256": "20eff5d2f06e9e078bd8c873de4d6e09a0fd584bc5c556899d23ad77f386a617"
+            },
+            "base_camera_env1": {
+              "file": "variant_10_base_camera_env1.png",
+              "sha256": "0434544eef9900b19d5450852d743f8b43cc2c32df27a3c3a83aeb0e32ab0f16"
+            },
+            "wrist_camera_env1": {
+              "file": "variant_10_wrist_camera_env1.png",
+              "sha256": "37c0a3cb9e67cd215d50291c0fb22297a829acb5c8739fb768409d6ee5ec62e8"
+            },
+            "human_env1": {
+              "file": "variant_10_human_env1.png",
+              "sha256": "ca292a751c9d1268de30ca2aa7c6e8dc17a1dcf672c958583c9e7fe08bf1b433"
+            }
+          }
+        }
+      },
+      "selected_state_checks": 65,
+      "fixed_scheme_restorations": 10,
+      "control_steps": 10,
+      "physics_steps": 200,
+      "witness": {
+        "pairs": 550,
+        "minimum_pixels_with_delta_8_by_object": {
+          "pipette": 2276,
+          "pipette_stand": 3566,
+          "test_tube": 173,
+          "tip_cup": 578,
+          "tube_rack": 1304
+        }
+      },
+      "plate_rgb": [
+        {
+          "camera": "base_camera_env0",
+          "visible_base_plate_pixels": 390,
+          "scheme_mean_rgb": {
+            "original": [
+              93.315,
+              124.095,
+              144.664
+            ],
+            "jade": [
+              117.833,
+              138.926,
+              128.977
+            ],
+            "coral": [
+              150.679,
+              115.121,
+              108.831
+            ],
+            "variant_3": [
+              191.254,
+              185.854,
+              173.179
+            ],
+            "variant_4": [
+              103.441,
+              118.782,
+              147.938
+            ],
+            "variant_5": [
+              91.305,
+              93.959,
+              96.392
+            ],
+            "variant_6": [
+              168.079,
+              173.174,
+              181.538
+            ],
+            "variant_7": [
+              157.664,
+              149.249,
+              125.213
+            ],
+            "variant_8": [
+              113.946,
+              147.936,
+              153.762
+            ],
+            "variant_9": [
+              141.815,
+              128.977,
+              147.938
+            ],
+            "variant_10": [
+              175.646,
+              159.031,
+              147.938
+            ]
+          }
+        },
+        {
+          "camera": "base_camera_env1",
+          "visible_base_plate_pixels": 370,
+          "scheme_mean_rgb": {
+            "original": [
+              93.219,
+              123.892,
+              144.43
+            ],
+            "jade": [
+              117.527,
+              138.559,
+              128.638
+            ],
+            "coral": [
+              150.254,
+              114.778,
+              108.568
+            ],
+            "variant_3": [
+              190.781,
+              185.346,
+              172.689
+            ],
+            "variant_4": [
+              103.181,
+              118.476,
+              147.543
+            ],
+            "variant_5": [
+              91.022,
+              93.711,
+              96.141
+            ],
+            "variant_6": [
+              167.657,
+              172.684,
+              181.049
+            ],
+            "variant_7": [
+              157.311,
+              148.951,
+              124.957
+            ],
+            "variant_8": [
+              113.697,
+              147.541,
+              153.354
+            ],
+            "variant_9": [
+              141.449,
+              128.638,
+              147.543
+            ],
+            "variant_10": [
+              175.141,
+              158.665,
+              147.543
+            ]
+          }
+        },
+        {
+          "camera": "human_env0",
+          "visible_base_plate_pixels": 880,
+          "scheme_mean_rgb": {
+            "original": [
+              93.367,
+              124.16,
+              144.74
+            ],
+            "jade": [
+              118.017,
+              139.148,
+              129.16
+            ],
+            "coral": [
+              150.88,
+              115.276,
+              108.994
+            ],
+            "variant_3": [
+              191.538,
+              186.115,
+              173.416
+            ],
+            "variant_4": [
+              103.598,
+              118.967,
+              148.166
+            ],
+            "variant_5": [
+              91.447,
+              94.11,
+              96.539
+            ],
+            "variant_6": [
+              168.33,
+              173.412,
+              181.801
+            ],
+            "variant_7": [
+              157.926,
+              149.5,
+              125.441
+            ],
+            "variant_8": [
+              114.114,
+              148.16,
+              153.962
+            ],
+            "variant_9": [
+              142.073,
+              129.16,
+              148.166
+            ],
+            "variant_10": [
+              175.88,
+              159.28,
+              148.166
+            ]
+          }
+        },
+        {
+          "camera": "human_env1",
+          "visible_base_plate_pixels": 847,
+          "scheme_mean_rgb": {
+            "original": [
+              93.494,
+              124.262,
+              144.856
+            ],
+            "jade": [
+              118.026,
+              139.115,
+              129.168
+            ],
+            "coral": [
+              150.863,
+              115.264,
+              108.975
+            ],
+            "variant_3": [
+              191.558,
+              186.112,
+              173.427
+            ],
+            "variant_4": [
+              103.607,
+              118.965,
+              148.171
+            ],
+            "variant_5": [
+              91.436,
+              94.116,
+              96.538
+            ],
+            "variant_6": [
+              168.345,
+              173.424,
+              181.79
+            ],
+            "variant_7": [
+              157.924,
+              149.537,
+              125.456
+            ],
+            "variant_8": [
+              114.124,
+              148.159,
+              153.98
+            ],
+            "variant_9": [
+              142.048,
+              129.168,
+              148.171
+            ],
+            "variant_10": [
+              175.871,
+              159.289,
+              148.171
+            ]
+          }
+        }
+      ],
+      "depth": {
+        "manifest_sha256": "c7c19aade7150c9750b9fc57a7cc35bdc5fffadfb21d48d575460974d2c15af5",
+        "results_sha256": "731685dfa11f8184767db33bbee28b6e6f26cfba00ce1ed678c84f43fc37bada",
+        "fresh_constructions": 28,
+        "camera_environment_pairs": 56,
+        "maximum_depth_bias_error": 2.655792236328134e-08,
+        "control_steps": 0,
+        "physics_steps": 0
+      },
+      "depth_rows_without_common_tip_pixels": 0
+    }
+  }
+}

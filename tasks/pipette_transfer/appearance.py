@@ -13,6 +13,7 @@ MATERIAL_FIELDS = FIELDS + (
     'base_color_texture', 'roughness_texture', 'metallic_texture',
     'normal_texture', 'emission_texture', 'transmission_texture',
 )
+PLATE_TEXTURE_FORMAT = 'R32G32B32A32Sfloat'
 
 
 def read(path):
@@ -23,6 +24,43 @@ def capture_material(material):
     return {key: (getattr(material, key) if key.endswith('_texture')
                   else copy.deepcopy(getattr(material, key)))
             for key in MATERIAL_FIELDS if hasattr(material, key)}
+
+
+def load_plate_pixels(path):
+    """Decode a baked sRGB plate into opaque, linear RGBA32F texels."""
+    from PIL import Image
+
+    with Image.open(path) as image:
+        if image.mode != 'RGB':
+            raise ValueError(f'Expected an opaque RGB Pipette stand texture: {path.name}')
+        rgb = np.asarray(image, dtype=np.float64) / 255
+    pixels = np.ones((*rgb.shape[:2], 4), dtype=np.float32)
+    pixels[..., :3] = np.where(rgb <= .04045, rgb / 12.92, ((rgb + .055) / 1.055)**2.4)
+    pixels.flags.writeable = False
+    return pixels
+
+
+class StandPlateTexture:
+    def __init__(self, material, shape, mipmap_levels):
+        from sapien.render import RenderTexture2D
+
+        color = np.asarray(material.base_color, dtype=np.float32)
+        if material.base_color_texture is not None or color.shape != (4,) or color[3] != 1:
+            raise RuntimeError('Expected an untextured opaque native Pipette stand plate')
+        self.original = np.empty(shape, dtype=np.float32)
+        self.original[:] = color
+        self.original.flags.writeable = False
+        self.texture = RenderTexture2D(self.original, PLATE_TEXTURE_FORMAT, mipmap_levels=mipmap_levels)
+        self.scheme = 'original'
+        material.base_color_texture = self.texture
+
+    def apply(self, scheme, pixels):
+        if scheme == self.scheme:
+            return
+        if pixels.shape != self.original.shape:
+            raise ValueError('Pipette stand texture layout differs from its original')
+        self.texture.upload(pixels)
+        self.scheme = scheme
 
 
 def validate_per_env(config, num_envs):
@@ -73,6 +111,19 @@ class PipetteAppearance:
         self.parameters = read(ROOT / self.catalog['parameters'])
         self.definitions = {name: read(ROOT / path)
                             for name, path in self.catalog['bindings'].items()}
+        plate_label = self.definitions['pipette_stand']['roles']['base_plate']['candidate_color_texture']
+        texture_dir = Path(plate_label['directory'])
+        label_files = {name: texture_dir / f'{name}.png' for name in self.parameters['candidate_ids']}
+        self._plate_label_paths = {name: (ROOT / path).resolve() for name, path in label_files.items()}
+        self._plate_label_levels = plate_label['mipmap_levels']
+        self._plate_pixels = {}
+        self.stand_plates = [None] * num_envs
+        asset_directory = (ROOT / 'assets/appearance/objects/pipette_transfer/pipette_stand').resolve()
+        if (self.parameters['new_textures'] != [path.as_posix() for path in label_files.values()]
+                or any(not path.is_relative_to(asset_directory) or not path.is_file()
+                       for path in self._plate_label_paths.values())
+                or self._plate_label_levels != 1):
+            raise ValueError('Invalid Pipette stand base-plate texture assets')
         seed = int(config.get('seed', 0))
         self.rng = [np.random.default_rng(np.random.SeedSequence([seed, i]))
                     for i in range(num_envs)]
@@ -109,9 +160,16 @@ class PipetteAppearance:
                     raise ValueError('Pipette material scalar expected')
         return result
 
-    @staticmethod
-    def isolate_builder_materials(builder):
+    def plate_pixels(self, name):
+        if name not in self._plate_pixels:
+            self._plate_pixels[name] = load_plate_pixels(self._plate_label_paths[name])
+        return self._plate_pixels[name]
+
+    def isolate_builder_materials(self, builder, *, stand_env=None):
         import sapien.render as sr
+        plate_index = None
+        if stand_env is not None and self.rendering_enabled:
+            plate_index, = self.definitions['pipette_stand']['roles']['base_plate']['visual_indices']
         for link_builder in getattr(builder, 'link_builders', [builder]):
             original_build = link_builder.build_render_component
             records = list(link_builder.visual_records)
@@ -124,7 +182,7 @@ class PipetteAppearance:
                 # This cache belongs to one render-component construction, never a
                 # persistent builder or environment. Preserve native wall aliases.
                 materials = []
-                for record, shape in zip(records, native_body.render_shapes):
+                for index, (record, shape) in enumerate(zip(records, native_body.render_shapes)):
                     if len(shape.parts) != 1:
                         raise RuntimeError('Expected one Pipette material per visual')
                     source = shape.parts[0].material
@@ -137,6 +195,10 @@ class PipetteAppearance:
                             setattr(private, key, value)
                         materials.append((source, private))
                     record.material = private
+                    if index == plate_index:
+                        pixels = self.plate_pixels(self.parameters['candidate_ids'][0])
+                        self.stand_plates[stand_env] = StandPlateTexture(
+                            private, pixels.shape, self._plate_label_levels)
                 return original_build()
             link_builder.build_render_component = build_private
 
@@ -163,7 +225,14 @@ class PipetteAppearance:
             if len(shape.parts) != 1:
                 raise RuntimeError(f'Expected one Pipette material per visual: {object_id}/{role}')
             part, = shape.parts
-            rows.append((object_id, role, part, part.material, capture_material(part.material)))
+            material = part.material
+            native = capture_material(material)
+            if (object_id, role) == ('pipette_stand', 'base_plate') and self.rendering_enabled:
+                plate = self.stand_plates[env_id]
+                if plate is None or material.base_color_texture != plate.texture:
+                    raise RuntimeError('Pipette stand plate was not privately textured before scene attachment')
+                native['base_color_texture'] = None
+            rows.append((object_id, role, part, material, native))
 
         for object_id in ('sample_cup', 'test_tube', 'tube_rack', 'pipette_stand'):
             handle = getattr(base, object_id)
@@ -251,12 +320,28 @@ class PipetteAppearance:
                                 for oid in {row[0] for row in self.bindings[i]}}
                           for name in choices}
             requests.append((i, mode, choices, parameters))
+        # Validate requested image layouts and bound handles before sampling.
+        for i, _, choices, _ in requests:
+            plate = self.stand_plates[i]
+            if plate is None:
+                continue
+            for object_id, role, _, material, _ in self.bindings[i]:
+                if (object_id, role) == ('pipette_stand', 'base_plate') and material.base_color_texture != plate.texture:
+                    raise RuntimeError('Pipette stand plate texture was replaced')
+            for name in choices:
+                if name != 'original' and self.plate_pixels(name).shape != plate.original.shape:
+                    raise ValueError('Pipette stand texture layout differs from its original')
         # Validate every selected environment before any sampling or material mutation.
         selections = [(i, str(self.rng[i].choice(choices)) if mode == 'random_choice' else choices[0], params)
                       for i, mode, choices, params in requests]
         for i, name, parameters in selections:
+            plate = self.stand_plates[i]
+            if plate is not None:
+                plate.apply(name, plate.original if name == 'original' else self.plate_pixels(name))
             for object_id, role, part, material, native in self.bindings[i]:
                 values = self.resolved_parameters(native, parameters[name][object_id].get(role, {}))
+                if plate is not None and (object_id, role) == ('pipette_stand', 'base_plate'):
+                    values.pop('base_color_texture')
                 for key, value in values.items():
                     setattr(material, key, value)
             self.schemes[i] = name

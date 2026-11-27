@@ -1,16 +1,29 @@
 # Pipette Transfer 外观
 
-AspirateLiquid 与 DispenseLiquid 的六个可见对象支持 original 加十套候选。扩容保留 jade 和 coral，追加 `variant_3` 至 `variant_10`。候选沿用既有材质角色，玻璃沿用各角色原有候选 alpha，吸头杯与周围支架使用不同配色。方案参数由[对象 catalog](../../assets/appearance/objects/pipette_transfer/catalog.json)定义，[运行索引](../../tasks/assets/variation/pipette_transfer/v1/catalog.json)列出方案、任务和绑定。
+AspirateLiquid 与 DispenseLiquid 的六个可见对象支持 original 加十套候选。真实版沿用 `jade`、`coral`、`variant_3` 至 `variant_10` 的方案 ID，按注塑外壳、玻璃、喷涂底板、可更换导向件和防滑脚分别选材。玻璃沿用各角色原有候选 alpha，杯沿与管沿使用更深的同系色体现厚边。方案参数由[对象 catalog](../../assets/appearance/objects/pipette_transfer/catalog.json)定义，[运行索引](../../tasks/assets/variation/pipette_transfer/v1/catalog.json)列出方案、任务和绑定。
+
+| ID | 仪器与容器配色 |
+|---|---|
+| `jade` | 灰绿注塑件与淡绿玻璃 |
+| `coral` | 陶土色 ABS 外壳与淡玫瑰玻璃 |
+| `variant_3` | 象牙色外壳、深暖灰导环与无色玻璃 |
+| `variant_4` | 石板蓝塑料与蓝灰玻璃 |
+| `variant_5` | 炭灰聚合物与烟灰玻璃 |
+| `variant_6` | 冷灰外壳、喷砂合金立柱、银灰导环与冷蓝玻璃 |
+| `variant_7` | 卡其树脂与棕琥珀玻璃 |
+| `variant_8` | 灰青外壳、喷砂合金立柱与淡青玻璃 |
+| `variant_9` | 梅灰聚合物与淡紫玻璃 |
+| `variant_10` | 麦色树脂、浅色导环与浅琥珀玻璃 |
 
 | 对象 | 正式绑定与保护 |
 |---|---|
 | 移液器 | 三 link 原生 articulation；仅 base.visual[0] 主体可变，其余五视觉完整 PBR、蓝柱塞及关节保留 |
 | 样品杯 | 按壁、底、沿绑定；候选只改 RGB／受控 alpha，其余光学参数保留 |
 | 试管 | 按壁、球底、沿绑定；动态刚体、质量和碰撞保留 |
-| 试管架 | 原有支架视觉换材质，开口、几何和碰撞保留 |
-| 支架／吸头杯 | 同一 Actor；tip_cup 是 stand.visual[4]，使用独立参数，未增加 Actor |
+| 试管架 | 原有上下格栅、立柱、脚垫独立配色 |
+| 支架／吸头杯 | 同一 Actor；底板、立柱、导环和 stand.visual[4] 吸头承托盘独立配色 |
 
-liquid_state 无视觉。所有方案保持机器人、位置规则、几何、碰撞、质量、关节、物理参数与成功判定。原资产、许可与文件身份见[资产审计](../../assets/appearance/objects/pipette_transfer/pipette/asset_audit.json)；原模型留在受忽略的授权资产目录，无新增 UV／贴图。
+liquid_state 无视觉。所有方案保持机器人、位置规则、几何、碰撞、质量、关节、物理参数与成功判定。原资产、许可与文件身份见[资产审计](../../assets/appearance/objects/pipette_transfer/pipette/asset_audit.json)。支架底板将[原创灰阶标识](../../assets/appearance/objects/pipette_transfer/pipette_stand/base-plate-mark.png)与各套底板色烘焙成不透明 sRGB 贴图，沿用原生盒体 UV。[烘焙工具](../../tools/variation/build_pipette_stand_textures.py)按 catalog 校验实际像素。移液器及其它圆柱保留原生材质绑定。
 
 **配置与生命周期**
 
@@ -28,7 +41,7 @@ obs, info = env.reset(options={"pipette_appearance": {"scheme_id": "original"}})
 records = env.unwrapped._pipette_appearance.records
 ```
 
-省略外观配置或关闭时，不创建外观材质、随机流或记录器。启用时在建场前按环境克隆材质，保留组件内部原有共享拓扑，捕获完整原生 PBR；原任务及短任务阶段初始化完成后统一应用方案。original 准确恢复捕获值，render 不重抽方案。
+省略外观配置或关闭时，不创建外观材质、随机流或记录器。启用时，建场按环境克隆材质，保留组件内部原有共享关系并捕获原生 PBR 值。启用候选渲染时，每行支架底板在加入场景前绑定自己的贴图。公开 reset 在返回首帧前原位上传该行所选候选的线性 RGBA，恢复 original 时则上传捕获的原生底色。render 沿用本轮选择。[双环境四种排列的首帧与下一帧](evidence/pipette_transfer/realistic/README.md)
 
 覆盖顺序为构造公共 → 构造 `per_env` → reset 公共 → reset `per_env`。`per_env` 使用实际环境编号的标准字符串键（如 `"0"`）和字典值。外观启用时，公开 `reset` 在进入父类前校验所有选中环境的有效显式 ID 或完整 `random_choice` 列表。无效方案在任务初始化、抽样、物理写入和材质修改前即被拒绝。外观关闭时，合法形状的 reset 覆盖不会启用外观。
 
@@ -46,6 +59,10 @@ records = env.unwrapped._pipette_appearance.records
 
 native_off、original 与候选的验收统一使用上述“修复 default shaders＋sample cup 固定透明 pass”配置。original 指该配置下的原生 PBR 及精确像素恢复；不声称与 stock default 或 minimal 的 RGB 相同。私有 shader 包按来源／补丁身份缓存，逐环境绑定实际 ID，不修改安装目录、顶点或世界位置。材质与深度参数读取唯一 catalog。
 
+**真实版验收**
+
+[真实版复验和原生任务图](evidence/pipette_transfer/realistic/README.md)记录当前采集提交、每套方案的遮罩对照、CPU 动态以及双环境局部重置。
+
 **Windows 历史扩容档案**
 
 [扩容摘要](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/summary.json)与[全部 132 张固定原图的索引](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/fixed_frames.json)记录 Windows 两短任务的实测结果。每任务各 11 张可直接查看的原生 human 视角 PNG 分别存放在 [AspirateLiquid](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid) 和 [DispenseLiquid](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/DispenseLiquid)。
@@ -61,13 +78,13 @@ CPU 公开入口合同逐项覆盖所有候选的合法转发与最后一个环�
 
 精选五张实景。[Aspirate original](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/original_human_env0.png) · [Aspirate variant_8](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/variant_8_human_env0.png) · [Dispense variant_9](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/DispenseLiquid/variant_9_human_env0.png) · [局部 reset 选中 env1](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/local_variant_3_variant_4_1_base_camera_env1.png) · [同轮未选 env0](../../assets/appearance/objects/pipette_transfer/previews/runtime_expansion_v2/AspirateLiquid/local_variant_3_variant_4_1_base_camera_env0.png)。
 
-**本地发布复验**
+**本地扩容发布档案**
 
 Windows 受控 SAPIEN `3.0.3+dexarena.gpu1.wininterop5` 上重新运行两个短任务。最新[双环境 CUDA 复核](evidence/pipette_transfer/expansion/windows-gpu-review.json)记录 130 次选中状态读回、20 控制步、400 物理子步、990 组逐对象配色对照及 32 个新增方案局部 reset 方向。候选均恢复同初态 original，未选环境的三台相机 RGB 保持一致。历史扩容归档中 24 张公开 PNG 和 PR #14 的六张固定外观在本机重现，PNG 字节逐张一致。
 
 Pipette CPU 接口合同测试通过。[CPU 动态复核](evidence/pipette_transfer/expansion/windows-cpu-dynamics.json)记录两任务 26 轮、1,560 控制步与 31,200 物理子步。所有固定外观逐状态复现 native_off，逐帧复算已核对关节实际运动，并核对材质稳定记录。
 
-**Server 3 双环境复验**
+**Server 3 扩容发布档案**
 
 [AspirateLiquid 与 DispenseLiquid 的 Linux 运行证据](evidence/pipette_transfer/expansion/README.md)来自作业 `123819`。采集提交与发布运行提交的 Pipette 源码、运行 catalog、共享 reset 和验证工具路径逐个核对一致。
 

@@ -1,0 +1,494 @@
+{
+  "job": 143432,
+  "node": "lyg0295",
+  "head_tested": "03ef33adfd2e0bc93c6c50aea8375af32f4d4163",
+  "main_tested": "86296530c1f6d76d0a6a756c42068bd6204a7a49",
+  "merged_tree_tested": "9547b4d352e8f794e82e452373bdda760549979a",
+  "before_head": "1e0a4a0719d559e429a1c51040f84ea3384da1de",
+  "seed": 7,
+  "num_envs": 2,
+  "steps_between_resets": 0,
+  "tasks": {
+    "AspirateLiquid": {
+      "views": [
+        {
+          "view": "reset",
+          "row": 0,
+          "jade_vs_coral": {
+            "pixels": 224,
+            "changed": 224,
+            "max": 36,
+            "mean": 31.625,
+            "outside_changed": 779
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0,
+          "before_changed": 0,
+          "old_fixed_changed": 224,
+          "original_full_frame_changed": 0,
+          "max_error_vs_old_fixed": 35,
+          "changed_outside_vs_old_fixed": 0
+        },
+        {
+          "view": "reset",
+          "row": 1,
+          "jade_vs_coral": {
+            "pixels": 228,
+            "changed": 228,
+            "max": 36,
+            "mean": 31.93859649122807,
+            "outside_changed": 773
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0,
+          "before_changed": 0,
+          "old_fixed_changed": 228,
+          "original_full_frame_changed": 0,
+          "max_error_vs_old_fixed": 39,
+          "changed_outside_vs_old_fixed": 0
+        },
+        {
+          "view": "next",
+          "row": 0,
+          "jade_vs_coral": {
+            "pixels": 224,
+            "changed": 224,
+            "max": 36,
+            "mean": 31.625,
+            "outside_changed": 779
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0,
+          "before_changed": 0,
+          "old_fixed_changed": 224,
+          "original_full_frame_changed": 0,
+          "max_error_vs_old_fixed": 35,
+          "changed_outside_vs_old_fixed": 0
+        },
+        {
+          "view": "next",
+          "row": 1,
+          "jade_vs_coral": {
+            "pixels": 228,
+            "changed": 228,
+            "max": 36,
+            "mean": 31.93859649122807,
+            "outside_changed": 773
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0,
+          "before_changed": 0,
+          "old_fixed_changed": 228,
+          "original_full_frame_changed": 0,
+          "max_error_vs_old_fixed": 39,
+          "changed_outside_vs_old_fixed": 0
+        },
+        {
+          "view": "human",
+          "row": 0,
+          "jade_vs_coral": {
+            "pixels": 503,
+            "changed": 503,
+            "max": 36,
+            "mean": 31.675944333996025,
+            "outside_changed": 1738
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0,
+          "before_changed": 0,
+          "old_fixed_changed": 503,
+          "original_full_frame_changed": 0,
+          "max_error_vs_old_fixed": 32,
+          "changed_outside_vs_old_fixed": 0
+        },
+        {
+          "view": "human",
+          "row": 1,
+          "jade_vs_coral": {
+            "pixels": 515,
+            "changed": 515,
+            "max": 37,
+            "mean": 32.0,
+            "outside_changed": 1742
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0,
+          "before_changed": 0,
+          "old_fixed_changed": 515,
+          "original_full_frame_changed": 0,
+          "max_error_vs_old_fixed": 34,
+          "changed_outside_vs_old_fixed": 0
+        }
+      ],
+      "native_bindings": {
+        "jade-jade": [
+          {
+            "scheme": "jade",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          },
+          {
+            "scheme": "jade",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          }
+        ],
+        "jade-coral": [
+          {
+            "scheme": "jade",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          },
+          {
+            "scheme": "coral",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          }
+        ],
+        "coral-jade": [
+          {
+            "scheme": "coral",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          },
+          {
+            "scheme": "jade",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          }
+        ],
+        "coral-coral": [
+          {
+            "scheme": "coral",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          },
+          {
+            "scheme": "coral",
+            "shape_id": 112,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          }
+        ]
+      },
+      "runtime_receipts": {
+        "standard": {
+          "version": "3.0.3+dexarena.gpu1.linux1",
+          "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+          "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+          "execution": "standard_cuda",
+          "results_sha256": "94cc0a4b69d55c4ae092a0b8431c69564af7e3321a4c625a77e337e485e409ec",
+          "manifest_sha256": "ec16d3c14563fc41b8b8755ea3c038de557c5315d45557c3ce06a98c40d75e98"
+        },
+        "optical": {
+          "version": "3.0.3+dexarena.gpu1.linux1",
+          "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+          "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+          "execution": "supplementary_optical",
+          "results_sha256": "e4983b5b7e3a9e4c9a10cc7f040c15b99fa22ced94a45ab034e9a766bc5a1f40",
+          "manifest_sha256": "65458d0cbb138b4b9bb5cb8b8788bc7443cb27e8624b8f7a96220f79b9b9f2a1"
+        }
+      },
+      "branch_and_integrated_raw_files_byte_identical": true
+    },
+    "DispenseLiquid": {
+      "views": [
+        {
+          "view": "reset",
+          "row": 0,
+          "jade_vs_coral": {
+            "pixels": 390,
+            "changed": 390,
+            "max": 36,
+            "mean": 32.84615384615385,
+            "outside_changed": 1914
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0
+        },
+        {
+          "view": "reset",
+          "row": 1,
+          "jade_vs_coral": {
+            "pixels": 370,
+            "changed": 370,
+            "max": 36,
+            "mean": 32.72702702702703,
+            "outside_changed": 1980
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0
+        },
+        {
+          "view": "next",
+          "row": 0,
+          "jade_vs_coral": {
+            "pixels": 390,
+            "changed": 390,
+            "max": 36,
+            "mean": 32.84615384615385,
+            "outside_changed": 1914
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0
+        },
+        {
+          "view": "next",
+          "row": 1,
+          "jade_vs_coral": {
+            "pixels": 370,
+            "changed": 370,
+            "max": 36,
+            "mean": 32.72702702702703,
+            "outside_changed": 1980
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0
+        },
+        {
+          "view": "human",
+          "row": 0,
+          "jade_vs_coral": {
+            "pixels": 880,
+            "changed": 880,
+            "max": 36,
+            "mean": 32.8625,
+            "outside_changed": 4261
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0
+        },
+        {
+          "view": "human",
+          "row": 1,
+          "jade_vs_coral": {
+            "pixels": 847,
+            "changed": 847,
+            "max": 37,
+            "mean": 32.837072018890204,
+            "outside_changed": 4403
+          },
+          "max_error_against_fixed": 0,
+          "whole_frame_differences_against_fixed": 0
+        }
+      ],
+      "native_bindings": {
+        "jade-jade": [
+          {
+            "scheme": "jade",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          },
+          {
+            "scheme": "jade",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          }
+        ],
+        "jade-coral": [
+          {
+            "scheme": "jade",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          },
+          {
+            "scheme": "coral",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          }
+        ],
+        "coral-jade": [
+          {
+            "scheme": "coral",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          },
+          {
+            "scheme": "jade",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "e6ae2bb19bda96306fc17e8aad38fc10ce632465e7b02e34b4b331cfa3f9a97a",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "672c92b8c94af63d1031b1a12bab11f30aa41b4433bf40c09648cefdc8c0be85"
+            }
+          }
+        ],
+        "coral-coral": [
+          {
+            "scheme": "coral",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          },
+          {
+            "scheme": "coral",
+            "shape_id": 120,
+            "texture": {
+              "sha256": "b4c9e99126218121da72f413da37da34818b0bc460436ef7b77d97c01415bcbc",
+              "shape": [
+                384,
+                512,
+                4
+              ],
+              "dtype": "float32",
+              "source_png_sha256": "ee87c7ffbe832c7afc5144a78d373172ff0372600bab75d4d84d0b7e06eebfef"
+            }
+          }
+        ]
+      },
+      "runtime_receipts": {
+        "standard": {
+          "version": "3.0.3+dexarena.gpu1.linux1",
+          "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+          "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+          "execution": "standard_cuda",
+          "results_sha256": "1b472659e3ae6368f3f336bc4ba003085f39a418580b430c5db4d76fa47437a5",
+          "manifest_sha256": "938542bab6169b5967220ef3e149e56819db09dd95817e291ca5e28f0c7a4eb8"
+        },
+        "optical": {
+          "version": "3.0.3+dexarena.gpu1.linux1",
+          "artifact_sha256": "a358fc3c5c4b78b96025ddc73feea28dd4e6b1f646e9f5139525264e77bbe265",
+          "wheel_sha256": "6f39b4afb860aae767f4f734108c17e579a3b04c0360d6fdb2cc85c11caeefe1",
+          "execution": "supplementary_optical",
+          "results_sha256": "731685dfa11f8184767db33bbee28b6e6f26cfba00ce1ed678c84f43fc37bada",
+          "manifest_sha256": "c7c19aade7150c9750b9fc57a7cc35bdc5fffadfb21d48d575460974d2c15af5"
+        }
+      },
+      "branch_and_integrated_raw_files_byte_identical": true
+    }
+  },
+  "archive": {
+    "path_on_server3": "/var/tmp/dexarena-pr37-r2-xkl-20261126.EQYTzb/plate-reset-rgb-segmentation.tar.gz",
+    "sha256": "9e3288e04bcd2606fd4be7454b713d35bfa9fc28c2f4a52b5366974352980167",
+    "files_in_index": 799
+  }
+}
