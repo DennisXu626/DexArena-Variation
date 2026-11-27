@@ -143,6 +143,15 @@ class ResetScopeTests(unittest.TestCase):
         self.assertFalse(hasattr(env, '_furniture_reset_env_idx'))
         self.assertFalse(hasattr(env, '_furniture_reset_scope_masks'))
 
+    def test_reset_mixin_forwards_other_families_layout(self):
+        env = FakeEnv(gpu=False)
+        options = {'env_idx': torch.tensor([1]), 'position_layout': {'1': {'socket_yaw_deg': 95}}}
+        with patch.object(FakeNative, 'reset', autospec=True, return_value={}) as native_reset:
+            env.reset(seed=3, options=options)
+            native_reset.assert_called_once_with(env, seed=3, options=options)
+        self.assert_clean(env)
+        self.assertFalse(hasattr(env, '_furniture_position_rows'))
+
     def test_selected_indices_use_gpu_index_and_require_fetch(self):
         scene = FakeScene()
         MODULE._gpu_apply_selected(scene, torch.tensor([-1, 1, 1]))

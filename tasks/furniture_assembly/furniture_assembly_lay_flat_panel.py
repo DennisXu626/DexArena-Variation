@@ -91,7 +91,9 @@ from mani_skill.utils.wrappers.record import RecordEpisode
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.furniture_assembly.appearance import FurnitureAppearance
-from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
+from tasks.furniture_assembly.position_layout import role_pose_tensor
+from tasks.furniture_assembly.reset_scope import is_full_reset
+from tasks.furniture_assembly.workspace import FurnitureWorkspaceMixin
 from tasks.robots.panda_sharpa_hand_left_mobile_base import PandaSharpaHandLeftAngledMobileBase  # noqa: F401
 from tasks.robots.panda_wuji_hand_left_mobile_base import PandaWujiHandLeftMobileBase  # noqa: F401
 from tasks.config.object_materials import object_material
@@ -737,7 +739,7 @@ def build_place_marker(scene: ManiSkillScene, half_size, name: str = "place_zone
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyLayFlatPanelEnv(FurnitureWorkspaceMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -763,6 +765,8 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTask
     # distance from the stage it is supposed to reproduce.
     RACK_SPAWN_CENTER = RACK_CENTER
     PLACE_SPAWN_CENTER = PLACE_CENTER
+    WORKSPACE_TASK = "LayFlatPanel"
+    POSITION_LAYOUT_CENTERS = {"rack": RACK_SPAWN_CENTER}
 
     # Success thresholds.
     PLACE_REGION_HALF_SIZE = (0.225, 0.135)
@@ -996,11 +1000,18 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTask
             rack_pos[:, 0] = self.RACK_SPAWN_CENTER[0] + rand(self.rack_random_x)
             rack_pos[:, 1] = self.RACK_SPAWN_CENTER[1] + rand(self.rack_random_y)
             rack_yaw = rand(self.rack_random_yaw)
+            position_rows = self._resolved_furniture_rows(env_idx)
+            if position_rows is not None:
+                rack_xy_yaw = role_pose_tensor(position_rows, "rack", rack_pos)
+                rack_pos[:, :2] = rack_xy_yaw[:, :2]
+                rack_yaw = rack_xy_yaw[:, 2]
             self.rack.set_pose(Pose.create_from_pq(p=rack_pos, q=yaw_to_quat_wxyz(rack_yaw)))
 
             # Panel standing in the slot: q = Rz(rack_yaw) * Rx(90deg + lean).
             # The small lean makes it settle against one wall instead of balancing ambiguously.
             lean = rand(np.deg2rad(1.5))
+            if position_rows is not None:
+                lean.zero_()
             q_panel = quat_mul(
                 yaw_to_quat_wxyz(rack_yaw),
                 axis_to_quat_wxyz(torch.full_like(lean, np.pi / 2.0) + lean, axis=0),
@@ -1009,6 +1020,9 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTask
             panel_pos[:, 2] = PANEL_IN_SLOT_Z
             # In-slot jitter in rack-local coordinates, rotated into world.
             dx, dy = rand(0.012), rand(0.0010)
+            if position_rows is not None:
+                dx.zero_()
+                dy.zero_()
             cy, sy = torch.cos(rack_yaw), torch.sin(rack_yaw)
             panel_pos[:, 0] += cy * dx - sy * dy
             panel_pos[:, 1] += sy * dx + cy * dy
@@ -1076,7 +1090,7 @@ class FurnitureAssemblyLayFlatPanelEnv(FurnitureResetScopeMixin, DeclarativeTask
 
     def _contact_count(self) -> torch.Tensor:
         """How many DISTINCT fingers carry contact force against the panel (collision-bearing links)."""
-        return finger_contact_count(self.scene, self.agent, self.panel, self.TIP_CONTACT_FORCE)
+        return self._workspace_contact_counts(finger_contact_count(self.scene, self.agent, self.panel, self.TIP_CONTACT_FORCE))
 
     def _gripper_opening(self) -> torch.Tensor:
         if self.robot_uids == GRIPPER_ROBOT_UID:

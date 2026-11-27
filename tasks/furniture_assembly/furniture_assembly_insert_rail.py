@@ -118,7 +118,9 @@ from tasks.furniture_assembly.furniture_assembly_lay_flat_panel import (
 from tasks.robots.panda_xhand_hand_right_mobile_base import PandaXHandHandRightMobileBase  # noqa: F401
 from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.furniture_assembly.appearance import FurnitureAppearance
-from tasks.furniture_assembly.reset_scope import FurnitureResetScopeMixin, is_full_reset
+from tasks.furniture_assembly.reset_scope import is_full_reset
+from tasks.furniture_assembly.workspace import FurnitureWorkspaceMixin
+from tasks.furniture_assembly.position_layout import role_pose_tensor
 from tasks.config.object_materials import object_material
 from tasks.scene_builders import TableSceneBuilder
 from tasks.config.sim_profiles import make_sim_config
@@ -662,7 +664,7 @@ class RailSeatClip:
     control_mode=DEFAULT_CONTROL_MODE,
     render_mode="rgb_array",
 )
-class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskStateMixin, BaseEnv):
+class FurnitureAssemblyInsertRailEnv(FurnitureWorkspaceMixin, DeclarativeTaskStateMixin, BaseEnv):
     # Task bookkeeping that physics cannot re-derive. Restoring a
     # mid-episode frame without these silently rewinds every milestone,
     # which breaks offline re-render, demo-init and end-frame QC.
@@ -689,6 +691,8 @@ class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskSt
     # rail lane.
     PANEL_SPAWN_CENTER = PLACE_CENTER
     RAIL_SPAWN_CENTER = RAIL_PICK_CENTER
+    WORKSPACE_TASK = "InsertRail"
+    POSITION_LAYOUT_CENTERS = {"panel": PANEL_SPAWN_CENTER, "rail": RAIL_SPAWN_CENTER}
 
     # Success thresholds.
     # Success thresholds live in rail_seat_quantities (shared with the long task);
@@ -894,6 +898,11 @@ class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskSt
             panel_pos[:, 1] = self.PANEL_SPAWN_CENTER[1]
             panel_pos[:, 2] = self.panel_rest_z
             panel_yaw = torch.zeros((b,), device=self.device)
+            position_rows = self._resolved_furniture_rows(env_idx)
+            if position_rows is not None:
+                panel_xy_yaw = role_pose_tensor(position_rows, "panel", panel_pos)
+                panel_pos[:, :2] = panel_xy_yaw[:, :2]
+                panel_yaw = panel_xy_yaw[:, 2]
             panel_quat = yaw_to_quat_wxyz(panel_yaw)
             self.panel.set_pose(Pose.create_from_pq(p=panel_pos, q=panel_quat))
             marker_p = torch.tensor([[self.PANEL_SPAWN_CENTER[0], self.PANEL_SPAWN_CENTER[1], 0.0]], device=self.device, dtype=torch.float32).expand(b, -1)
@@ -904,6 +913,10 @@ class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskSt
             rail_pos[:, 1] = self.RAIL_SPAWN_CENTER[1] + rand(self.rail_random_y)
             rail_pos[:, 2] = RAIL_REST_Z
             rail_yaw = rand(self.rail_random_yaw)
+            if position_rows is not None:
+                rail_xy_yaw = role_pose_tensor(position_rows, "rail", rail_pos)
+                rail_pos[:, :2] = rail_xy_yaw[:, :2]
+                rail_yaw = rail_xy_yaw[:, 2]
             self.rail.set_pose(Pose.create_from_pq(p=rail_pos, q=yaw_to_quat_wxyz(rail_yaw)))
             self.rail.set_root_linear_velocity(torch.zeros((b, 3), device=self.device))
             self.rail.set_root_angular_velocity(torch.zeros((b, 3), device=self.device))
@@ -952,7 +965,7 @@ class FurnitureAssemblyInsertRailEnv(FurnitureResetScopeMixin, DeclarativeTaskSt
 
     def _contact_count(self, actor) -> torch.Tensor:
         """Distinct fingers in force contact with `actor` (collision-bearing links, see finger_contact_count)."""
-        return finger_contact_count(self.scene, self.agent, actor, self.TIP_CONTACT_FORCE)
+        return self._workspace_contact_counts(finger_contact_count(self.scene, self.agent, actor, self.TIP_CONTACT_FORCE))
 
     # ------------------------------------------------------------------
     # Single source of truth

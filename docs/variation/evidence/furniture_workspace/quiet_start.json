@@ -1,0 +1,56 @@
+{
+  "commit": "ecafc5cc6e221a9b5c6eebac1c7d323be1d0c3f8",
+  "task": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+  "make": {
+    "position_workspace": true,
+    "robot_init_qpos_noise": 0.0,
+    "sim_backend": "physx_cpu",
+    "obs_mode": "state",
+    "control_mode": "pd_joint_pos",
+    "reconfiguration_freq": 0
+  },
+  "reset_options": {
+    "workspace_placement": {
+      "0": {
+        "rack_xy_m": [
+          -0.13237400000000002,
+          0.257626
+        ],
+        "rack_yaw_deg": 10
+      }
+    }
+  },
+  "seed": 137,
+  "env": 0,
+  "method": "independent per-angle held-out native CPU IK",
+  "routes": [
+    {
+      "tilt_deg": 0,
+      "max_error_m": 0.13195580857174896,
+      "step_rad": 0.46385984427349103,
+      "wrist_clearance_m": 0.03646810565438469,
+      "passed": false
+    },
+    {
+      "tilt_deg": 25,
+      "max_error_m": 0.028122737932405443,
+      "step_rad": 0.917635921275495,
+      "wrist_clearance_m": 0.029113636776464058,
+      "passed": false
+    },
+    {
+      "tilt_deg": -25,
+      "max_error_m": 0.00016065448222646857,
+      "step_rad": 0.8224204085421534,
+      "wrist_clearance_m": -0.05448631390826714,
+      "passed": false
+    },
+    {
+      "tilt_deg": -15,
+      "max_error_m": 0.0001838058540538581,
+      "step_rad": 0.9237795096008894,
+      "wrist_clearance_m": 0.02571164656776459,
+      "passed": true
+    }
+  ]
+}

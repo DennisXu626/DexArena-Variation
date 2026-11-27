@@ -1,0 +1,136 @@
+{
+  "head": "ecafc5cc6e221a9b5c6eebac1c7d323be1d0c3f8",
+  "native_reset_digests": {
+    "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
+      "7": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "c30ae41c7386ff6b34e3781444ab9eef53effcb1b984df8fb6d13f5a8a36ed49",
+          "panel_rack": "89e7361ca1e8d5432bb236b9f017d2f15195b3914a7aba6d4f19f52591fd1079",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": "236d29fa69155313b9510b6befbaf07e291079c7e5373f71c76b88f6cc4ad58a"
+        },
+        "furniture_panel_task_state": "b19dca87217caa2ea4b9abfab4cfcea7bc7a3bc27e815913cb0c06f5fb170bb5"
+      },
+      "47": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "668ccb604dbd393c53b54a0e1f2fb108e4846177760e4f2306d07e8fbb8da87b",
+          "panel_rack": "8bed8038f0ea22de51eb1b5085efec1e42b7a3f0a34b778582bc1811360cb7a8",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": "69018e13d04b3f2898915377c97b577b6806d9218e8142a310091e43b1936058"
+        },
+        "furniture_panel_task_state": "b19dca87217caa2ea4b9abfab4cfcea7bc7a3bc27e815913cb0c06f5fb170bb5"
+      },
+      "269": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "7802c50e83625848d53cd57b3997d15ba013c6ad311f397635d1cdafdf2012f5",
+          "panel_rack": "17dfece3c528b53b5693f9f21a865a830aed892f931cf0b39b3bef6146d82645",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_left_angled_mobile_base": "31f7661b32d5f19c7e5772c2eb15d57f1a4d80461d1ee41fb7189d392e80b040"
+        },
+        "furniture_panel_task_state": "b19dca87217caa2ea4b9abfab4cfcea7bc7a3bc27e815913cb0c06f5fb170bb5"
+      }
+    },
+    "FurnitureAssemblyInsertRail-Sharpa-v1": {
+      "7": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "1c9fb1cb56ee56c9f0cf214f0c0595e3c37df16eee01495037adafa402726280",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": "236d29fa69155313b9510b6befbaf07e291079c7e5373f71c76b88f6cc4ad58a",
+          "slider_rail": "789d05dab85dd8b280f73df7bbdca648f901de62e882de1f8e57b7962cb94907"
+        },
+        "furniture_rail_task_state": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+      },
+      "47": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "1c9fb1cb56ee56c9f0cf214f0c0595e3c37df16eee01495037adafa402726280",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": "69018e13d04b3f2898915377c97b577b6806d9218e8142a310091e43b1936058",
+          "slider_rail": "52a093fe547fe9d2ecead6c882b58ec546ddb5bd39cdfd9272fa151b77806bb1"
+        },
+        "furniture_rail_task_state": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+      },
+      "269": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "1c9fb1cb56ee56c9f0cf214f0c0595e3c37df16eee01495037adafa402726280",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": "31f7661b32d5f19c7e5772c2eb15d57f1a4d80461d1ee41fb7189d392e80b040",
+          "slider_rail": "2b6b81f27e566fcbbbf410846838d276a7cb14114ad3ceb7a0b6bba08fa998ad"
+        },
+        "furniture_rail_task_state": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+      }
+    },
+    "FurnitureAssemblyFastenScrew-Sharpa-v1": {
+      "7": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "ce72bea7ed4bf300ead5ee4523a7dae1e0245055e5a2f3c59aaf9c13090ab2e6",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": "236d29fa69155313b9510b6befbaf07e291079c7e5373f71c76b88f6cc4ad58a",
+          "slider_rail": "9960e8bfb596a1b209c625163b7d0ac7e048e5a85aa2eb447795259682243a0c"
+        },
+        "furniture_wing_screw_task_state": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "47": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "5841cc6b0d9d928b18fc7772a653f6a08be2ed7100b67e38d8b7b3b213318296",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": "69018e13d04b3f2898915377c97b577b6806d9218e8142a310091e43b1936058",
+          "slider_rail": "8a256f06c34784c8498330179278a6ce6e413f7c1dde67aee02813bc54b1c448"
+        },
+        "furniture_wing_screw_task_state": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "269": {
+        "actors": {
+          "table-workspace": "ea4b3a4847fd9c458260a0eec075c42894c4c5199c43d2f7c1a68398c5a79a93",
+          "drawer_panel": "49044bada85dc97747271aad9dfac33728a4d32bc1a056e9bbfba71d535a464c",
+          "place_zone": "617885cd66255e1f462094459b2a3cedcd997d95f1a2bafbe08e8f8d7d3424cb"
+        },
+        "articulations": {
+          "panda_sharpa_hand_right_angled_mobile_base": "31f7661b32d5f19c7e5772c2eb15d57f1a4d80461d1ee41fb7189d392e80b040",
+          "slider_rail": "721c1c319cb817864bb5fe5f7073deebc20eb77d289fbe1d9fed809018fab7b5"
+        },
+        "furniture_wing_screw_task_state": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      }
+    }
+  },
+  "explicit_checks": {
+    "FurnitureAssemblyLayFlatPanel-Sharpa-v1": {
+      "nominal_reset": true,
+      "unknown_field": "position_layout env 0: unsupported request fields",
+      "rejected_state_equal": true
+    },
+    "FurnitureAssemblyInsertRail-Sharpa-v1": {
+      "nominal_reset": true,
+      "unknown_field": "position_layout env 0: unsupported request fields",
+      "rejected_state_equal": true
+    },
+    "FurnitureAssemblyFastenScrew-Sharpa-v1": {
+      "nominal_reset": true,
+      "unknown_field": "position_layout env 0: unsupported request fields",
+      "rejected_state_equal": true
+    }
+  }
+}

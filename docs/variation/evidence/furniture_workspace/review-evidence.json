@@ -1,0 +1,601 @@
+{
+  "provenance": "2026-11-27 offline cross-check. SHA256 values below identify stored file bytes; extracted rows keep the field names of the original record.",
+  "prior_head": "19bce63abfb965d378b1392676dbac5f53445957",
+  "windows_receipts": [
+    {
+      "name": "furniture-cuda-v1",
+      "source_receipt_sha256": "be1b14620cf7531ace91a031aeb19b58512c2aebaca311d42c5c383a03eee616",
+      "process_commit": "2625fb7166ecc5bbb44750487592967295ff3dc1",
+      "command": [
+        "<PYTHON_ENV>\\python.exe",
+        "-B",
+        "tools/variation/sapien_sdk/run_task_check.py",
+        "--repo-root",
+        "<WORKSPACE>\\family-work\\furniture-position",
+        "--checker",
+        "tools/variation/check_furniture_workspace.py",
+        "--sapien-root",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\sapien-runtime-repro-v5",
+        "--artifact",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\artifact.json",
+        "--physx-gpu-dir",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\physx-runtime",
+        "--output",
+        "<WORKSPACE>\\.coordination\\position-workspace-20261125\\furniture-cuda-v1\\output",
+        "--backend",
+        "physx_cuda"
+      ],
+      "exit_code": 0,
+      "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB"
+    },
+    {
+      "name": "furniture-panel-approach",
+      "source_receipt_sha256": "5ee212eaca2eafca0ab647733243f180f22ff9b04b8cc25807f693e6dde58e1a",
+      "process_commit": "2625fb7166ecc5bbb44750487592967295ff3dc1",
+      "command": [
+        "<PYTHON_ENV>\\python.exe",
+        "-B",
+        "tools/variation/sapien_sdk/run_task_check.py",
+        "--repo-root",
+        "<WORKSPACE>\\family-work\\furniture-position",
+        "--checker",
+        "tools/variation/audit_furniture_panel_approach.py",
+        "--sapien-root",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\sapien-runtime-repro-v5",
+        "--artifact",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\artifact.json",
+        "--physx-gpu-dir",
+        "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\physx-runtime",
+        "--output",
+        "<WORKSPACE>\\.coordination\\position-workspace-20261125\\furniture-panel-approach\\output",
+        "--points",
+        "D:/DexArena/.coordination/position-workspace-20261125/furniture-cuda-v1/output/POINTS.csv"
+      ],
+      "exit_code": 0,
+      "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB"
+    }
+  ],
+  "server_account": "lyt",
+  "server_root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/position-workspace-20261125.2itE7q",
+  "server_read_method": "opened each listed file on lyg0295 as lyt with sha256sum; compared with archived bytes",
+  "server_job_submissions": 3,
+  "slurm": {
+    "142365": {
+      "archived_dashboard_row": [
+        "142365",
+        "lyt",
+        "position-furniture",
+        "FAILED",
+        "lyg0295",
+        "0",
+        "4",
+        "00:00:01",
+        "2026-11-25 17:56:05",
+        "2026-11-25 17:56:06",
+        "2026-11-25 17:56:07"
+      ],
+      "state": "FAILED",
+      "elapsed_seconds": 1,
+      "allocation_seconds_basis": "elapsed seconds x one assigned GPU; shared jobs counted once, across both families",
+      "exit_code": null,
+      "exit_code_note": "archived dashboard did not record raw Slurm exit codes; status.txt records checker outcomes when present"
+    },
+    "142366": {
+      "archived_dashboard_row": [
+        "142366",
+        "lyt",
+        "position-furniture",
+        "COMPLETED",
+        "lyg0295",
+        "0",
+        "4",
+        "00:08:48",
+        "2026-11-25 17:56:41",
+        "2026-11-25 17:56:41",
+        "2026-11-25 18:05:29"
+      ],
+      "state": "COMPLETED",
+      "elapsed_seconds": 528,
+      "allocation_seconds_basis": "elapsed seconds x one assigned GPU; shared jobs counted once, across both families",
+      "exit_code": null,
+      "exit_code_note": "archived dashboard did not record raw Slurm exit codes; status.txt records checker outcomes when present"
+    },
+    "142388": {
+      "archived_dashboard_row": [
+        "142388",
+        "lyt",
+        "position-panel",
+        "COMPLETED",
+        "lyg0295",
+        "0",
+        "2",
+        "00:00:13",
+        "2026-11-25 18:34:05",
+        "2026-11-25 18:52:20",
+        "2026-11-25 18:52:33"
+      ],
+      "state": "COMPLETED",
+      "elapsed_seconds": 13,
+      "allocation_seconds_basis": "elapsed seconds x one assigned GPU; shared jobs counted once, across both families",
+      "exit_code": null,
+      "exit_code_note": "archived dashboard did not record raw Slurm exit codes; status.txt records checker outcomes when present"
+    }
+  },
+  "server_original_sha256": {
+    "capture-142366/binding.txt": "47b2bece36dadb57a3928b241b7db74ebe7ad501ca36c2f7118654ccd8f50f3f",
+    "capture-142366/furniture-sdk.json": "7cd2617f304c0cd590d7ff00aa0e31f23732e78ae3c976c881f8f40475c7f122",
+    "capture-142366/furniture/POINTS.csv": "750727f9a7839fee9db2710943765b7db3ec145bfede20c0c5c7bda45462dcdb",
+    "capture-142366/furniture/results.json": "a5a022b35f7187c610cf279ddca14dee738c17731e2ea76f7b1439d4de7105e1",
+    "capture-142366/gpu.csv": "82f37887d5a9e26fc44b3cf689598c44adf1dc826ca9b07bedef3e2f576f6288",
+    "capture-142366/status.txt": "bc2c290ce613ee60ad1713d1fa1b75ff4441c26bdc1fc7ca50745929bc952a07",
+    "capture-142388/binding.txt": "554536e0a90627299a7d631666ef37ce40cee43fc8de9d22565c6862fff3057a",
+    "capture-142388/furniture-panel-sdk.json": "0620e0f411d46f42f9029d55ab505b86f50d69f9c7874cf70e41d74292e3294c",
+    "capture-142388/furniture-panel/panel_approach.json": "2a6fa5a09c4b4a12e93f927a3113f63db16502fee3378888c001d9f5b04315ff",
+    "capture-142388/gpu.csv": "82f37887d5a9e26fc44b3cf689598c44adf1dc826ca9b07bedef3e2f576f6288",
+    "capture-142388/status.txt": "7ed8ee11b85bcc0ffb62c0ae335c29da8ab3d227b040e2b25362e158bba217cb",
+    "job-142365.log": "590ea386103d1ebfa0eca36f6b387267917091c8d3c177e5070fada1cfc6503e"
+  },
+  "server_input_and_private_asset_identity": {
+    "commit": "ecafc5cc6e221a9b5c6eebac1c7d323be1d0c3f8",
+    "private_asset_count": 2,
+    "private_asset_sha256": {
+      "tasks/assets/task_object_meshes/furniture/generated/groove_mouth_wedge_0.obj": "cde822b859f4c6df14123c228f36c80c613d16b416b610b0a480631536a89900",
+      "tasks/assets/task_object_meshes/furniture/generated/groove_mouth_wedge_1.obj": "bdc23954094d16412771df5a938960aed1ca0d9b017391946645aed25107a1d8"
+    },
+    "tracked_digest": "f3772839925e4177da8592e6c630c0625994129702d2cedc02b3599102d85c86",
+    "tracked_file_count": 507,
+    "tree": "1cbd023bc4ee44f7b844ab65ad75678d7ec91131"
+  },
+  "github_evidence_sha256": {
+    "cpu/POINTS.csv": "b81ca60b52acd1ac720563692f828de7fd86fb5c65086cc411082f2e3ba81419",
+    "cpu/native_compatibility.json": "58d2adde7a7df5fd4631a69ac100fcef09b2575639fddb7d63fff3358c6ab8cb",
+    "cpu/panel_approach.json": "caebc638a8374f447522a46009c166327aea6bff13568722300d6222ca77c404",
+    "cpu/results.json": "098b98f010d87f4ed936cc361e1d32bfde76e7f77bcbf9eadb485deb75f21bab",
+    "linux_cuda/POINTS.csv": "750727f9a7839fee9db2710943765b7db3ec145bfede20c0c5c7bda45462dcdb",
+    "linux_cuda/SDK.json": "3c941e2f214586de5aea2b5ffa7f9c998eb3f8acddcbc9fb3eee3b81a9dc941c",
+    "linux_cuda/panel_approach.json": "2a6fa5a09c4b4a12e93f927a3113f63db16502fee3378888c001d9f5b04315ff",
+    "linux_cuda/results.json": "a5a022b35f7187c610cf279ddca14dee738c17731e2ea76f7b1439d4de7105e1",
+    "windows_cuda/POINTS.csv": "e8c7e6d0fce76ccfbae34cc9d2d023f7aadb3fc98a4ab7637b4c5605bc4af63d",
+    "windows_cuda/SDK.json": "592fcf51ab2d0dc377111ba4e3418d2d7307b29999aee911697bcf6f21ab7b0b",
+    "windows_cuda/panel_approach.json": "d4422391152cf5702cdc1137cd5e895a5315af149b4802f06edc7737690b3a3c",
+    "windows_cuda/results.json": "7efc53353737608abd6250d035a9497f508d15dcb42b7b675cdbb8627bfb8c20"
+  },
+  "windows_selected_examples": [
+    {
+      "task": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+      "file": "windows_cuda/POINTS.csv",
+      "id": "near",
+      "seed": 1301,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "options": {
+          "workspace_placement": {
+            "1": "near"
+          },
+          "env_idx": [
+            1
+          ]
+        },
+        "layout": {
+          "rack_xy_m": [
+            -0.194,
+            0.196
+          ],
+          "rack_yaw_deg": 0
+        },
+        "measured_poses": {
+          "rack": [
+            -0.1940000057220459,
+            0.1960000991821289,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "panel": [
+            -0.1940000057220459,
+            0.1960000991821289,
+            0.11050000041723251,
+            0.7071068286895752,
+            0.70710688829422,
+            9.340283407821559e-11,
+            5.241634903896397e-11
+          ]
+        },
+        "measured_yaw_deg": {
+          "panel": 1.1815503927446444e-08,
+          "rack": 0.0
+        },
+        "unselected_unchanged": true
+      }
+    },
+    {
+      "task": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+      "file": "windows_cuda/POINTS.csv",
+      "id": "far",
+      "seed": 1302,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "options": {
+          "workspace_placement": {
+            "0": "far"
+          },
+          "env_idx": [
+            0
+          ]
+        },
+        "layout": {
+          "rack_xy_m": [
+            -0.062,
+            0.196
+          ],
+          "rack_yaw_deg": 0
+        },
+        "measured_poses": {
+          "rack": [
+            -0.06199979782104492,
+            0.1960000991821289,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "panel": [
+            -0.06199979782104492,
+            0.1960000991821289,
+            0.11050000041723251,
+            0.7071068286895752,
+            0.70710688829422,
+            9.340283407821559e-11,
+            5.241634903896397e-11
+          ]
+        },
+        "measured_yaw_deg": {
+          "panel": 1.1815503927446444e-08,
+          "rack": 0.0
+        },
+        "unselected_unchanged": true
+      }
+    },
+    {
+      "task": "FurnitureAssemblyInsertRail-Sharpa-v1",
+      "file": "windows_cuda/POINTS.csv",
+      "id": "near",
+      "seed": 1301,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "options": {
+          "workspace_placement": {
+            "1": "near"
+          },
+          "env_idx": [
+            1
+          ]
+        },
+        "layout": {
+          "panel_xy_m": [
+            -0.13,
+            -0.06
+          ],
+          "panel_yaw_deg": 0,
+          "rail_xy_m": [
+            -0.13,
+            -0.192
+          ],
+          "rail_yaw_deg": 0
+        },
+        "measured_poses": {
+          "rail": [
+            -0.12999999523162842,
+            -0.1919999122619629,
+            0.006000000052154064,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "panel": [
+            -0.12999999523162842,
+            -0.059999942779541016,
+            0.008999999612569809,
+            1.0,
+            0.0,
+            -5.594515128937161e-11,
+            0.0
+          ],
+          "rail_body": [
+            -0.12999999523162842,
+            -0.1919999122619629,
+            0.006000000052154064,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "screw_head": [
+            -0.239999920129776,
+            -0.1919999122619629,
+            0.009499995969235897,
+            0.9999998807907104,
+            3.1320085414066057e-10,
+            -9.726225158601665e-09,
+            -3.4757050570988213e-09
+          ]
+        },
+        "measured_yaw_deg": {
+          "panel": 0.0,
+          "rail": 0.0
+        },
+        "unselected_unchanged": true
+      }
+    },
+    {
+      "task": "FurnitureAssemblyInsertRail-Sharpa-v1",
+      "file": "windows_cuda/POINTS.csv",
+      "id": "far",
+      "seed": 1302,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "options": {
+          "workspace_placement": {
+            "0": "far"
+          },
+          "env_idx": [
+            0
+          ]
+        },
+        "layout": {
+          "panel_xy_m": [
+            -0.13,
+            -0.06
+          ],
+          "panel_yaw_deg": 0,
+          "rail_xy_m": [
+            -0.13,
+            -0.354
+          ],
+          "rail_yaw_deg": 0
+        },
+        "measured_poses": {
+          "rail": [
+            -0.13000011444091797,
+            -0.3540000915527344,
+            0.006000000052154064,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "panel": [
+            -0.13000011444091797,
+            -0.059999942779541016,
+            0.008999999612569809,
+            1.0,
+            0.0,
+            -5.594515128937161e-11,
+            0.0
+          ],
+          "rail_body": [
+            -0.13000011444091797,
+            -0.3540000915527344,
+            0.006000000052154064,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "screw_head": [
+            -0.24000024795532227,
+            -0.3540000915527344,
+            0.009499995969235897,
+            0.9999998807907104,
+            3.1320085414066057e-10,
+            -9.726225158601665e-09,
+            -3.4757050570988213e-09
+          ]
+        },
+        "measured_yaw_deg": {
+          "panel": 0.0,
+          "rail": 0.0
+        },
+        "unselected_unchanged": true
+      }
+    },
+    {
+      "task": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+      "file": "windows_cuda/POINTS.csv",
+      "id": "near",
+      "seed": 1301,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "options": {
+          "workspace_placement": {
+            "1": "near"
+          },
+          "env_idx": [
+            1
+          ]
+        },
+        "layout": {
+          "panel_xy_m": [
+            -0.154,
+            -0.06
+          ],
+          "panel_yaw_deg": 0
+        },
+        "measured_poses": {
+          "panel": [
+            -0.15399999916553497,
+            -0.059999942779541016,
+            0.008999999612569809,
+            1.0,
+            0.0,
+            -5.594515128937161e-11,
+            0.0
+          ],
+          "rail": [
+            -0.1289999932050705,
+            -0.059999942779541016,
+            0.01599999889731407,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rail_body": [
+            -0.1289999932050705,
+            -0.059999942779541016,
+            0.01599999889731407,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "screw_head": [
+            -0.23899993300437927,
+            -0.059999942779541016,
+            0.01249999925494194,
+            0.9999999403953552,
+            -1.7631248295114227e-13,
+            -7.574781690777854e-09,
+            7.275957614183426e-12
+          ]
+        },
+        "measured_yaw_deg": {
+          "panel": 0.0,
+          "rail": 0.0
+        },
+        "unselected_unchanged": true
+      }
+    },
+    {
+      "task": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+      "file": "windows_cuda/POINTS.csv",
+      "id": "far",
+      "seed": 1302,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "position_workspace": true
+        },
+        "options": {
+          "workspace_placement": {
+            "0": "far"
+          },
+          "env_idx": [
+            0
+          ]
+        },
+        "layout": {
+          "panel_xy_m": [
+            -0.106,
+            -0.06
+          ],
+          "panel_yaw_deg": 0
+        },
+        "measured_poses": {
+          "panel": [
+            -0.10599994659423828,
+            -0.059999942779541016,
+            0.008999999612569809,
+            1.0,
+            0.0,
+            -5.594515128937161e-11,
+            0.0
+          ],
+          "rail": [
+            -0.08099985122680664,
+            -0.059999942779541016,
+            0.01599999889731407,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rail_body": [
+            -0.08099985122680664,
+            -0.059999942779541016,
+            0.01599999889731407,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "screw_head": [
+            -0.19099998474121094,
+            -0.059999942779541016,
+            0.01249999925494194,
+            0.9999999403953552,
+            -1.7631248295114227e-13,
+            -7.574781690777854e-09,
+            7.275957614183426e-12
+          ]
+        },
+        "measured_yaw_deg": {
+          "panel": 0.0,
+          "rail": 0.0
+        },
+        "unselected_unchanged": true
+      }
+    }
+  ],
+  "server_launcher_sha256": {
+    "gpu_job.sh": "e8014a9d9bad3fb197531eaf29306f17c9a95dfaa82e63332621403c7754edb8",
+    "server_sdk.py": "4c4fcc2c08985fc44fddf7a6efd213fe4b5e0aaadf2330e56b890c9d30af5ea9",
+    "gpu_extra.sh": "fed6f09a8ecf8c6e3b8c0363b86e1997dc2fe38069563f87d6191dc82593403b",
+    "server_sdk_extra.py": "e162cb748c79ad7728757b495f11f04bc9dba6efadafbecc3054527dde0c3994"
+  }
+}
