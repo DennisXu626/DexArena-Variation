@@ -1,0 +1,4 @@
+<WORKSPACE>\DexArena-Variation\.local\vendor\sapien-runtime-repro-v5\sapien\wrapper\pinocchio_model.py:299: UserWarning: pinnochio package is not installed, robotics functionalities will not be available
+  warnings.warn(
+[33;1m2026-11-26 20:56:34,954 - mani_skill  - WARNING - Overriding registered agent panda[0m
+[33;1m2026-11-26 20:56:34,954 - mani_skill  - WARNING - Overriding registered agent panda_wristcam[0m

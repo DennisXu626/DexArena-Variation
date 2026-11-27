@@ -1,0 +1,76 @@
+{
+  "provenance": "Post-run verification of committed blob bytes; runtime checker hash is recorded separately in each output/private_sdk.json",
+  "process_commit": "ef1408a1dd459248cead48a4acd1c9287e2ed4de",
+  "github_merge": {
+    "pr": "https://github.com/DennisXu626/DexArena-Variation/pull/43",
+    "state": "open",
+    "mergeable": true,
+    "merged": false,
+    "head": "e3495118e51a133d542349e88990cb26b539670b",
+    "merge_commit": "80780d33cd2acbd5aa352b713eb79f115ebecef8",
+    "merge_parents": [
+      "86296530c1f6d76d0a6a756c42068bd6204a7a49",
+      "e3495118e51a133d542349e88990cb26b539670b"
+    ],
+    "verified_tree": "f3f1ca754297b6497c248cabe54372d431073e64"
+  },
+  "check_reset_sha256": "edfa87c669dc460fdd176e291ef10825893979b80abaded306e2af3d3e9a1674",
+  "git_blobs": {
+    "tasks/office_desk/__init__.py": {
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "git_content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tasks/office_desk/devices_appearance.py": {
+      "git_blob": "388810497c8226c32a6c93d33d5b8c742fc8ddf3",
+      "git_content_sha256": "4d7538001a24c60317e8d2504ecd7934e508fe5dc0c941e5303bc52e5405746e"
+    },
+    "tasks/office_desk/mouse_appearance.py": {
+      "git_blob": "804ea2f61bf82bbd7dbea0c3329e5d831b89bab6",
+      "git_content_sha256": "f4a7a0f240364a517933231021aaeb4e49a1a7dd2c4bb8db5466be875a27bf8d"
+    },
+    "tasks/office_desk/office_desk_click_mouse.py": {
+      "git_blob": "5681526d7c6f3ad4cde2b5be7697a65101e1890c",
+      "git_content_sha256": "73786e9ede640228f5ccc34e6ebb58f9e9e2779b060c10c67506c93142ecfc29"
+    },
+    "tasks/office_desk/office_desk_long.py": {
+      "git_blob": "0f4af2d30807cc7aff9dfa9ef0aeee4f0bdd14ab",
+      "git_content_sha256": "0acc26306d8ff41b9455112031fcb904e0b24c837de95a4b5e6f71d016f01b38"
+    },
+    "tasks/office_desk/office_desk_open_laptop.py": {
+      "git_blob": "b764a2f9e8068c6e0d3c0b553dae8be484b0ad3c",
+      "git_content_sha256": "28cee8fdda0bb08e74c5ecbc33b36c2156c1e26f78d77011c19d2b9d005c1ed5"
+    },
+    "tasks/office_desk/office_desk_type_keys.py": {
+      "git_blob": "b7843e97fc1165afe004466f8eae2ef1974a9e7b",
+      "git_content_sha256": "4dcf2e57215135a5e1ff864d149f758ee524f299f329ba74af527fc5afff8780"
+    },
+    "tasks/office_desk/position_layout.py": {
+      "git_blob": "cdb49d9907a920294c8cc1407b35cf3fe3a422d8",
+      "git_content_sha256": "d3181ce0d3e45806843f5b5caeedee8fcc59d60ee743b1702fdedae7e19618c2"
+    },
+    "tasks/office_desk/position_workspace.py": {
+      "git_blob": "d17a1b5636556057222bc96c8a4568b1add9210e",
+      "git_content_sha256": "a7c1f22d733199dea412294d7370836a3c1c5df81bec696533e697e01831447d"
+    },
+    "tasks/office_desk/reset_scope.py": {
+      "git_blob": "8b16726552d5d5217934f048c09201d9f78495c1",
+      "git_content_sha256": "eef8cc8ab700b3b5409b7c4997b759785197db0a6dccf264cedbd53af68bed2e"
+    },
+    "tasks/office_desk/workspace_maps/keyboard.json": {
+      "git_blob": "53edab27d572ab1af9ff2826a4116b204afc8e3c",
+      "git_content_sha256": "028587cf05437d9b4c592df73acdb05cc879429d58cea918533e5608fd11b1a9"
+    },
+    "tasks/office_desk/workspace_maps/laptop.json": {
+      "git_blob": "db3a24dac77b8b02a357e075e4c859e79f48d64d",
+      "git_content_sha256": "92bfeade70f789cf1d69162bf32fb7297de59cb08345d04166e0248ccea75a8b"
+    },
+    "tasks/office_desk/workspace_maps/mouse.json": {
+      "git_blob": "e412a547a1f12664153f7e9be1e2d740e184a07f",
+      "git_content_sha256": "1a556b276ab6d9553e17ebe15585a991a9cc3e9789f44c77049637c5bd4eaab8"
+    },
+    "tools/variation/sapien_sdk/run_task_check.py": {
+      "git_blob": "2f19adfd41a28b592d259c2b2464ca19d8551187",
+      "git_content_sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb"
+    }
+  }
+}

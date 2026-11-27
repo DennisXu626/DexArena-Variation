@@ -1,0 +1,46 @@
+<WORKSPACE>\DexArena-Variation\.local\vendor\sapien-runtime-repro-v5\sapien\wrapper\pinocchio_model.py:299: UserWarning: pinnochio package is not installed, robotics functionalities will not be available
+  warnings.warn(
+[33;1m2026-11-26 20:55:56,054 - mani_skill  - WARNING - Overriding registered agent panda[0m
+[33;1m2026-11-26 20:55:56,054 - mani_skill  - WARNING - Overriding registered agent panda_wristcam[0m
+Traceback (most recent call last):
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tools\variation\sapien_sdk\run_task_check.py", line 122, in <module>
+    runpy.run_path(str(checker), run_name='__main__')
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tools\variation\check_pr43_reset_joint.py", line 91, in <module>
+    result = check(args.task, device)
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tools\variation\check_pr43_reset_joint.py", line 26, in check
+    env = gym.make(f"OfficeDesk{task}-Sharpa-v1", **kwargs)
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\gymnasium\envs\registration.py", line 802, in make
+    env = env_creator(**env_spec_kwargs)
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\utils\registration.py", line 182, in make
+    env = env_spec.make(**kwargs)
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\utils\registration.py", line 79, in make
+    return self.cls(**_kwargs)
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tasks\office_desk\office_desk_click_mouse.py", line 549, in __init__
+    super().__init__(
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\envs\sapien_env.py", line 327, in __init__
+    obs, _ = self.reset(seed=[2022 + i for i in range(self.num_envs)], options=dict(reconfigure=True))
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tasks\office_desk\reset_scope.py", line 84, in reset
+    result = super().reset(seed=seed, options=options)
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tasks\furniture_assembly\reset_scope.py", line 104, in reset
+    return super().reset(seed=seed, options=options)
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\envs\sapien_env.py", line 909, in reset
+    self._reconfigure(options)
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\envs\sapien_env.py", line 743, in _reconfigure
+    self._load_scene(options)
+  File "<WORKSPACE>\family-work\office-pr43-merge-check\tasks\office_desk\office_desk_click_mouse.py", line 695, in _load_scene
+    mouse = builder.build(
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\utils\building\articulation_builder.py", line 152, in build
+    links: list[sapien.Entity] = self._build_entities(
+  File "<USERPROFILE>\anaconda3\envs\dexarena-panel\lib\site-packages\mani_skill\utils\building\articulation_builder.py", line 76, in _build_entities
+    link_component = b.build_physx_component(
+  File "<WORKSPACE>\DexArena-Variation\.local\vendor\sapien-runtime-repro-v5\sapien\wrapper\actor_builder.py", line 250, in build_physx_component
+    filename = do_coacd(preprocess_mesh_file(r.filename), **params)
+  File "<WORKSPACE>\DexArena-Variation\.local\vendor\sapien-runtime-repro-v5\sapien\wrapper\coacd.py", line 100, in do_coacd
+    import coacd
+ModuleNotFoundError: No module named 'coacd'

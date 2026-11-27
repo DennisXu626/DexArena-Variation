@@ -1,0 +1,10 @@
+{
+  "task": "OpenLaptop",
+  "schemes": [
+    "variant_1",
+    "variant_2"
+  ],
+  "far_xy_error_m": 1.862645149230957e-08,
+  "peer_state_equal_both_directions": true,
+  "rejected_cases": 7
+}
