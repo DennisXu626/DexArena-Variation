@@ -81,3 +81,9 @@ python -B tools/variation/nut_bolt_workspace/figures.py outputs/nut_workspace_cp
 ```
 
 Windows CUDA 使用原 Nut 私有 SDK 启动器，将 `--checker` 指向 `tools/variation/nut_bolt_workspace/check.py`，传 `--sim-backend physx_cuda`。Linux 在已加载匹配私有 wheel 的环境中可直接使用同一检查器和后端参数。可加 `--task PickBolt`、`SeatNut` 或 `TurnNut` 隔离为单任务进程。GPU 入口显式核对 indexed apply 和原生锁同步版本。[SDK 使用说明](../../../../tools/variation/sapien_sdk/native_lock/README.md)
+
+## 2026-11-27 双环境复核
+
+三项注册任务分别在位置分支 `582a8a7` 及其与 `main@00cc8e0` 的集成树 `0a92509` 上实测。Windows PhysX CUDA 双环境、seed 717。先取两行 far 对照，再将两行初始化为 near；随后依次仅将 env1、env0 reset 至 far，局部调用省略 seed。六个方向的未选行位姿逐分量完全相同，所选行与同一物理环境的全量 far 对照满足 1×10⁻⁵ 分量误差门槛。两个版本的双向读数一致。索引逐任务保留两行操作前后实值、四元数、构造和 reset 参数、受测树、启动命令及 SDK 的原件入口。
+
+还逐一将 1,054 个已编译格中心送入本家族数值回放入口，并检查全部命名预设。位置接口和既有行为通过 57 项家族测试。 [逐行位姿、实际构造参数及原件索引](paired-reset-20261127.json)
