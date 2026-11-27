@@ -4,6 +4,7 @@ from functools import lru_cache
 import json
 from numbers import Real
 from pathlib import Path
+from sys import float_info
 
 import numpy as np
 
@@ -35,9 +36,9 @@ def resolve(task, item):
     for name in objects:
         pair = item[name + '_xy_m']
         if (not isinstance(pair, (list, tuple)) or len(pair) != 2 or
-                any(isinstance(x, bool) or not isinstance(x, Real) or not np.isfinite(x) for x in pair)):
+                any(isinstance(x, bool) or not isinstance(x, Real) or not -float_info.max <= x <= float_info.max for x in pair)):
             raise ValueError(f'workspace {name} requires two finite scene coordinates')
-        coords.extend(pair)
+        coords.extend(map(float, pair))
     if not np.any(np.all(np.abs(cells[yaw] - np.asarray(coords) * 1000) <= half + 1e-5, axis=1)):
         raise ValueError('outside screened joint Pipette workspace')
     return public_row(objects, coords, int(yaw))

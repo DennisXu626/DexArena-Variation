@@ -1,8 +1,9 @@
 """Deterministic Pipette workstation requests in world metres and degrees."""
 
 from collections.abc import Mapping
-from math import cos, hypot, isfinite, radians, sin
+from math import cos, hypot, radians, sin
 from numbers import Real
+from sys import float_info
 
 
 # Offsets from PipetteConfig centers, in order ((min X, min Y), (max X, max Y)).
@@ -31,7 +32,7 @@ def position_centers(cfg):
 
 def _xy(value, base, name):
     if (not isinstance(value, (list, tuple)) or len(value) != 2
-            or any(isinstance(axis, bool) or not isinstance(axis, Real) or not isfinite(axis)
+            or any(isinstance(axis, bool) or not isinstance(axis, Real) or not -float_info.max <= axis <= float_info.max
                    for axis in value)):
         raise ValueError(f"{name}_xy_m requires two finite world coordinates")
     lo, hi = XY_OFFSETS_M[name]
