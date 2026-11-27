@@ -1,5 +1,4 @@
-"""Run from a #41 checkout: python -B REPLAY_HOLD.py --repo ."""
-import argparse
+"""CPU regression: save/restore must preserve per-control-step hold processing."""
 import ast
 import json
 from pathlib import Path
@@ -65,35 +64,44 @@ for mode, threshold in [("pick", 8), ("dump", 10)]:
     for selected in (0, 1):
         for counted in (False, True):
             for wrapped in (False, True):
-                control, control_read = fixture(selected, mode)
-                restored, restored_read = fixture(selected, mode)
-                for env, read in [(control, control_read), (restored, restored_read)]:
-                    for _ in range(threshold - 1):
-                        env._elapsed_steps += 1
-                        read()
-                    if not counted:
-                        env._elapsed_steps += 1
-                idx = torch.tensor([selected])
-                state = {k: v[idx].clone() for k, v in restored.get_state_dict().items()}
-                if wrapped:
-                    state = {k: {"value": v} for k, v in state.items()}
-                neighbour = (restored.hold[1-selected].item(), restored._hold_step[1-selected].item())
-                # Loading into a different episode clock must preserve processing status.
-                restored._elapsed_steps[selected] += 100
-                restored.set_state_dict(state, idx)
-                assert (restored.hold[1-selected].item(), restored._hold_step[1-selected].item()) == neighbour
-                for _ in range(3):
-                    assert restored_read() == control_read()
-                if counted:
-                    assert restored.hold[selected] == threshold - 1
-                    assert not restored.success_latched[selected]
-                else:
-                    assert restored.hold[selected] == threshold
-                restored._elapsed_steps += 1
-                control._elapsed_steps += 1
-                assert restored_read() == control_read()
-                assert restored.success_latched[selected]
-                results.append(dict(mode=mode, selected=selected, counted=counted, wrapped=wrapped))
+                for clock_offset in (0, 100):
+                    control, control_read = fixture(selected, mode)
+                    restored, restored_read = fixture(selected, mode)
+                    for env, read in [(control, control_read), (restored, restored_read)]:
+                        for _ in range(threshold - 1):
+                            env._elapsed_steps += 1
+                            read()
+                        if not counted:
+                            env._elapsed_steps += 1
+                    idx = torch.tensor([selected])
+                    state = {k: v[idx].clone() for k, v in restored.get_state_dict().items()}
+                    saved_reading = (restored.hold.tolist(), restored.success_latched.tolist())
+                    if wrapped:
+                        state = {k: {"value": v} for k, v in state.items()}
+                    neighbour = (restored.hold[1-selected].item(), restored._hold_step[1-selected].item())
+                    # Loading into a different episode clock must preserve processing status.
+                    restored._elapsed_steps[selected] += clock_offset
+                    restored.set_state_dict(state, idx)
+                    assert (restored.hold[1-selected].item(), restored._hold_step[1-selected].item()) == neighbour
+                    loaded_reading = (restored.hold.tolist(), restored.success_latched.tolist())
+                    readings = []
+                    for _ in range(3):
+                        actual, expected = restored_read(), control_read()
+                        assert actual == expected
+                        readings.append(dict(restored=actual, continuous=expected))
+                    if counted:
+                        assert restored.hold[selected] == threshold - 1
+                        assert not restored.success_latched[selected]
+                    else:
+                        assert restored.hold[selected] == threshold
+                    restored._elapsed_steps += 1
+                    control._elapsed_steps += 1
+                    next_actual, next_expected = restored_read(), control_read()
+                    assert next_actual == next_expected
+                    assert restored.success_latched[selected]
+                    results.append(dict(mode=mode, selected=selected, counted=counted, wrapped=wrapped,
+                                        clock_offset=clock_offset, saved=saved_reading, loaded=loaded_reading,
+                                        same_frame_reads=readings, next_step=dict(restored=next_actual, continuous=next_expected)))
         for task_present in (False, True):
             env, read = fixture(selected, mode)
             env._elapsed_steps += 1
