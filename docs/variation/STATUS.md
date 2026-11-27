@@ -102,6 +102,10 @@ AspirateLiquid、DispenseLiquid 两个 Sharpa 短任务通过标准双环境的�
 
 [接口与绑定](PIPETTE_APPEARANCE.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/14#pullrequestreview-6011113935) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/14)
 
+**PR #37 真实版。** AspirateLiquid、DispenseLiquid 两个 Sharpa 短任务在标准双环境核对十套固定配色、双向局部 reset 和 `original` 恢复。两任务的 `jade`／`coral` 同号与互换排列均匹配本行同号固定参照。DispenseLiquid 的未选行活动目标在 `evaluate`、`get_obs` 的入口和出口保持不变。配色结论限实测机位的可见部件，排液腕相机未见承托盘。本次验收范围限上述两个短任务，Long、其他手型及完整机器人任务成功率未测。
+
+[移液证据](evidence/pipette_transfer/realistic/README.md) · [正式批准](https://github.com/DennisXu626/DexArena-Variation/pull/37#pullrequestreview-6082900354) · [合并记录](https://github.com/DennisXu626/DexArena-Variation/pull/37)
+
 ### Nut & Bolt（PR #15）
 
 Nut 专用 `linuxnut1` SDK 的 lock、raster 两项原生探针，以及 PickBolt、SeatNut、TurnNut 三个标准双环境 Sharpa 短任务通过限定验收。覆盖双向局部 reset、原版恢复、分部件配色和 SeatNut 游离／接合表示的阶段可见性；探针和阶段夹具不代表完整机器人任务成功。
