@@ -109,15 +109,23 @@ def source_check(baseline=BASELINE):
     if getattr(self, "_furniture_reset_env_idx", None) is not None:
         scene._reset_mask = mask & self._furniture_reset_mask(mask)
     try:
-        indices = marker._scene_idxs[scene._reset_mask[marker._scene_idxs]]
+        rows = scene._reset_mask[marker._scene_idxs].nonzero().flatten().tolist()
         poses = []
-        for env_id in indices.tolist():
+        for row in rows:
+            env_id = int(marker._scene_idxs[row])
             links = self._target_links[env_id]
             slot = int(self.sequence_index[env_id])
             key = links[slot] if 0 <= slot < len(links) else None
             poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
         if poses:
             marker.set_pose(Pose.create(poses, device=marker.device))
+            body_ids = torch.tensor([marker._bodies[row].gpu_index for row in rows],
+                                    dtype=torch.int32, device=marker.device)
+            torch.cuda.synchronize(marker.device)
+            try:
+                scene.px.gpu_apply_rigid_dynamic_data(sapien.CudaArray(body_ids))
+            finally:
+                torch.cuda.synchronize(marker.device)
     finally:
         scene._reset_mask = mask
     return''').body[0]
