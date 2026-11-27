@@ -1,0 +1,470 @@
+--- a/src/physx/physx_system.cpp
++++ b/src/physx/physx_system.cpp
+@@ -22,12 +22,14 @@
+ #include "sapien/physx/articulation_link_component.h"
+ #include "sapien/physx/material.h"
+ #include "sapien/physx/physx_default.h"
++#include "./gpu_memory_compat_561.h"
+ #include "sapien/physx/rigid_component.h"
+ #include "sapien/profiler.h"
+ #include <extensions/PxExtensionsAPI.h>
+ 
+ #ifdef SAPIEN_CUDA
+ #include "./physx_system.cuh"
++#include "./gpu_compat_561.h"
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+ #endif
+@@ -407,6 +409,8 @@
+   mGpuArticulationMaxDof = computeArticulationMaxDof();
+   mGpuArticulationMaxLinkCount = computeArticulationMaxLinkCount();
+ 
++  auto limits = mPxScene->getDirectGPUAPI().getArticulationGPUAPIMaxCounts();
++  if (int(limits.maxDofs) != mGpuArticulationMaxDof || int(limits.maxLinks) != mGpuArticulationMaxLinkCount) throw std::runtime_error("PhysX GPU articulation stride mismatch");
+   allocateCudaBuffers();
+ 
+   // ensureCudaDevice();
+@@ -516,7 +520,7 @@
+   }
+ 
+   SAPIEN_PROFILE_BLOCK_BEGIN("fetch contact count");
+-  mPxScene->copyContactData(mCudaContactBuffer.ptr, 0, mCudaContactCount.ptr);
++  compat561_ok(mPxScene->getDirectGPUAPI().copyContactData(mCudaContactBuffer.ptr, (unsigned*)mCudaContactCount.ptr, 0));
+   cudaMemcpy(&mContactCount, mCudaContactCount.ptr, sizeof(int), cudaMemcpyDeviceToHost);
+   SAPIEN_PROFILE_BLOCK_END;
+ 
+@@ -526,7 +530,7 @@
+     mCudaContactBuffer = CudaArray({size, sizeof(PxGpuContactPair)}, "u1");
+   }
+ 
+-  mPxScene->copyContactData(mCudaContactBuffer.ptr, size, mCudaContactCount.ptr);
++  compat561_ok(mPxScene->getDirectGPUAPI().copyContactData(mCudaContactBuffer.ptr, (unsigned*)mCudaContactCount.ptr, size));
+ 
+   mContactUpToDate = true;
+ }
+@@ -573,9 +577,7 @@
+   }
+ 
+   ensureCudaDevice();
+-  mPxScene->copyBodyData((PxGpuBodyData *)mCudaRigidDynamicScratch.ptr,
+-                         (PxGpuActorPair *)mCudaRigidDynamicIndexBuffer.ptr,
+-                         mCudaRigidDynamicIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_body_get(mPxScene, mCudaRigidDynamicScratch.ptr, mCudaRigidDynamicIndexBuffer.ptr, mCudaRigidDynamicIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+   body_data_physx_to_sapien(mCudaRigidDynamicHandle.ptr, mCudaRigidDynamicScratch.ptr,
+                             mCudaRigidDynamicOffsetBuffer.ptr,
+@@ -590,9 +592,7 @@
+   }
+ 
+   ensureCudaDevice();
+-  mPxScene->copyArticulationData(mCudaLinkPoseScratch.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eLINK_TRANSFORM,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaLinkPoseScratch.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eLINK_GLOBAL_POSE, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+   link_pose_physx_to_sapien(
+       mCudaLinkHandle.ptr, mCudaLinkPoseScratch.ptr, mCudaArticulationOffsetBuffer.ptr,
+@@ -609,9 +609,7 @@
+ 
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaLinkVelScratch.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eLINK_VELOCITY,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_vel_get(mPxScene, mCudaLinkVelScratch.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, mCudaArticulationIndexBuffer.shape.at(0), mGpuArticulationMaxLinkCount, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+   link_vel_physx_to_sapien(mCudaLinkHandle.ptr, mCudaLinkVelScratch.ptr,
+                            mCudaArticulationIndexBuffer.shape.at(0) * mGpuArticulationMaxLinkCount,
+@@ -627,9 +625,7 @@
+ 
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaQposHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eJOINT_POSITION,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaQposHandle.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eJOINT_POSITION, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -642,9 +638,7 @@
+ 
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaQvelHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eJOINT_VELOCITY,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaQvelHandle.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eJOINT_VELOCITY, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -657,9 +651,7 @@
+ 
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaQTargetPosHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eJOINT_TARGET_POSITION,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaQTargetPosHandle.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eJOINT_TARGET_POSITION, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -672,9 +664,7 @@
+ 
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaQTargetVelHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eJOINT_TARGET_VELOCITY,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaQTargetVelHandle.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eJOINT_TARGET_VELOCITY, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -687,10 +677,7 @@
+ 
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaArticulationLinkIncomingJointForceBuffer.ptr,
+-                                 mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eLINK_INCOMING_JOINT_FORCE,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaArticulationLinkIncomingJointForceBuffer.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eLINK_INCOMING_JOINT_FORCE, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -702,9 +689,7 @@
+   }
+   ensureCudaDevice();
+ 
+-  mPxScene->copyArticulationData(mCudaQaccHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                 PxArticulationGpuDataType::eJOINT_ACCELERATION,
+-                                 mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
++  compat561_art_get(mPxScene, mCudaQaccHandle.ptr, (unsigned*)mCudaArticulationIndexBuffer.ptr, PxArticulationGPUAPIReadType::eJOINT_ACCELERATION, mCudaArticulationIndexBuffer.shape.at(0), mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -717,7 +702,7 @@
+   checkCudaErrors(cudaDeviceSynchronize());
+ 
+   // also synchronously wait for the update to finish
+-  mPxScene->updateArticulationsKinematic(nullptr);
++  compat561_ok(mPxScene->getDirectGPUAPI().computeArticulationData(nullptr, nullptr, PxArticulationGPUAPIComputeType::eUPDATE_KINEMATIC, 0));
+ }
+ 
+ void PhysxSystemGpu::gpuApplyRigidDynamicData() {
+@@ -734,10 +719,7 @@
+                             mCudaRigidDynamicIndexBuffer.shape.at(0), mCudaStream);
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyActorData(mCudaRigidDynamicScratch.ptr,
+-                           (PxGpuActorPair *)mCudaRigidDynamicIndexBuffer.ptr,
+-                           PxActorCacheFlag::eACTOR_DATA, mCudaRigidDynamicIndexBuffer.shape.at(0),
+-                           mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_body_set(mPxScene, mCudaRigidDynamicScratch.ptr, mCudaRigidDynamicIndexBuffer.ptr, 0, mCudaRigidDynamicIndexBuffer.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -760,10 +742,7 @@
+                             indices.ptr, mCudaRigidDynamicOffsetBuffer.ptr, indices.shape.at(0),
+                             mCudaStream);
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyActorData(mCudaRigidDynamicScratch.ptr,
+-                           (PxGpuActorPair *)mCudaRigidDynamicIndexScratch.ptr,
+-                           PxActorCacheFlag::eACTOR_DATA, indices.shape.at(0),
+-                           mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_body_set(mPxScene, mCudaRigidDynamicScratch.ptr, mCudaRigidDynamicIndexScratch.ptr, 0, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -774,10 +753,7 @@
+     return;
+   }
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyActorData(mCudaRigidDynamicForceHandle.ptr,
+-                           (PxGpuActorPair *)mCudaRigidDynamicIndexBuffer.ptr,
+-                           PxActorCacheFlag::eFORCE, mCudaRigidDynamicIndexBuffer.shape.at(0),
+-                           mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_body_set(mPxScene, mCudaRigidDynamicForceHandle.ptr, mCudaRigidDynamicIndexBuffer.ptr, 1, mCudaRigidDynamicIndexBuffer.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -788,10 +764,7 @@
+     return;
+   }
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyActorData(mCudaRigidDynamicTorqueHandle.ptr,
+-                           (PxGpuActorPair *)mCudaRigidDynamicIndexBuffer.ptr,
+-                           PxActorCacheFlag::eTORQUE, mCudaRigidDynamicIndexBuffer.shape.at(0),
+-                           mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_body_set(mPxScene, mCudaRigidDynamicTorqueHandle.ptr, mCudaRigidDynamicIndexBuffer.ptr, 2, mCudaRigidDynamicIndexBuffer.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -815,9 +788,7 @@
+                             mCudaArticulationOffsetBuffer.ptr, mGpuArticulationMaxLinkCount,
+                             indices.shape.at(0), mCudaStream);
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaLinkPoseScratch.ptr, indices.ptr,
+-                                  PxArticulationGpuDataType::eROOT_TRANSFORM, indices.shape.at(0),
+-                                  mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_art_set(mPxScene, mCudaLinkPoseScratch.ptr, (unsigned*)indices.ptr, PxArticulationGPUAPIWriteType::eROOT_GLOBAL_POSE, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -840,9 +811,7 @@
+   root_vel_sapien_to_physx(mCudaLinkVelScratch.ptr, mCudaLinkHandle.ptr, indices.ptr,
+                            mGpuArticulationMaxLinkCount, indices.shape.at(0), mCudaStream);
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaLinkVelScratch.ptr, indices.ptr,
+-                                  PxArticulationGpuDataType::eROOT_VELOCITY, indices.shape.at(0),
+-                                  mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_art_root_vel_set(mPxScene, mCudaLinkVelScratch.ptr, (unsigned*)indices.ptr, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -863,9 +832,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQposHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                  PxArticulationGpuDataType::eJOINT_POSITION, indices.shape.at(0),
+-                                  mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_art_set(mPxScene, mCudaQposHandle.ptr, (unsigned*)indices.ptr, PxArticulationGPUAPIWriteType::eJOINT_POSITION, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -886,9 +853,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQvelHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                  PxArticulationGpuDataType::eJOINT_VELOCITY, indices.shape.at(0),
+-                                  mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_art_set(mPxScene, mCudaQvelHandle.ptr, (unsigned*)indices.ptr, PxArticulationGPUAPIWriteType::eJOINT_VELOCITY, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -909,9 +874,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQfHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                  PxArticulationGpuDataType::eJOINT_FORCE, indices.shape.at(0),
+-                                  mCudaEventRecord.event, mCudaEventWait.event);
++  compat561_art_set(mPxScene, mCudaQfHandle.ptr, (unsigned*)indices.ptr, PxArticulationGPUAPIWriteType::eJOINT_FORCE, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -932,10 +895,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQTargetPosHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                  PxArticulationGpuDataType::eJOINT_TARGET_POSITION,
+-                                  indices.shape.at(0), mCudaEventRecord.event,
+-                                  mCudaEventWait.event);
++  compat561_art_set(mPxScene, mCudaQTargetPosHandle.ptr, (unsigned*)indices.ptr, PxArticulationGPUAPIWriteType::eJOINT_TARGET_POSITION, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -956,10 +916,7 @@
+   ensureCudaDevice();
+ 
+   mCudaEventRecord.record(mCudaStream);
+-  mPxScene->applyArticulationData(mCudaQTargetVelHandle.ptr, mCudaArticulationIndexBuffer.ptr,
+-                                  PxArticulationGpuDataType::eJOINT_TARGET_VELOCITY,
+-                                  indices.shape.at(0), mCudaEventRecord.event,
+-                                  mCudaEventWait.event);
++  compat561_art_set(mPxScene, mCudaQTargetVelHandle.ptr, (unsigned*)indices.ptr, PxArticulationGPUAPIWriteType::eJOINT_TARGET_VELOCITY, indices.shape.at(0), mCudaEventRecord.event, mCudaEventWait.event);
+   mCudaEventWait.wait(mCudaStream);
+ }
+ 
+@@ -1122,17 +1079,14 @@
+     mCudaRigidDynamicOffsetBuffer = CudaArray({rigidDynamicCount, 3}, "f4");
+ 
+     std::vector<std::array<float, 3>> host_offset;
+-    std::vector<PxGpuActorPair> host_index;
++    std::vector<std::array<int, 4>> host_index;
+     auto bodies = getRigidDynamicComponents();
+     for (uint32_t i = 0; i < bodies.size(); ++i) {
+       // body set internal gpu id
+       Vec3 offset = getSceneOffset(bodies[i]->getScene());
+       host_offset.push_back({offset.x, offset.y, offset.z});
+ 
+-      PxGpuActorPair pair;
+-      memset(&pair, 0, sizeof(pair));
+-      pair.srcIndex = i;
+-      pair.nodeIndex = bodies[i]->getPxActor()->getInternalIslandNodeIndex();
++      std::array<int, 4> pair{int(i), int(bodies[i]->getPxActor()->getGPUIndex()), 0, 0};
+       host_index.push_back(pair);
+ 
+       bodies[i]->internalSetGpuIndex(i);
+@@ -1148,7 +1102,7 @@
+     mCudaArticulationOffsetBuffer = CudaArray({mGpuArticulationCount, 3}, "f4");
+     std::vector<std::array<float, 3>> host_offset(mGpuArticulationCount, {0.f, 0.f, 0.f});
+     for (auto a : getArticulationLinkComponents()) {
+-      uint32_t art_idx = a->getArticulation()->getPxArticulation()->getGpuArticulationIndex();
++      uint32_t art_idx = a->getArticulation()->getPxArticulation()->getGPUIndex();
+       if (a->isRoot()) {
+         Vec3 offset = getSceneOffset(a->getScene());
+         host_offset.at(art_idx) = {offset.x, offset.y, offset.z};
+--- a/src/physx/articulation.cpp
++++ b/src/physx/articulation.cpp
+@@ -249,7 +249,7 @@
+     (void)once;
+ #ifdef SAPIEN_CUDA
+     auto qpos = std::dynamic_pointer_cast<PhysxSystemGpu>(mScene->getPhysxSystem())
+-                    ->gpuDownloadArticulationQpos(mPxArticulation->getGpuArticulationIndex());
++                    ->gpuDownloadArticulationQpos(mPxArticulation->getGPUIndex());
+     return Eigen::Map<Eigen::VectorXf>(qpos.data(), dof);
+ #else
+     return Eigen::VectorXf();
+@@ -296,7 +296,7 @@
+     (void)once;
+ #ifdef SAPIEN_CUDA
+     std::dynamic_pointer_cast<PhysxSystemGpu>(mScene->getPhysxSystem())
+-        ->gpuUploadArticulationQpos(mPxArticulation->getGpuArticulationIndex(), q);
++        ->gpuUploadArticulationQpos(mPxArticulation->getGPUIndex(), q);
+ #endif
+     return;
+   }
+@@ -514,7 +514,7 @@
+ }
+ 
+ int PhysxArticulation::getGpuIndex() const {
+-  return getPxArticulation()->getGpuArticulationIndex();
++  return getPxArticulation()->getGPUIndex();
+ }
+ 
+ } // namespace physx
+--- a/src/physx/physx_default.cpp
++++ b/src/physx/physx_default.cpp
+@@ -15,6 +15,7 @@
+  * limitations under the License.
+  */
+ #include "sapien/physx/physx_default.h"
++#include "./gpu_memory_compat_561.h"
+ #include "sapien/physx/material.h"
+ #include "sapien/physx/physx_system.h"
+ 
+--- a/src/physx/material.cpp
++++ b/src/physx/material.cpp
+@@ -24,7 +24,7 @@
+     : mEngine(PhysxEngine::Get()) {
+   mMaterial =
+       mEngine->getPxPhysics()->createMaterial(staticFriction, dynamicFriction, restitution);
+-  mMaterial->setFlag(PxMaterialFlag::eIMPROVED_PATCH_FRICTION, true);
++  // PhysX 5.6.1 always enables improved patch friction (SDK CHANGELOG).
+ }
+ 
+ PhysxMaterial::~PhysxMaterial() { mMaterial->release(); }
+--- /dev/null
++++ b/src/physx/gpu_compat_561.h
+@@ -0,0 +1,62 @@
++// SAPIEN 3.0.3 -> PhysX 5.6.1 API layout adapter.
++// Copies/reorders source state only; no physical constants or dynamics changed.
++#pragma once
++#include <PxDirectGPUAPI.h>
++#include <cuda_runtime.h>
++#include "sapien/array.h"
++#include <stdexcept>
++namespace sapien::physx {
++void compat561_gather(float*,float const*,unsigned const*,int,int);
++inline void compat561_ok(bool ok){if(!ok)throw std::runtime_error("PhysX 5.6.1 direct GPU API failed");}
++inline void compat561_cuda(cudaError_t e){if(e!=cudaSuccess)throw std::runtime_error(cudaGetErrorString(e));}
++// cudaMemcpy2D D2D is not host-blocking. Complete the copy before the
++// non-blocking PhysX stream can reuse/read the same temporary allocation.
++inline void compat561_copy2d(void* dst,size_t dp,void const* src,size_t sp,size_t width,size_t rows,cudaMemcpyKind kind){
++  compat561_cuda(cudaMemcpy2D(dst,dp,src,sp,width,rows,kind));
++  compat561_cuda(cudaStreamSynchronize(0));
++}
++inline void compat561_event(CUevent e){if(e)compat561_cuda(cudaEventSynchronize(e));}
++inline void compat561_finish(CUevent e){if(e)compat561_cuda(cudaEventRecord(e,0));}
++inline CudaArray compat561_indices(void const* old,int n){
++  CudaArray indices({n},"u4");compat561_copy2d(indices.ptr,4,(char const*)old+4,16,4,n,cudaMemcpyDeviceToDevice);return indices;
++}
++inline void compat561_body_get(::physx::PxScene* scene,void* dst,void const* old,int n,CUevent finish){
++  auto indices=compat561_indices(old,n);CudaArray tmp({n*7},"f4");auto& api=scene->getDirectGPUAPI();
++  using T=::physx::PxRigidDynamicGPUAPIReadType;
++  for(auto entry:{std::pair{T::eGLOBAL_POSE,0},std::pair{T::eLINEAR_VELOCITY,32},std::pair{T::eANGULAR_VELOCITY,48}}){
++    int width=entry.first==T::eGLOBAL_POSE?28:12;
++    compat561_ok(api.getRigidDynamicData(tmp.ptr,(unsigned*)indices.ptr,entry.first,n));
++    compat561_copy2d((char*)dst+entry.second,64,tmp.ptr,width,width,n,cudaMemcpyDeviceToDevice);
++  }compat561_finish(finish);
++}
++// kind 0 = full body state, 1 = force, 2 = torque; old force rows have 16-byte pitch.
++inline void compat561_body_set(::physx::PxScene* scene,void const* src,void const* old,int kind,int n,CUevent start,CUevent finish){
++  compat561_event(start);auto indices=compat561_indices(old,n);CudaArray tmp({n*7},"f4");auto& api=scene->getDirectGPUAPI();using T=::physx::PxRigidDynamicGPUAPIWriteType;
++  if(kind){compat561_copy2d(tmp.ptr,12,src,16,12,n,cudaMemcpyDeviceToDevice);compat561_ok(api.setRigidDynamicData(tmp.ptr,(unsigned*)indices.ptr,kind==1?T::eFORCE:T::eTORQUE,n));}
++  else for(auto entry:{std::pair{T::eGLOBAL_POSE,0},std::pair{T::eLINEAR_VELOCITY,32},std::pair{T::eANGULAR_VELOCITY,48}}){
++    int width=entry.first==T::eGLOBAL_POSE?28:12;
++    compat561_copy2d(tmp.ptr,width,(char const*)src+entry.second,64,width,n,cudaMemcpyDeviceToDevice);
++    compat561_ok(api.setRigidDynamicData(tmp.ptr,(unsigned*)indices.ptr,entry.first,n));
++  }compat561_finish(finish);
++}
++inline void compat561_art_get(::physx::PxScene* scene,void* dst,unsigned const* indices,::physx::PxArticulationGPUAPIReadType::Enum kind,int n,CUevent finish){
++  compat561_ok(scene->getDirectGPUAPI().getArticulationData(dst,indices,kind,n));compat561_finish(finish);
++}
++inline void compat561_art_vel_get(::physx::PxScene* scene,void* dst,unsigned const* indices,int n,int links,CUevent finish){
++  auto& api=scene->getDirectGPUAPI();int count=n*links;CudaArray tmp({count*3},"f4");using T=::physx::PxArticulationGPUAPIReadType;
++  compat561_ok(api.getArticulationData(tmp.ptr,indices,T::eLINK_ANGULAR_VELOCITY,n));compat561_copy2d(dst,24,tmp.ptr,12,12,count,cudaMemcpyDeviceToDevice);
++  compat561_ok(api.getArticulationData(tmp.ptr,indices,T::eLINK_LINEAR_VELOCITY,n));compat561_copy2d((char*)dst+12,24,tmp.ptr,12,12,count,cudaMemcpyDeviceToDevice);compat561_finish(finish);
++}
++inline void compat561_art_set(::physx::PxScene* scene,void const* src,unsigned const* indices,::physx::PxArticulationGPUAPIWriteType::Enum kind,int n,CUevent start,CUevent finish){
++  compat561_event(start);auto& api=scene->getDirectGPUAPI();using T=::physx::PxArticulationGPUAPIWriteType;
++  int width=kind==T::eROOT_GLOBAL_POSE?7:api.getArticulationGPUAPIMaxCounts().maxDofs;
++  CudaArray packed({n*width},"f4");compat561_gather((float*)packed.ptr,(float const*)src,indices,n,width);compat561_cuda(cudaDeviceSynchronize());
++  compat561_ok(api.setArticulationData(packed.ptr,indices,kind,n));compat561_finish(finish);
++}
++inline void compat561_art_root_vel_set(::physx::PxScene* scene,void const* src,unsigned const* indices,int n,CUevent start,CUevent finish){
++  compat561_event(start);auto& api=scene->getDirectGPUAPI();using T=::physx::PxArticulationGPUAPIWriteType;
++  CudaArray packed({n*6},"f4"),tmp({n*3},"f4");compat561_gather((float*)packed.ptr,(float const*)src,indices,n,6);compat561_cuda(cudaDeviceSynchronize());
++  compat561_copy2d(tmp.ptr,12,packed.ptr,24,12,n,cudaMemcpyDeviceToDevice);compat561_ok(api.setArticulationData(tmp.ptr,indices,T::eROOT_ANGULAR_VELOCITY,n));
++  compat561_copy2d(tmp.ptr,12,(char*)packed.ptr+12,24,12,n,cudaMemcpyDeviceToDevice);compat561_ok(api.setArticulationData(tmp.ptr,indices,T::eROOT_LINEAR_VELOCITY,n));compat561_finish(finish);
++}
++}
+--- /dev/null
++++ b/src/physx/gpu_compat_561.cu
+@@ -0,0 +1,9 @@
++// Explicit gather for partial articulation reset/target writes.
++namespace sapien::physx {
++__global__ void compat561_gather_kernel(float* dst,float const* src,unsigned const* index,int n,int width){
++  int k=blockIdx.x*blockDim.x+threadIdx.x;if(k<n*width)dst[k]=src[index[k/width]*width+k%width];
++}
++void compat561_gather(float* dst,float const* src,unsigned const* index,int n,int width){
++  compat561_gather_kernel<<<(n*width+127)/128,128>>>(dst,src,index,n,width);
++}
++}
+--- /dev/null
++++ b/src/physx/gpu_memory_compat_561.h
+@@ -0,0 +1,31 @@
++// Preserve SAPIEN 3.0.3's public old-PhysX memory-config reference ABI (48 B).
++// Field order/defaults copied from installed PhysX 5.3.1 PxSceneDesc.h.
++#pragma once
++#include <PxSceneDesc.h>
++namespace physx {
++struct PxgDynamicsMemoryConfig {
++  PxU32 tempBufferCapacity=16*1024*1024;
++  PxU32 maxRigidContactCount=1024*512;
++  PxU32 maxRigidPatchCount=1024*80;
++  PxU32 heapCapacity=64*1024*1024;
++  PxU32 foundLostPairsCapacity=256*1024;
++  PxU32 foundLostAggregatePairsCapacity=1024;
++  PxU32 totalAggregatePairsCapacity=1024;
++  PxU32 maxSoftBodyContacts=1024*1024;
++  PxU32 maxFemClothContacts=1024*1024;
++  PxU32 maxParticleContacts=1024*1024;
++  PxU32 collisionStackSize=64*1024*1024;
++  PxU32 maxHairContacts=1024*1024;
++  operator PxGpuDynamicsMemoryConfig()const{
++    PxGpuDynamicsMemoryConfig value;
++    value.tempBufferCapacity=tempBufferCapacity;
++    value.maxRigidContactCount=maxRigidContactCount;value.maxRigidPatchCount=maxRigidPatchCount;
++    value.heapCapacity=heapCapacity;value.foundLostPairsCapacity=foundLostPairsCapacity;
++    value.foundLostAggregatePairsCapacity=foundLostAggregatePairsCapacity;value.totalAggregatePairsCapacity=totalAggregatePairsCapacity;
++    value.maxDeformableVolumeContacts=maxSoftBodyContacts;value.maxDeformableSurfaceContacts=maxFemClothContacts;
++    value.maxParticleContacts=maxParticleContacts;value.collisionStackSize=collisionStackSize;
++    return value;
++  }
++};
++static_assert(sizeof(PxgDynamicsMemoryConfig)==48);
++}

@@ -1,0 +1,37 @@
+{
+  "runtime_id": "107.3-physx-5.6.1+dexarena.1",
+  "required_upgrade": {
+    "from": "5.3.1",
+    "to": "5.6.1"
+  },
+  "sapien": {
+    "repository": "https://github.com/haosulab/SAPIEN",
+    "base_commit": "731622eac5b140b320076c8a1b6eb4b553c3ccd4",
+    "base_version": "3.0.3"
+  },
+  "physx": {
+    "repository": "https://github.com/NVIDIA-Omniverse/PhysX",
+    "base_commit": "5ca9f472105a90d70d957c243cb0ef36fe251a9f",
+    "tag": "107.3-physx-5.6.1",
+    "archive_sha256": "f46c5048566b12d1fbe4fa7fd0ab1c98db1b5a0db606882a4a5018ba9ce79d35"
+  },
+  "patches": {
+    "physx-5.6.1-partition-paths.patch": "fdaf9b210b296f93cd8931b5b66f26ee600499438f575fb4ea9fe02615bac9ee",
+    "physx-5.6.1-sm80-build.patch": "5af0398534d78fa69a9ee9aff37293653c410689c5929d7ef788784ec32cc06f",
+    "physx-5.6.1-tgs-velocity-coverage.patch": "d9c61822d597ed8083f51e1c14d4a839db35932307e296ae40e02cf067943501",
+    "sapien-3.0.3-direct-gpu-561.patch": "4fc97be60378e4d5d47a7be034c2514b1ddaef934f0a00f41f0834b69c05655e",
+    "sapien-3.0.3-friction-params.patch": "0d0cb9d0c90243b9829a0047178d5a73a414505c2f1219c1f7bd67b5f441f460",
+    "sapien-3.0.3-runtime-build.patch": "27056dbf35133f7c3e2cf3baae35f7593b9531cae38005e8d26e39fda9b4640c"
+  },
+  "optional_build_profile": "physx-5.6.1-sm80-build.patch is only for the validated CUDA 12.4 / sm80 profile",
+  "status": "source integration candidate; native wheel build and repository GPU regression pending",
+  "historical_validation_only": {
+    "date": "2026-11-27",
+    "backend": "Linux / A100 sm80 / CUDA 12.4 / PhysX 5.6.1",
+    "clean_full_episodes_passed": 3,
+    "clean_full_episodes_total": 3,
+    "gpu_library_sha256": "4fe9d90535d08930e67a4b63d4f13e5dcfbb6101bf7b5d44c439ffd9c4a60caf",
+    "sapien_core_sha256": "d38aa57fca4a1e34b829e9ce4b67872bcfec243d310eae309519c959da6b0721",
+    "note": "Isolated runtime used an external diagnostic friction setter. These are not hashes or results for the new native binding build."
+  }
+}
