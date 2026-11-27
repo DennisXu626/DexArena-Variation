@@ -52,3 +52,13 @@ python tools/variation/office_workspace/verify.py --task ClickMouse --backend ph
 Windows CUDA 使用本仓已有的核验 SDK 启动器，传同一 checker、任务和 `--backend physx_cuda`。本地证据汇总、动作结果和逐点入口见[实测报告](RESULTS.md)。
 
 在归档的 CPU 逐点数据上可额外运行 `python tools/variation/office_workspace/check_cpu_controls.py outputs/workspace/compatibility.json`，复核原 PR 的标称序列、保存状态恢复、Long 原生重播、随机起姿以及与主动动作同长的被动开盖。
+
+## 2026-11-27 双环境复核
+
+TypeKeys 在全量 near 后首次局部 reset 的第一次 PhysX fetch 将未选行的绿色提示恢复到了上一轮标称位置，平面偏差 28.28 mm。修复在当前键的姿态计算完成后，按真实刚体 ID 将所选标记写回 PhysX，并按物理场景的 float32 精度给出首次读回。测试使用实际键 link、序列索引、标记 XYZ 和四个机位，另覆盖标记行与环境号逆序。
+
+Windows RTX 4070 Laptop 使用 `main@00cc8e0` 与 `fa6aa11` 的集成树 `bc1a11f`。OpenLaptop、TypeKeys、ClickMouse 均先仅 reset env1 至远点，再仅 reset env0 至标称点并切换外观。六次未选行同机位 RGB 逐像素相同；TypeKeys 两行标记与当前目标键帽预期位置最大分量误差 5.97×10⁻⁸ m。两条键盘类任务在两次局部 reset 均读回请求的 `variant_1` 机身和 `variant_2` 键帽，鼠标读回 `ivory_matte`。
+
+从索引中 `archive.root` 进入团队原件目录。每个 `verified-任务/output/任务/` 下，`input.json` 记录构造参数及资产，`environment_1.json` 和 `environment_0.json` 分别记录所选行、同次请求、两行实值、材质、逐阶段控制目标及原帧。TypeKeys 的 `marker-trace.json` 包含 fetch 和标记写入前后读数。三项任务共 100 张本轮原帧，`SHA256.json` 可逐份查验。
+
+还逐一将 366 个已编译格中心送入本家族数值回放入口，并检查全部命名预设。位置接口和既有行为通过 26 项家族测试。当前主线组合另通过 28 项 Office 测试。旧显式布局及工作区均用超出 float 表示范围的整数复现了异常类别错误，修后两个入口均返回 ValueError。 [逐行位姿、实际构造参数及原件索引](paired-reset-20261127.json)
