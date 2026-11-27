@@ -1,0 +1,38 @@
+{
+  "scheme": "variant_1",
+  "selected": 0,
+  "before": {
+    "state": "46ad26f99f25c6776305f278975ec933293ad7e9dea248267739cdf99b0f3987",
+    "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+    "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+    "materials": "743d1669d4c08babd0d192ed6c17795666aa7a6728155227af66d2d635e26e8c",
+    "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+    "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+    "records": "f7df5c5c57cad75806be18854982d1823b3ae72258e308c9b682fc7c5de5fe26"
+  },
+  "after": {
+    "state": "acb5915f6726de50e10e26e3481abb494e0cf5e52db8aa86c8a2343f86f7b064",
+    "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+    "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+    "materials": "af99a9832a7b26ddbf0219d87641db93523fd8bc2e4260872f6b58ab17d4b766",
+    "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+    "rng": "ab6af3b43b372fa3c228424f94bd1b9a02fc67d793a7a1c7123c7ba06d0224c6",
+    "records": "4be5260f5cd0264a104034472c3c47b019f106bd3a4e063ebfcb232922c48d96"
+  },
+  "before_images": {
+    "base_camera/env0": "a5_variant_1_selected0_before_base_camera_env0.png",
+    "base_camera/env1": "a5_variant_1_selected0_before_base_camera_env1.png",
+    "wrist_camera/env0": "a5_variant_1_selected0_before_wrist_camera_env0.png",
+    "wrist_camera/env1": "a5_variant_1_selected0_before_wrist_camera_env1.png",
+    "human/env0": "a5_variant_1_selected0_before_human_env0.png",
+    "human/env1": "a5_variant_1_selected0_before_human_env1.png"
+  },
+  "after_images": {
+    "base_camera/env0": "a5_variant_1_selected0_after_base_camera_env0.png",
+    "base_camera/env1": "a5_variant_1_selected0_after_base_camera_env1.png",
+    "wrist_camera/env0": "a5_variant_1_selected0_after_wrist_camera_env0.png",
+    "wrist_camera/env1": "a5_variant_1_selected0_after_wrist_camera_env1.png",
+    "human/env0": "a5_variant_1_selected0_after_human_env0.png",
+    "human/env1": "a5_variant_1_selected0_after_human_env1.png"
+  }
+}

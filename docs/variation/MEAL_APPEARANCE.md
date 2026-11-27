@@ -82,3 +82,7 @@ Slurm 作业 `86563` 在 lyg0295 的 G0 上完成。运行使用 PhysX CUDA、SA
 历史任务判定、双环境隔离及恢复原版验收见 [运行证据索引](evidence/meal_preparation/README.md)。
 
 PR8-R2仅做文档及短时静态核对，不执行上述GPU示例。[收尾索引](evidence/meal_preparation/PR8-R2.md)保留R1已关闭项并核对新增补档。随机选择复现只限CPU逻辑；真实GPU随机路径、更多环境／手型、PartNet午餐盒和完整机器人长任务成功未纳入。限定技术验收依据[PR8-R2查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，当前待整合/合并；集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。
+
+## 十套扩展候选
+
+新增 variant_3 至 variant_10 的参数与审阅板见[扩展说明](MEAL_EXPAND_TO_10.md)。原有两套定义保留；上述历史运行结果不涵盖八套新增方案。

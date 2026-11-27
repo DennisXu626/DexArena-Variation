@@ -1,0 +1,69 @@
+{
+  "parent_head": "01468f2451a3d2f41cef08a8d7aad5bc574f56b8",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+  "torch": "2.6.0+cpu",
+  "numpy": "2.2.6",
+  "backend": "CPU source-level harness; no physical scene, no GPU job",
+  "runs": [
+    {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_meal_partial_reset.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "test_meal_partial_reset.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_package_partial_reset.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "test_package_partial_reset.txt"
+    },
+    {
+      "command": [
+        "C:\\Users\\Bobpeng\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_shared_row_state.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "test_shared_row_state.txt"
+    }
+  ],
+  "source_sha256": {
+    "tasks/meal_preparation/meal_preparation_long.py": "aa58d386310b873423ab579a5ca6536848c2b4b3c91f62719ea7774a74e90b81",
+    "tests/test_meal_partial_reset.py": "fe5f4b6e325926b14a89b8eea331601f08b52c544133804c73e6f9e97b4353ae",
+    "tests/fixtures/package_b22_reset.py": "d4a2c54744ed67a1b6685d44537c062e0c9cf49120224885a15c1de1fffd6b6d",
+    "tasks/robots/franka_joint_impedance_controller.py": "d705c01ea58d7109b737bd2dee5689b164e16f5dfc88a5ac5251192248238e89"
+  },
+  "tested_source_commit": "a83a0668848367c9448501c32c580f61612cb724",
+  "committed_source_sha256": {
+    "tasks/meal_preparation/meal_preparation_long.py": "b3590d29b00325982e959ba4dc1f9de4cf654cafa36a4dc086d319fe1ffaf7e3",
+    "tests/test_meal_partial_reset.py": "909d0f2b3945fe714ab14abed4814bfb8a623212d4195be1c95d9f9966749f0b",
+    "tests/fixtures/package_b22_reset.py": "c09fedd2296cca4cbd0e48b5eb98c9a3b434720f0aaa5237949f3c49b1a8c3d0",
+    "tasks/robots/franka_joint_impedance_controller.py": "ecda623ac5b13f8f5d6be2d26bf2ce813286d46d0236960af652f72a20d8c7ca"
+  },
+  "line_endings": "source_sha256 hashes tested Windows worktree bytes; committed_source_sha256 hashes Git blob bytes. Equality verified after CRLF-to-LF normalization; no source changes."
+}

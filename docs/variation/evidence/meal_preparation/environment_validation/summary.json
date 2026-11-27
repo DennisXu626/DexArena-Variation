@@ -1,0 +1,40 @@
+{
+  "open": {
+    "job": "123833",
+    "status": "failed",
+    "A4": 11,
+    "A5": 1,
+    "random": false,
+    "first_failure": [
+      "AssertionError: ('human', 'box', {'pixels': 4508, 'max': 41, 'channels': 3})"
+    ]
+  },
+  "bread": {
+    "job": "123834",
+    "status": "passed",
+    "A4": 11,
+    "A5": 20,
+    "random": true,
+    "first_failure": []
+  },
+  "tomato": {
+    "job": "123834",
+    "status": "failed",
+    "A4": 11,
+    "A5": 19,
+    "random": false,
+    "first_failure": [
+      "AssertionError: {'base_camera': {'max': 0, 'channels': 0}, 'wrist_camera': {'max': 2, 'channels': 6}, 'human': {'max': 0, 'channels': 0}}"
+    ]
+  },
+  "long": {
+    "job": "123834",
+    "status": "failed",
+    "A4": 11,
+    "A5": 1,
+    "random": false,
+    "first_failure": [
+      "AssertionError: ('human', 'box', {'pixels': 2736, 'max': 41, 'channels': 3})"
+    ]
+  }
+}

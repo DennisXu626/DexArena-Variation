@@ -1,0 +1,27 @@
+{
+  "decision": "A5 accepted by offline re-evaluation under approved updated camera criterion; no GPU rerun",
+  "approved_by": "user instruction in current conversation",
+  "scope": "ScoopTomato A5 only",
+  "prior_result_preserved": "tomato/report.json",
+  "case": {
+    "scheme": "variant_10",
+    "selected": 0,
+    "unselected": 1
+  },
+  "criterion": {
+    "wrist_max_channel_delta": 3,
+    "changed_channels": 8,
+    "changed_pixels": 5
+  },
+  "observed": {
+    "wrist_max_channel_delta": 2,
+    "changed_channels": 6,
+    "changed_pixels": 5,
+    "selected_vs_native_all_camera_rgb_max": 0
+  },
+  "A5_passed": 20,
+  "A5_total": 20,
+  "random_reproducibility": "not measured",
+  "baseline_support": "../native_calibration/README.md",
+  "previous_report_sha256": "44e5ad3276d564d20ec40d69a13be942d97958915250f5fee99bc83c06a27a0d"
+}

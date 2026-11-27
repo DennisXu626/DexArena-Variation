@@ -52,10 +52,47 @@ def plate_rim(root):
 def recolor_bagel(root, style):
     src = np.asarray(Image.open(root / "visual/image0.png").convert("RGB"),
                      dtype=np.float32)/255
-    if style=="light":
+    if style.startswith("roast"):
+        # Ordered baking ladder: preserve original surface luminance, while
+        # moving from pale yellow through amber to almost-charred brown.
+        recipes = [
+            (.35, [1.10, 1.10, .95], [.180, .140, .060]),
+            (.48, [1.08, 1.04, .83], [.130, .095, .035]),
+            (.62, [1.05, .97, .70], [.090, .060, .018]),
+            (.78, [1.02, .88, .60], [.065, .040, .012]),
+            (.95, [.98, .78, .50], [.040, .023, .008]),
+            (1.15, [.90, .66, .44], [.028, .016, .006]),
+            (1.40, [.78, .54, .38], [.018, .010, .004]),
+            (1.65, [.63, .42, .31], [.010, .006, .003]),
+            (2.00, [.48, .31, .24], [.006, .004, .002]),
+            (2.40, [.30, .21, .17], [.003, .002, .001]),
+        ]
+        level = int(style[5:])
+        if not 1 <= level <= len(recipes):
+            raise ValueError(f"Unknown roast level: {style}")
+        gamma, gain, bias = recipes[level-1]
+        # Keep the original warm RGB relationships and surface detail.
+        # Increasing gamma and decreasing gain/bias darken every source pixel.
+        out = np.power(src, gamma)*gain+bias
+    elif style=="light":
         out = np.power(src,0.63)*[1.06,1.08,.91]+[.045,.034,.012]
-    else:
+    elif style=="dark":
         out = np.power(src,1.32)*[.94,.66,.55]+[.025,.014,.01]
+    else:
+        # Preserve source UV and surface variation; these are color recipes,
+        # not additional grains, toppings, geometry or ingredient models.
+        recipes = {
+            "honey": (.78, [1.10, .98, .73], [.035, .025, .008]),
+            "sesame": (.88, [1.08, 1.02, .89], [.040, .035, .020]),
+            "rye": (1.16, [.82, .76, .64], [.025, .022, .015]),
+            "milk": (.55, [1.02, 1.00, .94], [.075, .065, .045]),
+            "cocoa": (1.46, [.72, .51, .44], [.035, .020, .016]),
+            "wholegrain": (1.04, [.95, .85, .65], [.030, .022, .010]),
+            "caramel": (1.12, [1.08, .69, .43], [.040, .018, .006]),
+            "pretzel": (1.38, [1.05, .57, .32], [.030, .012, .004]),
+        }
+        gamma, gain, bias = recipes[style]
+        out = np.power(src, gamma)*gain+bias
     return np.uint8(np.clip(out,0,1)*255)
 
 
@@ -63,7 +100,7 @@ def recolor_bagel(root, style):
 def bake_texture(root, name):
     if name == "plate_green_rim.png":
         rgb = plate_rim(root)
-    elif name in ("bagel_light_generated.png", "bagel_dark_generated.png"):
+    elif name.startswith("bagel_") and name.endswith("_generated.png"):
         rgb = recolor_bagel(root, name.split("_")[1])
     else:
         raise ValueError(f"Unknown Meal texture recipe: {name}")

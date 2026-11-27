@@ -1,0 +1,3371 @@
+{
+  "stage": "open",
+  "task": "MealPreparationOpenLunchBox-Sharpa-v1",
+  "family": "meal",
+  "rows": [
+    {
+      "request": "original",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "episode_index": 2,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "original",
+          "episode_index": 2,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "cb72d2f2585711ce27f7c5646474c41977f272fccfce08094b58801af5250896",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "fc63ed4d6a536229f17247b55ef61220fc9d9a751d2bc49c327076031d935e5d"
+      },
+      "images": {
+        "base_camera/env0": "original_base_camera_env0.png",
+        "base_camera/env1": "original_base_camera_env1.png",
+        "wrist_camera/env0": "original_wrist_camera_env0.png",
+        "wrist_camera/env1": "original_wrist_camera_env1.png",
+        "human/env0": "original_human_env0.png",
+        "human/env1": "original_human_env1.png"
+      },
+      "baseline": {
+        "state": [],
+        "info": []
+      },
+      "expected": {},
+      "original_rgb": [
+        {
+          "base_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "human": {
+            "max": 0,
+            "channels": 0
+          }
+        },
+        {
+          "base_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "wrist_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "human": {
+            "max": 0,
+            "channels": 0
+          }
+        }
+      ]
+    },
+    {
+      "request": "variant_1",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "episode_index": 3,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_1",
+          "episode_index": 3,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "51698b6a5c0fd80438b2aa4cf9194cb54a7e00475c45ecfa82b587d9cbd703ad",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "d3986e40478f3322c75236fc92280a6e5b0bf03620d075d227d74b82889addea",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "71c3fa0445b15c1c413ce765ffdb6d7e2c353e6148a1d266b38410175fdffa21"
+      },
+      "images": {
+        "base_camera/env0": "variant_1_base_camera_env0.png",
+        "base_camera/env1": "variant_1_base_camera_env1.png",
+        "wrist_camera/env0": "variant_1_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_1_wrist_camera_env1.png",
+        "human/env0": "variant_1_human_env0.png",
+        "human/env1": "variant_1_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 7.450580596923828e-09
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 7.450580596923828e-09
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#274A88",
+            "roughness": 0.28,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#A5B4C4",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#CBD0D6",
+            "roughness": 0.24,
+            "metallic": 0.83
+          },
+          "grip": {
+            "color": "#294875",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast01_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#EDAE36",
+            "roughness": 0.42,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#57768A",
+            "roughness": 0.72,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#E8EFF2",
+            "roughness": 0.72,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#9AB7C6",
+            "roughness": 0.72,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E8EFF2"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "8910b76d8cd2451b7f06641ace0a80670a608f3f8fa0848857c0ba7450050f60"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#294875"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E8EFF2"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "8910b76d8cd2451b7f06641ace0a80670a608f3f8fa0848857c0ba7450050f60"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#294875"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "8a0eba911cbbab685958aab4bbea29b000e38603d698e0148db1066775c8ff98",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "05b966efd95bfbc12f5c01d73a27d560f8b8580f18a7f27fc891f859055995e7"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_1_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_1_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_1_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_1_restored_wrist_camera_env1.png",
+          "human/env0": "variant_1_restored_human_env0.png",
+          "human/env1": "variant_1_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_2",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "episode_index": 5,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_2",
+          "episode_index": 5,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "366ecc8e9de7e4ea12fba7dc80792653028d74ae1d66db9fb2e33208a6929ab0",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "c88d4cd3271e4ec034592cf843cfad49dd7e336c5c6ea9384d1698548c159e64",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "06bace29c09424e57922a8218c692793403d23f422dd53aedf1d16547f49bd0d"
+      },
+      "images": {
+        "base_camera/env0": "variant_2_base_camera_env0.png",
+        "base_camera/env1": "variant_2_base_camera_env1.png",
+        "wrist_camera/env0": "variant_2_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_2_wrist_camera_env1.png",
+        "human/env0": "variant_2_human_env0.png",
+        "human/env1": "variant_2_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 2.2351741790771484e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 2.2351741790771484e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#FFFFFF",
+            "roughness": 0.48,
+            "metallic": 0,
+            "texture": "plate_green_rim.png"
+          },
+          "plate_bottom": {
+            "color": "#F3EAD6",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#56606B",
+            "roughness": 0.48,
+            "metallic": 0.72
+          },
+          "grip": {
+            "color": "#D38A5C",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast02_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#88284C",
+            "roughness": 0.56,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#A84C3C",
+            "roughness": 0.38,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#D8CDC0",
+            "roughness": 0.38,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#C48679",
+            "roughness": 0.38,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#D8CDC0"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "1e28a9eb19a3d99ce696ab01d81fa8b7fee052fc157412f5ce0a417b0d075f20"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D38A5C"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#D8CDC0"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "1e28a9eb19a3d99ce696ab01d81fa8b7fee052fc157412f5ce0a417b0d075f20"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D38A5C"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "35106cec4381dfa5528cfbfe1760d6efcae5dc480f19169aace7d62fa31e5e67",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "87c6d4c8d7da1675f16cbb560ab8478d38f35be781cd0e34a67bd8b4f7e3cec2"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_2_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_2_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_2_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_2_restored_wrist_camera_env1.png",
+          "human/env0": "variant_2_restored_human_env0.png",
+          "human/env1": "variant_2_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_3",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "episode_index": 7,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_3",
+          "episode_index": 7,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "f159b0a3a68fde5a290d174f98733b2f05292758e3be674650afb6a8a07bfbeb",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "0f3d7acfe2786e848461269fafc6d55d5eee8dd5ba83976b5996ce7da2a3a8f9",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "a9289756099cdd18830e96f6a446713276968ab4b746d5bec2fcc48ec4941dca"
+      },
+      "images": {
+        "base_camera/env0": "variant_3_base_camera_env0.png",
+        "base_camera/env1": "variant_3_base_camera_env1.png",
+        "wrist_camera/env0": "variant_3_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_3_wrist_camera_env1.png",
+        "human/env0": "variant_3_human_env0.png",
+        "human/env1": "variant_3_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 3.725290298461914e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 3.725290298461914e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#E8DAB6",
+            "roughness": 0.44,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#C6BEA6",
+            "roughness": 0.44,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#C6C9BD",
+            "roughness": 0.42,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#667C54",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast03_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#D87532",
+            "roughness": 0.52,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#536B50",
+            "roughness": 0.76,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#EEE9D8",
+            "roughness": 0.76,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#A8BA91",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#EEE9D8"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "15bc64c3f470405e436b1cc5dd38d11302030db279ed52f801e426ba6c1ffb26"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#667C54"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#EEE9D8"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "15bc64c3f470405e436b1cc5dd38d11302030db279ed52f801e426ba6c1ffb26"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#667C54"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "e7712711efd3d258ab648943215708799b906ad4506bf271b402fdb1cc5927f9",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "085ba17dca13c0cc059e28bd72f62bc753a3eabe0af93f7f2344e8516e860a87"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_3_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_3_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_3_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_3_restored_wrist_camera_env1.png",
+          "human/env0": "variant_3_restored_human_env0.png",
+          "human/env1": "variant_3_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_4",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "episode_index": 9,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_4",
+          "episode_index": 9,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "92016b5706374999dba6652cf48823d01a4dbbb3c4d794a2883f5616fb4a2264",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "719ebcdc07ab3379e714932a9c1136d81835ac7f07801c15febab28d6d25becf",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "7c0abf04b013db654f34c97da02c42b24e50173478023db75b0a5659ac18da2a"
+      },
+      "images": {
+        "base_camera/env0": "variant_4_base_camera_env0.png",
+        "base_camera/env1": "variant_4_base_camera_env1.png",
+        "wrist_camera/env0": "variant_4_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_4_wrist_camera_env1.png",
+        "human/env0": "variant_4_human_env0.png",
+        "human/env1": "variant_4_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 5.21540641784668e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 5.21540641784668e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#E2A18D",
+            "roughness": 0.32,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#BA7362",
+            "roughness": 0.32,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#B8C7CE",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#CE765D",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast04_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#9CCB45",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#233F54",
+            "roughness": 0.48,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#E1E9E5",
+            "roughness": 0.48,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#527B8B",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E1E9E5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "de2e6cc7536e99f71cbbcd79e782ed8cf73ea2ba1f9373137f8afbebdf11578c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#CE765D"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E1E9E5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "de2e6cc7536e99f71cbbcd79e782ed8cf73ea2ba1f9373137f8afbebdf11578c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#CE765D"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "00408567d1db96f9960ed20c8c4d29ffbc3fec0d1a141fa9c86d419bbffc2dd6",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "660bacf9731fae41aaade85b80ee1446d20966491c8e7f29f8a1ec8f713f9369"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_4_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_4_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_4_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_4_restored_wrist_camera_env1.png",
+          "human/env0": "variant_4_restored_human_env0.png",
+          "human/env1": "variant_4_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_5",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "episode_index": 11,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_5",
+          "episode_index": 11,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "766cac7c5b76adcdcea6fb1213d6f7277faddf8b5be5f5ed6f9f0c7c06f1aeb9",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "89c3faa2e32d95a64e78a1c8412fd33ef090293a79c92861d3df76542d23222c",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "c00a4544179d692b02b7a9cac7ead9a685eab67a24883921bbef8a7d9af662ef"
+      },
+      "images": {
+        "base_camera/env0": "variant_5_base_camera_env0.png",
+        "base_camera/env1": "variant_5_base_camera_env1.png",
+        "wrist_camera/env0": "variant_5_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_5_wrist_camera_env1.png",
+        "human/env0": "variant_5_human_env0.png",
+        "human/env1": "variant_5_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 6.705522537231445e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 6.705522537231445e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#343C43",
+            "roughness": 0.52,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#687179",
+            "roughness": 0.52,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#777C80",
+            "roughness": 0.42,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#D3AA43",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast05_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#36B8BD",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#B18B31",
+            "roughness": 0.65,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#F2E9CE",
+            "roughness": 0.65,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#DDC47C",
+            "roughness": 0.65,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F2E9CE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "32a934256f287cb47b2446116aebe13a51781fb3c57392bbea6b7137d675d340"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D3AA43"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F2E9CE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "32a934256f287cb47b2446116aebe13a51781fb3c57392bbea6b7137d675d340"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D3AA43"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "ba9cc8fb8200c119eb3ebfdab4cb9e526c480544d524c21d2dd942e369465311",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "97493a0a9a3a7c94080915d2a6fbc1cc2e03fc72e4b298af7a0f90ba64db339b"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_5_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_5_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_5_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_5_restored_wrist_camera_env1.png",
+          "human/env0": "variant_5_restored_human_env0.png",
+          "human/env1": "variant_5_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_6",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "episode_index": 13,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_6",
+          "episode_index": 13,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "d96ac6413bde0f0d061979c72332be0d574eb2cbea68f85f50c54a4c721c4b1f",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "47e162bbe51c6c7f7d3e6c6c257a8291b8f88bb668cbc45fe34a0d975eaff94e",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "76af3009c59d67ba5496c1c21fb6ecd687e00c8597c25942d2d7b876255a4cde"
+      },
+      "images": {
+        "base_camera/env0": "variant_6_base_camera_env0.png",
+        "base_camera/env1": "variant_6_base_camera_env1.png",
+        "wrist_camera/env0": "variant_6_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_6_wrist_camera_env1.png",
+        "human/env0": "variant_6_human_env0.png",
+        "human/env1": "variant_6_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 8.195638656616211e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 8.195638656616211e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#DDD2E4",
+            "roughness": 0.36,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#9C8AA9",
+            "roughness": 0.36,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#CBC2D2",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#58415F",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast06_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#4268D0",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#76658C",
+            "roughness": 0.58,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#ECE5EE",
+            "roughness": 0.58,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#B7A5C6",
+            "roughness": 0.58,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#ECE5EE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b59a7e1b19b22d092fb3c47248ceec57726a5cbb0ef4741278bd93a28c0e9104"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#58415F"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#ECE5EE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b59a7e1b19b22d092fb3c47248ceec57726a5cbb0ef4741278bd93a28c0e9104"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#58415F"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "803f84166f709c0d7e532bb84a19f6380ab52ab6f0ddd6786b47bcbe376429cb",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "f6353d5188e154657aa793a68c60040cb35de4a826bc98f7dc766d2aba03e6a3"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_6_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_6_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_6_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_6_restored_wrist_camera_env1.png",
+          "human/env0": "variant_6_restored_human_env0.png",
+          "human/env1": "variant_6_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_7",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "episode_index": 15,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_7",
+          "episode_index": 15,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "69481b71d8790056a258b169da3db2a691036f1d2a5e3ec6f66a207dd4b5b1cc",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "07051f8810efd911dcf4b5f7adcd11aabe805daaa704586cf958b21fd148f49a",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "2882eb8601171a0bbd7a9eba7791f3d692279a29ba08c3a162a367e0a517712d"
+      },
+      "images": {
+        "base_camera/env0": "variant_7_base_camera_env0.png",
+        "base_camera/env1": "variant_7_base_camera_env1.png",
+        "wrist_camera/env0": "variant_7_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_7_wrist_camera_env1.png",
+        "human/env0": "variant_7_human_env0.png",
+        "human/env1": "variant_7_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 9.685754776000977e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 9.685754776000977e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#B8BEC0",
+            "roughness": 0.3,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#747F85",
+            "roughness": 0.3,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#BDB8B1",
+            "roughness": 0.42,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#75384E",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast07_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#8650C4",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#722F43",
+            "roughness": 0.42,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#F0E1DA",
+            "roughness": 0.42,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#B16C7A",
+            "roughness": 0.42,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F0E1DA"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b8608833c8943c5be926c77bde481162f52c46f366ab24fb8181a148f836af29"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#75384E"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F0E1DA"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b8608833c8943c5be926c77bde481162f52c46f366ab24fb8181a148f836af29"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#75384E"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "4736335d3a87d30e3859bbbb1a819608d5b80c5d2b97e93209ff03b028e4cacc",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "5ce58b89ffba8aac6f4bd2989e12fd61db30db808da3cb305a9cc2289d30e7ec"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_7_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_7_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_7_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_7_restored_wrist_camera_env1.png",
+          "human/env0": "variant_7_restored_human_env0.png",
+          "human/env1": "variant_7_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_8",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "episode_index": 17,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_8",
+          "episode_index": 17,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "338193df9e922ae6a3c77b780e32908138cf294bb40ceb517e42a5d61d90840e",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "1410b931370638993db613ad27794db9655c0e464ffdde7bc11d69fe4ce0a213",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "3dd9d1e0444238dc02573b52faec94540c57ab640964a1cafd0831b1d4e73e70"
+      },
+      "images": {
+        "base_camera/env0": "variant_8_base_camera_env0.png",
+        "base_camera/env1": "variant_8_base_camera_env1.png",
+        "wrist_camera/env0": "variant_8_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_8_wrist_camera_env1.png",
+        "human/env0": "variant_8_human_env0.png",
+        "human/env1": "variant_8_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 1.1175870895385742e-07
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 1.1175870895385742e-07
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#254C42",
+            "roughness": 0.25,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#6C8974",
+            "roughness": 0.25,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#B3BDB7",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#D4B681",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast08_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#E788B1",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#478D87",
+            "roughness": 0.4,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#E6EFE5",
+            "roughness": 0.4,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#A3CCC1",
+            "roughness": 0.4,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E6EFE5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "06841c4dc3980d07729d4bc8dfacda15adef82e9285bcb08d4e17e5f88f0acb3"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D4B681"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E6EFE5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "06841c4dc3980d07729d4bc8dfacda15adef82e9285bcb08d4e17e5f88f0acb3"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D4B681"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "0911a9831f47a7a3bc96f9cff864285a038f9bd28952e3a3d41ad34dfa3f9051",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "35a3d51396b2da55725fb34bce4bb57307aa105df1fe169cdda1d74ed4374716"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_8_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_8_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_8_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_8_restored_wrist_camera_env1.png",
+          "human/env0": "variant_8_restored_human_env0.png",
+          "human/env1": "variant_8_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_9",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "episode_index": 19,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_9",
+          "episode_index": 19,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "38fda3e3902d627cd60a296f22a183de47f65026875876e2684571212039bc16",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "5ffdd645d858249f7f35d3d42406fc11ddb92df40c23bfdc6de53ea7fbb04506",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "718330ab644e7c6657be1bd44d1fab9ecb438617b34f90b148c9b98a29b7c262"
+      },
+      "images": {
+        "base_camera/env0": "variant_9_base_camera_env0.png",
+        "base_camera/env1": "variant_9_base_camera_env1.png",
+        "wrist_camera/env0": "variant_9_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_9_wrist_camera_env1.png",
+        "human/env0": "variant_9_human_env0.png",
+        "human/env1": "variant_9_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 1.2665987014770508e-07
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 1.2665987014770508e-07
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#C68A32",
+            "roughness": 0.48,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#805638",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#B87333",
+            "roughness": 0.34,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#E7DCC5",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast09_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#E9E3D5",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#B59A77",
+            "roughness": 0.84,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#F5EBDD",
+            "roughness": 0.84,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#E0CFAB",
+            "roughness": 0.84,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F5EBDD"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "467894c34c1730d93dcd8adad6d456f5d12771db23f04f36799effc4d874de8c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#E7DCC5"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F5EBDD"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "467894c34c1730d93dcd8adad6d456f5d12771db23f04f36799effc4d874de8c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#E7DCC5"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "e5b4efe4039366fa38e102a5d451c991ac80e7b9c02e025d802d0ba5511aca16",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "30ba44ede1f709853274f0f9c86742074c6a2458852f185a410bc9f343145022"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_9_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_9_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_9_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_9_restored_wrist_camera_env1.png",
+          "human/env0": "variant_9_restored_human_env0.png",
+          "human/env1": "variant_9_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_10",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "episode_index": 21,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_10",
+          "episode_index": 21,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "6269f730624ab398422eb83ea8301a407dc8af24990943b9eec37672ec89c822",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "9d6a2215d09e2cf9ed35b04e41b1b710f15b80c391daed22f5ed3e8f904dc84a",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "aef9f6ec12136886da3b393a52028b8841217f37b64ce09f682453f29b93b5bf"
+      },
+      "images": {
+        "base_camera/env0": "variant_10_base_camera_env0.png",
+        "base_camera/env1": "variant_10_base_camera_env1.png",
+        "wrist_camera/env0": "variant_10_wrist_camera_env0.png",
+        "wrist_camera/env1": "variant_10_wrist_camera_env1.png",
+        "human/env0": "variant_10_human_env0.png",
+        "human/env1": "variant_10_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 1.4156103134155273e-07
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 1.4156103134155273e-07
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#6C7883",
+            "roughness": 0.34,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#C6CCD0",
+            "roughness": 0.34,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#4E5963",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#9C6248",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast10_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#41454C",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#D5D9DA",
+            "roughness": 0.54,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#AAB4BB",
+            "roughness": 0.54,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#F1F0E9",
+            "roughness": 0.54,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#AAB4BB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "229158048afcdacbbfe3170f5449c43216d956c5c1915b658b79188696098162"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#9C6248"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#AAB4BB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "229158048afcdacbbfe3170f5449c43216d956c5c1915b658b79188696098162"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#9C6248"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              56,
+              57
+            ]
+          },
+          "human": {
+            "pixels": 4508,
+            "changed_pixels": 4454,
+            "entity_ids": [
+              56,
+              57
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 95,
+            "changed_pixels": 95,
+            "entity_ids": [
+              58
+            ]
+          },
+          "wrist_camera": {
+            "pixels": 1084,
+            "changed_pixels": 1084,
+            "entity_ids": [
+              58
+            ]
+          },
+          "human": {
+            "pixels": 1181,
+            "changed_pixels": 1181,
+            "entity_ids": [
+              58
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "c50d504f220cfa9a0b63958adbfc3519709dbd5f923d31cfd54d960040dc48ab",
+          "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+          "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+          "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+          "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+          "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+          "records": "36fbac9739658f6aafb63ebe3bacdd4cf85fa9d2dc1add9c3b166bb526e7ab05"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_10_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_10_restored_base_camera_env1.png",
+          "wrist_camera/env0": "variant_10_restored_wrist_camera_env0.png",
+          "wrist_camera/env1": "variant_10_restored_wrist_camera_env1.png",
+          "human/env0": "variant_10_restored_human_env0.png",
+          "human/env1": "variant_10_restored_human_env1.png"
+        }
+      }
+    }
+  ],
+  "A5": [
+    {
+      "request_pair": [
+        "variant_1",
+        "variant_2"
+      ],
+      "selected": 1,
+      "before": {
+        "state": "1c6e10ff37a575a2eb9b3666ac4c95edb0e5a695884847c71d6c296b8ecb822b",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "743d1669d4c08babd0d192ed6c17795666aa7a6728155227af66d2d635e26e8c",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+        "records": "a8c8d218c51f89e288ddfbd76bb6a0ad7ffb631bb0223400cfa7faf76abd0de5"
+      },
+      "after": {
+        "state": "4d4aebd4f05684f8c8dfe6015ffacf809df5dd44ef87bfed1ea6c5bbdf6d57c3",
+        "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+        "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+        "materials": "5f21b69cd14b89ac0170207157b3c4419690cff7de5d5c3fa4b93911e4ade19b",
+        "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+        "rng": "55fba1c7b8d83abc4848aacc1294cfb59cb45ef325926218baa4d97bad57461d",
+        "records": "276ddc88feb8ea443e337c1d8210fe548e43e3acce9b4beab42aa4f2c7dd83d6"
+      },
+      "unselected_rgb": {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 1,
+          "channels": 1
+        }
+      },
+      "selected_vs_native_rgb": {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "selected_vs_native_target_rgb": {
+        "base_camera": {
+          "box": {
+            "pixels": 216,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 87,
+            "max": 0,
+            "channels": 0
+          }
+        },
+        "wrist_camera": {
+          "box": {
+            "pixels": 11542,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 1548,
+            "max": 0,
+            "channels": 0
+          }
+        },
+        "human": {
+          "box": {
+            "pixels": 4518,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 1208,
+            "max": 0,
+            "channels": 0
+          }
+        }
+      },
+      "selected_before_vs_after_rgb": {
+        "base_camera": {
+          "max": 172,
+          "channels": 965
+        },
+        "wrist_camera": {
+          "max": 171,
+          "channels": 39358
+        },
+        "human": {
+          "max": 179,
+          "channels": 18048
+        }
+      },
+      "before_images": {
+        "base_camera/env0": "a5_variant_1_selected1_before_base_camera_env0.png",
+        "base_camera/env1": "a5_variant_1_selected1_before_base_camera_env1.png",
+        "wrist_camera/env0": "a5_variant_1_selected1_before_wrist_camera_env0.png",
+        "wrist_camera/env1": "a5_variant_1_selected1_before_wrist_camera_env1.png",
+        "human/env0": "a5_variant_1_selected1_before_human_env0.png",
+        "human/env1": "a5_variant_1_selected1_before_human_env1.png"
+      },
+      "after_images": {
+        "base_camera/env0": "a5_variant_1_selected1_after_base_camera_env0.png",
+        "base_camera/env1": "a5_variant_1_selected1_after_base_camera_env1.png",
+        "wrist_camera/env0": "a5_variant_1_selected1_after_wrist_camera_env0.png",
+        "wrist_camera/env1": "a5_variant_1_selected1_after_wrist_camera_env1.png",
+        "human/env0": "a5_variant_1_selected1_after_human_env0.png",
+        "human/env1": "a5_variant_1_selected1_after_human_env1.png"
+      }
+    }
+  ],
+  "random": null,
+  "status": "failed",
+  "native_0": {
+    "signatures": {
+      "state": "cb72d2f2585711ce27f7c5646474c41977f272fccfce08094b58801af5250896",
+      "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+      "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+      "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+      "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+      "rng": "35b1ae863ce32e5903b7721fe05a714a0f2330a1839abc4da0f667a142b1a378",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "images": {
+      "base_camera/env0": "native0_base_camera_env0.png",
+      "base_camera/env1": "native0_base_camera_env1.png",
+      "wrist_camera/env0": "native0_wrist_camera_env0.png",
+      "wrist_camera/env1": "native0_wrist_camera_env1.png",
+      "human/env0": "native0_human_env0.png",
+      "human/env1": "native0_human_env1.png"
+    }
+  },
+  "native_partial_1": {
+    "after": {
+      "state": "0975ff08885dfc50d9847236e1c9d86af2ea61895648573987ca3c4ad8c12ecc",
+      "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+      "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+      "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+      "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+      "rng": "b07ae2b9c6922a9f60e7a3c04a4d8d8e28ed965de866a19aa612801dd951c8ab",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "wrist_camera": {
+        "max": 1,
+        "channels": 3
+      },
+      "human": {
+        "max": 1,
+        "channels": 3
+      }
+    },
+    "images": {
+      "base_camera/env0": "native_partial1_base_camera_env0.png",
+      "base_camera/env1": "native_partial1_base_camera_env1.png",
+      "wrist_camera/env0": "native_partial1_wrist_camera_env0.png",
+      "wrist_camera/env1": "native_partial1_wrist_camera_env1.png",
+      "human/env0": "native_partial1_human_env0.png",
+      "human/env1": "native_partial1_human_env1.png"
+    }
+  },
+  "native_partial_0": {
+    "after": {
+      "state": "3683818be4c9438816e0118faf428c189100e897edc06c9a35852b03b79824e6",
+      "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+      "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+      "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+      "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+      "rng": "ae8c049d75dbe7b122418e17a5d3bcc40561fea1aa7783370b8db6037726c031",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "wrist_camera": {
+        "max": 1,
+        "channels": 4
+      },
+      "human": {
+        "max": 1,
+        "channels": 1
+      }
+    },
+    "images": {
+      "base_camera/env0": "native_partial0_base_camera_env0.png",
+      "base_camera/env1": "native_partial0_base_camera_env1.png",
+      "wrist_camera/env0": "native_partial0_wrist_camera_env0.png",
+      "wrist_camera/env1": "native_partial0_wrist_camera_env1.png",
+      "human/env0": "native_partial0_human_env0.png",
+      "human/env1": "native_partial0_human_env1.png"
+    }
+  },
+  "native_1": {
+    "signatures": {
+      "state": "cb72d2f2585711ce27f7c5646474c41977f272fccfce08094b58801af5250896",
+      "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+      "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+      "materials": "76b69b1032bfa4ee59ccf23b6dc3decf727a5fd1c4040c0b70e3a765e4f3e8cf",
+      "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+      "rng": "35b1ae863ce32e5903b7721fe05a714a0f2330a1839abc4da0f667a142b1a378",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "images": {
+      "base_camera/env0": "native1_base_camera_env0.png",
+      "base_camera/env1": "native1_base_camera_env1.png",
+      "wrist_camera/env0": "native1_wrist_camera_env0.png",
+      "wrist_camera/env1": "native1_wrist_camera_env1.png",
+      "human/env0": "native1_human_env0.png",
+      "human/env1": "native1_human_env1.png"
+    }
+  },
+  "native_noise": {
+    "numeric": {
+      "state": [],
+      "info": []
+    },
+    "rgb": [
+      {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    ]
+  },
+  "pending_case": {
+    "scheme": "variant_1",
+    "selected": 0,
+    "before": {
+      "state": "46ad26f99f25c6776305f278975ec933293ad7e9dea248267739cdf99b0f3987",
+      "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+      "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+      "materials": "743d1669d4c08babd0d192ed6c17795666aa7a6728155227af66d2d635e26e8c",
+      "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+      "rng": "ff921363541d1938e9126280b106b5c80c6905c5d5377193fb70c2f4a1ea27f5",
+      "records": "f7df5c5c57cad75806be18854982d1823b3ae72258e308c9b682fc7c5de5fe26"
+    },
+    "after": {
+      "state": "acb5915f6726de50e10e26e3481abb494e0cf5e52db8aa86c8a2343f86f7b064",
+      "info": "3e5c9e3e433d5bd8aa5647766894620586715b0a794f9c80cae8551301cca0a0",
+      "counters": "e5d89a3965638416b872b9bea972e00ad046167238670c13dd0937afb0211232",
+      "materials": "af99a9832a7b26ddbf0219d87641db93523fd8bc2e4260872f6b58ab17d4b766",
+      "physics": "32f7c4eac41203d93217dfb047905a00a399669108989be532a1d98de8ae0be2",
+      "rng": "ab6af3b43b372fa3c228424f94bd1b9a02fc67d793a7a1c7123c7ba06d0224c6",
+      "records": "4be5260f5cd0264a104034472c3c47b019f106bd3a4e063ebfcb232922c48d96"
+    },
+    "before_images": {
+      "base_camera/env0": "a5_variant_1_selected0_before_base_camera_env0.png",
+      "base_camera/env1": "a5_variant_1_selected0_before_base_camera_env1.png",
+      "wrist_camera/env0": "a5_variant_1_selected0_before_wrist_camera_env0.png",
+      "wrist_camera/env1": "a5_variant_1_selected0_before_wrist_camera_env1.png",
+      "human/env0": "a5_variant_1_selected0_before_human_env0.png",
+      "human/env1": "a5_variant_1_selected0_before_human_env1.png"
+    },
+    "after_images": {
+      "base_camera/env0": "a5_variant_1_selected0_after_base_camera_env0.png",
+      "base_camera/env1": "a5_variant_1_selected0_after_base_camera_env1.png",
+      "wrist_camera/env0": "a5_variant_1_selected0_after_wrist_camera_env0.png",
+      "wrist_camera/env1": "a5_variant_1_selected0_after_wrist_camera_env1.png",
+      "human/env0": "a5_variant_1_selected0_after_human_env0.png",
+      "human/env1": "a5_variant_1_selected0_after_human_env1.png"
+    }
+  },
+  "first_failure": "Traceback (most recent call last):\n  File \"/data/home/pb/meal-a4a5-final-20261120/run/tools/variation/check_ten_environment.py\", line 310, in run\n    \"selected_vs_native_target_rgb\":restored_target_rgb(native,after,selected),\n  File \"/data/home/pb/meal-a4a5-final-20261120/run/tools/variation/check_ten_environment.py\", line 180, in restored_target_rgb\n    assert row[\"max\"]<=1 and row[\"channels\"]<=8,(camera,name,row)\nAssertionError: ('human', 'box', {'pixels': 4508, 'max': 41, 'channels': 3})\n"
+}

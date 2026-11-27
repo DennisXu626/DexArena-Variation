@@ -1,0 +1,5403 @@
+{
+  "stage": "long",
+  "task": "MealPreparationLong-Sharpa-v1",
+  "family": "meal",
+  "rows": [
+    {
+      "request": "original",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "original",
+          "episode_index": 2,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "original",
+          "episode_index": 2,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "8f71469834836ae3ac00af4840209fd29ad29f4d030018414b357ca1cefcdc75",
+        "info": "33a91fedf9a89d31d37febea07c4a4cf922a835e6d4ca1681b2148f5bfa66483",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "fc63ed4d6a536229f17247b55ef61220fc9d9a751d2bc49c327076031d935e5d"
+      },
+      "images": {
+        "base_camera/env0": "original_base_camera_env0.png",
+        "base_camera/env1": "original_base_camera_env1.png",
+        "left_wrist_camera/env0": "original_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "original_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "original_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "original_right_wrist_camera_env1.png",
+        "human/env0": "original_human_env0.png",
+        "human/env1": "original_human_env1.png"
+      },
+      "baseline": {
+        "state": [],
+        "info": []
+      },
+      "expected": {},
+      "original_rgb": [
+        {
+          "base_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "human": {
+            "max": 0,
+            "channels": 0
+          }
+        },
+        {
+          "base_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "left_wrist_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "right_wrist_camera": {
+            "max": 0,
+            "channels": 0
+          },
+          "human": {
+            "max": 0,
+            "channels": 0
+          }
+        }
+      ]
+    },
+    {
+      "request": "variant_1",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_1",
+          "episode_index": 3,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_1",
+          "episode_index": 3,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "eb80dfa4012a81763f33317239c35a2042bd010fe6cf3d0c4414efca5b2a0f3a",
+        "info": "33a91fedf9a89d31d37febea07c4a4cf922a835e6d4ca1681b2148f5bfa66483",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "d18394635f956aa70fab66fb6ab1320aff93eb17ceed00e711e2a5806d42548b",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "71c3fa0445b15c1c413ce765ffdb6d7e2c353e6148a1d266b38410175fdffa21"
+      },
+      "images": {
+        "base_camera/env0": "variant_1_base_camera_env0.png",
+        "base_camera/env1": "variant_1_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_1_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_1_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_1_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_1_right_wrist_camera_env1.png",
+        "human/env0": "variant_1_human_env0.png",
+        "human/env1": "variant_1_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 7.450580596923828e-09
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 7.450580596923828e-09
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#274A88",
+            "roughness": 0.28,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#A5B4C4",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#CBD0D6",
+            "roughness": 0.24,
+            "metallic": 0.83
+          },
+          "grip": {
+            "color": "#294875",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast01_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#EDAE36",
+            "roughness": 0.42,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#57768A",
+            "roughness": 0.72,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#E8EFF2",
+            "roughness": 0.72,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#9AB7C6",
+            "roughness": 0.72,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E8EFF2"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "fe8a78e0d0c972b486a7eea8677362cd543cf166cc5712aa4c91df7d0161e87e"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "2692618b72d10df7bfcc0265df429b0ab43b0616ff5d2f21c79a084995a42309"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "8910b76d8cd2451b7f06641ace0a80670a608f3f8fa0848857c0ba7450050f60"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#294875"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "c0c0c96e0b934baf847e1d4a65b3f0baa7cd413b604f30b22650400faf91c707"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#EDAE36"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#57768A"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E8EFF2"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#9AB7C6"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "fe8a78e0d0c972b486a7eea8677362cd543cf166cc5712aa4c91df7d0161e87e"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "2692618b72d10df7bfcc0265df429b0ab43b0616ff5d2f21c79a084995a42309"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "8910b76d8cd2451b7f06641ace0a80670a608f3f8fa0848857c0ba7450050f60"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#294875"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "c0c0c96e0b934baf847e1d4a65b3f0baa7cd413b604f30b22650400faf91c707"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#EDAE36"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "9d38d7c332299e1b8f715fa8b4c082b928d9d9d899f914707a1ea629f0d7fb49",
+          "info": "33a91fedf9a89d31d37febea07c4a4cf922a835e6d4ca1681b2148f5bfa66483",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "05b966efd95bfbc12f5c01d73a27d560f8b8580f18a7f27fc891f859055995e7"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_1_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_1_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_1_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_1_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_1_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_1_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_1_restored_human_env0.png",
+          "human/env1": "variant_1_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_2",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_2",
+          "episode_index": 5,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_2",
+          "episode_index": 5,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "d7c1d01943e9f2110e2626d7e8e2c8de25a541f9a4ad6082342a2e2072d501ca",
+        "info": "33a91fedf9a89d31d37febea07c4a4cf922a835e6d4ca1681b2148f5bfa66483",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "321835a20fc207df2fb54d350ce4f51bc66d0d85af45349d202442c7a2a8465a",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "06bace29c09424e57922a8218c692793403d23f422dd53aedf1d16547f49bd0d"
+      },
+      "images": {
+        "base_camera/env0": "variant_2_base_camera_env0.png",
+        "base_camera/env1": "variant_2_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_2_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_2_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_2_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_2_right_wrist_camera_env1.png",
+        "human/env0": "variant_2_human_env0.png",
+        "human/env1": "variant_2_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 2.2351741790771484e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 2.2351741790771484e-08
+          }
+        ],
+        "info": []
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#FFFFFF",
+            "roughness": 0.48,
+            "metallic": 0,
+            "texture": "plate_green_rim.png"
+          },
+          "plate_bottom": {
+            "color": "#F3EAD6",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#56606B",
+            "roughness": 0.48,
+            "metallic": 0.72
+          },
+          "grip": {
+            "color": "#D38A5C",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast02_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#88284C",
+            "roughness": 0.56,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#A84C3C",
+            "roughness": 0.38,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#D8CDC0",
+            "roughness": 0.38,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#C48679",
+            "roughness": 0.38,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#D8CDC0"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "3202ed8a9f7ece2a5f4a1dfc10e88459291a072c1b3e15a700d4e4af77dd668f"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "da47510d2b7d297becaad13bd724beec8c5d5f99a4a05c1045d39ffdd4cb4a22"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "1e28a9eb19a3d99ce696ab01d81fa8b7fee052fc157412f5ce0a417b0d075f20"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D38A5C"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "5825d6a1e003a87317864312a94b55a7dd8ad57d8a25a2d48264b2e35071b201"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#88284C"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#A84C3C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#D8CDC0"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#C48679"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "3202ed8a9f7ece2a5f4a1dfc10e88459291a072c1b3e15a700d4e4af77dd668f"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "da47510d2b7d297becaad13bd724beec8c5d5f99a4a05c1045d39ffdd4cb4a22"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "1e28a9eb19a3d99ce696ab01d81fa8b7fee052fc157412f5ce0a417b0d075f20"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D38A5C"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "5825d6a1e003a87317864312a94b55a7dd8ad57d8a25a2d48264b2e35071b201"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#88284C"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "75fbd6274cd486e2bad14257729934cfb89acf216771412fcf0f51071a666f57",
+          "info": "d21d638a11fb3009ac8f9d03b597f3c918961b73e11e0e85396bf845fb775eeb",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "87c6d4c8d7da1675f16cbb560ab8478d38f35be781cd0e34a67bd8b4f7e3cec2"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_2_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_2_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_2_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_2_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_2_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_2_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_2_restored_human_env0.png",
+          "human/env1": "variant_2_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_3",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_3",
+          "episode_index": 7,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_3",
+          "episode_index": 7,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "39413c4be367e42dd1d8cd2c5f378cdded55997b6644d356fcb8b28928c6e6ce",
+        "info": "d21d638a11fb3009ac8f9d03b597f3c918961b73e11e0e85396bf845fb775eeb",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "bc1e2de3990c4a32c56184d8b4861acdc5ad59d8a339e871c1a645ef64c7214d",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "a9289756099cdd18830e96f6a446713276968ab4b746d5bec2fcc48ec4941dca"
+      },
+      "images": {
+        "base_camera/env0": "variant_3_base_camera_env0.png",
+        "base_camera/env1": "variant_3_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_3_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_3_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_3_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_3_right_wrist_camera_env1.png",
+        "human/env0": "variant_3_human_env0.png",
+        "human/env1": "variant_3_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 3.725290298461914e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 3.725290298461914e-08
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 2.9802322387695312e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#E8DAB6",
+            "roughness": 0.44,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#C6BEA6",
+            "roughness": 0.44,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#C6C9BD",
+            "roughness": 0.42,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#667C54",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast03_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#D87532",
+            "roughness": 0.52,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#536B50",
+            "roughness": 0.76,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#EEE9D8",
+            "roughness": 0.76,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#A8BA91",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#EEE9D8"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "8e91c2072764db8aef2ae61004ff03ed3ee9039ad785d6b85df926e8316dc918"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "981803c9a14ebde0ffa1714fdeaebfd8b0bd7537d7c4eb5fa947cdc4e570809b"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "15bc64c3f470405e436b1cc5dd38d11302030db279ed52f801e426ba6c1ffb26"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#667C54"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "0b4902181631f56fc5545047f8a72eff2737237fb8c4500cd9838198252e1334"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#D87532"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#536B50"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#EEE9D8"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A8BA91"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "8e91c2072764db8aef2ae61004ff03ed3ee9039ad785d6b85df926e8316dc918"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "981803c9a14ebde0ffa1714fdeaebfd8b0bd7537d7c4eb5fa947cdc4e570809b"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "15bc64c3f470405e436b1cc5dd38d11302030db279ed52f801e426ba6c1ffb26"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#667C54"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "0b4902181631f56fc5545047f8a72eff2737237fb8c4500cd9838198252e1334"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#D87532"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "2ef32a9bdccec14ccc1e7340132ee3d50eaf6daf8a4f70b846a2a6d9f5d848a2",
+          "info": "d21d638a11fb3009ac8f9d03b597f3c918961b73e11e0e85396bf845fb775eeb",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "085ba17dca13c0cc059e28bd72f62bc753a3eabe0af93f7f2344e8516e860a87"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_3_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_3_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_3_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_3_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_3_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_3_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_3_restored_human_env0.png",
+          "human/env1": "variant_3_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_4",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_4",
+          "episode_index": 9,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_4",
+          "episode_index": 9,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "3c249586e9a2cb9c9d75bd59ecc8cbe2f29f40f943a6f53ec0895ab0f7751f51",
+        "info": "d21d638a11fb3009ac8f9d03b597f3c918961b73e11e0e85396bf845fb775eeb",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "cc674ae3c81aa214dff3718a2f068eea718282f381ecd42a593b0645b68dd869",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "7c0abf04b013db654f34c97da02c42b24e50173478023db75b0a5659ac18da2a"
+      },
+      "images": {
+        "base_camera/env0": "variant_4_base_camera_env0.png",
+        "base_camera/env1": "variant_4_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_4_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_4_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_4_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_4_right_wrist_camera_env1.png",
+        "human/env0": "variant_4_human_env0.png",
+        "human/env1": "variant_4_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 5.21540641784668e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 5.21540641784668e-08
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 2.9802322387695312e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#E2A18D",
+            "roughness": 0.32,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#BA7362",
+            "roughness": 0.32,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#B8C7CE",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#CE765D",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast04_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#9CCB45",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#233F54",
+            "roughness": 0.48,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#E1E9E5",
+            "roughness": 0.48,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#527B8B",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E1E9E5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "5d90a36da590f8ace40523ba55272f8e96b3231ab1d372f0a0092af5b412a085"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "ca8a5923857d56194ddbb385daf956dcc2fcc988095d85c010e304fc35c692e2"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "de2e6cc7536e99f71cbbcd79e782ed8cf73ea2ba1f9373137f8afbebdf11578c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#CE765D"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "12a61baf1451067af0ec1110ba1eeba6e3a28859645fba47b60e33defdf0ff21"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#9CCB45"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#233F54"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E1E9E5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#527B8B"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "5d90a36da590f8ace40523ba55272f8e96b3231ab1d372f0a0092af5b412a085"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "ca8a5923857d56194ddbb385daf956dcc2fcc988095d85c010e304fc35c692e2"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "de2e6cc7536e99f71cbbcd79e782ed8cf73ea2ba1f9373137f8afbebdf11578c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#CE765D"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "12a61baf1451067af0ec1110ba1eeba6e3a28859645fba47b60e33defdf0ff21"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#9CCB45"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "0ca120704b6ceb3346d663e8482df409e0fb0ab5d0974e53699759127ed94562",
+          "info": "beac86b0a50d8e42683fc98297c1e522d6b0bec70e7e1ee17860c95f23929673",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "660bacf9731fae41aaade85b80ee1446d20966491c8e7f29f8a1ec8f713f9369"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_4_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_4_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_4_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_4_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_4_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_4_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_4_restored_human_env0.png",
+          "human/env1": "variant_4_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_5",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_5",
+          "episode_index": 11,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_5",
+          "episode_index": 11,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "f468c8d476b8a0b0c2a3454e7a528556d35958fa727cc48d976be6fb544fa73b",
+        "info": "beac86b0a50d8e42683fc98297c1e522d6b0bec70e7e1ee17860c95f23929673",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "887fccf71c58a9ef849c2a7c392c3571c451cf0a69e870e736ddba81e4bbaa42",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "c00a4544179d692b02b7a9cac7ead9a685eab67a24883921bbef8a7d9af662ef"
+      },
+      "images": {
+        "base_camera/env0": "variant_5_base_camera_env0.png",
+        "base_camera/env1": "variant_5_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_5_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_5_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_5_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_5_right_wrist_camera_env1.png",
+        "human/env0": "variant_5_human_env0.png",
+        "human/env1": "variant_5_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 6.705522537231445e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 6.705522537231445e-08
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/4",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/1",
+            "delta": 2.9802322387695312e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#343C43",
+            "roughness": 0.52,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#687179",
+            "roughness": 0.52,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#777C80",
+            "roughness": 0.42,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#D3AA43",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast05_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#36B8BD",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#B18B31",
+            "roughness": 0.65,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#F2E9CE",
+            "roughness": 0.65,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#DDC47C",
+            "roughness": 0.65,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F2E9CE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "e395ce3f4c088515c289f12cfab20a3a9d19444a1b4497b819f2e86485a90495"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "0428e8dcf2c4409619acbb56d9e8efc3261356a8d7ed143236441af14fa1390e"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "32a934256f287cb47b2446116aebe13a51781fb3c57392bbea6b7137d675d340"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D3AA43"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "275c60e21514a532448317cee3035c1d0f4bb9bdf278ce87051313d912599e72"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#36B8BD"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B18B31"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F2E9CE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#DDC47C"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "e395ce3f4c088515c289f12cfab20a3a9d19444a1b4497b819f2e86485a90495"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "0428e8dcf2c4409619acbb56d9e8efc3261356a8d7ed143236441af14fa1390e"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "32a934256f287cb47b2446116aebe13a51781fb3c57392bbea6b7137d675d340"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D3AA43"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "275c60e21514a532448317cee3035c1d0f4bb9bdf278ce87051313d912599e72"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#36B8BD"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "85233d015f169d8275c839f878b65e7e302f5892923a3e594e51c7ff92163d96",
+          "info": "beac86b0a50d8e42683fc98297c1e522d6b0bec70e7e1ee17860c95f23929673",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "97493a0a9a3a7c94080915d2a6fbc1cc2e03fc72e4b298af7a0f90ba64db339b"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_5_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_5_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_5_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_5_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_5_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_5_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_5_restored_human_env0.png",
+          "human/env1": "variant_5_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_6",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_6",
+          "episode_index": 13,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_6",
+          "episode_index": 13,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "70572bca0dfe9359dad1f7e7f1fb71d1f7c56ad53a00752447fd17767315e473",
+        "info": "beac86b0a50d8e42683fc98297c1e522d6b0bec70e7e1ee17860c95f23929673",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "70fdfaf05d1268de0be9fba0028c593a63e210ae7d10c3456da48e997e9410be",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "76af3009c59d67ba5496c1c21fb6ecd687e00c8597c25942d2d7b876255a4cde"
+      },
+      "images": {
+        "base_camera/env0": "variant_6_base_camera_env0.png",
+        "base_camera/env1": "variant_6_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_6_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_6_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_6_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_6_right_wrist_camera_env1.png",
+        "human/env0": "variant_6_human_env0.png",
+        "human/env1": "variant_6_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 8.195638656616211e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 8.195638656616211e-08
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/1",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/4",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/1",
+            "delta": 2.9802322387695312e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#DDD2E4",
+            "roughness": 0.36,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#9C8AA9",
+            "roughness": 0.36,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#CBC2D2",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#58415F",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast06_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#4268D0",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#76658C",
+            "roughness": 0.58,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#ECE5EE",
+            "roughness": 0.58,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#B7A5C6",
+            "roughness": 0.58,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#ECE5EE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "4d6677dc5b0c2c2cd71967c0622b3fb24972d58977a59745a2ac2c3b27363f54"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "258156b185127a6018054aa43eb5ee8a2d07b22c4bf28b10adc6ced2bf5ce6da"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b59a7e1b19b22d092fb3c47248ceec57726a5cbb0ef4741278bd93a28c0e9104"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#58415F"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "fb0659096c36c3b58f27bf489bd6e520f5c9456bf38dfda71c740f197e2d239f"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#4268D0"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#76658C"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#ECE5EE"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B7A5C6"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "4d6677dc5b0c2c2cd71967c0622b3fb24972d58977a59745a2ac2c3b27363f54"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "258156b185127a6018054aa43eb5ee8a2d07b22c4bf28b10adc6ced2bf5ce6da"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b59a7e1b19b22d092fb3c47248ceec57726a5cbb0ef4741278bd93a28c0e9104"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#58415F"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "fb0659096c36c3b58f27bf489bd6e520f5c9456bf38dfda71c740f197e2d239f"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#4268D0"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "46fb2139802c4ac8833f92503987ee084ae3e92c8e14fdcd3fd592f6b5690342",
+          "info": "2f623638c209b8f4e7ed7fd1491cc14db99d6f7425c42a5f3ad336c08f14f0e8",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "f6353d5188e154657aa793a68c60040cb35de4a826bc98f7dc766d2aba03e6a3"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_6_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_6_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_6_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_6_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_6_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_6_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_6_restored_human_env0.png",
+          "human/env1": "variant_6_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_7",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_7",
+          "episode_index": 15,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_7",
+          "episode_index": 15,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "75600e46a4ab97aa46a4dd571ec528cda52b141011ac8384dc5ee4b05a1ad4a7",
+        "info": "2f623638c209b8f4e7ed7fd1491cc14db99d6f7425c42a5f3ad336c08f14f0e8",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "80e1618b4d45b1facf0069dbcc8c6119cc32f225a7081e905d44b6ea46351188",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "2882eb8601171a0bbd7a9eba7791f3d692279a29ba08c3a162a367e0a517712d"
+      },
+      "images": {
+        "base_camera/env0": "variant_7_base_camera_env0.png",
+        "base_camera/env1": "variant_7_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_7_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_7_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_7_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_7_right_wrist_camera_env1.png",
+        "human/env0": "variant_7_human_env0.png",
+        "human/env1": "variant_7_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 9.685754776000977e-08
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 9.685754776000977e-08
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/1",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/4",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/1",
+            "delta": 5.960464477539063e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#B8BEC0",
+            "roughness": 0.3,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#747F85",
+            "roughness": 0.3,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#BDB8B1",
+            "roughness": 0.42,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#75384E",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast07_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#8650C4",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#722F43",
+            "roughness": 0.42,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#F0E1DA",
+            "roughness": 0.42,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#B16C7A",
+            "roughness": 0.42,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F0E1DA"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "fd59a5d86e7d91d9270f6b791976573d8a4dc241be1d5b524127cf8b86354c15"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "661d520a28d45549c2c2984a9a3a944d04daf23e71bd2634040f569fe842a0f3"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b8608833c8943c5be926c77bde481162f52c46f366ab24fb8181a148f836af29"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#75384E"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "39522a9cb5f1c97a4ded6c8569981568c3da8f748eb0003a9ba20c9ee0b58366"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#8650C4"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#722F43"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F0E1DA"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#B16C7A"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "fd59a5d86e7d91d9270f6b791976573d8a4dc241be1d5b524127cf8b86354c15"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "661d520a28d45549c2c2984a9a3a944d04daf23e71bd2634040f569fe842a0f3"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "b8608833c8943c5be926c77bde481162f52c46f366ab24fb8181a148f836af29"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#75384E"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "39522a9cb5f1c97a4ded6c8569981568c3da8f748eb0003a9ba20c9ee0b58366"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#8650C4"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "6339db3086619201dd9707bcaa4c767d5f2ce865cf3876742baa856e657fd3ba",
+          "info": "2f623638c209b8f4e7ed7fd1491cc14db99d6f7425c42a5f3ad336c08f14f0e8",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "5ce58b89ffba8aac6f4bd2989e12fd61db30db808da3cb305a9cc2289d30e7ec"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_7_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_7_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_7_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_7_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_7_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_7_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_7_restored_human_env0.png",
+          "human/env1": "variant_7_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_8",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_8",
+          "episode_index": 17,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_8",
+          "episode_index": 17,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "f243fc9859ab86919759db96e587c2e8433d9f66bba2ed95689e4f7bb91ca92f",
+        "info": "2f623638c209b8f4e7ed7fd1491cc14db99d6f7425c42a5f3ad336c08f14f0e8",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "2b4ff01bc1fd9ca6be1fb97eabee441ab7ca6d0bb6ff45f0a95a53cdfe5f9c1a",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "3dd9d1e0444238dc02573b52faec94540c57ab640964a1cafd0831b1d4e73e70"
+      },
+      "images": {
+        "base_camera/env0": "variant_8_base_camera_env0.png",
+        "base_camera/env1": "variant_8_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_8_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_8_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_8_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_8_right_wrist_camera_env1.png",
+        "human/env0": "variant_8_human_env0.png",
+        "human/env1": "variant_8_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 1.1175870895385742e-07
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 1.1175870895385742e-07
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/0",
+            "delta": 2.9802322387695312e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/1",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/4",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/1",
+            "delta": 5.960464477539063e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#254C42",
+            "roughness": 0.25,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#6C8974",
+            "roughness": 0.25,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#B3BDB7",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#D4B681",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast08_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#E788B1",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#478D87",
+            "roughness": 0.4,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#E6EFE5",
+            "roughness": 0.4,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#A3CCC1",
+            "roughness": 0.4,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E6EFE5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "aea57decc47e73443163d2fa280a6c53a9e6c42ef6528ada170b94ad346877f0"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "9bbc01cee34ebb2d334d27f5375cf1171e927c52355f26d4877117c3407eba54"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "06841c4dc3980d07729d4bc8dfacda15adef82e9285bcb08d4e17e5f88f0acb3"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D4B681"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "b240bca2a85bac0f76dadd2d8adb54b37ab59c95d6e4c4874d40f977c85f4bd2"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#E788B1"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#478D87"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#E6EFE5"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#A3CCC1"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "aea57decc47e73443163d2fa280a6c53a9e6c42ef6528ada170b94ad346877f0"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "9bbc01cee34ebb2d334d27f5375cf1171e927c52355f26d4877117c3407eba54"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "06841c4dc3980d07729d4bc8dfacda15adef82e9285bcb08d4e17e5f88f0acb3"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#D4B681"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "b240bca2a85bac0f76dadd2d8adb54b37ab59c95d6e4c4874d40f977c85f4bd2"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#E788B1"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "eec39de8cf70afe280fe72ba2e7e6b0b399fca85d732c8754f36ac602a0e4def",
+          "info": "a273468fb06b55254dd60334cb2032347df041d0d3c600a5337000ae64fc2c50",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "35a3d51396b2da55725fb34bce4bb57307aa105df1fe169cdda1d74ed4374716"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_8_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_8_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_8_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_8_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_8_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_8_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_8_restored_human_env0.png",
+          "human/env1": "variant_8_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_9",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_9",
+          "episode_index": 19,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_9",
+          "episode_index": 19,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "6980164de886a086ab737f5edcda3118f65a5c9465de533055d8c375a9d182d1",
+        "info": "a273468fb06b55254dd60334cb2032347df041d0d3c600a5337000ae64fc2c50",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "cb082e53b73a15908bbbe421627d5307410f8e372c3cfe2ddeff033ad6c7e710",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "718330ab644e7c6657be1bd44d1fab9ecb438617b34f90b148c9b98a29b7c262"
+      },
+      "images": {
+        "base_camera/env0": "variant_9_base_camera_env0.png",
+        "base_camera/env1": "variant_9_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_9_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_9_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_9_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_9_right_wrist_camera_env1.png",
+        "human/env0": "variant_9_human_env0.png",
+        "human/env1": "variant_9_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 1.2665987014770508e-07
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 1.2665987014770508e-07
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 1.1920928955078125e-07
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 1.1920928955078125e-07
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/1",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 1.1920928955078125e-07
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/4",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/1",
+            "delta": 8.940696716308594e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#C68A32",
+            "roughness": 0.48,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#805638",
+            "roughness": 0.48,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#B87333",
+            "roughness": 0.34,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#E7DCC5",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast09_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#E9E3D5",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#B59A77",
+            "roughness": 0.84,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#F5EBDD",
+            "roughness": 0.84,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#E0CFAB",
+            "roughness": 0.84,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F5EBDD"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "30c46b0fa0cacdb09b9d9c916d056b3a6db40d9a4955e5d9d4f8dd706f3279a8"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "37016067629451fcb521781525b0d55bba1956380d2705ec22c36ebbd5dd0993"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "467894c34c1730d93dcd8adad6d456f5d12771db23f04f36799effc4d874de8c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#E7DCC5"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "2d369767f234dee3aef3685428954d6e43c866f0caba3365cde162003feb5f4c"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#E9E3D5"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#B59A77"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#F5EBDD"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#E0CFAB"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "30c46b0fa0cacdb09b9d9c916d056b3a6db40d9a4955e5d9d4f8dd706f3279a8"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "37016067629451fcb521781525b0d55bba1956380d2705ec22c36ebbd5dd0993"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "467894c34c1730d93dcd8adad6d456f5d12771db23f04f36799effc4d874de8c"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#E7DCC5"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "2d369767f234dee3aef3685428954d6e43c866f0caba3365cde162003feb5f4c"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#E9E3D5"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "f815f5639a2affc22960f68b9e7da33d35fb0d8096c5d43e1b4315e73c24e2bd",
+          "info": "a273468fb06b55254dd60334cb2032347df041d0d3c600a5337000ae64fc2c50",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "30ba44ede1f709853274f0f9c86742074c6a2458852f185a410bc9f343145022"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_9_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_9_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_9_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_9_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_9_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_9_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_9_restored_human_env0.png",
+          "human/env1": "variant_9_restored_human_env1.png"
+        }
+      }
+    },
+    {
+      "request": "variant_10",
+      "actual": [
+        {
+          "env_idx": 0,
+          "scheme_id": "variant_10",
+          "episode_index": 21,
+          "catalog_version": "meal-preparation-v3"
+        },
+        {
+          "env_idx": 1,
+          "scheme_id": "variant_10",
+          "episode_index": 21,
+          "catalog_version": "meal-preparation-v3"
+        }
+      ],
+      "signatures": {
+        "state": "3cb7ff3380792931075ba4d4e8a7d49ccec50af2c1f53e4c799db092b0535d93",
+        "info": "a273468fb06b55254dd60334cb2032347df041d0d3c600a5337000ae64fc2c50",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "77a4dc8b2b896a94441cf9c3b6e9fb9caba0b9e57922e4aa710c4e77b5afb81a",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "aef9f6ec12136886da3b393a52028b8841217f37b64ce09f682453f29b93b5bf"
+      },
+      "images": {
+        "base_camera/env0": "variant_10_base_camera_env0.png",
+        "base_camera/env1": "variant_10_base_camera_env1.png",
+        "left_wrist_camera/env0": "variant_10_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "variant_10_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "variant_10_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "variant_10_right_wrist_camera_env1.png",
+        "human/env0": "variant_10_human_env0.png",
+        "human/env1": "variant_10_human_env1.png"
+      },
+      "baseline": {
+        "state": [
+          {
+            "path": "/0/articulations/procedural_box_0/0/2",
+            "delta": 1.4156103134155273e-07
+          },
+          {
+            "path": "/1/articulations/procedural_box_1/0/2",
+            "delta": 1.4156103134155273e-07
+          }
+        ],
+        "info": [
+          {
+            "path": "/left_tcp_to_box_dist/0",
+            "delta": 1.1920928955078125e-07
+          },
+          {
+            "path": "/left_tcp_to_box_dist/1",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/1",
+            "delta": 1.1920928955078125e-07
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/2",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/3",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/0/4",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/0",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/1",
+            "delta": 5.960464477539063e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/2",
+            "delta": 1.1920928955078125e-07
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/3",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_obj_tip_dist/1/4",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/0",
+            "delta": 8.940696716308594e-08
+          },
+          {
+            "path": "/left_box_closest_tip_surface_dist/1",
+            "delta": 8.940696716308594e-08
+          }
+        ]
+      },
+      "expected": {
+        "pizza_plate": {
+          "plate_top": {
+            "color": "#6C7883",
+            "roughness": 0.34,
+            "metallic": 0
+          },
+          "plate_bottom": {
+            "color": "#C6CCD0",
+            "roughness": 0.34,
+            "metallic": 0
+          }
+        },
+        "spoon": {
+          "wire_140088225": {
+            "color": "#4E5963",
+            "roughness": 0.3,
+            "metallic": 0.8
+          },
+          "grip": {
+            "color": "#9C6248",
+            "roughness": 0.78,
+            "metallic": 0
+          }
+        },
+        "bread": {
+          "Material.052": {
+            "color": "#FFFFFF",
+            "texture": "bagel_roast10_generated.png",
+            "roughness": 0.76,
+            "metallic": 0
+          }
+        },
+        "round_ball_food": {
+          "default.012": {
+            "color": "#41454C",
+            "roughness": 0.46,
+            "metallic": 0
+          }
+        },
+        "box": {
+          "box_base": {
+            "color": "#D5D9DA",
+            "roughness": 0.54,
+            "metallic": 0
+          },
+          "inner_floor": {
+            "color": "#AAB4BB",
+            "roughness": 0.54,
+            "metallic": 0
+          },
+          "box_lid": {
+            "color": "#F1F0E9",
+            "roughness": 0.54,
+            "metallic": 0
+          }
+        }
+      },
+      "semantic": [
+        [
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#AAB4BB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "280179774d6d9b7d6f4b95dba99c8210f0ff82f2acbce8398138c324ed33bb58"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "a7e37486f3057c1407269b3f57db01d11bb30ed3863047fc58577e0ce8cea275"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "229158048afcdacbbfe3170f5449c43216d956c5c1915b658b79188696098162"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#9C6248"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "b5fd9545b69c6790991d8c58544c218e666ed224285a29cc55ca73b7bd2a0aa9"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#41454C"
+          }
+        ],
+        [
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/box_base",
+            "color": "#D5D9DA"
+          },
+          {
+            "role": "box/inner_floor",
+            "color": "#AAB4BB"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "box/box_lid",
+            "color": "#F1F0E9"
+          },
+          {
+            "role": "pizza_plate/plate_top",
+            "pixels_sha256": "280179774d6d9b7d6f4b95dba99c8210f0ff82f2acbce8398138c324ed33bb58"
+          },
+          {
+            "role": "pizza_plate/plate_bottom",
+            "pixels_sha256": "a7e37486f3057c1407269b3f57db01d11bb30ed3863047fc58577e0ce8cea275"
+          },
+          {
+            "role": "spoon/wire_140088225",
+            "pixels_sha256": "229158048afcdacbbfe3170f5449c43216d956c5c1915b658b79188696098162"
+          },
+          {
+            "role": "spoon/grip",
+            "color": "#9C6248"
+          },
+          {
+            "role": "bread/Material.052",
+            "pixels_sha256": "b5fd9545b69c6790991d8c58544c218e666ed224285a29cc55ca73b7bd2a0aa9"
+          },
+          {
+            "role": "round_ball_food/default.012",
+            "color": "#41454C"
+          }
+        ]
+      ],
+      "target_rgb": {
+        "box": {
+          "base_camera": {
+            "pixels": 230,
+            "changed_pixels": 223,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 13889,
+            "changed_pixels": 13889,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              100,
+              101
+            ]
+          },
+          "human": {
+            "pixels": 2714,
+            "changed_pixels": 2687,
+            "entity_ids": [
+              100,
+              101
+            ]
+          }
+        },
+        "plate": {
+          "base_camera": {
+            "pixels": 126,
+            "changed_pixels": 126,
+            "entity_ids": [
+              102
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              102
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 8343,
+            "changed_pixels": 8343,
+            "entity_ids": [
+              102
+            ]
+          },
+          "human": {
+            "pixels": 5108,
+            "changed_pixels": 5108,
+            "entity_ids": [
+              102
+            ]
+          }
+        },
+        "spoon": {
+          "base_camera": {
+            "pixels": 66,
+            "changed_pixels": 66,
+            "entity_ids": [
+              103
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 840,
+            "changed_pixels": 840,
+            "entity_ids": [
+              103
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 1245,
+            "changed_pixels": 1245,
+            "entity_ids": [
+              103
+            ]
+          },
+          "human": {
+            "pixels": 513,
+            "changed_pixels": 513,
+            "entity_ids": [
+              103
+            ]
+          }
+        },
+        "bread": {
+          "base_camera": {
+            "pixels": 22,
+            "changed_pixels": 22,
+            "entity_ids": [
+              104
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              104
+            ]
+          },
+          "human": {
+            "pixels": 449,
+            "changed_pixels": 449,
+            "entity_ids": [
+              104
+            ]
+          }
+        },
+        "ball_food": {
+          "base_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "left_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "right_wrist_camera": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          },
+          "human": {
+            "pixels": 0,
+            "changed_pixels": 0,
+            "entity_ids": [
+              105
+            ]
+          }
+        }
+      },
+      "restored": {
+        "signatures": {
+          "state": "c956949040f7cc968d841985cdc6bc5ebcff64ce9a33966ff1241e53ef252c6e",
+          "info": "3caa7455ae2eaf460ef4599fd850e82168cbc8254b18e6f294672d7f3ab1cd2f",
+          "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+          "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+          "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+          "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+          "records": "36fbac9739658f6aafb63ebe3bacdd4cf85fa9d2dc1add9c3b166bb526e7ab05"
+        },
+        "rgb": [
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          },
+          {
+            "base_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "left_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "right_wrist_camera": {
+              "max": 0,
+              "channels": 0
+            },
+            "human": {
+              "max": 0,
+              "channels": 0
+            }
+          }
+        ],
+        "images": {
+          "base_camera/env0": "variant_10_restored_base_camera_env0.png",
+          "base_camera/env1": "variant_10_restored_base_camera_env1.png",
+          "left_wrist_camera/env0": "variant_10_restored_left_wrist_camera_env0.png",
+          "left_wrist_camera/env1": "variant_10_restored_left_wrist_camera_env1.png",
+          "right_wrist_camera/env0": "variant_10_restored_right_wrist_camera_env0.png",
+          "right_wrist_camera/env1": "variant_10_restored_right_wrist_camera_env1.png",
+          "human/env0": "variant_10_restored_human_env0.png",
+          "human/env1": "variant_10_restored_human_env1.png"
+        }
+      }
+    }
+  ],
+  "A5": [
+    {
+      "request_pair": [
+        "variant_1",
+        "variant_2"
+      ],
+      "selected": 1,
+      "before": {
+        "state": "fae03e8368735d1ba0911f82fbc78936108081e2b4254635a0a1e938ff2bb781",
+        "info": "3caa7455ae2eaf460ef4599fd850e82168cbc8254b18e6f294672d7f3ab1cd2f",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "f84d6194e5ddd225f434784f546f564d62365f9695aeda27f51087abdb11b3e9",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+        "records": "a8c8d218c51f89e288ddfbd76bb6a0ad7ffb631bb0223400cfa7faf76abd0de5"
+      },
+      "after": {
+        "state": "6f415d8652408d68af996631102cfec5be1eb7374d32907d16afee0531a8401f",
+        "info": "40f047df40c6fa0e838c3ece86a0db3948ba9b7c22eda5c382ab3f7665703390",
+        "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+        "materials": "cc56be31c3abad15a8829ec9ab8f75b83d6d1df618e615d6d3f20e90846d6e7b",
+        "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+        "rng": "8ef325083767248fe88570df45174dea0a1eaadd7aff0ab57ecaa18065e16fb3",
+        "records": "276ddc88feb8ea443e337c1d8210fe548e43e3acce9b4beab42aa4f2c7dd83d6"
+      },
+      "unselected_rgb": {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "left_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "right_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "selected_vs_native_rgb": {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "left_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "right_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      "selected_vs_native_target_rgb": {
+        "base_camera": {
+          "box": {
+            "pixels": 216,
+            "max": 0,
+            "channels": 0
+          },
+          "plate": {
+            "pixels": 180,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 61,
+            "max": 0,
+            "channels": 0
+          },
+          "bread": {
+            "pixels": 22,
+            "max": 0,
+            "channels": 0
+          },
+          "ball_food": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          }
+        },
+        "left_wrist_camera": {
+          "box": {
+            "pixels": 11542,
+            "max": 0,
+            "channels": 0
+          },
+          "plate": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 1005,
+            "max": 0,
+            "channels": 0
+          },
+          "bread": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          },
+          "ball_food": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          }
+        },
+        "right_wrist_camera": {
+          "box": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          },
+          "plate": {
+            "pixels": 8775,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 1036,
+            "max": 0,
+            "channels": 0
+          },
+          "bread": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          },
+          "ball_food": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          }
+        },
+        "human": {
+          "box": {
+            "pixels": 3224,
+            "max": 0,
+            "channels": 0
+          },
+          "plate": {
+            "pixels": 4923,
+            "max": 0,
+            "channels": 0
+          },
+          "spoon": {
+            "pixels": 575,
+            "max": 0,
+            "channels": 0
+          },
+          "bread": {
+            "pixels": 453,
+            "max": 0,
+            "channels": 0
+          },
+          "ball_food": {
+            "pixels": 0,
+            "max": 0,
+            "channels": 0
+          }
+        }
+      },
+      "selected_before_vs_after_rgb": {
+        "base_camera": {
+          "max": 173,
+          "channels": 1448
+        },
+        "left_wrist_camera": {
+          "max": 158,
+          "channels": 37700
+        },
+        "right_wrist_camera": {
+          "max": 181,
+          "channels": 29732
+        },
+        "human": {
+          "max": 186,
+          "channels": 27924
+        }
+      },
+      "before_images": {
+        "base_camera/env0": "a5_variant_1_selected1_before_base_camera_env0.png",
+        "base_camera/env1": "a5_variant_1_selected1_before_base_camera_env1.png",
+        "left_wrist_camera/env0": "a5_variant_1_selected1_before_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "a5_variant_1_selected1_before_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "a5_variant_1_selected1_before_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "a5_variant_1_selected1_before_right_wrist_camera_env1.png",
+        "human/env0": "a5_variant_1_selected1_before_human_env0.png",
+        "human/env1": "a5_variant_1_selected1_before_human_env1.png"
+      },
+      "after_images": {
+        "base_camera/env0": "a5_variant_1_selected1_after_base_camera_env0.png",
+        "base_camera/env1": "a5_variant_1_selected1_after_base_camera_env1.png",
+        "left_wrist_camera/env0": "a5_variant_1_selected1_after_left_wrist_camera_env0.png",
+        "left_wrist_camera/env1": "a5_variant_1_selected1_after_left_wrist_camera_env1.png",
+        "right_wrist_camera/env0": "a5_variant_1_selected1_after_right_wrist_camera_env0.png",
+        "right_wrist_camera/env1": "a5_variant_1_selected1_after_right_wrist_camera_env1.png",
+        "human/env0": "a5_variant_1_selected1_after_human_env0.png",
+        "human/env1": "a5_variant_1_selected1_after_human_env1.png"
+      }
+    }
+  ],
+  "random": null,
+  "status": "failed",
+  "native_0": {
+    "signatures": {
+      "state": "8f71469834836ae3ac00af4840209fd29ad29f4d030018414b357ca1cefcdc75",
+      "info": "33a91fedf9a89d31d37febea07c4a4cf922a835e6d4ca1681b2148f5bfa66483",
+      "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+      "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+      "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+      "rng": "9bb95d64eb2962bc26226a5aa337254482419302a2a744b13d9c705fb584cb32",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "images": {
+      "base_camera/env0": "native0_base_camera_env0.png",
+      "base_camera/env1": "native0_base_camera_env1.png",
+      "left_wrist_camera/env0": "native0_left_wrist_camera_env0.png",
+      "left_wrist_camera/env1": "native0_left_wrist_camera_env1.png",
+      "right_wrist_camera/env0": "native0_right_wrist_camera_env0.png",
+      "right_wrist_camera/env1": "native0_right_wrist_camera_env1.png",
+      "human/env0": "native0_human_env0.png",
+      "human/env1": "native0_human_env1.png"
+    }
+  },
+  "native_partial_1": {
+    "after": {
+      "state": "1d6f8fdd76091834713a2e38d5f9cb73690f670f42f045b63b6934d7241953f8",
+      "info": "98484c3850db0dd1f1b650d2ec84a07eb71c1eaa57b614563a667da5c4449c44",
+      "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+      "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+      "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+      "rng": "ff2c4c8a15d64f29e527ab56526e4b58e33db95e235c9b2b038f479377728a39",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0
+      }
+    },
+    "images": {
+      "base_camera/env0": "native_partial1_base_camera_env0.png",
+      "base_camera/env1": "native_partial1_base_camera_env1.png",
+      "left_wrist_camera/env0": "native_partial1_left_wrist_camera_env0.png",
+      "left_wrist_camera/env1": "native_partial1_left_wrist_camera_env1.png",
+      "right_wrist_camera/env0": "native_partial1_right_wrist_camera_env0.png",
+      "right_wrist_camera/env1": "native_partial1_right_wrist_camera_env1.png",
+      "human/env0": "native_partial1_human_env0.png",
+      "human/env1": "native_partial1_human_env1.png"
+    }
+  },
+  "native_partial_0": {
+    "after": {
+      "state": "8737cbcfa47de0f918905609b9dfc919cb5b02c8ba376e6ad5f07472d329e9ef",
+      "info": "c38dc117b99e43c2803db454afbf25cc5b74d8fdf12a5e4d4c76e72333c600df",
+      "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+      "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+      "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+      "rng": "94bdf9a41e5e196f829f8ad380bf826dd7bfafa49613ffea00105b15907dfdcd",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "unselected_rgb": {
+      "base_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "left_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "right_wrist_camera": {
+        "max": 0,
+        "channels": 0
+      },
+      "human": {
+        "max": 0,
+        "channels": 0
+      }
+    },
+    "images": {
+      "base_camera/env0": "native_partial0_base_camera_env0.png",
+      "base_camera/env1": "native_partial0_base_camera_env1.png",
+      "left_wrist_camera/env0": "native_partial0_left_wrist_camera_env0.png",
+      "left_wrist_camera/env1": "native_partial0_left_wrist_camera_env1.png",
+      "right_wrist_camera/env0": "native_partial0_right_wrist_camera_env0.png",
+      "right_wrist_camera/env1": "native_partial0_right_wrist_camera_env1.png",
+      "human/env0": "native_partial0_human_env0.png",
+      "human/env1": "native_partial0_human_env1.png"
+    }
+  },
+  "native_1": {
+    "signatures": {
+      "state": "8f71469834836ae3ac00af4840209fd29ad29f4d030018414b357ca1cefcdc75",
+      "info": "33a91fedf9a89d31d37febea07c4a4cf922a835e6d4ca1681b2148f5bfa66483",
+      "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+      "materials": "20c2d72ccea6cb3dd8e845bafd401d594ed12eedf1c9258c915967fc260e47e5",
+      "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+      "rng": "9bb95d64eb2962bc26226a5aa337254482419302a2a744b13d9c705fb584cb32",
+      "records": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "images": {
+      "base_camera/env0": "native1_base_camera_env0.png",
+      "base_camera/env1": "native1_base_camera_env1.png",
+      "left_wrist_camera/env0": "native1_left_wrist_camera_env0.png",
+      "left_wrist_camera/env1": "native1_left_wrist_camera_env1.png",
+      "right_wrist_camera/env0": "native1_right_wrist_camera_env0.png",
+      "right_wrist_camera/env1": "native1_right_wrist_camera_env1.png",
+      "human/env0": "native1_human_env0.png",
+      "human/env1": "native1_human_env1.png"
+    }
+  },
+  "native_noise": {
+    "numeric": {
+      "state": [],
+      "info": []
+    },
+    "rgb": [
+      {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "left_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "right_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      },
+      {
+        "base_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "left_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "right_wrist_camera": {
+          "max": 0,
+          "channels": 0
+        },
+        "human": {
+          "max": 0,
+          "channels": 0
+        }
+      }
+    ]
+  },
+  "pending_case": {
+    "scheme": "variant_1",
+    "selected": 0,
+    "before": {
+      "state": "c3bf3973cc4d7531f43534d4227ef2317fb0fb8be6d6090f8d38182de4300896",
+      "info": "3caa7455ae2eaf460ef4599fd850e82168cbc8254b18e6f294672d7f3ab1cd2f",
+      "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+      "materials": "f84d6194e5ddd225f434784f546f564d62365f9695aeda27f51087abdb11b3e9",
+      "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+      "rng": "a5d7cff79b22eaa55781556b89750a1e86b2785af4a76423d8c7252f24d512ae",
+      "records": "f7df5c5c57cad75806be18854982d1823b3ae72258e308c9b682fc7c5de5fe26"
+    },
+    "after": {
+      "state": "24341da09a9853b0b79de7ca62c3d6e4756c582e39ba4e8375b27bc033bcea39",
+      "info": "b6710b55706b655f3708ca740156b2e210c7d5b32edd4b545631d438f2a88de2",
+      "counters": "d7d3744d77d0b2bcd4044b7bf627b15fa5eed778b4b708b410bd300e943c452c",
+      "materials": "352a8151b2f4dafce134bc746214a7bffd6d83e3760f53ad7a0f7f5b0c531503",
+      "physics": "cbcb4ea14c87a4910f2f4ed371086e25c9f0c00681bc89ee12f1cab14efe9a86",
+      "rng": "779971f586a0df5f98e5aa15b1d7c6f106677b2a989710b562040c1b8058bfab",
+      "records": "4be5260f5cd0264a104034472c3c47b019f106bd3a4e063ebfcb232922c48d96"
+    },
+    "before_images": {
+      "base_camera/env0": "a5_variant_1_selected0_before_base_camera_env0.png",
+      "base_camera/env1": "a5_variant_1_selected0_before_base_camera_env1.png",
+      "left_wrist_camera/env0": "a5_variant_1_selected0_before_left_wrist_camera_env0.png",
+      "left_wrist_camera/env1": "a5_variant_1_selected0_before_left_wrist_camera_env1.png",
+      "right_wrist_camera/env0": "a5_variant_1_selected0_before_right_wrist_camera_env0.png",
+      "right_wrist_camera/env1": "a5_variant_1_selected0_before_right_wrist_camera_env1.png",
+      "human/env0": "a5_variant_1_selected0_before_human_env0.png",
+      "human/env1": "a5_variant_1_selected0_before_human_env1.png"
+    },
+    "after_images": {
+      "base_camera/env0": "a5_variant_1_selected0_after_base_camera_env0.png",
+      "base_camera/env1": "a5_variant_1_selected0_after_base_camera_env1.png",
+      "left_wrist_camera/env0": "a5_variant_1_selected0_after_left_wrist_camera_env0.png",
+      "left_wrist_camera/env1": "a5_variant_1_selected0_after_left_wrist_camera_env1.png",
+      "right_wrist_camera/env0": "a5_variant_1_selected0_after_right_wrist_camera_env0.png",
+      "right_wrist_camera/env1": "a5_variant_1_selected0_after_right_wrist_camera_env1.png",
+      "human/env0": "a5_variant_1_selected0_after_human_env0.png",
+      "human/env1": "a5_variant_1_selected0_after_human_env1.png"
+    }
+  },
+  "first_failure": "Traceback (most recent call last):\n  File \"/data/home/pb/meal-a4a5-final-20261120/run/tools/variation/check_ten_environment.py\", line 310, in run\n    \"selected_vs_native_target_rgb\":restored_target_rgb(native,after,selected),\n  File \"/data/home/pb/meal-a4a5-final-20261120/run/tools/variation/check_ten_environment.py\", line 180, in restored_target_rgb\n    assert row[\"max\"]<=1 and row[\"channels\"]<=8,(camera,name,row)\nAssertionError: ('human', 'box', {'pixels': 2736, 'max': 41, 'channels': 3})\n"
+}

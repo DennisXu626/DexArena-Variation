@@ -1,0 +1,72 @@
+{
+  "meal": {
+    "bread": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    },
+    "long": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    },
+    "open": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    },
+    "tomato": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    }
+  },
+  "package": {
+    "extract": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    },
+    "long": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    },
+    "open": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "random": true,
+      "first_failure": []
+    }
+  },
+  "short_trace": {
+    "open": {
+      "status": "passed",
+      "rows": 11,
+      "first_failure": []
+    },
+    "extract": {
+      "status": "passed",
+      "rows": 11,
+      "first_failure": []
+    },
+    "long": {
+      "status": "passed",
+      "rows": 11,
+      "first_failure": []
+    }
+  }
+}

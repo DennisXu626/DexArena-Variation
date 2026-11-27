@@ -1,0 +1,65 @@
+{
+  "method": "remove trailing whitespace and extra EOF blank lines only; all receipt fields unchanged; raw originals retained on server",
+  "files": {
+    "docs/variation/evidence/meal_preparation/environment_validation/receipts/123832.txt": {
+      "original_sha256": "44f741941feeef99a00701b0d8ed5f6839d40a1667ca6a3a761cdc76cebcf6fc",
+      "archived_sha256": "24e824b9495ef48313feddb6ad8838caf46b9996b0cde3d4f71e6037b4782ec2"
+    },
+    "docs/variation/evidence/meal_preparation/environment_validation/receipts/123833.txt": {
+      "original_sha256": "efbce76b239c4fbdab3d455df08a6ef3746a826d6e1e0ab55bf2b60c8174fbf8",
+      "archived_sha256": "0bfaf9aaa05d3014f1598f3b23db638cd44f0096fd78454c813b78c07b0ea73d"
+    },
+    "docs/variation/evidence/meal_preparation/environment_validation/receipts/123834.txt": {
+      "original_sha256": "17e6cc9092923d5a473a15906412d042295f3aa1fc013489bea12a40615f1434",
+      "archived_sha256": "96d05d3eeab7437bbc214c017de94c15dced8b5519cc022e6e1b275c86683536"
+    },
+    "docs/variation/evidence/meal_preparation/minimal_diagnosis/receipts/125106.txt": {
+      "original_sha256": "00f599728ce6e01c128fd3e5dc2d7851209674f8503b4313eac68c5e3fbc63bf",
+      "archived_sha256": "517ac3f8a503209ebcbb78aeaf79cf6fce76992fdb92c97a2c549e23380a7d30"
+    },
+    "docs/variation/evidence/meal_preparation/minimal_diagnosis/receipts/125107.txt": {
+      "original_sha256": "fca0ac8fd8cd98588f025e58769e5348c03b7c26f751ae4d314e443d053e9513",
+      "archived_sha256": "965d2666ec73031cc762a3e487ec11c143b8795cc28ef6447166bb83d9942fcf"
+    },
+    "docs/variation/evidence/meal_preparation/minimal_diagnosis/receipts/125109.txt": {
+      "original_sha256": "24a0ebd81b348a658a5e406dbf20aad75e415b6cd1aab2e0c4b9a9ef6652b44a",
+      "archived_sha256": "3187c985b5557e2fc4cf2c763990203b11751c7956d52d8ac6301f363c845971"
+    },
+    "docs/variation/evidence/meal_preparation/minimal_diagnosis/receipts/125111.txt": {
+      "original_sha256": "a9a0888e9f964623ca9271923075e4cb609135634ee041b1707f06928b15eba9",
+      "archived_sha256": "10a971dcbe0f04989e82abe73852cc37283b542c4e5cf5c83ac6c904f855f1fd"
+    },
+    "docs/variation/evidence/meal_preparation/native_calibration/receipt.txt": {
+      "original_sha256": "83182ff6acf945716103a182348850842217f5a780e42c639345cbf99f07de37",
+      "archived_sha256": "271f1f2cdf261d7317a7baa1053df665bd197de4aa716d0db65237d53074518b"
+    },
+    "docs/variation/evidence/meal_preparation/paired_revalidation/receipt.txt": {
+      "original_sha256": "69edc2de471bb7c7ba0bb05910ed52f7702fcd243d454854e353ba07bfb5fc3a",
+      "archived_sha256": "f1dd09904c2e5b9bb777f4117aa6c32852042e333bb9930e62f10a50a2381276"
+    },
+    "docs/variation/evidence/meal_preparation/paired_revalidation/receipts/125331.txt": {
+      "original_sha256": "69edc2de471bb7c7ba0bb05910ed52f7702fcd243d454854e353ba07bfb5fc3a",
+      "archived_sha256": "f1dd09904c2e5b9bb777f4117aa6c32852042e333bb9930e62f10a50a2381276"
+    },
+    "docs/variation/evidence/meal_preparation/paired_revalidation/receipts/125378.txt": {
+      "original_sha256": "017cb0ff2aa790c24805ac504c1a194667e73498cf59826a6b3bcbd009d0e3d4",
+      "archived_sha256": "10d74bc33e715963bfefefacd2f9abdd63c72856728b19de334cf769df2eb42b"
+    },
+    "docs/variation/evidence/meal_preparation/ten/receipt-123800.txt": {
+      "original_sha256": "3f0893ed6c621168fa8030ea14289ca61d913932db836b375437beb47fd7b5cb",
+      "archived_sha256": "abb7732f70d195b34191936d1732d7e75ff0854df93728d5103455cae957a309"
+    },
+    "docs/variation/evidence/meal_preparation/ten/receipt-123801.txt": {
+      "original_sha256": "5d867b64a5e4d1a2a1e6b7bc74f72b217c158d7c462357e864c331513a1a2072",
+      "archived_sha256": "8aaddd74d1c38f90bb047a18ff6dc4541a4bfaa32db6687855bac4ae8c90801d"
+    },
+    "docs/variation/evidence/meal_preparation/ten_final/receipt-123814.txt": {
+      "original_sha256": "a64fc2402da8c895b77aabb0e7bd58c005c5d74e4d20bfece6b952a507a1483e",
+      "archived_sha256": "75dd1d82f11005a58b207ac25c4acb741f50a45262790e5845721ce07c2ae75d"
+    },
+    "docs/variation/evidence/meal_preparation/ten_final/receipt-123816.txt": {
+      "original_sha256": "812b3123ff12453c752f8ab66809720e9c86eeebb7b380721a92ebf2782f67ab",
+      "archived_sha256": "7c5cff2ee39843aec17df703cb482c07b12add3ef2cdff9a5fdb9a9aff1fdc5f"
+    }
+  }
+}

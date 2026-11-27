@@ -1,0 +1,10 @@
+{
+  "job": "123816",
+  "gpu": "3",
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "catalog_sha256": "f09cc4030ff1ae20f100d240981285d2f5f719b779e6953fa0ea4b9994996063"
+}

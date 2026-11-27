@@ -1,0 +1,12 @@
+test_eight_directions_detect_legacy_failure_and_preserve_fixed_targets (test_meal_partial_reset.MealPartialResetTests.test_eight_directions_detect_legacy_failure_and_preserve_fixed_targets) ... C:\pengbo\PAIR\DexArena_Variation\DexArena-Variation-meal\tests\fixtures\package_b22_reset.py:121: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  if np.isnan(action).any():
+ok
+test_exception_cleanup_before_and_during_callbacks (test_meal_partial_reset.MealPartialResetTests.test_exception_cleanup_before_and_during_callbacks) ... ok
+test_full_reset_matches_native_behavior (test_meal_partial_reset.MealPartialResetTests.test_full_reset_matches_native_behavior) ... ok
+test_uninitialized_controller_target (test_meal_partial_reset.MealPartialResetTests.test_uninitialized_controller_target) ... ok
+test_without_appearance_and_nested_controller_dictionary (test_meal_partial_reset.MealPartialResetTests.test_without_appearance_and_nested_controller_dictionary) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.016s
+
+OK
