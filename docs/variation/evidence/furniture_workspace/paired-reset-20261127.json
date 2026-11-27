@@ -1,0 +1,799 @@
+{
+  "units": "Environment-local world coordinates in metres. Device and object root poses are [x,y,z,qw,qx,qy,qz]. Angles in public request fields are in degrees.",
+  "archive": {
+    "root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/pr43-r2-author-c17a7ecfb9e7",
+    "account": "lyt",
+    "archive_sha256": "c17a7ecfb9e76fe7d074c372f85cf0b8eb91c31ad20dd1db4a254423c81ad74b",
+    "opened_and_hashed": 213,
+    "archive_bytes": 37414623
+  },
+  "file_hash_index": "SHA256.json",
+  "execution": "Windows native CUDA on one locally serialized RTX 4070 Laptop, driver 576.88. No Slurm submission.",
+  "target_main_at_review": "00cc8e0469207afa03e49981fa65aa5cb2d144fe",
+  "runs": {
+    "verified-furniture": {
+      "tested_commit": "c801c3cbebd0e2a65c9ef995f3fa0ecf40dfee33",
+      "tested_tree": "42cbeab2bde179f1d2b3db7b851b7977b5e28662",
+      "exact_command_and_process": "verified-furniture/process.json",
+      "sdk_receipt": "verified-furniture/output/private_sdk.json",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "checker": {
+        "file": "run_task_check.py",
+        "sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb",
+        "checker": "tools/variation/check_r2_pair_readback.py",
+        "checker_sha256": "2dd55a823d5459c402adaf0db510361df3dded300af575dfa0bcafd3403db75c"
+      },
+      "elapsed_wall_seconds": 9.64,
+      "exit_code": 0,
+      "tasks": {
+        "FastenScrew": {
+          "raw": "verified-furniture/output/FastenScrew.json",
+          "task": "FurnitureAssemblyFastenScrew-Sharpa-v1",
+          "make": {
+            "position_workspace": true,
+            "num_envs": 2,
+            "sim_backend": "physx_cuda",
+            "obs_mode": "state",
+            "render_mode": null,
+            "control_mode": "pd_joint_pos",
+            "reconfiguration_freq": 0
+          },
+          "full": [
+            {
+              "seed": 717,
+              "options": {
+                "workspace_placement": {
+                  "0": "far",
+                  "1": "far"
+                }
+              },
+              "both": [
+                {
+                  "panel": [
+                    -0.10599994659423828,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.10599999874830246,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                }
+              ]
+            },
+            {
+              "seed": 717,
+              "options": {
+                "workspace_placement": {
+                  "0": "near",
+                  "1": "near"
+                }
+              },
+              "both": [
+                {
+                  "panel": [
+                    -0.15399980545043945,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.15399999916553497,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                }
+              ]
+            }
+          ],
+          "partial": [
+            {
+              "options": {
+                "env_idx": [
+                  1
+                ],
+                "workspace_placement": {
+                  "1": "far"
+                }
+              },
+              "before": [
+                {
+                  "panel": [
+                    -0.15399980545043945,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.15399999916553497,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                }
+              ],
+              "after": [
+                {
+                  "panel": [
+                    -0.15399980545043945,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.10599999874830246,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                }
+              ],
+              "max_abs_from_full_far": {
+                "panel": 0.0
+              }
+            },
+            {
+              "options": {
+                "env_idx": [
+                  0
+                ],
+                "workspace_placement": {
+                  "0": "far"
+                }
+              },
+              "before": [
+                {
+                  "panel": [
+                    -0.15399980545043945,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.10599999874830246,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                }
+              ],
+              "after": [
+                {
+                  "panel": [
+                    -0.10599994659423828,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.10599999874830246,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ]
+                }
+              ],
+              "max_abs_from_full_far": {
+                "panel": 0.0
+              }
+            }
+          ],
+          "integration_raw": "integration-furniture/output/FastenScrew.json",
+          "integration_rows_byte_equivalent_json": true
+        },
+        "InsertRail": {
+          "raw": "verified-furniture/output/InsertRail.json",
+          "task": "FurnitureAssemblyInsertRail-Sharpa-v1",
+          "make": {
+            "position_workspace": true,
+            "num_envs": 2,
+            "sim_backend": "physx_cuda",
+            "obs_mode": "state",
+            "render_mode": null,
+            "control_mode": "pd_joint_pos",
+            "reconfiguration_freq": 0
+          },
+          "full": [
+            {
+              "seed": 717,
+              "options": {
+                "workspace_placement": {
+                  "0": "far",
+                  "1": "far"
+                }
+              },
+              "both": [
+                {
+                  "panel": [
+                    -0.13000011444091797,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.13000011444091797,
+                    -0.3540000915527344,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.12999999523162842,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.12999999523162842,
+                    -0.3540000915527344,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ]
+            },
+            {
+              "seed": 717,
+              "options": {
+                "workspace_placement": {
+                  "0": "near",
+                  "1": "near"
+                }
+              },
+              "both": [
+                {
+                  "panel": [
+                    -0.13000011444091797,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.13000011444091797,
+                    -0.1919999122619629,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.12999999523162842,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.12999999523162842,
+                    -0.1919999122619629,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ]
+            }
+          ],
+          "partial": [
+            {
+              "options": {
+                "env_idx": [
+                  1
+                ],
+                "workspace_placement": {
+                  "1": "far"
+                }
+              },
+              "before": [
+                {
+                  "panel": [
+                    -0.13000011444091797,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.13000011444091797,
+                    -0.1919999122619629,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.12999999523162842,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.12999999523162842,
+                    -0.1919999122619629,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "after": [
+                {
+                  "panel": [
+                    -0.13000011444091797,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.13000011444091797,
+                    -0.1919999122619629,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.12999999523162842,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.12999999523162842,
+                    -0.3540000915527344,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "max_abs_from_full_far": {
+                "panel": 0.0,
+                "rail": 0.0
+              }
+            },
+            {
+              "options": {
+                "env_idx": [
+                  0
+                ],
+                "workspace_placement": {
+                  "0": "far"
+                }
+              },
+              "before": [
+                {
+                  "panel": [
+                    -0.13000011444091797,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.13000011444091797,
+                    -0.1919999122619629,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.12999999523162842,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.12999999523162842,
+                    -0.3540000915527344,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "after": [
+                {
+                  "panel": [
+                    -0.13000011444091797,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.13000011444091797,
+                    -0.3540000915527344,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "panel": [
+                    -0.12999999523162842,
+                    -0.059999942779541016,
+                    0.008999999612569809,
+                    1.0,
+                    0.0,
+                    -5.594515128937161e-11,
+                    0.0
+                  ],
+                  "rail": [
+                    -0.12999999523162842,
+                    -0.3540000915527344,
+                    0.006000000052154064,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "max_abs_from_full_far": {
+                "panel": 0.0,
+                "rail": 0.0
+              }
+            }
+          ],
+          "integration_raw": "integration-furniture/output/InsertRail.json",
+          "integration_rows_byte_equivalent_json": true
+        },
+        "LayFlatPanel": {
+          "raw": "verified-furniture/output/LayFlatPanel.json",
+          "task": "FurnitureAssemblyLayFlatPanel-Sharpa-v1",
+          "make": {
+            "position_workspace": true,
+            "num_envs": 2,
+            "sim_backend": "physx_cuda",
+            "obs_mode": "state",
+            "render_mode": null,
+            "control_mode": "pd_joint_pos",
+            "reconfiguration_freq": 0
+          },
+          "full": [
+            {
+              "seed": 717,
+              "options": {
+                "workspace_placement": {
+                  "0": "far",
+                  "1": "far"
+                }
+              },
+              "both": [
+                {
+                  "rack": [
+                    -0.06199979782104492,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "rack": [
+                    -0.06199999898672104,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ]
+            },
+            {
+              "seed": 717,
+              "options": {
+                "workspace_placement": {
+                  "0": "near",
+                  "1": "near"
+                }
+              },
+              "both": [
+                {
+                  "rack": [
+                    -0.194000244140625,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "rack": [
+                    -0.1940000057220459,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ]
+            }
+          ],
+          "partial": [
+            {
+              "options": {
+                "env_idx": [
+                  1
+                ],
+                "workspace_placement": {
+                  "1": "far"
+                }
+              },
+              "before": [
+                {
+                  "rack": [
+                    -0.194000244140625,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "rack": [
+                    -0.1940000057220459,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "after": [
+                {
+                  "rack": [
+                    -0.194000244140625,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "rack": [
+                    -0.06199999898672104,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "max_abs_from_full_far": {
+                "rack": 0.0
+              }
+            },
+            {
+              "options": {
+                "env_idx": [
+                  0
+                ],
+                "workspace_placement": {
+                  "0": "far"
+                }
+              },
+              "before": [
+                {
+                  "rack": [
+                    -0.194000244140625,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "rack": [
+                    -0.06199999898672104,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "after": [
+                {
+                  "rack": [
+                    -0.06199979782104492,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "rack": [
+                    -0.06199999898672104,
+                    0.1960000991821289,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              ],
+              "max_abs_from_full_far": {
+                "rack": 0.0
+              }
+            }
+          ],
+          "integration_raw": "integration-furniture/output/LayFlatPanel.json",
+          "integration_rows_byte_equivalent_json": true
+        }
+      },
+      "private_asset_sha256_checked_at_packaging": {
+        "tasks/assets/task_object_meshes/furniture/generated/groove_mouth_wedge_0.obj": "d4858cbd373db0467cd75217ff52ed5c51b31e6dd49d3592601819121b69939e",
+        "tasks/assets/task_object_meshes/furniture/generated/groove_mouth_wedge_1.obj": "941a36d5c6a69e009f1ec5d7ff9f3464f42ff1869b2653f2f47b7e553d2b9eba"
+      },
+      "combined_run": {
+        "tested_commit": "c76048625ac46ce53d92686545d6fbeeef486640",
+        "tree": "fcf354fbefc99dc682f2f7cd140b168a4e515e3b",
+        "parents": [
+          "00cc8e0469207afa03e49981fa65aa5cb2d144fe",
+          "c801c3cbebd0e2a65c9ef995f3fa0ecf40dfee33"
+        ],
+        "process": "integration-furniture/process.json",
+        "private_sdk": "integration-furniture/output/private_sdk.json",
+        "exit_code": 0
+      }
+    }
+  },
+  "cell_centres_and_named_presets_checked": {
+    "LayFlatPanel": [
+      261,
+      3
+    ],
+    "InsertRail": [
+      5459,
+      3
+    ],
+    "FastenScrew": [
+      79,
+      3
+    ]
+  },
+  "integration_and_unit_archive": {
+    "root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/pr51-paired-0a960d086843",
+    "account": "lyt",
+    "archive_sha256": "0a960d08684313d272565fc1aaafdfd62e284cfed71bc5e528bfd75e83882271",
+    "opened_and_hashed": 32
+  }
+}
