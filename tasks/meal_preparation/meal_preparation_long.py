@@ -89,6 +89,7 @@ from tasks.config.workspace_rig import (
 )
 from tasks.config.mass_properties import set_mass as set_realizable_mass
 from tasks.config.mass_properties import _pose_matrix, _shape_points
+from tasks.robots.franka_joint_impedance_controller import FrankaJointImpedanceController
 from tasks.robots.panda_sharpa_hand_right import PandaSharpaHandRight
 from tasks.robots.panda_wuji_hand_right import PandaWujiHandRight
 from tasks.robots.panda_sharpa_hand_right_mobile_base import (
@@ -1608,6 +1609,44 @@ class MealPreparationBase(BaseEnv):
             reconfiguration_freq=reconfiguration_freq,
             **kwargs,
         )
+
+    def reset(self, seed=None, options=None):
+        selected = (options or {}).get("env_idx")
+        if selected is None or len(selected) == self.num_envs:
+            return super().reset(seed=seed, options=options)
+        keep = torch.ones(self.num_envs, dtype=torch.bool, device=self.device)
+        keep[selected] = False
+        saved = []
+
+        def save(controller):
+            if isinstance(controller, FrankaJointImpedanceController):
+                target = getattr(controller, "_target_qpos", None)
+                if target is not None:
+                    saved.append((controller, target[keep].clone()))
+            children = controller if isinstance(controller, dict) else getattr(controller, "controllers", {})
+            for child in children.values():
+                save(child)
+        save(self.agent.controller)
+
+        def restore():
+            for controller, target in saved:
+                controller._target_qpos[keep] = target
+
+        # ManiSkill b22 resets controllers with an all-row mask after episode
+        # initialization. Restore before get_info invokes evaluate, so both
+        # evaluate and get_obs see the unselected rows' active arm targets.
+        self._meal_partial_reset_restore = restore
+        try:
+            return super().reset(seed=seed, options=options)
+        finally:
+            restore()
+            del self._meal_partial_reset_restore
+
+    def get_info(self):
+        restore = getattr(self, "_meal_partial_reset_restore", None)
+        if restore is not None:
+            restore()
+        return super().get_info()
 
     @property
     def _default_sim_config(self):
