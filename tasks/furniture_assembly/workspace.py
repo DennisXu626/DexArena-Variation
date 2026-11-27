@@ -4,6 +4,7 @@ from functools import lru_cache
 import json
 import math
 from numbers import Integral, Real
+from sys import float_info
 from pathlib import Path
 
 import numpy as np
@@ -67,7 +68,7 @@ def fixed_layout(kind, item):
     for role in roles:
         xy, yaw = item[role + "_xy_m"], item[role + "_yaw_deg"]
         if not isinstance(xy, (tuple, list)) or len(xy) != 2 or any(
-            isinstance(a, bool) or not isinstance(a, Real) or not math.isfinite(a) for a in (*xy, yaw)
+            isinstance(a, bool) or not isinstance(a, Real) or not -float_info.max <= a <= float_info.max for a in (*xy, yaw)
         ):
             raise ValueError("workspace_placement requires finite numeric coordinates and angles")
     angles = tuple(item[role + "_yaw_deg"] for role in roles)

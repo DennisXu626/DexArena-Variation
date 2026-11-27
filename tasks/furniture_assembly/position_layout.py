@@ -3,6 +3,7 @@
 from collections.abc import Mapping
 import math
 from numbers import Integral, Real
+from sys import float_info
 
 
 # World XY offsets from the task's native centre, in metres. Yaw is absolute.
@@ -17,7 +18,7 @@ YAW_DEGREES = {"rack": (-10, 0, 10), "panel": (-7, 0, 7), "rail": (-10, 0, 10)}
 def _xy(value, center, offsets):
     if (not isinstance(value, (tuple, list)) or len(value) != 2
             or any(isinstance(axis, bool) or not isinstance(axis, Real)
-                   or not math.isfinite(axis) for axis in value)):
+                   or not -float_info.max <= axis <= float_info.max for axis in value)):
         raise ValueError("expected two finite coordinates in metres")
     if any(not lo - 1e-9 <= axis - origin <= hi + 1e-9
            for axis, origin, (lo, hi) in zip(value, center, offsets)):
