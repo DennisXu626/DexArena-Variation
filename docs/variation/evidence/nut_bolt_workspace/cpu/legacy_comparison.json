@@ -1,0 +1,872 @@
+{
+  "checked_commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+  "original_sha256": "bdf7bb396cd14af03da8c3efb3f800f9611e1d013dc6f5621bcfb1ada1eab8a1",
+  "rerun_sha256": "9626e80554f03c30f4158045dd2860c9c6496b697a7672afb481beb5dbec68d1",
+  "results": {
+    "PickBolt": {
+      "rows": 15,
+      "legal": 13,
+      "rejected": 2,
+      "exact_fields": [
+        "readback",
+        "support",
+        "ik",
+        "rejected_reason",
+        "rejection_state_diffs"
+      ]
+    },
+    "SeatNut": {
+      "rows": 21,
+      "legal": 19,
+      "rejected": 2,
+      "exact_fields": [
+        "readback",
+        "support",
+        "ik",
+        "rejected_reason",
+        "rejection_state_diffs"
+      ]
+    },
+    "TurnNut": {
+      "rows": 14,
+      "legal": 12,
+      "rejected": 2,
+      "exact_fields": [
+        "readback",
+        "support",
+        "ik",
+        "rejected_reason",
+        "rejection_state_diffs"
+      ]
+    }
+  },
+  "appearance": {
+    "PickBolt": {
+      "edge_pairs": [
+        {
+          "yaw": 30,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.31,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.31001,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 30,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.19,
+              -0.22
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.18999000000000002,
+              -0.22
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 30,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.285
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.28501
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 30,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.145
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.14499
+            ],
+            "bolt_spawn_yaw_deg": 30
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 60,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.31,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.31001,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 60,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.19,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.18999000000000002,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 60,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.285
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.28501
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 60,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.145
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.14499
+            ],
+            "bolt_spawn_yaw_deg": 60
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 75,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.31,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.31001,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 75,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.19,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.18999000000000002,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 75,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.285
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.28501
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 75,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.145
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.14499
+            ],
+            "bolt_spawn_yaw_deg": 75
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 90,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.31,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.31001,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 90,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.19,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.18999000000000002,
+              -0.28
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 90,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.285
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.28501
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "error": "outside PickBolt workspace"
+        },
+        {
+          "yaw": 90,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.145
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "outside": {
+            "bolt_spawn_xy_m": [
+              -0.305,
+              -0.14499
+            ],
+            "bolt_spawn_yaw_deg": 90
+          },
+          "error": "outside PickBolt workspace"
+        }
+      ],
+      "layout_sequences_identical": true,
+      "seed": 637,
+      "fixed": {
+        "env_idx": 0,
+        "episode_index": 3,
+        "scheme_id": "original",
+        "catalog_version": "nut-bolt-appearance-v2"
+      },
+      "next": {
+        "env_idx": 0,
+        "episode_index": 4,
+        "scheme_id": "variant_1",
+        "catalog_version": "nut-bolt-appearance-v2"
+      },
+      "failed_appearance_preserved_layout": true
+    },
+    "SeatNut": {
+      "edge_pairs": [
+        {
+          "yaw": 0,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.18,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.16499999999999998,
+              -0.28500000000000003
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.18001,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.16501,
+              -0.28500000000000003
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.06,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.045,
+              -0.28500000000000003
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.05999,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.04499,
+              -0.28500000000000003
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.135,
+              -0.06
+            ],
+            "table_nut_xy_m": [
+              -0.12000000000000001,
+              -0.33
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.135,
+              -0.06001
+            ],
+            "table_nut_xy_m": [
+              -0.12000000000000001,
+              -0.33001
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.135,
+              0.06
+            ],
+            "table_nut_xy_m": [
+              -0.12000000000000001,
+              -0.21000000000000002
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.135,
+              0.06001
+            ],
+            "table_nut_xy_m": [
+              -0.12000000000000001,
+              -0.20999
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 2,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.165,
+              -0.28500000000000003
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.16501000000000002,
+              -0.28500000000000003
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 2,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.07500000000000001,
+              -0.28500000000000003
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.07499,
+              -0.28500000000000003
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 3,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.15000000000000002,
+              -0.3
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.15000000000000002,
+              -0.30001
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 3,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.15000000000000002,
+              -0.18
+            ]
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              -0.015
+            ],
+            "table_nut_xy_m": [
+              -0.15000000000000002,
+              -0.17998999999999998
+            ]
+          },
+          "error": "outside SeatNut workspace"
+        }
+      ],
+      "layout_sequences_identical": true,
+      "seed": 637,
+      "fixed": {
+        "env_idx": 0,
+        "episode_index": 3,
+        "scheme_id": "original",
+        "catalog_version": "nut-bolt-appearance-v2"
+      },
+      "next": {
+        "env_idx": 0,
+        "episode_index": 4,
+        "scheme_id": "variant_1",
+        "catalog_version": "nut-bolt-appearance-v2"
+      },
+      "failed_appearance_preserved_layout": true
+    },
+    "TurnNut": {
+      "edge_pairs": [
+        {
+          "yaw": -20,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.18,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.18001,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": -20,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.11,
+              -0.055
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.10998999999999999,
+              -0.055
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": -20,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              -0.06
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              -0.06001
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": -20,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.175,
+              0.01
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.175,
+              0.01001
+            ],
+            "threaded_nut_relative_yaw_deg": -20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.18,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.18001,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.08,
+              -0.055
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.07998999999999999,
+              -0.055
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              -0.06
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              -0.06001
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 0,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              0.05
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.165,
+              0.05001
+            ],
+            "threaded_nut_relative_yaw_deg": 0
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 20,
+          "axis": 0,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.18,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.18001,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 20,
+          "axis": 0,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.06,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.05999,
+              -0.035
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 20,
+          "axis": 1,
+          "sign": -1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              -0.06
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              -0.06001
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "error": "outside TurnNut workspace"
+        },
+        {
+          "yaw": 20,
+          "axis": 1,
+          "sign": 1,
+          "edge": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              0.06
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "outside": {
+            "upright_bolt_xy_m": [
+              -0.155,
+              0.06001
+            ],
+            "threaded_nut_relative_yaw_deg": 20
+          },
+          "error": "outside TurnNut workspace"
+        }
+      ],
+      "layout_sequences_identical": true,
+      "seed": 637,
+      "fixed": {
+        "env_idx": 0,
+        "episode_index": 3,
+        "scheme_id": "original",
+        "catalog_version": "nut-bolt-appearance-v2"
+      },
+      "next": {
+        "env_idx": 0,
+        "episode_index": 4,
+        "scheme_id": "variant_1",
+        "catalog_version": "nut-bolt-appearance-v2"
+      },
+      "failed_appearance_preserved_layout": true
+    }
+  },
+  "check_commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+  "checker_sha256": "6c774e28baa5a040bb3ab65a2db331d2827a210e107fa6215b00ebe3afaf1e03"
+}

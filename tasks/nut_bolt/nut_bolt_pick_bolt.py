@@ -41,13 +41,15 @@ class NutBoltPickBoltEnv(NutBoltLongEnv):
     has_platform = False
     has_nut = False
     show_bolt_place_region = True
+    position_layout_task = "PickBolt"
 
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         with torch.device(self.device):
             b = len(env_idx)
+            layout = self._requested_position_layout(env_idx.tolist(), options)
             self._reset_episode_buffers(env_idx, "bolt_pick_place")
             self._initialize_workspace(env_idx)
-            self._place_bolt(env_idx, b, already_placed=False)
+            self._place_bolt(env_idx, b, already_placed=False, layout=layout)
             # Reconcile the kinematic hold with the lock masks this reset just
             # set (see NutBoltLongEnv._refresh_hold_state).
             self._refresh_hold_state()

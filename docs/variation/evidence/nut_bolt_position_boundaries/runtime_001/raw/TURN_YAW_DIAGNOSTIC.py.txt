@@ -1,0 +1,44 @@
+"""Capture exact CUDA representations at the independent revolute reset."""
+
+import argparse
+import json
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from check_nut_bolt_positions import GPU_MEMORY, gym, sapien, read_pose, state
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--output", type=Path, required=True)
+parser.add_argument("--physx-gpu-dir", type=Path, required=True)
+args = parser.parse_args()
+args.output.mkdir(parents=True)
+if not sapien.physx.is_gpu_enabled():
+    sapien.physx._enable_gpu()
+env = gym.make("NutBoltTurnNut-Sharpa-v1", num_envs=2, sim_backend="physx_cuda",
+               obs_mode="state", control_mode="pd_joint_pos", render_mode=None,
+               reconfiguration_freq=0, enhanced_determinism=True, sim_config={"gpu_memory_config": GPU_MEMORY})
+e = env.unwrapped
+rows = []
+try:
+    for index in (0, 1):
+        for yaw in (-20, 0, 20):
+            env.reset(seed=819)
+            before = state(e, 1-index)
+            _, info = env.reset(options={"env_idx": [index], "position_layout": {
+                str(index): {"threaded_nut_relative_yaw_deg": yaw}
+            }})
+            row = dict(env_idx=index, requested_angle_deg=yaw,
+                       qpos_rad=float(e.nut_revolute.get_qpos()[index, 0]),
+                       qvel_rad_s=float(e.nut_revolute.get_qvel()[index, 0]),
+                       pose=read_pose(e.nut_revolute.links_map["threaded_nut"], index).tolist(),
+                       last_yaw_rad=float(e._nut_yaw_prev[index]),
+                       accumulated_rotation_rad=float(e._cum_rotation[index]),
+                       latest_delta_rad=float(info["rotation_delta"][index]),
+                       same_other_env=state(e, 1-index) == before)
+            rows.append(row)
+            print(json.dumps(row), flush=True)
+finally:
+    env.close()
+(args.output / "YAW_DIAGNOSIS.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")

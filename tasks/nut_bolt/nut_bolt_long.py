@@ -78,6 +78,7 @@ from tasks.config.guidance_markers import pop_guidance_marker_flag
 from tasks.config.sim_profiles import make_sim_config
 from tasks.nut_bolt.reset_scope import NutBoltResetScopeMixin, is_full_reset
 from tasks.nut_bolt.appearance import NutBoltAppearance, validate_per_env
+from tasks.nut_bolt.position_layout import BOLT_SPAWN_AXIAL_SPIN_DEG
 from tasks.nut_bolt.gpu_hold import hold_pose as gpu_hold_pose, refresh_gpu_hold_state, sync_nut_swap_gpu
 
 
@@ -295,6 +296,7 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
         num_envs=1,
         reconfiguration_freq=None,
         nut_bolt_appearance=None,
+        position_workspace=False,
         **kwargs,
     ):
         if "sim_config" in kwargs and kwargs["sim_config"] is not None:
@@ -308,6 +310,17 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                     'Screwing freezes the Plant configuration; only positive integer '
                     'GPU memory capacities may be overridden'
                 )
+        if not isinstance(position_workspace, bool):
+            raise ValueError("position_workspace must be a boolean")
+        self._nut_workspace = None
+        if position_workspace:
+            from tasks.nut_bolt.workspace import NutWorkspace
+
+            stage = getattr(self, "position_layout_task", None)
+            required = SCREWING_DEFAULT_ROBOT_UID_LEFT if stage == "PickBolt" else SCREWING_DEFAULT_ROBOT_UID_RIGHT
+            if stage not in ("PickBolt", "SeatNut", "TurnNut") or robot_uids != required:
+                raise ValueError("position_workspace requires the registered Nut & Bolt short-task Sharpa")
+            self._nut_workspace = NutWorkspace(stage, num_envs)
         if nut_bolt_appearance is not None:
             validate_per_env(nut_bolt_appearance, num_envs)
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
@@ -997,12 +1010,17 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
             yaw[invalid] = torch.rand(count) * 2 * np.pi - np.pi
         raise RuntimeError("Unable to sample a valid placed-bolt pose")
 
-    def _place_bolt(self, env_idx: torch.Tensor, b: int, already_placed=False):
+    def _place_bolt(self, env_idx: torch.Tensor, b: int, already_placed=False, layout=None):
         with torch.device(self.device):
             xyz = torch.zeros((b, 3))
             if already_placed:
                 xyz[:, :2], yaw = self._sample_placed_bolt_xy_yaw(b)
                 xyz[:, 2] = self.bolt_height / 2 + 1e-3
+                if layout is not None:
+                    xyz[:, :2] = torch.tensor(layout["upright_bolt_xy_m"])
+                    # Explicit handoffs use the native snapped, supported lock pose.
+                    xyz[:, 2] = self.bolt_height / 2
+                    yaw.zero_()
                 quat = quaternion_about_z(yaw)
             else:
                 # Sample the bolt in a disc and lay it down at a large random
@@ -1013,18 +1031,22 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                 )
                 tilt_min, tilt_max = self.bolt_spawn_tilt_range
                 tilt = tilt_min + self._reset_random((b,)) * (tilt_max - tilt_min)
+                yaw = self._reset_random((b,)) * 2 * np.pi - np.pi
+                spin = self._reset_random((b,)) * 2 * np.pi - np.pi
+                if layout is not None:
+                    xyz[:, :2] = torch.tensor(layout["bolt_spawn_xy_m"])
+                    tilt.fill_(tilt_max)
+                    yaw = torch.tensor(layout["bolt_spawn_yaw_deg"])
+                    # Start with a flat head face downward so the bolt does not roll off a vertex.
+                    spin.fill_(np.deg2rad(BOLT_SPAWN_AXIAL_SPIN_DEG))
                 tilt_q = axis_angle_to_quaternion(
                     torch.stack(
                         [torch.zeros_like(tilt), tilt, torch.zeros_like(tilt)],
                         dim=-1,
                     )
                 )
-                yaw_q = quaternion_about_z(
-                    self._reset_random((b,)) * 2 * np.pi - np.pi
-                )
-                spin_q = quaternion_about_z(
-                    self._reset_random((b,)) * 2 * np.pi - np.pi
-                )
+                yaw_q = quaternion_about_z(yaw)
+                spin_q = quaternion_about_z(spin)
                 quat = quaternion_multiply(
                     quaternion_multiply(yaw_q, tilt_q), spin_q
                 )
@@ -1071,7 +1093,7 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
                 self._stage_bolt_placed[env_idx] = True
                 self._bolt_place_hold_count[env_idx] = self.bolt_place_hold_steps
 
-    def _place_nut_on_table(self, env_idx: torch.Tensor, b: int):
+    def _place_nut_on_table(self, env_idx: torch.Tensor, b: int, layout=None):
         with torch.device(self.device):
             xyz = torch.zeros((b, 3))
             xyz[:, :2] = (
@@ -1080,15 +1102,20 @@ class NutBoltLongEnv(NutBoltResetScopeMixin, BaseEnv):
             )
             xyz[:, 2] = self.nut_half_height + 1e-3
             yaw = self._reset_random((b,)) * 2 * np.pi - np.pi
+            if layout is not None:
+                xyz[:, :2] = torch.tensor(layout["table_nut_xy_m"])
+                yaw.zero_()
             self._set_nut_pose(xyz, quaternion_about_z(yaw))
             self._park_threaded_nut(env_idx, b)
 
-    def _place_nut_on_platform(self, env_idx: torch.Tensor, b: int):
+    def _place_nut_on_platform(self, env_idx: torch.Tensor, b: int, layout=None):
         """Start from a valid output distribution of the nut-placement stage."""
         with torch.device(self.device):
             lock_pose = self._bolt_lock_pose[env_idx]
             bolt_yaw = yaw_about_z(lock_pose[:, 3:])
             yaw = bolt_yaw + self._reset_random((b,)) * 2 * np.pi - np.pi
+            if layout is not None:
+                yaw = bolt_yaw + torch.tensor(layout["threaded_nut_relative_yaw_deg"])
             quat = quaternion_about_z(yaw)
             self._set_threaded_nut_state(env_idx, lock_pose, quat)
             self._stage_nut_placed[env_idx] = True

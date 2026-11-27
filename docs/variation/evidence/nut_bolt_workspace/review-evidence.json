@@ -1,0 +1,433 @@
+{
+  "provenance": "2026-11-27 offline cross-check. SHA256 values below identify stored file bytes; extracted rows keep the field names of the original record.",
+  "prior_head": "ca34485c6dade761fa0abf3e40196c88353faa28",
+  "windows_receipts": [
+    {
+      "name": "nut-cuda-v1",
+      "source_receipt_sha256": "c078f02e79f00f92af968285efe811aa2c58157e8a96d8e688419761624fd739",
+      "process_commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+      "command": [
+        "<PYTHON_ENV>\\python.exe",
+        "-B",
+        "tools/variation/sapien_sdk/native_lock/tools/run_task_check.py",
+        "--repo-root",
+        "<WORKSPACE>\\family-work\\nut-bolt-position",
+        "--checker",
+        "tools/variation/nut_bolt_workspace/check.py",
+        "--sapien-root",
+        "<WORKSPACE>\\.coordination\\nut-sdk-investigation\\sdk-visibility-v1\\runtime",
+        "--artifact",
+        "<WORKSPACE>\\.coordination\\nut-sdk-investigation\\sdk-visibility-v1\\artifact.json",
+        "--physx-gpu-dir",
+        "<WORKSPACE>\\.coordination\\nut-sdk-investigation\\sdk-visibility-v1\\physx-runtime",
+        "--output",
+        "<WORKSPACE>\\.coordination\\position-workspace-20261125\\nut-cuda-v1\\output",
+        "--sim-backend",
+        "physx_cuda",
+        "--artifact-sha256",
+        "d6dc0cebfb1a2f7adef54909de8cd37c054281a94d09902092d225c89be083d0"
+      ],
+      "exit_code": 0,
+      "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB"
+    }
+  ],
+  "server_account": "lyt",
+  "server_root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/position-workspace-20261125.2itE7q",
+  "server_read_method": "opened each listed file on lyg0295 as lyt with sha256sum; compared with archived bytes",
+  "server_job_submissions": 1,
+  "slurm": {
+    "142368": {
+      "archived_dashboard_row": [
+        "142368",
+        "lyt",
+        "position-nut-pip",
+        "COMPLETED",
+        "lyg0295",
+        "0",
+        "4",
+        "00:10:45",
+        "2026-11-25 18:03:53",
+        "2026-11-25 18:41:34",
+        "2026-11-25 18:52:19"
+      ],
+      "state": "COMPLETED",
+      "elapsed_seconds": 645,
+      "allocation_seconds_basis": "elapsed seconds x one assigned GPU; shared jobs counted once, across both families",
+      "exit_code": null,
+      "exit_code_note": "archived dashboard did not record raw Slurm exit codes; status.txt records checker outcomes when present"
+    }
+  },
+  "server_original_sha256": {
+    "capture-142368/binding.txt": "f77a6031f7f9ab7be310074ab38f0299d2260ae80a3ad05ea64b2c45626b3a52",
+    "capture-142368/gpu.csv": "82f37887d5a9e26fc44b3cf689598c44adf1dc826ca9b07bedef3e2f576f6288",
+    "capture-142368/nut-sdk.json": "73db97c73f77bfa72b2c4e3aeaef5abc9894988206ad9c739b3c4c4ba66b0bb7",
+    "capture-142368/nut/PickBolt.csv": "4cbb1f12401dbb79739f7613badacc173a577c570fd72547e04188c42ec2cec8",
+    "capture-142368/nut/PickBolt.json": "89c62f11af7b6993a057014295b58f3f238412b10d34095ed7039928c6ae6c63",
+    "capture-142368/nut/SeatNut.csv": "3aeab03fafe883f6b800fbf3b478b96e3cd9ea12a070daf325c0033fc928b517",
+    "capture-142368/nut/SeatNut.json": "3e106616b0f44792339350bda45b83fbce54db534d77f7ce1fe8580a91e08efc",
+    "capture-142368/nut/TurnNut.csv": "0c7d2833f6f937c683f416c6be6893836d7af3f0511d211fa04af02176e6f36f",
+    "capture-142368/nut/TurnNut.json": "e8b1e41e0cd2c72688ca017d5d38f322c610ea19459e7b890d9fad8a31ed081a",
+    "capture-142368/nut/manifest.json": "dd0d53e86cd1de2de08663438277969e5414e0d1449927aeaa13e3f411716ef1",
+    "capture-142368/status.txt": "fe145b201d294093e70b64d3eb4d2cec4d9b63d3d73588e9dc977c36238c2946"
+  },
+  "server_input_and_private_asset_identity": {
+    "commit": "a154fa33e5da8a963ee7f2b1835b76cfe96fc9ff",
+    "private_asset_count": 1,
+    "private_asset_sha256": {
+      "tasks/assets/task_object_meshes/screwing/bolt_hex_head.obj": "2f9940d5d657d2b3af5d14ad7f77db0801808a9060f01c18425afe05a3513ac5"
+    },
+    "tracked_digest": "27e199b0df74f43c4c9aa05a9eab8f211c4255333982107fe4b27a151da870e6",
+    "tracked_file_count": 508,
+    "tree": "ecce11f837d9046a5cbc1dd46ee80b9e15bf9ff0"
+  },
+  "github_evidence_sha256": {
+    "cpu/PickBolt.csv": "100833a9437f49dbcd29c0193a3d4b7024b8fcb43ae648869d2f59e87b2761d0",
+    "cpu/PickBolt.json": "63a73e276639380b3c923a41d37a7f757f727dc2e541601082c9b7e2fac42bde",
+    "cpu/SeatNut.csv": "339a3b7db3ad78ba2f6ab8d85b1fe7db176e3649f1fb350b912b42d132968076",
+    "cpu/SeatNut.json": "4230544e6ab907b8c531a00a26ec4befdd358ecf19e9a5b45509a27607917410",
+    "cpu/TurnNut.csv": "f587b69aa7fa2614f4d12cb246011f817a9b45b1d5284333d077ddc5b2181deb",
+    "cpu/TurnNut.json": "ab82a76d0bb2734442ca2706bafb3bf0384bbf1506b4e86e2ea6842adcadaeed",
+    "cpu/legacy_comparison.json": "0137f56e6c9459bfbe61e177216356d63f8dd82f01c4b837597dccecb59c5889",
+    "cpu/manifest.json": "0301fa46e293244ea39d22d2e309153d440c3e8dcacb9e127078a5225da4443f",
+    "cuda/PickBolt.csv": "295f20bf19ac6436a0b7e39b08a4fe5f8058dd8211b4c2f2b19acca51b9f629f",
+    "cuda/PickBolt.json": "f58cce6a1f5e3ed1d24cc34724834242ab81dd36f7096628207f4df340b3f6d7",
+    "cuda/SeatNut.csv": "ad0040e129a8b547e49dd2b8d6b909603246446c4075d37d8c22d912ad832420",
+    "cuda/SeatNut.json": "8bb98ced31fe43a77e53736c8c03cdc1bf778b95353549bc1f64f4d232eec728",
+    "cuda/TurnNut.csv": "07448b19709aa2302d7d3302cd92b23054402dd3a50abdf3bc0b213829481f8e",
+    "cuda/TurnNut.json": "6f3baf3e6673f9d57a6157291929bf8bf5e87848d7473adfa141242f49194183",
+    "cuda/manifest.json": "546fcb940d00b8fd6d18c0553344d7f862166abfa212bc16de8e458a32fcd554",
+    "cuda/nut-cuda-v1-receipt.json": "2f81295f3814ed8f7b5472ef254bf279f72d4abe298a30cbc6d327d46e2b6451",
+    "linux_cuda/PickBolt.csv": "5a172a290d8b311ec6138e273679bee0f75becdd8b9de47965d71df0b3b28f77",
+    "linux_cuda/PickBolt.json": "89c62f11af7b6993a057014295b58f3f238412b10d34095ed7039928c6ae6c63",
+    "linux_cuda/SeatNut.csv": "acfae0eea2602d69a93a6cf316228f4c31a18b9d29b029b22f77255de28175d6",
+    "linux_cuda/SeatNut.json": "3e106616b0f44792339350bda45b83fbce54db534d77f7ce1fe8580a91e08efc",
+    "linux_cuda/TurnNut.csv": "578b8ab7a5f5e9ad4b212e164fbda7764cfde492b262d485d038f8e79a22daf6",
+    "linux_cuda/TurnNut.json": "e8b1e41e0cd2c72688ca017d5d38f322c610ea19459e7b890d9fad8a31ed081a",
+    "linux_cuda/manifest.json": "dd0d53e86cd1de2de08663438277969e5414e0d1449927aeaa13e3f411716ef1",
+    "linux_cuda/receipt.json": "ecc5852c363c1b8b86095fc4f41a5d2a4888ee51839fea97b0d7d9fde2f72315"
+  },
+  "windows_selected_examples": [
+    {
+      "task": "NutBoltPickBolt-Sharpa-v1",
+      "file": "cuda/PickBolt.csv",
+      "id": "near",
+      "seed": 931,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "enhanced_determinism": true,
+          "sim_config": {
+            "gpu_memory_config": {
+              "max_rigid_contact_count": 131072,
+              "max_rigid_patch_count": 65536,
+              "found_lost_pairs_capacity": 1048576
+            }
+          },
+          "position_workspace": true
+        },
+        "reset": {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "near"
+          }
+        },
+        "layout": {
+          "bolt_spawn_xy_m": [
+            -0.305,
+            -0.28
+          ],
+          "bolt_spawn_yaw_deg": 60
+        },
+        "actual_object_pose": [
+          -0.3050000071525574,
+          -0.2799999713897705,
+          0.021784603595733643,
+          0.4999999701976776,
+          -0.1830126941204071,
+          0.6830127835273743,
+          0.4999999701976776
+        ],
+        "isolation": true
+      }
+    },
+    {
+      "task": "NutBoltPickBolt-Sharpa-v1",
+      "file": "cuda/PickBolt.csv",
+      "id": "far",
+      "seed": 932,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "enhanced_determinism": true,
+          "sim_config": {
+            "gpu_memory_config": {
+              "max_rigid_contact_count": 131072,
+              "max_rigid_patch_count": 65536,
+              "found_lost_pairs_capacity": 1048576
+            }
+          },
+          "position_workspace": true
+        },
+        "reset": {
+          "env_idx": [
+            0
+          ],
+          "workspace_placement": {
+            "0": "far"
+          }
+        },
+        "layout": {
+          "bolt_spawn_xy_m": [
+            -0.195,
+            -0.28
+          ],
+          "bolt_spawn_yaw_deg": 60
+        },
+        "actual_object_pose": [
+          -0.19499993324279785,
+          -0.2799999713897705,
+          0.021784603595733643,
+          0.4999999701976776,
+          -0.1830126941204071,
+          0.6830127835273743,
+          0.4999999701976776
+        ],
+        "isolation": true
+      }
+    },
+    {
+      "task": "NutBoltSeatNut-Sharpa-v1",
+      "file": "cuda/SeatNut.csv",
+      "id": "near",
+      "seed": 931,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "enhanced_determinism": true,
+          "sim_config": {
+            "gpu_memory_config": {
+              "max_rigid_contact_count": 131072,
+              "max_rigid_patch_count": 65536,
+              "found_lost_pairs_capacity": 1048576
+            }
+          },
+          "position_workspace": true
+        },
+        "reset": {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "near"
+          }
+        },
+        "layout": {
+          "upright_bolt_xy_m": [
+            -0.165,
+            -0.015
+          ],
+          "table_nut_xy_m": [
+            -0.15000000000000002,
+            -0.195
+          ]
+        },
+        "actual_object_pose": [
+          -0.15000000596046448,
+          -0.19499993324279785,
+          0.008999999612569809,
+          1.0000001192092896,
+          0.0,
+          0.0,
+          1.2278084327022043e-08
+        ],
+        "isolation": true
+      }
+    },
+    {
+      "task": "NutBoltSeatNut-Sharpa-v1",
+      "file": "cuda/SeatNut.csv",
+      "id": "far",
+      "seed": 932,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "enhanced_determinism": true,
+          "sim_config": {
+            "gpu_memory_config": {
+              "max_rigid_contact_count": 131072,
+              "max_rigid_patch_count": 65536,
+              "found_lost_pairs_capacity": 1048576
+            }
+          },
+          "position_workspace": true
+        },
+        "reset": {
+          "env_idx": [
+            0
+          ],
+          "workspace_placement": {
+            "0": "far"
+          }
+        },
+        "layout": {
+          "upright_bolt_xy_m": [
+            -0.165,
+            -0.015
+          ],
+          "table_nut_xy_m": [
+            -0.09000000000000001,
+            -0.28500000000000003
+          ]
+        },
+        "actual_object_pose": [
+          -0.08999991416931152,
+          -0.2850000858306885,
+          0.008999999612569809,
+          1.0000001192092896,
+          0.0,
+          0.0,
+          1.2278084327022043e-08
+        ],
+        "isolation": true
+      }
+    },
+    {
+      "task": "NutBoltTurnNut-Sharpa-v1",
+      "file": "cuda/TurnNut.csv",
+      "id": "near",
+      "seed": 931,
+      "selected_env": 1,
+      "passive_env": 0,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "enhanced_determinism": true,
+          "sim_config": {
+            "gpu_memory_config": {
+              "max_rigid_contact_count": 131072,
+              "max_rigid_patch_count": 65536,
+              "found_lost_pairs_capacity": 1048576
+            }
+          },
+          "position_workspace": true
+        },
+        "reset": {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "near"
+          }
+        },
+        "layout": {
+          "upright_bolt_xy_m": [
+            -0.175,
+            -0.035
+          ],
+          "threaded_nut_relative_yaw_deg": 0
+        },
+        "actual_object_pose": [
+          -0.17499999701976776,
+          -0.03500008583068848,
+          0.06800000369548798,
+          0.9999999403953552,
+          0.0,
+          7.574781690777854e-09,
+          0.0
+        ],
+        "isolation": true
+      }
+    },
+    {
+      "task": "NutBoltTurnNut-Sharpa-v1",
+      "file": "cuda/TurnNut.csv",
+      "id": "far",
+      "seed": 932,
+      "selected_env": 0,
+      "passive_env": 1,
+      "readback": {
+        "make": {
+          "num_envs": 2,
+          "sim_backend": "physx_cuda",
+          "obs_mode": "state",
+          "render_mode": null,
+          "control_mode": "pd_joint_pos",
+          "reconfiguration_freq": 0,
+          "enhanced_determinism": true,
+          "sim_config": {
+            "gpu_memory_config": {
+              "max_rigid_contact_count": 131072,
+              "max_rigid_patch_count": 65536,
+              "found_lost_pairs_capacity": 1048576
+            }
+          },
+          "position_workspace": true
+        },
+        "reset": {
+          "env_idx": [
+            0
+          ],
+          "workspace_placement": {
+            "0": "far"
+          }
+        },
+        "layout": {
+          "upright_bolt_xy_m": [
+            -0.085,
+            -0.035
+          ],
+          "threaded_nut_relative_yaw_deg": 0
+        },
+        "actual_object_pose": [
+          -0.08500003814697266,
+          -0.03500008583068848,
+          0.06800000369548798,
+          0.9999999403953552,
+          0.0,
+          7.574781690777854e-09,
+          0.0
+        ],
+        "isolation": true
+      }
+    }
+  ],
+  "server_launcher_sha256": {
+    "gpu_job.sh": "e8014a9d9bad3fb197531eaf29306f17c9a95dfaa82e63332621403c7754edb8",
+    "server_sdk.py": "4c4fcc2c08985fc44fddf7a6efd213fe4b5e0aaadf2330e56b890c9d30af5ea9"
+  }
+}

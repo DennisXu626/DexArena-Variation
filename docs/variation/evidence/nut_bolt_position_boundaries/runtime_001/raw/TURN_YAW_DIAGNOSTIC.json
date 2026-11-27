@@ -1,0 +1,116 @@
+[
+  {
+    "env_idx": 0,
+    "requested_angle_deg": -20,
+    "qpos_rad": -0.34906578063964844,
+    "qvel_rad_s": 0.0,
+    "pose": [
+      -0.11999988555908203,
+      0.0,
+      0.06800000369548798,
+      0.9848077297210693,
+      -2.464649639932759e-08,
+      7.459703965650988e-09,
+      -0.17364802956581116
+    ],
+    "last_yaw_rad": -0.3490655720233917,
+    "accumulated_rotation_rad": 2.384185791015625e-07,
+    "latest_delta_rad": 2.384185791015625e-07,
+    "same_other_env": true
+  },
+  {
+    "env_idx": 0,
+    "requested_angle_deg": 0,
+    "qpos_rad": 0.0,
+    "qvel_rad_s": 0.0,
+    "pose": [
+      -0.11999988555908203,
+      0.0,
+      0.06800000369548798,
+      0.9999999403953552,
+      0.0,
+      7.574781690777854e-09,
+      0.0
+    ],
+    "last_yaw_rad": 0.0,
+    "accumulated_rotation_rad": 0.0,
+    "latest_delta_rad": 0.0,
+    "same_other_env": true
+  },
+  {
+    "env_idx": 0,
+    "requested_angle_deg": 20,
+    "qpos_rad": 0.34906578063964844,
+    "qvel_rad_s": 0.0,
+    "pose": [
+      -0.11999988555908203,
+      0.0,
+      0.06800000369548798,
+      0.9848077297210693,
+      2.464649639932759e-08,
+      7.459703965650988e-09,
+      0.17364802956581116
+    ],
+    "last_yaw_rad": 0.3490655720233917,
+    "accumulated_rotation_rad": 0.0,
+    "latest_delta_rad": -2.384185791015625e-07,
+    "same_other_env": true
+  },
+  {
+    "env_idx": 1,
+    "requested_angle_deg": -20,
+    "qpos_rad": -0.34906578063964844,
+    "qvel_rad_s": 0.0,
+    "pose": [
+      -0.11999999731779099,
+      0.0,
+      0.06800000369548798,
+      0.9848077297210693,
+      -2.464649639932759e-08,
+      7.459703965650988e-09,
+      -0.17364802956581116
+    ],
+    "last_yaw_rad": -0.3490655720233917,
+    "accumulated_rotation_rad": 2.384185791015625e-07,
+    "latest_delta_rad": 2.384185791015625e-07,
+    "same_other_env": true
+  },
+  {
+    "env_idx": 1,
+    "requested_angle_deg": 0,
+    "qpos_rad": 0.0,
+    "qvel_rad_s": 0.0,
+    "pose": [
+      -0.11999999731779099,
+      0.0,
+      0.06800000369548798,
+      0.9999999403953552,
+      0.0,
+      7.574781690777854e-09,
+      0.0
+    ],
+    "last_yaw_rad": 0.0,
+    "accumulated_rotation_rad": 0.0,
+    "latest_delta_rad": 0.0,
+    "same_other_env": true
+  },
+  {
+    "env_idx": 1,
+    "requested_angle_deg": 20,
+    "qpos_rad": 0.34906578063964844,
+    "qvel_rad_s": 0.0,
+    "pose": [
+      -0.11999999731779099,
+      0.0,
+      0.06800000369548798,
+      0.9848077297210693,
+      2.464649639932759e-08,
+      7.459703965650988e-09,
+      0.17364802956581116
+    ],
+    "last_yaw_rad": 0.3490655720233917,
+    "accumulated_rotation_rad": 0.0,
+    "latest_delta_rad": -2.384185791015625e-07,
+    "same_other_env": true
+  }
+]
