@@ -1,0 +1,3 @@
+[mouse 0] left stroke=0.0008000, right stroke=0.0008000
+[mouse 1] left stroke=0.0008000, right stroke=0.0008000
+{"task": "ClickMouse", "schemes": ["ivory_matte"], "far_xy_error_m": 8.940696716308594e-08, "peer_state_equal_both_directions": true, "rejected_cases": 5}

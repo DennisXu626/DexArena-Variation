@@ -657,6 +657,8 @@ class OfficeKeyMarkerScope(unittest.TestCase):
             def __init__(self, scene):
                 self.scene = scene
                 self._scene_idxs = torch.tensor([1,0])
+                self._body_data_index = torch.tensor([2, 4])
+                self._bodies = [SimpleNamespace(gpu_index=17), SimpleNamespace(gpu_index=8)]
                 self.device = torch.device('cpu')
                 self.positions = {}
 
@@ -664,6 +666,8 @@ class OfficeKeyMarkerScope(unittest.TestCase):
                 selected = self._scene_idxs[self.scene._reset_mask[self._scene_idxs]]
                 for env_id, pose in zip(selected.tolist(), poses, strict=True):
                     self.positions[env_id] = pose.p.tolist()
+                    row = int((self._scene_idxs == env_id).nonzero().item())
+                    buffer[self._body_data_index[row], :3] = torch.tensor(pose.p)
 
         def key(x, y, z):
             shape=SimpleNamespace(vertices=[[-1.,-2.,0.],[1.,2.,.4]],
@@ -678,11 +682,24 @@ class OfficeKeyMarkerScope(unittest.TestCase):
                  and node.name in {'_key_target_marker_pose','move_key_target_marker'}]
         cls=next(node for node in tree.body if isinstance(node,ast.ClassDef) and node.name=='OfficeDeskTypeKeysEnv')
         methods.append(next(node for node in cls.body if isinstance(node,ast.FunctionDef) and node.name=='_update_key_target_marker'))
-        namespace={'np':np,'sapien':SimpleNamespace(Pose=NativePose),'KEY_MARKER_HEIGHT':.05,
+        namespace={'np':np,'sapien':SimpleNamespace(Pose=NativePose,CudaArray=lambda t:t),
+                   'torch':SimpleNamespace(tensor=torch.tensor,int32=torch.int32,
+                                           cuda=SimpleNamespace(synchronize=lambda device:None)),
+                   'KEY_MARKER_HEIGHT':.05,
                    'KEY_MARKER_PARKED_Z':-3.,'Pose':SimpleNamespace(create=lambda poses,device:poses)}
         exec(compile(ast.Module(body=methods,type_ignores=[]),str(path),'exec'),namespace)
         update=namespace['_update_key_target_marker']
-        scene=SimpleNamespace(gpu_sim_enabled=True,_reset_mask=torch.tensor([True,True]))
+        buffer=torch.zeros((6, 13), dtype=torch.float32)
+        persisted={}
+        applied=[]
+        def apply(ids):
+            applied.append(ids.tolist())
+            for body_id in ids.tolist():
+                persisted[body_id]=buffer[{17:2,8:4}[body_id],:3].clone()
+        scene=SimpleNamespace(gpu_sim_enabled=True,_reset_mask=torch.tensor([True,True]),
+                              parallel_in_single_scene=False,scene_offsets=torch.tensor([[-2.,-2.,0.],[0.,-2.,0.]]),
+                              px=SimpleNamespace(cuda_rigid_body_data=SimpleNamespace(torch=lambda:buffer),
+                                                 gpu_apply_rigid_dynamic_data=apply))
         marker=Marker(scene)
         env=SimpleNamespace(num_envs=2,scene=scene,key_target_marker=marker,_target_links=[],sequence_index=torch.tensor([0,0]))
         update(env)
@@ -706,6 +723,22 @@ class OfficeKeyMarkerScope(unittest.TestCase):
         scene._reset_mask[:]=True
         update(env)
         self.assertEqual(marker.positions,{0:[0.,0.,-3.],1:[0.,0.,-3.]})
+        self.assertEqual(applied, [[17,8],[8],[17],[17],[17,8]])
+        # Change both targets with a full reset, then emulate the SDK overwriting
+        # the staging buffer on the next partial reset with persistent body poses.
+        env.sequence_index[:]=0
+        env._target_links[0][0].pose.sp=NativePose((.1234567,.2345678,.3))
+        update(env)
+        held=buffer[4,:3].clone()
+        for body_id,idx in [(17,2),(8,4)]:
+            buffer[idx,:3]=persisted[body_id]
+        env._furniture_reset_env_idx=[1]
+        env._furniture_reset_mask=lambda mask:torch.tensor([False,True])
+        update(env)
+        self.assertEqual(applied[-1],[17])
+        self.assertTrue(torch.equal(held,buffer[4,:3]))
+        self.assertTrue(torch.equal(scene._reset_mask,torch.tensor([True,True])))
+        self.assertTrue(torch.count_nonzero(buffer[[0,1,3,5]]) == 0)
 
 
 if __name__=='__main__':

@@ -1,0 +1,1760 @@
+{
+  "units": "Environment-local world coordinates in metres. Device and object root poses are [x,y,z,qw,qx,qy,qz]. Angles in public request fields are in degrees.",
+  "archive": {
+    "root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/pr43-r2-author-c17a7ecfb9e7",
+    "account": "lyt",
+    "archive_sha256": "c17a7ecfb9e76fe7d074c372f85cf0b8eb91c31ad20dd1db4a254423c81ad74b",
+    "opened_and_hashed": 213,
+    "archive_bytes": 37414623
+  },
+  "file_hash_index": "SHA256.json",
+  "execution": "Windows native CUDA on one locally serialized RTX 4070 Laptop, driver 576.88. No Slurm submission.",
+  "target_main_at_review": "00cc8e0469207afa03e49981fa65aa5cb2d144fe",
+  "runs": {
+    "verified-OpenLaptop": {
+      "tested_commit": "baf4e26eabbb5f9ab7a614827a6f80032f91ae0a",
+      "tested_tree": "bc1a11f8a9837f1d6dc08e34fd776959ca37b1a9",
+      "exact_command_and_process": "verified-OpenLaptop/process.json",
+      "sdk_receipt": "verified-OpenLaptop/output/private_sdk.json",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "checker": {
+        "file": "run_task_check.py",
+        "sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb",
+        "checker": "tools/variation/check_office_r2.py",
+        "checker_sha256": "c9ef598473d011abdc03be97edbe7380735bda0b3937b7c17e0c6ae6407518f2",
+        "archived_source": "checkers/office-pr43-r2-check/check_office_r2.py"
+      },
+      "elapsed_wall_seconds": 12.56,
+      "exit_code": 0,
+      "tasks": {
+        "OpenLaptop": {
+          "make": {
+            "position_workspace": true,
+            "num_envs": 2,
+            "sim_backend": "physx_cuda",
+            "render_backend": "gpu",
+            "obs_mode": "rgb+segmentation",
+            "render_mode": "rgb_array",
+            "control_mode": "pd_joint_pos",
+            "reconfiguration_freq": 0,
+            "reward_mode": "sparse",
+            "robot_init_qpos_noise": 0,
+            "sim_config": {
+              "gpu_memory_config": {
+                "max_rigid_contact_count": 131072,
+                "max_rigid_patch_count": 65536,
+                "found_lost_pairs_capacity": 1048576
+              }
+            },
+            "human_render_camera_configs": {
+              "pose": {
+                "p": [
+                  [
+                    -0.37299999594688416,
+                    -0.05999999865889549,
+                    0.47999998927116394
+                  ]
+                ],
+                "q": [
+                  [
+                    0.9244580268859863,
+                    -0.035395171493291855,
+                    0.3691439628601074,
+                    0.08864115923643112
+                  ]
+                ]
+              },
+              "fov": 0.78
+            },
+            "office_devices_appearance": {
+              "enabled": true,
+              "scheme_id": "original"
+            },
+            "office_keyboard_appearance": {
+              "enabled": true,
+              "scheme_id": "original"
+            }
+          },
+          "partial": [
+            {
+              "raw": "verified-OpenLaptop/output/OpenLaptop/environment_1.json",
+              "request_without_seed": {
+                "env_idx": [
+                  1
+                ],
+                "workspace_placement": {
+                  "1": "far"
+                },
+                "office_devices_appearance": {
+                  "scheme_id": "variant_1"
+                },
+                "office_keyboard_appearance": {
+                  "scheme_id": "variant_2"
+                }
+              },
+              "selected": 1,
+              "held": 0,
+              "device_poses_before": [
+                [
+                  -0.16300010681152344,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.16300000250339508,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "device_poses_after": [
+                [
+                  -0.16300010681152344,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.03700000047683716,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "expected_xy": [
+                0.037,
+                -0.02
+              ],
+              "scheme_readbacks": {
+                "office_devices_appearance": [
+                  "original",
+                  "variant_1"
+                ],
+                "office_keyboard_appearance": [
+                  "original",
+                  "variant_2"
+                ]
+              },
+              "held_rgb": {
+                "base_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "wrist_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "human": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                }
+              },
+              "state_held_max_abs": 0.0,
+              "target_deltas": [
+                {
+                  "point": "evaluate/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "evaluate/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "returned",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                }
+              ],
+              "selected_visible_by_camera": {
+                "base_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 6904,
+                    "entity_pixels_changed_over_8": 6836,
+                    "original_median_rgb": [
+                      180.0,
+                      180.0,
+                      180.0
+                    ],
+                    "observed_median_rgb": [
+                      114.0,
+                      90.0,
+                      79.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 1608,
+                    "entity_pixels_changed_over_8": 3,
+                    "original_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ],
+                    "observed_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ]
+                  }
+                },
+                "wrist_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 52,
+                    "entity_pixels_changed_over_8": 16,
+                    "original_median_rgb": [
+                      6.0,
+                      6.0,
+                      6.0
+                    ],
+                    "observed_median_rgb": [
+                      7.0,
+                      7.0,
+                      7.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 46,
+                    "entity_pixels_changed_over_8": 0,
+                    "original_median_rgb": [
+                      215.0,
+                      215.0,
+                      215.0
+                    ],
+                    "observed_median_rgb": [
+                      215.0,
+                      215.0,
+                      215.0
+                    ]
+                  }
+                },
+                "human": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 24142,
+                    "entity_pixels_changed_over_8": 12069,
+                    "original_median_rgb": [
+                      87.0,
+                      68.0,
+                      87.0
+                    ],
+                    "observed_median_rgb": [
+                      87.0,
+                      58.0,
+                      85.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 138874,
+                    "entity_pixels_changed_over_8": 30649,
+                    "original_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ],
+                    "observed_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ]
+                  }
+                }
+              },
+              "frames": {
+                "original_ref_frames": {
+                  "base_camera/env0": "verified-OpenLaptop/output/OpenLaptop/original_far_base_camera_env0.png",
+                  "base_camera/env1": "verified-OpenLaptop/output/OpenLaptop/original_far_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-OpenLaptop/output/OpenLaptop/original_far_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-OpenLaptop/output/OpenLaptop/original_far_wrist_camera_env1.png",
+                  "human/env0": "verified-OpenLaptop/output/OpenLaptop/original_far_human_env0.png",
+                  "human/env1": "verified-OpenLaptop/output/OpenLaptop/original_far_human_env1.png"
+                },
+                "frames_before": {
+                  "base_camera/env0": "verified-OpenLaptop/output/OpenLaptop/before_both_base_camera_env0.png",
+                  "base_camera/env1": "verified-OpenLaptop/output/OpenLaptop/before_both_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-OpenLaptop/output/OpenLaptop/before_both_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-OpenLaptop/output/OpenLaptop/before_both_wrist_camera_env1.png",
+                  "human/env0": "verified-OpenLaptop/output/OpenLaptop/before_both_human_env0.png",
+                  "human/env1": "verified-OpenLaptop/output/OpenLaptop/before_both_human_env1.png"
+                },
+                "frames_after": {
+                  "base_camera/env0": "verified-OpenLaptop/output/OpenLaptop/after_env1_base_camera_env0.png",
+                  "base_camera/env1": "verified-OpenLaptop/output/OpenLaptop/after_env1_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-OpenLaptop/output/OpenLaptop/after_env1_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-OpenLaptop/output/OpenLaptop/after_env1_wrist_camera_env1.png",
+                  "human/env0": "verified-OpenLaptop/output/OpenLaptop/after_env1_human_env0.png",
+                  "human/env1": "verified-OpenLaptop/output/OpenLaptop/after_env1_human_env1.png"
+                }
+              }
+            },
+            {
+              "raw": "verified-OpenLaptop/output/OpenLaptop/environment_0.json",
+              "request_without_seed": {
+                "env_idx": [
+                  0
+                ],
+                "position_layout": {
+                  "0": {}
+                },
+                "office_devices_appearance": {
+                  "scheme_id": "variant_1"
+                },
+                "office_keyboard_appearance": {
+                  "scheme_id": "variant_2"
+                }
+              },
+              "selected": 0,
+              "held": 1,
+              "device_poses_before": [
+                [
+                  -0.16300010681152344,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.03700000047683716,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "device_poses_after": [
+                [
+                  -0.06299996376037598,
+                  0.0,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.03700000047683716,
+                  -0.019999980926513672,
+                  0.01322800014168024,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "expected_xy": [
+                -0.06300000000000003,
+                0.0
+              ],
+              "scheme_readbacks": {
+                "office_devices_appearance": [
+                  "variant_1",
+                  "variant_1"
+                ],
+                "office_keyboard_appearance": [
+                  "variant_2",
+                  "variant_2"
+                ]
+              },
+              "held_rgb": {
+                "base_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "wrist_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "human": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                }
+              },
+              "state_held_max_abs": 0.0,
+              "target_deltas": [
+                {
+                  "point": "evaluate/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "evaluate/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "returned",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                }
+              ],
+              "selected_visible_by_camera": {
+                "base_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 6461,
+                    "entity_pixels_changed_over_8": 6406,
+                    "original_median_rgb": [
+                      180.0,
+                      180.0,
+                      180.0
+                    ],
+                    "observed_median_rgb": [
+                      114.0,
+                      90.0,
+                      79.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 1023,
+                    "entity_pixels_changed_over_8": 0,
+                    "original_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ],
+                    "observed_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ]
+                  }
+                },
+                "wrist_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 0,
+                    "entity_pixels_changed_over_8": 0,
+                    "original_median_rgb": null,
+                    "observed_median_rgb": null
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 0,
+                    "entity_pixels_changed_over_8": 0,
+                    "original_median_rgb": null,
+                    "observed_median_rgb": null
+                  }
+                },
+                "human": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 17231,
+                    "entity_pixels_changed_over_8": 17231,
+                    "original_median_rgb": [
+                      183.0,
+                      183.0,
+                      183.0
+                    ],
+                    "observed_median_rgb": [
+                      120.0,
+                      95.0,
+                      84.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 148607,
+                    "entity_pixels_changed_over_8": 42105,
+                    "original_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ],
+                    "observed_median_rgb": [
+                      219.0,
+                      219.0,
+                      219.0
+                    ]
+                  }
+                }
+              },
+              "frames": {
+                "original_ref_frames": {
+                  "base_camera/env0": "verified-OpenLaptop/output/OpenLaptop/original_nominal_base_camera_env0.png",
+                  "base_camera/env1": "verified-OpenLaptop/output/OpenLaptop/original_nominal_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-OpenLaptop/output/OpenLaptop/original_nominal_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-OpenLaptop/output/OpenLaptop/original_nominal_wrist_camera_env1.png",
+                  "human/env0": "verified-OpenLaptop/output/OpenLaptop/original_nominal_human_env0.png",
+                  "human/env1": "verified-OpenLaptop/output/OpenLaptop/original_nominal_human_env1.png"
+                },
+                "frames_before": {
+                  "base_camera/env0": "verified-OpenLaptop/output/OpenLaptop/after_env1_base_camera_env0.png",
+                  "base_camera/env1": "verified-OpenLaptop/output/OpenLaptop/after_env1_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-OpenLaptop/output/OpenLaptop/after_env1_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-OpenLaptop/output/OpenLaptop/after_env1_wrist_camera_env1.png",
+                  "human/env0": "verified-OpenLaptop/output/OpenLaptop/after_env1_human_env0.png",
+                  "human/env1": "verified-OpenLaptop/output/OpenLaptop/after_env1_human_env1.png"
+                },
+                "frames_after": {
+                  "base_camera/env0": "verified-OpenLaptop/output/OpenLaptop/after_env0_base_camera_env0.png",
+                  "base_camera/env1": "verified-OpenLaptop/output/OpenLaptop/after_env0_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-OpenLaptop/output/OpenLaptop/after_env0_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-OpenLaptop/output/OpenLaptop/after_env0_wrist_camera_env1.png",
+                  "human/env0": "verified-OpenLaptop/output/OpenLaptop/after_env0_human_env0.png",
+                  "human/env1": "verified-OpenLaptop/output/OpenLaptop/after_env0_human_env1.png"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "integration_parents": [
+        "00cc8e0469207afa03e49981fa65aa5cb2d144fe",
+        "fa6aa11936fbf1ea4240ad10403176869f23a544"
+      ],
+      "input_with_asset_hashes": "verified-OpenLaptop/output/OpenLaptop/input.json"
+    },
+    "verified-TypeKeys": {
+      "tested_commit": "baf4e26eabbb5f9ab7a614827a6f80032f91ae0a",
+      "tested_tree": "bc1a11f8a9837f1d6dc08e34fd776959ca37b1a9",
+      "exact_command_and_process": "verified-TypeKeys/process.json",
+      "sdk_receipt": "verified-TypeKeys/output/private_sdk.json",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "checker": {
+        "file": "run_task_check.py",
+        "sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb",
+        "checker": "tools/variation/check_office_r2.py",
+        "checker_sha256": "c9ef598473d011abdc03be97edbe7380735bda0b3937b7c17e0c6ae6407518f2",
+        "archived_source": "checkers/office-pr43-r2-check/check_office_r2.py"
+      },
+      "elapsed_wall_seconds": 18.22,
+      "exit_code": 0,
+      "tasks": {
+        "TypeKeys": {
+          "make": {
+            "position_workspace": true,
+            "num_envs": 2,
+            "sim_backend": "physx_cuda",
+            "render_backend": "gpu",
+            "obs_mode": "rgb+segmentation",
+            "render_mode": "rgb_array",
+            "control_mode": "pd_joint_pos",
+            "reconfiguration_freq": 0,
+            "reward_mode": "sparse",
+            "robot_init_qpos_noise": 0,
+            "sim_config": {
+              "gpu_memory_config": {
+                "max_rigid_contact_count": 131072,
+                "max_rigid_patch_count": 65536,
+                "found_lost_pairs_capacity": 1048576
+              }
+            },
+            "model_id": "13106",
+            "show_guidance_markers": true,
+            "office_devices_appearance": {
+              "enabled": true,
+              "scheme_id": "original"
+            },
+            "office_keyboard_appearance": {
+              "enabled": true,
+              "scheme_id": "original"
+            }
+          },
+          "partial": [
+            {
+              "raw": "verified-TypeKeys/output/TypeKeys/environment_1.json",
+              "request_without_seed": {
+                "env_idx": [
+                  1
+                ],
+                "workspace_placement": {
+                  "1": "far"
+                },
+                "office_devices_appearance": {
+                  "scheme_id": "variant_1"
+                },
+                "office_keyboard_appearance": {
+                  "scheme_id": "variant_2"
+                }
+              },
+              "selected": 1,
+              "held": 0,
+              "device_poses_before": [
+                [
+                  -0.30900001525878906,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.3089999854564667,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "device_poses_after": [
+                [
+                  -0.30900001525878906,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.14900000393390656,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "expected_xy": [
+                -0.149,
+                -0.02
+              ],
+              "scheme_readbacks": {
+                "office_devices_appearance": [
+                  "original",
+                  "variant_1"
+                ],
+                "office_keyboard_appearance": [
+                  "original",
+                  "variant_2"
+                ]
+              },
+              "held_rgb": {
+                "base_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "external_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "wrist_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "human": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                }
+              },
+              "state_held_max_abs": 0.0,
+              "target_deltas": [
+                {
+                  "point": "evaluate/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "evaluate/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "returned",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                }
+              ],
+              "selected_visible_by_camera": {
+                "base_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 1424,
+                    "entity_pixels_changed_over_8": 643,
+                    "original_median_rgb": [
+                      178.0,
+                      179.0,
+                      181.0
+                    ],
+                    "observed_median_rgb": [
+                      176.0,
+                      168.0,
+                      169.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 2058,
+                    "entity_pixels_changed_over_8": 2058,
+                    "original_median_rgb": [
+                      222.0,
+                      222.0,
+                      224.0
+                    ],
+                    "observed_median_rgb": [
+                      189.0,
+                      202.0,
+                      214.0
+                    ]
+                  }
+                },
+                "external_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 932,
+                    "entity_pixels_changed_over_8": 184,
+                    "original_median_rgb": [
+                      176.0,
+                      176.5,
+                      178.0
+                    ],
+                    "observed_median_rgb": [
+                      176.0,
+                      172.0,
+                      174.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 1855,
+                    "entity_pixels_changed_over_8": 1854,
+                    "original_median_rgb": [
+                      222.0,
+                      222.0,
+                      224.0
+                    ],
+                    "observed_median_rgb": [
+                      191.0,
+                      204.0,
+                      215.0
+                    ]
+                  }
+                },
+                "wrist_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 1353,
+                    "entity_pixels_changed_over_8": 403,
+                    "original_median_rgb": [
+                      180.0,
+                      180.0,
+                      182.0
+                    ],
+                    "observed_median_rgb": [
+                      177.0,
+                      173.0,
+                      175.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 247,
+                    "entity_pixels_changed_over_8": 247,
+                    "original_median_rgb": [
+                      221.0,
+                      221.0,
+                      222.0
+                    ],
+                    "observed_median_rgb": [
+                      188.0,
+                      201.0,
+                      216.0
+                    ]
+                  }
+                },
+                "human": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 5873,
+                    "entity_pixels_changed_over_8": 2974,
+                    "original_median_rgb": [
+                      168.0,
+                      168.0,
+                      170.0
+                    ],
+                    "observed_median_rgb": [
+                      168.0,
+                      165.0,
+                      147.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 9123,
+                    "entity_pixels_changed_over_8": 9081,
+                    "original_median_rgb": [
+                      222.0,
+                      222.0,
+                      223.0
+                    ],
+                    "observed_median_rgb": [
+                      193.0,
+                      206.0,
+                      216.0
+                    ]
+                  }
+                }
+              },
+              "frames": {
+                "original_ref_frames": {
+                  "base_camera/env0": "verified-TypeKeys/output/TypeKeys/original_far_base_camera_env0.png",
+                  "base_camera/env1": "verified-TypeKeys/output/TypeKeys/original_far_base_camera_env1.png",
+                  "external_camera/env0": "verified-TypeKeys/output/TypeKeys/original_far_external_camera_env0.png",
+                  "external_camera/env1": "verified-TypeKeys/output/TypeKeys/original_far_external_camera_env1.png",
+                  "wrist_camera/env0": "verified-TypeKeys/output/TypeKeys/original_far_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-TypeKeys/output/TypeKeys/original_far_wrist_camera_env1.png",
+                  "human/env0": "verified-TypeKeys/output/TypeKeys/original_far_human_env0.png",
+                  "human/env1": "verified-TypeKeys/output/TypeKeys/original_far_human_env1.png"
+                },
+                "frames_before": {
+                  "base_camera/env0": "verified-TypeKeys/output/TypeKeys/before_both_base_camera_env0.png",
+                  "base_camera/env1": "verified-TypeKeys/output/TypeKeys/before_both_base_camera_env1.png",
+                  "external_camera/env0": "verified-TypeKeys/output/TypeKeys/before_both_external_camera_env0.png",
+                  "external_camera/env1": "verified-TypeKeys/output/TypeKeys/before_both_external_camera_env1.png",
+                  "wrist_camera/env0": "verified-TypeKeys/output/TypeKeys/before_both_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-TypeKeys/output/TypeKeys/before_both_wrist_camera_env1.png",
+                  "human/env0": "verified-TypeKeys/output/TypeKeys/before_both_human_env0.png",
+                  "human/env1": "verified-TypeKeys/output/TypeKeys/before_both_human_env1.png"
+                },
+                "frames_after": {
+                  "base_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env1_base_camera_env0.png",
+                  "base_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env1_base_camera_env1.png",
+                  "external_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env1_external_camera_env0.png",
+                  "external_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env1_external_camera_env1.png",
+                  "wrist_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env1_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env1_wrist_camera_env1.png",
+                  "human/env0": "verified-TypeKeys/output/TypeKeys/after_env1_human_env0.png",
+                  "human/env1": "verified-TypeKeys/output/TypeKeys/after_env1_human_env1.png"
+                }
+              }
+            },
+            {
+              "raw": "verified-TypeKeys/output/TypeKeys/environment_0.json",
+              "request_without_seed": {
+                "env_idx": [
+                  0
+                ],
+                "position_layout": {
+                  "0": {}
+                },
+                "office_devices_appearance": {
+                  "scheme_id": "variant_1"
+                },
+                "office_keyboard_appearance": {
+                  "scheme_id": "variant_2"
+                }
+              },
+              "selected": 0,
+              "held": 1,
+              "device_poses_before": [
+                [
+                  -0.30900001525878906,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.14900000393390656,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "device_poses_after": [
+                [
+                  -0.2890000343322754,
+                  0.0,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  -0.14900000393390656,
+                  -0.019999980926513672,
+                  0.01453164592385292,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              "expected_xy": [
+                -0.28900000000000003,
+                0.0
+              ],
+              "scheme_readbacks": {
+                "office_devices_appearance": [
+                  "variant_1",
+                  "variant_1"
+                ],
+                "office_keyboard_appearance": [
+                  "variant_2",
+                  "variant_2"
+                ]
+              },
+              "held_rgb": {
+                "base_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "external_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "wrist_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "human": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                }
+              },
+              "state_held_max_abs": 0.0,
+              "target_deltas": [
+                {
+                  "point": "evaluate/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "evaluate/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "returned",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                }
+              ],
+              "selected_visible_by_camera": {
+                "base_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 1013,
+                    "entity_pixels_changed_over_8": 542,
+                    "original_median_rgb": [
+                      172.0,
+                      173.0,
+                      175.0
+                    ],
+                    "observed_median_rgb": [
+                      171.0,
+                      162.0,
+                      142.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 1454,
+                    "entity_pixels_changed_over_8": 1453,
+                    "original_median_rgb": [
+                      221.0,
+                      222.0,
+                      223.0
+                    ],
+                    "observed_median_rgb": [
+                      189.0,
+                      202.0,
+                      210.0
+                    ]
+                  }
+                },
+                "external_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 1089,
+                    "entity_pixels_changed_over_8": 225,
+                    "original_median_rgb": [
+                      175.0,
+                      175.0,
+                      177.0
+                    ],
+                    "observed_median_rgb": [
+                      174.0,
+                      170.0,
+                      172.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 2033,
+                    "entity_pixels_changed_over_8": 2030,
+                    "original_median_rgb": [
+                      222.0,
+                      222.0,
+                      224.0
+                    ],
+                    "observed_median_rgb": [
+                      191.0,
+                      204.0,
+                      216.0
+                    ]
+                  }
+                },
+                "wrist_camera": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 0,
+                    "entity_pixels_changed_over_8": 0,
+                    "original_median_rgb": null,
+                    "observed_median_rgb": null
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 0,
+                    "entity_pixels_changed_over_8": 0,
+                    "original_median_rgb": null,
+                    "observed_median_rgb": null
+                  }
+                },
+                "human": {
+                  "office_devices_appearance": {
+                    "overlapping_entity_pixels": 4919,
+                    "entity_pixels_changed_over_8": 2821,
+                    "original_median_rgb": [
+                      164.0,
+                      164.0,
+                      166.0
+                    ],
+                    "observed_median_rgb": [
+                      166.0,
+                      158.0,
+                      140.0
+                    ]
+                  },
+                  "office_keyboard_appearance": {
+                    "overlapping_entity_pixels": 7478,
+                    "entity_pixels_changed_over_8": 7447,
+                    "original_median_rgb": [
+                      222.0,
+                      222.0,
+                      223.0
+                    ],
+                    "observed_median_rgb": [
+                      193.0,
+                      205.0,
+                      212.0
+                    ]
+                  }
+                }
+              },
+              "frames": {
+                "original_ref_frames": {
+                  "base_camera/env0": "verified-TypeKeys/output/TypeKeys/original_nominal_base_camera_env0.png",
+                  "base_camera/env1": "verified-TypeKeys/output/TypeKeys/original_nominal_base_camera_env1.png",
+                  "external_camera/env0": "verified-TypeKeys/output/TypeKeys/original_nominal_external_camera_env0.png",
+                  "external_camera/env1": "verified-TypeKeys/output/TypeKeys/original_nominal_external_camera_env1.png",
+                  "wrist_camera/env0": "verified-TypeKeys/output/TypeKeys/original_nominal_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-TypeKeys/output/TypeKeys/original_nominal_wrist_camera_env1.png",
+                  "human/env0": "verified-TypeKeys/output/TypeKeys/original_nominal_human_env0.png",
+                  "human/env1": "verified-TypeKeys/output/TypeKeys/original_nominal_human_env1.png"
+                },
+                "frames_before": {
+                  "base_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env1_base_camera_env0.png",
+                  "base_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env1_base_camera_env1.png",
+                  "external_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env1_external_camera_env0.png",
+                  "external_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env1_external_camera_env1.png",
+                  "wrist_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env1_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env1_wrist_camera_env1.png",
+                  "human/env0": "verified-TypeKeys/output/TypeKeys/after_env1_human_env0.png",
+                  "human/env1": "verified-TypeKeys/output/TypeKeys/after_env1_human_env1.png"
+                },
+                "frames_after": {
+                  "base_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env0_base_camera_env0.png",
+                  "base_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env0_base_camera_env1.png",
+                  "external_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env0_external_camera_env0.png",
+                  "external_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env0_external_camera_env1.png",
+                  "wrist_camera/env0": "verified-TypeKeys/output/TypeKeys/after_env0_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-TypeKeys/output/TypeKeys/after_env0_wrist_camera_env1.png",
+                  "human/env0": "verified-TypeKeys/output/TypeKeys/after_env0_human_env0.png",
+                  "human/env1": "verified-TypeKeys/output/TypeKeys/after_env0_human_env1.png"
+                }
+              }
+            }
+          ],
+          "link_marker_trace": "verified-TypeKeys/output/TypeKeys/marker-trace.json",
+          "max_link_derived_marker_error_m": 5.960464477539063e-08
+        }
+      },
+      "integration_parents": [
+        "00cc8e0469207afa03e49981fa65aa5cb2d144fe",
+        "fa6aa11936fbf1ea4240ad10403176869f23a544"
+      ],
+      "input_with_asset_hashes": "verified-TypeKeys/output/TypeKeys/input.json"
+    },
+    "verified-ClickMouse": {
+      "tested_commit": "baf4e26eabbb5f9ab7a614827a6f80032f91ae0a",
+      "tested_tree": "bc1a11f8a9837f1d6dc08e34fd776959ca37b1a9",
+      "exact_command_and_process": "verified-ClickMouse/process.json",
+      "sdk_receipt": "verified-ClickMouse/output/private_sdk.json",
+      "sdk_version": "3.0.3+dexarena.gpu1.wininterop5",
+      "sdk_artifact_sha256": "8a66fec98c16001264968b0888b81dcb4407e808eb66dacd9ccfe4a74fd2760a",
+      "checker": {
+        "file": "run_task_check.py",
+        "sha256": "a7b905bc99a7bc9667479d17901e7b432c69e13ed24651b9e8fe5ab0987319bb",
+        "checker": "tools/variation/check_office_r2.py",
+        "checker_sha256": "c9ef598473d011abdc03be97edbe7380735bda0b3937b7c17e0c6ae6407518f2",
+        "archived_source": "checkers/office-pr43-r2-check/check_office_r2.py"
+      },
+      "elapsed_wall_seconds": 11.53,
+      "exit_code": 0,
+      "tasks": {
+        "ClickMouse": {
+          "make": {
+            "position_workspace": true,
+            "num_envs": 2,
+            "sim_backend": "physx_cuda",
+            "render_backend": "gpu",
+            "obs_mode": "rgb+segmentation",
+            "render_mode": "rgb_array",
+            "control_mode": "pd_joint_pos",
+            "reconfiguration_freq": 0,
+            "reward_mode": "sparse",
+            "robot_init_qpos_noise": 0,
+            "sim_config": {
+              "gpu_memory_config": {
+                "max_rigid_contact_count": 131072,
+                "max_rigid_patch_count": 65536,
+                "found_lost_pairs_capacity": 1048576
+              }
+            },
+            "mouse_appearance": {
+              "enabled": true,
+              "scheme_id": "original"
+            }
+          },
+          "partial": [
+            {
+              "raw": "verified-ClickMouse/output/ClickMouse/environment_1.json",
+              "request_without_seed": {
+                "env_idx": [
+                  1
+                ],
+                "workspace_placement": {
+                  "1": "far"
+                },
+                "mouse_appearance": {
+                  "scheme_id": "ivory_matte"
+                }
+              },
+              "selected": 1,
+              "held": 0,
+              "device_poses_before": [
+                [
+                  -0.20000004768371582,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  -0.20000000298023224,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "device_poses_after": [
+                [
+                  -0.20000004768371582,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.07999999821186066,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "expected_xy": [
+                0.08,
+                -0.33999999
+              ],
+              "scheme_readbacks": {
+                "mouse_appearance": [
+                  "original",
+                  "ivory_matte"
+                ]
+              },
+              "held_rgb": {
+                "base_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "wrist_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "human": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                }
+              },
+              "state_held_max_abs": 0.0,
+              "target_deltas": [
+                {
+                  "point": "evaluate/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "evaluate/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "returned",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                }
+              ],
+              "selected_visible_by_camera": {
+                "base_camera": {
+                  "mouse_appearance": {
+                    "overlapping_entity_pixels": 2331,
+                    "entity_pixels_changed_over_8": 2331,
+                    "original_median_rgb": [
+                      96.0,
+                      96.0,
+                      96.0
+                    ],
+                    "observed_median_rgb": [
+                      191.0,
+                      183.0,
+                      164.0
+                    ]
+                  }
+                },
+                "wrist_camera": {
+                  "mouse_appearance": {
+                    "overlapping_entity_pixels": 1170,
+                    "entity_pixels_changed_over_8": 1170,
+                    "original_median_rgb": [
+                      95.0,
+                      95.0,
+                      95.0
+                    ],
+                    "observed_median_rgb": [
+                      193.0,
+                      185.0,
+                      166.0
+                    ]
+                  }
+                },
+                "human": {
+                  "mouse_appearance": {
+                    "overlapping_entity_pixels": 3350,
+                    "entity_pixels_changed_over_8": 3350,
+                    "original_median_rgb": [
+                      90.0,
+                      90.0,
+                      90.0
+                    ],
+                    "observed_median_rgb": [
+                      149.0,
+                      142.0,
+                      128.0
+                    ]
+                  }
+                }
+              },
+              "frames": {
+                "original_ref_frames": {
+                  "base_camera/env0": "verified-ClickMouse/output/ClickMouse/original_far_base_camera_env0.png",
+                  "base_camera/env1": "verified-ClickMouse/output/ClickMouse/original_far_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-ClickMouse/output/ClickMouse/original_far_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-ClickMouse/output/ClickMouse/original_far_wrist_camera_env1.png",
+                  "human/env0": "verified-ClickMouse/output/ClickMouse/original_far_human_env0.png",
+                  "human/env1": "verified-ClickMouse/output/ClickMouse/original_far_human_env1.png"
+                },
+                "frames_before": {
+                  "base_camera/env0": "verified-ClickMouse/output/ClickMouse/before_both_base_camera_env0.png",
+                  "base_camera/env1": "verified-ClickMouse/output/ClickMouse/before_both_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-ClickMouse/output/ClickMouse/before_both_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-ClickMouse/output/ClickMouse/before_both_wrist_camera_env1.png",
+                  "human/env0": "verified-ClickMouse/output/ClickMouse/before_both_human_env0.png",
+                  "human/env1": "verified-ClickMouse/output/ClickMouse/before_both_human_env1.png"
+                },
+                "frames_after": {
+                  "base_camera/env0": "verified-ClickMouse/output/ClickMouse/after_env1_base_camera_env0.png",
+                  "base_camera/env1": "verified-ClickMouse/output/ClickMouse/after_env1_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-ClickMouse/output/ClickMouse/after_env1_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-ClickMouse/output/ClickMouse/after_env1_wrist_camera_env1.png",
+                  "human/env0": "verified-ClickMouse/output/ClickMouse/after_env1_human_env0.png",
+                  "human/env1": "verified-ClickMouse/output/ClickMouse/after_env1_human_env1.png"
+                }
+              }
+            },
+            {
+              "raw": "verified-ClickMouse/output/ClickMouse/environment_0.json",
+              "request_without_seed": {
+                "env_idx": [
+                  0
+                ],
+                "position_layout": {
+                  "0": {}
+                },
+                "mouse_appearance": {
+                  "scheme_id": "ivory_matte"
+                }
+              },
+              "selected": 0,
+              "held": 1,
+              "device_poses_before": [
+                [
+                  -0.20000004768371582,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.07999999821186066,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "device_poses_after": [
+                [
+                  -0.09999990463256836,
+                  -0.31999993324279785,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                [
+                  0.07999999821186066,
+                  -0.3399999141693115,
+                  0.015476773492991924,
+                  -4.371138828673793e-08,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "expected_xy": [
+                -0.10000000000000003,
+                -0.32
+              ],
+              "scheme_readbacks": {
+                "mouse_appearance": [
+                  "ivory_matte",
+                  "ivory_matte"
+                ]
+              },
+              "held_rgb": {
+                "base_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "wrist_camera": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                },
+                "human": {
+                  "max": 0,
+                  "channels": 0,
+                  "pixels": 0
+                }
+              },
+              "state_held_max_abs": 0.0,
+              "target_deltas": [
+                {
+                  "point": "evaluate/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "evaluate/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/entry",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "get_obs/exit",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                },
+                {
+                  "point": "returned",
+                  "max_abs_by_field": {
+                    "drive_targets": 0.0,
+                    "drive_velocities": 0.0,
+                    "controller/arm": 0.0
+                  }
+                }
+              ],
+              "selected_visible_by_camera": {
+                "base_camera": {
+                  "mouse_appearance": {
+                    "overlapping_entity_pixels": 1822,
+                    "entity_pixels_changed_over_8": 1822,
+                    "original_median_rgb": [
+                      130.0,
+                      130.0,
+                      130.0
+                    ],
+                    "observed_median_rgb": [
+                      191.0,
+                      182.0,
+                      164.0
+                    ]
+                  }
+                },
+                "wrist_camera": {
+                  "mouse_appearance": {
+                    "overlapping_entity_pixels": 1373,
+                    "entity_pixels_changed_over_8": 1373,
+                    "original_median_rgb": [
+                      97.0,
+                      97.0,
+                      97.0
+                    ],
+                    "observed_median_rgb": [
+                      196.0,
+                      187.0,
+                      168.0
+                    ]
+                  }
+                },
+                "human": {
+                  "mouse_appearance": {
+                    "overlapping_entity_pixels": 2935,
+                    "entity_pixels_changed_over_8": 2935,
+                    "original_median_rgb": [
+                      90.0,
+                      90.0,
+                      90.0
+                    ],
+                    "observed_median_rgb": [
+                      131.0,
+                      126.0,
+                      114.0
+                    ]
+                  }
+                }
+              },
+              "frames": {
+                "original_ref_frames": {
+                  "base_camera/env0": "verified-ClickMouse/output/ClickMouse/original_nominal_base_camera_env0.png",
+                  "base_camera/env1": "verified-ClickMouse/output/ClickMouse/original_nominal_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-ClickMouse/output/ClickMouse/original_nominal_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-ClickMouse/output/ClickMouse/original_nominal_wrist_camera_env1.png",
+                  "human/env0": "verified-ClickMouse/output/ClickMouse/original_nominal_human_env0.png",
+                  "human/env1": "verified-ClickMouse/output/ClickMouse/original_nominal_human_env1.png"
+                },
+                "frames_before": {
+                  "base_camera/env0": "verified-ClickMouse/output/ClickMouse/after_env1_base_camera_env0.png",
+                  "base_camera/env1": "verified-ClickMouse/output/ClickMouse/after_env1_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-ClickMouse/output/ClickMouse/after_env1_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-ClickMouse/output/ClickMouse/after_env1_wrist_camera_env1.png",
+                  "human/env0": "verified-ClickMouse/output/ClickMouse/after_env1_human_env0.png",
+                  "human/env1": "verified-ClickMouse/output/ClickMouse/after_env1_human_env1.png"
+                },
+                "frames_after": {
+                  "base_camera/env0": "verified-ClickMouse/output/ClickMouse/after_env0_base_camera_env0.png",
+                  "base_camera/env1": "verified-ClickMouse/output/ClickMouse/after_env0_base_camera_env1.png",
+                  "wrist_camera/env0": "verified-ClickMouse/output/ClickMouse/after_env0_wrist_camera_env0.png",
+                  "wrist_camera/env1": "verified-ClickMouse/output/ClickMouse/after_env0_wrist_camera_env1.png",
+                  "human/env0": "verified-ClickMouse/output/ClickMouse/after_env0_human_env0.png",
+                  "human/env1": "verified-ClickMouse/output/ClickMouse/after_env0_human_env1.png"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "integration_parents": [
+        "00cc8e0469207afa03e49981fa65aa5cb2d144fe",
+        "fa6aa11936fbf1ea4240ad10403176869f23a544"
+      ],
+      "input_with_asset_hashes": "verified-ClickMouse/output/ClickMouse/input.json"
+    }
+  },
+  "cell_centres_and_named_presets_checked": {
+    "mouse": [
+      177,
+      5
+    ],
+    "keyboard": [
+      65,
+      5
+    ],
+    "laptop": [
+      124,
+      5
+    ]
+  },
+  "integration_and_unit_archive": {
+    "root": "/data/home/lyt/dexarena-issue18-20261120-env/runs/pr51-paired-0a960d086843",
+    "account": "lyt",
+    "archive_sha256": "0a960d08684313d272565fc1aaafdfd62e284cfed71bc5e528bfd75e83882271",
+    "opened_and_hashed": 32
+  },
+  "old_trigger": {
+    "linux_review": "https://github.com/DennisXu626/DexArena-Variation/pull/43#pullrequestreview-6085314815",
+    "reviewer_server": "/mnt/ceph2/xkl/DexArena/pr_review/PR43-R2/run_01",
+    "reviewer_files_opened_as": "lyt",
+    "reviewer_server_sha256": {
+      "capture/OpenLaptop/after_env0_base_camera_env0.png": "5a5cc094e1f2d06c18f1facfcd31fecce2b8653b54cd845e853f9bc6a53d8f29",
+      "capture/OpenLaptop/after_env0_base_camera_env1.png": "e39de3095c3448454b2ab6d3397ab300bce4433a92005f487999dc59c8123be0",
+      "capture/OpenLaptop/after_env0_human_env0.png": "439692a21bce1acd3aa9226bfff3511a5f1852679c14cb7eef3b4f6da5075060",
+      "capture/OpenLaptop/after_env0_human_env1.png": "b4f02e2fe7a1f3eacc632c954a8348d6a506c2d9de4387189a6391d57fe3c340",
+      "capture/OpenLaptop/after_env0_wrist_camera_env0.png": "f1131c5e58d9ad10de52885550e113f2370613a7c3544991bc04a9d9528acf78",
+      "capture/OpenLaptop/after_env0_wrist_camera_env1.png": "64367220be1aeff82abfebe9f9deb9c3f5c43e56a9c7811d4bbc78512bd87abb",
+      "capture/OpenLaptop/after_env1_base_camera_env0.png": "32d2c442877ed668d544420309833ed3f672dafa5ea29d0c0d5abf4643418c6b",
+      "capture/OpenLaptop/after_env1_base_camera_env1.png": "e39de3095c3448454b2ab6d3397ab300bce4433a92005f487999dc59c8123be0",
+      "capture/OpenLaptop/after_env1_human_env0.png": "88fe32581698a4c9c6c6a1fed1d433f8659bdb4d76bfe86cfdde7e0a4c53a50f",
+      "capture/OpenLaptop/after_env1_human_env1.png": "b4f02e2fe7a1f3eacc632c954a8348d6a506c2d9de4387189a6391d57fe3c340",
+      "capture/OpenLaptop/after_env1_wrist_camera_env0.png": "f1131c5e58d9ad10de52885550e113f2370613a7c3544991bc04a9d9528acf78",
+      "capture/OpenLaptop/after_env1_wrist_camera_env1.png": "64367220be1aeff82abfebe9f9deb9c3f5c43e56a9c7811d4bbc78512bd87abb",
+      "capture/OpenLaptop/before_both_base_camera_env0.png": "32d2c442877ed668d544420309833ed3f672dafa5ea29d0c0d5abf4643418c6b",
+      "capture/OpenLaptop/before_both_base_camera_env1.png": "b49ca6026a3bf0bcc69a215c85161f21027b976fed1e732133e8d8fcb353d5f9",
+      "capture/OpenLaptop/before_both_human_env0.png": "88fe32581698a4c9c6c6a1fed1d433f8659bdb4d76bfe86cfdde7e0a4c53a50f",
+      "capture/OpenLaptop/before_both_human_env1.png": "07be494d6f90e8f1e4b5372558ba51627aeef463de6ff9eed8a384ceb48e85dd",
+      "capture/OpenLaptop/before_both_wrist_camera_env0.png": "f1131c5e58d9ad10de52885550e113f2370613a7c3544991bc04a9d9528acf78",
+      "capture/OpenLaptop/before_both_wrist_camera_env1.png": "fd13c63076e2bf28dfb9e11348b5cff452404ab27b7b058cf3bbaad05b3038bd",
+      "capture/OpenLaptop/original_far_base_camera_env0.png": "32d2c442877ed668d544420309833ed3f672dafa5ea29d0c0d5abf4643418c6b",
+      "capture/OpenLaptop/original_far_base_camera_env1.png": "6054e27f8183db437d0d81c7efe1d397ad0509b7d0c24998e513ff7e6de8379c",
+      "capture/OpenLaptop/original_far_human_env0.png": "88fe32581698a4c9c6c6a1fed1d433f8659bdb4d76bfe86cfdde7e0a4c53a50f",
+      "capture/OpenLaptop/original_far_human_env1.png": "3d82c881aa3c8c9a4d47c7f474b430eea07e3e95ecd1a2cd1862e9619c31274f",
+      "capture/OpenLaptop/original_far_wrist_camera_env0.png": "f1131c5e58d9ad10de52885550e113f2370613a7c3544991bc04a9d9528acf78",
+      "capture/OpenLaptop/original_far_wrist_camera_env1.png": "e73026d6149fa2cd0154a7af967211faa26aa21fb47581342fd43992db2c6981",
+      "capture/OpenLaptop/original_nominal_base_camera_env0.png": "7f17e86a82a4b3069b35155449e96e2477259204300ae3b9151ec633b897d374",
+      "capture/OpenLaptop/original_nominal_base_camera_env1.png": "d97ec09598313b3329ca4d8bdaef8f8700c5a4da043be36a916d665fa0509c4e",
+      "capture/OpenLaptop/original_nominal_human_env0.png": "cb2e383ce54de5669adf8dc8b5d5d47a513abe77a2dacf614f5a12b8ef1ab50d",
+      "capture/OpenLaptop/original_nominal_human_env1.png": "caae5bf016a9f4c368f66029f1081608630329230d237c51461ba44ca569f829",
+      "capture/OpenLaptop/original_nominal_wrist_camera_env0.png": "f1131c5e58d9ad10de52885550e113f2370613a7c3544991bc04a9d9528acf78",
+      "capture/OpenLaptop/original_nominal_wrist_camera_env1.png": "fd13c63076e2bf28dfb9e11348b5cff452404ab27b7b058cf3bbaad05b3038bd",
+      "capture/TypeKeys/after_env1_base_camera_env0.png": "02c9cf1a3c38bdc1f0d5408e8749237cc79db397515bc5fff70188ab983f3536",
+      "capture/TypeKeys/after_env1_base_camera_env1.png": "80feb19016dc592359e223fad15918a54e4bee64fc4bb12e07b483b7d99ba7e6",
+      "capture/TypeKeys/after_env1_external_camera_env0.png": "4f754b931b2f16b10c1415247c4bb24df7cf8f9d958cc4fef9325aa1a95aeedd",
+      "capture/TypeKeys/after_env1_external_camera_env1.png": "cd1627e6a30399a312bfbd1a9e69f0a590fdbf5d7a20463bda353d1ed174d591",
+      "capture/TypeKeys/after_env1_human_env0.png": "0856fc662db65c0de7a43724321e47a7020c0429d54f6a48a2a73af5f94a0ee4",
+      "capture/TypeKeys/after_env1_human_env1.png": "fa163d42b89fe99ee6d60e1b3f501f8971d359fea9bcfd2ab50e414a4567036a",
+      "capture/TypeKeys/after_env1_wrist_camera_env0.png": "db001eab61888b4bf6faf72e8d63b1c0819089031b911f38df427c24a408b888",
+      "capture/TypeKeys/after_env1_wrist_camera_env1.png": "6d29787f46c9aed371c9a795a9bdb8c49beff733b8ad3d38202bf7a74d9e24c1",
+      "capture/TypeKeys/before_both_base_camera_env0.png": "2b71560d8ee537551f122931beadbfe37f9310ce7546dee9d067ccea8019c2a8",
+      "capture/TypeKeys/before_both_base_camera_env1.png": "124e6044bc237bcd6f4ab707e30e43dcf08e1f2bd718d5e5639c97724fa79bbb",
+      "capture/TypeKeys/before_both_external_camera_env0.png": "379ef2b1cbc1d744efb913700de80c852c6aa2a734be2d8c9e85d3b51512b94d",
+      "capture/TypeKeys/before_both_external_camera_env1.png": "e64c950f3e539246af62bfb5c7dbba556a2e43d01d81bdf0a7dd4bf2abe995a4",
+      "capture/TypeKeys/before_both_human_env0.png": "6c6208dbc8aed1950d10877f60f69615588af7b77eb2c36ab7d9278216a905bd",
+      "capture/TypeKeys/before_both_human_env1.png": "31dbc8308ab3631d30813f84985edf0c2b5167deffc1de6a5e53d1112426f18e",
+      "capture/TypeKeys/before_both_wrist_camera_env0.png": "db001eab61888b4bf6faf72e8d63b1c0819089031b911f38df427c24a408b888",
+      "capture/TypeKeys/before_both_wrist_camera_env1.png": "dcbde3c4698708caac8debd431a2360317f592dbb0aee06c2d39988424112bb4",
+      "capture/TypeKeys/original_far_base_camera_env0.png": "2b71560d8ee537551f122931beadbfe37f9310ce7546dee9d067ccea8019c2a8",
+      "capture/TypeKeys/original_far_base_camera_env1.png": "8e57c8788508c695ba0c3fdf0b4f3ac0d9288ef5caa8dea669acb3b35b49a3aa",
+      "capture/TypeKeys/original_far_external_camera_env0.png": "379ef2b1cbc1d744efb913700de80c852c6aa2a734be2d8c9e85d3b51512b94d",
+      "capture/TypeKeys/original_far_external_camera_env1.png": "32cb456cea7974efdea577a80896996d489eaa751f72368870d8d088bccd69c0",
+      "capture/TypeKeys/original_far_human_env0.png": "6c6208dbc8aed1950d10877f60f69615588af7b77eb2c36ab7d9278216a905bd",
+      "capture/TypeKeys/original_far_human_env1.png": "c6036622c6619bbacfa5aebdd4ed73f9d54e1985715555e0132fedadd823a3ed",
+      "capture/TypeKeys/original_far_wrist_camera_env0.png": "db001eab61888b4bf6faf72e8d63b1c0819089031b911f38df427c24a408b888",
+      "capture/TypeKeys/original_far_wrist_camera_env1.png": "742561a9185797cbbff98a1a1fd82c03cbfde3596729474cc472be895da8f34f",
+      "capture/TypeKeys/original_nominal_base_camera_env0.png": "b99f7ad229a55e1f32866f6f64dbf155a88d8781e65581adfd439c376318a691",
+      "capture/TypeKeys/original_nominal_base_camera_env1.png": "0f7fd0bd9d06260eb6dee27acc2bf5d6d3185ad2605bb01d3c768a654fdee6cb",
+      "capture/TypeKeys/original_nominal_external_camera_env0.png": "64ab77fd1249a997ea21d6f60e537c03521c448731cad1e0489ebebb014b513d",
+      "capture/TypeKeys/original_nominal_external_camera_env1.png": "460216949c1e463d2b8dba90bcd7ae3024b4f70eba4867552d0f53043b4f057c",
+      "capture/TypeKeys/original_nominal_human_env0.png": "f991cecb6f92bfbf27c3d85aa6c716d2300ab27cd14486424d94fdba6d69994a",
+      "capture/TypeKeys/original_nominal_human_env1.png": "1054cfd0ae717e56d1bcfadf22cacf29b9f10f36f8d1d368f6365711c143cb75",
+      "capture/TypeKeys/original_nominal_wrist_camera_env0.png": "db001eab61888b4bf6faf72e8d63b1c0819089031b911f38df427c24a408b888",
+      "capture/TypeKeys/original_nominal_wrist_camera_env1.png": "dcbde3c4698708caac8debd431a2360317f592dbb0aee06c2d39988424112bb4",
+      "capture/TypeKeys/environment_1.json": "cf6419977cff1681c89e3a3659523c291cf9ed839b78503af7abb11675da4e37",
+      "handback/COSTS.json": "2c4eb19522cccaca676e1570cb96128cf0d159560bd1564ffab2b25ac7fad108",
+      "TERMINAL.json": "69972f687d9c24263baf08e53d427c4411000923eba8657ab3621a1a9d3859e8"
+    },
+    "worker_exit_code": 1,
+    "job_id": "144137",
+    "terminal": "FAILED",
+    "allocated_gpu_seconds": 37,
+    "submissions": 1,
+    "author_matched_tree": "de00502d6086e8ad75754b8f58308f90e187f91d",
+    "windows_trace": "before-3/output/TypeKeys/marker-trace.json",
+    "windows_failed_receipt": "before-3/output/TypeKeys/environment_1.json",
+    "windows_process": "before-3/process.json",
+    "reviewer_originals": "reviewer/execution/server/capture/TypeKeys/environment_1.json"
+  }
+}

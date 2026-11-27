@@ -31,6 +31,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from mani_skill.envs.sapien_env import BaseEnv
 from tasks.office_desk.reset_scope import OfficeResetScopeMixin, is_full_reset, office_capacity_config
+from tasks.office_desk.position_layout import apply_position_layout
 from tasks.office_desk.devices_appearance import OfficeDevicesAppearance, appearance_enabled
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
@@ -601,6 +602,9 @@ def press_contact_link(agent, tip_link):
 class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
     """Full-key physical keyboard with a P-A-I-R-Enter success sequence."""
 
+    _position_device_name = "keyboard"
+    _position_center = KEYBOARD_SPAWN_CENTER
+
     SUPPORTED_ROBOTS = [
         "panda_gripper_left_mobile_base",
         "panda_sharpa_hand_left_mobile_base",
@@ -688,6 +692,11 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
 
         self.available_model_ids = np.asarray(
             [model_id] if model_id else list(KEYBOARD_MODEL_IDS)
+        )
+        self._configure_position_workspace(
+            kwargs, num_envs, robot_uids == DEFAULT_ROBOT_UID and self.target_finger_id == 1
+            and 0 <= self.robot_init_qpos_noise <= .01 and self.keyboard_clearance == .002
+            and self.available_model_ids.tolist() == ["13106"],
         )
         if reconfiguration_freq is None:
             reconfiguration_freq = 1 if num_envs == 1 else 0
@@ -1192,6 +1201,7 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
             yaw = (
                 self._office_rand(env_idx, ()) * 2.0 - 1.0
             ) * self.keyboard_random_yaw
+            apply_position_layout(options, env_idx, xyz, yaw)
             for local_index, env_id in enumerate(env_idx.tolist()):
                 yaw[local_index] += float(
                     KEYBOARD_MODELS[self._model_ids_per_env[env_id]]["yaw_offset"]
@@ -1395,15 +1405,41 @@ class OfficeDeskTypeKeysEnv(OfficeResetScopeMixin, BaseEnv):
         if marker is None or not self._target_links:
             return
         if self.scene.gpu_sim_enabled and self.num_envs > 1:
-            indices = marker._scene_idxs[marker.scene._reset_mask[marker._scene_idxs]]
-            poses = []
-            for env_id in indices.tolist():
-                links = self._target_links[env_id]
-                slot = int(self.sequence_index[env_id])
-                key = links[slot] if 0 <= slot < len(links) else None
-                poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
-            if poses:
-                marker.set_pose(Pose.create(poses, device=marker.device))
+            scene = marker.scene
+            mask = scene._reset_mask
+            # ManiSkill reopens its scene mask before reset readback calls evaluate.
+            if getattr(self, "_furniture_reset_env_idx", None) is not None:
+                scene._reset_mask = mask & self._furniture_reset_mask(mask)
+            try:
+                rows = scene._reset_mask[marker._scene_idxs].nonzero().flatten().tolist()
+                poses = []
+                for row in rows:
+                    env_id = int(marker._scene_idxs[row])
+                    links = self._target_links[env_id]
+                    slot = int(self.sequence_index[env_id])
+                    key = links[slot] if 0 <= slot < len(links) else None
+                    poses.append(_key_target_marker_pose(key, pose=key.pose.sp if key is not None else None))
+                if poses:
+                    marker.set_pose(Pose.create(poses, device=marker.device))
+                    # Expose the same float32 local coordinates as a native readback.
+                    # In a shared render scene all bodies belong to sub-scene zero.
+                    scene_ids = marker._scene_idxs[rows]
+                    offsets = scene.scene_offsets[0 if scene.parallel_in_single_scene else scene_ids]
+                    body_rows = marker._body_data_index[rows]
+                    buffer = scene.px.cuda_rigid_body_data.torch()
+                    buffer[body_rows, :3] = (buffer[body_rows, :3] + offsets) - offsets
+                    # evaluate runs after reset's last PhysX apply/fetch. Persist
+                    # these marker bodies before a later fetch replaces the pose buffer.
+                    body_ids = torch.tensor([marker._bodies[row].gpu_index for row in rows],
+                                            dtype=torch.int32, device=marker.device)
+                    torch.cuda.synchronize(marker.device)
+                    try:
+                        scene.px.gpu_apply_rigid_dynamic_data(sapien.CudaArray(body_ids))
+                    finally:
+                        # PhysX borrows body_ids on a separate CUDA stream.
+                        torch.cuda.synchronize(marker.device)
+            finally:
+                scene._reset_mask = mask
             return
         # sequence_index, not _current_target_slot(): the latter clamps, which
         # would leave the marker sitting on the last cap after the run is done.

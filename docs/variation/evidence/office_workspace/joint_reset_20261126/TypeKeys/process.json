@@ -1,0 +1,27 @@
+{
+  "commit": "3047a378165eac424d9b15aa847bc16379815999",
+  "command": [
+    "<USERPROFILE>\\anaconda3\\envs\\dexarena-panel\\python.exe",
+    "-B",
+    "tools/variation/sapien_sdk/run_task_check.py",
+    "--repo-root",
+    "<WORKSPACE>\\family-work\\office-pr43-merge-check",
+    "--checker",
+    "tools/variation/check_pr43_reset_joint.py",
+    "--sapien-root",
+    "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\sapien-runtime-repro-v5",
+    "--artifact",
+    "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\artifact.json",
+    "--physx-gpu-dir",
+    "<WORKSPACE>\\DexArena-Variation\\.local\\vendor\\repro-clean-v5\\physx-runtime",
+    "--output",
+    "<WORKSPACE>\\.coordination\\position-workspace-20261125\\..\\position-pr43-20261126\\TypeKeys\\output",
+    "--task",
+    "TypeKeys"
+  ],
+  "elapsed_seconds": 10.64,
+  "min_gpu_free_mib": 5692,
+  "exit_code": 0,
+  "stop_reason": null,
+  "device": "NVIDIA GeForce RTX 4070 Laptop GPU, 576.88, 8188 MiB"
+}

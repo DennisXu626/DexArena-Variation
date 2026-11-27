@@ -1,0 +1,344 @@
+{
+  "OpenLaptop": {
+    "archived_input": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+    "native_max_abs_difference": {
+      "pose": 0.0,
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "robot_qpos": 0.0
+    },
+    "saved_state_restore_max_abs_difference": 0.0,
+    "layout_counters_preserved": true,
+    "held_out_robot_poses": [
+      {
+        "seed": 7111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 7111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            0.013463511259448495,
+            0.06585919685245072
+          ],
+          "yaw_offset_deg": 10
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 28,
+            "tip_error_m": 0.0006345822512308593,
+            "clearance_m": 0.05789877643424332,
+            "joint_step_rad": 0.1227311228764596
+          }
+        }
+      },
+      {
+        "seed": 8111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 8111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            0.0038922657380369916,
+            0.018807247955277565
+          ],
+          "yaw_offset_deg": 0
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 28,
+            "tip_error_m": 0.0006575567026935201,
+            "clearance_m": 0.06145936047187503,
+            "joint_step_rad": 0.09511623952768966
+          }
+        }
+      },
+      {
+        "seed": 9111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 9111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            -0.06520782474707254,
+            0.09371790454568187
+          ],
+          "yaw_offset_deg": 10
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 30,
+            "tip_error_m": 0.0007199450380560978,
+            "clearance_m": 0.056573455412216644,
+            "joint_step_rad": 0.09034501375741322
+          },
+          "side": {
+            "code": 1,
+            "waypoint": 30,
+            "tip_error_m": 0.013193463882853924,
+            "clearance_m": 0.028449556997494463,
+            "joint_step_rad": 0.5041251856383785
+          }
+        }
+      }
+    ],
+    "passive_controls": [
+      {
+        "seed": 517,
+        "preset": "reference",
+        "control_steps": 672,
+        "initial_angle_deg": 44.04727554321289,
+        "passive_peak_deg": 44.04727554321289,
+        "final_angle_deg": 38.54376220703125,
+        "active_peak_deg": 62.738525390625
+      },
+      {
+        "seed": 517,
+        "preset": "far",
+        "control_steps": 672,
+        "initial_angle_deg": 44.04727554321289,
+        "passive_peak_deg": 44.04727554321289,
+        "final_angle_deg": 38.54376220703125,
+        "active_peak_deg": 67.27757263183594
+      }
+    ]
+  },
+  "TypeKeys": {
+    "archived_input": "4f9c5f5a566ff6a132afd4a0d57b268894c5fa1c",
+    "native_max_abs_difference": {
+      "pose": 0.0,
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "robot_qpos": 0.0
+    },
+    "saved_state_restore_max_abs_difference": 0.0,
+    "layout_counters_preserved": true,
+    "held_out_robot_poses": [
+      {
+        "seed": 7111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 7111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            -0.1725364887405515,
+            0.06585919685245072
+          ],
+          "yaw_offset_deg": 10
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 54,
+            "tip_error_m": 0.00045601933632258664,
+            "clearance_m": 0.012720558364629354,
+            "joint_step_rad": 0.0992072110147546
+          },
+          "side": {
+            "code": 0,
+            "waypoint": 53,
+            "tip_error_m": 0.0007900843130471399,
+            "clearance_m": 0.014307301545573782,
+            "joint_step_rad": 0.10652996908519707
+          }
+        }
+      },
+      {
+        "seed": 8111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 8111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            -0.182107734261963,
+            0.058807247955277565
+          ],
+          "yaw_offset_deg": 0
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 53,
+            "tip_error_m": 0.0007828151872965134,
+            "clearance_m": 0.014305557496850727,
+            "joint_step_rad": 0.0967889603652261
+          },
+          "side": {
+            "code": 0,
+            "waypoint": 52,
+            "tip_error_m": 0.0007965608672911578,
+            "clearance_m": 0.01588212052046298,
+            "joint_step_rad": 0.10796423247452869
+          }
+        }
+      },
+      {
+        "seed": 9111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 9111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            -0.21120782474707253,
+            0.053717904545681865
+          ],
+          "yaw_offset_deg": 10
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 53,
+            "tip_error_m": 0.00046597961525148804,
+            "clearance_m": 0.014143121207607058,
+            "joint_step_rad": 0.09612754902125209
+          },
+          "side": {
+            "code": 0,
+            "waypoint": 52,
+            "tip_error_m": 0.0007270842061882933,
+            "clearance_m": 0.01551413105361752,
+            "joint_step_rad": 0.10400714781107845
+          }
+        }
+      }
+    ]
+  },
+  "ClickMouse": {
+    "archived_input": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+    "native_max_abs_difference": {
+      "pose": 0.0,
+      "qpos": 0.0,
+      "qvel": 0.0,
+      "robot_qpos": 0.0
+    },
+    "saved_state_restore_max_abs_difference": 0.0,
+    "layout_counters_preserved": true,
+    "held_out_robot_poses": [
+      {
+        "seed": 7111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 7111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            0.016463511259448494,
+            -0.2941407931475493
+          ],
+          "yaw_offset_deg": 10
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 17,
+            "tip_error_m": 0.000535189937726761,
+            "clearance_m": 0.009781096646982158,
+            "joint_step_rad": 0.1508922545888396
+          },
+          "shell_side": {
+            "code": 0,
+            "waypoint": 16,
+            "tip_error_m": 0.0004952209788180442,
+            "clearance_m": 0.012224398541274252,
+            "joint_step_rad": 0.19067779083667613
+          }
+        }
+      },
+      {
+        "seed": 8111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 8111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            0.006892265738036991,
+            -0.22119274204472245
+          ],
+          "yaw_offset_deg": 0
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 18,
+            "tip_error_m": 0.0005053221982197978,
+            "clearance_m": 0.009944716862442443,
+            "joint_step_rad": 0.13623239115229913
+          },
+          "shell_side": {
+            "code": 0,
+            "waypoint": 18,
+            "tip_error_m": 0.0007516634966931651,
+            "clearance_m": 0.014246705057127107,
+            "joint_step_rad": 0.20643990698955894
+          }
+        }
+      },
+      {
+        "seed": 9111,
+        "layout": {
+          "version": "office-workspace-v1",
+          "seed": 9111,
+          "draw_index": 0,
+          "mode": "random",
+          "xy_m": [
+            -0.062207824747072545,
+            -0.3462820854543181
+          ],
+          "yaw_offset_deg": 10
+        },
+        "routes": {
+          "front": {
+            "code": 0,
+            "waypoint": 15,
+            "tip_error_m": 0.0005782184923805242,
+            "clearance_m": 0.013587060613702587,
+            "joint_step_rad": 0.13754866712830083
+          },
+          "shell_side": {
+            "code": 0,
+            "waypoint": 15,
+            "tip_error_m": 0.0005110810816591038,
+            "clearance_m": 0.014848310539169789,
+            "joint_step_rad": 0.13124723606061295
+          }
+        }
+      }
+    ]
+  },
+  "long": {
+    "task": "OfficeDeskLong-Sharpa-v1",
+    "seed": 817,
+    "make_kwargs": {
+      "num_envs": 1,
+      "sim_backend": "physx_cpu",
+      "obs_mode": "state",
+      "reward_mode": "sparse",
+      "control_mode": "pd_joint_pos",
+      "reconfiguration_freq": 0
+    },
+    "initializations": [
+      {
+        "digest": "0ab0907cc942e818a8382dab9a8fd9afcdf62cb30be62babd29559a3e295b3fa",
+        "success": false,
+        "values": 354
+      },
+      {
+        "digest": "0ab0907cc942e818a8382dab9a8fd9afcdf62cb30be62babd29559a3e295b3fa",
+        "success": false,
+        "values": 354
+      }
+    ],
+    "passed": true
+  },
+  "source_commit": "ba8b1f4ceca8eb2987ab4fe3c0e8683bb141d239",
+  "checker_sha256": "22a182f2e777bd8939a050082a1a4830c21d70cc1cc2a2cb0b7d3b265d743606"
+}

@@ -1,0 +1,13 @@
+{
+  "pr": "https://github.com/DennisXu626/DexArena-Variation/pull/43",
+  "state": "open",
+  "mergeable": true,
+  "merged": false,
+  "head": "e3495118e51a133d542349e88990cb26b539670b",
+  "merge_commit": "80780d33cd2acbd5aa352b713eb79f115ebecef8",
+  "merge_parents": [
+    "86296530c1f6d76d0a6a756c42068bd6204a7a49",
+    "e3495118e51a133d542349e88990cb26b539670b"
+  ],
+  "verified_tree": "f3f1ca754297b6497c248cabe54372d431073e64"
+}

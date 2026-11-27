@@ -1,0 +1,28 @@
+{
+  "source_commit": "0b4b7d5cb4493b972db5c612bb369807c827e54d",
+  "backend": "physx_cuda",
+  "status": "failed",
+  "gate": "indexed isolation",
+  "results_sha256": "def6e9d3079c1d9da3005976f730193e23677dfc8857487a8a364d250add67fa",
+  "private_sdk_sha256": "394572b3d961a6cf17d41fb678bb3fc80a9dbd617b72251fcfec2caf329c5b19",
+  "cases": [
+    {
+      "id": "ISO0-C---",
+      "selected_yaw_error_rad": 1.535141663788764e-08,
+      "state_changes": [
+        "key_marker_pose"
+      ],
+      "unselected_marker_before_sha256": "5169509b549d8d05a9c68098fc6f4a4a228c6f1d7637415c9eda271ec6eae796",
+      "unselected_marker_after_sha256": "0cee3d112a55d2903db5239922c881da967d5c7d43dc85ce7829c82f0e0225e8"
+    },
+    {
+      "id": "ISO1-C+++",
+      "selected_yaw_error_rad": 1.535141663788764e-08,
+      "state_changes": [
+        "key_marker_pose"
+      ],
+      "unselected_marker_before_sha256": "1580e4d7b16462fa42bce91de8bd325af25bbfd8ebce9588a208264e04bc829f",
+      "unselected_marker_after_sha256": "71f1bf51c522790865da54c4e16ef23993524ee1d09f001e718c7fc4b09117e6"
+    }
+  ]
+}

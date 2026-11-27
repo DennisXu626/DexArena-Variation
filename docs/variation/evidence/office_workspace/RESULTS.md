@@ -1,0 +1,49 @@
+# Office Desk 遥操前检查
+
+运行输入为原 #43 提交 `b2a8918` 的直接后继 `ba8b1f4`。模拟器和检查器的实际版本、资产闭包、构造参数及源文件 SHA256 随每份原始报告保存。三张运行表从原生碰撞与运动学输入独立重建后逐字节一致。26 项 Office 合约测试通过。
+
+## CPU 原生初态与路径
+
+每项在 Windows PhysX CPU 单环境验证 5 个命名预设、12 个分朝向的外边界合法点及 12 个刚越界点，共 29 行。17 个合法初态均通过实际根 XY／朝向、关节、目标点、完整桌面占地和初始阶段检查。5 个预设另作 8 个控制步的支撑／固定根检查。非法请求完整拒绝，物理和任务状态、任务随机流与布局序列前后相同。真实操作点最大预测误差均小于 0.0001 mm。原生根、关节、速度及机器人关节在三项原 PR 采集种子下逐值重现。恢复快照后原生全状态与保存值一致，布局计数保持。OfficeDeskLong 另做原生 CPU 重播。[原生兼容与恢复](compatibility.json)
+
+| 短任务 | 实测目标点 | 三档朝向有效面积（−10°、0°、+10°），cm² | 已测布局最小整机桌边余量 | 逐点表与原始报告 |
+|---|---|---|---|---|
+| OpenLaptop | 屏边 | 500、572、636 | 68.41 mm | [CSV](cpu/OpenLaptop/POINTS.csv) · [JSON](cpu/OpenLaptop/report.json) |
+| TypeKeys | P、A、I、R、Enter | 320、400、320 | 9.81 mm | [CSV](cpu/TypeKeys/POINTS.csv) · [JSON](cpu/TypeKeys/report.json) |
+| ClickMouse | 左键面 | 880、888、884 | 123.38 mm | [CSV](cpu/ClickMouse/POINTS.csv) · [JSON](cpu/ClickMouse/report.json) |
+
+相同机器人和控制器下，每种分布各取 24 个预设种子。下表给首个实际操作点世界 X/Y 的样本跨度，单位 cm。OpenLaptop 的屏边还随原生初始开度变化。各回合的实测点、seed 和 reset 耗时见原始报告 `distributions`。
+
+| 任务 | 原生随机 | 在旧显式域内均匀选 XY、等概率选朝向 | 新随机域 |
+|---|---|---|---|
+| OpenLaptop | 6.1 / 4.3 | 7.2 / 10.6 | 24.4 / 24.5 |
+| TypeKeys | 4.7 / 3.5 | 5.9 / 7.7 | 20.9 / 17.5 |
+| ClickMouse | 3.7 / 3.7 | 8.2 / 7.4 | 31.5 / 27.3 |
+
+对照相同顺序的 CPU reset 耗时中位数（原生／旧域／新域）分别为 OpenLaptop 3.8／3.8／3.4 ms、TypeKeys 6.9／6.8／6.8 ms、ClickMouse 4.2／4.3／4.2 ms。这是本机单批 24 个种子的观测。审计文件的 `neighbouring_paths` 逐朝向列出区域四侧边界及外移 2 cm 的路线结果。例如在 0°，键盘近侧的域外相邻点已经越过桌边；鼠标远侧相邻点在两条路线上分别遇到指尖误差和关节变化过大。笔记本四侧有仍可解的域外点，保留有限搜索窗口，便于运营时复现同一区域并继续扩展。
+
+每次实际动作从全新 reset 开始，使用原生关节控制器按离散路径逐步执行。CPU 上，TypeKeys 在 `reference` 和 `far` 都完成 P 的按压与释放并推进到 A，实测指腹有接触；其余四键只完成路径筛选。ClickMouse 的 `far/front` 实际触发原生有效点击，读取的指定 link 对接触力仍为零。标称的两条路线均未触发原生点击，远点的壳侧路线因重解时关节变化过大而未执行。OpenLaptop 两次均有屏角变化，指定指尖与屏幕的接触力读数都是零。每个探针的目标、轨迹、接触与成功标记在报告 `actions` 中逐控制步记录。
+
+额外用未参与建图的三个种子初始化实际机器人和布局，每项的三个随机点均有至少一条离线路线通过。OpenLaptop 其中一个点的侧向路线超过指尖误差门槛。另按两次主动开盖试验相同的种子、布局及 672 个控制步保持原生关节目标，屏角均从 44.05° 下降到 38.54°。主动探针的峰值分别为 62.74°、67.28°，两次均未读到指定指尖接触。[原生起姿与被动开盖对照](compatibility.json)
+
+## Windows 双环境 CUDA
+
+三个独占作业使用 `f9f64ec`、Windows PhysX CUDA 和支持 indexed apply 的 SAPIEN wininterop5。与 CPU 输入的差异为交接资料与额外离线／CPU 检查。每项共 33 行，包含 17 个合法初态、12 个预期拒绝和 4 个在零步间隔完成的局部 reset。两个方向各做一次固定、一次随机，并实际读回选中实体与未选物理、阶段、控制器和随机流。TypeKeys 同时核提示位置，三项均验证乱序选择 ID 的路由、seed 重播、推进和同种子旧接口。全部通过，最大操作点预测误差 0.00035 mm。三个作业均正常退出，SDK 前后身份一致。
+
+| 短任务 | 双环境逐点、原始记录、SDK 与回执 | 代表点实际短动作 |
+|---|---|---|
+| OpenLaptop | [CSV](cuda/OpenLaptop/POINTS.csv) · [JSON](cuda/OpenLaptop/report.json) · [SDK](cuda/OpenLaptop/SDK.json) | 标称和远点的屏角峰值为 60.61° 和 67.10°，指定指尖对屏幕的接触力读数均为零。 |
+| TypeKeys | [CSV](cuda/TypeKeys/POINTS.csv) · [JSON](cuda/TypeKeys/report.json) · [SDK](cuda/TypeKeys/SDK.json) | 标称与远点均完成首键按压释放并推进到 A，指定指腹接触力峰值分别为 3.81 N、3.64 N。 |
+| ClickMouse | [CSV](cuda/ClickMouse/POINTS.csv) · [JSON](cuda/ClickMouse/report.json) · [SDK](cuda/ClickMouse/SDK.json) | 标称两路线均未触发。远点两路线左键峰值都达到满行程，壳侧路线触发原生有效点击。指定 link 对接触力读数为零。 |
+
+## Linux 双环境 CUDA
+
+Server3 在 Linux PhysX CUDA 上使用同一提交，三项各完成 33 行检查。Linux 与 Windows CUDA 对代表点的实际动作给出了相同的通过组合。任务回执、作业状态和接触测量见 [Server3 实测报告](server3/RESULTS.md)。
+
+## 复现给遥操组的点
+
+使用相应后端报告的 `make_kwargs` 和 `seed`。先按 `reference` 初始化，再通过同样的 `workspace_placement` 请求切到 `far`。比较进手侧时保持位置与朝向相同。各点实测操作坐标和可原样复制的 `reset_options` 在逐点 CSV 中。
+
+- **OpenLaptop** 用屏边从正面和侧面入手，反馈首次有效接触、途中过腕及稳定直立的阶段。
+- **TypeKeys** 标称和远点先试 P 的有效按压与释放，再跨到 A 和 Enter。记录邻键误按、视野、指腹是否需换侧。
+- **ClickMouse** 标称先用前上方和壳侧两种进入方向，再在远点复试有效左键点击、右键误按及释放。标明原生判据是否触发。

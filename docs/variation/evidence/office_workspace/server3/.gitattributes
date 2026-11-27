@@ -1,0 +1,2 @@
+POINTS.csv -text whitespace=trailing-space,cr-at-eol
+*.json text eol=lf

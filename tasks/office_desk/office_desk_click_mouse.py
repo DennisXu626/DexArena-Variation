@@ -25,6 +25,7 @@ from tasks.robots.panda_wuji_hand_right_mobile_base import (
 )
 from mani_skill.envs.sapien_env import BaseEnv
 from tasks.office_desk.reset_scope import OfficeResetScopeMixin, office_capacity_config
+from tasks.office_desk.position_layout import apply_position_layout
 from mani_skill.sensors.camera import CameraConfig
 from mani_skill.utils import common, sapien_utils
 from mani_skill.utils.geometry.trimesh_utils import (
@@ -471,6 +472,9 @@ def _configure_task_articulation(articulation) -> None:
 class OfficeDeskClickMouseEnv(OfficeResetScopeMixin, BaseEnv):
     """Hold a valid left-button click for three consecutive control frames."""
 
+    _position_device_name = "mouse"
+    _position_center = (MOUSE_X, MOUSE_Y)
+
     SUPPORTED_ROBOTS = [
         "panda_gripper_right_mobile_base",
         "panda_sharpa_hand_right_mobile_base",
@@ -538,6 +542,10 @@ class OfficeDeskClickMouseEnv(OfficeResetScopeMixin, BaseEnv):
             )
 
         self.show_guidance_markers = pop_guidance_marker_flag(kwargs)
+        self._configure_position_workspace(
+            kwargs, num_envs, robot_uids == DEFAULT_ROBOT_UID and self.target_finger_id == 1
+            and 0 <= self.robot_init_qpos_noise <= .02,
+        )
         super().__init__(
             *args,
             robot_uids=robot_uids,
@@ -955,6 +963,7 @@ class OfficeDeskClickMouseEnv(OfficeResetScopeMixin, BaseEnv):
                 * 2.0
                 - 1.0
             ) * self.mouse_yaw_noise
+            apply_position_layout(options, env_idx, xyz, yaw)
             yaw += float(
                 MOUSE_MODEL["yaw_offset"]
             )

@@ -1,0 +1,522 @@
+{
+  "provenance": "Offline reading of the archived checker, results and tested code. Option dictionaries and asserted scheme vectors are reconstructed. No per-call observation, exception log, or camera frame was saved.",
+  "cases": [
+    {
+      "task_id": "OfficeDeskOpenLaptop-Sharpa-v1",
+      "source_folder": "OpenLaptop",
+      "make_kwargs_from_checker": {
+        "position_workspace": true,
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "state",
+        "control_mode": "pd_joint_pos",
+        "reconfiguration_freq": 0,
+        "sim_config": {
+          "gpu_memory_config": {
+            "max_rigid_contact_count": 131072,
+            "max_rigid_patch_count": 65536,
+            "found_lost_pairs_capacity": 1048576
+          }
+        },
+        "office_devices_appearance": {
+          "enabled": true,
+          "scheme_id": "original"
+        },
+        "office_keyboard_appearance": {
+          "enabled": true,
+          "scheme_id": "original"
+        }
+      },
+      "full_reset_seed": 717,
+      "local_resets_in_execution_order": [
+        {
+          "options": {
+            "env_idx": [
+              1
+            ],
+            "workspace_placement": {
+              "1": "far"
+            },
+            "office_devices_appearance": {
+              "scheme_id": "variant_1"
+            },
+            "office_keyboard_appearance": {
+              "scheme_id": "variant_2"
+            }
+          },
+          "target_xy_m_yaw_offset_deg_from_table": [
+            0.037,
+            -0.02,
+            0
+          ],
+          "far_xy_error_m_from_result": 1.862645149230957e-08,
+          "scheme_vectors_asserted_by_checker": {
+            "office_devices_appearance": [
+              "original",
+              "variant_1"
+            ],
+            "office_keyboard_appearance": [
+              "original",
+              "variant_2"
+            ]
+          },
+          "passive_env": 0
+        },
+        {
+          "options": {
+            "env_idx": [
+              0
+            ],
+            "position_layout": {
+              "0": {}
+            },
+            "office_devices_appearance": {
+              "scheme_id": "variant_1"
+            },
+            "office_keyboard_appearance": {
+              "scheme_id": "variant_2"
+            }
+          },
+          "target_xy_m_from_legacy_center": [
+            -0.063,
+            0.0
+          ],
+          "target_yaw_offset_deg": 0,
+          "scheme_vectors_asserted_by_checker": {
+            "office_devices_appearance": [
+              "variant_1",
+              "variant_1"
+            ],
+            "office_keyboard_appearance": [
+              "variant_2",
+              "variant_2"
+            ]
+          },
+          "passive_env": 1
+        }
+      ],
+      "result_summary": {
+        "task": "OpenLaptop",
+        "schemes": [
+          "variant_1",
+          "variant_2"
+        ],
+        "far_xy_error_m": 1.862645149230957e-08,
+        "peer_state_equal_both_directions": true,
+        "rejected_cases": 7
+      },
+      "illegal_options_from_checker": [
+        {
+          "env_idx": [
+            1
+          ],
+          "position_layout": {
+            "1": {
+              "laptop_xy_m": [
+                99,
+                99
+              ]
+            }
+          },
+          "office_devices_appearance": {
+            "scheme_id": "variant_1"
+          },
+          "office_keyboard_appearance": {
+            "scheme_id": "variant_2"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "office_devices_appearance": {
+            "scheme_id": "unknown"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "office_devices_appearance": {
+            "scheme_id": "original"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "office_keyboard_appearance": {
+            "scheme_id": "unknown"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "office_keyboard_appearance": {
+            "scheme_id": "original"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "position_layout": {
+            "1": {}
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "position_layout": {
+            "1": {}
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "OfficeDeskTypeKeys-Sharpa-v1",
+      "source_folder": "TypeKeys-final",
+      "make_kwargs_from_checker": {
+        "position_workspace": true,
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "state",
+        "control_mode": "pd_joint_pos",
+        "reconfiguration_freq": 0,
+        "sim_config": {
+          "gpu_memory_config": {
+            "max_rigid_contact_count": 131072,
+            "max_rigid_patch_count": 65536,
+            "found_lost_pairs_capacity": 1048576
+          }
+        },
+        "model_id": "13106",
+        "office_devices_appearance": {
+          "enabled": true,
+          "scheme_id": "original"
+        },
+        "office_keyboard_appearance": {
+          "enabled": true,
+          "scheme_id": "original"
+        }
+      },
+      "full_reset_seed": 717,
+      "local_resets_in_execution_order": [
+        {
+          "options": {
+            "env_idx": [
+              1
+            ],
+            "workspace_placement": {
+              "1": "far"
+            },
+            "office_devices_appearance": {
+              "scheme_id": "variant_1"
+            },
+            "office_keyboard_appearance": {
+              "scheme_id": "variant_2"
+            }
+          },
+          "target_xy_m_yaw_offset_deg_from_table": [
+            -0.149,
+            -0.02,
+            0
+          ],
+          "far_xy_error_m_from_result": 1.862645149230957e-08,
+          "scheme_vectors_asserted_by_checker": {
+            "office_devices_appearance": [
+              "original",
+              "variant_1"
+            ],
+            "office_keyboard_appearance": [
+              "original",
+              "variant_2"
+            ]
+          },
+          "passive_env": 0
+        },
+        {
+          "options": {
+            "env_idx": [
+              0
+            ],
+            "position_layout": {
+              "0": {}
+            },
+            "office_devices_appearance": {
+              "scheme_id": "variant_1"
+            },
+            "office_keyboard_appearance": {
+              "scheme_id": "variant_2"
+            }
+          },
+          "target_xy_m_from_legacy_center": [
+            -0.289,
+            0.0
+          ],
+          "target_yaw_offset_deg": 0,
+          "scheme_vectors_asserted_by_checker": {
+            "office_devices_appearance": [
+              "variant_1",
+              "variant_1"
+            ],
+            "office_keyboard_appearance": [
+              "variant_2",
+              "variant_2"
+            ]
+          },
+          "passive_env": 1
+        }
+      ],
+      "result_summary": {
+        "task": "TypeKeys",
+        "schemes": [
+          "variant_1",
+          "variant_2"
+        ],
+        "far_xy_error_m": 1.862645149230957e-08,
+        "peer_state_equal_both_directions": true,
+        "rejected_cases": 7
+      },
+      "illegal_options_from_checker": [
+        {
+          "env_idx": [
+            1
+          ],
+          "position_layout": {
+            "1": {
+              "keyboard_xy_m": [
+                99,
+                99
+              ]
+            }
+          },
+          "office_devices_appearance": {
+            "scheme_id": "variant_1"
+          },
+          "office_keyboard_appearance": {
+            "scheme_id": "variant_2"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "office_devices_appearance": {
+            "scheme_id": "unknown"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "office_devices_appearance": {
+            "scheme_id": "original"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "office_keyboard_appearance": {
+            "scheme_id": "unknown"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "office_keyboard_appearance": {
+            "scheme_id": "original"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "position_layout": {
+            "1": {}
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "position_layout": {
+            "1": {}
+          }
+        }
+      ]
+    },
+    {
+      "task_id": "OfficeDeskClickMouse-Sharpa-v1",
+      "source_folder": "ClickMouse-with-deps",
+      "make_kwargs_from_checker": {
+        "position_workspace": true,
+        "num_envs": 2,
+        "sim_backend": "physx_cuda",
+        "obs_mode": "state",
+        "control_mode": "pd_joint_pos",
+        "reconfiguration_freq": 0,
+        "sim_config": {
+          "gpu_memory_config": {
+            "max_rigid_contact_count": 131072,
+            "max_rigid_patch_count": 65536,
+            "found_lost_pairs_capacity": 1048576
+          }
+        },
+        "mouse_appearance": {
+          "enabled": true,
+          "scheme_id": "original"
+        }
+      },
+      "full_reset_seed": 717,
+      "local_resets_in_execution_order": [
+        {
+          "options": {
+            "env_idx": [
+              1
+            ],
+            "workspace_placement": {
+              "1": "far"
+            },
+            "mouse_appearance": {
+              "scheme_id": "ivory_matte"
+            }
+          },
+          "target_xy_m_yaw_offset_deg_from_table": [
+            0.08,
+            -0.33999999,
+            0
+          ],
+          "far_xy_error_m_from_result": 8.940696716308594e-08,
+          "scheme_vectors_asserted_by_checker": {
+            "mouse_appearance": [
+              "original",
+              "ivory_matte"
+            ]
+          },
+          "passive_env": 0
+        },
+        {
+          "options": {
+            "env_idx": [
+              0
+            ],
+            "position_layout": {
+              "0": {}
+            },
+            "mouse_appearance": {
+              "scheme_id": "ivory_matte"
+            }
+          },
+          "target_xy_m_from_legacy_center": [
+            -0.1,
+            -0.32
+          ],
+          "target_yaw_offset_deg": 0,
+          "scheme_vectors_asserted_by_checker": {
+            "mouse_appearance": [
+              "ivory_matte",
+              "ivory_matte"
+            ]
+          },
+          "passive_env": 1
+        }
+      ],
+      "result_summary": {
+        "task": "ClickMouse",
+        "schemes": [
+          "ivory_matte"
+        ],
+        "far_xy_error_m": 8.940696716308594e-08,
+        "peer_state_equal_both_directions": true,
+        "rejected_cases": 5
+      },
+      "illegal_options_from_checker": [
+        {
+          "env_idx": [
+            1
+          ],
+          "position_layout": {
+            "1": {
+              "mouse_xy_m": [
+                99,
+                99
+              ]
+            }
+          },
+          "mouse_appearance": {
+            "scheme_id": "ivory_matte"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "mouse_appearance": {
+            "scheme_id": "unknown"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "mouse_appearance": {
+            "scheme_id": "original"
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "reset_to_env_states": {},
+          "position_layout": {
+            "1": {}
+          }
+        },
+        {
+          "env_idx": [
+            1
+          ],
+          "workspace_placement": {
+            "1": "far"
+          },
+          "position_layout": {
+            "1": {}
+          }
+        }
+      ]
+    }
+  ]
+}
