@@ -32,3 +32,5 @@ python tests/test_meal_partial_reset.py --evidence
 - 请独立执行层在新 head 上先复测 OpenLunchBox selected0 原反例；通过后继续四入口双向共八方向、真实 evaluate/get_obs 边界目标、original 恢复、完整材质及同号配色断言。新 GPU 作业按反馈单独申请范围和预算。
 - 历史贴图、原帧、资产检查继续复用，不重新渲染。作者原帧入口 `/data/home/pb/paired-full-20261121/results-125331/meal/`，团队读取账号 `xkl`，索引 PR30_files.csv 的 260 条 PNG SHA-256 已逐项匹配；权限已配置，等待读取方实读。本地先前没有成功切换为 xkl，不能声称该身份已实读。
 - 上轮独立审验原证据入口 `/mnt/ceph2/xkl/DexArena/pr_review/PR30-R4/run_01/recovery_01/`；其中 `capture/open/selected_0/result.json` 为原失败实值。该历史 GPU 证据不作为新 head 已通过的证明。
+
+归档补充：CPU 受测生产/测试源码对应提交 `a83a0668848367c9448501c32c580f61612cb724`。后续归档提交仅修改本 README 和 metadata.json，记录 Windows 工作树 CRLF 与 Git blob LF 的两组 SHA-256；逐文件已验证仅有换行差异，生产代码、测试及 SDK 夹具均未改动。最终送审 head 以 PR 正文为准。
