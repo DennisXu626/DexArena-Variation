@@ -1,0 +1,39 @@
+--- a/physx/source/gpuarticulation/src/CUDA/forwardDynamic2.cu
++++ b/physx/source/gpuarticulation/src/CUDA/forwardDynamic2.cu
+@@ -3381,6 +3381,7 @@
+ 		PxU32 oldCommonNode = commonNode;
+ 
+ 		bool sharedPathEmpty = true;
++		bool resetPathToRoot = false;
+ 		
+ 		const PxU32 nbArticulationBatchPerPartition = (nbArticulations + 31) / 32;
+ 
+@@ -3404,6 +3405,14 @@
+ 				{
+ 					if (dirtyIndex != 0xFFFFFFFF)
+ 					{
++						// Consume pending paths only when this articulation is referenced again.
++						if (resetPathToRoot)
++						{
++							for (PxU32 j = 0; j < wordSize; ++j)
++								pathToRootBitField[j].bitField[threadIndexInWarp] = 0;
++							resetPathToRoot = false;
++						}
++
+ 						const PxgArticulationBitFieldStackData* linkPathToRoot = &linkBitFieldBlocks[dirtyIndex * wordSize];
+ 						PxU32 commonLink = 0;
+ 						if (sharedPathEmpty)
+@@ -3488,11 +3497,11 @@
+ 				PxU64 word = rootBitField[j].bitField[threadIndexInWarp];
+ 				sharedBitField[j].bitField[threadIndexInWarp] = word;
+ 				sharedPathEmpty &= (word == 0);
+-				//zero pathToRoot
+-				pathToRootBitField[j].bitField[threadIndexInWarp] = 0;
++				// Preserve these paths across partitions without this articulation.
+ 			}
+ 			
+ 			const PxReal scale = count < 1.f ? 0.f : 1.f/count;
++			resetPathToRoot = true;
+ 			dirtyLink[partitionOffset] = commonNode;
+ 			partitionAverageScale[partitionOffset] = scale;
+ 		}

@@ -1,0 +1,138 @@
+--- a/include/sapien/physx/articulation_link_component.h
++++ b/include/sapien/physx/articulation_link_component.h
+@@ -44,6 +44,12 @@
+   float getFriction() const;
+   void setFriction(float friction);
+ 
++  // Efforts are N m for revolute joints and N for prismatic joints. This is
++  // separate from the dimensionless legacy coefficient exposed by setFriction.
++  Eigen::Vector3f getFrictionParams() const;
++  void setFrictionParams(float staticEffort, float dynamicEffort, float viscous);
++  bool hasFrictionParams() const { return mFrictionParamsEnabled; }
++
+   float getMaxVelocity() const;
+   void setMaxVelocity(float v);
+ 
+@@ -82,6 +88,8 @@
+ 
+ private:
+   std::string mName;
++  // PhysX has no public query for which friction model has been selected.
++  bool mFrictionParamsEnabled{false};
+   ::physx::PxArticulationJointReducedCoordinate *getPxJoint() const;
+   std::vector<::physx::PxArticulationAxis::Enum> mAxes;
+   std::weak_ptr<PhysxArticulationLinkComponent> mLink;
+--- a/src/physx/articulation_link_component.cpp
++++ b/src/physx/articulation_link_component.cpp
+@@ -24,6 +24,7 @@
+ #include "sapien/scene.h"
+ 
+ #include "sapien/profiler.h"
++#include <cmath>
+ 
+ using namespace physx;
+ 
+@@ -114,6 +115,30 @@
+   }
+ }
+ 
++Eigen::Vector3f PhysxArticulationJoint::getFrictionParams() const {
++  auto j = getPxJoint();
++  if (!j || mAxes.size() != 1) {
++    throw std::runtime_error("friction parameters require a revolute or prismatic joint");
++  }
++  auto params = j->getFrictionParams(mAxes[0]);
++  return {params.staticFrictionEffort, params.dynamicFrictionEffort,
++          params.viscousFrictionCoefficient};
++}
++
++void PhysxArticulationJoint::setFrictionParams(float staticEffort, float dynamicEffort,
++                                              float viscous) {
++  auto j = getPxJoint();
++  if (!j || mAxes.size() != 1) {
++    throw std::runtime_error("friction parameters require a revolute or prismatic joint");
++  }
++  if (!std::isfinite(staticEffort) || !std::isfinite(dynamicEffort) ||
++      !std::isfinite(viscous) || staticEffort < 0 || dynamicEffort < 0 || viscous < 0) {
++    throw std::invalid_argument("friction parameters must be finite and nonnegative");
++  }
++  j->setFrictionParams(mAxes[0], {staticEffort, dynamicEffort, viscous});
++  mFrictionParamsEnabled = true;
++}
++
+ float PhysxArticulationJoint::getMaxVelocity() const {
+   if (auto j = getPxJoint()) {
+     return j->getMaxJointVelocity();
+@@ -430,6 +455,8 @@
+ 
+     PxArticulationJointType::Enum jointType{};
+     float jointFriction{};
++    bool jointFrictionParamsEnabled{};
++    Eigen::Vector3f jointFrictionParams{Eigen::Vector3f::Zero()};
+     PxTransform jointParentPose{};
+     PxTransform jointChildPose{};
+ 
+@@ -464,6 +491,11 @@
+ 
+     if (pxjoint) {
+       property.jointFriction = pxjoint->getFrictionCoefficient();
++      auto joint = l->getJoint();
++      property.jointFrictionParamsEnabled = joint->getDof() == 1 && joint->hasFrictionParams();
++      if (property.jointFrictionParamsEnabled) {
++        property.jointFrictionParams = joint->getFrictionParams();
++      }
+       property.jointParentPose = pxjoint->getParentPose();
+       property.jointChildPose = pxjoint->getChildPose();
+       std::vector<PxArticulationAxis::Enum> axes = {
+@@ -533,6 +565,10 @@
+                          ? PxArticulationJointType::eFIX
+                          : info.jointType);
+       pxjoint->setFrictionCoefficient(info.jointFriction);
++      if (info.jointFrictionParamsEnabled && joint->getDof() == 1) {
++        auto const &params = info.jointFrictionParams;
++        joint->setFrictionParams(params[0], params[1], params[2]);
++      }
+       pxjoint->setParentPose(info.jointParentPose);
+       pxjoint->setChildPose(info.jointChildPose);
+       std::vector<PxArticulationAxis::Enum> axes = {
+@@ -656,6 +692,10 @@
+     newJoint->setLimit(joint->getLimit());
+     newJoint->setArmature(joint->getArmature());
+     newJoint->setFriction(joint->getFriction());
++    if (joint->getDof() == 1 && joint->hasFrictionParams()) {
++      auto params = joint->getFrictionParams();
++      newJoint->setFrictionParams(params[0], params[1], params[2]);
++    }
+     newJoint->setDriveTargetPosition(joint->getDriveTargetPosition());
+     newJoint->setDriveTargetVelocity(joint->getDriveTargetVelocity());
+     if (joint->getDof() != 0) {
+--- a/python/pybind/physx.cpp
++++ b/python/pybind/physx.cpp
+@@ -935,6 +935,11 @@
+                     &PhysxArticulationJoint::setFriction)
+       .def("get_friction", &PhysxArticulationJoint::getFriction)
+       .def("set_friction", &PhysxArticulationJoint::setFriction, py::arg("friction"))
++      .def("get_friction_params", &PhysxArticulationJoint::getFrictionParams)
++      .def("set_friction_params", &PhysxArticulationJoint::setFrictionParams,
++           py::arg("static_effort"), py::arg("dynamic_effort"), py::arg("viscous"),
++           "Set effort-based friction on a revolute/prismatic joint (PhysX 5.6.1).")
++      .def_property_readonly("friction_params_enabled", &PhysxArticulationJoint::hasFrictionParams)
+ 
+       .def_property("max_velocity", &PhysxArticulationJoint::getMaxVelocity,
+                     &PhysxArticulationJoint::setMaxVelocity)
+--- a/python/py_package/pysapien/physx.pyi
++++ b/python/py_package/pysapien/physx.pyi
+@@ -176,6 +176,13 @@
+         ...
+     def get_force_limit(self) -> float:
+         ...
++    def get_friction_params(self) -> numpy.ndarray:
++        """Return static effort, dynamic effort and viscous coefficient."""
++    def set_friction_params(self, static_effort: float, dynamic_effort: float, viscous: float) -> None:
++        """Use N m for revolute effort or N for prismatic effort."""
++    @property
++    def friction_params_enabled(self) -> bool:
++        ...
+     def get_friction(self) -> float:
+         ...
+     def get_global_pose(self) -> sapien.pysapien.Pose:

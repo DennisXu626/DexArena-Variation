@@ -587,7 +587,7 @@ def xhand_marker_links(prefix: str = "right_") -> list:
 def apply_joint_physics(robot, hand_joint_names, frictionloss=None, armature=None,
                         max_velocity=None, no_collision_links=()):
     """Apply vendor-MJCF joint transmission physics to a BUILT articulation:
-    Coulomb dry friction (``joint.set_friction``) and reflected rotor inertia
+    Coulomb dry friction (PhysX 5.6.1 effort-based friction) and reflected rotor inertia
     (``PhysxArticulationJoint.set_armature``). These are frozen REAL physical
     properties (sim2real) — never runtime knobs. Call from the agent's
     ``_after_init`` (re-runs on every reconfigure, so rebuilds keep them).
@@ -607,8 +607,21 @@ def apply_joint_physics(robot, hand_joint_names, frictionloss=None, armature=Non
           if armature else {})
     for j in robot.get_active_joints():
         f = fl.get(j.name)
-        if f is not None and hasattr(j, "set_friction"):
-            j.set_friction(float(f))
+        if f is not None:
+            # MJCF frictionloss is an effort (N m for hinges), whereas the legacy
+            # set_friction argument is a dimensionless, load-dependent coefficient.
+            # ManiSkill joints wrap one native joint per environment; native SAPIEN
+            # joints are also accepted. Reconfigure applies this to the new objects.
+            native_joints = getattr(j, "_objs", (j,))
+            if not native_joints or any(
+                    not hasattr(pj, "set_friction_params") for pj in native_joints):
+                raise RuntimeError(
+                    "Joint frictionloss requires the patched SAPIEN / PhysX 5.6.1 "
+                    "runtime; see docs/physics/PHYSX_561_MIGRATION.md. "
+                    "PhysX 5.3.1 set_friction cannot represent this effort.")
+            for pj in native_joints:
+                pj.set_friction(0.0)
+                pj.set_friction_params(float(f), float(f), 0.0)
         a = ar.get(j.name)
         if a is not None:
             for pj in getattr(j, "_objs", []):
