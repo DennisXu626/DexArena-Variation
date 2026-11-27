@@ -18,6 +18,7 @@ class CleaningAppearance:
         self.records = [None] * num_envs
         self.bindings = [None] * num_envs
         self.applied = [None] * num_envs
+        self.detail_bindings = [None] * num_envs
 
     def begin_scene(self):
         self._files = tempfile.TemporaryDirectory(prefix="table_cleaning_visuals_")
@@ -60,11 +61,40 @@ class CleaningAppearance:
                 for part in shape.parts]
 
     def bind(self, index, pan, bin_actor, debris):
-        body, = [m for m in self.mesh_materials(pan) if m.base_color[2] > .8 and m.base_color[0] < .1]
+        pan_materials = self.mesh_materials(pan)
+        body, = [m for m in pan_materials if m.base_color[2] > .8 and m.base_color[0] < .1]
         frame, = [m for m in self.mesh_materials(bin_actor) if m.base_color_texture is None]
         self.bindings[index] = (
             body, frame, [self.mesh_materials(actor)[0].base_color_texture for actor in debris],
             list(body.base_color), body.roughness, list(frame.base_color))
+        handles = [m for m in pan_materials if m is not body]
+        entity, = pan._objs
+        render = entity.find_component_by_type(sapien.render.RenderBodyComponent)
+        handles += [shape.material for shape in render.render_shapes
+                    if isinstance(shape, sapien.render.RenderShapePrimitive)]
+        shells = [m for m in self.mesh_materials(bin_actor) if m.base_color_texture is not None]
+        shell, = shells
+        source = shell.base_color_texture
+        pixels = np.ascontiguousarray(source.download())
+        if pixels.shape[-1] == 3:
+            pixels = np.asarray(Image.fromarray(pixels).convert("RGBA"))
+        # private_glb gives each row a separate embedded texture. Upload into
+        # that existing texture: replacing the material's texture after actor
+        # creation may leave the renderer's descriptor pointing at the old one.
+        self.detail_bindings[index] = {
+            "handles": [(m, list(m.base_color)) for m in handles],
+            "shell": shell, "pixels": pixels,
+            "metallic": shell.metallic, "roughness": shell.roughness,
+        }
+
+    @staticmethod
+    def shell_pixels(original, color):
+        pixels = original.copy()
+        target = np.array([int(color[i:i+2], 16) for i in (1, 3, 5)])
+        # The original RGB is almost black on opaque wire pixels. Only retain
+        # its alpha pattern; let geometry and lighting provide surface shading.
+        pixels[..., :3] = target
+        return np.ascontiguousarray(pixels)
 
     @staticmethod
     def linear_hex(color):
@@ -106,6 +136,15 @@ class CleaningAppearance:
                 body.base_color = self.linear_hex(recipe["pan"]) if recipe else base
                 body.roughness = recipe.get("pan_roughness", roughness)
                 frame.base_color = self.linear_hex(recipe["bin_frame"]) if recipe else frame_base
+                details = self.detail_bindings[index]
+                if details is not None:
+                    for material, original in details["handles"]:
+                        material.base_color = self.linear_hex(recipe["pan_handle"]) if recipe else original
+                    pixels = (self.shell_pixels(details["pixels"], recipe["bin_body"])
+                              if recipe else details["pixels"])
+                    details["shell"].base_color_texture.upload(pixels)
+                    details["shell"].metallic = recipe.get("bin_body_metallic", details["metallic"])
+                    details["shell"].roughness = recipe.get("bin_body_roughness", details["roughness"])
                 if scheme != "original" or self.applied[index] is not None:
                     for texture in textures:
                         texture.upload(self.pixels[scheme])

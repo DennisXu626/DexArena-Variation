@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "platform": "CPU; AST-loaded real methods; external BaseEnv/render spies",
+  "invalid_request_base_calls": 0,
+  "scope": "explicit modes only; no simulation or GPU; no claim of measured physical state on error"
+}

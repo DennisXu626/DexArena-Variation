@@ -278,7 +278,8 @@ def semantic(t,idx,scheme):
     from table_cleaning_contract import check_materials
     from check_table_cleaning_parallel import material_state
     return check_materials(NATIVE_MATERIALS[idx], material_state(t,idx), scheme,
-                           t.cleaning_appearance.pixels["original"])
+                             t.cleaning_appearance.pixels["original"],
+                             t.cleaning_appearance.detail_bindings[idx]["pixels"])
 
 
 def make(config):

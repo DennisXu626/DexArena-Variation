@@ -1,5 +1,5 @@
 {
-  "version": "table-cleaning-ten-v1",
+  "version": "table-cleaning-ten-v3",
   "schemes": {
     "original": {},
     "variant_1": {
@@ -10,7 +10,11 @@
         1.05,
         0.82,
         0.88
-      ]
+      ],
+      "pan_handle": "#D8C7A5",
+      "bin_body": "#A9B8AC",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_2": {
       "pan": "#A64D3C",
@@ -20,55 +24,91 @@
         0.76,
         0.92,
         1.08
-      ]
+      ],
+      "pan_handle": "#D6BA98",
+      "bin_body": "#91A5BA",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_3": {
       "pan": "#315DA8",
       "pan_roughness": 0.7,
       "bin_frame": "#E5DCC8",
-      "sugar_color": "#E8A35A"
+      "sugar_color": "#E8A35A",
+      "pan_handle": "#D7A469",
+      "bin_body": "#B5C5D8",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_4": {
       "pan": "#8C9E7A",
       "pan_roughness": 0.82,
       "bin_frame": "#733B4B",
-      "sugar_color": "#C7B2DB"
+      "sugar_color": "#C7B2DB",
+      "pan_handle": "#B47D8B",
+      "bin_body": "#CAB7BF",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_5": {
       "pan": "#D5A72C",
       "pan_roughness": 0.64,
       "bin_frame": "#454951",
-      "sugar_color": "#60B8CD"
+      "sugar_color": "#60B8CD",
+      "pan_handle": "#607D8B",
+      "bin_body": "#A6B4BE",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_6": {
       "pan": "#A38CC6",
       "pan_roughness": 0.76,
       "bin_frame": "#286A70",
-      "sugar_color": "#E3D77E"
+      "sugar_color": "#E3D77E",
+      "pan_handle": "#68A89E",
+      "bin_body": "#A9C8C0",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_7": {
       "pan": "#D57B65",
       "pan_roughness": 0.6,
       "bin_frame": "#304869",
-      "sugar_color": "#97CDB2"
+      "sugar_color": "#97CDB2",
+      "pan_handle": "#7893B2",
+      "bin_body": "#A5B8CB",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_8": {
       "pan": "#8FBFD0",
       "pan_roughness": 0.8,
       "bin_frame": "#765448",
-      "sugar_color": "#D991AD"
+      "sugar_color": "#D991AD",
+      "pan_handle": "#B48E76",
+      "bin_body": "#C9B6A3",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_9": {
       "pan": "#E5DDC9",
       "pan_roughness": 0.72,
       "bin_frame": "#35584C",
-      "sugar_color": "#825184"
+      "sugar_color": "#825184",
+      "pan_handle": "#789B82",
+      "bin_body": "#A9BCA5",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     },
     "variant_10": {
       "pan": "#535A66",
       "pan_roughness": 0.66,
       "bin_frame": "#B97846",
-      "sugar_color": "#E8E4DC"
+      "sugar_color": "#E8E4DC",
+      "pan_handle": "#D0A078",
+      "bin_body": "#C6AD95",
+      "bin_body_metallic": 0.05,
+      "bin_body_roughness": 0.65
     }
   }
 }

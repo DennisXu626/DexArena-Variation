@@ -55,6 +55,8 @@ VIEWS = {
     "pan_loaded": (DUMP, "pan", (.28, -.04, .48), .69),
     "bin_floor": (DUMP, "bin", (.20, -.06, .63), .63),
     "long_scene": (LONG, "scene", (.35, -.24, .83), .70),
+    "bin_side": (DUMP, "bin", (.36, -.24, .16), .65),
+    "pan_handle": (DUMP, "handle", (.18, -.16, .28), .60),
 }
 LABELS = ["Original", "Teal / Warm Gray / Pink", "Brick / Blue Gray / Pale Blue"]
 
@@ -69,7 +71,7 @@ def place_for_bin_preview(task):
         actor.set_angular_velocity(torch.zeros((1, 3), device=task.device))
 
 
-def capture(view, scheme, colors, sugar_original, out):
+def capture(view, scheme, colors, sugar_original, out, native_binding=None):
     task_id, focus, delta, fovy = VIEWS[view]
     source_glb = native.GLB_CACHE
     private_glb = out.parent / ("visual-cache-" + os.environ.get("SLURM_JOB_ID", "local")) / f"{view}_{scheme}"
@@ -87,8 +89,16 @@ def capture(view, scheme, colors, sugar_original, out):
             place_for_bin_preview(task)
         from check_table_cleaning_parallel import material_state
         binding = material_state(task, 0)
+        if native_binding is not None:
+            from table_cleaning_contract import check_materials
+            check_materials(native_binding, binding, scheme,
+                            task.cleaning_appearance.pixels["original"],
+                            task.cleaning_appearance.detail_bindings[0]["pixels"])
         xyz = lambda actor: actor.pose.p[0].cpu().numpy()
-        if focus == "pan":
+        if focus == "handle":
+            transform = task.pan.pose.to_transformation_matrix()[0].cpu().numpy()
+            target = (transform @ np.r_[native.DUSTPAN_GRIP_CENTER, 1.])[:3]
+        elif focus == "pan":
             target = xyz(task.pan) + [0., 0., .015]
         elif focus == "bin":
             target = xyz(task.bin) + [0., 0., .15]
@@ -134,6 +144,7 @@ def main():
     p.add_argument("--assets", type=Path, required=True)
     p.add_argument("--catalog", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--views", nargs="+", choices=list(VIEWS), default=list(VIEWS))
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=True)
     use_verified_collision_cache()
@@ -149,10 +160,11 @@ def main():
                 "source_hashes": {Path(p).name: hashlib.sha256(Path(p).read_bytes()).hexdigest()
                                   for p in (src, native.__file__, a.catalog, __file__)},
                 "views": {}}
-    for view in VIEWS:
+    for view in a.views:
         checks = manifest["views"][view] = {}
         for scheme, colors in schemes.items():
-            checks[scheme] = capture(view, scheme, colors, source, a.output)
+            checks[scheme] = capture(view, scheme, colors, source, a.output,
+                                     checks.get("original", {}).get("binding"))
             print(view, scheme, "OK", flush=True)
         reference = checks["original"]
         for scheme in list(schemes)[1:]:

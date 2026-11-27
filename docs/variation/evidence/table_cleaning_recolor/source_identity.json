@@ -1,0 +1,30 @@
+{
+  "tasks/table_cleaning/appearance.py": {
+    "sha256": "389489ce9bbf12d12b1ab3cb10a99abde82869f2dfe55444cfdb995e741b88ce",
+    "sha256_lf": "389489ce9bbf12d12b1ab3cb10a99abde82869f2dfe55444cfdb995e741b88ce"
+  },
+  "tasks/assets/variation/table_cleaning/v1/catalog.json": {
+    "sha256": "727a82a5928ebca557156b13f5f376da3723f4ffc3cd652e4756944df44087f5",
+    "sha256_lf": "7d5ecebd8b6fee9266415ec4e2a3d6b6150448a55b600655744255dee571373c"
+  },
+  "tools/variation/table_cleaning_contract.py": {
+    "sha256": "c9565760b427227f14eb4794f6d3b37c7cdf893ebac5b8f42c80c4a00321ddf0",
+    "sha256_lf": "63a3fc1f52132bdd7a13af939e574fb5bf477fed2bf6904a1dc9599afdcaab32"
+  },
+  "tools/variation/check_table_cleaning_reset_cpu.py": {
+    "sha256": "3c82a3a6eef1b200baca5ca9bba55c0b5be3f35e172fc61a815a2b712e72d831",
+    "sha256_lf": "3a749e72510a5f720d4d96c712f81b86bcb821e9a31a2f000fd5f9fb5d02d6b5"
+  },
+  "tools/variation/render_table_cleaning_ten.py": {
+    "sha256": "00473a3651a5e263d6e6f730cb1946cad5c77678e4f026896adb25ed4b58e738",
+    "sha256_lf": "efd0cf9200232c1319e1b1dee289f9eb90663a7c57b70f3aaa412f97d29da4ac"
+  },
+  "tools/variation/check_table_cleaning_parallel.py": {
+    "sha256": "5cfd4d6da801c9363eeeb3984e713c38e0e135302b87d5ba1108c83ad1b4d064",
+    "sha256_lf": "1beb6afe289c566e4aaaf399c269314ece80ea6a89843a189c8e67c8c8e11156"
+  },
+  "tools/variation/check_table_cleaning_ten_paired.py": {
+    "sha256": "2eac88a48f087c901bb439ef639ff7161e9c745c571f99ea0f1e641159266865",
+    "sha256_lf": "3b3db7240d9a6d9ad8320ee53ccab8fe8b8fff408f4924369babb2606c5706c9"
+  }
+}

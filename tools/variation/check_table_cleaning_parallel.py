@@ -100,14 +100,15 @@ def trial(task_id, enabled, out):
         return {"before": m_before, "after": m_after, "env0_rgb": delta(before[0],after[0]),
                 "env0_state": state_changes, "env1_state": state(task,1),
                 "after_rgb": after, "before_rgb": before, "records": records,
-                "source_pixels": source_pixels}
+                "source_pixels": source_pixels,
+                "bin_source_pixels": task.cleaning_appearance.detail_bindings[0]["pixels"] if enabled else None}
     finally:
         env.close()
 
 
 def check(task_id,out):
     a,b = trial(task_id,False,out),trial(task_id,True,out)
-    semantic = [check_materials(a["before"][i], b["before"][i], scheme, b["source_pixels"])
+    semantic = [check_materials(a["before"][i], b["before"][i], scheme, b["source_pixels"], b["bin_source_pixels"])
                 for i, scheme in enumerate(("variant_1", "variant_2"))]
     changed = [[k for k,v in b["before"][i].items() if a["before"][i].get(k) != v] for i in (0,1)]
     restored = delta(a["after_rgb"][1], b["after_rgb"][1])
@@ -120,7 +121,8 @@ def check(task_id,out):
               "restored_rgb": restored, "env1_materials_match_original": a["after"][1] == b["after"][1],
               "env0_materials_unchanged": b["before"][0] == b["after"][0], "records": b["records"]}
     (out/f"{task_id}.json").write_text(json.dumps(result,indent=2)+"\n")
-    assert all(len(slots) == 5 for slots in changed), changed
+    # The v2 palette also changes the black handle, grip sleeve and bin shell.
+    assert all(set(slots) == set(a["before"][i]) for i, slots in enumerate(changed)), changed
     assert all(d["nonzero"] > 0 for d in images), images
     assert result["env0_materials_unchanged"] and result["env1_materials_match_original"], result
     assert all(d["max"] <= 1e-6 for d in b["env0_state"].values()), result

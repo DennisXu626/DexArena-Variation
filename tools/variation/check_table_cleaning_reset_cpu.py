@@ -68,6 +68,14 @@ def adapter(config, count=2):
         frame = SimpleNamespace(base_color=[.1, .1, .1, 1.])
         textures = [Texture(item.pixels["original"]) for _ in range(3)]
         item.bindings[index] = (body, frame, textures, body.base_color.copy(), body.roughness, frame.base_color.copy())
+        handle = SimpleNamespace(base_color=[0., 0., 0., 1.])
+        sleeve = SimpleNamespace(base_color=[.12, .12, .14, 1.])
+        shell = SimpleNamespace(base_color=[1., 1., 1., 1.], metallic=1., roughness=.14,
+                                base_color_texture=Texture(item.pixels["original"]))
+        item.detail_bindings[index] = {"handles": [(handle, handle.base_color.copy()),
+                                                   (sleeve, sleeve.base_color.copy())],
+                                       "shell": shell, "pixels": item.pixels["original"].copy(),
+                                       "metallic": shell.metallic, "roughness": shell.roughness}
     return item
 
 
@@ -85,6 +93,13 @@ def snapshot(item, index):
     body, frame, textures, *_ = item.bindings[index]
     result = {"pan/0/1": {"color": list(body.base_color), "roughness": body.roughness, "metallic": 0., "base_color_texture": None},
               "bin/0/1": {"color": list(frame.base_color), "roughness": .5, "metallic": 0., "base_color_texture": None}}
+    details = item.detail_bindings[index]
+    for i, (material, _) in enumerate(details["handles"]):
+        result[f"pan/{i+1}/0"] = {"color": list(material.base_color), "roughness": .9,
+                                   "metallic": 0., "base_color_texture": None}
+    pixels = details["shell"].base_color_texture.pixels
+    result["bin/0/0"] = {"color": [1.,1.,1.,1.], "roughness": details["shell"].roughness, "metallic": details["shell"].metallic,
+                         "base_color_texture": [True, [list(pixels.shape), str(pixels.dtype), hashlib.sha256(pixels.tobytes()).hexdigest()]]}
     for i, texture in enumerate(textures):
         p = texture.pixels
         result[f"debris_{i}/0/0"] = {"color": [1., 1., 1., 1.], "roughness": .8, "metallic": 0.,
@@ -96,6 +111,25 @@ Appearance, PublicReset = load_code()
 
 
 class ResetTests(unittest.TestCase):
+    def test_ten_body_handle_recipes_and_bidirectional_restore(self):
+        for scheme in (f"variant_{i}" for i in range(1,11)):
+            for selected in (0,1):
+                item = adapter({"scheme_id": "original"})
+                item.reset([0,1], {})
+                base = [snapshot(item, i) for i in (0,1)]
+                item.reset([selected], {"table_cleaning_appearance": {"scheme_id": scheme}})
+                source = item.detail_bindings[selected]["pixels"]
+                check_materials(base[selected], snapshot(item,selected), scheme,
+                                item.pixels["original"], source)
+                np.testing.assert_array_equal(source[...,3], item.detail_bindings[selected]["shell"].base_color_texture.pixels[...,3])
+                expected_rgb = np.array([int(item.catalog["schemes"][scheme]["bin_body"][j:j+2],16)
+                                         for j in (1,3,5)], dtype=np.uint8)
+                actual_rgb = item.detail_bindings[selected]["shell"].base_color_texture.pixels[...,:3]
+                np.testing.assert_array_equal(actual_rgb, np.broadcast_to(expected_rgb, actual_rgb.shape))
+                self.assertEqual(base[1-selected],snapshot(item,1-selected))
+                item.reset([selected], {"table_cleaning_appearance": {"scheme_id": "original"}})
+                self.assertEqual(base[selected],snapshot(item,selected))
+
     def reject(self, env, options):
         before = env.stage.copy()
         records = copy.deepcopy(env.cleaning_appearance.records)
@@ -150,10 +184,10 @@ class ResetTests(unittest.TestCase):
         check_catalog(item.catalog)
         item.reset([0, 1], {})
         for i, scheme in enumerate(("variant_1", "variant_2")):
-            check_materials(base[i], snapshot(item, i), scheme, source)
+            check_materials(base[i], snapshot(item, i), scheme, source, item.detail_bindings[i]["pixels"])
         keep = snapshot(item, 0)
         item.reset([1], {"table_cleaning_appearance": {"scheme_id": "original"}})
-        check_materials(base[1], snapshot(item, 1), "original", source)
+        check_materials(base[1], snapshot(item, 1), "original", source, item.detail_bindings[1]["pixels"])
         self.assertEqual(keep, snapshot(item, 0))
         np.testing.assert_array_equal(source, item.pixels["original"])
 
@@ -169,7 +203,7 @@ class ResetTests(unittest.TestCase):
         base = snapshot(item, 0)
         item.reset([0], {})
         with self.assertRaises(AssertionError):
-            check_materials(base, snapshot(item, 0), "variant_1", item.pixels["original"])
+            check_materials(base, snapshot(item, 0), "variant_1", item.pixels["original"], item.detail_bindings[0]["pixels"])
 
 
 if __name__ == "__main__":
