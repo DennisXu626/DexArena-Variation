@@ -4,7 +4,7 @@
 
 [Drawer & Plug 十套家族外观](DRAWER_TEN_VARIANTS.md)已拍齐三个短任务的十套实景及固定方案恢复。OpenDrawer／PickCharger 的随机及 A5 沿用作业 128860。InsertPlug 随机复现、env0 恢复和双孔十一格补测通过，双向 A5 证据已齐。Dennis 已审图并验收三个短任务的十套外观。旧对象的限定验收保留。
 
-这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中14个对象为 `accepted_pilot`。这组数字沿用对象档案的状态标记，不按本页的 PR 或短任务条目数重算。各对象的任务覆盖和验证边界见对应条目。Meal限定技术验收通过，待整合/合并；依据[PR8-R2审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8)。本轮只做Git／CPU静态整合，不新增运行验证。
+这是当前能力的集中入口；README和对象档案只作导航。对象索引共42项，其中14个对象为 `accepted_pilot`。这组数字沿用对象档案的状态标记，不按本页的 PR 或短任务条目数重算。各对象的任务覆盖和验证边界见对应条目。Meal 的 [#8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 与 [#30](https://github.com/DennisXu626/DexArena-Variation/pull/30) 均已合入，分项证据见[第 6 节](#6-meal-preparation-外观接入)。
 
 **Cabinet & Pouring 单门柜。** `cabinet_appearance` 独立选择 `original`、`oak_warm_white` 或 `sage_walnut`。Dennis 已确认两套柜体外观。OpenCabinet 原生闭门和 PickBottle 原生 90° 开门各 2 环境通过原版恢复、局部 reset 隔离和柜外材质对照。PickBottle 使用原版瓶子。验收限于这两个入口。[用法](CABINET_SINGLE_DOOR.md) · [实景与工程证据](evidence/cabinet_single_door/runtime_001/README.md)
 
@@ -73,16 +73,19 @@ Dennis 已批准 [Cabinet & Pouring 十套家族外观](CABINET_TEN_VARIANTS.md)
 | 固定版本与来源 | 实际运行`78c9b2f212a50f4a9249acd30993dd9c6940d467`；已查收证据`daaec9c9cd9c30da432dd23c65a720ed1cfb382e`，[限定结果](https://github.com/DennisXu626/DexArena-Variation/blob/daaec9c9cd9c30da432dd23c65a720ed1cfb382e/docs/variation/evidence/mouse_101408/retest_001.json)、[Mouse档案](../../assets/appearance/objects/office_desk/mouse/README.md)、[PR #6](https://github.com/DennisXu626/DexArena-Variation/pull/6) |
 | 历史记录 | 失败86071保留；复测86453完成25秒，GPU累计35/600秒。上轮墙钟71分54秒、超支26分54秒保留，不冲销；本次仅文档整合，GPU新增0 |
 
-## 6. Meal Preparation 外观接入（限定技术验收通过，待整合/合并）
+## 6. Meal Preparation 外观接入
 
 | 字段 | 当前事实 |
 | --- | --- |
-| 实现范围 | 午餐盒、盘子、勺子、面包和番茄。开盒、放面包、舀番茄及长任务四个 Sharpa 入口 |
-| 配置与实现 | `meal_appearance` 默认关闭。提供原版和两套方案，支持固定选择、指定集合随机、按环境设置以及回合记录。[使用说明](MEAL_APPEARANCE.md)和[唯一运行 catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json) |
+| 实现范围 | 午餐盒、盘子、勺子、面包和番茄。四个 Sharpa 入口为 OpenLunchBox、PlaceBread、ScoopTomato 和 Long |
+| 配置与实现 | `meal_appearance` 默认关闭。[#8](https://github.com/DennisXu626/DexArena-Variation/pull/8) 接入原版与 1、2 号，[#30](https://github.com/DennisXu626/DexArena-Variation/pull/30) 新增 3–10 号，支持固定选择、指定集合随机、按环境设置以及回合记录。[使用说明](MEAL_APPEARANCE.md)和[唯一运行 catalog](../../tasks/assets/variation/meal_preparation/v1/catalog.json) |
 | 历史实测 | 86264 为旧基线加独立预览绑定，核对三方案的物理签名、受控任务判定和短任务回放。86563 为接入实现的双环境局部 reset 隔离，另测长任务双环境成本。86898 对照独立原版，四任务共 76 个槽的材质与纹理一致，恢复后的 env1 RGB 逐值一致 |
 | 审阅补充 | PR8-R1 在 CPU 空渲染绑定下确认固定 seed、配置、环境数和 reset 顺序的 32 轮随机选择与记录可复现，未选 env0 随机流保持一致 |
-| 未测范围 | 随机方案 GPU 渲染、更多环境、其它手型及 PartNet 午餐盒。放面包和舀番茄的历史回放未复现最终成功。长任务完成只用受控状态验证 |
-| 审阅与证据 | [PR #8](https://github.com/DennisXu626/DexArena-Variation/pull/8)、[PR8-R1 审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5918176986)、[证据与历史收据](evidence/meal_preparation/README.md)。限定技术验收通过，待整合/合并；[查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)，集成状态见[PR8](https://github.com/DennisXu626/DexArena-Variation/pull/8) |
+| 固定配色（#30） | 作业 `125331` 留存四入口 × 两行环境 × 新增八套的 64 格可见配色，以及 1、2 号的 16 个贝果检查位。只计机位可见部件，遮挡按原始记录保留。[十套方案与历史实景](MEAL_EXPAND_TO_10.md) |
+| 局部 reset 与恢复（#30） | 作业 `143978` 完成四入口各两个方向，共 8/8。未选行的活动及驱动目标在 reset 前、`evaluate` 和 `get_obs` 的入口与出口、reset 返回时均逐值保持。选中行恢复 original 后材质、贴图与原生对照一致，26 组恢复全帧 RGB 最大差为 0，未选行前后最大差为 1。 |
+| 编号互换（#30） | 两行分别设为 1/9、9/1。16 格实际编号与可见配色对应，52 组同行同号相机对照 RGB 最大差为 0。[受审提交与作业结果](https://github.com/DennisXu626/DexArena-Variation/pull/30#pullrequestreview-6084508658) |
+| 验收边界 | 默认程序生成午餐盒、Sharpa、双环境。更多环境、其它手型、PartNet 午餐盒和完整机器人任务成功仍未验收。#8 的随机复现仅在 CPU 检查，放面包和舀番茄的历史回放未复现最终成功，长任务完成只用受控状态验证。 |
+| 审阅与证据 | [#8](https://github.com/DennisXu626/DexArena-Variation/pull/8)、[PR8-R1 审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5918176986)、[PR8-R2 查收审阅](https://github.com/DennisXu626/DexArena-Variation/pull/8#pullrequestreview-5919739591)、[证据与历史收据](evidence/meal_preparation/README.md)；[#30 合并提交](https://github.com/DennisXu626/DexArena-Variation/commit/9359c28e74882767f26fad034465dc8878a8ca26) |
 
 ## Server 3 已合入的四项短任务限定验收
 
@@ -124,11 +127,11 @@ OpenLaptop 复用 PR16-R3，TypeKeys、ClickMouse 使用 PR16-R4 的 Server 3 �
 
 ## 仍待实现／验证
 
-[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录42个逻辑对象状态。单门柜、瓶身／盖、抽屉／插座、Charger、限定ClickMouse、Meal，以及本页新增的 Furniture／Pipette／Nut & Bolt／Office 短任务，分别以上述条目的正式验收范围为准。Meal尚待PR8集成／合并；对象档案中的既有状态标记继续按42项索引保留；已验短任务按本页条目记录，家族内其余任务保留各自的验证边界。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析，其本身不提供新方案、GPU或A6结果。
+[对象清单](../../assets/appearance/objects.csv)和[档案总索引](../../assets/appearance/README.md)记录42个逻辑对象状态。单门柜、瓶身／盖、抽屉／插座、Charger、限定ClickMouse、Meal，以及本页新增的 Furniture／Pipette／Nut & Bolt／Office 短任务，分别以上述条目的正式验收范围为准。对象档案中的既有状态标记继续按42项索引保留；已验短任务按本页条目记录，家族内其余任务保留各自的验证边界。[下一物体候选](OBJECT_CANDIDATES.md)只是静态分析，其本身不提供新方案、GPU或A6结果。
 
-完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。Meal随机方案真实GPU、PartNet午餐盒和完整机器人长任务成功未测；默认程序盒、固定方案双环境局部reset及恢复original的限定结论不外推。历史报告保留当时结论。
+完整机器人任务、策略训练、其它手型／规模、新物体适配、柜内扩区、自由yaw等仍需独立授权与验证。Meal 的默认程序盒、固定配色、双环境局部 reset 与 original 恢复范围见[第 6 节](#6-meal-preparation-外观接入)。历史报告保留当时结论。
 
-Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合记录](evidence/meal_preparation/PR8-R3.md)分别记录当时状态与本轮收尾。86264旧基线＋独立预览／回放仅作历史参考，不替代当前接入验收。执行层未批准、未合并。
+Meal [PR8-R2历史索引](evidence/meal_preparation/PR8-R2.md)和[PR8-R3整合记录](evidence/meal_preparation/PR8-R3.md)分别记录 #8 当时的验收和文档整合。86264旧基线＋独立预览／回放仅作历史参考，不替代当前接入验收。
 
 
 ## 7. Package Opening
