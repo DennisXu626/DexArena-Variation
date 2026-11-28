@@ -1,0 +1,12 @@
+6ab8d568b3c1d05edd74958d694d13f43f0e1ade2ff2444820d172e860b4a061  /data/home/pb/table-cleaning-appearance-preview-v1/assets/glb_cache/21901bdd81f649e89af087ae6f67ca7e.glb
+ac86404d8735572b37daacf9c588b225b18c278fa4e18245ca1b219a428cd45a  /data/home/pb/table-cleaning-appearance-preview-v1/assets/glb_cache/21901bdd81f649e89af087ae6f67ca7e.glb.coacd.ply
+79e5364f702cb77d28204424c4d80095ee0ab7514127bd514d8659faf907e9b3  /data/home/pb/table-cleaning-appearance-preview-v1/assets/glb_cache/387894f112f44d82a0dbbe6aa3906454.glb
+f2030ac53e62d3c6002de4453c15732ba0bcc69b5bdc4a33741b466c49ed6872  /data/home/pb/table-cleaning-appearance-preview-v1/assets/glb_cache/387894f112f44d82a0dbbe6aa3906454.glb.coacd.ply
+fa352ba3ba5f226c7276895fae2d6a287950a84c72ba54f59452274960848ca0  /data/home/pb/table-cleaning-appearance-preview-v1/assets/glb_cache/bb540fc9fcb04a5aa13a5d9b72918f8f.glb
+8d43a520f6db3477e78d0178c93e795dc7d74673c3a0cc65bd9066a09d53c173  /data/home/pb/table-cleaning-appearance-preview-v1/assets/ATTRIBUTION.md
+6a440a0a6d4f1a1115e997df573f966770c8fda538fd61be19a7cdaee6af089d  /data/home/pb/table-cleaning-appearance-preview-v1/assets/robocasa/lightwheel/sugar_cube/SugarCube001/collision/collision_mesh_collision_0.obj
+858fe63fe3e3fcc6e0c9201a2979cd95edd3f941769bfa354ccdd760cca19948  /data/home/pb/table-cleaning-appearance-preview-v1/assets/robocasa/lightwheel/sugar_cube/SugarCube001/collision/collision_mesh_collision_1.obj
+7602043f38fa02f3029f189bcf29ec8779d3f42dc28735814a3aaddbb8a7384a  /data/home/pb/table-cleaning-appearance-preview-v1/assets/robocasa/lightwheel/sugar_cube/SugarCube001/visual/SugarCube001.obj
+fc101a378e6dcc487074243f083d62fa9ad06c37dae57340c4514dacfeab04d3  /data/home/pb/table-cleaning-appearance-preview-v1/assets/robocasa/lightwheel/sugar_cube/SugarCube001/visual/T_BC001.png
+4c1c72bc1b24c5981498a73963699203197bd91d48e72f60957fd580cab6a249  /data/home/pb/table-cleaning-appearance-preview-v1/assets/robocasa/lightwheel/sugar_cube/SugarCube001/model.xml
+c2b0fdf19820ad7e99c7f3838f02764fff2dcc249793c28cbffc4be5514c32fe  /data/home/pb/table-cleaning-appearance-preview-v1/assets/objaverse_licenses.json

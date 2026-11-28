@@ -1,0 +1,45 @@
+{
+  "job": 144256,
+  "status": "COMPLETED",
+  "exit_code": "0:0",
+  "runtime": "00:00:58",
+  "gpu": "Server 3 / lyg0295 / G6 / one shared shard",
+  "submissions": 1,
+  "physics": "CPU",
+  "render": "GPU SAPIEN/Vulkan",
+  "num_envs": 1,
+  "seed": 7,
+  "robot_noise": 0,
+  "views": [
+    "bin_side"
+  ],
+  "schemes": [
+    "original",
+    "variant_1",
+    "variant_2",
+    "variant_3",
+    "variant_4",
+    "variant_5",
+    "variant_6",
+    "variant_7",
+    "variant_8",
+    "variant_9",
+    "variant_10"
+  ],
+  "verified_pngs": 12,
+  "source_sha256": {
+    "tasks/table_cleaning/appearance.py": "389489ce9bbf12d12b1ab3cb10a99abde82869f2dfe55444cfdb995e741b88ce",
+    "tasks/assets/variation/table_cleaning/v1/catalog.json": "727a82a5928ebca557156b13f5f376da3723f4ffc3cd652e4756944df44087f5",
+    "tools/variation/table_cleaning_contract.py": "c9565760b427227f14eb4794f6d3b37c7cdf893ebac5b8f42c80c4a00321ddf0",
+    "tools/variation/check_table_cleaning_reset_cpu.py": "3c82a3a6eef1b200baca5ca9bba55c0b5be3f35e172fc61a815a2b712e72d831",
+    "tools/variation/render_table_cleaning_ten.py": "00473a3651a5e263d6e6f730cb1946cad5c77678e4f026896adb25ed4b58e738",
+    "tools/variation/check_table_cleaning_parallel.py": "5cfd4d6da801c9363eeeb3984e713c38e0e135302b87d5ba1108c83ad1b4d064",
+    "tools/variation/check_table_cleaning_ten_paired.py": "2eac88a48f087c901bb439ef639ff7161e9c745c571f99ea0f1e641159266865"
+  },
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "algorithm": "RGB is the exact target sRGB; alpha unchanged; original restores original pixels"
+}

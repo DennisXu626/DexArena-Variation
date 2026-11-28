@@ -1,0 +1,88 @@
+{
+  "job": 138555,
+  "gpu": 6,
+  "stages": {
+    "PickDebris": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "signature_blocks": 120,
+      "replay": true
+    },
+    "DumpDustpan": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "signature_blocks": 120,
+      "replay": true
+    },
+    "Long": {
+      "status": "passed",
+      "A4": 11,
+      "A5": 20,
+      "signature_blocks": 120,
+      "replay": true
+    }
+  },
+  "source_snapshot": "final-overlay.tar.gz",
+  "trace_max_delta": 0.0,
+  "short_trace": {
+    "PickDebris": {
+      "status": "passed",
+      "pairs": 11
+    },
+    "DumpDustpan": {
+      "status": "passed",
+      "pairs": 11
+    },
+    "Long": {
+      "status": "passed",
+      "pairs": 11
+    }
+  },
+  "critical": {
+    "status": "passed",
+    "cases": 8
+  },
+  "pixel": {
+    "status": "passed",
+    "cases": [
+      {
+        "stage": "PickDebris",
+        "enabled": false,
+        "num_envs": 2,
+        "status": "passed"
+      },
+      {
+        "stage": "PickDebris",
+        "enabled": true,
+        "num_envs": 2,
+        "status": "passed"
+      },
+      {
+        "stage": "DumpDustpan",
+        "enabled": false,
+        "num_envs": 2,
+        "status": "passed"
+      },
+      {
+        "stage": "DumpDustpan",
+        "enabled": true,
+        "num_envs": 2,
+        "status": "passed"
+      },
+      {
+        "stage": "Long",
+        "enabled": false,
+        "num_envs": 2,
+        "status": "passed"
+      },
+      {
+        "stage": "Long",
+        "enabled": true,
+        "num_envs": 2,
+        "status": "passed"
+      }
+    ]
+  }
+}

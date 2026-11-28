@@ -1,0 +1,103 @@
+{
+  "source_head": "1d5151bf61b8586c1905f36e54f554ca50647001",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.3",
+  "torch": "2.6.0+cpu",
+  "numpy": "2.2.6",
+  "seed": "not used: deterministic CPU fixtures",
+  "num_envs": 2,
+  "backend": "CPU AST methods, physics/pose doubles",
+  "gpu_jobs": 0,
+  "checks": [
+    {
+      "name": "hold-restore",
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_table_cleaning_hold_restore_cpu.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "hold",
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_table_cleaning_hold_cpu.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "reset",
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_table_cleaning_reset_cpu.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "single-env",
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_table_cleaning_single_env_cpu.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "static",
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_static.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "archive",
+      "command": [
+        "python",
+        "-B",
+        "tools/variation/check_appearance_archive.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "tasks/table_cleaning/table_cleaning_long.py",
+      "sha256_lf": "a300fbacbfb1bb7659f58adc074bb1a9ad79602738dd81f5f3af440e123212de",
+      "unchanged_from_1d5151b": true
+    },
+    {
+      "path": "tools/variation/check_table_cleaning_state_restore_cpu.py",
+      "sha256_lf": "a06a8063f725356749d4326bd314960ce25f44b7c2dacd3c0479fcf4a9287457",
+      "unchanged_from_1d5151b": true
+    },
+    {
+      "path": "tools/variation/check_table_cleaning_hold_restore_cpu.py",
+      "sha256_lf": "d21f7fdc06255424b9aaca77816d240225c5cc7380d7ac0034b3fff2ccbee041",
+      "unchanged_from_1d5151b": false
+    }
+  ],
+  "reused": [
+    {
+      "path": "docs/variation/evidence/table_cleaning_ten/pr41_r3/state-restore.json",
+      "sha256": "9c82b716e363081f277631926c75fa3305b919724d28da780fdec59fc67384ca"
+    },
+    {
+      "path": "docs/variation/evidence/table_cleaning_ten/pr41_r3/isolation.json",
+      "sha256": "960b6d8c4bbdec98240027caa93c5d1393e3a68bf9fb5372dcea9a0ed1c3727b"
+    },
+    {
+      "path": "docs/variation/evidence/table_cleaning_ten/pr41_r3/reviewer-before.json",
+      "sha256": "0cfa76eb113aed73712579cc8f2c63caf783bf5baebb4a22a78fd2c93f57b7ac"
+    }
+  ],
+  "review_input_sha256": {
+    "AUTHOR_ISSUE.md": "47020dd5b909f30bf703109eb4779e58b635047c596fd517b6342ee72bf08034",
+    "HOLD_RESULT.json": "0cfa76eb113aed73712579cc8f2c63caf783bf5baebb4a22a78fd2c93f57b7ac",
+    "REPLAY_HOLD.py": "03db851a21bb0a431c860f139a17f0b7a7da46350905b3f0468279559983bdb3"
+  }
+}

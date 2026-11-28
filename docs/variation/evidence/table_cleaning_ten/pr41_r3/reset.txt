@@ -1,0 +1,16 @@
+test_actual_apply_two_ids_and_restore (__main__.ResetTests.test_actual_apply_two_ids_and_restore) ... ok
+test_config_per_env_over_global (__main__.ResetTests.test_config_per_env_over_global) ... ok
+test_disabled_path_delegates (__main__.ResetTests.test_disabled_path_delegates) ... ok
+test_invalid_constructor_config_at_public_reset (__main__.ResetTests.test_invalid_constructor_config_at_public_reset) ... ok
+test_invalid_single_environment (__main__.ResetTests.test_invalid_single_environment) ... ok
+test_last_invalid_full_reset (__main__.ResetTests.test_last_invalid_full_reset) ... ok
+test_last_invalid_local_reset (__main__.ResetTests.test_last_invalid_local_reset) ... ok
+test_local_reset_ignores_unselected_invalid_config (__main__.ResetTests.test_local_reset_ignores_unselected_invalid_config) ... ok
+test_override_order_and_legal_public_reset (__main__.ResetTests.test_override_order_and_legal_public_reset) ... ok
+test_swapped_actual_materials_are_rejected (__main__.ResetTests.test_swapped_actual_materials_are_rejected) ... ok
+test_swapped_legal_catalog_is_rejected (__main__.ResetTests.test_swapped_legal_catalog_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.305s
+
+OK

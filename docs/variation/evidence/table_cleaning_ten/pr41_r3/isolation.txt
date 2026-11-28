@@ -1,0 +1,9 @@
+test_exception_cleanup (__main__.IsolationTests.test_exception_cleanup) ... ok
+test_partial_reset (__main__.IsolationTests.test_partial_reset) ... ok
+test_returned_stage_at_boundary (__main__.IsolationTests.test_returned_stage_at_boundary) ... ok
+test_seed_rejection_and_full_reset (__main__.IsolationTests.test_seed_rejection_and_full_reset) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.472s
+
+OK

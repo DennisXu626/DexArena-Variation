@@ -1,0 +1,102 @@
+{
+  "job": 144248,
+  "status": "COMPLETED",
+  "exit_code": "0:0",
+  "runtime_seconds": 111,
+  "gpu": "lyg0295 G6, one shared shard",
+  "reserved_shard_seconds": 111,
+  "exclusive_gpu_seconds": "not measured; shared GPU",
+  "num_envs": 1,
+  "seed": 7,
+  "physics": "CPU",
+  "render": "GPU SAPIEN/Vulkan",
+  "image_count": 22,
+  "contact_sheets": 2,
+  "verified_png_sha256": 24,
+  "views": [
+    "bin_side",
+    "pan_handle"
+  ],
+  "versions": {
+    "sapien": "3.0.3",
+    "mani_skill": "3.0.0b22",
+    "torch": "2.12.0.dev20260408+cu128"
+  },
+  "source": [
+    {
+      "path": "tasks/table_cleaning/appearance.py",
+      "local_sha256": "1a4ee554b78094aa010bbcb0957b435893ac791e0c38b87ba129ab9302455b33",
+      "rendered_sha256": "1a4ee554b78094aa010bbcb0957b435893ac791e0c38b87ba129ab9302455b33",
+      "matches_rendered": true
+    },
+    {
+      "path": "tasks/assets/variation/table_cleaning/v1/catalog.json",
+      "local_sha256": "e88df22247d8c8fe2741844264e786588382d2d3a42601e0258ef33471e93578",
+      "rendered_sha256": "e88df22247d8c8fe2741844264e786588382d2d3a42601e0258ef33471e93578",
+      "matches_rendered": true
+    },
+    {
+      "path": "tools/variation/table_cleaning_contract.py",
+      "local_sha256": "9c54c96e57b8036d670969d07d106c1b47822f302c2a99d45fdf416bc3550246",
+      "rendered_sha256": "9c54c96e57b8036d670969d07d106c1b47822f302c2a99d45fdf416bc3550246",
+      "matches_rendered": true
+    },
+    {
+      "path": "tools/variation/check_table_cleaning_parallel.py",
+      "local_sha256": "5cfd4d6da801c9363eeeb3984e713c38e0e135302b87d5ba1108c83ad1b4d064",
+      "rendered_sha256": "54369a96ce63e2880362b4bbad5021ddcb91bf460e236d2f54cbc617b04bcef7",
+      "matches_rendered": false
+    },
+    {
+      "path": "tools/variation/check_table_cleaning_reset_cpu.py",
+      "local_sha256": "8a8f013fcdf9e0e6db771785d739b9da94e243809d56ce350c12998f1161443f",
+      "rendered_sha256": "8a8f013fcdf9e0e6db771785d739b9da94e243809d56ce350c12998f1161443f",
+      "matches_rendered": true
+    },
+    {
+      "path": "tools/variation/check_table_cleaning_ten_paired.py",
+      "local_sha256": "2eac88a48f087c901bb439ef639ff7161e9c745c571f99ea0f1e641159266865",
+      "rendered_sha256": "2eac88a48f087c901bb439ef639ff7161e9c745c571f99ea0f1e641159266865",
+      "matches_rendered": true
+    },
+    {
+      "path": "tools/variation/render_table_cleaning_ten.py",
+      "local_sha256": "00473a3651a5e263d6e6f730cb1946cad5c77678e4f026896adb25ed4b58e738",
+      "rendered_sha256": "00473a3651a5e263d6e6f730cb1946cad5c77678e4f026896adb25ed4b58e738",
+      "matches_rendered": true
+    }
+  ],
+  "history": [
+    {
+      "job": 144240,
+      "status": "FAILED",
+      "exit": "1:0",
+      "runtime_seconds": 15,
+      "reason": "body/handle wrapper identity; observed live, final receipt since purged"
+    },
+    {
+      "job": 144242,
+      "status": "CANCELLED",
+      "exit": "0:15",
+      "runtime_seconds": 230,
+      "reason": "bucket stayed dark; visual material refinement, observed live, receipt since purged"
+    },
+    {
+      "job": 144246,
+      "status": "CANCELLED",
+      "reason": "in-place texture update and focused close-ups supersede; see receipt",
+      "runtime_seconds": 215
+    },
+    {
+      "job": 144248,
+      "status": "COMPLETED",
+      "exit": "0:0",
+      "runtime_seconds": 111
+    }
+  ],
+  "accepted_submissions": 4,
+  "rejected_submissions": 1,
+  "rejected_reason": "Windows CRLF, no allocation",
+  "accounting": "sacct unavailable: slurmdbd connection refused",
+  "total_reserved_shard_seconds": 571
+}

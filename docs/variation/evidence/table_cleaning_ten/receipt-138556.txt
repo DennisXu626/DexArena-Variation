@@ -1,0 +1,1 @@
+Receipt no longer retained by scontrol at collection time: slurm_load_jobs error: Invalid job id specified

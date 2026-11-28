@@ -860,6 +860,8 @@ class TableCleanBase(BaseEnv):
     FLAG_NAMES = ("f_picked", "f_grasp_pan", "f_poured", "f_stow_pan")
 
     def _reset_buffers(self, env_idx):
+        if hasattr(self, "_hold_step"):
+            self._hold_step[env_idx] = -1
         if hasattr(self, "_debris_motion_step"):
             self._debris_motion_step[env_idx] = -1
         self.stage[env_idx] = 0
@@ -936,6 +938,8 @@ class TableCleanBase(BaseEnv):
         keep = torch.ones(self.num_envs, dtype=torch.bool, device=self.device)
         keep[selected] = False
         fields = ("stage", "hold", "success_latched", *self.FLAG_NAMES)
+        if hasattr(self, "_hold_step"):
+            fields = (*fields, "_hold_step")
         saved = {key: getattr(self, key)[keep].clone() for key in fields}
         previous = getattr(self, "_debris_local_prev", None)
         old_local = [value[keep].clone() for value in previous] if previous else None
@@ -1155,7 +1159,12 @@ class TableCleanBase(BaseEnv):
 
     def _latch(self, cond, steps=HOLD_STEPS):
         """Advance `hold` while cond holds; return True once it sticks."""
-        self.hold = torch.where(cond, self.hold + 1, torch.zeros_like(self.hold))
+        if not hasattr(self, "_hold_step"):
+            self._hold_step = torch.full_like(self._elapsed_steps, -1)
+        fresh = self._hold_step != self._elapsed_steps
+        updated = torch.where(cond, self.hold + 1, torch.zeros_like(self.hold))
+        self.hold = torch.where(fresh, updated, self.hold)
+        self._hold_step = self._elapsed_steps.clone()
         return self.hold >= steps
 
     # --------------------------------------------------- shared stage steps
@@ -1206,6 +1215,13 @@ class TableCleanBase(BaseEnv):
             + [self.success_latched[:, None].float()],
             dim=-1,
         )
+        # Store processing status relative to the saved frame, rather than an
+        # absolute step number: reset-to-state may use a different episode clock.
+        hold_step = getattr(self, "_hold_step", None)
+        state["table_clean_hold_counted"] = (
+            torch.zeros_like(self._elapsed_steps, dtype=torch.bool)
+            if hold_step is None else hold_step == self._elapsed_steps
+        )[:, None]
         return state
 
     def set_state_dict(self, state: dict, env_idx: torch.Tensor = None):
@@ -1220,6 +1236,7 @@ class TableCleanBase(BaseEnv):
         """
         state = dict(state)
         task_state = state.pop("table_clean_task_state", None)
+        hold_counted = state.pop("table_clean_hold_counted", None)
         if env_idx is None:
             restore_idx = torch.arange(self.num_envs, device=self.device)
             super().set_state_dict(state)
@@ -1231,6 +1248,8 @@ class TableCleanBase(BaseEnv):
         # Restoring poses may keep elapsed_steps unchanged (including demo-state
         # reset, which bypasses _initialize_episode). Recompute motion for these
         # rows against their previous positions; retain neighbours' same-step cache.
+        if hasattr(self, "_hold_step"):
+            self._hold_step[restore_idx] = -1
         if hasattr(self, "_debris_motion_step"):
             self._debris_motion_step[restore_idx] = -1
         # Fixed-base set_root_pose/get_state drifts root z by -2^-26 per
@@ -1252,6 +1271,19 @@ class TableCleanBase(BaseEnv):
         self.success_latched[restore_idx] = task_state[
             :, 2 + len(self.FLAG_NAMES)
         ].bool()
+        if isinstance(hold_counted, dict):
+            hold_counted = hold_counted.get("value")
+        if hold_counted is not None:
+            counted = torch.as_tensor(
+                hold_counted, device=self.device, dtype=torch.bool
+            ).reshape(len(restore_idx))
+            if not hasattr(self, "_hold_step"):
+                self._hold_step = torch.full_like(self._elapsed_steps, -1)
+            self._hold_step[restore_idx] = torch.where(
+                counted, self._elapsed_steps[restore_idx], -1
+            )
+        # Legacy task states lack processing status; retain their historical
+        # first-read evaluation. Physics-only states likewise invalidate above.
 
     def compute_normalized_dense_reward(self, obs, action, info):
         return self.compute_dense_reward(obs, action, info) / self.MAX_REWARD

@@ -23,3 +23,10 @@ V1对象键：`table_cleaning/dustpan`；V2对应键：`dustpan`。代码调查�
 ## 2026-11-15候选静态分析
 
 状态仍为待适配。本轮仅核对现有源文件、资产部件与材质／UV事实，实际SAPIEN绑定、并行隔离和A6仍未验证；见[候选分析](../../../../../docs/variation/OBJECT_CANDIDATES.md)。没有创建该对象的新方案、配置或运行代码。
+
+## 2026-11-24 十方案实施
+
+用户已确认十套方案，保留 original 与旧 variant_1/2，新增 variant_3–10。
+唯一运行参数见 `tasks/assets/variation/table_cleaning/v1/catalog.json`，支持三个 Sharpa 入口。
+实现与当前验证范围见[十方案记录](../../../../../docs/variation/TABLE_CLEANING_TEN_VARIANTS.md)。
+本节实施状态不将上面的历史“待适配”调查记录当作新增验收证据。
